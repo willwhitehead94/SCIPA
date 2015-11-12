@@ -5,3 +5,10 @@ C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DataAccessLay
 C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DataAccessLayer.pdb
 C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
 C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb

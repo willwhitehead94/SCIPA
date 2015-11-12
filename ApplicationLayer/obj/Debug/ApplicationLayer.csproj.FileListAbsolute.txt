@@ -10,3 +10,15 @@ C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DomainLogicLa
 C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DataAccessLayer.dll
 C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DomainLogicLayer.pdb
 C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DataAccessLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe.config
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csprojResolveAssemblyReference.cache
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.Properties.Resources.resources
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.exe
+\\scm-home\M2006199\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.pdb

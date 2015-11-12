@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Communicators\Communicator.cs" />
     <Compile Include="Communicators\DatabaseCommunicator.cs" />
     <Compile Include="Communicators\FlatFileCommunicator.cs" />

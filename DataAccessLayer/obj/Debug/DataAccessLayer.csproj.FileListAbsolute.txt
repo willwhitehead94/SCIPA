@@ -4,3 +4,9 @@ C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\bin\Debug\DataAccessLaye
 C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
 C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+\\scm-home\M2006199\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
