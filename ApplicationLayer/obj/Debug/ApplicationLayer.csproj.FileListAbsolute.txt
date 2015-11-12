@@ -1,0 +1,12 @@
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\ApplicationLayer.exe.config
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\ApplicationLayer.exe
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\ApplicationLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\obj\Debug\ApplicationLayer.csprojResolveAssemblyReference.cache
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\obj\Debug\ApplicationLayer.Properties.Resources.resources
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\obj\Debug\ApplicationLayer.exe
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\obj\Debug\ApplicationLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\ApplicationLayer\bin\Debug\DataAccessLayer.pdb

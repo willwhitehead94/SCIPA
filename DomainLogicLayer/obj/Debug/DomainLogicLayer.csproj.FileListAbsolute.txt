@@ -1,0 +1,7 @@
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb

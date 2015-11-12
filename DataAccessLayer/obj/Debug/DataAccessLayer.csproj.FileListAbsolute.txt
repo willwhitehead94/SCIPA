@@ -1,0 +1,6 @@
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\SCIPA Project\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
