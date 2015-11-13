@@ -39,6 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Objects\Alarm.cs" />
+    <Compile Include="Data Objects\AlarmType.cs" />
+    <Compile Include="Data Objects\Command.cs" />
+    <Compile Include="Data Objects\CommandType.cs" />
+    <Compile Include="Data Objects\Communicator.cs" />
+    <Compile Include="Data Objects\CommunicatorType.cs" />
+    <Compile Include="Data Objects\DatabaseCommunicator.cs" />
+    <Compile Include="Data Objects\DatabaseType.cs" />
+    <Compile Include="Data Objects\Device.cs" />
+    <Compile Include="Data Objects\DeviceValue.cs" />
+    <Compile Include="Data Objects\FileCommunicator.cs" />
+    <Compile Include="Data Objects\FileOpenMode.cs" />
+    <Compile Include="Data Objects\Location.cs" />
+    <Compile Include="Data Objects\Rule.cs" />
+    <Compile Include="Data Objects\RuleCommandLookup.cs" />
+    <Compile Include="Data Objects\SerialCommunicator.cs" />
+    <Compile Include="Data Objects\ValueType.cs" />
     <Compile Include="DatabaseHandler.cs" />
     <Compile Include="FlatFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
