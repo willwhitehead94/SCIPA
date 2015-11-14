@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Data_Objects
+namespace DataAccessLayer.Models
 {
-    public class AlarmType
+    public class CommunicatorType
     {
         private int id { get; set; }
 
-        private char alarmType { get; set; }
+        private char communicatorType { get; set; }
 
     }
+
 }

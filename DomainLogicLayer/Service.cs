@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
 
 namespace DomainLogicLayer
 {
@@ -32,5 +33,14 @@ namespace DomainLogicLayer
         {
             DebugPrint(string.Format("{0}:  {1}", Message, SecondMessage));
         }
+
+
+        public static bool CheckMyThinking(string query)
+        {
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            return dbHandler.Execute(query);
+        }
+
+        
     }
 }

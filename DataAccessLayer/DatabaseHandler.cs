@@ -1,213 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Odbc;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public enum DatabaseType { SQL, OLE, ODBC };
+    public enum DatabaseType { Unknown, SQL, OLE, ODBC };
 
-    /// <summary>
-    /// This class can be used to connect to either an SQL, an OLE or an ODBC database.
-    /// 
-    /// SQL executed by calling the Execute method against the DatabaseHandler object.
-    ///     - Execute(Query) executes a query and prepares the returned data.
-    ///     - Execute(Query, false) executes a query but ignores response data.
-    /// </summary>
     public class DatabaseHandler
     {
-        #region Default Values
+        #region Static Defaults
 
         /// <summary>
         /// This is the default connection type used when there isn't one passed to the constructor.
         /// </summary>
-        private DatabaseType DefaultConnectionType = GetDefaultDatabaseTypeFromConfig();
+        private DatabaseType defaultConnectionType = GetDatabaseType();
 
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
         /// </summary>
-        private string DefaultConnectionString = Properties.Settings.Default.DefaultDatabaseConnectionString;
-
-        #endregion Default Values
-
-        #region Variables
-
-        /// <summary>
-        /// The selected connection type, which has to be one of the preset options.
-        /// </summary>
-        private DatabaseType ConnectionType;
-
-        /// <summary>
-        /// The actual connection to the data source.
-        /// </summary>
-        private IDbConnection DatabaseConnection;
-
-        /// <summary>
-        /// The connection string to connect to the database with.
-        /// </summary>
-        private string ConnectionString;
-
-        /// <summary>
-        /// The query to execute against the connection string.
-        /// </summary>
-        private string Query;
-
-        private int ResponseCode;
-
-        /// <summary>
-        /// A list of Object arrays. Each Object array constitues a record from the database.
-        /// The Record Object contains a result for each column returned via the query.
-        /// </summary>
-        private List<Object[]> ResultSet;
-
-        /// <summary>
-        /// Numerical count of the affected rows server-side.
-        /// </summary>
-        private int AffectedRows;
-
-        #endregion Variables
-
-        #region Constructor(s)
-
-        /// <summary>
-        /// Constructor method creates a new DatabaseHandler object with the default connection string
-        /// and connection type. These values can be changed within the 'Default' region of the 
-        /// DatabaseHandler class.
-        /// </summary>
-        public DatabaseHandler()
-        {
-            this.ConnectionType = DefaultConnectionType;
-            this.ConnectionString = DefaultConnectionString;
-        }
-
-        /// <summary>
-        /// Constructor method creates a DatabaseHandler object with a preset data type
-        /// and connection string.
-        /// </summary>
-        public DatabaseHandler(DatabaseType Type, string ConnectionString)
-        {
-            this.ConnectionType = Type;
-            this.ConnectionString = ConnectionString;
-        }
-
-        /// <summary>
-        /// Constructor method creates a DatabaseHandler object with a preset data type
-        /// and connection string, but also executes the query immediately.
-        /// </summary>
-        public DatabaseHandler(DatabaseType Type, string ConnectionString, string Query, bool ExpectResults = true)
-        {
-            this.ConnectionType = Type;
-            this.ConnectionString = ConnectionString;
-            this.Query = Query;
-
-            Execute(this.Query, ExpectResults);
-        }
-
-        #endregion Constructor
-
-        #region Public Methods
-
-        /// <summary>
-        /// Takes a query to execute, along with an optional param to determine whether or not
-        /// results are expected. NonQuerys, such as Insert and Update statements do not return results,
-        /// and as such, the 'ExpectResults' param should be set to false.
-        /// 
-        /// It is common, however, for most queries to require responses, so this is the default setting.
-        /// </summary>
-        /// <param name="Query"></param>
-        /// <param name="ExpectResults"></param>
-        /// <returns></returns>
-        public bool Execute(String Query = "", bool ExpectResults = true)
-        {
-            //Service.DebugPrint("About to execute SQL query", Query);
-
-            this.Query = Query;
-
-            this.AffectedRows = int.MinValue;
-            this.ResultSet = null;
-
-            IDbConnection DatabaseConnection = GetDatabaseConnection(ConnectionType);
-
-            return InternalExecute(DatabaseConnection, ExpectResults);
-        }
-
-        /// <summary>
-        /// Returns the List of results. Records are stored in an object array.
-        /// </summary>
-        public List<Object[]> GetResultObject()
-        {
-            if (ResultSet.Count == 0 || ResultSet == null)
-                return null;
-            else
-                return ResultSet;
-        }
-
-        /// <summary>
-        /// Returns the List of results. Records are stored in an object array.
-        /// The integer being passed out is the number of affected rows (in this instance, the number of records).
-        /// </summary>
-        public List<Object[]> GetResultObject(out int AffectedRows)
-        {
-            AffectedRows = this.AffectedRows;
-            return GetResultObject();
-        }
-
-        /// <summary>
-        /// Returns a list of lists that make up every record returned via the database.
-        /// Each List<> is a record, each string inside the child List<> is a value.
-        /// 
-        /// For example "SELECT TOP 3 Name, Age FROM Person" would return List<List<string>>    
-        ///     - The first list would contain 3 list<string> objects.
-        ///     - Each of the second list<string> objects would contain 2 string
-        ///       objects (to represent Name and Age).
-        /// </summary>
-        public List<List<string>> GetResultLists()
-        {
-            List<Object[]> ResultObject = GetResultObject();
-
-            if (ResultObject != null)
-            {
-                List<List<string>> AllRecords = new List<List<string>>();
-                List<string> SingleRecord = new List<string>();
-
-                foreach (Object[] Record in ResultObject)
-                {
-                    foreach (string Value in Record)
-                    {
-                        SingleRecord.Add(Value);
-                    }
-                    AllRecords.Add(SingleRecord);
-                }
-
-                return AllRecords;
-            }
-            else
-                return null;
-        }
-
-        /// <summary>
-        /// Method returns an integer value of the affected records from the last query
-        /// executed by this object.
-        /// </summary>
-        /// <returns></returns>
-        public int GetAffectedRows()
-        {
-            return AffectedRows;
-        }
-
-        #endregion Public Methods
-
-        #region Private Methods
+        private string defaultConnectionString = Properties.Settings.Default.DefaultDatabaseConnectionString;
 
         /// <summary>
         /// Method to automatically convert the default database type to the 'DatabaseType' enumeration.
         /// </summary>
         /// <returns>DatabaseType of entered database, except where fault where SQL is selected.</returns>
-        private static DatabaseType GetDefaultDatabaseTypeFromConfig()
+        private static DatabaseType GetDatabaseType(string dbType = null)
         {
-            switch(Properties.Settings.Default.DefaultDatabaseConnectionType.ToUpper())
+            string enteredValue = (dbType == null ? Properties.Settings.Default.DefaultDatabaseConnectionType : dbType);
+            
+            switch (enteredValue.ToUpper())
             {
                 case "SQL": return DatabaseType.SQL;
                 case "OLE": return DatabaseType.OLE;
@@ -216,121 +43,96 @@ namespace DataAccessLayer
             }
         }
 
+        #endregion Static Defaults
+
         /// <summary>
-        /// Creates a new database connection based on the DatabaseType the user has selected.
-        /// The database connection is then stored in the local, private variable 'DatabaseConnection'
-        /// If already created, a new database connection is not created.
+        /// The database connection type that this database handler will be connecting to.
         /// </summary>
-        private IDbConnection GetDatabaseConnection(DatabaseType DataType)
+        private DatabaseType _connectionType = DatabaseType.Unknown;
+        
+        /// <summary>
+        /// The connection string to use in order to connect and communicate with the database.
+        /// </summary>
+        private string _connectionString;
+
+        /// <summary>
+        /// The data set of results from the last execution.
+        /// </summary>
+        private DataSet _lastDataSet = null;
+
+        /// <summary>
+        /// Sets the current object's connection type by convering a string object to the DatabaseType format.
+        /// </summary>
+        /// <param name="connectionType">Text representation of DatabaseType.</param>
+        private void SetConnectionType(string connectionType)
         {
-            if (this.DatabaseConnection != null)
-            {
-                return this.DatabaseConnection;
-            }
-
-            switch (DataType)
-            {
-                case DatabaseType.SQL: DatabaseConnection = new System.Data.SqlClient.SqlConnection(ConnectionString); break;
-                case DatabaseType.ODBC: DatabaseConnection = new System.Data.Odbc.OdbcConnection(ConnectionString); break;
-                case DatabaseType.OLE: DatabaseConnection = new System.Data.OleDb.OleDbConnection(ConnectionString); break;
-                default: DatabaseConnection = null; break;
-            }
-
-            return DatabaseConnection;
+            GetDatabaseType(connectionType);
         }
 
         /// <summary>
-        /// This method determines which type of execution is required given user input from
-        /// other methods. 
-        /// As a private method, this execution is only performed internally.
+        /// Sets the current object's connection type by taking a parameter of DatabaseType and setting that as current.
         /// </summary>
-        private bool InternalExecute(IDbConnection DatabaseConnection, bool ExpectResults)
+        /// <param name="connectionType">DatabaseType original format.</param>
+        private void SetConnectionType(DatabaseType connectionType)
         {
-            bool SuccessfulExecute = false;
-            int AffectedRows = 0;
-
-            if (DatabaseConnection == null)
-                return false;
-
-            ConnectionState StartState = DatabaseConnection.State;
-
-            try
-            {
-                if (StartState != ConnectionState.Open)
-                    DatabaseConnection.Open();
-
-                if (ExpectResults)
-                    SuccessfulExecute = ExecuteQuery(DatabaseConnection.CreateCommand(), out AffectedRows);
-                else
-                {
-                    SuccessfulExecute = ExecuteNonQuery(DatabaseConnection.CreateCommand(), out AffectedRows);
-                }
-            }
-            finally
-            {
-                //Leave the connection as we found it (i.e. close it if it came closed)
-                if (StartState.Equals(ConnectionState.Closed))
-                    DatabaseConnection.Close();
-
-                this.AffectedRows = AffectedRows;
-            }
-
-            return SuccessfulExecute;
+            this._connectionType = connectionType;
         }
 
         /// <summary>
-        /// This method executes a query against the database connection where a result is expected.
-        /// Results are stored in the ResultSet private object.
-        /// Affected rows are calculated by the number of records returned.
+        /// Sets the local connection string value.
         /// </summary>
-        private bool ExecuteQuery(IDbCommand DatabaseCommand, out int AffectedRows)
+        /// <param name="connectionString">Text representation of the connection string.</param>
+        private void SetConnectionString(string connectionString)
         {
-            List<Object[]> AllRecords = new List<object[]>();
-            IDataReader DataReader;
+            this._connectionString = connectionString;
+        }
 
-            try
-            {
-                DatabaseCommand.CommandText = Query;
-                DataReader = DatabaseCommand.ExecuteReader();
 
-                Object[] SingleRecord = new Object[DataReader.FieldCount];
 
-                while (DataReader.Read())
-                {
-                    SingleRecord = new Object[DataReader.FieldCount];
-
-                    for (int ColumnCounter = 0; ColumnCounter < DataReader.FieldCount; ColumnCounter++)
-                        SingleRecord[ColumnCounter] = DataReader.GetValue(ColumnCounter).ToString();
-
-                    AllRecords.Add(SingleRecord);
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            finally
-            {
-                AffectedRows = AllRecords.Count;
-                ResultSet = AllRecords;
-            }
-
-            return true;
+        /// <summary>
+        /// Constructor setting the communication defaults from the configuration file.
+        /// </summary>
+        public DatabaseHandler()
+        {
+            SetConnectionString(defaultConnectionString);
+            SetConnectionType(defaultConnectionType);
         }
 
         /// <summary>
-        /// This method executes a query against the database connection where a result is NOT required.
-        /// Results are NOT stored.
-        /// Affected rows are calculated by the number of rows affected on the database.
+        /// Constructor to use a defined connection string and type.
         /// </summary>
-        private bool ExecuteNonQuery(IDbCommand DatabaseCommand, out int AffectedRows)
+        /// <param name="connectionString">User required connection string.</param>
+        /// <param name="connectionType">User required connection type (as text representation)</param>
+        public DatabaseHandler(string connectionString, string connectionType)
         {
-            AffectedRows = 0;
+            SetConnectionString(connectionString);
+            SetConnectionType(connectionType);
+        }
 
+        /// <summary>
+        /// Constructor to use a defined connection string and type.
+        /// </summary>
+        /// <param name="connectionString">User required connection string.</param>
+        /// <param name="connectionType">User required connection type</param>
+        public DatabaseHandler(string connectionString, DatabaseType connectionType)
+        {
+            SetConnectionString(connectionString);
+            SetConnectionType(connectionType);
+        }
+
+
+
+        /// <summary>
+        /// Public method to execute an entered query string against the pre-defined connection settings.
+        /// Stores the dataset into the local object's private variable.
+        /// </summary>
+        /// <param name="query">Query string to execute on the database server.</param>
+        /// <returns>Success or fail of execution.</returns>
+        public bool Execute(string query)
+        {
             try
             {
-                DatabaseCommand.CommandText = Query;
-                AffectedRows = DatabaseCommand.ExecuteNonQuery();
+                _lastDataSet = ExecuteQuery(query);
                 return true;
             }
             catch
@@ -339,6 +141,61 @@ namespace DataAccessLayer
             }
         }
 
-        #endregion Private Methods
+        /// <summary>
+        /// Private method to execite a query string against the pre-defined connection settings.
+        /// </summary>
+        /// <param name="query">Query string to execute on the database server.</param>
+        /// <returns>The query's resulting dataset.</returns>
+        private DataSet ExecuteQuery(string query)
+        {
+            DataSet resultDataSet = new DataSet();
+            IDbConnection connection;
+            IDbCommand command;
+            IDbDataAdapter adapter;
+
+            if (_connectionString == null || _connectionType == DatabaseType.Unknown || query == null)
+                return null;
+
+            switch (_connectionType)
+            {
+                case DatabaseType.SQL:
+                    connection = new SqlConnection(_connectionString);
+                    command = new SqlCommand(query, (SqlConnection)connection);
+                    adapter = new SqlDataAdapter((SqlCommand)command);
+                    break;
+                case DatabaseType.ODBC:
+                    connection = new OdbcConnection(_connectionString);
+                    command = new OdbcCommand(query, (OdbcConnection)connection);
+                    adapter = new OdbcDataAdapter((OdbcCommand)command);
+                    break;
+                case DatabaseType.OLE:
+                    connection = new OleDbConnection(_connectionString);
+                    command = new OleDbCommand(query, (OleDbConnection)connection);
+                    adapter = new OleDbDataAdapter((OleDbCommand)command);
+                    break;
+                default:
+                    return null;
+            }
+
+            adapter.Fill(resultDataSet);
+
+            return resultDataSet;
+        }
+
+
+        public DataSet GetDataSet()
+        {
+            return _lastDataSet;
+        }
+
+        public DataTable GetDataTableFromDataSet(int TableIndex)
+        {
+            return _lastDataSet.Tables[TableIndex];
+        }
+
+        public DataTable GetDataTableFromDataSet(string TableName)
+        {
+            return GetDataTableFromDataSet(_lastDataSet.Tables.IndexOf(TableName));
+        }
     }
 }

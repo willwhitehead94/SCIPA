@@ -90,14 +90,15 @@ namespace DomainLogicLayer.Objects
             Service.DebugPrint("Updating general information for Device", Id.ToString());
 
             //Creates new instance of the database handler, and sets-up the connection to the database.
-            DatabaseHandler Data = new DatabaseHandler(DatabaseType.SQL, DataAccessLayer.Properties.Settings.Default.DefaultDatabaseConnectionString);
+            DatabaseHandler Data = new DatabaseHandler(DataAccessLayer.Properties.Settings.Default.DefaultDatabaseConnectionString.ToString(), DatabaseType.SQL);
 
             //Executes the required SQL statement to retrieve the required data.
-            Data.Execute(string.Format("SELECT TOP 1 Id,Name,Description FROM Device WHERE Id = {0}", Id), true);
+            Data.Execute(string.Format("SELECT TOP 1 Id,Name,Description FROM Device WHERE Id = {0}", Id));
 
             //Converts the data from the returned object list to the correct format, and updates
             //local variables as required.
-            object[] DatabaseResults = Data.GetResultObject()[0];
+            //TODO get results 
+            object[] DatabaseResults = null;//Data.GetResultObject()[0];
 
             int.TryParse(DatabaseResults[0].ToString(), out this.Id); ///Id
             this.Name = DatabaseResults[1].ToString(); //Name
@@ -119,20 +120,20 @@ namespace DomainLogicLayer.Objects
             DatabaseHandler Data = new DatabaseHandler();
 
             //Executes the required SQL statement to retrieve the required data.
-            Data.Execute(string.Format("SELECT Id FROM Command WHERE DeviceId = {0}", Id), true);
+            Data.Execute(string.Format("SELECT Id FROM Command WHERE DeviceId = {0}", Id));
 
             //Converts the data from the returned object list to the correct format, and calls the creation
             //of the required objects.
-            foreach (object[] CommandRecord in Data.GetResultObject())
-            {
-                int TempCommandId = int.MinValue;
-                int.TryParse(CommandRecord[0].ToString(), out TempCommandId);
+            //foreach (object[] CommandRecord in Data.GetResultObject())
+            //{
+            //    int TempCommandId = int.MinValue;
+            //    int.TryParse(CommandRecord[0].ToString(), out TempCommandId);
 
-                if (TempCommandId != int.MinValue)
-                {
-                    Commands.Add(new Command(TempCommandId));
-                }
-            }
+            //    if (TempCommandId != int.MinValue)
+            //    {
+            //        Commands.Add(new Command(TempCommandId));
+            //    }
+            //}
         }
 
         /// <summary>
@@ -147,20 +148,20 @@ namespace DomainLogicLayer.Objects
             DatabaseHandler Data = new DatabaseHandler();
 
             //Executes the required SQL statement to retrieve the required data.
-            Data.Execute(string.Format("SELECT Id FROM Rule WHERE DeviceId = {0}", Id), true);
+            Data.Execute(string.Format("SELECT Id FROM Rule WHERE DeviceId = {0}", Id));
 
             //Converts the data from the returned object list to the correct format, and calls the creation
             //of the required objects.
-            foreach (object[] RuleRecord in Data.GetResultObject())
-            {
-                int TempRuleRecordId = int.MinValue;
-                int.TryParse(RuleRecord[0].ToString(), out TempRuleRecordId);
+            //foreach (object[] RuleRecord in Data.GetResultObject())
+            //{
+            //    int TempRuleRecordId = int.MinValue;
+            //    int.TryParse(RuleRecord[0].ToString(), out TempRuleRecordId);
 
-                if (TempRuleRecordId != int.MinValue)
-                {
-                    Rules.Add(new Rule(TempRuleRecordId));
-                }
-            }
+            //    if (TempRuleRecordId != int.MinValue)
+            //    {
+            //        Rules.Add(new Rule(TempRuleRecordId));
+            //    }
+            //}
         }
 
         /// <summary>

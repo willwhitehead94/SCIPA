@@ -4,19 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Data_Objects
+namespace DataAccessLayer.Models
 {
-    public class Communicator
+    public class Rule
     {
         private int id { get; set; }
 
         private int deviceId { get; set; }
 
-        private int communicatorTypeId { get; set; }
-
-        private int subId { get; set; }
-
-        private int valueTypeId { get; set; }
+        private char ruleText { get; set; }
 
     }
+
 }

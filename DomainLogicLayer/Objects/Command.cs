@@ -44,11 +44,12 @@ namespace DomainLogicLayer.Objects
             DatabaseHandler Data = new DatabaseHandler();
 
             //Executes the required SQL statement to retrieve the required data.
-            Data.Execute(string.Format("SELECT TOP 1 Name,Description,ValueToTransmit,CommunicatorId FROM Command WHERE Id = {0}", Id), true);
+            Data.Execute(string.Format("SELECT TOP 1 Name,Description,ValueToTransmit,CommunicatorId FROM Command WHERE Id = {0}", Id));
 
             //Converts the data from the returned object list to the correct format, and calls the creation
             //of the required objects.
-            object[] DatabaseResults = Data.GetResultObject()[0];
+            //TODO get results now 
+            object[] DatabaseResults = null;//Data.GetResultObject()[0];
 
             this.Id = Id;
             this.Name = DatabaseResults[0].ToString();

@@ -19,3 +19,10 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\Domain
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb

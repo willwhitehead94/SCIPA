@@ -103,7 +103,7 @@ namespace DomainLogicLayer.Communicators
             DatabaseConnection.Execute(string.Format("SELECT TOP 1 * FROM SerialCommunicator WHERE Id={0}", Id));
 
             //Assign data to objects
-            DatabaseConnection.GetResultLists();
+            //DatabaseConnection.GetResultLists();
         }
 
         private List<int> GetSerialCommunicatorIdsFromDatabase()

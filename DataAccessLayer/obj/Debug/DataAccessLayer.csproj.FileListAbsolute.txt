@@ -15,3 +15,9 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAc
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.pdb

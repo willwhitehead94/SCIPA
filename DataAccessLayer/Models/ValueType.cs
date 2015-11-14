@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Data_Objects
+namespace DataAccessLayer.Models
 {
-    public class FileOpenMode
+    public class ValueType
     {
         private int id { get; set; }
 
-        private char openMode { get; set; }
+        private char type { get; set; }
 
     }
 

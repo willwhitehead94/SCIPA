@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Data_Objects
+namespace DataAccessLayer.Models
 {
-    public class DatabaseType
+    public class DatabaseCommunicator
     {
         private int id { get; set; }
 
-        private char databaseType { get; set; }
+        private char connectionString { get; set; }
+
+        private int databaseTypeId { get; set; }
 
     }
 

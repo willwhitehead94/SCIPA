@@ -34,3 +34,15 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\Applic
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.exe
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe.config
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csprojResolveAssemblyReference.cache
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.Properties.Resources.resources
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.exe
+C:\Users\m2006199\Desktop\GitHub\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.pdb

@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Data_Objects
+namespace DataAccessLayer.Models
 {
-    public class ValueType
+    public class CommandType
     {
         private int id { get; set; }
 
-        private char type { get; set; }
+        private char commandType { get; set; }
 
     }
-
 }
