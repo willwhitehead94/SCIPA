@@ -23,7 +23,7 @@ namespace DataAccessLayer
         /// <summary>
         /// This is the default connection type used when there isn't one passed to the constructor.
         /// </summary>
-        private DatabaseType DefaultConnectionType = DatabaseType.SQL;
+        private DatabaseType DefaultConnectionType = GetDefaultDatabaseTypeFromConfig();
 
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
@@ -200,6 +200,21 @@ namespace DataAccessLayer
         #endregion Public Methods
 
         #region Private Methods
+
+        /// <summary>
+        /// Method to automatically convert the default database type to the 'DatabaseType' enumeration.
+        /// </summary>
+        /// <returns>DatabaseType of entered database, except where fault where SQL is selected.</returns>
+        private static DatabaseType GetDefaultDatabaseTypeFromConfig()
+        {
+            switch(Properties.Settings.Default.DefaultDatabaseConnectionType.ToUpper())
+            {
+                case "SQL": return DatabaseType.SQL;
+                case "OLE": return DatabaseType.OLE;
+                case "ODBC": return DatabaseType.ODBC;
+                default: return DatabaseType.SQL;
+            }
+        }
 
         /// <summary>
         /// Creates a new database connection based on the DatabaseType the user has selected.

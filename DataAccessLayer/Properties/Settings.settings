@@ -9,5 +9,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-LH3AFE6\SQLEXPRESS;Initial Catalog=scipa_test;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="DefaultDatabaseConnectionType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQL</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
