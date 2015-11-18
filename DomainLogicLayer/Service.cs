@@ -35,10 +35,19 @@ namespace DomainLogicLayer
         }
 
 
-        public static bool CheckMyThinking(string query)
+        //public static bool CheckMyThinking(string query)
+        //{
+        //    DatabaseHandler dbHandler = new DatabaseHandler();
+        //    return dbHandler.Execute(query);
+        //}
+
+        public static void CheckMyThinking()
         {
-            DatabaseHandler dbHandler = new DatabaseHandler();
-            return dbHandler.Execute(query);
+            List<DataAccessLayer.Models.Device> tempList = new List<DataAccessLayer.Models.Device>();
+            tempList= DataAccessLayer.Controllers.Devices.GetAllDevices();
+
+
+            string test = "temp";
         }
 
         

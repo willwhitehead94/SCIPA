@@ -19,8 +19,9 @@ namespace ApplicationLayer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            bool temp = DomainLogicLayer.Service.CheckMyThinking("SELECT id FROM Device");
+            //bool temp = DomainLogicLayer.Service.CheckMyThinking("SELECT id FROM Device");
 
+            DomainLogicLayer.Service.CheckMyThinking();
         }
     }
 }
