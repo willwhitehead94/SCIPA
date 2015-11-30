@@ -15,6 +15,8 @@ namespace ApplicationLayer
         [STAThread]
         static void Main()
         {
+            DomainLogicLayer.Service.DebugPrint("A new instance of SCIPA has been started!");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

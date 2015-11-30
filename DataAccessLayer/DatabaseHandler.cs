@@ -133,10 +133,12 @@ namespace DataAccessLayer
             try
             {
                 _lastDataSet = ExecuteQuery(query);
+                Service.DebugPrint("Execution of query was a success.");
                 return true;
             }
             catch
             {
+                Service.DebugPrint("Execution of query was a failure.");
                 return false;
             }
         }
@@ -148,6 +150,8 @@ namespace DataAccessLayer
         /// <returns>The query's resulting dataset.</returns>
         private DataSet ExecuteQuery(string query)
         {
+            Service.DebugPrint("About to execute:", query);
+
             DataSet resultDataSet = new DataSet();
             IDbConnection connection;
             IDbCommand command;
@@ -196,6 +200,23 @@ namespace DataAccessLayer
         public DataTable GetDataTableFromDataSet(string TableName)
         {
             return GetDataTableFromDataSet(_lastDataSet.Tables.IndexOf(TableName));
+        }
+
+        public string GetSingleValueFromFirstTableInSet()
+        {
+            string value = null;
+
+            foreach (DataRow row in _lastDataSet.Tables[0].Rows)
+            {
+                value =row[0].ToString();
+
+                if (value != null)
+                {
+                    break;
+                }
+            }
+
+            return value;
         }
     }
 }

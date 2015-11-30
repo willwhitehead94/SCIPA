@@ -8,13 +8,44 @@ namespace DataAccessLayer.Models
 {
     public class Alarm
     {
-        private int id { get; set; }
+        public bool changesMade;
 
-        private int deviceId { get; set; }
+        private int _id { get; set; }
 
-        private int alarmTypeId { get; set; }
+        private int _deviceId { get; set; }
 
-        private char value { get; set; }
+        private int _alarmTypeId { get; set; }
 
+        private string _value { get; set; }
+
+        private bool _enabled { get; set; }
+
+        public Alarm(int id,int deviceId,int alarmTypeId,string value,bool enabled)
+        {
+            _id = id;
+            _deviceId = deviceId;
+            _alarmTypeId = alarmTypeId;
+            _value = value;
+            _enabled = enabled;
+        }
+
+        public Alarm(string id, string deviceId, string alarmTypeId, string value, string enabled)
+        {
+            _id = Convert.ToInt32(id) ;
+            _deviceId = Convert.ToInt32(deviceId);
+            _alarmTypeId = Convert.ToInt32(alarmTypeId);
+            _value = value;
+            _enabled = Convert.ToBoolean(enabled);
+        }
+
+        public int GetId()
+        {
+            return _id;
+        }
+
+        public int GetDeviceId()
+        {
+            return _deviceId;
+        }
     }
 }

@@ -4,11 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer;
 
-namespace DomainLogicLayer
+namespace DataAccessLayer
 {
-    public class Service
+    class Service
     {
         /// <summary>
         /// Global static method available to all aspects of the application to unify the
@@ -35,7 +34,6 @@ namespace DomainLogicLayer
             DebugPrint(string.Format("{0}:  {1}", Message, SecondMessage));
         }
 
-
         /// <summary>
         /// Stores the debug statements to a file for analysis following the runtime events.
         /// </summary>
@@ -43,36 +41,11 @@ namespace DomainLogicLayer
         public static void LogDebugStatements(string statement)
         {
             string dir = Properties.Settings.Default.DebugOutputDir;
-            string file = DateTime.Now.ToString("yyyy-MM-dd") + " DLL.log";
+            string file = DateTime.Now.ToString("yyyy-MM-dd") + " DAL.log";
 
             dir += file;
 
             System.IO.File.AppendAllText(@dir, statement + Environment.NewLine);
         }
-
-
-
-        public static void CheckMyThinking()
-        {
-            List<DataAccessLayer.Models.Device> tempList = new List<DataAccessLayer.Models.Device>();
-            
-
-            DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
-            DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
-
-            tempList = DataAccessLayer.Controllers.DeviceController.GetAllDevices();
-
-            foreach (DataAccessLayer.Models.Device device in tempList)
-            {
-                device.SetName("This is a test 777");
-                DataAccessLayer.Controllers.DeviceController.UpdateDevice(device);
-            }
-
-            DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
-
-            string test = "temp";
-        }
-
-        
     }
 }

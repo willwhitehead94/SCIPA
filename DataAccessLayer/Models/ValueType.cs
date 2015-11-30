@@ -12,6 +12,10 @@ namespace DataAccessLayer.Models
 
         private char type { get; set; }
 
+        public int GetId()
+        {
+            return id;
+        }
     }
 
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.Properties {
+namespace DomainLogicLayer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,29 +20,6 @@ namespace DataAccessLayer.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-LH3AFE6\\SQLEXPRESS;Initial Catalog=SCIPA;Integrated Security=" +
-            "True")]
-        public string DefaultDatabaseConnectionString {
-            get {
-                return ((string)(this["DefaultDatabaseConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SQL")]
-        public string DefaultDatabaseConnectionType {
-            get {
-                return ((string)(this["DefaultDatabaseConnectionType"]));
-            }
-            set {
-                this["DefaultDatabaseConnectionType"] = value;
             }
         }
         

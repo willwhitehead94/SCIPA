@@ -14,10 +14,14 @@ namespace DataAccessLayer.Models
 
         private double? longitude { get; set; }
 
-    private double? latitude { get; set; }
+        private double? latitude { get; set; }
 
-    private char notes { get; set; }
+        private char notes { get; set; }
 
-}
+        public int GetId()
+        {
+            return id;
+        }
+    }
 
 }

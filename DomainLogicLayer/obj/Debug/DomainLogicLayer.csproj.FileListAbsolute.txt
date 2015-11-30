@@ -26,3 +26,4 @@ C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLaye
 C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
 C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
 C:\Users\m2006199\Desktop\GitHub\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb
+F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll.config
