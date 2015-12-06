@@ -8,9 +8,26 @@ namespace DataAccessLayer.Models
 {
     public class CommunicatorType
     {
-        private int id { get; set; }
+        private int _id;
 
-        private char communicatorType { get; set; }
+        private string _communicatorType;
+
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public string AlarmValueType
+        {
+            get { return _communicatorType; }
+            set { _communicatorType = value; }
+        }
+
+        public CommunicatorType(int id, string type)
+        {
+            _id = id;
+            _communicatorType = type;
+        }
 
     }
 

@@ -8,9 +8,26 @@ namespace DataAccessLayer.Models
 {
     public class AlarmType
     {
-        private int id { get; set; }
+        private int _id;
 
-        private char alarmType { get; set; }
+        private string _alarmType;
+
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public string AlarmValueType
+        {
+            get { return _alarmType; }
+            set { _alarmType = value; }
+        }
+
+        public AlarmType(int id, string type)
+        {
+            _id = id;
+            _alarmType = type;
+        }
 
     }
 }

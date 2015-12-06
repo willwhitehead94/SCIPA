@@ -24,6 +24,7 @@ namespace ApplicationLayer
             //bool temp = DomainLogicLayer.Service.CheckMyThinking("SELECT id FROM Device");
 
             DomainLogicLayer.Service.CheckMyThinking();
+
         }
     }
 }

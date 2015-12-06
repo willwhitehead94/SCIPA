@@ -71,6 +71,8 @@ namespace DomainLogicLayer
             DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
 
             string test = "temp";
+
+            DataAccessLayer.Controllers.AlarmController.TestMyThoughts();
         }
 
         

@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AlarmController.cs" />
+    <Compile Include="Controllers\CommandController.cs" />
+    <Compile Include="Controllers\CommunicatorController.cs" />
+    <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="DatabaseHandler.cs" />
     <Compile Include="Models\Alarm.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="Models\FileCommunicator.cs" />
     <Compile Include="Models\FileOpenMode.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\RuleCommandLookup.cs" />
     <Compile Include="Models\SerialCommunicator.cs" />

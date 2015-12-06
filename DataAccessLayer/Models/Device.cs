@@ -208,7 +208,7 @@ namespace DataAccessLayer.Models
         /// <param name="location">Location object</param>
         public void SetLocation(Location location)
         {
-            SetLocation(location.GetId());
+            SetLocation(location.Id);
             changesMade = true;
         }
 
@@ -255,7 +255,7 @@ namespace DataAccessLayer.Models
         /// <param name="valueType">New Value Type</param>
         public void SetValueType(ValueType valueType)
         {
-            SetValueType(valueType.GetId());
+            SetValueType(valueType.Id);
             changesMade = true;
         }
 

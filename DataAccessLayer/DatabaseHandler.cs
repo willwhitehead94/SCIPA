@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public enum DatabaseType { Unknown, SQL, OLE, ODBC };
+    public enum enumDatabaseType { Unknown, SQL, OLE, ODBC };
 
     public class DatabaseHandler
     {
@@ -19,7 +19,7 @@ namespace DataAccessLayer
         /// <summary>
         /// This is the default connection type used when there isn't one passed to the constructor.
         /// </summary>
-        private DatabaseType defaultConnectionType = GetDatabaseType();
+        private enumDatabaseType defaultConnectionType = GetDatabaseType();
 
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
@@ -30,16 +30,16 @@ namespace DataAccessLayer
         /// Method to automatically convert the default database type to the 'DatabaseType' enumeration.
         /// </summary>
         /// <returns>DatabaseType of entered database, except where fault where SQL is selected.</returns>
-        private static DatabaseType GetDatabaseType(string dbType = null)
+        private static enumDatabaseType GetDatabaseType(string dbType = null)
         {
             string enteredValue = (dbType == null ? Properties.Settings.Default.DefaultDatabaseConnectionType : dbType);
             
             switch (enteredValue.ToUpper())
             {
-                case "SQL": return DatabaseType.SQL;
-                case "OLE": return DatabaseType.OLE;
-                case "ODBC": return DatabaseType.ODBC;
-                default: return DatabaseType.SQL;
+                case "SQL": return enumDatabaseType.SQL;
+                case "OLE": return enumDatabaseType.OLE;
+                case "ODBC": return enumDatabaseType.ODBC;
+                default: return enumDatabaseType.SQL;
             }
         }
 
@@ -48,7 +48,7 @@ namespace DataAccessLayer
         /// <summary>
         /// The database connection type that this database handler will be connecting to.
         /// </summary>
-        private DatabaseType _connectionType = DatabaseType.Unknown;
+        private enumDatabaseType _connectionType = enumDatabaseType.Unknown;
         
         /// <summary>
         /// The connection string to use in order to connect and communicate with the database.
@@ -73,7 +73,7 @@ namespace DataAccessLayer
         /// Sets the current object's connection type by taking a parameter of DatabaseType and setting that as current.
         /// </summary>
         /// <param name="connectionType">DatabaseType original format.</param>
-        private void SetConnectionType(DatabaseType connectionType)
+        private void SetConnectionType(enumDatabaseType connectionType)
         {
             this._connectionType = connectionType;
         }
@@ -114,7 +114,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="connectionString">User required connection string.</param>
         /// <param name="connectionType">User required connection type</param>
-        public DatabaseHandler(string connectionString, DatabaseType connectionType)
+        public DatabaseHandler(string connectionString, enumDatabaseType connectionType)
         {
             SetConnectionString(connectionString);
             SetConnectionType(connectionType);
@@ -157,22 +157,22 @@ namespace DataAccessLayer
             IDbCommand command;
             IDbDataAdapter adapter;
 
-            if (_connectionString == null || _connectionType == DatabaseType.Unknown || query == null)
+            if (_connectionString == null || _connectionType == enumDatabaseType.Unknown || query == null)
                 return null;
 
             switch (_connectionType)
             {
-                case DatabaseType.SQL:
+                case enumDatabaseType.SQL:
                     connection = new SqlConnection(_connectionString);
                     command = new SqlCommand(query, (SqlConnection)connection);
                     adapter = new SqlDataAdapter((SqlCommand)command);
                     break;
-                case DatabaseType.ODBC:
+                case enumDatabaseType.ODBC:
                     connection = new OdbcConnection(_connectionString);
                     command = new OdbcCommand(query, (OdbcConnection)connection);
                     adapter = new OdbcDataAdapter((OdbcCommand)command);
                     break;
-                case DatabaseType.OLE:
+                case enumDatabaseType.OLE:
                     connection = new OleDbConnection(_connectionString);
                     command = new OleDbCommand(query, (OleDbConnection)connection);
                     adapter = new OleDbDataAdapter((OleDbCommand)command);

@@ -90,7 +90,7 @@ namespace DomainLogicLayer.Objects
             Service.DebugPrint("Updating general information for Device", Id.ToString());
 
             //Creates new instance of the database handler, and sets-up the connection to the database.
-            DatabaseHandler Data = new DatabaseHandler(DataAccessLayer.Properties.Settings.Default.DefaultDatabaseConnectionString.ToString(), DatabaseType.SQL);
+            DatabaseHandler Data = new DatabaseHandler(DataAccessLayer.Properties.Settings.Default.DefaultDatabaseConnectionString.ToString(), enumDatabaseType.SQL);
 
             //Executes the required SQL statement to retrieve the required data.
             Data.Execute(string.Format("SELECT TOP 1 Id,Name,Description FROM Device WHERE Id = {0}", Id));

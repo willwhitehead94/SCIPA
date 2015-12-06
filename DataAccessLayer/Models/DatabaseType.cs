@@ -8,10 +8,40 @@ namespace DataAccessLayer.Models
 {
     public class DatabaseType
     {
-        private int id { get; set; }
+        private int _id;
 
-        private char databaseType { get; set; }
+        private enumDatabaseType _databaseType;
 
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public enumDatabaseType DatabaseConnectionType
+        {
+            get { return _databaseType; }
+            set { _databaseType = value; }
+        }
+
+        public DatabaseType(int id, enumDatabaseType databaseType)
+        {
+            _id = id;
+            DatabaseConnectionType = databaseType;
+        }
+
+        public DatabaseType(string id, string databaseType)
+        {
+
+            _id = Convert.ToInt32(id);
+
+            switch (databaseType.ToUpper())
+            {
+                case "SQL": DatabaseConnectionType = enumDatabaseType.SQL; break;
+                case "OLE": DatabaseConnectionType = enumDatabaseType.OLE; break;
+                case "ODBC": DatabaseConnectionType = enumDatabaseType.ODBC; break;
+                default: DatabaseConnectionType = enumDatabaseType.SQL; break;
+            }
+        }
     }
 
 }

@@ -8,18 +8,64 @@ namespace DataAccessLayer.Models
 {
     public class DeviceValue
     {
-        private int id { get; set; }
+        private int _id;
 
-        private int deviceId { get; set; }
+        private int _deviceId;
 
-        private DateTime date { get; set; }
+        private DateTime _date;
 
-        private TimeSpan? time { get; set; }
+        private DateTime? _time;
 
-        private char value { get; set; }
+        private string _value;
 
-        private bool withinTolerance { get; set; }
+        private bool _withinTolerance;
 
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public int DeviceId
+        {
+            get { return _deviceId; }
+            set { _deviceId = value; }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set { _date = value; }
+        }
+
+        public DateTime? Time
+        {
+            get { return _time; }
+            set { _time = value; }
+        }
+
+        public string Value
+        {
+            get { return _value; }
+            set { _value = value; }
+        }
+
+        public DeviceValue (int id, int deviceId, DateTime date, DateTime? time, string value)
+        {
+            _id = id;
+            DeviceId = deviceId;
+            Date = date;
+            Time = time;
+            Value = value;
+        }
+
+        public DeviceValue(string id, string deviceId, string date, string time, string value)
+        {
+            _id = Convert.ToInt32(id);
+            DeviceId = Convert.ToInt32(deviceId);
+            Date = Convert.ToDateTime(date);
+            Time = Convert.ToDateTime(time);
+            Value = value;
+        }
     }
 
 }

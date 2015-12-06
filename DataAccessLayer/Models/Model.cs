@@ -6,28 +6,21 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Models
 {
-    public class ValueType
+    abstract class Model
     {
         private int _id;
 
-        private string _valueType;
+        private bool _enabled;
 
         public int Id
         {
             get { return _id; }
         }
 
-        public string Type
+        public bool IsEnabled
         {
-            get { return _valueType; }
-            set { _valueType = value; }
-        }
-
-        public ValueType(int id, string type)
-        {
-            _id = id;
-            _valueType = type;
+            get { return _enabled; }
+            set { _enabled = value; }
         }
     }
-
 }

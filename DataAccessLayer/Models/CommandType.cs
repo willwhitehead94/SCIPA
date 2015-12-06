@@ -8,9 +8,26 @@ namespace DataAccessLayer.Models
 {
     public class CommandType
     {
-        private int id { get; set; }
+        private int _id;
 
-        private char commandType { get; set; }
+        private string _commandType;
+
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public string CommandValueType
+        {
+            get { return _commandType; }
+            set { _commandType = value; }
+        }
+
+        public CommandType(int id, string type)
+        {
+            _id = id;
+            _commandType = type;
+        }
 
     }
 }

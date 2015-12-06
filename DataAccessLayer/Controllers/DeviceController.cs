@@ -8,7 +8,7 @@ using System.Data;
 
 namespace DataAccessLayer.Controllers
 {
-    public static class DeviceController
+    public class DeviceController : Controller
     {
     #region Static Variables
 
