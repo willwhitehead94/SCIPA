@@ -21,3 +21,4 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAc
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
