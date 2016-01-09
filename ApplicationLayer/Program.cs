@@ -19,11 +19,11 @@ namespace ApplicationLayer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DataManagers.AlarmManager());
 
             //bool temp = DomainLogicLayer.Service.CheckMyThinking("SELECT id FROM Device");
 
-            DomainLogicLayer.Service.CheckMyThinking();
+            //DomainLogicLayer.Service.CheckMyThinking();
 
         }
     }

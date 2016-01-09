@@ -46,3 +46,17 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\Applic
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.exe
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.Properties.Resources.resources
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csproj.GenerateResource.Cache
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe.config
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.exe
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\ApplicationLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.csprojResolveAssemblyReference.cache
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.exe
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.DataManagers.AlarmManager.resources
+F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\ApplicationLayer\obj\Debug\ApplicationLayer.DataManagers.AlarmManager.resources

@@ -41,7 +41,7 @@ namespace DataAccessLayer.Controllers
                 Service.DebugPrint("The list of Alarm objects being used/called is null...");
                 return null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Service.DebugPrint("The list of Alarm objects being used/called wasn't null, but posed a further exception... Failed!");
                 return null;
@@ -54,14 +54,14 @@ namespace DataAccessLayer.Controllers
         /// <param name="deviceId">The ID of the Device to search for alarms.</param>
         /// <param name="attemptNumber">Internal param only. Used when the method becomes recursive.</param>
         /// <returns>List of Alarm objects or NULL depending on what is most appropriate.</returns>
-        public static List<Alarm> GetAlarmsForDevice(int deviceId, int attemptNumber =0)
+        public static List<Alarm> GetAlarmsForDevice(int deviceId, int attemptNumber = 0)
         {
             if (_deviceAlarmDictionary == null)
             {
                 UpdateLocalDictionary();
             }
 
-            if (_deviceAlarmDictionary[deviceId].Count>0)
+            if (_deviceAlarmDictionary[deviceId].Count > 0)
             {
                 return _deviceAlarmDictionary[deviceId];
             }
@@ -81,20 +81,91 @@ namespace DataAccessLayer.Controllers
             }
         }
 
-        /// <summary>
-        /// Retrieves a list of all the alarms that are currently in a state of alarm (i.e. less than normal state).
-        /// </summary>
-        /// <returns>List of Alarm objects.</returns>
-        public static List<Alarm> GetAllAlarming()
+        ///// <summary>
+        ///// Retrieves a list of all the alarms that are currently in a state of alarm (i.e. less than normal state).
+        ///// </summary>
+        ///// <returns>List of Alarm objects.</returns>
+        //public static List<Alarm> GetAllAlarming()
+        //{
+        //    if (GetAllAlarms() != null)
+        //    {
+        //        return GetAllAlarms().Where(alarm => alarm.IsAlarming == true).ToList();
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        public static Alarm CreateNewObject()
         {
-            if (GetAllAlarms() != null)
+            int nextIdNumber = int.MinValue;
+            int? latestId = GetLatestId("Alarm");
+
+            if (latestId != null)
             {
-                return GetAllAlarms().Where(alarm => alarm.IsAlarming == true).ToList();
+                nextIdNumber = (int)latestId + 1;
+                return new Alarm(nextIdNumber);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Public method to upload alarm objects to the database.
+        /// </summary>
+        /// <param name="newObject">The object of the new item being pushed to the database.</param>
+        /// <returns>Success boolean</returns>
+        public static bool UploadAlarmToDB(Alarm newObject)
+        {
+            //check the newObject's id - if greater than current ID (obv insert) otherwise, update? safety check: is the object too different?
+
+            int? currentId = Controller.GetLatestId("Alarm");
+            bool updatingRecord = (currentId >= newObject.Id);
+            bool creatingNextRecord = (newObject.Id == (currentId + 1));
+            bool creatingPreAssignedRecord = ((currentId + 1) < newObject.Id);
+
+            string executable = null;
+
+            if (currentId != null && updatingRecord)
+            {
+                //If this code is hit, we know we're lookign to UPDATE the current record.
+                executable = UpdateStatement(newObject);
+            }
+            else if (currentId != null && creatingNextRecord)
+            {
+                //If this code is hit, we know we're adding the next in the sequence.
+                executable = InsertStatement(newObject);
+            }
+            else if (currentId != null && creatingPreAssignedRecord)
+            {
+                //If this code is hit, we know we're adding a random new record??? WHY?!
+                executable = InsertStatement(newObject);
             }
             else
             {
-                return null;
+                //If this code is hit, we know that the latest ID was unknown/a LTN state has occured.
             }
+
+            bool successfulExecute = false;
+
+            if (executable!= null)
+            {
+                //Here we can assume that an SQL query to run has been generated.
+                DatabaseHandler db = new DatabaseHandler();
+                successfulExecute = db.Execute(executable);
+                if (successfulExecute)
+                {
+                    Service.DebugPrint("Execution was successful!");
+                }
+                else
+                {
+                    Service.DebugPrint("Execution failed!");
+                }
+            }
+
+            return successfulExecute;
+
         }
 
         #endregion Public Methods
@@ -106,7 +177,7 @@ namespace DataAccessLayer.Controllers
         /// Generic Accessor for the _allAlarms Alarm object List to reduce the 'if null' code.
         /// </summary>
         /// <returns>A list of Alarm objects.</returns>
-        public static List<Alarm> AllAlarms()
+        private static List<Alarm> AllAlarms()
         {
             bool nulled = (_allAlarms == null ? true : false);
             bool empty = (!nulled && (_allAlarms.Count < 1) ? true : false);
@@ -194,7 +265,7 @@ namespace DataAccessLayer.Controllers
                 //For each record returned, copy the data into a list of Alarm objects.
                 foreach (DataRow row in dbHandler.GetDataTableFromDataSet(0).Rows)
                 {
-                    Service.DebugPrint(string.Format("Now reading Alarm {0} of {1} from the database for device {2}...", tempAlarmList.Count + 1, dbHandler.GetDataTableFromDataSet(0).Rows.Count,row[0].ToString()));
+                    Service.DebugPrint(string.Format("Now reading Alarm {0} of {1} from the database for device {2}...", tempAlarmList.Count + 1, dbHandler.GetDataTableFromDataSet(0).Rows.Count, row[0].ToString()));
 
                     //Create new Alarm object.
                     tempAlarmList.Add(DataRowToDevice(row));
@@ -268,6 +339,60 @@ namespace DataAccessLayer.Controllers
             return query;
         }
 
+        private static string InsertStatement(Alarm alarm)
+        {
+            string query = "INSERT INTO Alarm ({0}) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}')";
+            query = string.Format(query, GetColumnString(), alarm.Id, alarm.DeviceId, alarm.AlarmTypeId, alarm.Value, alarm.IsEnabled);
+
+            return query;
+        }
+
+        private static string UpdateStatement(Alarm alarm)
+        {
+            string query = "UPDATE Alarm SET ";
+            int paramCount = 1;
+            foreach(string colName in GetColumnList())
+            {
+                query += string.Format("{0} = '{{1}}', ", colName, paramCount);
+                paramCount++;
+            }
+
+            query = string.Format(query, alarm.Id, alarm.DeviceId, alarm.AlarmTypeId, alarm.Value, alarm.IsEnabled);
+
+            //Trim the trailing comma space...
+            query = query.Substring(0, query.Length - 2);
+            
+            return query;
+        }
+
+        private static string GetColumnString()
+        {
+            string allColumns = "";
+
+            foreach(string colName in GetColumnList())
+            {
+                allColumns += colName + ", ";
+            }
+
+            //Trim off the trailing comma space...
+            return allColumns.Substring(0, allColumns.Length - 2);
+        }
+
+        private static List<string> GetColumnList()
+        {
+            string colList = "[id] ,[deviceId] ,[alarmTypeId] ,[value] ,[enabled]";
+            List<string> cols = new List<string>();
+            
+            foreach(string colName in colList.Split(','))
+            {
+                cols.Add(colName.Trim());
+            }
+
+            return cols;
+        }
+
+
+        
 
         #endregion Private Methods
     }

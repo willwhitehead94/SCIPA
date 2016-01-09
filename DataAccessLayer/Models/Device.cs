@@ -134,72 +134,45 @@ namespace DataAccessLayer.Models
             _enabled = Convert.ToBoolean(enabled);
 
         }
-        
+
         /// <summary>
         /// Get the ID number of the current Device.
         /// </summary>
         /// <returns>ID Number</returns>
-        public int GetId()
+        public int Id
         {
-            return _id;
+            get { return _id; }
         }
 
         /// <summary>
-        /// Get the Name of the current Device.
+        /// Get or Set the Name of the current Device.
         /// </summary>
         /// <returns>Name</returns>
-        public string GetName()
+        public string Name
         {
-            return _name;
+            get { return _name; }
+            set { _name = value; }
         }
 
         /// <summary>
-        /// Set the Name of the current Device.
-        /// </summary>
-        /// <param name="name">New Name</param>
-        public void SetName(string name)
-        {
-            _name = name;
-            changesMade = true;
-        }
-
-        /// <summary>
-        /// Get whether or not the Device is read only.
+        /// Get or Set whether or not the Device is read only.
         /// </summary>
         /// <returns>Read Only State</returns>
-        public bool IsReadOnly()
+        public bool IsReadOnly
         {
-            return _readOnly;
+            get { return _readOnly; }
+            set { _readOnly = value; changesMade = true; }
         }
 
         /// <summary>
-        /// Sets whether or not the Device is read only.
-        /// </summary>
-        /// <param name="readOnly">New Read Only State</param>
-        public void SetReadOnly(bool readOnly)
-        {
-            _readOnly = readOnly;
-            changesMade = true;
-        }
-
-        /// <summary>
-        /// Gets the ID number of the location of this Device.
+        /// Gets or Sets the ID number of the location of this Device.
         /// This can be used to download Location data from the appropriate controller.
         /// </summary>
         /// <returns>Location ID</returns>
-        public int? GetLocationId()
+        public int? LocationId
         {
-            return _locationId;
-        }
-
-        /// <summary>
-        /// Sets the ID of the location of this Device.
-        /// </summary>
-        /// <param name="id">Location ID</param>
-        public void SetLocation(int id)
-        {
-            _locationId = id;
-            changesMade = true;
+            get { return _locationId; }
+            set { _locationId = value; }
         }
 
         /// <summary>
@@ -208,103 +181,68 @@ namespace DataAccessLayer.Models
         /// <param name="location">Location object</param>
         public void SetLocation(Location location)
         {
-            SetLocation(location.Id);
+            LocationId = (location.Id);
             changesMade = true;
         }
 
         /// <summary>
-        /// Gets the acceptable Fault Tolerance for this Device.
+        /// Gets or Sets the acceptable Fault Tolerance for this Device.
         /// </summary>
         /// <returns>Fault Tolerance</returns>
-        public double? GetFaultTolerance()
+        public double? FaultTolerance
         {
-            return _faultTolerance;
+            get { return _faultTolerance; }
+            set { _faultTolerance = value; }
         }
 
         /// <summary>
-        /// Sets the acceptable Fault Tolerance for this Device.
-        /// </summary>
-        /// <param name="tolerance">New Fault Tolerance</param>
-        public void SetFaultTolerance(double tolerance)
-        {
-            _faultTolerance = tolerance;
-        }
-
-        /// <summary>
-        /// Gets the Value Type (by ID) for this Device.
+        /// Gets or Sets the Value Type (by ID) for this Device.
         /// </summary>
         /// <returns>ID of the Value Type</returns>
-        public int GetValueTypeId()
+        public int ValueTypeId
         {
-            return _valueTypeId;
-        }
-
-        /// <summary>
-        /// Sets the Value Type of this Device (by ID).
-        /// </summary>
-        /// <param name="id">New Value Type ID</param>
-        public void SetValueType(int id)
-        {
-            _valueTypeId = id;
-            changesMade = true;
+            get { return _valueTypeId; }
+            set { _valueTypeId = value; changesMade = true; }
         }
 
         /// <summary>
         /// Sets the Value Type of this Device (by ValueType object).
         /// </summary>
         /// <param name="valueType">New Value Type</param>
-        public void SetValueType(ValueType valueType)
+        public void ValueType(ValueType valueType)
         {
-            SetValueType(valueType.Id);
-            changesMade = true;
+            ValueTypeId = valueType.Id;
         }
 
         /// <summary>
-        /// Gets the lowest acceptable value.
+        /// Gets or Sets the lowest acceptable value.
         /// </summary>
         /// <returns>Lowest Value</returns>
-        public double? GetLowestValue()
+        public double? LowestValue
         {
-            return _lowestValue;
-        }
-
-        /// <summary>
-        /// Sets the lowest acceptable value for this Device.
-        /// </summary>
-        /// <param name="lowest">New Lowest Value</param>
-        public void SetLowestValue(double lowest)
-        {
-            _lowestValue = lowest;
-            changesMade = true;
+            get { return _lowestValue; }
+            set { _lowestValue = value; changesMade = true; }
         }
 
 
         /// <summary>
-        /// Gets the highest acceptable value for this Device.
+        /// Gets or Sets the highest acceptable value for this Device.
         /// </summary>
         /// <returns>Highest Value</returns>
-        public double? GetHighestValue()
+        public double? HighestValue
         {
-            return _highestValue;
-        }
-
-        /// <summary>
-        /// Sets the highest acceptable value for this Device.
-        /// </summary>
-        /// <param name="highest">New Highest Value</param>
-        public void SetHighestValue(double highest)
-        {
-            _highestValue = highest;
-            changesMade = true;
+            get { return _highestValue; }
+            set { _highestValue = value; changesMade = true; }
         }
 
         /// <summary>
         /// Returns a boolean as to whether or not the device is 'enabled'.
         /// </summary>
         /// <returns>Boolean</returns>
-        public bool IsEnabled()
+        public bool IsEnabled
         {
-            return _enabled;
+            get { return _enabled; }
+            set { _enabled = false; }
         }
 
 

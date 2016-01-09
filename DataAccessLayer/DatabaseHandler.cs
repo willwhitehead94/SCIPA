@@ -202,9 +202,19 @@ namespace DataAccessLayer
             return GetDataTableFromDataSet(_lastDataSet.Tables.IndexOf(TableName));
         }
 
+        /// <summary>
+        /// Collects the first value from the first data table in the data set from the last executed query.
+        /// </summary>
+        /// <returns>String representation of the first known value in the table.</returns>
         public string GetSingleValueFromFirstTableInSet()
         {
             string value = null;
+
+            //Do not continue if there is no dataset to investigate.
+            if (_lastDataSet == null)
+            {
+                return null;
+            }
 
             foreach (DataRow row in _lastDataSet.Tables[0].Rows)
             {
@@ -217,6 +227,40 @@ namespace DataAccessLayer
             }
 
             return value;
+        }
+
+        public bool CheckDatabaseIsAvailable()
+        {
+            bool isOpen = false;
+
+            SqlConnection newConnection = new SqlConnection(_connectionString);
+
+            try
+            {
+
+                newConnection.Open();
+
+                if (newConnection.State == ConnectionState.Open)
+                {
+                    isOpen = true;
+                }
+
+
+            }
+            catch(SqlException sqlEx)
+            {
+                Service.DebugPrint("There was an error within the SQL Connection.", sqlEx.Message);
+            }
+            catch(Exception e)
+            {
+                Service.DebugPrint("There was not an error within the SQL Connection, but a failure occured elsewhere.", e.Message);
+            }
+            finally
+            {
+                newConnection.Close();
+            }
+
+            return isOpen;
         }
     }
 }

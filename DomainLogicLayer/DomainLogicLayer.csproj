@@ -39,10 +39,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AlarmController.cs" />
     <Compile Include="Communicators\Communicator.cs" />
     <Compile Include="Communicators\DatabaseCommunicator.cs" />
     <Compile Include="Communicators\FlatFileCommunicator.cs" />
     <Compile Include="Communicators\SerialCommunicator.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="ViewModels\AlarmVM.cs" />
+    <Compile Include="ViewModels\AlarmTypeVM.cs" />
+    <Compile Include="ViewModels\CommandVM.cs" />
+    <Compile Include="ViewModels\CommandTypeVM.cs" />
+    <Compile Include="ViewModels\CommunicatorVM.cs" />
+    <Compile Include="ViewModels\CommunicatorTypeVM.cs" />
+    <Compile Include="ViewModels\DatabaseCommunicatorVM.cs" />
+    <Compile Include="ViewModels\DatabaseTypeVM.cs" />
+    <Compile Include="ViewModels\DeviceVM.cs" />
+    <Compile Include="ViewModels\DeviceValueVM.cs" />
+    <Compile Include="ViewModels\FileCommunicatorVM.cs" />
+    <Compile Include="ViewModels\FileOpenModeVM.cs" />
+    <Compile Include="ViewModels\LocationVM.cs" />
+    <Compile Include="ViewModels\Model.cs" />
+    <Compile Include="ViewModels\RuleVM.cs" />
+    <Compile Include="ViewModels\RuleCommandLookupVM.cs" />
+    <Compile Include="ViewModels\SerialCommunicatorVM.cs" />
+    <Compile Include="ViewModels\ValueTypeVM.cs" />
     <Compile Include="Objects\Command.cs" />
     <Compile Include="Objects\Device.cs" />
     <Compile Include="Objects\Location.cs" />
@@ -68,6 +90,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

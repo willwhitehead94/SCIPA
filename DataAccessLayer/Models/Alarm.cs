@@ -8,7 +8,7 @@ namespace DataAccessLayer.Models
 {
     public class Alarm
     {
-        private bool changesMade;
+        //private bool changesMade;
 
         private int _id;
 
@@ -19,8 +19,6 @@ namespace DataAccessLayer.Models
         private string _value;
 
         private bool _enabled;
-
-        private bool _currentlyInAlarm;
 
 
 
@@ -54,26 +52,29 @@ namespace DataAccessLayer.Models
             set { _enabled = value; }
         }
 
-        public bool IsAlarming
-        {
-            get { return _currentlyInAlarm; }
-            set { _currentlyInAlarm = value; }
-        }
+        //public bool ChangesMade
+        //{
+        //    get { return changesMade; }
+        //    set { changesMade = value; }
+        //}
 
-        public bool ChangesMade
-        {
-            get { return changesMade; }
-            set { changesMade = value; }
-        }
-
-        public Alarm(int id,int deviceId,int alarmTypeId,string value,bool enabled)
+        public Alarm(int id)
         {
             _id = id;
-            _deviceId = deviceId;
-            _alarmTypeId = alarmTypeId;
-            _value = value;
-            _enabled = enabled;
+            DeviceId = int.MinValue;
+            AlarmTypeId = int.MinValue;
+            Value = null;
+            IsEnabled = false;
         }
+
+        //public Alarm(int id,int deviceId,int alarmTypeId,string value,bool enabled)
+        //{
+        //    _id = id;
+        //    _deviceId = deviceId;
+        //    _alarmTypeId = alarmTypeId;
+        //    _value = value;
+        //    _enabled = enabled;
+        //}
 
         public Alarm(string id, string deviceId, string alarmTypeId, string value, string enabled)
         {
@@ -83,7 +84,6 @@ namespace DataAccessLayer.Models
             _value = value;
             _enabled = Convert.ToBoolean(enabled);
         }
-
 
     }
 }

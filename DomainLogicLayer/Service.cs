@@ -54,25 +54,32 @@ namespace DomainLogicLayer
 
         public static void CheckMyThinking()
         {
-            List<DataAccessLayer.Models.Device> tempList = new List<DataAccessLayer.Models.Device>();
+            //List<DataAccessLayer.Models.Device> tempList = new List<DataAccessLayer.Models.Device>();
             
 
-            DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
-            DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
+            //DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
+            //DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
 
-            tempList = DataAccessLayer.Controllers.DeviceController.GetAllDevices();
+            //tempList = DataAccessLayer.Controllers.DeviceController.GetAllDevices();
 
-            foreach (DataAccessLayer.Models.Device device in tempList)
-            {
-                device.SetName("This is a test 777");
-                DataAccessLayer.Controllers.DeviceController.UpdateDevice(device);
-            }
+            //foreach (DataAccessLayer.Models.Device device in tempList)
+            //{
+            //    device.SetName("This is a test 777");
+            //    DataAccessLayer.Controllers.DeviceController.UpdateDevice(device);
+            //}
 
             DataAccessLayer.Controllers.DeviceController.GetDeviceById(1);
 
             string test = "temp";
 
-            DataAccessLayer.Controllers.AlarmController.TestMyThoughts();
+            DataAccessLayer.Models.Alarm alTest = DataAccessLayer.Controllers.AlarmController.CreateNewObject();
+            alTest.AlarmTypeId = 1;
+            alTest.IsEnabled = true;
+
+            DataAccessLayer.Controllers.AlarmController.UploadAlarmToDB(alTest);
+
+
+            test = "temp";
         }
 
         

@@ -27,3 +27,11 @@ F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\Domain
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
 F:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll.config
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.dll
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\bin\Debug\DomainLogicLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.dll
+C:\Users\white\Desktop\Test Folder\SCIPA\DomainLogicLayer\obj\Debug\DomainLogicLayer.pdb

@@ -60,10 +60,10 @@ namespace DataAccessLayer.Controllers
 
             if (_allDevices != null && _allDevices.Count>0)
             {
-                toReturn = _allDevices.Find(d => d.GetId().Equals(idNumber));
+                toReturn = _allDevices.Find(d => d.Id.Equals(idNumber));
             }
 
-            if (toReturn != null && toReturn.GetId()==idNumber)
+            if (toReturn != null && toReturn.Id==idNumber)
             {
                 return toReturn;
             }
@@ -180,7 +180,7 @@ namespace DataAccessLayer.Controllers
                 {
                     try
                     {
-                        int indexOfDevice = _allDevices.FindIndex(d => d.GetId().Equals(idNumber));
+                        int indexOfDevice = _allDevices.FindIndex(d => d.Id.Equals(idNumber));
                         _allDevices[indexOfDevice] = downloadedDevice;
                     }
                     catch
@@ -242,13 +242,13 @@ namespace DataAccessLayer.Controllers
         /// <returns>A success boolean.</returns>
         private static bool UpdateDeviceOnDatabase(Device device, bool forceUpdate = false)
         {
-            Service.DebugPrint(string.Format("Commiting the local change on device {0} to the database.", device.GetId()));
+            Service.DebugPrint(string.Format("Commiting the local change on device {0} to the database.", device.Id));
 
             //Connect to database using default connection
             DatabaseHandler dbHandler = new DatabaseHandler();
 
             bool databaseReadOnly = false;
-            string query = string.Format("SELECT readOnly FROM Device WHERE id = {0}",device.GetId());
+            string query = string.Format("SELECT readOnly FROM Device WHERE id = {0}",device.Id);
             dbHandler.Execute(query);
             if (bool.TryParse(dbHandler.GetSingleValueFromFirstTableInSet(),out databaseReadOnly))
             {
@@ -282,7 +282,7 @@ namespace DataAccessLayer.Controllers
                 "enabled='{7}' " +
                 "WHERE id={8}";
 
-            query = string.Format(query, device.GetName(), device.IsReadOnly(), device.GetLocationId(), device.GetFaultTolerance(), device.GetValueTypeId(), device.GetLowestValue(), device.GetHighestValue(), device.IsEnabled(), device.GetId());
+            query = string.Format(query, device.Name, device.IsReadOnly, device.LocationId, device.FaultTolerance, device.ValueTypeId, device.LowestValue, device.HighestValue, device.IsEnabled, device.Id);
 
             bool executionSuccess = dbHandler.Execute(query);
 
