@@ -30,6 +30,10 @@ namespace DomainLogicLayer.Controllers
             return false;
         }
 
+        /// <summary>
+        /// Calls the Database Handlers connection checking method to ensure that a new connection can be opened to the database.
+        /// </summary>
+        /// <returns>Success or Fail boolean.</returns>
         public static bool EnsureDatabaseAvailable()
         {
             DataAccessLayer.DatabaseHandler dbHandler = new DataAccessLayer.DatabaseHandler();

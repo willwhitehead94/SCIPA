@@ -22,7 +22,14 @@ namespace DomainLogicLayer.ViewModels
 
         private bool _currentlyInAlarm;
 
-
+        public AlarmVM(DataAccessLayer.Models.Alarm dalObject)
+        {
+            _id = dalObject.Id;
+            DeviceId = dalObject.DeviceId;
+            AlarmTypeId = dalObject.AlarmTypeId;
+            Value = dalObject.Value;
+            IsEnabled = dalObject.IsEnabled;
+        }
 
         public int Id
         {

@@ -17,7 +17,7 @@ namespace ApplicationLayer.DataManagers
     {
         //Create generic controller object
         Controllers.AlarmController controller = new Controllers.AlarmController();
-
+        
         public AlarmManager()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace ApplicationLayer.DataManagers
 
                 int selectedId = Convert.ToInt32(lbExisting.SelectedItem.ToString().Substring(2));
 
-                UpdateDataLabels((Models.AlarmVM)controller.GetFromId(selectedId));
+                UpdateDataLabels((Models.AlarmVM)controller.DownloadById(selectedId));
             }
             catch (NullReferenceException nre)
             {
@@ -98,12 +98,13 @@ namespace ApplicationLayer.DataManagers
         {
             lbExisting.Items.Clear();
             
-            foreach (Models.AlarmVM obj in controller.DownloadAll<Models.AlarmVM>())
+            foreach (Models.AlarmVM obj in controller.DownloadAll())
             {
                 lbExisting.Items.Add("ID " + obj.Id);
             }
 
             lbExisting.Refresh();
         }
+
     }
 }

@@ -229,6 +229,11 @@ namespace DataAccessLayer
             return value;
         }
 
+        /// <summary>
+        /// Open a new SQL connection to the default database and returns a success or fail boolean to that effect before closign the connection.
+        /// Used to ensure the database is available and that the server is accepting new connections.
+        /// </summary>
+        /// <returns>Success or Fail boolean.</returns>
         public bool CheckDatabaseIsAvailable()
         {
             bool isOpen = false;

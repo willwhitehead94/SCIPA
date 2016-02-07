@@ -20,6 +20,8 @@ namespace DataAccessLayer.Models
 
         private bool _enabled;
 
+        private bool _deleted;
+
 
 
         public int Id
@@ -52,11 +54,12 @@ namespace DataAccessLayer.Models
             set { _enabled = value; }
         }
 
-        //public bool ChangesMade
-        //{
-        //    get { return changesMade; }
-        //    set { changesMade = value; }
-        //}
+        public bool IsDelete
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
+
 
         public Alarm(int id)
         {

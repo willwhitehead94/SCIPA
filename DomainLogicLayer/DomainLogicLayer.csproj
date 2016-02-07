@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comms\ICommunicator.cs" />
     <Compile Include="Controllers\AlarmController.cs" />
     <Compile Include="Communicators\Communicator.cs" />
     <Compile Include="Communicators\DatabaseCommunicator.cs" />
@@ -46,7 +47,9 @@
     <Compile Include="Communicators\SerialCommunicator.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
+    <Compile Include="Controllers\FlatFileController.cs" />
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Events\NewValueRecievedEventArgs.cs" />
     <Compile Include="ViewModels\AlarmVM.cs" />
     <Compile Include="ViewModels\AlarmTypeVM.cs" />
     <Compile Include="ViewModels\CommandVM.cs" />

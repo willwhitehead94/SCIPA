@@ -30,11 +30,11 @@ namespace DataAccessLayer.Controllers
         /// Retrieves a list of all alarms for all devices as stored on the RDB.
         /// </summary>
         /// <returns>List of Alarm objects.</returns>
-        public static List<Alarm> GetAllAlarms()
+        public static List<Alarm> GetAllAlarms(int id = -1)
         {
             try
             {
-                return AllAlarms();
+                return AllAlarms(id);
             }
             catch (NullReferenceException nulled)
             {
@@ -81,21 +81,17 @@ namespace DataAccessLayer.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Retrieves a list of all the alarms that are currently in a state of alarm (i.e. less than normal state).
-        ///// </summary>
-        ///// <returns>List of Alarm objects.</returns>
-        //public static List<Alarm> GetAllAlarming()
-        //{
-        //    if (GetAllAlarms() != null)
-        //    {
-        //        return GetAllAlarms().Where(alarm => alarm.IsAlarming == true).ToList();
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+        public static int GetMaxAlarmId()
+        {
+            int maxId = int.MinValue;
+            DatabaseHandler db = new DatabaseHandler();
+            if (db.Execute("SELECT MAX(Id) FROM Alarm"))
+            {
+                int.TryParse(db.GetSingleValueFromFirstTableInSet(), out maxId);
+            }
+
+            return maxId;
+        }
 
         public static Alarm CreateNewObject()
         {
@@ -177,7 +173,7 @@ namespace DataAccessLayer.Controllers
         /// Generic Accessor for the _allAlarms Alarm object List to reduce the 'if null' code.
         /// </summary>
         /// <returns>A list of Alarm objects.</returns>
-        private static List<Alarm> AllAlarms()
+        private static List<Alarm> AllAlarms(int id = -1)
         {
             bool nulled = (_allAlarms == null ? true : false);
             bool empty = (!nulled && (_allAlarms.Count < 1) ? true : false);
@@ -185,6 +181,15 @@ namespace DataAccessLayer.Controllers
             if (nulled || empty)
             {
                 DownloadAllAlarms(false);
+            }
+
+            //if the value is not default
+            if (id != -1)
+            {
+                if(DownloadAlarmByID(id))
+                {
+                    Service.DebugPrint("About to return all alarm objects with required alarm in list.");
+                }
             }
 
             return _allAlarms;
@@ -231,6 +236,64 @@ namespace DataAccessLayer.Controllers
             if (tempAlarmList.Count > 0)
             {
                 _allAlarms = tempAlarmList;
+                return true;
+            }
+            else
+            {
+                //Indicates that no alarm have been downloaded.
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Connect to the RDB and download a single alarm via it's ID. Update the local list or add new.
+        /// </summary>
+        /// <param name="id">Download the Alarm object based on it's ID.</param>
+        /// <returns>A success/fail boolean.</returns>
+        private static bool DownloadAlarmByID(int id)
+        {
+            //Connect to database using default connection
+            DatabaseHandler dbHandler = new DatabaseHandler();
+
+            //Alarm list
+            List<Alarm> tempAlarmList = new List<Alarm>();
+
+            //Get the select statement
+            string query = SelectStatement();
+
+            //Add the WHERE clause for the given ID
+            query += " WHERE [id] = " + id;
+
+            //Use the handler to execute the query.
+            if (dbHandler.Execute(query))
+            {
+                //For each record returned, copy the data into a list of Alarm objects.
+                foreach (DataRow row in dbHandler.GetDataTableFromDataSet(0).Rows)
+                {
+                    Service.DebugPrint(string.Format("Now reading Alarm {0} of {1} from the database for device {2}...", tempAlarmList.Count + 1, dbHandler.GetDataTableFromDataSet(0).Rows.Count, row[0].ToString()));
+
+                    //Create new Alarm object.
+                    tempAlarmList.Add(DataRowToDevice(row));
+                }
+            }
+
+            Service.DebugPrint(string.Format("There were {0} Alarms read from the database.", tempAlarmList.Count));
+
+            //If at least one alarm is returned, store the alarm(s) and return true.
+            if (tempAlarmList.Count > 0)
+            {
+                int index = _allAlarms.FindIndex(alarm => alarm.Id == id);
+                if (index >= 0)
+                {
+                    Service.DebugPrint("Updating the local Alarm object.");
+                    _allAlarms[index] = tempAlarmList[0];
+                }
+                else
+                {
+                    Service.DebugPrint("Adding a new Alarm to the object list.");
+                    _allAlarms.Add(tempAlarmList[0]);
+                }
+
                 return true;
             }
             else

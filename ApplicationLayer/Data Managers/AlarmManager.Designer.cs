@@ -30,6 +30,7 @@
         {
             this.tcManager = new System.Windows.Forms.TabControl();
             this.tpExisting = new System.Windows.Forms.TabPage();
+            this.bOffline = new System.Windows.Forms.Button();
             this.bTopHundred = new System.Windows.Forms.Button();
             this.bAll = new System.Windows.Forms.Button();
             this.pData = new System.Windows.Forms.Panel();
@@ -45,7 +46,6 @@
             this.lEnabledData = new System.Windows.Forms.Label();
             this.lbExisting = new System.Windows.Forms.ListBox();
             this.tpNew = new System.Windows.Forms.TabPage();
-            this.bOffline = new System.Windows.Forms.Button();
             this.tcManager.SuspendLayout();
             this.tpExisting.SuspendLayout();
             this.pData.SuspendLayout();
@@ -78,6 +78,16 @@
             this.tpExisting.TabIndex = 0;
             this.tpExisting.Text = "Existing Objects";
             this.tpExisting.UseVisualStyleBackColor = true;
+            // 
+            // bOffline
+            // 
+            this.bOffline.Location = new System.Drawing.Point(544, 7);
+            this.bOffline.Name = "bOffline";
+            this.bOffline.Size = new System.Drawing.Size(91, 23);
+            this.bOffline.TabIndex = 16;
+            this.bOffline.Text = "Offline Load";
+            this.bOffline.UseVisualStyleBackColor = true;
+            this.bOffline.Click += new System.EventHandler(this.bOffline_Click);
             // 
             // bTopHundred
             // 
@@ -244,16 +254,6 @@
             this.tpNew.TabIndex = 1;
             this.tpNew.Text = "Create New";
             this.tpNew.UseVisualStyleBackColor = true;
-            // 
-            // bOffline
-            // 
-            this.bOffline.Location = new System.Drawing.Point(544, 7);
-            this.bOffline.Name = "bOffline";
-            this.bOffline.Size = new System.Drawing.Size(91, 23);
-            this.bOffline.TabIndex = 16;
-            this.bOffline.Text = "Offline Load";
-            this.bOffline.UseVisualStyleBackColor = true;
-            this.bOffline.Click += new System.EventHandler(this.bOffline_Click);
             // 
             // AlarmManager
             // 

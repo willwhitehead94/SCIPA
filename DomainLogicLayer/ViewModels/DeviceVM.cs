@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainLogicLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,10 @@ namespace DomainLogicLayer.ViewModels
 
         private bool _enabled { get; set; }
 
+        private IEnumerable<CommunicatorVM> InputCommunicators { get; set; }
+
+        private IEnumerable<CommunicatorVM> OutputCommunicators { get; set; }
+
         /// <summary>
         /// A nullable, blank instantiation of a Device object.
         /// </summary>
@@ -43,6 +48,23 @@ namespace DomainLogicLayer.ViewModels
         public DeviceVM(int id)
         {
 
+        }
+
+        /// <summary>
+        /// Constructor to convert from a DAL Alarm to a DLL Alarm.
+        /// </summary>
+        /// <param name="dalObject"></param>
+        public DeviceVM(DataAccessLayer.Models.Device dalObject)
+        {
+            _id = dalObject.Id;
+            Name = dalObject.Name;
+            IsReadOnly = dalObject.IsReadOnly;
+            LocationId = dalObject.LocationId;
+            FaultTolerance = dalObject.FaultTolerance;
+            ValueTypeId = dalObject.ValueTypeId;
+            LowestValue = dalObject.LowestValue;
+            HighestValue = dalObject.HighestValue;
+            IsEnabled = dalObject.IsEnabled;
         }
 
         /// <summary>

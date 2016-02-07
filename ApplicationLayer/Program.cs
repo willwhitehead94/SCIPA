@@ -19,7 +19,7 @@ namespace ApplicationLayer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DataManagers.AlarmManager());
+            Application.Run(new DataManagers.DeviceManager());
 
             //bool temp = DomainLogicLayer.Service.CheckMyThinking("SELECT id FROM Device");
 

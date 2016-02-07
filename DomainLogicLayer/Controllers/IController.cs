@@ -23,6 +23,12 @@ namespace DomainLogicLayer.Controllers
         /// </summary>
         /// <param name="id">The id number of the object to collect from the RDBMS.</param>
         /// <returns>Generic object housing the implementing controller's object type.</returns>
-        object GetFromId(int id);
+        object DownloadById(int id, int counter = 0);
+
+        /// <summary>
+        /// Downloads all of the objects from the Data Access Layer.
+        /// </summary>
+        /// <returns>Generic object list housing the implementing controller's object type.</returns>
+        List<object> DownloadAll();
     }
 }
