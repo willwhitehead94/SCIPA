@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    class FlatFileHandler
+    public class FlatFileHandler
     {
         public enum ValueType
         {
             Integer,
             Real,
-            String
+            String,
+            Boolean
         };
 
 
@@ -34,7 +35,7 @@ namespace DataAccessLayer
 
         private string valueFromFile;
 
-        private object requiredValue;
+        public object requiredValue;
 
 #endregion Variables
 
@@ -43,13 +44,17 @@ namespace DataAccessLayer
             //generic blank object.... TODO: remove!
         }
 
-        public FlatFileHandler(string FilePath, int StartChar = 0, int DataLength = 0, ValueType VType = ValueType.Integer, FileAccess FAccess = FileAccess.Read)
+        public FlatFileHandler(string FilePath, int StartChar = 0, int DataLength = 0,string ValType = "String", FileAccess FAccess = FileAccess.Read)
         {
-            this.FilePath = FilePath;
+            this.FilePath = @FilePath;
             this.StartChar = StartChar;
             this.DataLength = DataLength;
-            this.VType = VType;
+            this.VType = ValueType.String;
             this.FAccess = FAccess;
+
+            OpenFileReadOnly();
+            valueFromFile= GetRequiredValueFromFile();
+            requiredValue = GetValue();
 
         }
 
@@ -108,6 +113,16 @@ namespace DataAccessLayer
                     requiredValue = convertedDouble;
                     break;
                 }
+                case ValueType.Boolean:
+                    {
+                        bool returnValue = false;
+                        bool valueBoolable = bool.TryParse(valueFromFile, out valueBoolable);
+                        if (valueBoolable)
+                        {
+                            requiredValue = returnValue;
+                        }
+                        break;
+                    }
                 case ValueType.String:
                 {
                     requiredValue = valueFromFile;

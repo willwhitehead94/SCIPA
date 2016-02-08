@@ -31,7 +31,7 @@ namespace DomainLogicLayer.Controllers
             throw new NotImplementedException();
         }
 
-        public FileCommunicatorVM GetCommunicator()
+        public FileCommunicatorVM Communicator()
         {
             return comm;
         }
@@ -41,24 +41,36 @@ namespace DomainLogicLayer.Controllers
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Saves the 'comm' object (FileCommunicatorVM) to the RDBMS.
+        /// </summary>
+        public void SaveNewDevice()
+        {
+
+        }
 
 
 
-
-
+        /// <summary>
+        /// Returns an object array of all available value types as defined within the DAL.
+        /// </summary>
+        /// <returns></returns>
         public object[] GetValueTypes()
         {
-            object[] tempList = new object[4];
+            var values = Enum.GetValues(typeof(DataAccessLayer.FlatFileHandler.ValueType));
+            object[] tempList = new object[values.Length];
 
-            tempList[0] = "String";
-            tempList[1] = "Integer";
-            tempList[2] = "Double";
-            tempList[3] = "Boolean";
+            int x = 0;
+            foreach (var val in values)
+            {
+                if (val != null)
+                {
+                    tempList[x++] = val;
+                }
+            }
 
 
             return tempList;
         }
-
-        
     }
 }

@@ -54,7 +54,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.gbExample = new System.Windows.Forms.GroupBox();
-            this.lbData = new System.Windows.Forms.ListBox();
             this.fswExample = new System.IO.FileSystemWatcher();
             this.bQuestion = new System.Windows.Forms.Button();
             this.bQuestionTwo = new System.Windows.Forms.Button();
@@ -63,6 +62,13 @@
             this.bStartTest = new System.Windows.Forms.Button();
             this.cbValueType = new System.Windows.Forms.ComboBox();
             this.lDeviceId = new System.Windows.Forms.Label();
+            this.tLastValue = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbFileAccessible = new System.Windows.Forms.CheckBox();
+            this.cbInRange = new System.Windows.Forms.CheckBox();
+            this.cbValueTypeOkay = new System.Windows.Forms.CheckBox();
+            this.bSave = new System.Windows.Forms.Button();
+            this.lWarning = new System.Windows.Forms.Label();
             this.gbExample.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fswExample)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +103,7 @@
             this.tStartChar.Name = "tStartChar";
             this.tStartChar.Size = new System.Drawing.Size(370, 20);
             this.tStartChar.TabIndex = 3;
+            this.tStartChar.Text = "0";
             this.tStartChar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyAllowDigits_KeyPress);
             // 
             // tEndChar
@@ -105,6 +112,7 @@
             this.tEndChar.Name = "tEndChar";
             this.tEndChar.Size = new System.Drawing.Size(370, 20);
             this.tEndChar.TabIndex = 4;
+            this.tEndChar.Text = "0";
             this.tEndChar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyAllowDigits_KeyPress);
             // 
             // tCheckEvery
@@ -113,11 +121,13 @@
             this.tCheckEvery.Name = "tCheckEvery";
             this.tCheckEvery.Size = new System.Drawing.Size(370, 20);
             this.tCheckEvery.TabIndex = 6;
+            this.tCheckEvery.Text = "5";
+            this.tCheckEvery.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyAllowDigits_KeyPress);
             // 
             // tLastUpdate
             // 
             this.tLastUpdate.Enabled = false;
-            this.tLastUpdate.Location = new System.Drawing.Point(117, 217);
+            this.tLastUpdate.Location = new System.Drawing.Point(105, 19);
             this.tLastUpdate.Name = "tLastUpdate";
             this.tLastUpdate.Size = new System.Drawing.Size(370, 20);
             this.tLastUpdate.TabIndex = 7;
@@ -131,33 +141,39 @@
             this.cbReadOnly.TabIndex = 8;
             this.cbReadOnly.Text = "Always open the file in \'read only\' mode.";
             this.cbReadOnly.UseVisualStyleBackColor = true;
+            this.cbReadOnly.CheckedChanged += new System.EventHandler(this.cbReadOnly_CheckedChanged);
             // 
             // tDefaultValue
             // 
-            this.tDefaultValue.Location = new System.Drawing.Point(117, 266);
+            this.tDefaultValue.Location = new System.Drawing.Point(117, 240);
             this.tDefaultValue.Name = "tDefaultValue";
             this.tDefaultValue.Size = new System.Drawing.Size(392, 20);
             this.tDefaultValue.TabIndex = 9;
+            this.tDefaultValue.Text = "null";
             // 
             // cbReadUpdateOnly
             // 
             this.cbReadUpdateOnly.AutoSize = true;
-            this.cbReadUpdateOnly.Location = new System.Drawing.Point(117, 243);
+            this.cbReadUpdateOnly.Location = new System.Drawing.Point(117, 217);
             this.cbReadUpdateOnly.Name = "cbReadUpdateOnly";
             this.cbReadUpdateOnly.Size = new System.Drawing.Size(246, 17);
             this.cbReadUpdateOnly.TabIndex = 10;
             this.cbReadUpdateOnly.Text = "Only read the file if the timestamp has updated.";
             this.cbReadUpdateOnly.UseVisualStyleBackColor = true;
+            this.cbReadUpdateOnly.CheckedChanged += new System.EventHandler(this.cbReadUpdateOnly_CheckedChanged);
             // 
             // cbNullable
             // 
             this.cbNullable.AutoSize = true;
-            this.cbNullable.Location = new System.Drawing.Point(117, 292);
+            this.cbNullable.Checked = true;
+            this.cbNullable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNullable.Location = new System.Drawing.Point(117, 266);
             this.cbNullable.Name = "cbNullable";
             this.cbNullable.Size = new System.Drawing.Size(133, 17);
             this.cbNullable.TabIndex = 11;
             this.cbNullable.Text = "This value can be null.";
             this.cbNullable.UseVisualStyleBackColor = true;
+            this.cbNullable.CheckedChanged += new System.EventHandler(this.cbNullable_CheckedChanged);
             // 
             // label1
             // 
@@ -230,7 +246,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 220);
+            this.label7.Location = new System.Drawing.Point(6, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 21;
@@ -257,7 +273,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 296);
+            this.label10.Location = new System.Drawing.Point(12, 270);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 24;
@@ -266,7 +282,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 270);
+            this.label11.Location = new System.Drawing.Point(12, 244);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(74, 13);
             this.label11.TabIndex = 23;
@@ -275,7 +291,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 244);
+            this.label12.Location = new System.Drawing.Point(12, 218);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(103, 13);
             this.label12.TabIndex = 22;
@@ -283,21 +299,17 @@
             // 
             // gbExample
             // 
-            this.gbExample.Controls.Add(this.lbData);
-            this.gbExample.Location = new System.Drawing.Point(12, 377);
+            this.gbExample.Controls.Add(this.label13);
+            this.gbExample.Controls.Add(this.tLastValue);
+            this.gbExample.Controls.Add(this.tLastUpdate);
+            this.gbExample.Controls.Add(this.label7);
+            this.gbExample.Controls.Add(this.bQuestionFour);
+            this.gbExample.Location = new System.Drawing.Point(12, 318);
             this.gbExample.Name = "gbExample";
-            this.gbExample.Size = new System.Drawing.Size(503, 100);
+            this.gbExample.Size = new System.Drawing.Size(503, 75);
             this.gbExample.TabIndex = 25;
             this.gbExample.TabStop = false;
-            this.gbExample.Text = "Example Incoming Data";
-            // 
-            // lbData
-            // 
-            this.lbData.FormattingEnabled = true;
-            this.lbData.Location = new System.Drawing.Point(6, 19);
-            this.lbData.Name = "lbData";
-            this.lbData.Size = new System.Drawing.Size(491, 69);
-            this.lbData.TabIndex = 0;
+            this.gbExample.Text = "System Recieved Values";
             // 
             // fswExample
             // 
@@ -340,7 +352,7 @@
             // bQuestionFour
             // 
             this.bQuestionFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bQuestionFour.Location = new System.Drawing.Point(493, 215);
+            this.bQuestionFour.Location = new System.Drawing.Point(481, 17);
             this.bQuestionFour.Name = "bQuestionFour";
             this.bQuestionFour.Size = new System.Drawing.Size(16, 23);
             this.bQuestionFour.TabIndex = 29;
@@ -350,11 +362,11 @@
             // 
             // bStartTest
             // 
-            this.bStartTest.Location = new System.Drawing.Point(117, 332);
+            this.bStartTest.Location = new System.Drawing.Point(15, 289);
             this.bStartTest.Name = "bStartTest";
-            this.bStartTest.Size = new System.Drawing.Size(291, 23);
+            this.bStartTest.Size = new System.Drawing.Size(501, 23);
             this.bStartTest.TabIndex = 30;
-            this.bStartTest.Text = "* Start Test *";
+            this.bStartTest.Text = "Begin Reading File";
             this.bStartTest.UseVisualStyleBackColor = true;
             this.bStartTest.Click += new System.EventHandler(this.bStartTest_Click);
             // 
@@ -375,15 +387,89 @@
             this.lDeviceId.TabIndex = 32;
             this.lDeviceId.Text = "#[Device ID]";
             // 
+            // tLastValue
+            // 
+            this.tLastValue.Enabled = false;
+            this.tLastValue.Location = new System.Drawing.Point(105, 45);
+            this.tLastValue.Name = "tLastValue";
+            this.tLastValue.Size = new System.Drawing.Size(370, 20);
+            this.tLastValue.TabIndex = 33;
+            this.tLastValue.TextChanged += new System.EventHandler(this.tLastValue_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 48);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Last Value:";
+            // 
+            // cbFileAccessible
+            // 
+            this.cbFileAccessible.AutoSize = true;
+            this.cbFileAccessible.Enabled = false;
+            this.cbFileAccessible.Location = new System.Drawing.Point(12, 399);
+            this.cbFileAccessible.Name = "cbFileAccessible";
+            this.cbFileAccessible.Size = new System.Drawing.Size(96, 17);
+            this.cbFileAccessible.TabIndex = 33;
+            this.cbFileAccessible.Text = "File Accessible";
+            this.cbFileAccessible.UseVisualStyleBackColor = true;
+            // 
+            // cbInRange
+            // 
+            this.cbInRange.AutoSize = true;
+            this.cbInRange.Enabled = false;
+            this.cbInRange.Location = new System.Drawing.Point(117, 399);
+            this.cbInRange.Name = "cbInRange";
+            this.cbInRange.Size = new System.Drawing.Size(124, 17);
+            this.cbInRange.TabIndex = 34;
+            this.cbInRange.Text = "Characters In Range";
+            this.cbInRange.UseVisualStyleBackColor = true;
+            // 
+            // cbValueTypeOkay
+            // 
+            this.cbValueTypeOkay.AutoSize = true;
+            this.cbValueTypeOkay.Enabled = false;
+            this.cbValueTypeOkay.Location = new System.Drawing.Point(247, 399);
+            this.cbValueTypeOkay.Name = "cbValueTypeOkay";
+            this.cbValueTypeOkay.Size = new System.Drawing.Size(117, 17);
+            this.cbValueTypeOkay.TabIndex = 35;
+            this.cbValueTypeOkay.Text = "Value Type Correct";
+            this.cbValueTypeOkay.UseVisualStyleBackColor = true;
+            // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(370, 395);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(145, 23);
+            this.bSave.TabIndex = 36;
+            this.bSave.Text = "Save Device";
+            this.bSave.UseVisualStyleBackColor = true;
+            // 
+            // lWarning
+            // 
+            this.lWarning.AutoSize = true;
+            this.lWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lWarning.Location = new System.Drawing.Point(9, 428);
+            this.lWarning.Name = "lWarning";
+            this.lWarning.Size = new System.Drawing.Size(101, 15);
+            this.lWarning.TabIndex = 37;
+            this.lWarning.Text = "No Warnings...";
+            // 
             // FlatFileManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 489);
+            this.ClientSize = new System.Drawing.Size(527, 454);
+            this.Controls.Add(this.lWarning);
+            this.Controls.Add(this.bSave);
+            this.Controls.Add(this.cbValueTypeOkay);
+            this.Controls.Add(this.cbInRange);
+            this.Controls.Add(this.cbFileAccessible);
             this.Controls.Add(this.lDeviceId);
             this.Controls.Add(this.cbValueType);
             this.Controls.Add(this.bStartTest);
-            this.Controls.Add(this.bQuestionFour);
             this.Controls.Add(this.bQuestionThree);
             this.Controls.Add(this.bQuestionTwo);
             this.Controls.Add(this.bQuestion);
@@ -391,7 +477,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label4);
@@ -405,7 +490,6 @@
             this.Controls.Add(this.cbReadUpdateOnly);
             this.Controls.Add(this.tDefaultValue);
             this.Controls.Add(this.cbReadOnly);
-            this.Controls.Add(this.tLastUpdate);
             this.Controls.Add(this.tCheckEvery);
             this.Controls.Add(this.tEndChar);
             this.Controls.Add(this.tStartChar);
@@ -419,6 +503,7 @@
             this.Text = "FlatFileManager";
             this.Load += new System.EventHandler(this.FlatFileManager_Load);
             this.gbExample.ResumeLayout(false);
+            this.gbExample.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fswExample)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -459,8 +544,14 @@
         private System.Windows.Forms.Button bQuestionThree;
         private System.Windows.Forms.Button bQuestionTwo;
         private System.Windows.Forms.Button bStartTest;
-        private System.Windows.Forms.ListBox lbData;
         private System.Windows.Forms.ComboBox cbValueType;
         private System.Windows.Forms.Label lDeviceId;
+        private System.Windows.Forms.TextBox tLastValue;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox cbFileAccessible;
+        private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.CheckBox cbValueTypeOkay;
+        private System.Windows.Forms.CheckBox cbInRange;
+        private System.Windows.Forms.Label lWarning;
     }
 }
