@@ -277,5 +277,9 @@ namespace DomainLogicLayer.ViewModels
         }
 
 
+        public override string ToString()
+        {
+            return _id + ": " + _name;
+        }
     }
 }

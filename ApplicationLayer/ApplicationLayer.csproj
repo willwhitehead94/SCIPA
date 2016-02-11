@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Boot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Boot.Designer.cs">
+      <DependentUpon>Boot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connection Managers\FlatFileManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Boot.resx">
+      <DependentUpon>Boot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Connection Managers\FlatFileManager.resx">
       <DependentUpon>FlatFileManager.cs</DependentUpon>
     </EmbeddedResource>

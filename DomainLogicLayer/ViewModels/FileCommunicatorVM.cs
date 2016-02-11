@@ -10,11 +10,24 @@ namespace DomainLogicLayer.Models
 {
     public class FileCommunicatorVM
     {
+        private int _id;
+
+        private string _folderPath;
+
+        private int? _startChar;
+
+        private int? _endChar;
+
+        private int _openModeId;
+
+
+
+
         public string DeviceName { get; set; }
         public string FileName { get; set; }
         public string ValueType { get; set; }
 
-public bool ReadOnly { get; set; }
+        public bool ReadOnly { get; set; }
         public int CheckTime { get; set; }
         public DateTime? LastUpdateTime { get; set; }
         public bool ReadUpdatesOnly { get; set; }
@@ -29,16 +42,10 @@ public bool ReadOnly { get; set; }
 
         public event NewValuesRecievedHandler onValueRecieved;
 
+        private DataAccessLayer.FlatFileHandler localHandler = null;
 
-        private int _id; 
 
-        private string _folderPath;
 
-        private int? _startChar;
-
-        private int? _endChar;
-
-        private int _openModeId;
 
 
         public int Id
@@ -116,13 +123,17 @@ public bool ReadOnly { get; set; }
         /// Starts the FileSystemWatcher instance, watching the filepath as stored within the object.
         /// When the file is updated, the backgroundFSQ_Changed method is invoked.
         /// </summary>
-        public void StartFileWatcher()
+        public void StartFileWatcher(bool ResetFileHandler = false)
         {
             try
             {
                 backgroundFSW.Path = FolderPath;
                 backgroundFSW.NotifyFilter = System.IO.NotifyFilters.LastWrite;
                 backgroundFSW.Filter = FileName;
+
+                //To reset the file handler (i.e. the preview has already started once)
+                GetHandler(ResetFileHandler);
+
                 backgroundFSW.Changed += backgroundFSW_Changed;
                 backgroundFSW.EnableRaisingEvents = true;
             }
@@ -157,28 +168,45 @@ public bool ReadOnly { get; set; }
             }
         }
 
+        private DataAccessLayer.FlatFileHandler GetHandler(bool GetNewHandler=false)
+        {
+            if (localHandler != null)
+            {
+                return localHandler;
+            }
+            else
+            {
+                FileAccess accessType = FileAccess.Read;
+
+                if (!this.ReadOnly)
+                {
+                    accessType = FileAccess.ReadWrite;
+                }
+
+                if (StartChar != null && StartChar >= 0 && EndChar < 1)
+                {
+                    localHandler = new DataAccessLayer.FlatFileHandler(FolderPath + FileName, (int)StartChar, 0, this.ValueType, accessType);
+                }
+                else if (StartChar >= 0 && EndChar >= 1)
+                {
+                    int length = (int)EndChar - (int)StartChar;
+                    localHandler = new DataAccessLayer.FlatFileHandler(FolderPath + FileName, (int)StartChar, length, this.ValueType, accessType);
+                }
+
+                return localHandler;
+            }
+        }
+
         private string ReadValueFromFile()
         {
-            DataAccessLayer.FlatFileHandler ffh;
-            FileAccess accessType = FileAccess.Read;
+            DataAccessLayer.FlatFileHandler ffh = GetHandler();
 
-            if (!this.ReadOnly)
+            if (ffh != null)
             {
-                accessType = FileAccess.ReadWrite;
+                string test = (string)ffh.GetRequiredValue().ToString();
             }
 
-            if (StartChar != null && StartChar>=0 && EndChar < 1)
-            {
-                ffh = new DataAccessLayer.FlatFileHandler(FolderPath + FileName,(int)StartChar,0,this.ValueType,accessType);
-                var test = ffh.requiredValue;
-            }
-            else if(StartChar >= 0 && EndChar >=1)
-            {
-                int length = (int)EndChar - (int)StartChar;
-                ffh = new DataAccessLayer.FlatFileHandler(FolderPath + FileName,(int)StartChar,length,this.ValueType,accessType);
-            }
-
-            return "13";
+            return (string)ffh.GetRequiredValue().ToString();
 
         }
 

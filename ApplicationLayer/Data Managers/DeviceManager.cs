@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationLayer.Connection_Managers;
+using DomainLogicLayer.ViewModels;
 
 namespace ApplicationLayer.DataManagers
 {
@@ -16,6 +17,9 @@ namespace ApplicationLayer.DataManagers
     {
         //Create generic controller object
         //Controllers.DeviceController controller = new Controllers.AlarmController();
+        DomainLogicLayer.Controllers.DeviceController controller = new DomainLogicLayer.Controllers.DeviceController();
+
+        object newObject;
 
         public DeviceManager()
         {
@@ -24,7 +28,28 @@ namespace ApplicationLayer.DataManagers
 
         private void DeviceManager_Load(object sender, EventArgs e)
         {
+            //Make small
+            this.Height = 154;
 
+
+            newObject = "Create New Device";
+
+            //Get Device's available on the database and popular the listbox.
+            RefreshDeviceListBox();
+        }
+
+        private void RefreshDeviceListBox()
+        {
+            cbDeviceList.Items.Clear();
+            cbDeviceList.Items.Add(newObject);
+
+            List<DeviceVM> deviceModels = new List<DeviceVM>();
+            deviceModels.AddRange(controller.ConvertToModel<DeviceVM>(controller.DownloadAll()));
+
+            foreach (var dev in deviceModels)
+            {
+                cbDeviceList.Items.Add(dev);
+            }
         }
 
         private void rbInput_CheckedChanged(object sender, EventArgs e)
@@ -107,6 +132,23 @@ namespace ApplicationLayer.DataManagers
 
             manager.Show(this) ;
             return manager.DeviceName;
+        }
+
+        private void cbDeviceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Create new device is always at index 0, so if larger than that, load data.
+            if (cbDeviceList.SelectedIndex > 0)
+            {
+                DeviceVM selectedDevice = (DeviceVM)cbDeviceList.SelectedItem;
+
+                tDeviceName.Text = selectedDevice.Name;
+                tLocation.Text = selectedDevice.LocationId.ToString();
+                tOwner.Text = "Taylor, Andrew";
+            }
+            else //Creating new device
+            {
+                DeviceVM newDevice = new DeviceVM()
+            }
         }
     }
 }

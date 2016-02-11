@@ -105,8 +105,12 @@ namespace ApplicationLayer.Connection_Managers
 
                 ffc.Communicator().StartFileWatcher();
                 ffc.Communicator().onValueRecieved += OnValueRecieved_Event;
+                
                 cbFileAccessible.Checked = true;
+                cbInRange.Checked = true;
                 ShowWarning();
+                bStartTest.Text = "Reading File!";
+                
             }
             else
             {
@@ -243,6 +247,23 @@ namespace ApplicationLayer.Connection_Managers
         private void cbNullable_CheckedChanged(object sender, EventArgs e)
         {
             ffc.Communicator().Nullable = cbNullable.Checked;
+        }
+
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            ffc.SaveNewDevice();
+        }
+
+        private void cbValidity_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbInRange.Checked && cbFileAccessible.Checked && cbValueTypeOkay.Checked)
+            {
+                bSave.Enabled = true;
+            }
+            else
+            {
+                bSave.Enabled = false;
+            }
         }
     }
 }

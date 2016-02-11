@@ -26,7 +26,7 @@ namespace DataAccessLayer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-LH3AFE6\\SQLEXPRESS;Initial Catalog=SCIPA;Integrated Security=" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DIANDLAD-LAPTOP\\SQLExpress;Initial Catalog=SCIPA;Integrated Security=" +
             "True")]
         public string DefaultDatabaseConnectionString {
             get {

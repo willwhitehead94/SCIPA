@@ -11,7 +11,7 @@ namespace DomainLogicLayer.Controllers
     /// <summary>
     /// This is the domain controller. It acts upon the respective data controller in the Data Access Layer.
     /// </summary>
-    class DeviceController : DefaultController, IController
+    public class DeviceController : DefaultController, IController
     {
         public List<object> _allObjects = new List<object>();
 

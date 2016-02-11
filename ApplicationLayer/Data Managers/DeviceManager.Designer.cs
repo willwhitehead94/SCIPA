@@ -40,6 +40,10 @@
             this.rbInput = new System.Windows.Forms.RadioButton();
             this.rbOutput = new System.Windows.Forms.RadioButton();
             this.gbConnection = new System.Windows.Forms.GroupBox();
+            this.bTestConnection = new System.Windows.Forms.Button();
+            this.lConnectionInformation = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bNewConnection = new System.Windows.Forms.Button();
             this.rbFlat = new System.Windows.Forms.RadioButton();
             this.rbSerial = new System.Windows.Forms.RadioButton();
             this.rbDatabase = new System.Windows.Forms.RadioButton();
@@ -51,10 +55,8 @@
             this.lNameCheck = new System.Windows.Forms.Label();
             this.lLocationCheck = new System.Windows.Forms.Label();
             this.lOwnerCheck = new System.Windows.Forms.Label();
-            this.bNewConnection = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lConnectionInformation = new System.Windows.Forms.Label();
-            this.bTestConnection = new System.Windows.Forms.Button();
+            this.bLoad = new System.Windows.Forms.Button();
+            this.cbDeviceList = new System.Windows.Forms.ComboBox();
             this.gbHeader.SuspendLayout();
             this.gbConnection.SuspendLayout();
             this.gbRules.SuspendLayout();
@@ -65,12 +67,14 @@
             // 
             this.lHeaderMessage.Location = new System.Drawing.Point(6, 16);
             this.lHeaderMessage.Name = "lHeaderMessage";
-            this.lHeaderMessage.Size = new System.Drawing.Size(404, 81);
+            this.lHeaderMessage.Size = new System.Drawing.Size(404, 38);
             this.lHeaderMessage.TabIndex = 0;
             this.lHeaderMessage.Text = "label1";
             // 
             // gbHeader
             // 
+            this.gbHeader.Controls.Add(this.cbDeviceList);
+            this.gbHeader.Controls.Add(this.bLoad);
             this.gbHeader.Controls.Add(this.lHeaderMessage);
             this.gbHeader.Location = new System.Drawing.Point(12, 12);
             this.gbHeader.Name = "gbHeader";
@@ -178,6 +182,42 @@
             this.gbConnection.TabStop = false;
             this.gbConnection.Text = "Connection Settings";
             this.gbConnection.Enter += new System.EventHandler(this.gbConnection_Enter);
+            // 
+            // bTestConnection
+            // 
+            this.bTestConnection.Location = new System.Drawing.Point(10, 124);
+            this.bTestConnection.Name = "bTestConnection";
+            this.bTestConnection.Size = new System.Drawing.Size(116, 23);
+            this.bTestConnection.TabIndex = 7;
+            this.bTestConnection.Text = "Test Connection";
+            this.bTestConnection.UseVisualStyleBackColor = true;
+            // 
+            // lConnectionInformation
+            // 
+            this.lConnectionInformation.Location = new System.Drawing.Point(7, 88);
+            this.lConnectionInformation.Name = "lConnectionInformation";
+            this.lConnectionInformation.Size = new System.Drawing.Size(403, 33);
+            this.lConnectionInformation.TabIndex = 6;
+            this.lConnectionInformation.Text = "No information to show...";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 72);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Current connection information:";
+            // 
+            // bNewConnection
+            // 
+            this.bNewConnection.Location = new System.Drawing.Point(10, 46);
+            this.bNewConnection.Name = "bNewConnection";
+            this.bNewConnection.Size = new System.Drawing.Size(400, 23);
+            this.bNewConnection.TabIndex = 4;
+            this.bNewConnection.Text = "Create New Connection";
+            this.bNewConnection.UseVisualStyleBackColor = true;
+            this.bNewConnection.Click += new System.EventHandler(this.bNewConnection_Click);
             // 
             // rbFlat
             // 
@@ -289,47 +329,29 @@
             this.lOwnerCheck.Text = "Label";
             this.lOwnerCheck.Visible = false;
             // 
-            // bNewConnection
+            // bLoad
             // 
-            this.bNewConnection.Location = new System.Drawing.Point(10, 46);
-            this.bNewConnection.Name = "bNewConnection";
-            this.bNewConnection.Size = new System.Drawing.Size(400, 23);
-            this.bNewConnection.TabIndex = 4;
-            this.bNewConnection.Text = "Create New Connection";
-            this.bNewConnection.UseVisualStyleBackColor = true;
-            this.bNewConnection.Click += new System.EventHandler(this.bNewConnection_Click);
+            this.bLoad.Location = new System.Drawing.Point(335, 71);
+            this.bLoad.Name = "bLoad";
+            this.bLoad.Size = new System.Drawing.Size(75, 23);
+            this.bLoad.TabIndex = 1;
+            this.bLoad.Text = "Load";
+            this.bLoad.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // cbDeviceList
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 72);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Current connection information:";
-            // 
-            // lConnectionInformation
-            // 
-            this.lConnectionInformation.Location = new System.Drawing.Point(7, 88);
-            this.lConnectionInformation.Name = "lConnectionInformation";
-            this.lConnectionInformation.Size = new System.Drawing.Size(403, 33);
-            this.lConnectionInformation.TabIndex = 6;
-            this.lConnectionInformation.Text = "No information to show...";
-            // 
-            // bTestConnection
-            // 
-            this.bTestConnection.Location = new System.Drawing.Point(10, 124);
-            this.bTestConnection.Name = "bTestConnection";
-            this.bTestConnection.Size = new System.Drawing.Size(116, 23);
-            this.bTestConnection.TabIndex = 7;
-            this.bTestConnection.Text = "Test Connection";
-            this.bTestConnection.UseVisualStyleBackColor = true;
+            this.cbDeviceList.FormattingEnabled = true;
+            this.cbDeviceList.Location = new System.Drawing.Point(6, 71);
+            this.cbDeviceList.Name = "cbDeviceList";
+            this.cbDeviceList.Size = new System.Drawing.Size(323, 21);
+            this.cbDeviceList.TabIndex = 2;
+            this.cbDeviceList.SelectedIndexChanged += new System.EventHandler(this.cbDeviceList_SelectedIndexChanged);
             // 
             // DeviceManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 789);
+            this.ClientSize = new System.Drawing.Size(440, 115);
             this.Controls.Add(this.lOwnerCheck);
             this.Controls.Add(this.lLocationCheck);
             this.Controls.Add(this.lNameCheck);
@@ -393,5 +415,7 @@
         private System.Windows.Forms.Button bTestConnection;
         private System.Windows.Forms.Label lConnectionInformation;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbDeviceList;
+        private System.Windows.Forms.Button bLoad;
     }
 }

@@ -46,6 +46,9 @@ namespace DomainLogicLayer.Controllers
         /// </summary>
         public void SaveNewDevice()
         {
+            var temp = comm.ToString();
+
+
 
         }
 

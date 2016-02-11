@@ -35,7 +35,11 @@ namespace DataAccessLayer
 
         private string valueFromFile;
 
-        public object requiredValue;
+        private object requiredValue;
+
+        private bool InRange;
+
+        private DateTime FileLastUpdated = DateTime.MinValue;
 
 #endregion Variables
 
@@ -49,35 +53,69 @@ namespace DataAccessLayer
             this.FilePath = @FilePath;
             this.StartChar = StartChar;
             this.DataLength = DataLength;
-            this.VType = ValueType.String;
+            this.VType = ValueType.Integer;
             this.FAccess = FAccess;
-
-            OpenFileReadOnly();
-            valueFromFile= GetRequiredValueFromFile();
-            requiredValue = GetValue();
-
         }
 
-        private string OpenFileReadOnly()
+        public object GetRequiredValue()
         {
+            OpenFileAndReadContents();
+            valueFromFile = ReadValueFromOpenFile();
+            requiredValue = GetValueInCorrectFormat();
+
+            return requiredValue;
+        }
+
+        public bool FileIsReadable()
+        {
+            string contentTest = OpenFileAndReadContents();
+
+            if (contentTest != "" || contentTest != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private string OpenFileAndReadContents()
+        {
+
             if (File.Exists(FilePath))
             {
-                TextReader fileReaderObject = new StreamReader(new FileStream(FilePath,FileMode.Open,FAccess,FileShare.ReadWrite));
-                var FileContents = fileReaderObject.ReadToEnd();
-                fileReaderObject.Close();
-                fileReaderObject.Dispose();
+                if (File.GetLastWriteTime(FilePath) > FileLastUpdated)
+                {
+                    try
+                    {
+                        TextReader fileReaderObject = new StreamReader(new FileStream(FilePath, FileMode.Open, FAccess, FileShare.ReadWrite));
+                        var FileContents = fileReaderObject.ReadToEnd();
+                        fileReaderObject.Close();
+                        fileReaderObject.Dispose();
 
-                this.FileContents = FileContents.ToString();
+                        FileLastUpdated = File.GetLastWriteTime(FilePath);
+                        this.FileContents = FileContents.ToString();
+                    }
+                    catch (Exception e)
+                    {
+                        
+                    }
+                }
+
+                if(FileContents.Length >= StartChar && FileContents.Length >= (StartChar + DataLength))
+                {
+                    InRange = true;
+                }
+
                 return FileContents.ToString();
             }
 
             return null;
         }
 
-        private string GetRequiredValueFromFile()
+        private string ReadValueFromOpenFile()
         {
             bool ReadToEnd = DataLength == 0 ? true : false;
-            valueFromFile = "";
+            valueFromFile = FileContents;
 
             if (FileContents.Length >= StartChar && (!ReadToEnd && FileContents.Length >= (StartChar + DataLength)))
             {
@@ -95,7 +133,7 @@ namespace DataAccessLayer
             return valueFromFile;
         }
 
-        private object GetValue()
+        private object GetValueInCorrectFormat()
         {
             switch (VType)
             {
