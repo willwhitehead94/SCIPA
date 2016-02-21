@@ -10,7 +10,7 @@ namespace SCIPA.Domain.Logic
     public class FlatFileReader
     {
         private Models.FileCommunicator _comm = new Models.FileCommunicator();
-        private string FileContents { get; set; }
+        private string FileContents { get; set; } = "";
 
         private bool FileContentsUpdated { get; set; } = false;
 
@@ -62,13 +62,15 @@ namespace SCIPA.Domain.Logic
 
         public string GetString()
         {
-            if (!FileContentsUpdated)
-                GetRequiredValue();
+            GetRequiredValue();
+
+            if (FileContents.Equals(""))
+            {
+                DebugOutput.Print("No value available from file at ", _comm.FilePath);
+            }
 
             return FileContents;
         }
-
-
 
 
         private void GetRequiredValue()
@@ -134,29 +136,56 @@ namespace SCIPA.Domain.Logic
         private bool ReadValueFromFile()
         {
             DebugOutput.Print("Collecting value from file at ", _comm.FilePath);
-            bool ReadToEnd = _comm.EndChar == 0 ? true : false;
 
-            if (FileContents.Length >= _comm.StartChar && (!ReadToEnd && FileContents.Length >= (_comm.EndChar)))
+            bool ReadWholeFile = (_comm.StartChar == 0) && (_comm.EndChar == 0);
+            bool ReadToEndFromStartChar = (_comm.StartChar > 0) && (_comm.EndChar == 0);
+            bool ReadToEndCharFromStartChar = (_comm.StartChar > 0) && (_comm.EndChar < FileContents.Length);
+
+            try
             {
-                try
+                if (ReadWholeFile)
                 {
-                    int length = _comm.EndChar - _comm.StartChar;
-                    if (length>0)
-                    {
-                        FileContents = FileContents.Substring(_comm.StartChar, length);
-                        DebugOutput.Print("Obtained value from file at ", _comm.FilePath);
-                    }
+                    FileContents = FileContents;
                     return true;
                 }
-                catch (Exception e)
+                else if (ReadToEndFromStartChar)
                 {
-                    DebugOutput.Print("The data in the file did not match the constraints given for file at ", _comm.FilePath);
-                    throw new FileLoadException(
-                        "The data in the file did not match the constraints given to read the data.");
+                    FileContents = FileContents.Substring(_comm.StartChar);
                 }
+                else if (ReadToEndCharFromStartChar)
+                {
+                    int length = _comm.EndChar - _comm.StartChar;
+                    FileContents = FileContents.Substring(_comm.StartChar, length);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                DebugOutput.Print("The data in the file did not match the constraints given for file at ", _comm.FilePath);
+                throw new FileLoadException(
+                    "The data in the file did not match the constraints given to read the data.");
             }
 
             return false;
+
+            //if (FileContents.Length >= _comm.StartChar && (!ReadToEnd && FileContents.Length >= (_comm.EndChar)))
+            //{
+            //    try
+            //    {
+            //        int length = _comm.EndChar - _comm.StartChar;
+            //        if (length>0)
+            //        {
+            //            FileContents = FileContents.Substring(_comm.StartChar, length);
+            //            DebugOutput.Print("Obtained value from file at ", _comm.FilePath);
+            //        }
+            //        return true;
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        DebugOutput.Print("The data in the file did not match the constraints given for file at ", _comm.FilePath);
+            //        throw new FileLoadException(
+            //            "The data in the file did not match the constraints given to read the data.");
+            //    }
         }
 
         private bool ConvertValueToFormat()
@@ -197,7 +226,7 @@ namespace SCIPA.Domain.Logic
                             ConvertedOk = true;
                         }
 
-                            break;
+                        break;
                     }
                 case Models.Type.String:
                     {

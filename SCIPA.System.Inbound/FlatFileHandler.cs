@@ -103,7 +103,7 @@ namespace SCIPA.Domain.Inbound
             //Only allows one occurence per the time in the 'WaitPeriod' object.
             if (!((EventOccurenceTime - _lastUpdate) <  WaitPeriod))
             {
-                _lastUpdate = DateTime.Now;
+                _lastUpdate = EventOccurenceTime;
                 if (onFileUpdate != null)
                 {
                     DebugOutput.Print("Change detected on file at ", _fileComms.FilePath);
@@ -118,14 +118,29 @@ namespace SCIPA.Domain.Inbound
         private void OnFileUpdateEvent(object source, FileUpdatedEventArgs e)
         {
             //what to do when the file udpates
-            Console.WriteLine(e.GetEventInfo());
+            //Console.WriteLine(e.GetEventInfo());
 
+            
 
             Domain.Logic.FlatFileReader ffr = new Logic.FlatFileReader(_fileComms);
-            DebugOutput.Print("Value retrieved: ", ffr.GetString());
 
-            //READ THE FILE HERE
-            _lastValueRead = ffr.GetString();
+            string _newValue = ffr.GetString().Trim();
+
+            if (_lastValueRead != null && _lastValueRead != "" && _newValue != "")
+            {
+                if (_newValue.Trim().Equals(_lastValueRead.Trim()))
+                {
+                    DebugOutput.Print("Value has not changed; ", _lastValueRead);
+                }
+                else
+                {
+                    DebugOutput.Print("New value retrieved: ", _newValue);
+                }
+            }
+            else
+            {
+                _lastValueRead = _newValue;
+            }
         }
 
         public string GetLastValueRead()

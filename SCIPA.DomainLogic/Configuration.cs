@@ -8,6 +8,7 @@ namespace SCIPA.Domain.Logic
 {
     public static class Configuration
     {
-        public static string LogFilePath { get; } = @"C:\scipa\log.dat";
+        private static string DefaultDirectory { get; } = @"C:\scipa\";
+        public static string LogFilePath { get; } = DefaultDirectory + "log.dat";
     }
 }
