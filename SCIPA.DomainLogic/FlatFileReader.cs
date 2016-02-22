@@ -69,6 +69,7 @@ namespace SCIPA.Domain.Logic
                 DebugOutput.Print("No value available from file at ", _comm.FilePath);
             }
 
+            string ignore = null;
             return FileContents;
         }
 
