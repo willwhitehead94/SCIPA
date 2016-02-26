@@ -7,8 +7,8 @@
     <ProjectGuid>{281EFAC6-85D4-4086-BE80-FB468B6B99E5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCIPA.DataAccessLayer</RootNamespace>
-    <AssemblyName>SCIPA.DataAccessLayer</AssemblyName>
+    <RootNamespace>SCIPA.Data.AccessLayer</RootNamespace>
+    <AssemblyName>SCIPA.Data.AccessLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

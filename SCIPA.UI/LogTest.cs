@@ -83,7 +83,7 @@ namespace SCIPA.UI
 
         private void LogTest_Load(object sender, EventArgs e)
         {
-
+            this.Text = SCIPA.Domain.Logic.Properties.Settings.Default.UserName;
         }
     }
 }
