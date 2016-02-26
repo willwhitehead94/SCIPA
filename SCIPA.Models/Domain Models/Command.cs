@@ -6,11 +6,6 @@ namespace SCIPA.Models
 
     public partial class Command : IDomainModel
     {
-        public Command()
-        {
-            Rules = new HashSet<Rule>();
-        }
-
         public int id { get; set; }
 
         public int deviceId { get; set; }

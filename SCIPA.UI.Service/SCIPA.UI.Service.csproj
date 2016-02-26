@@ -53,7 +53,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SCIPA.DomainLogic\SCIPA.Domain.Logic.csproj">
+    <ProjectReference Include="..\SCIPA.Domain.Logic\SCIPA.Domain.Logic.csproj">
       <Project>{782b4fa0-9a1b-41c6-a27f-78e523d9398d}</Project>
       <Name>SCIPA.Domain.Logic</Name>
     </ProjectReference>

@@ -45,7 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SCIPA.DataAccessLayer\SCIPA.Data.AccessLayer.csproj">
+    <ProjectReference Include="..\SCIPA.Data.AccessLayer\SCIPA.Data.AccessLayer.csproj">
       <Project>{281efac6-85d4-4086-be80-fb468b6b99e5}</Project>
       <Name>SCIPA.Data.AccessLayer</Name>
     </ProjectReference>
