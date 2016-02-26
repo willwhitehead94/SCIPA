@@ -5,13 +5,13 @@ namespace SCIPA.Models
     {
         public CommunicatorType()
         {
-            Communicators = new HashSet<Communicator>();
+            Communicators = new HashSet<CommunicatorModel>();
         }
 
         public int id { get; set; }
 
         public string communicatorType1 { get; set; }
 
-        public virtual ICollection<Communicator> Communicators { get; set; }
+        public virtual ICollection<CommunicatorModel> Communicators { get; set; }
     }
 }

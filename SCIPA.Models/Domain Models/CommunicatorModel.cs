@@ -2,7 +2,7 @@ namespace SCIPA.Models
 {
     using System;
 
-    public partial class Communicator : IDomainModel
+    public partial class CommunicatorModel : IDomainModel
     {
         public int id { get; set; }
 

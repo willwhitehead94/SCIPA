@@ -14,4 +14,6 @@ namespace SCIPA.Models
         Serial,
         Database
     };
+
+    public enum DatabaseTechnologyType { SQL, OLE, ODBC };
 }

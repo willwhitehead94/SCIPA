@@ -7,7 +7,7 @@ namespace SCIPA.Models
         public ValueType()
         {
             Commands = new HashSet<Command>();
-            Communicators = new HashSet<Communicator>();
+            Communicators = new HashSet<CommunicatorModel>();
         }
 
         public int id { get; set; }
@@ -16,6 +16,6 @@ namespace SCIPA.Models
 
         public virtual ICollection<Command> Commands { get; set; }
 
-        public virtual ICollection<Communicator> Communicators { get; set; }
+        public virtual ICollection<CommunicatorModel> Communicators { get; set; }
     }
 }

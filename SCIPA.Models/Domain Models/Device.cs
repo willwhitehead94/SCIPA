@@ -6,7 +6,7 @@ namespace SCIPA.Models
     {
         public Device()
         {
-            Communicators = new HashSet<Communicator>();
+            Communicators = new HashSet<CommunicatorModel>();
             DeviceValues = new HashSet<DeviceValue>();
             Rules = new HashSet<Rule>();
 
@@ -43,7 +43,7 @@ namespace SCIPA.Models
 
         public virtual Command Command1 { get; set; }
 
-        public virtual ICollection<Communicator> Communicators { get; set; }
+        public virtual ICollection<CommunicatorModel> Communicators { get; set; }
 
         public virtual Location Location { get; set; }
 

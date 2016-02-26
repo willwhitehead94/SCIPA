@@ -19,7 +19,7 @@ namespace SCIPA.Domain.Inbound
         private FileSystemWatcher _backgroundFSW = null;
 
         /// <summary>
-        /// File Communicator object used to store the connection settings.
+        /// File CommunicatorModel object used to store the connection settings.
         /// </summary>
         public Models.FileCommunicator Communicator = null;
 
@@ -44,7 +44,7 @@ namespace SCIPA.Domain.Inbound
         /// being watched, this is ignored. Otherwise, the file is watched by a system file watcher
         /// object.
         /// </summary>
-        /// <param name="comms">File Communicator</param>
+        /// <param name="comms">File CommunicatorModel</param>
         public FlatFileHandler(FileCommunicator comms)
         {
             if (PathsBeingWatched.Contains(@comms.FilePath))
@@ -196,12 +196,12 @@ namespace SCIPA.Domain.Inbound
                     }
 
                     //TextReader fileReaderObject =
-                    //    new StreamReader(new FileStream(Communicator.FilePath, FileMode.Open, FileAccess.Read,
+                    //    new StreamReader(new FileStream(CommunicatorModel.FilePath, FileMode.Open, FileAccess.Read,
                     //        FileShare.Read));
                     //fileContents = fileReaderObject.ReadToEnd();
                     //fileReaderObject.Close();
                     //fileReaderObject.Dispose();
-                    //fileContents = System.IO.File.ReadAllText(Communicator.FilePath);
+                    //fileContents = System.IO.File.ReadAllText(CommunicatorModel.FilePath);
 
                 Communicator.LastReadTime = lastWriteTime;
                 fileContents = fileContents.Trim();
@@ -217,6 +217,11 @@ namespace SCIPA.Domain.Inbound
             }
 
             return fileContents;
+        }
+
+        public override Communicator GetCommunicator()
+        {
+            return Communicator;
         }
     }
 }

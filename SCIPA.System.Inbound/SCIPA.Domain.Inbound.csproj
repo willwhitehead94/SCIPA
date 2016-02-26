@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseHandler.cs" />
+    <Compile Include="DatabaseReader.cs" />
     <Compile Include="DataHandler.cs" />
     <Compile Include="DataReader.cs" />
     <Compile Include="FileValueChangedEventArgs.cs" />

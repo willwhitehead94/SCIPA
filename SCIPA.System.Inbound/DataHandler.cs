@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SCIPA.Models;
 using SCIPA.Models.Resources;
 
 namespace SCIPA.Domain.Inbound
@@ -9,7 +10,7 @@ namespace SCIPA.Domain.Inbound
         /// <summary>
         /// Maximum number of incoming messages allowed per second.
         /// </summary>
-        protected const int MaximumReadsPerSecond = 1;
+        protected const int MaximumReadsPerMinute = 100;
 
         /// <summary>
         /// DateTime of the last inbound message.
@@ -21,6 +22,11 @@ namespace SCIPA.Domain.Inbound
         /// </summary>
         public Queue<Value> InboundDataQueue = new Queue<Value>();
 
-
+        /// <summary>
+        /// Abstract method ensures that implementing members must provide an
+        /// access method for their communicator objects.
+        /// </summary>
+        /// <returns></returns>
+        public abstract Communicator GetCommunicator();
     }
 }

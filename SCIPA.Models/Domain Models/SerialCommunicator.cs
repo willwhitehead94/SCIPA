@@ -2,11 +2,11 @@ namespace SCIPA.Models
 {
     using System.Collections.Generic;
 
-    public partial class SerialCommunicator : IDomainModel
+    public partial class SerialCommunicator : Communicator, IDomainModel
     {
         public SerialCommunicator()
         {
-            Communicators = new HashSet<Communicator>();
+            Communicators = new HashSet<CommunicatorModel>();
         }
 
         public int id { get; set; }
@@ -21,12 +21,12 @@ namespace SCIPA.Models
 
         public bool? isDTR { get; set; }
 
-        public eType ValueEType { get; set; } = eType.String;
+        //public eType ValueEType { get; set; } = eType.String;
 
-        public int StartChar { get; set; } = 0;
+        //public int StartChar { get; set; } = 0;
 
-        public int EndChar { get; set; } = 0;
+        //public int EndChar { get; set; } = 0;
 
-        public virtual ICollection<Communicator> Communicators { get; set; }
+        public virtual ICollection<CommunicatorModel> Communicators { get; set; }
     }
 }

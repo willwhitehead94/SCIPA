@@ -13,7 +13,6 @@ namespace SCIPA.UI.Service
 {
     class Program
     {
-        private static bool _updateRequired = false;
 
         private static List<string> _logEntries = new List<string>();
         private static DateTime _lastLogUpdate;
@@ -91,7 +90,6 @@ namespace SCIPA.UI.Service
                 if (ReaderRunning < 2)
                 {
                     DateTime fileWriteTime = System.IO.File.GetLastWriteTime(Configuration.LogFilePath);
-                    _updateRequired = false;
 
                     if (fileWriteTime > _lastLogUpdate)
                     {
@@ -108,9 +106,6 @@ namespace SCIPA.UI.Service
                                 _logEntries.Add(line);
                             }
                         }
-
-                        //inform the class an update has occured
-                        _updateRequired = true;
                     }
                 }
             }

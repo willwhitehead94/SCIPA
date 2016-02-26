@@ -18,10 +18,10 @@ namespace SCIPA.Domain.Inbound
         /// <summary>
         /// Serial Port object used to connect to, send and receive messages from the COM Port.
         /// </summary>
-        private SerialPort _sPort; 
+        private SerialPort _sPort;
 
         /// <summary>
-        /// Serial Communicator object used to store the COM settings.
+        /// Serial CommunicatorModel object used to store the COM settings.
         /// </summary>
         public SerialCommunicator Communicator { get; set; }
 
@@ -84,7 +84,7 @@ namespace SCIPA.Domain.Inbound
         /// <param name="e">Event received data.</param>
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            double ms = 1000 / MaximumReadsPerSecond;
+            double ms = 60000 / MaximumReadsPerMinute;
             if (_lastIncomingMessage.AddMilliseconds(ms) < DateTime.Now)
             {
                 SerialPort sp = (SerialPort)sender;
@@ -139,6 +139,12 @@ namespace SCIPA.Domain.Inbound
 
             DebugOutput.Print("Now ignoring ",_sPort.PortName);
             _portOutOfService = true;
+        }
+
+
+        public override Communicator GetCommunicator()
+        {
+            return Communicator;
         }
     }
 }

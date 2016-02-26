@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using SCIPA.Models.Resources;
@@ -11,6 +12,11 @@ namespace SCIPA.Domain.Inbound
         /// The handler used for monitoring the connection to the data.
         /// </summary>
         protected DataHandler _handler = null;
+
+        public int AvailableValues()
+        {
+            return _handler.InboundDataQueue.Count;
+        }
 
         /// <summary>
         /// Stores the handler's eType. Defaults to STRING.
@@ -38,7 +44,10 @@ namespace SCIPA.Domain.Inbound
         {
             if (IsReadable() && ValueDequeued())
             {
-                ConvertValueToFormat();
+                if (CutToRequiredLength())
+                {
+                    ConvertValueToFormat();
+                }
             }
         }
 
@@ -67,6 +76,49 @@ namespace SCIPA.Domain.Inbound
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Takes the InboundData and cuts to the desired length based upon the start and end charectors.
+        /// </summary>
+        /// <returns>Success or fail boolean.</returns>
+        private bool CutToRequiredLength()
+        {
+            Communicator temp = _handler.GetCommunicator();
+
+            string data = InboundData.NewValue;
+
+            int startChar = temp.StartChar;
+            int endChar = temp.EndChar;
+
+            bool ReadWholeFile = (startChar == 0) && (endChar == 0);
+            bool ReadToEndFromStartChar = (startChar > 0) && (endChar == 0);
+            bool ReadToEndCharFromStartChar = (startChar > 0) && (endChar < data.Length);
+
+            try
+            {
+                if (ReadWholeFile)
+                {
+                    data = data + "";
+                }
+                else if (ReadToEndFromStartChar)
+                {
+                    data = data.Substring(startChar);
+                }
+                else if (ReadToEndCharFromStartChar)
+                {
+                    int length = endChar - startChar;
+                    data = data.Substring(startChar, length);
+                }
+            }
+            catch (Exception e)
+            {
+                DebugOutput.Print("The data in the could not be constrained as requested.", e.Message);
+                return false;
+            }
+
+            InboundData.NewValue = data;
+            return true;
         }
 
         /// <summary>
@@ -192,7 +244,7 @@ namespace SCIPA.Domain.Inbound
 
             if (Data.Equals(""))
             {
-                DebugOutput.Print("No serial data available from the COM Port "); //_handler.Communicator.comPort //TODO See note at top - add Communicator in!
+                DebugOutput.Print("No data available!"); //_handler.CommunicatorModel.comPort //TODO See note at top - add CommunicatorModel in!
             }
 
             return Data;
