@@ -3,6 +3,7 @@ using System.Threading;
 using SCIPA.Models;
 using SCIPA.Domain.Logic;
 using SCIPA.Models.Resources;
+using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
 {
@@ -72,8 +73,8 @@ namespace SCIPA.Domain.Inbound
                         //Create a new Value object for the queue.
                         var result = new Value()
                         {
-                            CommType = eComm.Database,
-                            ValueType = eType.String,
+                            CommType = CommunicatorType.Database,
+                            ValueType = ValueType.String,
                             EventTime = DateTime.Now,
                             NewValue = dcm.GetResultLists()[0][0]
                         };

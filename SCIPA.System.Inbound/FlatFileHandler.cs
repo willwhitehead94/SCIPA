@@ -7,6 +7,7 @@ using System.IO.Ports;
 using System.Text;
 using System.Threading;
 using SCIPA.Models.Resources;
+using ValueType = SCIPA.Models.ValueType;
 
 
 namespace SCIPA.Domain.Inbound
@@ -167,8 +168,8 @@ namespace SCIPA.Domain.Inbound
 
                 InboundDataQueue.Enqueue(new Value()
                 {
-                    ValueType = eType.String,
-                    CommType = eComm.Serial,
+                    ValueType = ValueType.String,
+                    CommType = CommunicatorType.FlatFile,
                     EventTime = DateTime.Now,
                     NewValue = fileText
                 });

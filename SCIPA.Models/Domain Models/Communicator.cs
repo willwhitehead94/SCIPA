@@ -10,6 +10,6 @@ namespace SCIPA.Models
 
         public DateTime LastReadTime { get; set; }
 
-        public eType ValueEType { get; set; }
+        public ValueType ValueValueType { get; set; }
     }
 }

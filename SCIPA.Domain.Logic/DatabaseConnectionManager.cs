@@ -9,7 +9,7 @@ namespace SCIPA.Domain.Logic
     /// This class can be used to connect to either an SQL, an OLE or an ODBC database.
     /// No special objects are required.
     /// 
-    /// To use, instantiate a new object of this type, and pass the DatabaseTechnologyType (via the enum)
+    /// To use, instantiate a new object of this type, and pass the DatabaseType (via the enum)
     /// and the connection string.
     /// 
     /// To execute a query, call the .Execute method against your new object; if you're executing
@@ -18,26 +18,26 @@ namespace SCIPA.Domain.Logic
     /// </summary>
     public class DatabaseConnectionManager
     {
-        #region Default Values
+        #region Default InboundValues
 
         /// <summary>
         /// This is the default connection type used when there isn't one passed to the constructr.
         /// </summary>
-        private DatabaseTechnologyType DefaultConnectionType = DatabaseTechnologyType.SQL;
+        private DatabaseType DefaultConnectionType = DatabaseType.SQL;
 
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
         /// </summary>
         private string DefaultConnectionString = Properties.Settings.Default.DefaultDatabaseConnectionString;
 
-        #endregion Default Values
+        #endregion Default InboundValues
 
         #region Variables
 
         /// <summary>
         /// The selected connection type, which has to be one of the preset options.
         /// </summary>
-        private DatabaseTechnologyType ConnectionType;
+        private DatabaseType ConnectionType;
 
         /// <summary>
         /// The actual connection to the data source.
@@ -86,7 +86,7 @@ namespace SCIPA.Domain.Logic
         /// Constructor method creates a DatabaseHandler object with a preset data type
         /// and connection string.
         /// </summary>
-        public DatabaseConnectionManager(DatabaseTechnologyType Type, string ConnectionString)
+        public DatabaseConnectionManager(DatabaseType Type, string ConnectionString)
         {
             this.ConnectionType = Type;
             this.ConnectionString = ConnectionString;
@@ -96,7 +96,7 @@ namespace SCIPA.Domain.Logic
         /// Constructor method creates a DatabaseHandler object with a preset data type
         /// and connection string, but also executes the query immediately.
         /// </summary>
-        public DatabaseConnectionManager(DatabaseTechnologyType Type, string ConnectionString, string Query, bool ExpectResults = true)
+        public DatabaseConnectionManager(DatabaseType Type, string ConnectionString, string Query, bool ExpectResults = true)
         {
             this.ConnectionType = Type;
             this.ConnectionString = ConnectionString;
@@ -205,11 +205,11 @@ namespace SCIPA.Domain.Logic
         #region Private Methods
 
         /// <summary>
-        /// Creates a new database connection based on the DatabaseTechnologyType the user has selected.
+        /// Creates a new database connection based on the DatabaseType the user has selected.
         /// The database connection is then stored in the local, private variable 'DatabaseConnection'
         /// If already created, a new database connection is not created.
         /// </summary>
-        private IDbConnection GetDatabaseConnection(DatabaseTechnologyType DataType)
+        private IDbConnection GetDatabaseConnection(DatabaseType DataType)
         {
             if (this.DatabaseConnection != null)
             {
@@ -218,9 +218,9 @@ namespace SCIPA.Domain.Logic
 
             switch (DataType)
             {
-                case DatabaseTechnologyType.SQL: DatabaseConnection = new System.Data.SqlClient.SqlConnection(ConnectionString); break;
-                case DatabaseTechnologyType.ODBC: DatabaseConnection = new System.Data.Odbc.OdbcConnection(ConnectionString); break;
-                case DatabaseTechnologyType.OLE: DatabaseConnection = new System.Data.OleDb.OleDbConnection(ConnectionString); break;
+                case DatabaseType.SQL: DatabaseConnection = new System.Data.SqlClient.SqlConnection(ConnectionString); break;
+                case DatabaseType.ODBC: DatabaseConnection = new System.Data.Odbc.OdbcConnection(ConnectionString); break;
+                case DatabaseType.OLE: DatabaseConnection = new System.Data.OleDb.OleDbConnection(ConnectionString); break;
                 default: DatabaseConnection = null; break;
             }
 

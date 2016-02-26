@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data.Common;
 using System.IO;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using SCIPA.Models.Resources;
+using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
 {
@@ -13,16 +15,20 @@ namespace SCIPA.Domain.Inbound
         /// </summary>
         protected DataHandler _handler = null;
 
+        /// <summary>
+        /// Returns the number of values available in the queue.
+        /// </summary>
+        /// <returns></returns>
         public int AvailableValues()
         {
             return _handler.InboundDataQueue.Count;
         }
 
         /// <summary>
-        /// Stores the handler's eType. Defaults to STRING.
+        /// Stores the handler's ValueType. Defaults to STRING.
         /// TODO Create an abstract class for all communicators to remove the need for this.
         /// </summary>
-        protected eType _handlerEType = eType.String;
+        protected ValueType HandlerValueType = ValueType.String;
 
         /// <summary>
         /// Once the inbond values are converted to the correct format successfully,
@@ -34,7 +40,6 @@ namespace SCIPA.Domain.Inbound
         /// The most recent 'Value' object.
         /// </summary>
         protected Value InboundData { get; set; }
-
 
         /// <summary>
         /// Checks the value is both readable and deqeued from the handler.
@@ -128,47 +133,51 @@ namespace SCIPA.Domain.Inbound
         /// <returns>Success/fail boolean.</returns>
         private bool ConvertValueToFormat()
         {
-            DebugOutput.Print("Converting the value to ", _handlerEType.ToString());
+            DebugOutput.Print("Converting the value to ", HandlerValueType.ToString());
             bool ConvertedOk = false;
 
-            switch (_handlerEType)
+            switch (HandlerValueType)
             {
-                case Models.eType.Integer:
+                case Models.ValueType.Integer:
                     {
                         int convertedInt = int.MinValue;
                         if (int.TryParse(InboundData.NewValue, out convertedInt))
                         {
                             Data = convertedInt.ToString();
+                            InboundData.NewValue = Data;
                             ConvertedOk = true;
                         }
 
                         break;
                     }
-                case Models.eType.Float:
+                case Models.ValueType.Float:
                     {
                         float convertedFloat = float.MinValue;
                         if (float.TryParse(InboundData.NewValue, out convertedFloat))
                         {
                             Data = convertedFloat.ToString();
+                            InboundData.NewValue = Data;
                             ConvertedOk = true;
                         }
 
                         break;
                     }
-                case Models.eType.Boolean:
+                case Models.ValueType.Boolean:
                     {
                         bool returnValue = false;
                         if (bool.TryParse(InboundData.NewValue, out returnValue))
                         {
                             Data = returnValue.ToString();
+                            InboundData.NewValue = Data;
                             ConvertedOk = true;
                         }
 
                         break;
                     }
-                case Models.eType.String:
+                case Models.ValueType.String:
                     {
                         Data = InboundData.NewValue.ToString();
+                        InboundData.NewValue = Data;
                         ConvertedOk = true;
                         break;
                     }
@@ -189,19 +198,38 @@ namespace SCIPA.Domain.Inbound
         }
 
 
+        /// <summary>
+        /// Gets the next inbound Value object from the reader. Returns null if there are no new values.
+        /// </summary>
+        /// <returns>Value object of the next value in the queue.</returns>
+        public Value GetNextValue()
+        {
+            if (AvailableValues() > 0)
+            {
+                GetRequiredValue();
+                return InboundData;
+            }
 
-
+            return null;
+        }
 
         /// <summary>
         /// Public method to get latest value as an int.
         /// </summary>
         /// <returns>Int if the type is int, null otherwise.</returns>
-        public int? GetInteger()
+        public int? GetNextValueAsInt()
         {
-            if (_handlerEType== Models.eType.Integer)
+            if (HandlerValueType== Models.ValueType.Integer)
             {
-                GetRequiredValue();
-                return Convert.ToInt32(Data);
+                if (AvailableValues() > 0)
+                {
+                    GetRequiredValue();
+                    return Convert.ToInt32(Data);
+                }
+                else
+                {
+                    DebugOutput.Print("No data available!");
+                }
             }
             return null;
         }
@@ -210,12 +238,19 @@ namespace SCIPA.Domain.Inbound
         /// Public method to get latest value as a float.
         /// </summary>
         /// <returns>Float if the type is float, null otherwise.</returns>
-        public float? GetFloat()
+        public float? GetNextValueAsFloat()
         {
-            if (_handlerEType == Models.eType.Float)
+            if (HandlerValueType == Models.ValueType.Float)
             {
-                GetRequiredValue();
-                return (float)Convert.ToDouble(Data);
+                if (AvailableValues() > 0)
+                {
+                    GetRequiredValue();
+                    return (float)Convert.ToDouble(Data);
+                }
+                else
+                {
+                    DebugOutput.Print("No data available!");
+                }
             }
             return null;
         }
@@ -224,12 +259,20 @@ namespace SCIPA.Domain.Inbound
         /// Public method to get latest value as an boolean.
         /// </summary>
         /// <returns>Boolean if the type is boolean, null otherwise.</returns>
-        public bool? GetBoolean()
+        public bool? GetNextValueAsBoolean()
         {
-            if (_handlerEType == Models.eType.Boolean)
+            if (HandlerValueType == Models.ValueType.Boolean)
             {
-                GetRequiredValue();
-                return Convert.ToBoolean(Data);
+                if (AvailableValues() > 0)
+                {
+                    GetRequiredValue();
+                    return Convert.ToBoolean(Data);
+                }
+                else
+                {
+                    DebugOutput.Print("No data available!");
+                }
+                
             }
             return null;
         }
@@ -238,13 +281,13 @@ namespace SCIPA.Domain.Inbound
         /// Public method to get latest value as a string.
         /// </summary>
         /// <returns>String representation of the latest value.</returns>
-        public string GetString()
+        public string GetNextValueAsString()
         {
             GetRequiredValue();
 
             if (Data.Equals(""))
             {
-                DebugOutput.Print("No data available!"); //_handler.CommunicatorModel.comPort //TODO See note at top - add CommunicatorModel in!
+                DebugOutput.Print("No data available!"); //TODO See note at top - add CommunicatorModel in!
             }
 
             return Data;

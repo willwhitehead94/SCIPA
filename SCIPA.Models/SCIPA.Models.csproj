@@ -40,30 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Communicator.cs" />
-    <Compile Include="Domain Models\Alarm.cs" />
-    <Compile Include="Domain Models\AlarmType.cs" />
+    <Compile Include="Domain Models\Communicator.cs" />
     <Compile Include="Domain Models\ApplicationInformation.cs" />
-    <Compile Include="Domain Models\Command.cs" />
-    <Compile Include="Domain Models\CommandType.cs" />
-    <Compile Include="Domain Models\CommunicatorModel.cs" />
-    <Compile Include="Domain Models\CommunicatorType.cs" />
     <Compile Include="Domain Models\DatabaseCommunicator.cs" />
-    <Compile Include="Domain Models\DatabaseType.cs" />
     <Compile Include="Domain Models\Device.cs" />
-    <Compile Include="Domain Models\DeviceValue.cs" />
     <Compile Include="Domain Models\FileCommunicator.cs" />
-    <Compile Include="Domain Models\FileOpenMode.cs" />
     <Compile Include="Domain Models\IDomainModel.cs" />
-    <Compile Include="Domain Models\Location.cs" />
-    <Compile Include="FileUpdateResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain Models\Rule.cs" />
     <Compile Include="Domain Models\SerialCommunicator.cs" />
-    <Compile Include="Domain Models\sysdiagram.cs" />
-    <Compile Include="Domain Models\ValueType.cs" />
     <Compile Include="Resource Models\Value.cs" />
-    <Compile Include="TypeEnum.cs" />
+    <Compile Include="Enumerations.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

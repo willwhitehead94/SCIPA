@@ -1,54 +1,29 @@
+﻿using System.Collections.Generic;
+using SCIPA.Models.Resources;
+
 namespace SCIPA.Models
 {
-    using System.Collections.Generic;
-
-    public partial class Device : IDomainModel
+    public class Device
     {
-        public Device()
-        {
-            Communicators = new HashSet<CommunicatorModel>();
-            DeviceValues = new HashSet<DeviceValue>();
-            Rules = new HashSet<Rule>();
+        public int Id { get; set; }
 
-            //Whitehead
-            ValueType = new ValueType();
-            Location = new Location();
-        }
+        public string Name { get; set; }
 
-        public int id { get; set; }
+        public string Location { get; set; }
 
-        public string name { get; set; }
+        public string Custodian { get; set; }
 
-        public bool readOnly { get; set; }
+        public object InboundReader { get; set; }
 
-        public int? locationId { get; set; }
+        public object OutboundWriter { get; set; }
 
-        public string custodian { get; set; }
+        public ICollection<Value> InboundValues { get; set; }
 
-        public float? faultTolerance { get; set; }
+        public ICollection<Value> OutboundValues { get; set; }
 
-        public int valueTypeId { get; set; }
+        //public ICollection<Rule> Rules { get; set; }
+        
+        //public ICollection<Command> Commands { get; set; }
 
-        public virtual ValueType ValueType { get; set; }
-
-        public int? lowestValue { get; set; }
-
-        public int? highestValue { get; set; }
-
-        public bool enabled { get; set; }
-
-        public virtual Alarm Alarm { get; set; }
-
-        public virtual Command Command { get; set; }
-
-        public virtual Command Command1 { get; set; }
-
-        public virtual ICollection<CommunicatorModel> Communicators { get; set; }
-
-        public virtual Location Location { get; set; }
-
-        public virtual ICollection<DeviceValue> DeviceValues { get; set; }
-
-        public virtual ICollection<Rule> Rules { get; set; }
     }
 }

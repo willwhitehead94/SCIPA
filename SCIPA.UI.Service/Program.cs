@@ -109,17 +109,17 @@ namespace SCIPA.UI.Service
                     }
                 }
             }
-            catch(System.IO.FileNotFoundException fnf)
+            catch(System.IO.FileNotFoundException e)
             {
-
+                DebugOutput.Print("Could not access the log file... ", e.Message);
             }
-            catch(System.IO.FileLoadException fle)
+            catch(System.IO.FileLoadException e)
             {
-
+                DebugOutput.Print("Problem opening log file... ", e.Message );
             }
-            catch
+            catch(Exception e)
             {
-
+                DebugOutput.Print("General problem occured! ",e.Message);
             }
             finally
             {

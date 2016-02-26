@@ -9,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SCIPA.Domain.Inbound;
+using SCIPA.Domain.Logic;
 using SCIPA.Models;
+using ValueType = SCIPA.Models.ValueType;
+using SCIPA.Models.Resources;
 
 namespace SCIPA.UI
 {
     public partial class LogTest : Form
     {
         private object basicobj = null;
+
+        public Device myDevice = null;
 
         SerialCommunicator myCommunicator = new SerialCommunicator()
         {
@@ -53,7 +58,7 @@ namespace SCIPA.UI
                 FilePath = @"C:\scipa\values.dat",
                 StartChar = 0,
                 EndChar = 4,
-                ValueEType = Models.eType.String
+                ValueValueType = Models.ValueType.String
             };
 
             Domain.Inbound.FlatFileHandler ffh = new Domain.Inbound.FlatFileHandler(ffc);
@@ -63,8 +68,8 @@ namespace SCIPA.UI
         {
             DatabaseCommunicator dbComm = new DatabaseCommunicator()
             {
-                DatabaseType = DatabaseTechnologyType.SQL,
-                ValueEType = eType.String,
+                DatabaseType = DatabaseType.SQL,
+                ValueValueType = ValueType.String,
                 connectionString = @"Data Source=DIANDLAD-LAPTOP\SQLENTERPRISE;Initial Catalog=SCIPA;Integrated Security=True",
                 query = "SELECT TOP 1 id FROM dbo.Alarm ORDER BY id DESC"
             };
@@ -75,7 +80,7 @@ namespace SCIPA.UI
             FileCommunicator ffComm = new FileCommunicator()
             {
                 FilePath = @"C:\scipa\values.dat",
-                ValueEType = eType.String,
+                ValueValueType = ValueType.String,
                 StartChar = 0,
                 EndChar = 0
             };
@@ -84,7 +89,7 @@ namespace SCIPA.UI
             SerialCommunicator sdComm = new SerialCommunicator()
             {
                 comPort = "COM3",
-                ValueEType = eType.String,
+                ValueValueType = ValueType.String,
                 StartChar = 0,
                 EndChar = 0
             };
@@ -94,19 +99,55 @@ namespace SCIPA.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DatabaseReader x = (DatabaseReader)basicobj;
-            if (x.AvailableValues()>0)
-                label1.Text = x.GetString();
-            //    label2.Text = myReader.GetBoolean().ToString();
-            //    label3.Text = myReader.GetFloat().ToString();
-            //    label4.Text = myReader.GetInteger().ToString();
-            //label1.Text = secondHandler.InboundDataQueue.Count.ToString();
-            //label2.Text = secondReader.GetString();
+            myDevice = new Device()
+            {
+                Id = 1,
+                Name = "Arduino Uno Trend App",
+                Location = "Desk 1",
+                Custodian = "W. Whitehead",
+                InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
+                {
+                    id = 1,
+                    comPort = "COM3",
+                    StartChar = 0,
+                    EndChar = 0,
+                    baudRate = 9600,
+                    dataBits = 8,
+                    isDTR = false,
+                    isRTS = false
+                }))
+            };
+
+            DebugOutput.Print(myDevice.Custodian+"'s " + myDevice.Name + " now starting...");
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (myDevice != null)
+            {
+                DataReader myReader = (DataReader)myDevice.InboundReader;
+
+                if (myDevice.InboundValues == null)
+                {
+                    myDevice.InboundValues = new List<Value>();
+                }
+
+                List<Value> newValues = new List<Value>();
+                while (myReader.AvailableValues() > 0)
+                {
+                    myDevice.InboundValues.Add(myReader.GetNextValue());
+                }
+
+                System.Windows.Forms.MessageBox.Show(myDevice.InboundValues.Count.ToString());
+            }
         }
 
         private void LogTest_Load(object sender, EventArgs e)
         {
             this.Text = SCIPA.Domain.Logic.Properties.Settings.Default.UserName;
         }
+
+        
     }
 }

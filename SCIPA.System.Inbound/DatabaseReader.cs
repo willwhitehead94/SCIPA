@@ -8,7 +8,7 @@
         /// <param name="handler"></param>
         public DatabaseReader(DatabaseHandler handler)
         {
-            _handlerEType = handler.Communicator.ValueEType;
+            HandlerValueType = handler.Communicator.ValueValueType;
             _handler = handler;
         }
     }

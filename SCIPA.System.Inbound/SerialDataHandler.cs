@@ -10,6 +10,7 @@ using SCIPA.Domain.Logic;
 using System.Threading;
 using SCIPA.Models;
 using SCIPA.Models.Resources;
+using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
 {
@@ -99,8 +100,8 @@ namespace SCIPA.Domain.Inbound
 
                     InboundDataQueue.Enqueue(new Value()
                     {
-                        ValueType = eType.String,
-                        CommType = eComm.Serial,
+                        ValueType = ValueType.String,
+                        CommType = CommunicatorType.Serial,
                         EventTime = DateTime.Now,
                         NewValue = indata
                     });
