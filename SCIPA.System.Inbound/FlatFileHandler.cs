@@ -3,25 +3,48 @@ using SCIPA.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Ports;
+using System.Text;
+using System.Threading;
+using SCIPA.Models.Resources;
 
 
 namespace SCIPA.Domain.Inbound
 {
-    public class FlatFileHandler
+    public class FlatFileHandler : DataHandler
     {
+        /// <summary>
+        /// System object to watch the given file. Throws event when file updates.
+        /// </summary>
+        private FileSystemWatcher _backgroundFSW = null;
+
+        /// <summary>
+        /// File Communicator object used to store the connection settings.
+        /// </summary>
+        public Models.FileCommunicator Communicator = null;
+
+        /// <summary>
+        /// List of paths already being watched by the system.
+        /// </summary>
         private static List<string> PathsBeingWatched = new List<string>();
 
-        private FileSystemWatcher _backgroundFSW = null;
-        private DateTime _lastMessageReceived;
-        private Models.FileCommunicator _fileComms = null;
-
-        private string _filePath, _folderPath, _fileName;
-        private DateTime _lastUpdate;
-
-        private string _lastValueRead;
-
+        /// <summary>
+        /// Event to execute when the file is updated.
+        /// </summary>
         public event FileUpdatedHandler onFileUpdate;
 
+        /// <summary>
+        /// Local strings used to determine the difference between the three similar values;
+        /// file name, file path and the folder path.
+        /// </summary>
+        private string _filePath, _folderPath, _fileName;
+
+        /// <summary>
+        /// Constructor takes a file communicator object. If the file in question is already
+        /// being watched, this is ignored. Otherwise, the file is watched by a system file watcher
+        /// object.
+        /// </summary>
+        /// <param name="comms">File Communicator</param>
         public FlatFileHandler(FileCommunicator comms)
         {
             if (PathsBeingWatched.Contains(@comms.FilePath))
@@ -31,29 +54,34 @@ namespace SCIPA.Domain.Inbound
             else
             {
                 DebugOutput.Print("Attempting to create new connection to file at ", comms.FilePath);
-                _fileComms = comms;
+                Communicator = comms;
                 StartFileWatcher();
             }
         }
 
+        /// <summary>
+        /// Ensure the file is valid, available and OK to open.
+        /// </summary>
+        /// <returns>Success of fail boolean.</returns>
         private bool CheckFile()
         {
             try
             {
                 //Set local _filePath variable to the entire path of the file.
-                _filePath = _fileComms.FilePath;
+                _filePath = Communicator.FilePath;
 
                 //Find last slash in the string (i.e. jump to file name and extension)
-                int lastSlashIndex = _fileComms.FilePath.LastIndexOf('\\') + 1;
-                _fileName = _fileComms.FilePath.Substring(lastSlashIndex);
+                int lastSlashIndex = Communicator.FilePath.LastIndexOf('\\') + 1;
+                _fileName = Communicator.FilePath.Substring(lastSlashIndex);
 
                 //Change fullPath to contain only the file path (excludes the filename).
-                _folderPath = _fileComms.FilePath.Substring(0, (_filePath.Length - (_filePath.Length - lastSlashIndex)));
+                _folderPath = Communicator.FilePath.Substring(0,
+                    (_filePath.Length - (_filePath.Length - lastSlashIndex)));
 
                 //Check file exists and is accessible
                 if (System.IO.File.Exists(_filePath))
                 {
-                    DebugOutput.Print("Connected to file at ", _fileComms.FilePath);
+                    DebugOutput.Print("Connected to file at ", Communicator.FilePath);
 
                     return true;
                 }
@@ -62,13 +90,15 @@ namespace SCIPA.Domain.Inbound
             {
                 return false;
             }
-            
+
 
             //If unable to access the file, return false
             return false;
         }
 
-
+        /// <summary>
+        /// Starts the FileSystemWatcher object and monitors for file changes.
+        /// </summary>
         private void StartFileWatcher()
         {
             if (CheckFile())
@@ -83,9 +113,13 @@ namespace SCIPA.Domain.Inbound
                 onFileUpdate += OnFileUpdateEvent;
 
                 PathsBeingWatched.Add(@_filePath);
-                DebugOutput.Print("Now watching for updates on the file at ", _fileComms.FilePath);
+                DebugOutput.Print("Now watching for updates on the file at ", Communicator.FilePath);
 
                 _backgroundFSW.EnableRaisingEvents = true;
+            }
+            else
+            {
+                DebugOutput.Print("This file could not be connected to! Ensure you have permissions.");
             }
         }
 
@@ -93,20 +127,20 @@ namespace SCIPA.Domain.Inbound
         /// Called when the backgroundFSW detects an appropriate change in the file being watched.
         /// Calls the 'OnFileUpdateEvent'.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">System.</param>
+        /// <param name="e">FileSystem arguments.</param>
         private void FileChangeTrigger(object sender, FileSystemEventArgs e)
         {
             DateTime EventOccurenceTime = DateTime.Now;
             TimeSpan WaitPeriod = new TimeSpan(0, 0, 1);
 
             //Only allows one occurence per the time in the 'WaitPeriod' object.
-            if (!((EventOccurenceTime - _lastUpdate) <  WaitPeriod))
+            if (!((EventOccurenceTime - _lastIncomingMessage) < WaitPeriod))
             {
-                _lastUpdate = EventOccurenceTime;
+                _lastIncomingMessage = EventOccurenceTime;
                 if (onFileUpdate != null)
                 {
-                    DebugOutput.Print("Change detected on file at ", _fileComms.FilePath);
+                    DebugOutput.Print("Change detected on file at ", Communicator.FilePath);
                     string LastKnownValue = DateTime.Now.ToString();
                     OnFileUpdateEvent(this, new FileUpdatedEventArgs(LastKnownValue));
                 }
@@ -114,40 +148,75 @@ namespace SCIPA.Domain.Inbound
 
         }
 
-
+        /// <summary>
+        /// Custom code executed when the file has been updated. Waits 100ms to ensure the file has had chance to close.
+        /// Enqueues any newly read values.
+        /// </summary>
+        /// <param name="source">System.</param>
+        /// <param name="e">Updated File arguments.</param>
         private void OnFileUpdateEvent(object source, FileUpdatedEventArgs e)
         {
-            //what to do when the file udpates
-            //Console.WriteLine(e.GetEventInfo());
-
-            
-
-            Domain.Logic.FlatFileReader ffr = new Logic.FlatFileReader(_fileComms);
-
-            string _newValue = ffr.GetString().Trim();
-
-            if (_lastValueRead != null && _lastValueRead != "" && _newValue != "")
+            Thread.Sleep(100);
+            string fileText = ReadFile();
+            if (fileText != "")
             {
-                if (_newValue.Trim().Equals(_lastValueRead.Trim()))
+                _lastIncomingMessage = DateTime.Now;
+                string info = "Incoming data received from {0}: '{1}'";
+                info = string.Format(info, _fileName, fileText);
+                DebugOutput.Print(info);
+
+                InboundDataQueue.Enqueue(new Value()
                 {
-                    DebugOutput.Print("Value has not changed; ", _lastValueRead);
-                }
-                else
-                {
-                    DebugOutput.Print("New value retrieved: ", _newValue);
-                }
-            }
-            else
-            {
-                _lastValueRead = _newValue;
+                    ValueType = eType.String,
+                    CommType = eComm.Serial,
+                    EventTime = DateTime.Now,
+                    NewValue = fileText
+                });
             }
         }
 
-        public string GetLastValueRead()
+        /// <summary>
+        /// When requested, this method simply opens the file from the communicator
+        /// and returns the file, as a string, in full.
+        /// </summary>
+        /// <returns>All lines from the file, with a buffer size of 256.</returns>
+        private string ReadFile()
         {
-            return _lastValueRead;
+            DebugOutput.Print("reading file now");
+            DateTime lastWriteTime = File.GetLastWriteTime(Communicator.FilePath);
+            string fileContents = "";
+
+            try
+            {
+                const Int32 BufferSize = 256;
+                using (var fileStream = File.OpenRead(Communicator.FilePath))
+                    using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, BufferSize))
+                    {
+                        fileContents = streamReader.ReadToEnd();
+                    }
+
+                    //TextReader fileReaderObject =
+                    //    new StreamReader(new FileStream(Communicator.FilePath, FileMode.Open, FileAccess.Read,
+                    //        FileShare.Read));
+                    //fileContents = fileReaderObject.ReadToEnd();
+                    //fileReaderObject.Close();
+                    //fileReaderObject.Dispose();
+                    //fileContents = System.IO.File.ReadAllText(Communicator.FilePath);
+
+                Communicator.LastReadTime = lastWriteTime;
+                fileContents = fileContents.Trim();
+            }
+            catch (IOException e)
+            {
+                DebugOutput.Print("IO Error occured at the file", e.Message);
+            }
+            catch (Exception e)
+            {
+                DebugOutput.Print("Attempt to read file failed!", e.Message);
+                fileContents = "";
+            }
+
+            return fileContents;
         }
-
-
     }
 }

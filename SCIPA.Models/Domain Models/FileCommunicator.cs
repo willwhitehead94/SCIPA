@@ -19,7 +19,7 @@ namespace SCIPA.Models
 
         public DateTime LastReadTime { get; set; }
 
-        public Type ValueType { get; set; }
+        public eType ValueEType { get; set; }
 
         //public int OpenModeId { get; set; }
 

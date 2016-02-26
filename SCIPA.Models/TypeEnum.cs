@@ -6,5 +6,12 @@ using System.Threading.Tasks;
 
 namespace SCIPA.Models
 {
-    public enum Type { String, Integer, Float, Boolean };
+    public enum eType { String, Integer, Float, Boolean };
+
+    public enum eComm
+    {
+        FlatFile,
+        Serial,
+        Database
+    };
 }

@@ -11,7 +11,7 @@ namespace SCIPA.Models
 
         public int id { get; set; }
 
-        public int comPort { get; set; }
+        public string comPort { get; set; }
 
         public int baudRate { get; set; }
 
@@ -20,6 +20,12 @@ namespace SCIPA.Models
         public bool? isRTS { get; set; }
 
         public bool? isDTR { get; set; }
+
+        public eType ValueEType { get; set; } = eType.String;
+
+        public int StartChar { get; set; } = 0;
+
+        public int EndChar { get; set; } = 0;
 
         public virtual ICollection<Communicator> Communicators { get; set; }
     }

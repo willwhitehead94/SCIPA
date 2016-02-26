@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SCIPA.Models;
 
 namespace SCIPA.UI.Service
 {
@@ -24,8 +25,11 @@ namespace SCIPA.UI.Service
 
             ThreadPool.QueueUserWorkItem(new WaitCallback(ConsoleUpdate));
 
-            SerialDataHandler sdh = new SerialDataHandler("COM3");
-            SerialDataHandler sdhTwo = new SerialDataHandler("COM4");
+
+            
+
+            //SerialDataHandler sdh = new SerialDataHandler("COM3");
+            //SerialDataHandler sdhTwo = new SerialDataHandler("COM4");
 
             //Stops the 'enter' quitting the process.
             while (true)
@@ -57,7 +61,7 @@ namespace SCIPA.UI.Service
                 ThreadPool.QueueUserWorkItem(new WaitCallback(GetLogMessages));
                 
 
-                Thread.Sleep(50);
+                Thread.Sleep(500);
             }
         }
 
@@ -135,7 +139,7 @@ namespace SCIPA.UI.Service
         /// </summary>
         private static void PrintTopMessages()
         {
-            int messagesToShow = 20;
+            int messagesToShow = 15;
 
             if (_logEntries != null || _logEntries.Count > 0)
             {

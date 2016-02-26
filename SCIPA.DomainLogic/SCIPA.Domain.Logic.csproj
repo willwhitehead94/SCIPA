@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="DebugOutput.cs" />
-    <Compile Include="FlatFileReader.cs" />
     <Compile Include="SharedResources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

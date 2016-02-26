@@ -61,11 +61,10 @@
     <Compile Include="Domain Models\SerialCommunicator.cs" />
     <Compile Include="Domain Models\sysdiagram.cs" />
     <Compile Include="Domain Models\ValueType.cs" />
+    <Compile Include="Resource Models\Value.cs" />
     <Compile Include="TypeEnum.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resource Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
