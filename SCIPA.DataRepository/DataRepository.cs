@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SCIPA.Models;
 
-
-namespace SCIPA.DataRepository
+namespace SCIPA.Data.Repository
 {
     public class DataRepository : IRepository
     {
         DataAccessLayer.DataController _dbController = new DataAccessLayer.DataController();
         public void CreateNewDevice(Device domainModel)
         {
-            DataAccessLayer.Device dataModel = new DataAccessLayer.Device();
+            DataAccessLayer.Models.Device dataModel = new DataAccessLayer.Models.Device();
             dataModel.name = domainModel.name;
             dataModel.readOnly = domainModel.readOnly;
             dataModel.locationId = domainModel.Location.id;
@@ -39,10 +35,10 @@ namespace SCIPA.DataRepository
 
         public ICollection<Device> RetrieveAllDevices()
         {
-            ICollection<DataAccessLayer.Device> devList = _dbController.RetrieveDevices();
+            ICollection<DataAccessLayer.Models.Device> devList = _dbController.RetrieveDevices();
             ICollection<Device> domainDevList = null;
 
-            foreach (DataAccessLayer.Device dataDev in devList)
+            foreach (DataAccessLayer.Models.Device dataDev in devList)
             {
                 domainDevList.Add(new Device()
                 {

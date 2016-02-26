@@ -1,3 +1,5 @@
+using SCIPA.DataAccessLayer.Models;
+
 namespace SCIPA.DataAccessLayer
 {
     using System;
@@ -28,7 +30,7 @@ namespace SCIPA.DataAccessLayer
         public virtual DbSet<Rule> Rules { get; set; }
         public virtual DbSet<SerialCommunicator> SerialCommunicators { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<ValueType> ValueTypes { get; set; }
+        public virtual DbSet<Models.ValueType> ValueTypes { get; set; }
         public virtual DbSet<ApplicationInformation> ApplicationInformations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -169,17 +171,17 @@ namespace SCIPA.DataAccessLayer
                 .HasForeignKey(e => e.subId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ValueType>()
+            modelBuilder.Entity<Models.ValueType>()
                 .Property(e => e.type)
                 .IsFixedLength();
 
-            modelBuilder.Entity<ValueType>()
+            modelBuilder.Entity<Models.ValueType>()
                 .HasMany(e => e.Commands)
                 .WithRequired(e => e.ValueType)
                 .HasForeignKey(e => e.returnValueTypeId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ValueType>()
+            modelBuilder.Entity<Models.ValueType>()
                 .HasMany(e => e.Communicators)
                 .WithRequired(e => e.ValueType)
                 .WillCascadeOnDelete(false);

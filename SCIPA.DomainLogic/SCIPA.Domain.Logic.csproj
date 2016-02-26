@@ -46,9 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SCIPA.DataRepository\SCIPA.DataRepository.csproj">
+    <ProjectReference Include="..\SCIPA.DataRepository\SCIPA.Data.Repository.csproj">
       <Project>{6e21d7e3-2e9b-491d-999f-3d372ee43fbc}</Project>
-      <Name>SCIPA.DataRepository</Name>
+      <Name>SCIPA.Data.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\SCIPA.Models\SCIPA.Models.csproj">
       <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>

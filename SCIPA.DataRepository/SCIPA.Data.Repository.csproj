@@ -7,8 +7,8 @@
     <ProjectGuid>{6E21D7E3-2E9B-491D-999F-3D372EE43FBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCIPA.DataRepository</RootNamespace>
-    <AssemblyName>SCIPA.DataRepository</AssemblyName>
+    <RootNamespace>SCIPA.Data.Repository</RootNamespace>
+    <AssemblyName>SCIPA.Data.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SCIPA.DataAccessLayer\SCIPA.DataAccessLayer.csproj">
+    <ProjectReference Include="..\SCIPA.DataAccessLayer\SCIPA.Data.AccessLayer.csproj">
       <Project>{281efac6-85d4-4086-be80-fb468b6b99e5}</Project>
-      <Name>SCIPA.DataAccessLayer</Name>
+      <Name>SCIPA.Data.AccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\SCIPA.Models\SCIPA.Models.csproj">
       <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>
