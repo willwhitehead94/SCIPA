@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCIPA.DataAccessLayer.Models
+namespace SCIPA.Data.AccessLayer.Models
 {
     [Table("DatabaseType")]
     public partial class DatabaseType

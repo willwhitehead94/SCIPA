@@ -91,7 +91,7 @@ namespace SCIPA.Domain.Inbound
         {
             Communicator temp = _handler.GetCommunicator();
 
-            string data = InboundData.NewValue;
+            string data = InboundData.StringValue;
 
             int startChar = temp.StartChar;
             int endChar = temp.EndChar;
@@ -122,7 +122,7 @@ namespace SCIPA.Domain.Inbound
                 return false;
             }
 
-            InboundData.NewValue = data;
+            InboundData.StringValue = data;
             return true;
         }
 
@@ -141,10 +141,10 @@ namespace SCIPA.Domain.Inbound
                 case Models.ValueType.Integer:
                     {
                         int convertedInt = int.MinValue;
-                        if (int.TryParse(InboundData.NewValue, out convertedInt))
+                        if (int.TryParse(InboundData.StringValue, out convertedInt))
                         {
                             Data = convertedInt.ToString();
-                            InboundData.NewValue = Data;
+                            InboundData.StringValue = Data;
                             ConvertedOk = true;
                         }
 
@@ -153,10 +153,10 @@ namespace SCIPA.Domain.Inbound
                 case Models.ValueType.Float:
                     {
                         float convertedFloat = float.MinValue;
-                        if (float.TryParse(InboundData.NewValue, out convertedFloat))
+                        if (float.TryParse(InboundData.StringValue, out convertedFloat))
                         {
                             Data = convertedFloat.ToString();
-                            InboundData.NewValue = Data;
+                            InboundData.StringValue = Data;
                             ConvertedOk = true;
                         }
 
@@ -165,10 +165,10 @@ namespace SCIPA.Domain.Inbound
                 case Models.ValueType.Boolean:
                     {
                         bool returnValue = false;
-                        if (bool.TryParse(InboundData.NewValue, out returnValue))
+                        if (bool.TryParse(InboundData.StringValue, out returnValue))
                         {
                             Data = returnValue.ToString();
-                            InboundData.NewValue = Data;
+                            InboundData.StringValue = Data;
                             ConvertedOk = true;
                         }
 
@@ -176,8 +176,8 @@ namespace SCIPA.Domain.Inbound
                     }
                 case Models.ValueType.String:
                     {
-                        Data = InboundData.NewValue.ToString();
-                        InboundData.NewValue = Data;
+                        Data = InboundData.StringValue.ToString();
+                        InboundData.StringValue = Data;
                         ConvertedOk = true;
                         break;
                     }

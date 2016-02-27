@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCIPA.DataAccessLayer.Models
+namespace SCIPA.Data.AccessLayer.Models
 {
     [Table("Alarm")]
     public partial class Alarm

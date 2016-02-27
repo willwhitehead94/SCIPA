@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SCIPA.DataAccessLayer.Models;
+using SCIPA.Data.AccessLayer.Models;
 
-namespace SCIPA.DataAccessLayer
+namespace SCIPA.Data.AccessLayer
 {
     interface IDataController
     {

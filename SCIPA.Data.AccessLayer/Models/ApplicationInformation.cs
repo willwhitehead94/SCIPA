@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCIPA.DataAccessLayer.Models
+namespace SCIPA.Data.AccessLayer.Models
 {
     [Table("ApplicationInformation")]
     public partial class ApplicationInformation

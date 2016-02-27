@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SCIPA.DataAccessLayer.Models
+namespace SCIPA.Data.AccessLayer.Models
 {
     [Table("Device")]
     public partial class Device

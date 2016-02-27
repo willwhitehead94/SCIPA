@@ -76,10 +76,11 @@ namespace SCIPA.Domain.Inbound
                             CommType = CommunicatorType.Database,
                             ValueType = ValueType.String,
                             EventTime = DateTime.Now,
-                            NewValue = dcm.GetResultLists()[0][0]
+                            StringValue = dcm.GetResultLists()[0][0],
+                            Inbound = true
                         };
 
-                        if (result.NewValue != "")
+                        if (result.StringValue != "")
                         {
                             //Enqueue the new Value.
                             InboundDataQueue.Enqueue(result);

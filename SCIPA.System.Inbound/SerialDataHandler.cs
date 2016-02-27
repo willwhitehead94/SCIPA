@@ -103,7 +103,8 @@ namespace SCIPA.Domain.Inbound
                         ValueType = ValueType.String,
                         CommType = CommunicatorType.Serial,
                         EventTime = DateTime.Now,
-                        NewValue = indata
+                        StringValue = indata,
+                        Inbound = true
                     });
                 }
             }

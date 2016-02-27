@@ -171,7 +171,8 @@ namespace SCIPA.Domain.Inbound
                     ValueType = ValueType.String,
                     CommType = CommunicatorType.FlatFile,
                     EventTime = DateTime.Now,
-                    NewValue = fileText
+                    StringValue = fileText,
+                    Inbound = true
                 });
             }
         }

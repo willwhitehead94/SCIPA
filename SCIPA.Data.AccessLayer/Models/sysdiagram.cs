@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace SCIPA.DataAccessLayer.Models
+namespace SCIPA.Data.AccessLayer.Models
 {
     public partial class sysdiagram
     {

@@ -1,6 +1,6 @@
-using SCIPA.DataAccessLayer.Models;
+using SCIPA.Data.AccessLayer.Models;
 
-namespace SCIPA.DataAccessLayer
+namespace SCIPA.Data.AccessLayer
 {
     using System;
     using System.Data.Entity;

@@ -6,7 +6,11 @@ namespace SCIPA.Data.Repository
 {
     public class DataRepository : IRepository
     {
-        DataAccessLayer.DataController _dbController = new DataAccessLayer.DataController();
+        AccessLayer.DataController _dbController = new AccessLayer.DataController();
 
+        public ICollection<Device> RetrieveAllDevices()
+        {
+            
+        }
     }
 }

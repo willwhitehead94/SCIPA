@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace SCIPA.Models.Resources
 {
@@ -10,8 +11,8 @@ namespace SCIPA.Models.Resources
 
         public DateTime EventTime { get; set; }
 
-        public string NewValue { get; set; }
+        public string StringValue { get; set; }
 
-
+        public bool Inbound { get; set; }
     }
 }

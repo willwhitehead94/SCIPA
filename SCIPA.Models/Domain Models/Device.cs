@@ -13,6 +13,8 @@ namespace SCIPA.Models
 
         public string Custodian { get; set; }
 
+        public bool Enabled { get; set; } = true;
+
         public object InboundReader { get; set; }
 
         public object OutboundWriter { get; set; }
@@ -21,9 +23,6 @@ namespace SCIPA.Models
 
         public ICollection<Value> OutboundValues { get; set; }
 
-        //public ICollection<Rule> Rules { get; set; }
-        
-        //public ICollection<Command> Commands { get; set; }
-
+        public ICollection<Rule> Rules { get; set; }
     }
 }

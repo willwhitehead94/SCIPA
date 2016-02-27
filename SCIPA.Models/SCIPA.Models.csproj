@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain Models\Action.cs" />
     <Compile Include="Domain Models\Communicator.cs" />
     <Compile Include="Domain Models\ApplicationInformation.cs" />
     <Compile Include="Domain Models\DatabaseCommunicator.cs" />
     <Compile Include="Domain Models\Device.cs" />
     <Compile Include="Domain Models\FileCommunicator.cs" />
     <Compile Include="Domain Models\IDomainModel.cs" />
+    <Compile Include="Domain Models\Rule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain Models\SerialCommunicator.cs" />
     <Compile Include="Resource Models\Value.cs" />

@@ -99,7 +99,26 @@ namespace SCIPA.UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            myDevice = new Device()
+            //myDevice = new Device()
+            //{
+            //    Id = 1,
+            //    Name = "Arduino Uno Trend App",
+            //    Location = "Desk 1",
+            //    Custodian = "W. Whitehead",
+            //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
+            //    {
+            //        id = 1,
+            //        comPort = "COM3",
+            //        StartChar = 0,
+            //        EndChar = 0,
+            //        baudRate = 9600,
+            //        dataBits = 8,
+            //        isDTR = false,
+            //        isRTS = false
+            //    }))
+            //};
+
+            Domain.Logic.DeviceController.AllDevices.Add(new Device()
             {
                 Id = 1,
                 Name = "Arduino Uno Trend App",
@@ -116,14 +135,18 @@ namespace SCIPA.UI
                     isDTR = false,
                     isRTS = false
                 }))
-            };
+            });
 
-            DebugOutput.Print(myDevice.Custodian+"'s " + myDevice.Name + " now starting...");
-            
+            //DebugOutput.Print(myDevice.Custodian+"'s " + myDevice.Name + " now starting...");
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //Domain.Logic.DeviceController temp = new DeviceController();
+            //temp.GetAllDevices();
+
+
             if (myDevice != null)
             {
                 DataReader myReader = (DataReader)myDevice.InboundReader;
