@@ -48,5 +48,10 @@ namespace SCIPA.Data.AccessLayer
                 _db.SaveChanges();
             }
         }
+
+        public void CreateNewAction(Action action)
+        {
+            
+        }
     }
 }
