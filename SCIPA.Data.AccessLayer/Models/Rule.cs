@@ -1,29 +1,25 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SCIPA.Data.AccessLayer.Models
+﻿namespace SCIPA.Data.AccessLayer.Models
 {
-    [Table("Rule")]
-    public partial class Rule
+    public class Rule
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rule()
-        {
-            Commands = new HashSet<Command>();
-        }
+        public int Id { get; set; }
 
-        public int id { get; set; }
+        public RuleType RuleType { get; set; }
 
-        public int deviceId { get; set; }
+        public string ValueOne { get; set; }
 
-        [Required]
-        [StringLength(500)]
-        public string ruleText { get; set; }
+        public ValueType ValueOneType { get; set; }
+
+        public string ValueTwo { get; set; }
+
+        public ValueType ValueTwoType { get; set; }
+
+        public bool ConditionMet { get; set; }
+
+        public Action ActionOnConditionsMet { get; set; }
+
+        public bool AlarmOnConditionsMet { get; set; } = true;
 
         public virtual Device Device { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Command> Commands { get; set; }
     }
 }

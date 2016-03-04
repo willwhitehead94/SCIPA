@@ -1,18 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace SCIPA.Data.AccessLayer.Models
 {
-    [Table("ApplicationInformation")]
-    public partial class ApplicationInformation
+    public partial class ApplicationInformation : IDomainModel
     {
-        [Key]
-        [Column(Order = 0)]
-        [StringLength(50)]
         public string BusinessName { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         public bool ApplicationEnabled { get; set; }
     }
 }

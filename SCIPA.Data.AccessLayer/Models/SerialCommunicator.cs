@@ -1,20 +1,10 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace SCIPA.Data.AccessLayer.Models
 {
-    [Table("SerialCommunicator")]
-    public partial class SerialCommunicator
+    public partial class SerialCommunicator : Communicator, IDomainModel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SerialCommunicator()
-        {
-            Communicators = new HashSet<Communicator>();
-        }
-
         public int id { get; set; }
 
-        public int comPort { get; set; }
+        public string comPort { get; set; }
 
         public int baudRate { get; set; }
 
@@ -24,7 +14,6 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public bool? isDTR { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Communicator> Communicators { get; set; }
+        public virtual  Device Device { get; set; }
     }
 }

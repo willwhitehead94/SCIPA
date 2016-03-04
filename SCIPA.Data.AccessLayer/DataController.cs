@@ -51,7 +51,7 @@ namespace SCIPA.Data.AccessLayer
 
         public void CreateNewAction(Action action)
         {
-            
+            _db.Actions.Add(action)
         }
     }
 }

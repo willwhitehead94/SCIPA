@@ -1,32 +1,11 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace SCIPA.Data.AccessLayer.Models
 {
-    [Table("FileCommunicator")]
-    public partial class FileCommunicator
+    public partial class FileCommunicator : Communicator, IDomainModel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FileCommunicator()
-        {
-            Communicators = new HashSet<Communicator>();
-        }
+        public int Id { get; set; }
 
-        public int id { get; set; }
+        public string FilePath { get; set; }
 
-        [Required]
-        public string filePath { get; set; }
-
-        public int startChar { get; set; }
-
-        public int endChar { get; set; }
-
-        public int openModeId { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Communicator> Communicators { get; set; }
-
-        public virtual FileOpenMode FileOpenMode { get; set; }
+        public virtual Device Device { get; set; }
     }
 }
