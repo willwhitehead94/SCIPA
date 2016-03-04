@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Dynamic;
 
-namespace SCIPA.Data.AccessLayer.Models.Resources
+namespace SCIPA.Data.AccessLayer.Models
 {
     public class Value
     {
+        public int Id { get; set; }
+
         public ValueType ValueType { get; set; } = ValueType.String;
 
         public CommunicatorType CommType { get; set; }

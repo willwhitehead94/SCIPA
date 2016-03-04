@@ -1,3 +1,5 @@
+using SCIPA.Data.AccessLayer.Models.Resources;
+
 namespace SCIPA.Data.AccessLayer
 {
     using System;
@@ -21,7 +23,7 @@ namespace SCIPA.Data.AccessLayer
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<Models.Action> Actions { get; set; }
 
         public virtual DbSet<ApplicationInformation> ApplicationInformation { get; set; }
 
@@ -34,6 +36,8 @@ namespace SCIPA.Data.AccessLayer
         public virtual DbSet<Device> Devices { get; set; }
 
         public virtual DbSet<Rule> Rules { get; set; }
+
+        public virtual  DbSet<Value> Values { get; set; }
     }
 
     //public class MyEntity

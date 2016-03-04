@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using SCIPA.Models;
+using System.Linq;
+using DOM = SCIPA.Models;
+using DOMR = SCIPA.Models.Resources;
+using DAL = SCIPA.Data.AccessLayer.Models;
 using Action = SCIPA.Models.Action;
 
 namespace SCIPA.Data.Repository
@@ -20,11 +23,12 @@ namespace SCIPA.Data.Repository
 
 
 
+
         /// <summary>
         /// Passes a new Device to the database for insertion.
         /// </summary>
         /// <param name="device">New Device.</param>
-        public void CreateDevice(Device device)
+        public void CreateDevice(DOM.Device device)
         {
             if (device == null) return;
 
@@ -43,7 +47,7 @@ namespace SCIPA.Data.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Device RetrieveDevice(int id)
+        public DOM.Device RetrieveDevice(int id)
         {
             return _converter.ConvertToDomain(_dbController.RetrieveDevice(id));
         }
@@ -52,9 +56,9 @@ namespace SCIPA.Data.Repository
         /// Get all Devices stored on the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<Device> RetrieveAllDevices()
+        public ICollection<DOM.Device> RetrieveAllDevices()
         {
-            List<Device> devList = new List<Device>();
+            List<DOM.Device> devList = new List<DOM.Device>();
 
             foreach (var device in _dbController.RetrieveDevices())
             {
@@ -68,7 +72,7 @@ namespace SCIPA.Data.Repository
         /// Passes an existing Device object back to the database to update it.
         /// </summary>
         /// <param name="device">Updated Device object.</param>
-        public void UpdateDevice(Device device)
+        public void UpdateDevice(DOM.Device device)
         {
             if (device == null) return;
 
@@ -79,7 +83,7 @@ namespace SCIPA.Data.Repository
         /// Delete an existing Device object from the database.
         /// </summary>
         /// <param name="device"></param>
-        public void DisableDevice(Device device)
+        public void DisableDevice(DOM.Device device)
         {
             if (device == null) return;
 
@@ -108,6 +112,7 @@ namespace SCIPA.Data.Repository
 
 
 
+
         public void CreateAction(Models.Action action)
         {
             if (action == null) return;
@@ -119,17 +124,202 @@ namespace SCIPA.Data.Repository
             }
 
             //Pass the object through the converter and onto the dbController.
-            _dbController.CreateAction(_converter.ConvertToData(action));
+            _dbController.CreateNewAction(_converter.ConvertToData(action));
         }
 
-        public Action RetrieveAction(int id);
+        public Action RetrieveAction(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveAction(id));
+        }
 
-        public ICollection<Action> RetrieveActionsForDevice(int deviceId);
+        public ICollection<Action> RetrieveActionsForDevice(int deviceId)
+        {
+            return _dbController.RetrieveActionsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
 
-        public ICollection<Action> RetrieveAllActions();
+        public ICollection<DOM.Action> RetrieveAllActions()
+        {
+            return _dbController.RetrieveActions().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
 
-        public void UpdateAction(Action action);
+        public void UpdateAction(DOM.Action action)
+        {
+            _dbController.UpdateAction(_converter.ConvertToData(action));
+        }
 
-        public void DeleteAction(Action action);
+        public void DeleteAction(DOM.Action action)
+        {
+            _dbController.DeleteAction(_converter.ConvertToData(action));
+        }
+
+
+
+
+        public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        {
+            if (databaseCommunicator == null) return;
+            _dbController.CreateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+        }
+
+        public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
+        }
+
+        public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
+        {
+            return _dbController.RetrieveDatabaseCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
+        {
+            return _dbController.RetrieveDatabaseCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        {
+            _dbController.UpdateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+        }
+
+        public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        {
+            _dbController.DeleteDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+        }
+
+
+
+
+        public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        {
+            if (fileCommunicator == null) return;
+            _dbController.CreateFileCommunicator(_converter.ConvertToData(fileCommunicator));
+        }
+
+        public DOM.FileCommunicator RetrieveFileCommunicator(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveFileCommunicator(id));
+        }
+
+        public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
+        {
+            return _dbController.RetrieveFileCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
+        {
+            return _dbController.RetrieveFileCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        {
+            _dbController.UpdateFileCommunicator(_converter.ConvertToData(fileCommunicator));
+        }
+
+        public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        {
+            _dbController.DeleteFileCommunicator(_converter.ConvertToData(fileCommunicator));
+        }
+
+
+
+
+        public void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        {
+            if (serialCommunicator == null) return;
+            _dbController.CreateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+        }
+
+        public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveSerialCommunicator(id));
+        }
+
+        public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
+        {
+            return _dbController.RetrieveSerialCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
+        {
+            return _dbController.RetrieveSerialCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        {
+            _dbController.UpdateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+        }
+
+        public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        {
+            _dbController.DeleteSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+        }
+
+
+
+
+        public void CreateRule(DOM.Rule Rule)
+        {
+            if (Rule == null) return;
+            _dbController.CreateRule(_converter.ConvertToData(Rule));
+        }
+
+        public DOM.Rule RetrieveRule(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveRule(id));
+        }
+
+        public ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId)
+        {
+            return _dbController.RetrieveRulesForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public ICollection<DOM.Rule> RetrieveAllRules()
+        {
+            return _dbController.RetrieveRules().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public void UpdateRule(DOM.Rule Rule)
+        {
+            _dbController.UpdateRule(_converter.ConvertToData(Rule));
+        }
+
+        public void DeleteRule(DOM.Rule Rule)
+        {
+            _dbController.DeleteRule(_converter.ConvertToData(Rule));
+        }
+
+
+
+
+        public void CreateValue(DOMR.Value Value)
+        {
+            if (Value == null) return;
+            _dbController.CreateValue(_converter.ConvertToData(Value));
+        }
+
+        public DOMR.Value RetrieveValue(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveValue(id));
+        }
+
+        public ICollection<DOMR.Value> RetrieveValuesForDevice(int deviceId)
+        {
+            return _dbController.RetrieveValuesForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public ICollection<DOMR.Value> RetrieveAllValues()
+        {
+            return _dbController.RetrieveValues().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        }
+
+        public void UpdateValue(DOMR.Value Value)
+        {
+            _dbController.UpdateValue(_converter.ConvertToData(Value));
+        }
+
+        public void DeleteValue(DOMR.Value Value)
+        {
+            _dbController.DeleteValue(_converter.ConvertToData(Value));
+        }
     }
 }

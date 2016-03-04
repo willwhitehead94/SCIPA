@@ -1,102 +1,119 @@
 ﻿using System.Linq.Expressions;
-using DBM = SCIPA.Data.AccessLayer.Models; //DataBase Model
-using DMM = SCIPA.Models; //DoMain Model
+using DAL = SCIPA.Data.AccessLayer.Models; //DataBase Model
+using DOM = SCIPA.Models; //DoMain Model
+using DOMR = SCIPA.Models.Resources;
 
 namespace SCIPA.Data.Repository
 {
     public class Converter
     {
-        public DBM.Device ConvertToData(DMM.Device domainModel)
+        public DAL.Device ConvertToData(DOM.Device domainModel)
         {
-            return new DBM.Device()
+            return new DAL.Device()
             {
                 
             };
         }
 
-        public DMM.Device ConvertToDomain(DBM.Device dataModel)
+        public DOM.Device ConvertToDomain(DAL.Device dataModel)
         {
-            return new DMM.Device()
+            return new DOM.Device()
             {
                 
             };
         }
 
-        public DBM.Action ConvertToData(DMM.Action domainModel)
+        public DAL.Action ConvertToData(DOM.Action domainModel)
         {
-            return new DBM.Action()
+            return new DAL.Action()
             {
                 
             };
         }
 
-        public DMM.Action ConvertToDomain(DBM.Action dataModel)
+        public DOM.Action ConvertToDomain(DAL.Action dataModel)
         {
-            return new DMM.Action()
+            return new DOM.Action()
             {
                 
             };
         }
 
-        public DBM.DatabaseCommunicator ConvertToData(DMM.DatabaseCommunicator domainModel)
+        public DAL.DatabaseCommunicator ConvertToData(DOM.DatabaseCommunicator domainModel)
         {
-            return new DBM.DatabaseCommunicator()
+            return new DAL.DatabaseCommunicator()
             {
                 
             };
         }
 
-        public DMM.DatabaseCommunicator ConvertToDomain(DBM.DatabaseCommunicator dataModel)
+        public DOM.DatabaseCommunicator ConvertToDomain(DAL.DatabaseCommunicator dataModel)
         {
-            return new DMM.DatabaseCommunicator()
+            return new DOM.DatabaseCommunicator()
             {
                 
             };
         }
 
-        public DBM.FileCommunicator ConvertToData(DMM.FileCommunicator domainModel)
+        public DAL.FileCommunicator ConvertToData(DOM.FileCommunicator domainModel)
         {
-            return new DBM.FileCommunicator()
+            return new DAL.FileCommunicator()
             {
                 
             };
         }
 
-        public DMM.FileCommunicator ConvertToDomain(DBM.FileCommunicator dataModel)
+        public DOM.FileCommunicator ConvertToDomain(DAL.FileCommunicator dataModel)
         {
-            return new DMM.FileCommunicator()
+            return new DOM.FileCommunicator()
             {
                 
             };
         }
 
-        public DBM.SerialCommunicator ConvertToData(DMM.SerialCommunicator domainModel)
+        public DAL.SerialCommunicator ConvertToData(DOM.SerialCommunicator domainModel)
         {
-            DBM.SerialCommunicator()
+            return new  DAL.SerialCommunicator()
             {
                 
             };
         }
 
-        public DMM.SerialCommunicator ConvertToDomain(DBM.SerialCommunicator dataModel)
+        public DOM.SerialCommunicator ConvertToDomain(DAL.SerialCommunicator dataModel)
         {
-            return new DMM.SerialCommunicator()
+            return new DOM.SerialCommunicator()
             {
                 
             };
         }
 
-        public DBM.Rule ConvertToData(DMM.Rule domainModel)
+        public DAL.Rule ConvertToData(DOM.Rule domainModel)
         {
-            return new DBM.Rule()
+            return new DAL.Rule()
             {
                 
             };
         }
 
-        public DMM.Rule ConvertToDomain(DBM.Rule dataModel)
+        public DOM.Rule ConvertToDomain(DAL.Rule dataModel)
         {
-            return new DMM.Rule()
+            return new DOM.Rule()
+            {
+                
+            };
+        }
+
+        public DAL.Value ConvertToData(DOMR.Value value)
+        {
+            return new DAL.Value()
+            {
+                
+            };
+        }
+
+        public DOMR.Value ConvertToDomain(DAL.Value value)
+        {
+            return new DOMR.Value()
             {
                 
             };

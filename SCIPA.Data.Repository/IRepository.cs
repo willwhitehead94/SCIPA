@@ -49,7 +49,7 @@ namespace SCIPA.Data.Repository
         void DeleteDatabaseCommunicator(DatabaseCommunicator dc);
 
 
-        void CreateSerialCommunicator(SerialCommunicator sc);
+        void CreateSerialCommunicator(SerialCommunicator serialCommunicator);
 
         SerialCommunicator RetrieveSerialCommunicator(int id);
 
@@ -57,9 +57,9 @@ namespace SCIPA.Data.Repository
 
         ICollection<SerialCommunicator> RetrieveAllSerialCommunicators();
 
-        void UpdateSerialCommunicator(SerialCommunicator sc);
+        void UpdateSerialCommunicator(SerialCommunicator serialCommunicator);
 
-        void DeleteSerialCommunicator(SerialCommunicator sc);
+        void DeleteSerialCommunicator(SerialCommunicator serialCommunicator);
 
 
         void CreateFileCommunicator(FileCommunicator dc);
@@ -70,9 +70,9 @@ namespace SCIPA.Data.Repository
 
         ICollection<FileCommunicator> RetrieveAllFileCommunicators();
 
-        void UpdateFileCommunicator(FileCommunicator dc);
+        void UpdateFileCommunicator(FileCommunicator fileCommunicator);
 
-        void DeleteFileCommunicator(FileCommunicator dc);
+        void DeleteFileCommunicator(FileCommunicator fileCommunicator);
 
 
         void CreateRule(Rule dc);
