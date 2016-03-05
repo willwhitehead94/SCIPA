@@ -11,5 +11,7 @@ namespace SCIPA.Data.AccessLayer.Models
         public DateTime LastReadTime { get; set; }
 
         public ValueType ValueValueType { get; set; }
+
+
     }
 }

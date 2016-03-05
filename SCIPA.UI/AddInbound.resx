@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lDBMessage.Text" xml:space="preserve">
+    <value>To use a database as a source of information for this device, you must set the connection string (including both username and password if required) and a query that will return a single result. Queries that return multiple records or datasets will require more resources than neccessary as SCIPA will only read the first value from the first dataset.</value>
+  </data>
+  <data name="lFFMessage.Text" xml:space="preserve">
+    <value>To use a flat file as a data source for this device, please make sure you provide the full file path to the file and that the underlying operating system will grant the current user permission to open it. Files are always opened in a shared method where possible in order to reduce the chances of a locked file.</value>
+  </data>
+  <data name="lSMessage.Text" xml:space="preserve">
+    <value>To use a serial device as a source of information, you must select the COM port that the device communicates on. This device must always communicate on this port. Once used as an inbound data source, the COM port cannot be used as this or another device's destination.</value>
+  </data>
 </root>

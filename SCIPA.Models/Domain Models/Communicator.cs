@@ -11,5 +11,7 @@ namespace SCIPA.Models
         public DateTime LastReadTime { get; set; }
 
         public ValueType ValueValueType { get; set; }
+
+        public virtual Device Device { get; set; }
     }
 }

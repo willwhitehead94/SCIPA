@@ -14,7 +14,11 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public bool Enabled { get; set; } = true;
 
-        public object InboundReader { get; set; }
+        public FileCommunicator InboundFile { get; set; }
+
+        public SerialCommunicator InboundSerial { get; set; }
+
+        public DatabaseCommunicator InboundDatabase { get; set; }
 
         public object OutboundWriter { get; set; }
 

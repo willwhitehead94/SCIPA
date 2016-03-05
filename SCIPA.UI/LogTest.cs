@@ -138,6 +138,37 @@ namespace SCIPA.UI
                 }))
             });
 
+            //Domain.Logic.DeviceController.AllDevices.Add(new Device()
+            //{
+            //    Id = 2,
+            //    Name = "Arduino Uno Trend App 2",
+            //    Location = "Desk 1",
+            //    Custodian = "W. Whitehead",
+            //    InboundReader = new DatabaseReader(new DatabaseHandler(new DatabaseCommunicator()
+            //    {
+            //        id = ,
+            //        EndChar = ,
+            //        StartChar = ,
+            //        LastReadTime = ,
+            //        ValueValueType = ,
+            //        DatabaseType = ,
+            //        connectionString = ,
+            //        query = ,
+            //        databaseTypeId = 
+            //    }));
+            //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
+            //    {
+            //        id = 1,
+            //        comPort = "COM3",
+            //        StartChar = 0,
+            //        EndChar = 0,
+            //        baudRate = 9600,
+            //        dataBits = 8,
+            //        isDTR = false,
+            //        isRTS = false
+            //    }))
+            //});
+
             //DebugOutput.Print(myDevice.Custodian+"'s " + myDevice.Name + " now starting...");
 
         }

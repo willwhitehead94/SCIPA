@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace SCIPA.Data.AccessLayer.Models
 {
     public partial class SerialCommunicator : Communicator, IDomainModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
 
         public string comPort { get; set; }

@@ -14,6 +14,7 @@ namespace SCIPA.Data.Repository
         {
             ICollection<DAL.Value> outboundVals = null, inboundVals = null;
             ICollection<DAL.Rule> rules = null;
+            
 
             if (domainModel.OutboundValues != null)
             {
@@ -30,10 +31,37 @@ namespace SCIPA.Data.Repository
                 rules = domainModel.Rules.Select(ConvertToData).ToList();
             }
 
+            DAL.FileCommunicator _inboundFile = null;
+            DAL.DatabaseCommunicator _inboundData = null;
+            DAL.SerialCommunicator _inboundSerial = null;
+
+            if (domainModel.InboundReader != null)
+            {
+                DOM.Communicator communicator =(DOM.Communicator) domainModel.InboundReader;
+                communicator.Device = domainModel;
+
+
+                if (domainModel.InboundReader is DOM.FileCommunicator)
+                {
+                    _inboundFile = ConvertToData((DOM.FileCommunicator)domainModel.InboundReader);
+                }
+                else if (domainModel.InboundReader is DOM.SerialCommunicator)
+                {
+                    _inboundSerial = ConvertToData((DOM.SerialCommunicator)domainModel.InboundReader);
+                }
+                else if (domainModel.InboundReader is DOM.DatabaseCommunicator)
+                {
+                    _inboundData = ConvertToData((DOM.DatabaseCommunicator)domainModel.InboundReader);
+                }
+                
+            }
+
             return new DAL.Device()
             {
                 Id = domainModel.Id,
-                InboundReader = domainModel.InboundReader,
+                InboundDatabase = _inboundData,
+                InboundSerial = _inboundSerial,
+                InboundFile = _inboundFile,
                 Location = domainModel.Location,
                 Name = domainModel.Name,
                 Custodian = domainModel.Custodian,
@@ -41,7 +69,7 @@ namespace SCIPA.Data.Repository
                 Rules = rules,
                 Enabled = domainModel.Enabled,
                 InboundValues = inboundVals,
-                OutboundWriter = domainModel.OutboundWriter
+                OutboundWriter = (DAL.Communicator)domainModel.OutboundWriter
             };
         }
 
@@ -74,9 +102,23 @@ namespace SCIPA.Data.Repository
                 DebugOutput.Print("Conversion Error (Handled). ",e.Message);
             }
 
-            //var inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
-            //var outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
-            //var rules = dataModel.Rules.Select(ConvertToDomain).ToList();
+            var file = dataModel.InboundFile;
+            var data = dataModel.InboundDatabase;
+            var serial = dataModel.InboundSerial;
+            DOM.Communicator inboundComm = null;
+
+            if (file != null)
+            {
+                inboundComm = ConvertToDomain(file);
+            }
+            else if (data != null)
+            {
+                inboundComm = ConvertToDomain(data);
+            }
+            else if (serial != null)
+            {
+                inboundComm = ConvertToDomain(serial);
+            }
 
             return new DOM.Device()
             {
@@ -88,7 +130,7 @@ namespace SCIPA.Data.Repository
                 OutboundWriter = dataModel.OutboundWriter,
                 Rules = rules,
                 Id = dataModel.Id,
-                InboundReader = dataModel.InboundReader,
+                InboundReader = inboundComm,
                 Location = dataModel.Location
             };
         }
@@ -153,7 +195,7 @@ namespace SCIPA.Data.Repository
                 EndChar = domainModel.EndChar,
                 LastReadTime = domainModel.LastReadTime,
                 ValueValueType = ConvertToData(domainModel.ValueValueType),
-                //Device = 
+                Device = ConvertToData(domainModel.Device),
                 FilePath = domainModel.FilePath,
                 Id = domainModel.Id,
                 StartChar = domainModel.StartChar
