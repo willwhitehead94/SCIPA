@@ -28,7 +28,7 @@ namespace SCIPA.UI
         private void bSave_Click(object sender, EventArgs e)
         {
             bool enabled = rbTrue.Checked && !rbFalse.Checked;
-            _controller.SaveNewDevice(Convert.ToInt32(tId.Text), tName.Text, tLocation.Text, tCustodian.Text, enabled);
+            _controller.SaveDevice(Convert.ToInt32(tId.Text), tName.Text, tLocation.Text, tCustodian.Text, enabled);
         }
 
         private void bCancel_Click(object sender, EventArgs e)

@@ -40,21 +40,6 @@ namespace SCIPA.Domain.Logic
             
         }
 
-        public bool SaveNewDevice(int id, string name, string location, string custodian, bool enabled)
-        {
-            var newDevice = new Device()
-            {
-                Id=id,
-                Custodian = custodian,
-                Enabled = enabled,
-                Location = location,
-                Name = name
-            };
-
-            try { _repo.CreateDevice(newDevice); return true; }
-            catch (Exception e) { DebugOutput.Print("Device creation failed.",e.Message); return false; }
-        }
-
         public bool SaveDevice(int id, string name, string location, string custodian, bool enabled)
         {
             var dev = new Device()

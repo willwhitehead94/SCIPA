@@ -77,6 +77,7 @@ namespace SCIPA.Data.Repository
             if (device == null) return;
 
             _dbController.UpdateDevice(_converter.ConvertToData(device));
+            DebugOutput.Print("Device has been updated: ",device.Id.ToString());
         }
 
         /// <summary>

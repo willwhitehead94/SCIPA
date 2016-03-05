@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using SCIPA.Domain.Generic;
 using DAL = SCIPA.Data.AccessLayer.Models; //DataBase Model
 using DOM = SCIPA.Models; //DoMain Model
 using DOMR = SCIPA.Models.Resources;
@@ -45,22 +47,31 @@ namespace SCIPA.Data.Repository
 
         public DOM.Device ConvertToDomain(DAL.Device dataModel)
         {
+            if (dataModel == null) return null;
+
             ICollection<DOMR.Value> outboundVals = null, inboundVals = null;
             ICollection<DOM.Rule> rules = null;
 
-            if (dataModel.OutboundValues != null)
+            try
             {
-                outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
-            }
+                if (dataModel.OutboundValues != null)
+                {
+                    outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
+                }
 
-            if (dataModel.InboundValues != null)
-            {
-                inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
-            }
+                if (dataModel.InboundValues != null)
+                {
+                    inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
+                }
 
-            if (dataModel.Rules != null)
+                if (dataModel.Rules != null)
+                {
+                    rules = dataModel.Rules.Select(ConvertToDomain).ToList();
+                }
+            }
+            catch (Exception e)
             {
-                rules = dataModel.Rules.Select(ConvertToDomain).ToList();
+                DebugOutput.Print("Conversion Error (Handled). ",e.Message);
             }
 
             //var inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();

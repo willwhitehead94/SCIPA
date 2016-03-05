@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,7 @@ namespace SCIPA.Data.AccessLayer
             if (temp != null)
             {
                 temp = device;
+                _db.Devices.AddOrUpdate(temp);
                 _db.SaveChanges();
             }
         }
