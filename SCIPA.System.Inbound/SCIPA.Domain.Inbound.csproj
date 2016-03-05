@@ -52,6 +52,10 @@
     <Compile Include="SerialDataReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SCIPA.Data.Repository\SCIPA.Data.Repository.csproj">
+      <Project>{6e21d7e3-2e9b-491d-999f-3d372ee43fbc}</Project>
+      <Name>SCIPA.Data.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SCIPA.Domain.Logic\SCIPA.Domain.Logic.csproj">
       <Project>{782b4fa0-9a1b-41c6-a27f-78e523d9398d}</Project>
       <Name>SCIPA.Domain.Logic</Name>

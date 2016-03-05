@@ -98,7 +98,7 @@ namespace SCIPA.Domain.Inbound
                     info = string.Format(info, sp.PortName, indata);
                     DebugOutput.Print(info);
 
-                    InboundDataQueue.Enqueue(new Value()
+                    EnqueueData(new Value()
                     {
                         ValueType = ValueType.String,
                         CommType = CommunicatorType.Serial,
@@ -106,6 +106,15 @@ namespace SCIPA.Domain.Inbound
                         StringValue = indata,
                         Inbound = true
                     });
+
+                    //InboundDataQueue.Enqueue(new Value()
+                    //{
+                    //    ValueType = ValueType.String,
+                    //    CommType = CommunicatorType.Serial,
+                    //    EventTime = DateTime.Now,
+                    //    StringValue = indata,
+                    //    Inbound = true
+                    //});
                 }
             }
         }

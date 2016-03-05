@@ -295,6 +295,7 @@ namespace SCIPA.Data.Repository
         {
             if (value == null) return;
             _dbController.CreateValue(_converter.ConvertToData(value));
+            Console.WriteLine("Outputting data --> " + value.StringValue);
         }
 
         public DOMR.Value RetrieveValue(int id)

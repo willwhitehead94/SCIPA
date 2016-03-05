@@ -16,5 +16,7 @@ namespace SCIPA.Models.Resources
         public string StringValue { get; set; }
 
         public bool Inbound { get; set; }
+
+        public virtual Device Device { get; set; }
     }
 }

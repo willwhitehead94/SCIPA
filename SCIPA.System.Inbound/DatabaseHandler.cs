@@ -83,7 +83,7 @@ namespace SCIPA.Domain.Inbound
                         if (result.StringValue != "")
                         {
                             //Enqueue the new Value.
-                            InboundDataQueue.Enqueue(result);
+                            EnqueueData(result);
                         }
 
                         _currentlyAttemptingConnection = false;

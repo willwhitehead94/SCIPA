@@ -166,7 +166,7 @@ namespace SCIPA.Domain.Inbound
                 info = string.Format(info, _fileName, fileText);
                 DebugOutput.Print(info);
 
-                InboundDataQueue.Enqueue(new Value()
+                EnqueueData(new Value()
                 {
                     ValueType = ValueType.String,
                     CommType = CommunicatorType.FlatFile,
@@ -174,6 +174,15 @@ namespace SCIPA.Domain.Inbound
                     StringValue = fileText,
                     Inbound = true
                 });
+
+                //InboundDataQueue.Enqueue(new Value()
+                //{
+                //    ValueType = ValueType.String,
+                //    CommType = CommunicatorType.FlatFile,
+                //    EventTime = DateTime.Now,
+                //    StringValue = fileText,
+                //    Inbound = true
+                //});
             }
         }
 
