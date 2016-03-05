@@ -40,9 +40,9 @@ namespace SCIPA.Domain.Logic
             
         }
 
-        public bool SaveDevice(int id, string name, string location, string custodian, bool enabled)
+        public Device GetDeviceObject(int id, string name, string location, string custodian, bool enabled)
         {
-            var dev = new Device()
+            return new Device()
             {
                 Id = id,
                 Custodian = custodian,
@@ -50,22 +50,42 @@ namespace SCIPA.Domain.Logic
                 Location = location,
                 Name = name
             };
+        }
 
-            bool devExists = _repo.RetrieveDevice(id) != null;
+        public bool SaveDevice(Device device)
+        {
+            bool devExists = _repo.RetrieveDevice(device.Id) != null;
 
             try
             {
                 if (devExists)
                 {
-                    _repo.UpdateDevice(dev);
+                    _repo.UpdateDevice(device);
+                    AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
                 }
                 else
                 {
-                    _repo.CreateDevice(dev);
+                    _repo.CreateDevice(device);
+                    AllDevices.Add(device);
                 }
                 return true;
             }
             catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
+        }
+
+        public Device RetrieveDevice(int id, bool secondPass=false)
+        {
+            var dev = AllDevices.First(d => d.Id == id);
+
+            if (dev == null && !secondPass)
+            {
+                GetAllDevices(true);
+                return RetrieveDevice(id,true);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

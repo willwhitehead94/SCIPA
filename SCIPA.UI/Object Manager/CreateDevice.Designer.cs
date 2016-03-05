@@ -179,6 +179,7 @@
             this.bAddSource.TabIndex = 13;
             this.bAddSource.Text = "Add Inbound Source";
             this.bAddSource.UseVisualStyleBackColor = true;
+            this.bAddSource.Click += new System.EventHandler(this.bAddSource_Click);
             // 
             // lSource
             // 
@@ -206,6 +207,7 @@
             this.bAddDestination.TabIndex = 16;
             this.bAddDestination.Text = "Add Outbound Destination";
             this.bAddDestination.UseVisualStyleBackColor = true;
+            this.bAddDestination.Click += new System.EventHandler(this.bAddDestination_Click);
             // 
             // label8
             // 
@@ -233,6 +235,7 @@
             this.bAddRule.TabIndex = 19;
             this.bAddRule.Text = "Add Rule";
             this.bAddRule.UseVisualStyleBackColor = true;
+            this.bAddRule.Click += new System.EventHandler(this.bAddRule_Click);
             // 
             // label10
             // 
