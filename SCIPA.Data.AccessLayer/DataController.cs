@@ -11,6 +11,11 @@ namespace SCIPA.Data.AccessLayer
     {
         private readonly DataModel _db = new DataModel();
 
+        public string xxxx()
+        {
+            return _db.Database.Connection.ConnectionString;
+        }
+
         public void SetApplicationInformation(ApplicationInformation ai)
         {
             var current = _db.ApplicationInformation.First();

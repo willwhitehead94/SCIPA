@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using SCIPA.Data.Repository;
@@ -17,6 +18,11 @@ namespace SCIPA.DomainLogic
         public int GetValueCount()
         {
             return _repo.RetrieveAllValues().Count;
+        }
+
+        public string GetLocation()
+        {
+            return _repo.xxxx();
         }
     }
 }

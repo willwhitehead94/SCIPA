@@ -21,7 +21,10 @@ namespace SCIPA.Data.Repository
         /// </summary>
         readonly Converter _converter = new Converter();
 
-
+        public string xxxx()
+        {
+            return _dbController.xxxx();
+        }
 
 
         /// <summary>

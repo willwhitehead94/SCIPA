@@ -149,6 +149,7 @@ namespace SCIPA.UI
 
             DomainLogic.SharedResources sr = new SharedResources();
             System.Windows.Forms.MessageBox.Show(sr.GetValueCount().ToString());
+            System.Windows.Forms.MessageBox.Show(sr.GetLocation());
 
             //if (myDevice != null)
             //{
