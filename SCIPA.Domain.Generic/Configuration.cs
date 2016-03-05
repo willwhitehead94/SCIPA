@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCIPA.Domain.Logic
+namespace SCIPA.Domain.Generic
 {
     public static class Configuration
     {

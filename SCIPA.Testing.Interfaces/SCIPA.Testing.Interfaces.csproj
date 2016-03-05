@@ -53,6 +53,12 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj">
+      <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
+      <Name>SCIPA.Domain.Generic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

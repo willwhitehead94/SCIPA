@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SCIPA.Domain.Generic;
 using DOM = SCIPA.Models;
 using DOMR = SCIPA.Models.Resources;
 using DAL = SCIPA.Data.AccessLayer.Models;
@@ -21,11 +22,6 @@ namespace SCIPA.Data.Repository
         /// </summary>
         readonly Converter _converter = new Converter();
 
-        public string xxxx()
-        {
-            return _dbController.xxxx();
-        }
-
 
         /// <summary>
         /// Passes a new Device to the database for insertion.
@@ -43,6 +39,7 @@ namespace SCIPA.Data.Repository
 
             //Pass the device object through the converter and onto the dbController.
             _dbController.CreateNewDevice(_converter.ConvertToData(device));
+            DebugOutput.Print("New device created: ", device.Id.ToString());
         }
 
         /// <summary>

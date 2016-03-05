@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
@@ -53,8 +54,6 @@ namespace SCIPA.Domain.Logic
         /// The query to execute against the connection string.
         /// </summary>
         private string Query;
-
-        private int ResponseCode;
 
         /// <summary>
         /// A list of Object arrays. Each Object array constitues a record from the database.

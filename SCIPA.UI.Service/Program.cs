@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
 namespace SCIPA.UI.Service

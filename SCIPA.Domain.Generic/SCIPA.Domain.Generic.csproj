@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E21D7E3-2E9B-491D-999F-3D372EE43FBC}</ProjectGuid>
+    <ProjectGuid>{7804F99A-5A1A-4270-BAB5-B69C4C5D0D3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCIPA.Data.Repository</RootNamespace>
-    <AssemblyName>SCIPA.Data.Repository</AssemblyName>
+    <RootNamespace>SCIPA.Domain.Generic</RootNamespace>
+    <AssemblyName>SCIPA.Domain.Generic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,24 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter.cs" />
-    <Compile Include="DataRepository.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DebugOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SCIPA.Data.AccessLayer\SCIPA.Data.AccessLayer.csproj">
-      <Project>{281efac6-85d4-4086-be80-fb468b6b99e5}</Project>
-      <Name>SCIPA.Data.AccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj">
-      <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
-      <Name>SCIPA.Domain.Generic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SCIPA.Models\SCIPA.Models.csproj">
-      <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>
-      <Name>SCIPA.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,10 +19,5 @@ namespace SCIPA.DomainLogic
         {
             return _repo.RetrieveAllValues().Count;
         }
-
-        public string GetLocation()
-        {
-            return _repo.xxxx();
-        }
     }
 }

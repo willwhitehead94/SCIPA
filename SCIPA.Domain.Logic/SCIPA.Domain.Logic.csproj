@@ -40,9 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
     <Compile Include="DatabaseConnectionManager.cs" />
-    <Compile Include="DebugOutput.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,6 +54,10 @@
     <ProjectReference Include="..\SCIPA.Data.Repository\SCIPA.Data.Repository.csproj">
       <Project>{6e21d7e3-2e9b-491d-999f-3d372ee43fbc}</Project>
       <Name>SCIPA.Data.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj">
+      <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
+      <Name>SCIPA.Domain.Generic</Name>
     </ProjectReference>
     <ProjectReference Include="..\SCIPA.Models\SCIPA.Models.csproj">
       <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>

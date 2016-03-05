@@ -49,7 +49,7 @@ namespace SCIPA.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Domain.Logic.DebugOutput.Print("Button has been clicked!");
+            Domain.Generic.DebugOutput.Print("Button has been clicked!");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -149,7 +149,6 @@ namespace SCIPA.UI
 
             DomainLogic.SharedResources sr = new SharedResources();
             System.Windows.Forms.MessageBox.Show(sr.GetValueCount().ToString());
-            System.Windows.Forms.MessageBox.Show(sr.GetLocation());
 
             //if (myDevice != null)
             //{

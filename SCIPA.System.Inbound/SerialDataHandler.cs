@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using SCIPA.Domain.Logic;
 using System.Threading;
+using SCIPA.Domain.Generic;
 using SCIPA.Models;
 using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;

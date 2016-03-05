@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SCIPA.Data.Repository;
+using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
@@ -52,6 +53,34 @@ namespace SCIPA.Domain.Logic
 
             try { _repo.CreateDevice(newDevice); return true; }
             catch (Exception e) { DebugOutput.Print("Device creation failed.",e.Message); return false; }
+        }
+
+        public bool SaveDevice(int id, string name, string location, string custodian, bool enabled)
+        {
+            var dev = new Device()
+            {
+                Id = id,
+                Custodian = custodian,
+                Enabled = enabled,
+                Location = location,
+                Name = name
+            };
+
+            bool devExists = _repo.RetrieveDevice(id) != null;
+
+            try
+            {
+                if (devExists)
+                {
+                    _repo.UpdateDevice(dev);
+                }
+                else
+                {
+                    _repo.CreateDevice(dev);
+                }
+                return true;
+            }
+            catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
         }
     }
 }
