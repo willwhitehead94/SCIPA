@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using SCIPA.Data.AccessLayer.Models.Resources;
 
 namespace SCIPA.Data.AccessLayer.Models
 {

@@ -19,7 +19,7 @@ namespace SCIPA.Data.Repository
         /// <summary>
         /// Converter tool to convert models from Domain to Data and vice versa.
         /// </summary>
-        Converter _converter = new Converter();
+        readonly Converter _converter = new Converter();
 
 
 
@@ -113,7 +113,7 @@ namespace SCIPA.Data.Repository
 
 
 
-        public void CreateAction(Models.Action action)
+        public void CreateAction(Action action)
         {
             if (action == null) return;
 
@@ -137,17 +137,17 @@ namespace SCIPA.Data.Repository
             return _dbController.RetrieveActionsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
         }
 
-        public ICollection<DOM.Action> RetrieveAllActions()
+        public ICollection<Action> RetrieveAllActions()
         {
             return _dbController.RetrieveActions().Select(obj => _converter.ConvertToDomain(obj)).ToList();
         }
 
-        public void UpdateAction(DOM.Action action)
+        public void UpdateAction(Action action)
         {
             _dbController.UpdateAction(_converter.ConvertToData(action));
         }
 
-        public void DeleteAction(DOM.Action action)
+        public void DeleteAction(Action action)
         {
             _dbController.DeleteAction(_converter.ConvertToData(action));
         }
@@ -257,10 +257,10 @@ namespace SCIPA.Data.Repository
 
 
 
-        public void CreateRule(DOM.Rule Rule)
+        public void CreateRule(DOM.Rule rule)
         {
-            if (Rule == null) return;
-            _dbController.CreateRule(_converter.ConvertToData(Rule));
+            if (rule == null) return;
+            _dbController.CreateRule(_converter.ConvertToData(rule));
         }
 
         public DOM.Rule RetrieveRule(int id)
@@ -278,23 +278,23 @@ namespace SCIPA.Data.Repository
             return _dbController.RetrieveRules().Select(obj => _converter.ConvertToDomain(obj)).ToList();
         }
 
-        public void UpdateRule(DOM.Rule Rule)
+        public void UpdateRule(DOM.Rule rule)
         {
-            _dbController.UpdateRule(_converter.ConvertToData(Rule));
+            _dbController.UpdateRule(_converter.ConvertToData(rule));
         }
 
-        public void DeleteRule(DOM.Rule Rule)
+        public void DeleteRule(DOM.Rule rule)
         {
-            _dbController.DeleteRule(_converter.ConvertToData(Rule));
+            _dbController.DeleteRule(_converter.ConvertToData(rule));
         }
 
 
 
 
-        public void CreateValue(DOMR.Value Value)
+        public void CreateValue(DOMR.Value value)
         {
-            if (Value == null) return;
-            _dbController.CreateValue(_converter.ConvertToData(Value));
+            if (value == null) return;
+            _dbController.CreateValue(_converter.ConvertToData(value));
         }
 
         public DOMR.Value RetrieveValue(int id)
@@ -312,14 +312,25 @@ namespace SCIPA.Data.Repository
             return _dbController.RetrieveValues().Select(obj => _converter.ConvertToDomain(obj)).ToList();
         }
 
-        public void UpdateValue(DOMR.Value Value)
+        public void UpdateValue(DOMR.Value value)
         {
-            _dbController.UpdateValue(_converter.ConvertToData(Value));
+            _dbController.UpdateValue(_converter.ConvertToData(value));
         }
 
-        public void DeleteValue(DOMR.Value Value)
+        public void DeleteValue(DOMR.Value value)
         {
-            _dbController.DeleteValue(_converter.ConvertToData(Value));
+            _dbController.DeleteValue(_converter.ConvertToData(value));
+        }
+
+
+        public DOM.ApplicationInformation GetApplicationInformation()
+        {
+            return _converter.ConvertToDomain(_dbController.GetApplicationInformation());
+        }
+
+        public void SetApplicationInformation(DOM.ApplicationInformation ai)
+        {
+            _dbController.SetApplicationInformation(_converter.ConvertToData(ai));
         }
     }
 }

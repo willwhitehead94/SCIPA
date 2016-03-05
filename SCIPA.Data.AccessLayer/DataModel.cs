@@ -1,5 +1,3 @@
-using SCIPA.Data.AccessLayer.Models.Resources;
-
 namespace SCIPA.Data.AccessLayer
 {
     using System;

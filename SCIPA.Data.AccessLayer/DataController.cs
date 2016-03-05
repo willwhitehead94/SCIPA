@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SCIPA.Data.AccessLayer.Models;
-using SCIPA.Data.AccessLayer.Models.Resources;
 
 namespace SCIPA.Data.AccessLayer
 {

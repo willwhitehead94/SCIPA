@@ -75,7 +75,7 @@ namespace SCIPA.Data.Repository
         void DeleteFileCommunicator(FileCommunicator fileCommunicator);
 
 
-        void CreateRule(Rule dc);
+        void CreateRule(Rule rule);
 
         Rule RetrieveRule(int id);
 
@@ -83,8 +83,8 @@ namespace SCIPA.Data.Repository
 
         ICollection<Rule> RetrieveAllRules();
 
-        void UpdateRule(Rule dc);
+        void UpdateRule(Rule rule);
 
-        void DeleteRule(Rule dc);
+        void DeleteRule(Rule rule);
     }
 }

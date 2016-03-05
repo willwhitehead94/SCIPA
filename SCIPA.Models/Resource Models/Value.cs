@@ -5,6 +5,8 @@ namespace SCIPA.Models.Resources
 {
     public class Value
     {
+        public int Id { get; set; }
+
         public ValueType ValueType { get; set; } = ValueType.String;
 
         public CommunicatorType CommType { get; set; }
