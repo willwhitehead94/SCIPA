@@ -175,6 +175,10 @@ namespace SCIPA.UI
             this.Text = SCIPA.Domain.Logic.Properties.Settings.Default.UserName;
         }
 
-        
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CreateDevice cd = new CreateDevice();
+            cd.Show();
+        }
     }
 }

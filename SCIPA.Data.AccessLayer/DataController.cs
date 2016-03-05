@@ -49,6 +49,7 @@ namespace SCIPA.Data.AccessLayer
 
         public ICollection<Device> RetrieveDevices()
         {
+            var x = _db.Devices;
             return _db.Devices.ToList();
         }
 

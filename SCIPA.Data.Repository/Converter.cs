@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using DAL = SCIPA.Data.AccessLayer.Models; //DataBase Model
 using DOM = SCIPA.Models; //DoMain Model
 using DOMR = SCIPA.Models.Resources;
@@ -9,9 +10,23 @@ namespace SCIPA.Data.Repository
     {
         public DAL.Device ConvertToData(DOM.Device domainModel)
         {
-            var outboundVals = domainModel.OutboundValues.Select(ConvertToData).ToList();
-            var inboundVals = domainModel.InboundValues.Select(ConvertToData).ToList();
-            var rules = domainModel.Rules.Select(ConvertToData).ToList();
+            ICollection<DAL.Value> outboundVals = null, inboundVals = null;
+            ICollection<DAL.Rule> rules = null;
+
+            if (domainModel.OutboundValues != null)
+            {
+                outboundVals = domainModel.OutboundValues.Select(ConvertToData).ToList();
+            }
+
+            if (domainModel.InboundValues != null)
+            {
+                inboundVals = domainModel.InboundValues.Select(ConvertToData).ToList();
+            }
+
+            if (domainModel.Rules != null)
+            {
+                rules = domainModel.Rules.Select(ConvertToData).ToList();
+            }
 
             return new DAL.Device()
             {
@@ -30,9 +45,27 @@ namespace SCIPA.Data.Repository
 
         public DOM.Device ConvertToDomain(DAL.Device dataModel)
         {
-            var inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
-            var outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
-            var rules = dataModel.Rules.Select(ConvertToDomain).ToList();
+            ICollection<DOMR.Value> outboundVals = null, inboundVals = null;
+            ICollection<DOM.Rule> rules = null;
+
+            if (dataModel.OutboundValues != null)
+            {
+                outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
+            }
+
+            if (dataModel.InboundValues != null)
+            {
+                inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
+            }
+
+            if (dataModel.Rules != null)
+            {
+                rules = dataModel.Rules.Select(ConvertToDomain).ToList();
+            }
+
+            //var inboundVals = dataModel.InboundValues.Select(ConvertToDomain).ToList();
+            //var outboundVals = dataModel.OutboundValues.Select(ConvertToDomain).ToList();
+            //var rules = dataModel.Rules.Select(ConvertToDomain).ToList();
 
             return new DOM.Device()
             {

@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Object Manager\CreateDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Object Manager\CreateDevice.Designer.cs">
+      <DependentUpon>CreateDevice.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Object Manager\CreateDevice.resx">
+      <DependentUpon>CreateDevice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogTest.resx">
       <DependentUpon>LogTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +127,7 @@
     <Content Include="2016_02_26__1__DgG_icon.ico" />
     <None Include="Resources\logo %281%29.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -65,7 +65,7 @@ namespace SCIPA.Data.Repository
 
             foreach (var device in _dbController.RetrieveDevices())
             {
-                _converter.ConvertToDomain(device);
+                devList.Add(_converter.ConvertToDomain(device));
             }
 
             return devList;
