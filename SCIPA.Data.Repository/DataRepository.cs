@@ -22,6 +22,11 @@ namespace SCIPA.Data.Repository
         /// </summary>
         readonly Converter _converter = new Converter();
 
+        public void CheckDb()
+        {
+            var demo = _dbController.xxxx();
+        }
+
 
         /// <summary>
         /// Passes a new Device to the database for insertion.

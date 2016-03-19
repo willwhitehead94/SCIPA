@@ -124,6 +124,7 @@ namespace SCIPA.UI.Service
             }
             finally
             {
+                //This instance of the reader will now be disposed of.
                 ReaderRunning--;
             }
 
@@ -135,7 +136,7 @@ namespace SCIPA.UI.Service
         /// </summary>
         private static void PrintTopMessages()
         {
-            int messagesToShow = 15;
+            var messagesToShow = 15;
 
             if (_logEntries != null || _logEntries.Count > 0)
             {

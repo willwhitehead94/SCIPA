@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Data.Repository", "SCIPA.Data.Repository\SCIPA.Data.Repository.csproj", "{6E21D7E3-2E9B-491D-999F-3D372EE43FBC}"
 EndProject
@@ -59,6 +59,7 @@ Global
 		{4BAC6E7C-F2CC-433B-8794-B120333BDA97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
 		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
 		{782B4FA0-9A1B-41C6-A27F-78E523D9398D}.Development|Any CPU.ActiveCfg = Debug|Any CPU

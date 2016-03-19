@@ -15,6 +15,11 @@ namespace SCIPA.Domain.Logic
 
         private readonly DataRepository _repo = new DataRepository();
 
+        public void CheckDb()
+        {
+            _repo.CheckDb();
+        }
+
         public ICollection<Device> GetAllDevices(bool refresh=false)
         {
             if (refresh)

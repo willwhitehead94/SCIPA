@@ -12,9 +12,9 @@ namespace SCIPA.Data.AccessLayer
     {
         private readonly DataModel _db = new DataModel();
 
-        public string xxxx()
+        public bool xxxx()
         {
-            return _db.Database.Connection.ConnectionString;
+            return _db.Database.Exists();
         }
 
         public void SetApplicationInformation(ApplicationInformation ai)

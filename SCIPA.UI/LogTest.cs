@@ -19,7 +19,6 @@ namespace SCIPA.UI
 {
     public partial class LogTest : Form
     {
-        private object basicobj = null;
 
         public Device myDevice = null;
 
@@ -71,7 +70,7 @@ namespace SCIPA.UI
             {
                 DatabaseType = DatabaseType.SQL,
                 ValueValueType = ValueType.String,
-                connectionString = @"Data Source=DIANDLAD-LAPTOP\SQLENTERPRISE;Initial Catalog=SCIPA;Integrated Security=True",
+                connectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
                 query = "SELECT TOP 1 id FROM dbo.Alarm ORDER BY id DESC"
             };
 
@@ -209,6 +208,27 @@ namespace SCIPA.UI
         {
             CreateDevice cd = new CreateDevice();
             cd.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Device testDev = new Device()
+            {
+                Id = 1,
+                Name = "Arduino Uno Trend App",
+                Location = "Desk 1",
+                Custodian = "W. Whitehead",
+                Enabled = true
+            };
+
+            AddInbound ai = new AddInbound(testDev);
+            ai.ShowDialog();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var cd = new CreateDevice();
+            cd.ShowDialog();
         }
     }
 }

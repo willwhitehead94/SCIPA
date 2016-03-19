@@ -62,7 +62,7 @@ namespace SCIPA.Domain.Logic.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DIANDLAD-LAPTOP;Initial Catalog=scipa;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-81SM1A6;Initial Catalog=scipa;Integrated Security=True")]
         public string DefaultDatabaseConnectionString {
             get {
                 return ((string)(this["DefaultDatabaseConnectionString"]));

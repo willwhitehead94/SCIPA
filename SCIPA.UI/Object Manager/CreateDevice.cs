@@ -20,6 +20,7 @@ namespace SCIPA.UI
         public CreateDevice()
         {
             InitializeComponent();
+            _controller.CheckDb();
         }
 
         private void CreateDevice_Load(object sender, EventArgs e)
@@ -55,6 +56,7 @@ namespace SCIPA.UI
 
             if (result == DialogResult.Yes)
             {
+                bSave.PerformClick();
                 AddInbound ai = new AddInbound(_device);
                 ai.ShowDialog();
             }
