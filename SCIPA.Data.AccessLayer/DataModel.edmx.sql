@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2016 21:46:28
+-- Date Created: 03/20/2016 21:48:37
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,62 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_DeviceAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_DeviceAction];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Write]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Read]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeviceValue]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Values] DROP CONSTRAINT [FK_DeviceValue];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FileCommunicator_inherits_Communicator]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Communicators_FileCommunicator] DROP CONSTRAINT [FK_FileCommunicator_inherits_Communicator];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SerialCommunicator_inherits_Communicator]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Communicators_SerialCommunicator] DROP CONSTRAINT [FK_SerialCommunicator_inherits_Communicator];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DatabaseCommunicator_inherits_Communicator]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Communicators_DatabaseCommunicator] DROP CONSTRAINT [FK_DatabaseCommunicator_inherits_Communicator];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Actions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Actions];
+GO
+IF OBJECT_ID(N'[dbo].[Communicators]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Communicators];
+GO
+IF OBJECT_ID(N'[dbo].[Devices]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Devices];
+GO
+IF OBJECT_ID(N'[dbo].[Rules]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Rules];
+GO
+IF OBJECT_ID(N'[dbo].[Values]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Values];
+GO
+IF OBJECT_ID(N'[dbo].[AppData]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AppData];
+GO
+IF OBJECT_ID(N'[dbo].[Communicators_FileCommunicator]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Communicators_FileCommunicator];
+GO
+IF OBJECT_ID(N'[dbo].[Communicators_SerialCommunicator]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Communicators_SerialCommunicator];
+GO
+IF OBJECT_ID(N'[dbo].[Communicators_DatabaseCommunicator]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Communicators_DatabaseCommunicator];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables

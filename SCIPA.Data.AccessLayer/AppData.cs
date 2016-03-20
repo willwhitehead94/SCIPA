@@ -14,9 +14,9 @@ namespace SCIPA.Data.AccessLayer
     
     public partial class AppData
     {
-        public string BootName { get; set; }
         public string BusinessName { get; set; }
         public string Supervisor { get; set; }
         public string Enabled { get; set; }
+        public System.Guid Instance { get; set; }
     }
 }

@@ -405,12 +405,12 @@
         </Association>
         <EntityType Name="AppData">
           <Key>
-            <PropertyRef Name="BootName" />
+            <PropertyRef Name="Instance" />
           </Key>
-          <Property Name="BootName" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="BusinessName" Type="String" Nullable="false" />
           <Property Name="Supervisor" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="String" Nullable="false" />
+          <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -495,7 +495,6 @@
     <EntitySetMapping Name="AppData">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.AppData)">
         <MappingFragment StoreEntitySet="AppData">
-          <ScalarProperty Name="BootName" ColumnName="BootName" />
           <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
           <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
           <ScalarProperty Name="Enabled" ColumnName="Enabled" />
