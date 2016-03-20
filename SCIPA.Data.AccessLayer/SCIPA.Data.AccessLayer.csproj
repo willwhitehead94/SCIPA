@@ -51,20 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel.cs" />
-    <Compile Include="IDataController.cs" />
-    <Compile Include="DataController.cs" />
-    <Compile Include="Models\Action.cs" />
-    <Compile Include="Models\ApplicationInformation.cs" />
-    <Compile Include="Models\Communicator.cs" />
-    <Compile Include="Models\DatabaseCommunicator.cs" />
-    <Compile Include="Models\Device.cs" />
-    <Compile Include="Models\Enumerations.cs" />
-    <Compile Include="Models\FileCommunicator.cs" />
-    <Compile Include="Models\IDomainModel.cs" />
-    <Compile Include="Models\Rule.cs" />
-    <Compile Include="Models\SerialCommunicator.cs" />
-    <Compile Include="Models\Value.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +62,9 @@
       <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
       <Name>SCIPA.Domain.Generic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
