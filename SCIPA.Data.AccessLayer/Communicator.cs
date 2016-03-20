@@ -12,7 +12,7 @@ namespace SCIPA.Data.AccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Communicator
+    public abstract partial class Communicator
     {
         public int Id { get; set; }
         public string StartChar { get; set; }

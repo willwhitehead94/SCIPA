@@ -98,12 +98,12 @@
   </EntityType>
   <EntityType Name="AppData">
     <Key>
-      <PropertyRef Name="BootName" />
+      <PropertyRef Name="Instance" />
     </Key>
-    <Property Name="BootName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="BusinessName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Supervisor" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Enabled" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Instance" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Communicators_FileCommunicator">
     <Key>
@@ -274,7 +274,7 @@
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceAction" FromRole="Action" ToRole="Device" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Communicator">
+        <EntityType Name="Communicator" Abstract="true">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -495,6 +495,7 @@
     <EntitySetMapping Name="AppData">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.AppData)">
         <MappingFragment StoreEntitySet="AppData">
+          <ScalarProperty Name="Instance" ColumnName="Instance" />
           <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
           <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
           <ScalarProperty Name="Enabled" ColumnName="Enabled" />

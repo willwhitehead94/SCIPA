@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2016 21:48:37
+-- Date Created: 03/20/2016 21:52:03
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -128,10 +128,10 @@ GO
 
 -- Creating table 'AppData'
 CREATE TABLE [dbo].[AppData] (
-    [BootName] nvarchar(max)  NOT NULL,
     [BusinessName] nvarchar(max)  NOT NULL,
     [Supervisor] nvarchar(max)  NOT NULL,
-    [Enabled] nvarchar(max)  NOT NULL
+    [Enabled] nvarchar(max)  NOT NULL,
+    [Instance] uniqueidentifier  NOT NULL
 );
 GO
 
@@ -195,10 +195,10 @@ ADD CONSTRAINT [PK_Values]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [BootName] in table 'AppData'
+-- Creating primary key on [Instance] in table 'AppData'
 ALTER TABLE [dbo].[AppData]
 ADD CONSTRAINT [PK_AppData]
-    PRIMARY KEY CLUSTERED ([BootName] ASC);
+    PRIMARY KEY CLUSTERED ([Instance] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Communicators_FileCommunicator'
