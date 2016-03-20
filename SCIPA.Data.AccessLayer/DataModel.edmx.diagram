@@ -8,20 +8,8 @@
         <EntityTypeShape EntityType="DataModel.Action" Width="1.5" PointX="3.625" PointY="0.5" />
         <EntityTypeShape EntityType="DataModel.Communicator" Width="1.5" PointX="8.5" PointY="0.5" />
         <EntityTypeShape EntityType="DataModel.FileCommunicator" Width="1.5" PointX="6.625" PointY="4.25" />
-        <InheritanceConnector EntityType="DataModel.FileCommunicator" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.25" PointY="2.4802864583333335" />
-          <ConnectorPoint PointX="9.25" PointY="2.8167919270833335" />
-          <ConnectorPoint PointX="8.7086405619978589" PointY="2.8167919270833335" />
-          <ConnectorPoint PointX="8.7086405619978589" PointY="3.5" />
-          <ConnectorPoint PointX="8.125" PointY="3.5" />
-          <ConnectorPoint PointX="8.125" PointY="3.875" />
-          <ConnectorPoint PointX="7.375" PointY="3.875" />
-          <ConnectorPoint PointX="7.375" PointY="4.25" />
-        </InheritanceConnector>
         <EntityTypeShape EntityType="DataModel.SerialCommunicator" Width="1.5" PointX="8.375" PointY="3.75" />
-        <InheritanceConnector EntityType="DataModel.SerialCommunicator" />
         <EntityTypeShape EntityType="DataModel.DatabaseCommunicator" Width="1.5" PointX="10.25" PointY="3" />
-        <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" />
         <EntityTypeShape EntityType="DataModel.Device" Width="1.5" PointX="5.75" PointY="0.5" />
         <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3.375" PointY="2.5" />
         <EntityTypeShape EntityType="DataModel.Value" Width="1.5" PointX="1.625" PointY="1.75" />
@@ -31,6 +19,9 @@
         <AssociationConnector Association="DataModel.DeviceRule" />
         <AssociationConnector Association="DataModel.DeviceValue" />
         <EntityTypeShape EntityType="DataModel.AppData" Width="1.5" PointX="12.75" PointY="1" />
+        <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" />
+        <InheritanceConnector EntityType="DataModel.FileCommunicator" />
+        <InheritanceConnector EntityType="DataModel.SerialCommunicator" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
