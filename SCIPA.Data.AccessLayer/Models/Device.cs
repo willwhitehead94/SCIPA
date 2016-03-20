@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SCIPA.Data.AccessLayer.Models
 {
@@ -14,11 +15,14 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public bool Enabled { get; set; } = true;
 
-        public FileCommunicator InboundFile { get; set; }
+        [ForeignKey("Id")]
+        public virtual FileCommunicator InboundFile { get; set; }
 
-        public SerialCommunicator InboundSerial { get; set; }
+        [ForeignKey("Id")]
+        public virtual SerialCommunicator InboundSerial { get; set; }
 
-        public DatabaseCommunicator InboundDatabase { get; set; }
+        [ForeignKey("Id")]
+        public virtual DatabaseCommunicator InboundDatabase { get; set; }
 
         public object OutboundWriter { get; set; }
 

@@ -12,9 +12,20 @@ namespace SCIPA.Data.AccessLayer
     {
         private readonly DataModel _db = new DataModel();
 
-        public bool xxxx()
+        public DataController()
         {
-            return _db.Database.Exists();
+            try
+            {
+                _db.Database.Delete();
+            }
+            catch
+            {
+            }
+            _db.Database.CreateIfNotExists();
+
+            var cs = _db.Database.Connection.ConnectionString;
+            var isCompat =_db.Database.CompatibleWithModel(false);
+
         }
 
         public void SetApplicationInformation(ApplicationInformation ai)
@@ -114,12 +125,18 @@ namespace SCIPA.Data.AccessLayer
 
         public DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
         {
-            return _db.DatabaseCommunicators.FirstOrDefault(dc => dc.id == id);
+            return _db.DatabaseCommunicators.FirstOrDefault(dc => dc.Id == id);
         }
 
         public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
         {
-            return _db.DatabaseCommunicators.Where(dc => dc.Device.Id == deviceId).ToList();
+            return null;
+            //var comms = new List<DatabaseCommunicator>();
+            //comms.AddRange(_db.Devices.Where(d => d.Id == deviceId).);
+
+            //_db.Devices.
+
+            //return _db.DatabaseCommunicators.Where(dc => dc.Device.Id == deviceId).ToList();
         } 
 
         public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicators()
@@ -129,7 +146,7 @@ namespace SCIPA.Data.AccessLayer
 
         public void UpdateDatabaseCommunicator(DatabaseCommunicator dc)
         {
-            var toUpdate = RetrieveDatabaseCommunicator(dc.id);
+            var toUpdate = RetrieveDatabaseCommunicator(dc.Id);
             if (toUpdate != null)
             {
                 toUpdate = dc;
@@ -139,7 +156,7 @@ namespace SCIPA.Data.AccessLayer
 
         public void DeleteDatabaseCommunicator(DatabaseCommunicator dc)
         {
-            var toDelete = RetrieveDatabaseCommunicator(dc.id);
+            var toDelete = RetrieveDatabaseCommunicator(dc.Id);
             if (toDelete != null)
             {
                 _db.DatabaseCommunicators.Remove(toDelete);
@@ -151,6 +168,7 @@ namespace SCIPA.Data.AccessLayer
         {
             if (fc == null) return;
             _db.FileCommunicators.Add(fc);
+
             _db.SaveChanges();
         }
 
@@ -161,7 +179,8 @@ namespace SCIPA.Data.AccessLayer
 
         public ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
         {
-            return _db.FileCommunicators.Where(fc => fc.Device.Id == deviceId).ToList();
+            return null;
+            //return _db.FileCommunicators.Where(fc => fc.Device.Id == deviceId).ToList();
         }
 
         public ICollection<FileCommunicator> RetrieveFileCommunicators()
@@ -198,12 +217,13 @@ namespace SCIPA.Data.AccessLayer
 
         public SerialCommunicator RetrieveSerialCommunicator(int id)
         {
-            return _db.SerialCommunicators.FirstOrDefault(sc => sc.id == id);
+            return _db.SerialCommunicators.FirstOrDefault(sc => sc.Id == id);
         }
 
         public ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
         {
-            return _db.SerialCommunicators.Where(sc => sc.Device.Id == deviceId).ToList();
+            return null;
+            //return _db.SerialCommunicators.Where(sc => sc.Device.Id == deviceId).ToList();
         }
 
         public ICollection<SerialCommunicator> RetrieveSerialCommunicators()
@@ -213,7 +233,7 @@ namespace SCIPA.Data.AccessLayer
 
         public void UpdateSerialCommunicator(SerialCommunicator sc)
         {
-            var toUpdate = RetrieveSerialCommunicator(sc.id);
+            var toUpdate = RetrieveSerialCommunicator(sc.Id);
             if (toUpdate != null)
             {
                 toUpdate = sc;
@@ -223,7 +243,7 @@ namespace SCIPA.Data.AccessLayer
 
         public void DeleteSerialCommunicator(SerialCommunicator sc)
         {
-            var toDelete = RetrieveSerialCommunicator(sc.id);
+            var toDelete = RetrieveSerialCommunicator(sc.Id);
             if (toDelete != null)
             {
                 _db.SerialCommunicators.Remove(toDelete);

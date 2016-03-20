@@ -166,7 +166,7 @@ namespace SCIPA.Data.Repository
                 ValueValueType = ConvertToData(domainModel.ValueValueType),
                 connectionString = domainModel.connectionString,
                 databaseTypeId = domainModel.databaseTypeId,
-                id = domainModel.id,
+                Id = domainModel.Id,
                 query = domainModel.query
                 //Device = 
             };
@@ -176,7 +176,7 @@ namespace SCIPA.Data.Repository
         {
             return new DOM.DatabaseCommunicator()
             {
-                id = dataModel.id,
+                Id = dataModel.Id,
                 StartChar = dataModel.StartChar,
                 EndChar = dataModel.EndChar,
                 connectionString = dataModel.connectionString,
@@ -195,7 +195,7 @@ namespace SCIPA.Data.Repository
                 EndChar = domainModel.EndChar,
                 LastReadTime = domainModel.LastReadTime,
                 ValueValueType = ConvertToData(domainModel.ValueValueType),
-                Device = ConvertToData(domainModel.Device),
+                //Device = ConvertToData(domainModel.Device),
                 FilePath = domainModel.FilePath,
                 Id = domainModel.Id,
                 StartChar = domainModel.StartChar
@@ -227,7 +227,7 @@ namespace SCIPA.Data.Repository
                 baudRate = domainModel.baudRate,
                 comPort = domainModel.comPort,
                 dataBits = domainModel.dataBits,
-                id = domainModel.id,
+                Id = domainModel.Id,
                 isDTR = domainModel.isDTR,
                 isRTS = domainModel.isRTS
             };
@@ -241,7 +241,7 @@ namespace SCIPA.Data.Repository
                 baudRate = dataModel.baudRate,
                 comPort = dataModel.comPort,
                 dataBits = dataModel.dataBits,
-                id = dataModel.id,
+                Id = dataModel.Id,
                 isDTR = dataModel.isDTR,
                 isRTS = dataModel.isRTS,
                 EndChar = dataModel.EndChar,

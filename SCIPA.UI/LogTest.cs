@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
@@ -71,7 +72,7 @@ namespace SCIPA.UI
                 DatabaseType = DatabaseType.SQL,
                 ValueValueType = ValueType.String,
                 connectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
-                query = "SELECT TOP 1 id FROM dbo.Alarm ORDER BY id DESC"
+                query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
             };
 
             var dbRead = new DatabaseReader(new DatabaseHandler(dbComm));
@@ -107,7 +108,7 @@ namespace SCIPA.UI
             //    Custodian = "W. Whitehead",
             //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
             //    {
-            //        id = 1,
+            //        Id = 1,
             //        comPort = "COM3",
             //        StartChar = 0,
             //        EndChar = 0,
@@ -126,7 +127,7 @@ namespace SCIPA.UI
                 Custodian = "W. Whitehead",
                 InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
                 {
-                    id = 1,
+                    Id = 1,
                     comPort = "COM3",
                     StartChar = 0,
                     EndChar = 0,
@@ -137,7 +138,7 @@ namespace SCIPA.UI
                 }))
             });
 
-            //Domain.Logic.DeviceController.AllDevices.Add(new Device()
+            //Domain.Logic.DeviceController.AllCommunicators.Add(new Device()
             //{
             //    Id = 2,
             //    Name = "Arduino Uno Trend App 2",
@@ -145,7 +146,7 @@ namespace SCIPA.UI
             //    Custodian = "W. Whitehead",
             //    InboundReader = new DatabaseReader(new DatabaseHandler(new DatabaseCommunicator()
             //    {
-            //        id = ,
+            //        Id = ,
             //        EndChar = ,
             //        StartChar = ,
             //        LastReadTime = ,
@@ -157,7 +158,7 @@ namespace SCIPA.UI
             //    }));
             //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
             //    {
-            //        id = 1,
+            //        Id = 1,
             //        comPort = "COM3",
             //        StartChar = 0,
             //        EndChar = 0,
@@ -200,7 +201,7 @@ namespace SCIPA.UI
         }
 
         private void LogTest_Load(object sender, EventArgs e)
-        {
+        { 
             this.Text = SCIPA.Domain.Logic.Properties.Settings.Default.UserName;
         }
 

@@ -9,6 +9,7 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public string FilePath { get; set; }
 
+        [ForeignKey("Id")]
         public virtual Device Device { get; set; }
     }
 }

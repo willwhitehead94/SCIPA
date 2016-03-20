@@ -20,7 +20,6 @@ namespace SCIPA.UI
         public CreateDevice()
         {
             InitializeComponent();
-            _controller.CheckDb();
         }
 
         private void CreateDevice_Load(object sender, EventArgs e)

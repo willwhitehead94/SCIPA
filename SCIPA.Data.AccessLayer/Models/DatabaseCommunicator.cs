@@ -5,7 +5,8 @@ namespace SCIPA.Data.AccessLayer.Models
     public partial class DatabaseCommunicator : Communicator, IDomainModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public int Id { get; set; }
+
         public string connectionString { get; set; }
 
         public string query { get; set; }
@@ -14,6 +15,6 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public virtual DatabaseType DatabaseType { get; set; }
 
-        public virtual Device Device { get; set; }
+        //public virtual Device Device { get; set; }
     }
 }

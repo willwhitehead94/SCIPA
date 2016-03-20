@@ -18,7 +18,7 @@ namespace SCIPA.UI
     {
         private Device _device = null;
         private Communicator _communicator = null;
-        private DeviceController _controller = new DeviceController();
+        private CommunicatorController _controller = new CommunicatorController();
 
         public AddInbound(Device device)
         {
@@ -31,7 +31,7 @@ namespace SCIPA.UI
             lHeader.Text = string.Format(lHeader.Text, _device.Id.ToString(), _device.Name);
             cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
             cbDBType.DataSource = Enum.GetValues(typeof (DatabaseType));
-            cbComPort.DataSource = SerialPort.GetPortNames();
+            bReloadSerialCommList.PerformClick();
         }
 
         private void CheckCommunicatorIsDatabase()
@@ -159,9 +159,9 @@ namespace SCIPA.UI
                     Device = _device
                 };
             }
-
+            
             _device.InboundReader = _communicator;
-            _controller.SaveDevice(_device);
+            _controller.SaveCommunicator(_communicator);
         }
 
         private int GetStartChar()
@@ -183,6 +183,25 @@ namespace SCIPA.UI
             }
 
             return end;
+        }
+
+        /// <summary>
+        /// Checks the operating system for a list of available COM ports.
+        /// Does not check that the port is operable (in that a port 
+        /// already in use will be displayed).
+        /// The combobox will be updated on each performed click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bReloadSerialCommList_Click(object sender, EventArgs e)
+        {
+            cbComPort.DataSource = SerialPort.GetPortNames();
+            cbComPort.Refresh();
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("The returned value is " + _controller.GetMaxId<DatabaseCommunicator>());
         }
     }
 }

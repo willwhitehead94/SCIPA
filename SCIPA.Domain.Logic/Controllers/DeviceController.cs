@@ -15,11 +15,6 @@ namespace SCIPA.Domain.Logic
 
         private readonly DataRepository _repo = new DataRepository();
 
-        public void CheckDb()
-        {
-            _repo.CheckDb();
-        }
-
         public ICollection<Device> GetAllDevices(bool refresh=false)
         {
             if (refresh)
@@ -60,6 +55,7 @@ namespace SCIPA.Domain.Logic
         public bool SaveDevice(Device device)
         {
             bool devExists = _repo.RetrieveDevice(device.Id) != null;
+            device = PrepareCommunicatorInfo(device);
 
             try
             {
@@ -76,6 +72,12 @@ namespace SCIPA.Domain.Logic
                 return true;
             }
             catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
+        }
+
+        public Device PrepareCommunicatorInfo(Device device)
+        {
+            device.InboundReader = (Communicator) device.InboundReader;
+            return device;
         }
 
         public Device RetrieveDevice(int id, bool secondPass=false)

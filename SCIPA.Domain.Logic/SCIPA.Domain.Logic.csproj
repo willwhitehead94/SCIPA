@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommunicatorController.cs" />
     <Compile Include="DatabaseConnectionManager.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

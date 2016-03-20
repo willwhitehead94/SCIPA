@@ -2,7 +2,7 @@ namespace SCIPA.Models
 {
     public partial class SerialCommunicator : Communicator, IDomainModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public string comPort { get; set; }
 

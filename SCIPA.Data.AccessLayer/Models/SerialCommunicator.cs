@@ -5,7 +5,7 @@ namespace SCIPA.Data.AccessLayer.Models
     public partial class SerialCommunicator : Communicator, IDomainModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public string comPort { get; set; }
 
@@ -17,6 +17,6 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public bool? isDTR { get; set; }
 
-        public virtual  Device Device { get; set; }
+        //public virtual  Device Device { get; set; }
     }
 }
