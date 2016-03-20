@@ -16,13 +16,13 @@ namespace SCIPA.Data.AccessLayer.Models
         public bool Enabled { get; set; } = true;
 
         [ForeignKey("Id")]
-        public virtual FileCommunicator InboundFile { get; set; }
+        public virtual FileCommunicator InboundFile { get; set; } = null;
 
         [ForeignKey("Id")]
-        public virtual SerialCommunicator InboundSerial { get; set; }
+        public virtual SerialCommunicator InboundSerial { get; set; } = null;
 
         [ForeignKey("Id")]
-        public virtual DatabaseCommunicator InboundDatabase { get; set; }
+        public virtual DatabaseCommunicator InboundDatabase { get; set; } = null;
 
         public object OutboundWriter { get; set; }
 

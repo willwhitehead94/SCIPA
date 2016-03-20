@@ -161,7 +161,7 @@ namespace SCIPA.UI
             }
             
             _device.InboundReader = _communicator;
-            _controller.SaveCommunicator(_communicator);
+            _controller.SaveCommunicator(_communicator, _device);
         }
 
         private int GetStartChar()

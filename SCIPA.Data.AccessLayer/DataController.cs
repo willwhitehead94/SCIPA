@@ -14,17 +14,17 @@ namespace SCIPA.Data.AccessLayer
 
         public DataController()
         {
-            try
-            {
-                _db.Database.Delete();
-            }
-            catch
-            {
-            }
-            _db.Database.CreateIfNotExists();
+            //try
+            //{
+            //    _db.Database.Delete();
+            //}
+            //catch
+            //{
+            //}
+            //_db.Database.CreateIfNotExists();
 
             var cs = _db.Database.Connection.ConnectionString;
-            var isCompat =_db.Database.CompatibleWithModel(false);
+            var isCompat =_db.Database.CompatibleWithModel(true);
 
         }
 

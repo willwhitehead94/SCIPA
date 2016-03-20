@@ -6,6 +6,10 @@ namespace SCIPA.Data.AccessLayer.Models
 {
     public abstract class Communicator
     {
+        //[Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         public int StartChar { get; set; }
 
         public int EndChar { get; set; }
@@ -14,7 +18,7 @@ namespace SCIPA.Data.AccessLayer.Models
 
         public ValueType ValueValueType { get; set; }
 
-        [Required]
-        public Device Device { get; set; }
+        //[ForeignKey("Id")]
+        public virtual Device Device { get; set; }
     }
 }

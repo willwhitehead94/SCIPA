@@ -84,14 +84,15 @@ namespace SCIPA.Domain.Logic
 
         }
 
-        public void SaveCommunicator(FileCommunicator ffComm)
+        public void SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
         {
+            ffComm.Device = parentDevice;
             _repo.CreateFileCommunicator(ffComm);
             var deviceController = new DeviceController();
             var x = deviceController.SaveDevice(ffComm.Device);
         }
 
-        public void SaveCommunicator(Communicator generalComm)
+        public void SaveCommunicator(Communicator generalComm, Device parentDevice)
         {
             var dbValue = 0;
 
@@ -106,7 +107,7 @@ namespace SCIPA.Domain.Logic
                     dbValue = allSComms.Count == 0 ? allSComms.Count : allSComms.Max(c => c.Id);
                     break;
                 case "FileCommunicator":
-                    SaveCommunicator((FileCommunicator)generalComm);
+                    SaveCommunicator((FileCommunicator)generalComm,parentDevice);
                     break;
                 default:
                     return;
