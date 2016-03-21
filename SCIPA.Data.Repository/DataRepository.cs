@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SCIPA.Domain.Generic;
 using DOM = SCIPA.Models;
 using DAL = SCIPA.Data.AccessLayer;
 using Action = SCIPA.Models.Action;
@@ -14,7 +13,7 @@ namespace SCIPA.Data.Repository
         /// Data Controller object from the DAL. Acts as the intermediary between the repository and 
         /// the database.
         /// </summary>
-        readonly AccessLayer.DataController _dbController = new AccessLayer.DataController();
+        readonly DAL.DataController _dbController = new AccessLayer.DataController();
 
         /// <summary>
         /// Converter tool to convert models from Domain to Data and vice versa.
@@ -24,62 +23,76 @@ namespace SCIPA.Data.Repository
 
         public void CreateDevice(DOM.Device device)
         {
-            throw new NotImplementedException();
+            _dbController.CreateDevice(_converter.ConvertToData(device));
         }
 
         public DOM.Device RetrieveDevice(int id)
         {
-            throw new NotImplementedException();
+            return _converter.ConvertToDomain(_dbController.RetrieveDevice(id));
         }
 
         public ICollection<DOM.Device> RetrieveAllDevices()
         {
-            throw new NotImplementedException();
+            return _dbController.RetrieveDevices().Select(dev => _converter.ConvertToDomain(dev)).ToList();
         }
 
         public void UpdateDevice(DOM.Device device)
         {
-            throw new NotImplementedException();
+            _dbController.UpdateDevice(_converter.ConvertToData(device));
         }
 
         public void DisableDevice(DOM.Device device)
         {
-            throw new NotImplementedException();
+            _dbController.DeleteDevice(_converter.ConvertToData(device));
         }
 
         public void CreateOrUpdateDevice(DOM.Device device)
         {
-            throw new NotImplementedException();
+            //Ensure the passed device is valid.
+            if (device.Id > 0 )
+            {
+                var retrievedDevice = RetrieveDevice(device.Id);
+
+                if (retrievedDevice != null)
+                {
+                    //If a device was retrieved then the update method is called.
+                    _dbController.UpdateDevice(_converter.ConvertToData(retrievedDevice));
+                    return;
+                }
+            }
+
+            //If not found/not retrieved - create new.
+            _dbController.CreateDevice(_converter.ConvertToData(device));
         }
 
         public void CreateAction(Action action)
         {
-            throw new NotImplementedException();
+            _dbController.CreateAction(_converter.ConvertToData(action));
         }
 
         public Action RetrieveAction(int id)
         {
-            throw new NotImplementedException();
+            return _converter.ConvertToDomain(_dbController.RetrieveAction(id));
         }
 
         public ICollection<Action> RetrieveActionsForDevice(int deviceId)
         {
-            throw new NotImplementedException();
+            return _dbController.RetrieveActionsForDevice(deviceId).Select(action => _converter.ConvertToDomain(action)).ToList();
         }
 
         public ICollection<Action> RetrieveAllActions()
         {
-            throw new NotImplementedException();
+            return _dbController.RetrieveActions().Select(action => _converter.ConvertToDomain(action)).ToList();
         }
 
         public void UpdateAction(Action action)
         {
-            throw new NotImplementedException();
+            _dbController.UpdateAction(_converter.ConvertToData(action));
         }
 
         public void DeleteAction(Action action)
         {
-            throw new NotImplementedException();
+            _dbController.DeleteAction(_converter.ConvertToData(action));
         }
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)

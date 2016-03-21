@@ -26,7 +26,7 @@ namespace SCIPA.Data.AccessLayer
             return _db.AppData.First();
         }
 
-        public void CreateNewDevice(Device device)
+        public void CreateDevice(Device device)
         {
             _db.Devices.Add(device);
             _db.SaveChanges();
@@ -62,7 +62,7 @@ namespace SCIPA.Data.AccessLayer
             }
         }
 
-        public void CreateNewAction(Action action)
+        public void CreateAction(Action action)
         {
             _db.Actions.Add(action);
         }
