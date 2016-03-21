@@ -139,12 +139,12 @@ namespace SCIPA.UI
                 {
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    ValueValueType = (Models.ValueType)cbValueType.SelectedItem,
-                    baudRate = Convert.ToInt32(tBaud.Text),
-                    comPort = cbComPort.SelectedText,
-                    dataBits = Convert.ToByte(tBit.Text),
-                    isDTR = cDTR.Checked,
-                    isRTS = cRTS.Checked,
+                    ValueType = (Models.ValueType)cbValueType.SelectedItem,
+                    BaudRate = Convert.ToInt32(tBaud.Text),
+                    ComPort = cbComPort.SelectedText,
+                    DataBits = Convert.ToByte(tBit.Text),
+                    IsDTR = cDTR.Checked,
+                    IsRTS = cRTS.Checked,
                     Device = _device
                 };
             }

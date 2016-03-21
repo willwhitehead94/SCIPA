@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using SCIPA.Domain.Generic;
 using DOM = SCIPA.Models;
-using DOMR = SCIPA.Models.Resources;
 using DAL = SCIPA.Data.AccessLayer;
 using Action = SCIPA.Models.Action;
 
@@ -22,316 +21,225 @@ namespace SCIPA.Data.Repository
         /// </summary>
         readonly Converter _converter = new Converter();
 
-        /// <summary>
-        /// Passes a new Device to the database for insertion.
-        /// </summary>
-        /// <param name="device">New Device.</param>
+
         public void CreateDevice(DOM.Device device)
         {
-            if (device == null) return;
-
-            //check the device has not already been assigned an ID
-            if (device.Id == int.MinValue) 
-            {
-                //do the checks to make sure nothing is null
-            }
-
-            //Pass the device object through the converter and onto the dbController.
-            _dbController.CreateNewDevice(_converter.ConvertToData(device));
-            DebugOutput.Print("New device created: ", device.Id.ToString());
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Retrieve a specific Device from the database.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public DOM.Device RetrieveDevice(int id)
         {
-            return _converter.ConvertToDomain(_dbController.RetrieveDevice(id));
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Get all Devices stored on the database.
-        /// </summary>
-        /// <returns></returns>
         public ICollection<DOM.Device> RetrieveAllDevices()
         {
-            List<DOM.Device> devList = new List<DOM.Device>();
-
-            foreach (var device in _dbController.RetrieveDevices())
-            {
-                devList.Add(_converter.ConvertToDomain(device));
-            }
-
-            return devList;
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Passes an existing Device object back to the database to update it.
-        /// </summary>
-        /// <param name="device">Updated Device object.</param>
         public void UpdateDevice(DOM.Device device)
         {
-            if (device == null) return;
-
-            _dbController.UpdateDevice(_converter.ConvertToData(device));
-            DebugOutput.Print("Device has been updated: ",device.Id.ToString());
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Delete an existing Device object from the database.
-        /// </summary>
-        /// <param name="device"></param>
         public void DisableDevice(DOM.Device device)
         {
-            if (device == null) return;
-
-            _dbController.DeleteDevice(_converter.ConvertToData(device));
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// If an objects existance is unknown, check the database.
-        /// If found, update, otherwise create new.
-        /// </summary>
-        /// <param name="device">Unknown Device object.</param>
-        public void CreateOrUpdateDevice(Models.Device device)
+        public void CreateOrUpdateDevice(DOM.Device device)
         {
-            if (device == null) return;
-
-            if (RetrieveDevice(device.Id) == null)
-            {
-                device.Id = int.MinValue;
-                CreateDevice(device);
-            }
-            else
-            {
-                UpdateDevice(device);
-            }
+            throw new NotImplementedException();
         }
-
-
-
 
         public void CreateAction(Action action)
         {
-            if (action == null) return;
-
-            //check the object has not already been assigned an ID
-            if (action.Id == int.MinValue)
-            {
-                //do the checks to make sure nothing is null
-            }
-
-            //Pass the object through the converter and onto the dbController.
-            _dbController.CreateNewAction(_converter.ConvertToData(action));
+            throw new NotImplementedException();
         }
 
         public Action RetrieveAction(int id)
         {
-            return _converter.ConvertToDomain(_dbController.RetrieveAction(id));
+            throw new NotImplementedException();
         }
 
         public ICollection<Action> RetrieveActionsForDevice(int deviceId)
         {
-            return _dbController.RetrieveActionsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
         public ICollection<Action> RetrieveAllActions()
         {
-            return _dbController.RetrieveActions().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
         public void UpdateAction(Action action)
         {
-            _dbController.UpdateAction(_converter.ConvertToData(action));
+            throw new NotImplementedException();
         }
 
         public void DeleteAction(Action action)
         {
-            _dbController.DeleteAction(_converter.ConvertToData(action));
+            throw new NotImplementedException();
         }
-
-
-
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
         {
-            if (databaseCommunicator == null) return;
-            _dbController.CreateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+            throw new NotImplementedException();
         }
 
-        //public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
-        //{
-        //    return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
-        //}
+        public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
-        //{
-        //    return _dbController.RetrieveDatabaseCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
-        //{
-        //    return _dbController.RetrieveDatabaseCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        //{
-        //    _dbController.UpdateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
-        //}
+        public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        //{
-        //    _dbController.DeleteDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
-        //}
-
-
-
+        public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
         public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
-            if (fileCommunicator == null) return;
-            _dbController.CreateFileCommunicator(_converter.ConvertToData(fileCommunicator));
+            throw new NotImplementedException();
         }
 
-        //public DOM.FileCommunicator RetrieveFileCommunicator(int id)
-        //{
-        //    return _converter.ConvertToDomain(_dbController.RetrieveFileCommunicator(id));
-        //}
+        public DOM.FileCommunicator RetrieveFileCommunicator(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
-        //{
-        //    return _dbController.RetrieveFileCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
-        //{
-        //    return _dbController.RetrieveFileCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        //{
-        //    _dbController.UpdateFileCommunicator(_converter.ConvertToData(fileCommunicator));
-        //}
+        public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        //{
-        //    _dbController.DeleteFileCommunicator(_converter.ConvertToData(fileCommunicator));
-        //}
-
-
-
+        public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
         public void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
         {
-            if (serialCommunicator == null) return;
-            _dbController.CreateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+            throw new NotImplementedException();
         }
 
-        //public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
-        //{
-        //    return _converter.ConvertToDomain(_dbController.RetrieveSerialCommunicator(id));
-        //}
+        public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
-        //{
-        //    return _dbController.RetrieveSerialCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
-        //{
-        //    return _dbController.RetrieveSerialCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        //}
+        public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        //{
-        //    _dbController.UpdateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
-        //}
+        public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        //{
-        //    _dbController.DeleteSerialCommunicator(_converter.ConvertToData(serialCommunicator));
-        //}
-
-
-
+        public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        {
+            throw new NotImplementedException();
+        }
 
         public void CreateRule(DOM.Rule rule)
         {
-            if (rule == null) return;
-            _dbController.CreateRule(_converter.ConvertToData(rule));
+            throw new NotImplementedException();
         }
 
         public DOM.Rule RetrieveRule(int id)
         {
-            return _converter.ConvertToDomain(_dbController.RetrieveRule(id));
+            throw new NotImplementedException();
         }
 
         public ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId)
         {
-            return _dbController.RetrieveRulesForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
         public ICollection<DOM.Rule> RetrieveAllRules()
         {
-            return _dbController.RetrieveRules().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
         public void UpdateRule(DOM.Rule rule)
         {
-            _dbController.UpdateRule(_converter.ConvertToData(rule));
+            throw new NotImplementedException();
         }
 
         public void DeleteRule(DOM.Rule rule)
         {
-            _dbController.DeleteRule(_converter.ConvertToData(rule));
+            throw new NotImplementedException();
         }
 
-
-
-
-        public void CreateValue(DOMR.Value value)
+        public void CreateValue(DOM.Value value)
         {
-            if (value == null) return;
-            _dbController.CreateValue(_converter.ConvertToData(value));
-            Console.WriteLine("Outputting data --> " + value.StringValue);
+            throw new NotImplementedException();
         }
 
-        public DOMR.Value RetrieveValue(int id)
+        public DOM.Value RetrieveValue(int id)
         {
-            return _converter.ConvertToDomain(_dbController.RetrieveValue(id));
+            throw new NotImplementedException();
         }
 
-        public ICollection<DOMR.Value> RetrieveValuesForDevice(int deviceId)
+        public ICollection<DOM.Value> RetrieveValuesForDevice(int deviceId)
         {
-            return _dbController.RetrieveValuesForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
-        public ICollection<DOMR.Value> RetrieveAllValues()
+        public ICollection<DOM.Value> RetrieveAllValues()
         {
-            return _dbController.RetrieveValues().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+            throw new NotImplementedException();
         }
 
-        public void UpdateValue(DOMR.Value value)
+        public void UpdateValue(DOM.Value value)
         {
-            _dbController.UpdateValue(_converter.ConvertToData(value));
+            throw new NotImplementedException();
         }
 
-        public void DeleteValue(DOMR.Value value)
+        public void DeleteValue(DOM.Value value)
         {
-            _dbController.DeleteValue(_converter.ConvertToData(value));
+            throw new NotImplementedException();
         }
 
-
-        public DOM.ApplicationInformation GetApplicationInformation()
+        public DOM.AppData GetApplicationInformation()
         {
-            return _converter.ConvertToDomain(_dbController.GetAppData());
+            throw new NotImplementedException();
         }
 
-        public void SetApplicationInformation(DOM.ApplicationInformation ai)
+        public void SetApplicationInformation(DOM.AppData ai)
         {
-            _dbController.SetAppData(_converter.ConvertToData(ai));
+            throw new NotImplementedException();
         }
     }
 }
