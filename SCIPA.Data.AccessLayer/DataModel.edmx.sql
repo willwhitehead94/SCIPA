@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/21/2016 15:30:34
+-- Date Created: 03/21/2016 18:17:19
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -91,7 +91,8 @@ CREATE TABLE [dbo].[Communicators] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [StartChar] nvarchar(max)  NOT NULL,
     [EndChar] nvarchar(max)  NOT NULL,
-    [LastReadTime] nvarchar(max)  NOT NULL
+    [LastReadTime] nvarchar(max)  NOT NULL,
+    [Type] smallint  NOT NULL
 );
 GO
 
@@ -112,7 +113,8 @@ GO
 -- Creating table 'Rules'
 CREATE TABLE [dbo].[Rules] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [DeviceId] int  NOT NULL
+    [DeviceId] int  NOT NULL,
+    [Type] smallint  NOT NULL
 );
 GO
 
@@ -122,7 +124,8 @@ CREATE TABLE [dbo].[Values] (
     [EventTime] nvarchar(max)  NOT NULL,
     [StringValue] nvarchar(max)  NOT NULL,
     [Inbound] nvarchar(max)  NOT NULL,
-    [DeviceId] int  NOT NULL
+    [DeviceId] int  NOT NULL,
+    [Type] smallint  NOT NULL
 );
 GO
 
@@ -157,6 +160,7 @@ GO
 CREATE TABLE [dbo].[Communicators_DatabaseCommunicator] (
     [ConnectionString] nvarchar(max)  NOT NULL,
     [Query] nvarchar(max)  NOT NULL,
+    [DbType] smallint  NOT NULL,
     [Id] int  NOT NULL
 );
 GO

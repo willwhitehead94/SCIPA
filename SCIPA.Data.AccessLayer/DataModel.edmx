@@ -64,6 +64,7 @@
     <Property Name="StartChar" Type="nvarchar(max)" Nullable="false" />
     <Property Name="EndChar" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastReadTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -85,6 +86,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Values">
     <Key>
@@ -95,6 +97,7 @@
     <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Inbound" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -129,6 +132,7 @@
     </Key>
     <Property Name="ConnectionString" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Query" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DbType" Type="smallint" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="DeviceAction">
@@ -438,6 +442,7 @@
           <ScalarProperty Name="StartChar" ColumnName="StartChar" />
           <ScalarProperty Name="EndChar" ColumnName="EndChar" />
           <ScalarProperty Name="LastReadTime" ColumnName="LastReadTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.FileCommunicator)">
@@ -461,6 +466,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
           <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="DbType" ColumnName="DbType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -482,6 +488,7 @@
         <MappingFragment StoreEntitySet="Rules">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -493,6 +500,7 @@
           <ScalarProperty Name="StringValue" ColumnName="StringValue" />
           <ScalarProperty Name="Inbound" ColumnName="Inbound" />
           <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
