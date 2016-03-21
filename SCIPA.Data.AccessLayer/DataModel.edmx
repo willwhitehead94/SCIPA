@@ -283,6 +283,7 @@
           <Property Name="EndChar" Type="String" Nullable="false" />
           <Property Name="LastReadTime" Type="String" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Communicator" ToRole="Device" />
+          <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
@@ -297,6 +298,7 @@
         <EntityType Name="DatabaseCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="ConnectionString" Type="String" Nullable="false" />
           <Property Name="Query" Type="String" Nullable="false" />
+          <Property Name="DbType" Type="DataModel.DatabaseType" Nullable="false" />
         </EntityType>
         <EntityType Name="Device">
           <Key>
@@ -322,6 +324,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceRule" FromRole="Rule" ToRole="Device" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="DataModel.RuleType" Nullable="false" />
         </EntityType>
         <EntityType Name="Value">
           <Key>
@@ -333,6 +336,7 @@
           <Property Name="Inbound" Type="String" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceValue" FromRole="Value" ToRole="Device" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
         </EntityType>
         <EnumType Name="ValueType" UnderlyingType="Int16">
           <Member Name="String" />

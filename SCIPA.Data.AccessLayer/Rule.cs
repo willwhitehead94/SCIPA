@@ -16,6 +16,7 @@ namespace SCIPA.Data.AccessLayer
     {
         public int Id { get; set; }
         public int DeviceId { get; set; }
+        public RuleType Type { get; set; }
     
         public virtual Device Device { get; set; }
     }

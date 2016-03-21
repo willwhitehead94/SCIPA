@@ -2,7 +2,6 @@
 using System.Threading;
 using SCIPA.Models;
 using SCIPA.Domain.Logic;
-using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound

@@ -16,5 +16,6 @@ namespace SCIPA.Data.AccessLayer
     {
         public string ConnectionString { get; set; }
         public string Query { get; set; }
+        public DatabaseType DbType { get; set; }
     }
 }
