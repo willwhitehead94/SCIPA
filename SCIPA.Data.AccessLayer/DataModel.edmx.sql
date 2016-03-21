@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2016 21:53:59
+-- Date Created: 03/21/2016 15:30:34
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[Devices] (
     [Name] nvarchar(max)  NOT NULL,
     [Location] nvarchar(max)  NOT NULL,
     [Custodian] nvarchar(max)  NOT NULL,
-    [Enabled] nvarchar(max)  NOT NULL,
+    [Enabled] bit  NOT NULL,
     [InboundValues] nvarchar(max)  NOT NULL,
     [OutboundValues] nvarchar(max)  NOT NULL,
     [Writer_Id] int  NOT NULL,

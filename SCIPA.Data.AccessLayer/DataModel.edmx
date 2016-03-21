@@ -73,7 +73,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Custodian" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Enabled" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
     <Property Name="InboundValues" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OutboundValues" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Writer_Id" Type="int" Nullable="false" />

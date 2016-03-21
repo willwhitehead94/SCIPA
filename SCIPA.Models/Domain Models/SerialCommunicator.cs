@@ -1,17 +1,14 @@
-namespace SCIPA.Models
+namespace SCIPA.Data.AccessLayer
 {
-    public partial class SerialCommunicator : Communicator, IDomainModel
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class SerialCommunicator : Communicator
     {
-        public int Id { get; set; }
-
-        public string comPort { get; set; }
-
-        public int baudRate { get; set; }
-
-        public byte dataBits { get; set; }
-
-        public bool? isRTS { get; set; }
-
-        public bool? isDTR { get; set; }
+        public string ComPort { get; set; }
+        public string BaudRate { get; set; }
+        public string DataBits { get; set; }
+        public string IsRTS { get; set; }
+        public string IsDTR { get; set; }
     }
 }

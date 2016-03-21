@@ -1,28 +1,33 @@
-﻿using System.Collections.Generic;
-using SCIPA.Models.Resources;
-
-namespace SCIPA.Models
+namespace SCIPA.Data.AccessLayer
 {
-    public class Device
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Device
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Device()
+        {
+            this.Actions = new HashSet<Action>();
+            this.Rules = new HashSet<Rule>();
+            this.Values = new HashSet<Value>();
+        }
+    
         public int Id { get; set; }
-
         public string Name { get; set; }
-
         public string Location { get; set; }
-
         public string Custodian { get; set; }
-
-        public bool Enabled { get; set; } = true;
-
-        public object InboundReader { get; set; }
-
-        public object OutboundWriter { get; set; }
-
-        public ICollection<Value> InboundValues { get; set; }
-
-        public ICollection<Value> OutboundValues { get; set; }
-
-        public ICollection<Rule> Rules { get; set; }
+        public bool Enabled { get; set; }
+        public string InboundValues { get; set; }
+        public string OutboundValues { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Action> Actions { get; set; }
+        public virtual Communicator Writer { get; set; }
+        public virtual Communicator Reader { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rule> Rules { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Value> Values { get; set; }
     }
 }

@@ -1,9 +1,10 @@
-namespace SCIPA.Models
+namespace SCIPA.Data.AccessLayer
 {
-    public partial class FileCommunicator : Communicator, IDomainModel
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class FileCommunicator : Communicator
     {
-        public int Id { get; set; }
-
         public string FilePath { get; set; }
     }
 }
