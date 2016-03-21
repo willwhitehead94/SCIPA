@@ -306,7 +306,7 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Location" Type="String" Nullable="false" />
           <Property Name="Custodian" Type="String" Nullable="false" />
-          <Property Name="Enabled" Type="String" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="InboundValues" Type="String" Nullable="false" />
           <Property Name="OutboundValues" Type="String" Nullable="false" />
           <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />

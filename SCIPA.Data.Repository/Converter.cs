@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SCIPA.Domain.Generic;
-using DAL = SCIPA.Data.AccessLayer.Models; //DataBase Model
+using DAL = SCIPA.Data.AccessLayer; //DataBase Model
 using DOM = SCIPA.Models; //DoMain Model
 using DOMR = SCIPA.Models.Resources;
 

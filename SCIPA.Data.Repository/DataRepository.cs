@@ -4,7 +4,7 @@ using System.Linq;
 using SCIPA.Domain.Generic;
 using DOM = SCIPA.Models;
 using DOMR = SCIPA.Models.Resources;
-using DAL = SCIPA.Data.AccessLayer.Models;
+using DAL = SCIPA.Data.AccessLayer;
 using Action = SCIPA.Models.Action;
 
 namespace SCIPA.Data.Repository
@@ -161,30 +161,30 @@ namespace SCIPA.Data.Repository
             _dbController.CreateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
         }
 
-        public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
-        {
-            return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
-        }
+        //public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
+        //{
+        //    return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
+        //}
 
-        public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
-        {
-            return _dbController.RetrieveDatabaseCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
+        //{
+        //    return _dbController.RetrieveDatabaseCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
-        {
-            return _dbController.RetrieveDatabaseCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
+        //{
+        //    return _dbController.RetrieveDatabaseCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        {
-            _dbController.UpdateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
-        }
+        //public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        //{
+        //    _dbController.UpdateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+        //}
 
-        public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        {
-            _dbController.DeleteDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
-        }
+        //public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        //{
+        //    _dbController.DeleteDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
+        //}
 
 
 
@@ -195,30 +195,30 @@ namespace SCIPA.Data.Repository
             _dbController.CreateFileCommunicator(_converter.ConvertToData(fileCommunicator));
         }
 
-        public DOM.FileCommunicator RetrieveFileCommunicator(int id)
-        {
-            return _converter.ConvertToDomain(_dbController.RetrieveFileCommunicator(id));
-        }
+        //public DOM.FileCommunicator RetrieveFileCommunicator(int id)
+        //{
+        //    return _converter.ConvertToDomain(_dbController.RetrieveFileCommunicator(id));
+        //}
 
-        public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
-        {
-            return _dbController.RetrieveFileCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
+        //{
+        //    return _dbController.RetrieveFileCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
-        {
-            return _dbController.RetrieveFileCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
+        //{
+        //    return _dbController.RetrieveFileCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        {
-            _dbController.UpdateFileCommunicator(_converter.ConvertToData(fileCommunicator));
-        }
+        //public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        //{
+        //    _dbController.UpdateFileCommunicator(_converter.ConvertToData(fileCommunicator));
+        //}
 
-        public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        {
-            _dbController.DeleteFileCommunicator(_converter.ConvertToData(fileCommunicator));
-        }
+        //public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        //{
+        //    _dbController.DeleteFileCommunicator(_converter.ConvertToData(fileCommunicator));
+        //}
 
 
 
@@ -229,30 +229,30 @@ namespace SCIPA.Data.Repository
             _dbController.CreateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
         }
 
-        public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
-        {
-            return _converter.ConvertToDomain(_dbController.RetrieveSerialCommunicator(id));
-        }
+        //public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
+        //{
+        //    return _converter.ConvertToDomain(_dbController.RetrieveSerialCommunicator(id));
+        //}
 
-        public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
-        {
-            return _dbController.RetrieveSerialCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
+        //{
+        //    return _dbController.RetrieveSerialCommunicatorsForDevice(deviceId).Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
-        {
-            return _dbController.RetrieveSerialCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
-        }
+        //public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
+        //{
+        //    return _dbController.RetrieveSerialCommunicators().Select(obj => _converter.ConvertToDomain(obj)).ToList();
+        //}
 
-        public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        {
-            _dbController.UpdateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
-        }
+        //public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        //{
+        //    _dbController.UpdateSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+        //}
 
-        public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        {
-            _dbController.DeleteSerialCommunicator(_converter.ConvertToData(serialCommunicator));
-        }
+        //public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
+        //{
+        //    _dbController.DeleteSerialCommunicator(_converter.ConvertToData(serialCommunicator));
+        //}
 
 
 
@@ -326,12 +326,12 @@ namespace SCIPA.Data.Repository
 
         public DOM.ApplicationInformation GetApplicationInformation()
         {
-            return _converter.ConvertToDomain(_dbController.GetApplicationInformation());
+            return _converter.ConvertToDomain(_dbController.GetAppData());
         }
 
         public void SetApplicationInformation(DOM.ApplicationInformation ai)
         {
-            _dbController.SetApplicationInformation(_converter.ConvertToData(ai));
+            _dbController.SetAppData(_converter.ConvertToData(ai));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SCIPA.Data.AccessLayer
         public string Name { get; set; }
         public string Location { get; set; }
         public string Custodian { get; set; }
-        public string Enabled { get; set; }
+        public bool Enabled { get; set; }
         public string InboundValues { get; set; }
         public string OutboundValues { get; set; }
     
