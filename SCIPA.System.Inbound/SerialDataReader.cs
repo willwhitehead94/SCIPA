@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 
 namespace SCIPA.Domain.Inbound
 {

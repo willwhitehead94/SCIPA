@@ -14,7 +14,6 @@ using SCIPA.Domain.Logic;
 using SCIPA.DomainLogic;
 using SCIPA.Models;
 using ValueType = SCIPA.Models.ValueType;
-using SCIPA.Models.Resources;
 
 namespace SCIPA.UI
 {

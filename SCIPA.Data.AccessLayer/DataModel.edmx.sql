@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/21/2016 18:17:19
+-- Date Created: 03/21/2016 18:30:49
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -89,9 +89,9 @@ GO
 -- Creating table 'Communicators'
 CREATE TABLE [dbo].[Communicators] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [StartChar] nvarchar(max)  NOT NULL,
-    [EndChar] nvarchar(max)  NOT NULL,
-    [LastReadTime] nvarchar(max)  NOT NULL,
+    [StartChar] int  NOT NULL,
+    [EndChar] int  NOT NULL,
+    [LastReadTime] datetime  NOT NULL,
     [Type] smallint  NOT NULL
 );
 GO
@@ -103,8 +103,6 @@ CREATE TABLE [dbo].[Devices] (
     [Location] nvarchar(max)  NOT NULL,
     [Custodian] nvarchar(max)  NOT NULL,
     [Enabled] bit  NOT NULL,
-    [InboundValues] nvarchar(max)  NOT NULL,
-    [OutboundValues] nvarchar(max)  NOT NULL,
     [Writer_Id] int  NOT NULL,
     [Reader_Id] int  NOT NULL
 );
@@ -121,11 +119,12 @@ GO
 -- Creating table 'Values'
 CREATE TABLE [dbo].[Values] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [EventTime] nvarchar(max)  NOT NULL,
+    [EventTime] datetime  NOT NULL,
     [StringValue] nvarchar(max)  NOT NULL,
-    [Inbound] nvarchar(max)  NOT NULL,
-    [DeviceId] int  NOT NULL,
-    [Type] smallint  NOT NULL
+    [Inbound] bit  NOT NULL,
+    [Type] smallint  NOT NULL,
+    [Device_Id] int  NOT NULL,
+    [DeviceOutboundValue_Value_Id] int  NOT NULL
 );
 GO
 
@@ -133,7 +132,7 @@ GO
 CREATE TABLE [dbo].[AppData] (
     [BusinessName] nvarchar(max)  NOT NULL,
     [Supervisor] nvarchar(max)  NOT NULL,
-    [Enabled] nvarchar(max)  NOT NULL,
+    [Enabled] bit  NOT NULL,
     [Instance] uniqueidentifier  NOT NULL
 );
 GO
@@ -287,19 +286,34 @@ ON [dbo].[Rules]
     ([DeviceId]);
 GO
 
--- Creating foreign key on [DeviceId] in table 'Values'
+-- Creating foreign key on [Device_Id] in table 'Values'
 ALTER TABLE [dbo].[Values]
-ADD CONSTRAINT [FK_DeviceValue]
-    FOREIGN KEY ([DeviceId])
+ADD CONSTRAINT [FK_DeviceInboundValue]
+    FOREIGN KEY ([Device_Id])
     REFERENCES [dbo].[Devices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceValue'
-CREATE INDEX [IX_FK_DeviceValue]
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeviceInboundValue'
+CREATE INDEX [IX_FK_DeviceInboundValue]
 ON [dbo].[Values]
-    ([DeviceId]);
+    ([Device_Id]);
+GO
+
+-- Creating foreign key on [DeviceOutboundValue_Value_Id] in table 'Values'
+ALTER TABLE [dbo].[Values]
+ADD CONSTRAINT [FK_DeviceOutboundValue]
+    FOREIGN KEY ([DeviceOutboundValue_Value_Id])
+    REFERENCES [dbo].[Devices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeviceOutboundValue'
+CREATE INDEX [IX_FK_DeviceOutboundValue]
+ON [dbo].[Values]
+    ([DeviceOutboundValue_Value_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

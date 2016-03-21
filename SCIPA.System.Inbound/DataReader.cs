@@ -4,7 +4,6 @@ using System.IO;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound

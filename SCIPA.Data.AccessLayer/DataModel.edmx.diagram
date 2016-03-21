@@ -11,17 +11,18 @@
         <EntityTypeShape EntityType="DataModel.SerialCommunicator" Width="1.5" PointX="8.375" PointY="3.75" />
         <EntityTypeShape EntityType="DataModel.DatabaseCommunicator" Width="1.5" PointX="12.125" PointY="3.375" />
         <EntityTypeShape EntityType="DataModel.Device" Width="1.5" PointX="5.75" PointY="0.5" />
-        <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3.375" PointY="2.5" />
-        <EntityTypeShape EntityType="DataModel.Value" Width="1.5" PointX="1.625" PointY="1.75" />
+        <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3.375" PointY="3.875" />
+        <EntityTypeShape EntityType="DataModel.Value" Width="1.5" PointX="1.125" PointY="1.625" />
         <AssociationConnector Association="DataModel.DeviceAction" />
         <AssociationConnector Association="DataModel.DeviceCommunicator_Write" />
         <AssociationConnector Association="DataModel.DeviceCommunicator_Read" />
         <AssociationConnector Association="DataModel.DeviceRule" />
-        <AssociationConnector Association="DataModel.DeviceValue" />
         <EntityTypeShape EntityType="DataModel.AppData" Width="1.5" PointX="12.75" PointY="0.5" />
         <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" />
         <InheritanceConnector EntityType="DataModel.FileCommunicator" />
         <InheritanceConnector EntityType="DataModel.SerialCommunicator" />
+        <AssociationConnector Association="DataModel.DeviceInboundValue" />
+        <AssociationConnector Association="DataModel.DeviceOutboundValue" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

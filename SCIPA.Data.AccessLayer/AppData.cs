@@ -16,7 +16,7 @@ namespace SCIPA.Data.AccessLayer
     {
         public string BusinessName { get; set; }
         public string Supervisor { get; set; }
-        public string Enabled { get; set; }
+        public bool Enabled { get; set; }
         public System.Guid Instance { get; set; }
     }
 }

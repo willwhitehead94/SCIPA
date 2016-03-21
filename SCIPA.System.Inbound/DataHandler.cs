@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using SCIPA.Data.Repository;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 
 namespace SCIPA.Domain.Inbound
 {

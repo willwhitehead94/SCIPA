@@ -76,7 +76,7 @@ namespace SCIPA.Domain.Logic
 
         public Device PrepareCommunicatorInfo(Device device)
         {
-            device.InboundReader = (Communicator) device.InboundReader;
+            device.Reader = (Communicator) device.Reader;
             return device;
         }
 
