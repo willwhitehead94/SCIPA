@@ -1,4 +1,4 @@
-namespace SCIPA.Data.AccessLayer
+namespace SCIPA.Models
 {
     using System;
     
