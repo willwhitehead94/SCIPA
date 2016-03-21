@@ -15,7 +15,7 @@ namespace SCIPA.Data.AccessLayer
     {
         String = 0,
         Integer = 1,
-        Floaot = 2,
+        Float = 2,
         Boolean = 3
     }
 }

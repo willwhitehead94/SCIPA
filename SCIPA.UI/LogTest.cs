@@ -24,7 +24,7 @@ namespace SCIPA.UI
 
         SerialCommunicator myCommunicator = new SerialCommunicator()
         {
-            comPort = "COM3",
+            ComPort = "COM3",
             StartChar = 2,
             EndChar =  4
         };
@@ -58,7 +58,7 @@ namespace SCIPA.UI
                 FilePath = @"C:\scipa\values.dat",
                 StartChar = 0,
                 EndChar = 4,
-                ValueValueType = Models.ValueType.String
+                ValueType = Models.ValueType.String
             };
 
             Domain.Inbound.FlatFileHandler ffh = new Domain.Inbound.FlatFileHandler(ffc);
@@ -68,10 +68,10 @@ namespace SCIPA.UI
         {
             DatabaseCommunicator dbComm = new DatabaseCommunicator()
             {
-                DatabaseType = DatabaseType.SQL,
-                ValueValueType = ValueType.String,
-                connectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
-                query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
+                DbType = DatabaseType.SQL,
+                ValueType = ValueType.String,
+                ConnectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
+                Query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
             };
 
             var dbRead = new DatabaseReader(new DatabaseHandler(dbComm));
@@ -80,7 +80,7 @@ namespace SCIPA.UI
             FileCommunicator ffComm = new FileCommunicator()
             {
                 FilePath = @"C:\scipa\values.dat",
-                ValueValueType = ValueType.String,
+                ValueType = ValueType.String,
                 StartChar = 0,
                 EndChar = 0
             };
@@ -88,8 +88,8 @@ namespace SCIPA.UI
 
             SerialCommunicator sdComm = new SerialCommunicator()
             {
-                comPort = "COM3",
-                ValueValueType = ValueType.String,
+                ComPort = "COM3",
+                ValueType = ValueType.String,
                 StartChar = 0,
                 EndChar = 0
             };
@@ -127,13 +127,13 @@ namespace SCIPA.UI
                 InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
                 {
                     Id = 1,
-                    comPort = "COM3",
+                    ComPort = "COM3",
                     StartChar = 0,
                     EndChar = 0,
-                    baudRate = 9600,
-                    dataBits = 8,
-                    isDTR = false,
-                    isRTS = false
+                    BaudRate = 9600,
+                    DataBits = 8,
+                    IsDTR = false,
+                    IsRTS = false
                 }))
             });
 

@@ -19,6 +19,7 @@ namespace SCIPA.Data.AccessLayer
         public int EndChar { get; set; }
         public System.DateTime LastReadTime { get; set; }
         public CommunicatorType Type { get; set; }
+        public ValueType ValueType { get; set; }
     
         public virtual Device Device { get; set; }
     }

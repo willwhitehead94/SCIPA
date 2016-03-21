@@ -35,7 +35,7 @@ namespace SCIPA.Domain.Inbound
         public DatabaseHandler(DatabaseCommunicator comms)
         {
             Communicator = comms;
-            dcm = new DatabaseConnectionManager(comms.DatabaseType, comms.ConnectionString, comms.Query, true);
+            dcm = new DatabaseConnectionManager(comms.DbType, comms.ConnectionString, comms.Query, true);
 
             StartWatchingDatabase();
         }
@@ -72,11 +72,10 @@ namespace SCIPA.Domain.Inbound
                         //Create a new Value object for the queue.
                         var result = new Value()
                         {
-                            Type = CommunicatorType.Database,
-                            ValueType = ValueType.String,
                             EventTime = DateTime.Now,
+                            Inbound = true,
                             StringValue = dcm.GetResultLists()[0][0],
-                            Inbound = true
+                            Type = ValueType.String
                         };
 
                         if (result.StringValue != "")

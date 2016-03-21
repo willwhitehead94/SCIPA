@@ -124,10 +124,10 @@ namespace SCIPA.UI
             {
                 _communicator = new DatabaseCommunicator()
                 {
-                    DatabaseType = (DatabaseType)cbDBType.SelectedItem,
-                    ValueValueType = (Models.ValueType)cbValueType.SelectedItem,
-                    connectionString = tConnString.Text,
-                    query = tQuery.Text,
+                    DbType = (DatabaseType)cbDBType.SelectedItem,
+                    ValueType = (Models.ValueType)cbValueType.SelectedItem,
+                    ConnectionString = tConnString.Text,
+                    Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
                     Device = _device
@@ -153,14 +153,14 @@ namespace SCIPA.UI
                 _communicator=new FileCommunicator()
                 {
                     FilePath = tFilePath.Text,
-                    ValueValueType = (Models.ValueType)cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
                     Device = _device
                 };
             }
             
-            _device.InboundReader = _communicator;
+            _device.Reader = _communicator;
             _controller.SaveCommunicator(_communicator, _device);
         }
 

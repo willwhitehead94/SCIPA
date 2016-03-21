@@ -168,8 +168,7 @@ namespace SCIPA.Domain.Inbound
 
                 EnqueueData(new Value()
                 {
-                    ValueType = ValueType.String,
-                    CommType = CommunicatorType.FlatFile,
+                    Type = ValueType.String,
                     EventTime = DateTime.Now,
                     StringValue = fileText,
                     Inbound = true

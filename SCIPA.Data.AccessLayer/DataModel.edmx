@@ -69,6 +69,7 @@
     <Property Name="EndChar" Type="int" Nullable="false" />
     <Property Name="LastReadTime" Type="datetime" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="ValueType" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -307,16 +308,17 @@
           <Property Name="LastReadTime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Communicator" ToRole="Device" />
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
+          <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="SerialCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="ComPort" Type="String" Nullable="false" />
-          <Property Name="BaudRate" Type="String" Nullable="false" />
-          <Property Name="DataBits" Type="String" Nullable="false" />
-          <Property Name="IsRTS" Type="String" Nullable="false" />
-          <Property Name="IsDTR" Type="String" Nullable="false" />
+          <Property Name="BaudRate" Type="Int32" Nullable="false" />
+          <Property Name="DataBits" Type="Byte" Nullable="false" />
+          <Property Name="IsRTS" Type="Boolean" Nullable="false" />
+          <Property Name="IsDTR" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DatabaseCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="ConnectionString" Type="String" Nullable="false" />
@@ -362,7 +364,7 @@
         <EnumType Name="ValueType" UnderlyingType="Int16">
           <Member Name="String" />
           <Member Name="Integer" />
-          <Member Name="Floaot" />
+          <Member Name="Float" />
           <Member Name="Boolean" />
         </EnumType>
         <EnumType Name="CommunicatorType" UnderlyingType="Int16">
@@ -456,6 +458,7 @@
           <ScalarProperty Name="EndChar" ColumnName="EndChar" />
           <ScalarProperty Name="LastReadTime" ColumnName="LastReadTime" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.FileCommunicator)">

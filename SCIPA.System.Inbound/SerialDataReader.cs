@@ -17,7 +17,7 @@ namespace SCIPA.Domain.Inbound
         /// <param name="handler"></param>
         public SerialDataReader(SerialDataHandler handler)
         {
-            HandlerValueType = handler.Communicator.ValueValueType;
+            HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
         }
     }
