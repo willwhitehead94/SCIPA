@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/21/2016 19:25:13
+-- Date Created: 03/21/2016 18:44:36
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -151,10 +151,10 @@ GO
 -- Creating table 'Communicators_SerialCommunicator'
 CREATE TABLE [dbo].[Communicators_SerialCommunicator] (
     [ComPort] nvarchar(max)  NOT NULL,
-    [BaudRate] int  NOT NULL,
-    [DataBits] tinyint  NOT NULL,
-    [IsRTS] bit  NOT NULL,
-    [IsDTR] bit  NOT NULL,
+    [BaudRate] nvarchar(max)  NOT NULL,
+    [DataBits] nvarchar(max)  NOT NULL,
+    [IsRTS] nvarchar(max)  NOT NULL,
+    [IsDTR] nvarchar(max)  NOT NULL,
     [Id] int  NOT NULL
 );
 GO

@@ -124,10 +124,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="ComPort" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="BaudRate" Type="int" Nullable="false" />
-    <Property Name="DataBits" Type="tinyint" Nullable="false" />
-    <Property Name="IsRTS" Type="bit" Nullable="false" />
-    <Property Name="IsDTR" Type="bit" Nullable="false" />
+    <Property Name="BaudRate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataBits" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRTS" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsDTR" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Communicators_DatabaseCommunicator">
