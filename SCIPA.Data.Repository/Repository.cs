@@ -81,7 +81,11 @@ namespace SCIPA.Data.Repository
 
         public void CreateDevice(DOM.Device device)
         {
-            throw new System.NotImplementedException();
+            using (var db = new DAL.SCIPAEntities())
+            {
+                _db.Devices.Add(_mapper.Map(device, new DAL.Device()));
+                db.SaveChanges();
+            }
         }
 
         public DOM.Device RetrieveDevice(int id)
@@ -91,52 +95,70 @@ namespace SCIPA.Data.Repository
 
         public ICollection<DOM.Device> RetrieveAllDevices()
         {
-            throw new System.NotImplementedException();
+            return _db.Devices.Select(device => _mapper.Map(device, new DOM.Device())).ToList();
         }
 
         public void UpdateDevice(DOM.Device device)
         {
-            throw new System.NotImplementedException();
+            var dbValue = RetrieveDevice(device.Id);
+            if (dbValue == null) return;
+            dbValue = device;
+            _db.SaveChanges();
         }
 
         public void DisableDevice(DOM.Device device)
         {
-            throw new System.NotImplementedException();
+            var dbValue = RetrieveDevice(device.Id);
+            if (dbValue == null) return;
+            _db.Devices.Remove(_mapper.Map(dbValue,new DAL.Device()));
         }
 
         public void CreateOrUpdateDevice(DOM.Device device)
         {
-            throw new System.NotImplementedException();
+            var dbValue = RetrieveDevice(device.Id);
+            if (dbValue == null)
+            {
+                CreateDevice(device);
+            }
+            else
+            {
+                UpdateDevice(device);
+            }
         }
 
         public void CreateAction(DOM.Action action)
         {
-            throw new System.NotImplementedException();
+            _db.Actions.Add(_mapper.Map(action, new DAL.Action()));
         }
 
         public DOM.Action RetrieveAction(int id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map(_db.Actions.FirstOrDefault(act => act.Id == id), new DOM.Action());
         }
 
         public ICollection<DOM.Action> RetrieveActionsForDevice(int deviceId)
         {
-            throw new System.NotImplementedException();
+            return _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
         public ICollection<DOM.Action> RetrieveAllActions()
         {
-            throw new System.NotImplementedException();
+            return _db.Actions.Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
         public void UpdateAction(DOM.Action action)
         {
-            throw new System.NotImplementedException();
+            var dbValue = RetrieveAction(action.Id);
+            if (dbValue == null) return;
+            dbValue = _mapper.Map(action, new DOM.Action());
+            _db.SaveChanges();
         }
 
         public void DeleteAction(DOM.Action action)
         {
-            throw new System.NotImplementedException();
+            var dbValue = RetrieveAction(action.Id);
+            if (dbValue == null) return;
+            _db.Actions.Remove(_mapper.Map(action, new DAL.Action());
         }
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
