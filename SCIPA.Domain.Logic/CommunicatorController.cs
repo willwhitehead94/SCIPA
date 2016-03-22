@@ -15,27 +15,27 @@ namespace SCIPA.Domain.Logic
         /// Returns collection of all File Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<FileCommunicator> GetAllFileCommunicators()
+        public ICollection<Communicator> GetAllFileCommunicators()
         {
-            return _repo.RetrieveAllFileCommunicators();
+            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.FlatFile).ToList();
         }
 
         /// <summary>
         /// Returns collection of all Database Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<DatabaseCommunicator> GetAllDatabaseCommunicators()
+        public ICollection<Communicator> GetAllDatabaseCommunicators()
         {
-            return _repo.RetrieveAllDatabaseCommunicators();
+            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.Database).ToList();
         }
 
         /// <summary>
         /// Returns collection of all Serial Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<SerialCommunicator> GetAllSerialCommunicators()
+        public ICollection<Communicator> GetAllSerialCommunicators()
         {
-            return _repo.RetrieveAllSerialCommunicators();
+            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.Serial).ToList();
         }
 
         /// <summary>

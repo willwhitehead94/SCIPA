@@ -100,21 +100,6 @@ namespace SCIPA.Data.Repository
             _dbController.CreateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
         }
 
-        public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
-        {
-            return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
-        }
-
-        public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators()
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
         {
             throw new NotImplementedException();
@@ -126,21 +111,6 @@ namespace SCIPA.Data.Repository
         }
 
         public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DOM.FileCommunicator RetrieveFileCommunicator(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators()
         {
             throw new NotImplementedException();
         }
@@ -160,21 +130,6 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public DOM.SerialCommunicator RetrieveSerialCommunicator(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators()
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
         {
             throw new NotImplementedException();
@@ -183,6 +138,21 @@ namespace SCIPA.Data.Repository
         public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
+        {
+            return _dbController.RetrieveAllCommunicators().Select(comm => _converter.ConvertToDomain(comm)).ToList();
+        }
+
+        public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
+        {
+            return _dbController.RetrieveCommunicatorsByDeviceId(deviceId).Select(comm => _converter.ConvertToDomain(comm)).ToList();
+        }
+
+        public DOM.Communicator RetrieveCommunicatorById(int id)
+        {
+            return _converter.ConvertToDomain(_dbController.RetrieveAllCommunicators().FirstOrDefault(comm=>comm.Id==id));
         }
 
         public void CreateRule(DOM.Rule rule)

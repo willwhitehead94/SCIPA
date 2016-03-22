@@ -32,11 +32,11 @@ namespace SCIPA.Data.Repository
 
         void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
+        //DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
 
-        ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
+        //ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
 
-        ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
+        //ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
 
         void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
@@ -44,11 +44,11 @@ namespace SCIPA.Data.Repository
 
         void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
-        DOM.FileCommunicator RetrieveFileCommunicator(int id);
+        //DOM.FileCommunicator RetrieveFileCommunicator(int id);
 
-        ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
+        //ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
 
-        ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators();
+        //ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators();
 
         void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
@@ -56,11 +56,11 @@ namespace SCIPA.Data.Repository
 
         void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
-        DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
+        //DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
 
-        ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
+        //ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
 
-        ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
+        //ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
 
         void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 

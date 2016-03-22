@@ -135,5 +135,45 @@ namespace SCIPA.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public DOM.Communicator ConvertToDomain(DAL.Communicator dataModel)
+        {
+            {
+                if (dataModel is DAL.SerialCommunicator)
+                {
+                    return ConvertToDomain((DAL.SerialCommunicator)dataModel);
+                }
+                else if (dataModel is DAL.FileCommunicator)
+                {
+                    return ConvertToDomain((DAL.FileCommunicator)dataModel);
+                }
+                else if (dataModel is DAL.DatabaseCommunicator)
+                {
+                    return ConvertToDomain((DAL.DatabaseCommunicator)dataModel);
+                }
+
+                return null;
+            }
+        }
+
+        public DAL.Communicator ConvertToData(DOM.Communicator domainModel)
+        {
+            {
+                if (domainModel is DOM.SerialCommunicator)
+                {
+                    return ConvertToData((DOM.SerialCommunicator)domainModel);
+                }
+                else if (domainModel is DOM.FileCommunicator)
+                {
+                    return ConvertToData((DOM.FileCommunicator)domainModel);
+                }
+                else if (domainModel is DOM.DatabaseCommunicator)
+                {
+                    return ConvertToData((DOM.DatabaseCommunicator)domainModel);
+                }
+
+                return null;
+            }
+        }
     }
 }

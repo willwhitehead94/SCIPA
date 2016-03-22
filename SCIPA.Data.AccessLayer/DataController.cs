@@ -103,14 +103,14 @@ namespace SCIPA.Data.AccessLayer
             _db.SaveChanges();
         }
 
-        //public DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
-        //{
-        //    return (DatabaseCommunicator)_db.Communicators.FirstOrDefault(dc => dc.Id == id);
-        //}
+        public DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
+        {
+            return (DatabaseCommunicator)_db.Communicators.FirstOrDefault(dc => dc.Id == id);
+        }
 
         //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
         //{
-        //    return _db.Communicators.Where(comm => comm.Device.Id == deviceId).sele;
+        //    return _db.Communicators.Where(comm => comm.Device.Id == deviceId);
         //}
 
         //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicators()
@@ -118,25 +118,25 @@ namespace SCIPA.Data.AccessLayer
         //    return _db.DatabaseCommunicators.ToList();
         //}
 
-        //public void UpdateDatabaseCommunicator(DatabaseCommunicator dc)
-        //{
-        //    var toUpdate = RetrieveDatabaseCommunicator(dc.Id);
-        //    if (toUpdate != null)
-        //    {
-        //        toUpdate = dc;
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void UpdateDatabaseCommunicator(DatabaseCommunicator dc)
+        {
+            var toUpdate = RetrieveDatabaseCommunicator(dc.Id);
+            if (toUpdate != null)
+            {
+                toUpdate = dc;
+                _db.SaveChanges();
+            }
+        }
 
-        //public void DeleteDatabaseCommunicator(DatabaseCommunicator dc)
-        //{
-        //    var toDelete = RetrieveDatabaseCommunicator(dc.Id);
-        //    if (toDelete != null)
-        //    {
-        //        _db.DatabaseCommunicators.Remove(toDelete);
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void DeleteDatabaseCommunicator(DatabaseCommunicator dc)
+        {
+            var toDelete = RetrieveDatabaseCommunicator(dc.Id);
+            if (toDelete != null)
+            {
+                _db.Communicators.Remove(toDelete);
+                _db.SaveChanges();
+            }
+        }
 
         public void CreateFileCommunicator(FileCommunicator fc)
         {
@@ -146,10 +146,10 @@ namespace SCIPA.Data.AccessLayer
             _db.SaveChanges();
         }
 
-        //public FileCommunicator RetrieveFileCommunicator(int id)
-        //{
-        //    return _db.FileCommunicators.FirstOrDefault(fc => fc.Id == id);
-        //}
+        public FileCommunicator RetrieveFileCommunicator(int id)
+        {
+            return (FileCommunicator)_db.Communicators.FirstOrDefault(fc => fc.Id == id);
+        }
 
         //public ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
         //{
@@ -162,25 +162,25 @@ namespace SCIPA.Data.AccessLayer
         //    return _db.FileCommunicators.ToList();
         //}
 
-        //public void UpdateFileCommunicator(FileCommunicator fc)
-        //{
-        //    var toUpdate = RetrieveFileCommunicator(fc.Id);
-        //    if (toUpdate != null)
-        //    {
-        //        toUpdate = fc;
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void UpdateFileCommunicator(FileCommunicator fc)
+        {
+            var toUpdate = RetrieveFileCommunicator(fc.Id);
+            if (toUpdate != null)
+            {
+                toUpdate = fc;
+                _db.SaveChanges();
+            }
+        }
 
-        //public void DeleteFileCommunicator(FileCommunicator fc)
-        //{
-        //    var toDelete = RetrieveFileCommunicator(fc.Id);
-        //    if (toDelete != null)
-        //    {
-        //        _db.FileCommunicators.Remove(toDelete);
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void DeleteFileCommunicator(FileCommunicator fc)
+        {
+            var toDelete = RetrieveFileCommunicator(fc.Id);
+            if (toDelete != null)
+            {
+                _db.Communicators.Remove(toDelete);
+                _db.SaveChanges();
+            }
+        }
 
         public void CreateSerialCommunicator(SerialCommunicator sc)
         {
@@ -189,10 +189,10 @@ namespace SCIPA.Data.AccessLayer
             _db.SaveChanges();
         }
 
-        //public SerialCommunicator RetrieveSerialCommunicator(int id)
-        //{
-        //    return _db.SerialCommunicators.FirstOrDefault(sc => sc.Id == id);
-        //}
+        public SerialCommunicator RetrieveSerialCommunicator(int id)
+        {
+            return (SerialCommunicator)_db.Communicators.FirstOrDefault(sc => sc.Id == id);
+        }
 
         //public ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
         //{
@@ -205,25 +205,45 @@ namespace SCIPA.Data.AccessLayer
         //    return _db.SerialCommunicators.ToList();
         //}
 
-        //public void UpdateSerialCommunicator(SerialCommunicator sc)
-        //{
-        //    var toUpdate = RetrieveSerialCommunicator(sc.Id);
-        //    if (toUpdate != null)
-        //    {
-        //        toUpdate = sc;
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void UpdateSerialCommunicator(SerialCommunicator sc)
+        {
+            var toUpdate = RetrieveSerialCommunicator(sc.Id);
+            if (toUpdate != null)
+            {
+                toUpdate = sc;
+                _db.SaveChanges();
+            }
+        }
 
-        //public void DeleteSerialCommunicator(SerialCommunicator sc)
-        //{
-        //    var toDelete = RetrieveSerialCommunicator(sc.Id);
-        //    if (toDelete != null)
-        //    {
-        //        _db.SerialCommunicators.Remove(toDelete);
-        //        _db.SaveChanges();
-        //    }
-        //}
+        public void DeleteSerialCommunicator(SerialCommunicator sc)
+        {
+            var toDelete = RetrieveSerialCommunicator(sc.Id);
+            if (toDelete != null)
+            {
+                _db.Communicators.Remove(toDelete);
+                _db.SaveChanges();
+            }
+        }
+
+
+        public void CreateCommunicator(Communicator comm)
+        {
+            _db.Communicators.Add(comm);
+            _db.SaveChanges();
+        }
+
+        public IEnumerable<Communicator> RetrieveAllCommunicators()
+        {
+            return _db.Communicators.ToList();
+        }
+
+        public IEnumerable<Communicator> RetrieveCommunicatorsByDeviceId(int id)
+        {
+            return _db.Communicators.Where(comm => comm.Device.Id == id).ToList();
+        } 
+
+
+
 
         public void CreateRule(Rule rule)
         {

@@ -56,5 +56,12 @@ namespace SCIPA.Data.Repository
         DAL.AppData ConvertToData(DOM.AppData domainModel);
 
         DOM.AppData ConvertToDomain(DAL.AppData dataModel);
+
+
+
+
+        DOM.Communicator ConvertToDomain(DAL.Communicator dataModel);
+
+        DAL.Communicator ConvertToData(DOM.Communicator domainModel);
     }
 }
