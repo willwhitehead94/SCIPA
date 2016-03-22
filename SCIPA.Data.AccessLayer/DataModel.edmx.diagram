@@ -1,29 +1,584 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
- <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Actions" EntityType="DataModel.Store.Actions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Communicators" EntityType="DataModel.Store.Communicators" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Devices" EntityType="DataModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rules" EntityType="DataModel.Store.Rules" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Values" EntityType="DataModel.Store.Values" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppData" EntityType="DataModel.Store.AppData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Communicators_FileCommunicator" EntityType="DataModel.Store.Communicators_FileCommunicator" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Communicators_SerialCommunicator" EntityType="DataModel.Store.Communicators_SerialCommunicator" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Communicators_DatabaseCommunicator" EntityType="DataModel.Store.Communicators_DatabaseCommunicator" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DeviceAction" Association="DataModel.Store.DeviceAction">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Action" EntitySet="Actions" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceCommunicator_Write" Association="DataModel.Store.DeviceCommunicator_Write">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Communicator" EntitySet="Communicators" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceCommunicator_Read" Association="DataModel.Store.DeviceCommunicator_Read">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Communicator" EntitySet="Communicators" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceRule" Association="DataModel.Store.DeviceRule">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Rule" EntitySet="Rules" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceInboundValue" Association="DataModel.Store.DeviceInboundValue">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Value" EntitySet="Values" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceOutboundValue" Association="DataModel.Store.DeviceOutboundValue">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Value" EntitySet="Values" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
+      <End Role="Communicator" EntitySet="Communicators" />
+      <End Role="FileCommunicator" EntitySet="Communicators_FileCommunicator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SerialCommunicator_inherits_Communicator" Association="DataModel.Store.FK_SerialCommunicator_inherits_Communicator">
+      <End Role="Communicator" EntitySet="Communicators" />
+      <End Role="SerialCommunicator" EntitySet="Communicators_SerialCommunicator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DatabaseCommunicator_inherits_Communicator" Association="DataModel.Store.FK_DatabaseCommunicator_inherits_Communicator">
+      <End Role="Communicator" EntitySet="Communicators" />
+      <End Role="DatabaseCommunicator" EntitySet="Communicators_DatabaseCommunicator" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Actions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OutputValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Communicators">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartChar" Type="int" Nullable="false" />
+    <Property Name="EndChar" Type="int" Nullable="false" />
+    <Property Name="LastReadTime" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="ValueType" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Devices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Custodian" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="Writer_Id" Type="int" Nullable="false" />
+    <Property Name="Reader_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Values">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventTime" Type="datetime" Nullable="false" />
+    <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Inbound" Type="bit" Nullable="false" />
+    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="Device_Id" Type="int" Nullable="false" />
+    <Property Name="DeviceOutboundValue_Value_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppData">
+    <Key>
+      <PropertyRef Name="Instance" />
+    </Key>
+    <Property Name="BusinessName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Supervisor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="Instance" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Communicators_FileCommunicator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="FilePath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Communicators_SerialCommunicator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ComPort" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BaudRate" Type="int" Nullable="false" />
+    <Property Name="DataBits" Type="tinyint" Nullable="false" />
+    <Property Name="IsRTS" Type="bit" Nullable="false" />
+    <Property Name="IsDTR" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Communicators_DatabaseCommunicator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ConnectionString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Query" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DbType" Type="smallint" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="DeviceAction">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceCommunicator_Write">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Communicator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Device">
+        <PropertyRef Name="Writer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceCommunicator_Read">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Communicator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Device">
+        <PropertyRef Name="Reader_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceRule">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rule">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceInboundValue">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Value">
+        <PropertyRef Name="Device_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceOutboundValue">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Value">
+        <PropertyRef Name="DeviceOutboundValue_Value_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileCommunicator_inherits_Communicator">
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FileCommunicator" Type="DataModel.Store.Communicators_FileCommunicator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Communicator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FileCommunicator">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SerialCommunicator_inherits_Communicator">
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SerialCommunicator" Type="DataModel.Store.Communicators_SerialCommunicator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Communicator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SerialCommunicator">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DatabaseCommunicator_inherits_Communicator">
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DatabaseCommunicator" Type="DataModel.Store.Communicators_DatabaseCommunicator" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Communicator">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DatabaseCommunicator">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SCIPAEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Actions" EntityType="DataModel.Action" />
+          <EntitySet Name="Communicators" EntityType="DataModel.Communicator" />
+          <EntitySet Name="Devices" EntityType="DataModel.Device" />
+          <EntitySet Name="Rules" EntityType="DataModel.Rule" />
+          <EntitySet Name="Values" EntityType="DataModel.Value" />
+          <AssociationSet Name="DeviceAction" Association="DataModel.DeviceAction">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
+          <AssociationSet Name="DeviceCommunicator_Write" Association="DataModel.DeviceCommunicator_Write">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Communicator" EntitySet="Communicators" />
+          </AssociationSet>
+          <AssociationSet Name="DeviceCommunicator_Read" Association="DataModel.DeviceCommunicator_Read">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Communicator" EntitySet="Communicators" />
+          </AssociationSet>
+          <AssociationSet Name="DeviceRule" Association="DataModel.DeviceRule">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Rule" EntitySet="Rules" />
+          </AssociationSet>
+          <EntitySet Name="AppData" EntityType="DataModel.AppData" />
+          <AssociationSet Name="DeviceInboundValue" Association="DataModel.DeviceInboundValue">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Value" EntitySet="Values" />
+          </AssociationSet>
+          <AssociationSet Name="DeviceOutboundValue" Association="DataModel.DeviceOutboundValue">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Value" EntitySet="Values" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OutputValue" Type="String" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceAction" FromRole="Action" ToRole="Device" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Communicator" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartChar" Type="Int32" Nullable="false" />
+          <Property Name="EndChar" Type="Int32" Nullable="false" />
+          <Property Name="LastReadTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Communicator" ToRole="Device" />
+          <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
+          <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
+          <Property Name="FilePath" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SerialCommunicator" BaseType="DataModel.Communicator" >
+          <Property Name="ComPort" Type="String" Nullable="false" />
+          <Property Name="BaudRate" Type="Int32" Nullable="false" />
+          <Property Name="DataBits" Type="Byte" Nullable="false" />
+          <Property Name="IsRTS" Type="Boolean" Nullable="false" />
+          <Property Name="IsDTR" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseCommunicator" BaseType="DataModel.Communicator" >
+          <Property Name="ConnectionString" Type="String" Nullable="false" />
+          <Property Name="Query" Type="String" Nullable="false" />
+          <Property Name="DbType" Type="DataModel.DatabaseType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="false" />
+          <Property Name="Custodian" Type="String" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
+          <NavigationProperty Name="Writer" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Device" ToRole="Communicator" />
+          <NavigationProperty Name="Reader" Relationship="DataModel.DeviceCommunicator_Read" FromRole="Device" ToRole="Communicator" />
+          <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
+          <NavigationProperty Name="InboundValues" Relationship="DataModel.DeviceInboundValue" FromRole="Device" ToRole="Value" />
+          <NavigationProperty Name="OutboundValues" Relationship="DataModel.DeviceOutboundValue" FromRole="Device" ToRole="Value" />
+        </EntityType>
+        <EntityType Name="Rule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceRule" FromRole="Rule" ToRole="Device" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="DataModel.RuleType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Value">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTime" Type="DateTime" Nullable="false" />
+          <Property Name="StringValue" Type="String" Nullable="false" />
+          <Property Name="Inbound" Type="Boolean" Nullable="false" />
+          <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceInboundValue" FromRole="Value" ToRole="Device" />
+        </EntityType>
+        <EnumType Name="ValueType" UnderlyingType="Int16">
+          <Member Name="String" />
+          <Member Name="Integer" />
+          <Member Name="Float" />
+          <Member Name="Boolean" />
+        </EnumType>
+        <EnumType Name="CommunicatorType" UnderlyingType="Int16">
+          <Member Name="FlatFile" />
+          <Member Name="Serial" />
+          <Member Name="Database" />
+        </EnumType>
+        <EnumType Name="DatabaseType" UnderlyingType="Int16">
+          <Member Name="SQL" />
+          <Member Name="OLE" />
+          <Member Name="ODBC" />
+        </EnumType>
+        <EnumType Name="RuleType" UnderlyingType="Int16">
+          <Member Name="LessThan" />
+          <Member Name="LessThanEqualTo" />
+          <Member Name="EqualTo" />
+          <Member Name="MoreThanEqualTo" />
+          <Member Name="MoreThan" />
+          <Member Name="Not" />
+          <Member Name="Between" />
+        </EnumType>
+        <Association Name="DeviceAction">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Action" Role="Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeviceCommunicator_Write">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
+        </Association>
+        <Association Name="DeviceCommunicator_Read">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
+        </Association>
+        <Association Name="DeviceRule">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Rule" Role="Rule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rule">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AppData">
+          <Key>
+            <PropertyRef Name="Instance" />
+          </Key>
+          <Property Name="BusinessName" Type="String" Nullable="false" />
+          <Property Name="Supervisor" Type="String" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Instance" Type="Guid" Nullable="false" />
+        </EntityType>
+        <Association Name="DeviceInboundValue">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
+        </Association>
+        <Association Name="DeviceOutboundValue">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="SCIPAEntities">
+    <EntitySetMapping Name="Actions">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Action)">
+        <MappingFragment StoreEntitySet="Actions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OutputValue" ColumnName="OutputValue" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Communicators">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Communicator)">
+        <MappingFragment StoreEntitySet="Communicators">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartChar" ColumnName="StartChar" />
+          <ScalarProperty Name="EndChar" ColumnName="EndChar" />
+          <ScalarProperty Name="LastReadTime" ColumnName="LastReadTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.FileCommunicator)">
+        <MappingFragment StoreEntitySet="Communicators_FileCommunicator">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.SerialCommunicator)">
+        <MappingFragment StoreEntitySet="Communicators_SerialCommunicator">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ComPort" ColumnName="ComPort" />
+          <ScalarProperty Name="BaudRate" ColumnName="BaudRate" />
+          <ScalarProperty Name="DataBits" ColumnName="DataBits" />
+          <ScalarProperty Name="IsRTS" ColumnName="IsRTS" />
+          <ScalarProperty Name="IsDTR" ColumnName="IsDTR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.DatabaseCommunicator)">
+        <MappingFragment StoreEntitySet="Communicators_DatabaseCommunicator">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="DbType" ColumnName="DbType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devices">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Device)">
+        <MappingFragment StoreEntitySet="Devices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Custodian" ColumnName="Custodian" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rules">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Rule)">
+        <MappingFragment StoreEntitySet="Rules">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Values">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Value)">
+        <MappingFragment StoreEntitySet="Values">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="StringValue" ColumnName="StringValue" />
+          <ScalarProperty Name="Inbound" ColumnName="Inbound" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppData">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.AppData)">
+        <MappingFragment StoreEntitySet="AppData">
+          <ScalarProperty Name="Instance" ColumnName="Instance" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DeviceCommunicator_Write" TypeName="DataModel.DeviceCommunicator_Write" StoreEntitySet="Devices">
+      <EndProperty Name="Communicator">
+        <ScalarProperty Name="Id" ColumnName="Writer_Id" />
+      </EndProperty>
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeviceCommunicator_Read" TypeName="DataModel.DeviceCommunicator_Read" StoreEntitySet="Devices">
+      <EndProperty Name="Communicator">
+        <ScalarProperty Name="Id" ColumnName="Reader_Id" />
+      </EndProperty>
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeviceInboundValue" TypeName="DataModel.DeviceInboundValue" StoreEntitySet="Values">
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Device_Id" />
+      </EndProperty>
+      <EndProperty Name="Value">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeviceOutboundValue" TypeName="DataModel.DeviceOutboundValue" StoreEntitySet="Values">
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="DeviceOutboundValue_Value_Id" />
+      </EndProperty>
+      <EndProperty Name="Value">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-      <Diagram DiagramId="12ba0888a5c846009a60c2e2a43368e2" Name="Diagram1" ZoomLevel="73" >
-        <EntityTypeShape EntityType="DataModel.Action" Width="1.5" PointX="3.625" PointY="0.5" />
-        <EntityTypeShape EntityType="DataModel.Communicator" Width="1.5" PointX="8.5" PointY="0.5" />
-        <EntityTypeShape EntityType="DataModel.FileCommunicator" Width="1.5" PointX="6.625" PointY="4.25" />
-        <EntityTypeShape EntityType="DataModel.SerialCommunicator" Width="1.5" PointX="8.375" PointY="3.75" />
-        <EntityTypeShape EntityType="DataModel.DatabaseCommunicator" Width="1.5" PointX="12.125" PointY="3.375" />
-        <EntityTypeShape EntityType="DataModel.Device" Width="1.5" PointX="5.75" PointY="0.5" />
-        <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3.375" PointY="3.875" />
-        <EntityTypeShape EntityType="DataModel.Value" Width="1.5" PointX="1.125" PointY="1.625" />
-        <AssociationConnector Association="DataModel.DeviceAction" />
-        <AssociationConnector Association="DataModel.DeviceCommunicator_Write" />
-        <AssociationConnector Association="DataModel.DeviceCommunicator_Read" />
-        <AssociationConnector Association="DataModel.DeviceRule" />
-        <EntityTypeShape EntityType="DataModel.AppData" Width="1.5" PointX="12.75" PointY="0.5" />
-        <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" />
-        <InheritanceConnector EntityType="DataModel.FileCommunicator" />
-        <InheritanceConnector EntityType="DataModel.SerialCommunicator" />
-        <AssociationConnector Association="DataModel.DeviceInboundValue" />
-        <AssociationConnector Association="DataModel.DeviceOutboundValue" />
-      </Diagram>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>
