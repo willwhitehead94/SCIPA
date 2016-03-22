@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using DAL = SCIPA.Data.AccessLayer;
 using DOM = SCIPA.Models;
@@ -11,7 +12,7 @@ namespace SCIPA.Data.Repository
         /// Data Controller object from the DAL. Acts as the intermediary between the repository and 
         /// the database.
         /// </summary>
-        readonly DAL.DataController _db = new AccessLayer.DataController();
+        //readonly DAL.DataController _db = new AccessLayer.DataController();
         readonly DAL.SCIPAEntities _db = new DAL.SCIPAEntities();
 
 
@@ -85,7 +86,7 @@ namespace SCIPA.Data.Repository
 
         public DOM.Device RetrieveDevice(int id)
         {
-            _db.
+            return _mapper.Map(_db.Devices.FirstOrDefault(dev => dev.Id == id), new DOM.Device());
         }
 
         public ICollection<DOM.Device> RetrieveAllDevices()
