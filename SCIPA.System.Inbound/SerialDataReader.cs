@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 
 namespace SCIPA.Domain.Inbound
 {
@@ -18,7 +17,7 @@ namespace SCIPA.Domain.Inbound
         /// <param name="handler"></param>
         public SerialDataReader(SerialDataHandler handler)
         {
-            HandlerValueType = handler.Communicator.ValueValueType;
+            HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
         }
     }

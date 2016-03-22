@@ -10,7 +10,6 @@ using SCIPA.Domain.Logic;
 using System.Threading;
 using SCIPA.Domain.Generic;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
@@ -44,7 +43,7 @@ namespace SCIPA.Domain.Inbound
         {
             Communicator = communicator;
 
-            _sPort = new SerialPort(Communicator.comPort);
+            _sPort = new SerialPort(Communicator.ComPort);
 
             _sPort.BaudRate = 9600;
             _sPort.Parity = Parity.None;
@@ -59,7 +58,7 @@ namespace SCIPA.Domain.Inbound
                 if (_portOutOfService)
                 {
                     _sPort.DataReceived -= DataReceivedHandler;
-                    throw new IOException("Port stopped responding. Closing connection on " + Communicator.comPort);
+                    throw new IOException("Port stopped responding. Closing connection on " + Communicator.ComPort);
                 }
 
                 ThreadPool.QueueUserWorkItem(new WaitCallback(CheckConnectionState));
@@ -101,8 +100,7 @@ namespace SCIPA.Domain.Inbound
 
                     EnqueueData(new Value()
                     {
-                        ValueType = ValueType.String,
-                        CommType = CommunicatorType.Serial,
+                        Type = ValueType.String,
                         EventTime = DateTime.Now,
                         StringValue = indata,
                         Inbound = true

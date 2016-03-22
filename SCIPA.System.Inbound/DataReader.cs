@@ -4,7 +4,6 @@ using System.IO;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
-using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
@@ -139,7 +138,7 @@ namespace SCIPA.Domain.Inbound
 
             switch (HandlerValueType)
             {
-                case Models.ValueType.Integer:
+                case ValueType.Integer:
                     {
                         int convertedInt = int.MinValue;
                         if (int.TryParse(InboundData.StringValue, out convertedInt))
@@ -151,7 +150,7 @@ namespace SCIPA.Domain.Inbound
 
                         break;
                     }
-                case Models.ValueType.Float:
+                case ValueType.Float:
                     {
                         float convertedFloat = float.MinValue;
                         if (float.TryParse(InboundData.StringValue, out convertedFloat))
@@ -163,7 +162,7 @@ namespace SCIPA.Domain.Inbound
 
                         break;
                     }
-                case Models.ValueType.Boolean:
+                case ValueType.Boolean:
                     {
                         bool returnValue = false;
                         if (bool.TryParse(InboundData.StringValue, out returnValue))

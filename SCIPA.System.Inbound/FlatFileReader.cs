@@ -16,7 +16,7 @@ namespace SCIPA.Domain.Inbound
         /// <param name="handler"></param>
         public FlatFileReader(FlatFileHandler handler)
         {
-            HandlerValueType = handler.Communicator.ValueValueType;
+            HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
         }
     }

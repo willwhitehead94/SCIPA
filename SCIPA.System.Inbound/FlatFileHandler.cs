@@ -7,7 +7,6 @@ using System.IO.Ports;
 using System.Text;
 using System.Threading;
 using SCIPA.Domain.Generic;
-using SCIPA.Models.Resources;
 using ValueType = SCIPA.Models.ValueType;
 
 
@@ -169,8 +168,7 @@ namespace SCIPA.Domain.Inbound
 
                 EnqueueData(new Value()
                 {
-                    ValueType = ValueType.String,
-                    CommType = CommunicatorType.FlatFile,
+                    Type = ValueType.String,
                     EventTime = DateTime.Now,
                     StringValue = fileText,
                     Inbound = true

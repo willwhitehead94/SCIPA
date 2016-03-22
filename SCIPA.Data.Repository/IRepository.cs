@@ -1,90 +1,103 @@
 ﻿using System.Collections.Generic;
-using SCIPA.Models;
+using DAL = SCIPA.Data.AccessLayer; //Data Access Layer Models
+using DOM = SCIPA.Models; //Domain Layer Models
 
 namespace SCIPA.Data.Repository
 {
-    interface IRepository
+    public interface IRepository
     {
-        void CreateDevice(Models.Device device);
+        void CreateDevice(DOM.Device device);
 
-        Models.Device RetrieveDevice(int deviceId);
+        DOM.Device RetrieveDevice(int id);
 
-        ICollection<Models.Device> RetrieveAllDevices();
+        ICollection<DOM.Device> RetrieveAllDevices();
 
-        void UpdateDevice(Models.Device device);
+        void UpdateDevice(DOM.Device device);
 
-        void DisableDevice(Models.Device device);
+        void DisableDevice(DOM.Device device);
 
         void CreateOrUpdateDevice(Models.Device device);
 
+        void CreateAction(DOM.Action action);
 
-        void CreateAction(Models.Action action);
+        DOM.Action RetrieveAction(int id);
 
-        Action RetrieveAction(int id);
+        ICollection<DOM.Action> RetrieveActionsForDevice(int deviceId);
 
-        ICollection<Action> RetrieveActionsForDevice(int deviceId);
+        ICollection<DOM.Action> RetrieveAllActions();
 
-        ICollection<Action> RetrieveAllActions();
+        void UpdateAction(DOM.Action action);
 
-        void UpdateAction(Action action);
+        void DeleteAction(DOM.Action action);
 
-        void DeleteAction(Action action);
+        void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
+        //DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
 
-        void SetApplicationInformation(ApplicationInformation ai);
+        //ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
 
-        ApplicationInformation GetApplicationInformation();
+        //ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
 
+        void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        void CreateDatabaseCommunicator(DatabaseCommunicator dc);
+        void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
+        void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
-        ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
+        //DOM.FileCommunicator RetrieveFileCommunicator(int id);
 
-        ICollection<DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
+        //ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
 
-        void UpdateDatabaseCommunicator(DatabaseCommunicator dc);
+        //ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators();
 
-        void DeleteDatabaseCommunicator(DatabaseCommunicator dc);
+        void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
+        void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
-        void CreateSerialCommunicator(SerialCommunicator serialCommunicator);
+        void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
-        SerialCommunicator RetrieveSerialCommunicator(int id);
+        //DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
 
-        ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
+        //ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
 
-        ICollection<SerialCommunicator> RetrieveAllSerialCommunicators();
+        //ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
 
-        void UpdateSerialCommunicator(SerialCommunicator serialCommunicator);
+        DOM.Communicator RetrieveCommunicator(int id);
 
-        void DeleteSerialCommunicator(SerialCommunicator serialCommunicator);
+        ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId);
 
+        ICollection<DOM.Communicator> RetrieveAllCommunicators();  
 
-        void CreateFileCommunicator(FileCommunicator dc);
+        void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
-        FileCommunicator RetrieveFileCommunicator(int id);
+        void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
-        ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
+        void CreateRule(DOM.Rule rule);
 
-        ICollection<FileCommunicator> RetrieveAllFileCommunicators();
+        DOM.Rule RetrieveRule(int id);
 
-        void UpdateFileCommunicator(FileCommunicator fileCommunicator);
+        ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId);
 
-        void DeleteFileCommunicator(FileCommunicator fileCommunicator);
+        ICollection<DOM.Rule> RetrieveAllRules();
 
+        void UpdateRule(DOM.Rule rule);
 
-        void CreateRule(Rule rule);
+        void DeleteRule(DOM.Rule rule);
 
-        Rule RetrieveRule(int id);
+        void CreateValue(DOM.Value value);
 
-        ICollection<Rule> RetrieveRulesForDevice(int deviceId);
+        DOM.Value RetrieveValue(int id);
 
-        ICollection<Rule> RetrieveAllRules();
+        ICollection<DOM.Value> RetrieveValuesForDevice(int deviceId);
 
-        void UpdateRule(Rule rule);
+        ICollection<DOM.Value> RetrieveAllValues();
 
-        void DeleteRule(Rule rule);
+        void UpdateValue(DOM.Value value);
+
+        void DeleteValue(DOM.Value value);
+
+        DOM.AppData GetApplicationInformation();
+
+        void SetApplicationInformation(DOM.AppData ai);
     }
 }

@@ -1,46 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SCIPA.Data.AccessLayer.Models;
 
 namespace SCIPA.Data.AccessLayer
 {
-    public class DataController : IDataController
+    public class DataController
     {
-        private readonly DataModel _db = new DataModel();
+        private readonly SCIPAEntities _db = new SCIPAEntities();
 
-        public DataController()
+        public void SetAppData(AppData ai)
         {
-            //try
-            //{
-            //    _db.Database.Delete();
-            //}
-            //catch
-            //{
-            //}
-            //_db.Database.CreateIfNotExists();
-
-            var cs = _db.Database.Connection.ConnectionString;
-            var isCompat =_db.Database.CompatibleWithModel(true);
-
-        }
-
-        public void SetApplicationInformation(ApplicationInformation ai)
-        {
-            var current = _db.ApplicationInformation.First();
+            var current = _db.AppData.First();
             current = ai;
             _db.SaveChanges();
         }
 
-        public ApplicationInformation GetApplicationInformation()
+        public AppData GetAppData()
         {
-            return _db.ApplicationInformation.First();
+            return _db.AppData.First();
         }
 
-        public void CreateNewDevice(Device device)
+        public void CreateDevice(Device device)
         {
             _db.Devices.Add(device);
             _db.SaveChanges();
@@ -67,7 +47,7 @@ namespace SCIPA.Data.AccessLayer
         public void UpdateDevice(Device device)
         {
             var temp = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
-            
+
             if (temp != null)
             {
                 temp = device;
@@ -76,27 +56,27 @@ namespace SCIPA.Data.AccessLayer
             }
         }
 
-        public void CreateNewAction(Models.Action action)
+        public void CreateAction(Action action)
         {
             _db.Actions.Add(action);
         }
 
-        public Models.Action RetrieveAction(int id)
+        public Action RetrieveAction(int id)
         {
             return _db.Actions.FirstOrDefault(a => a.Id == id);
         }
 
-        public ICollection<Models.Action> RetrieveActionsForDevice(int deviceId)
+        public ICollection<Action> RetrieveActionsForDevice(int deviceId)
         {
             return _db.Actions.Where(a => a.Device.Id == deviceId).ToList();
         }
 
-        public ICollection<Models.Action> RetrieveActions()
+        public ICollection<Action> RetrieveActions()
         {
             return _db.Actions.ToList();
         }
 
-        public void UpdateAction(Models.Action action)
+        public void UpdateAction(Action action)
         {
             var toUpdate = _db.Actions.FirstOrDefault(a => a.Id == action.Id);
             if (toUpdate != null)
@@ -106,7 +86,7 @@ namespace SCIPA.Data.AccessLayer
             }
         }
 
-        public void DeleteAction(Models.Action action)
+        public void DeleteAction(Action action)
         {
             var toDelete = _db.Actions.FirstOrDefault(a => a.Id == action.Id);
             if (toDelete != null)
@@ -119,30 +99,24 @@ namespace SCIPA.Data.AccessLayer
         public void CreateDatabaseCommunicator(DatabaseCommunicator dc)
         {
             if (dc == null) return;
-            _db.DatabaseCommunicators.Add(dc);
+            _db.Communicators.Add(dc);
             _db.SaveChanges();
         }
 
         public DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
         {
-            return _db.DatabaseCommunicators.FirstOrDefault(dc => dc.Id == id);
+            return (DatabaseCommunicator)_db.Communicators.FirstOrDefault(dc => dc.Id == id);
         }
 
-        public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
-        {
-            return null;
-            //var comms = new List<DatabaseCommunicator>();
-            //comms.AddRange(_db.Devices.Where(d => d.Id == deviceId).);
+        //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
+        //{
+        //    return _db.Communicators.Where(comm => comm.Device.Id == deviceId);
+        //}
 
-            //_db.Devices.
-
-            //return _db.DatabaseCommunicators.Where(dc => dc.Device.Id == deviceId).ToList();
-        } 
-
-        public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicators()
-        {
-            return _db.DatabaseCommunicators.ToList();
-        }
+        //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicators()
+        //{
+        //    return _db.DatabaseCommunicators.ToList();
+        //}
 
         public void UpdateDatabaseCommunicator(DatabaseCommunicator dc)
         {
@@ -159,7 +133,7 @@ namespace SCIPA.Data.AccessLayer
             var toDelete = RetrieveDatabaseCommunicator(dc.Id);
             if (toDelete != null)
             {
-                _db.DatabaseCommunicators.Remove(toDelete);
+                _db.Communicators.Remove(toDelete);
                 _db.SaveChanges();
             }
         }
@@ -167,26 +141,26 @@ namespace SCIPA.Data.AccessLayer
         public void CreateFileCommunicator(FileCommunicator fc)
         {
             if (fc == null) return;
-            _db.FileCommunicators.Add(fc);
+            _db.Communicators.Add(fc);
 
             _db.SaveChanges();
         }
 
         public FileCommunicator RetrieveFileCommunicator(int id)
         {
-            return _db.FileCommunicators.FirstOrDefault(fc => fc.Id == id);
+            return (FileCommunicator)_db.Communicators.FirstOrDefault(fc => fc.Id == id);
         }
 
-        public ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
-        {
-            return null;
-            //return _db.FileCommunicators.Where(fc => fc.Device.Id == deviceId).ToList();
-        }
+        //public ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
+        //{
+        //    return null;
+        //    //return _db.FileCommunicators.Where(fc => fc.Device.Id == deviceId).ToList();
+        //}
 
-        public ICollection<FileCommunicator> RetrieveFileCommunicators()
-        {
-            return _db.FileCommunicators.ToList();
-        }
+        //public ICollection<FileCommunicator> RetrieveFileCommunicators()
+        //{
+        //    return _db.FileCommunicators.ToList();
+        //}
 
         public void UpdateFileCommunicator(FileCommunicator fc)
         {
@@ -203,7 +177,7 @@ namespace SCIPA.Data.AccessLayer
             var toDelete = RetrieveFileCommunicator(fc.Id);
             if (toDelete != null)
             {
-                _db.FileCommunicators.Remove(toDelete);
+                _db.Communicators.Remove(toDelete);
                 _db.SaveChanges();
             }
         }
@@ -211,25 +185,25 @@ namespace SCIPA.Data.AccessLayer
         public void CreateSerialCommunicator(SerialCommunicator sc)
         {
             if (sc == null) return;
-            _db.SerialCommunicators.Add(sc);
+            _db.Communicators.Add(sc);
             _db.SaveChanges();
         }
 
         public SerialCommunicator RetrieveSerialCommunicator(int id)
         {
-            return _db.SerialCommunicators.FirstOrDefault(sc => sc.Id == id);
+            return (SerialCommunicator)_db.Communicators.FirstOrDefault(sc => sc.Id == id);
         }
 
-        public ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
-        {
-            return null;
-            //return _db.SerialCommunicators.Where(sc => sc.Device.Id == deviceId).ToList();
-        }
+        //public ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
+        //{
+        //    return null;
+        //    //return _db.SerialCommunicators.Where(sc => sc.Device.Id == deviceId).ToList();
+        //}
 
-        public ICollection<SerialCommunicator> RetrieveSerialCommunicators()
-        {
-            return _db.SerialCommunicators.ToList();
-        }
+        //public ICollection<SerialCommunicator> RetrieveSerialCommunicators()
+        //{
+        //    return _db.SerialCommunicators.ToList();
+        //}
 
         public void UpdateSerialCommunicator(SerialCommunicator sc)
         {
@@ -246,10 +220,30 @@ namespace SCIPA.Data.AccessLayer
             var toDelete = RetrieveSerialCommunicator(sc.Id);
             if (toDelete != null)
             {
-                _db.SerialCommunicators.Remove(toDelete);
+                _db.Communicators.Remove(toDelete);
                 _db.SaveChanges();
             }
         }
+
+
+        public void CreateCommunicator(Communicator comm)
+        {
+            _db.Communicators.Add(comm);
+            _db.SaveChanges();
+        }
+
+        public IEnumerable<Communicator> RetrieveAllCommunicators()
+        {
+            return _db.Communicators.ToList();
+        }
+
+        public IEnumerable<Communicator> RetrieveCommunicatorsByDeviceId(int id)
+        {
+            return _db.Communicators.Where(comm => comm.Device.Id == id).ToList();
+        }
+
+
+
 
         public void CreateRule(Rule rule)
         {
@@ -307,7 +301,7 @@ namespace SCIPA.Data.AccessLayer
 
         public ICollection<Value> RetrieveValuesForDevice(int deviceId)
         {
-            return _db.Values.Where(Value => Value.Device.Id == deviceId).ToList();
+            return _db.Values.Where(value => value.Device.Id == deviceId).ToList();
         }
 
         public ICollection<Value> RetrieveValues()
@@ -315,19 +309,19 @@ namespace SCIPA.Data.AccessLayer
             return _db.Values.ToList();
         }
 
-        public void UpdateValue(Value Value)
+        public void UpdateValue(Value value)
         {
-            var toUpdate = RetrieveValue(Value.Id);
+            var toUpdate = RetrieveValue(value.Id);
             if (toUpdate != null)
             {
-                toUpdate = Value;
+                toUpdate = value;
                 _db.SaveChanges();
             }
         }
 
-        public void DeleteValue(Value Value)
+        public void DeleteValue(Value value)
         {
-            var toDelete = RetrieveValue(Value.Id);
+            var toDelete = RetrieveValue(value.Id);
             if (toDelete != null)
             {
                 _db.Values.Remove(toDelete);
