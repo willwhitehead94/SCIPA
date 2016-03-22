@@ -8,7 +8,7 @@ using SCIPA.Models;
 namespace SCIPA.Domain.Logic
 {
     public class CommunicatorController
-    { 
+    {
         private readonly DataRepository _repo = new DataRepository();
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace SCIPA.Domain.Logic
         /// <returns></returns>
         public ICollection<Communicator> GetAllFileCommunicators()
         {
-            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.FlatFile).ToList();
+            return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.FlatFile).ToList();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace SCIPA.Domain.Logic
         /// <returns></returns>
         public ICollection<Communicator> GetAllDatabaseCommunicators()
         {
-            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.Database).ToList();
+            return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Database).ToList();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace SCIPA.Domain.Logic
         /// <returns></returns>
         public ICollection<Communicator> GetAllSerialCommunicators()
         {
-            return _repo.RetrieveAllCommunicators().Where(comm=>comm.Type==CommunicatorType.Serial).ToList();
+            return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Serial).ToList();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace SCIPA.Domain.Logic
         {
             var dbValue = int.MinValue;
 
-            if (typeof (T).BaseType != typeof (Communicator))
+            if (typeof(T).BaseType != typeof(Communicator))
             {
                 throw new Exception("Method only handles Communicator objects.");
             }
@@ -76,7 +76,7 @@ namespace SCIPA.Domain.Logic
 
         public void SaveCommunicator(DatabaseCommunicator dbComm)
         {
-            
+
         }
 
         public void SaveCommunicator(SerialCommunicator sComm)
@@ -107,7 +107,7 @@ namespace SCIPA.Domain.Logic
                     dbValue = allSComms.Count == 0 ? allSComms.Count : allSComms.Max(c => c.Id);
                     break;
                 case "FileCommunicator":
-                    SaveCommunicator((FileCommunicator)generalComm,parentDevice);
+                    SaveCommunicator((FileCommunicator)generalComm, parentDevice);
                     break;
                 default:
                     return;

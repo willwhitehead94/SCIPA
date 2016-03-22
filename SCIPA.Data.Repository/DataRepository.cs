@@ -49,7 +49,7 @@ namespace SCIPA.Data.Repository
         public void CreateOrUpdateDevice(DOM.Device device)
         {
             //Ensure the passed device is valid.
-            if (device.Id > 0 )
+            if (device.Id > 0)
             {
                 var retrievedDevice = RetrieveDevice(device.Id);
 
@@ -152,7 +152,7 @@ namespace SCIPA.Data.Repository
 
         public DOM.Communicator RetrieveCommunicatorById(int id)
         {
-            return _converter.ConvertToDomain(_dbController.RetrieveAllCommunicators().FirstOrDefault(comm=>comm.Id==id));
+            return _converter.ConvertToDomain(_dbController.RetrieveAllCommunicators().FirstOrDefault(comm => comm.Id == id));
         }
 
         public void CreateRule(DOM.Rule rule)
