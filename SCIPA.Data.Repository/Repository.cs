@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using SCIPA.Domain.Generic;
 using DAL = SCIPA.Data.AccessLayer;
 using DOM = SCIPA.Models;
 
@@ -158,17 +159,18 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = RetrieveAction(action.Id);
             if (dbValue == null) return;
-            _db.Actions.Remove(_mapper.Map(action, new DAL.Action());
+            _db.Actions.Remove(_mapper.Map(action, new DAL.Action()));
         }
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
         {
-            throw new System.NotImplementedException();
+            _db.Communicators.Add(_mapper.Map(databaseCommunicator, new DAL.DatabaseCommunicator()));
         }
 
         public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
         {
-            throw new System.NotImplementedException();
+            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == databaseCommunicator.Id);
+
         }
 
         public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
@@ -198,17 +200,50 @@ namespace SCIPA.Data.Repository
 
         public DOM.Communicator RetrieveCommunicator(int id)
         {
-            throw new System.NotImplementedException();
+            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == id);
+            if (dbValue == null) return null;
+            return ConvertDALCommunicatorsToDOM(dbValue);
         }
 
         public ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
-            throw new System.NotImplementedException();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId)).ToList();
+        }
+
+        /// <summary>
+        /// Used to iteratively go through a list of communicator objects and convert them to Domain models.
+        /// </summary>
+        /// <param name="communicators">DAL Communicators.</param>
+        /// <returns>DOM Communicators.</returns>
+        private IEnumerable<DOM.Communicator> ConvertDALCommunicatorsToDOM(IEnumerable<DAL.Communicator> communicators)
+        {
+            return communicators.Select(comm => ConvertDALCommunicatorToDOM(comm)).ToList();
+        }
+
+        /// <summary>
+        /// Converts a single DAL Communicator to DOM.
+        /// </summary>
+        /// <param name="communicator">DAL Communicator.</param>
+        /// <returns>DOM Communicator.</returns>
+        private DOM.Communicator ConvertDALCommunicatorToDOM(DAL.Communicator communicator)
+        {
+            switch (communicator.Type)
+            {
+                case DAL.CommunicatorType.Database:
+                    return (_mapper.Map(communicator, new DOM.DatabaseCommunicator()));
+                case DAL.CommunicatorType.Serial:
+                    return (_mapper.Map(communicator, new DOM.SerialCommunicator()));
+                case DAL.CommunicatorType.FlatFile:
+                    return (_mapper.Map(communicator, new DOM.FileCommunicator()));
+                default:
+                    DebugOutput.Print("Unable to convert/understand Communicator...",communicator.Id.ToString());
+                    return null;
+            }
         }
 
         public ICollection<DOM.Communicator> RetrieveAllCommunicators()
         {
-            throw new System.NotImplementedException();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators).ToList();
         }
 
         public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
