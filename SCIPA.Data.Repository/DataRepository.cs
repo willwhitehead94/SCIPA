@@ -97,12 +97,12 @@ namespace SCIPA.Data.Repository
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
         {
-            throw new NotImplementedException();
+            _dbController.CreateDatabaseCommunicator(_converter.ConvertToData(databaseCommunicator));
         }
 
         public DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id)
         {
-            throw new NotImplementedException();
+            return _converter.ConvertToDomain(_dbController.RetrieveDatabaseCommunicator(id));
         }
 
         public ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)

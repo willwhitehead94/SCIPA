@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
@@ -7,12 +6,7 @@ namespace SCIPA.Data.AccessLayer
 {
     public class DataController
     {
-        private SCIPAEntities _db = new SCIPAEntities();
-
-        public DataController()
-        {
-
-        }
+        private readonly SCIPAEntities _db = new SCIPAEntities();
 
         public void SetAppData(AppData ai)
         {
@@ -287,7 +281,7 @@ namespace SCIPA.Data.AccessLayer
 
         public ICollection<Value> RetrieveValuesForDevice(int deviceId)
         {
-            return _db.Values.Where(Value => Value.Device.Id == deviceId).ToList();
+            return _db.Values.Where(value => value.Device.Id == deviceId).ToList();
         }
 
         public ICollection<Value> RetrieveValues()
@@ -295,19 +289,19 @@ namespace SCIPA.Data.AccessLayer
             return _db.Values.ToList();
         }
 
-        public void UpdateValue(Value Value)
+        public void UpdateValue(Value value)
         {
-            var toUpdate = RetrieveValue(Value.Id);
+            var toUpdate = RetrieveValue(value.Id);
             if (toUpdate != null)
             {
-                toUpdate = Value;
+                toUpdate = value;
                 _db.SaveChanges();
             }
         }
 
-        public void DeleteValue(Value Value)
+        public void DeleteValue(Value value)
         {
-            var toDelete = RetrieveValue(Value.Id);
+            var toDelete = RetrieveValue(value.Id);
             if (toDelete != null)
             {
                 _db.Values.Remove(toDelete);

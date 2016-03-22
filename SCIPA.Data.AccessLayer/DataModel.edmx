@@ -10,7 +10,7 @@
     <EntitySet Name="Communicators" EntityType="DataModel.Store.Communicators" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Devices" EntityType="DataModel.Store.Devices" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Rules" EntityType="DataModel.Store.Rules" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Values" EntityType="DataModel.Store.Values" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="values" EntityType="DataModel.Store.values" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AppData" EntityType="DataModel.Store.AppData" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_FileCommunicator" EntityType="DataModel.Store.Communicators_FileCommunicator" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_SerialCommunicator" EntityType="DataModel.Store.Communicators_SerialCommunicator" store:Type="Tables" Schema="dbo" />
@@ -31,13 +31,13 @@
       <End Role="Device" EntitySet="Devices" />
       <End Role="Rule" EntitySet="Rules" />
     </AssociationSet>
-    <AssociationSet Name="DeviceInboundValue" Association="DataModel.Store.DeviceInboundValue">
+    <AssociationSet Name="DeviceInboundvalue" Association="DataModel.Store.DeviceInboundvalue">
       <End Role="Device" EntitySet="Devices" />
-      <End Role="Value" EntitySet="Values" />
+      <End Role="value" EntitySet="values" />
     </AssociationSet>
-    <AssociationSet Name="DeviceOutboundValue" Association="DataModel.Store.DeviceOutboundValue">
+    <AssociationSet Name="DeviceOutboundvalue" Association="DataModel.Store.DeviceOutboundvalue">
       <End Role="Device" EntitySet="Devices" />
-      <End Role="Value" EntitySet="Values" />
+      <End Role="value" EntitySet="values" />
     </AssociationSet>
     <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
       <End Role="Communicator" EntitySet="Communicators" />
@@ -57,7 +57,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OutputValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Outputvalue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Communicators">
@@ -69,7 +69,7 @@
     <Property Name="EndChar" Type="int" Nullable="false" />
     <Property Name="LastReadTime" Type="datetime" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
-    <Property Name="ValueType" Type="smallint" Nullable="false" />
+    <Property Name="valueType" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -91,17 +91,17 @@
     <Property Name="DeviceId" Type="int" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
   </EntityType>
-  <EntityType Name="Values">
+  <EntityType Name="values">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EventTime" Type="datetime" Nullable="false" />
-    <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Stringvalue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="Device_Id" Type="int" Nullable="false" />
-    <Property Name="DeviceOutboundValue_Value_Id" Type="int" Nullable="false" />
+    <Property Name="DeviceOutboundvalue_value_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -187,27 +187,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeviceInboundValue">
+  <Association Name="DeviceInboundvalue">
     <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
-    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
+    <End Role="value" Type="DataModel.Store.values" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Device">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Value">
+      <Dependent Role="value">
         <PropertyRef Name="Device_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeviceOutboundValue">
+  <Association Name="DeviceOutboundvalue">
     <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
-    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
+    <End Role="value" Type="DataModel.Store.values" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Device">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Value">
-        <PropertyRef Name="DeviceOutboundValue_Value_Id" />
+      <Dependent Role="value">
+        <PropertyRef Name="DeviceOutboundvalue_value_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -262,7 +262,7 @@
           <EntitySet Name="Communicators" EntityType="DataModel.Communicator" />
           <EntitySet Name="Devices" EntityType="DataModel.Device" />
           <EntitySet Name="Rules" EntityType="DataModel.Rule" />
-          <EntitySet Name="Values" EntityType="DataModel.Value" />
+          <EntitySet Name="values" EntityType="DataModel.value" />
           <AssociationSet Name="DeviceAction" Association="DataModel.DeviceAction">
             <End Role="Device" EntitySet="Devices" />
             <End Role="Action" EntitySet="Actions" />
@@ -280,13 +280,13 @@
             <End Role="Rule" EntitySet="Rules" />
           </AssociationSet>
           <EntitySet Name="AppData" EntityType="DataModel.AppData" />
-          <AssociationSet Name="DeviceInboundValue" Association="DataModel.DeviceInboundValue">
+          <AssociationSet Name="DeviceInboundvalue" Association="DataModel.DeviceInboundvalue">
             <End Role="Device" EntitySet="Devices" />
-            <End Role="Value" EntitySet="Values" />
+            <End Role="value" EntitySet="values" />
           </AssociationSet>
-          <AssociationSet Name="DeviceOutboundValue" Association="DataModel.DeviceOutboundValue">
+          <AssociationSet Name="DeviceOutboundvalue" Association="DataModel.DeviceOutboundvalue">
             <End Role="Device" EntitySet="Devices" />
-            <End Role="Value" EntitySet="Values" />
+            <End Role="value" EntitySet="values" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
@@ -294,7 +294,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OutputValue" Type="String" Nullable="false" />
+          <Property Name="Outputvalue" Type="String" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceAction" FromRole="Action" ToRole="Device" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
         </EntityType>
@@ -308,7 +308,7 @@
           <Property Name="LastReadTime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Communicator" ToRole="Device" />
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
-          <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
+          <Property Name="valueType" Type="DataModel.valueType" Nullable="false" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
@@ -338,8 +338,8 @@
           <NavigationProperty Name="Writer" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Device" ToRole="Communicator" />
           <NavigationProperty Name="Reader" Relationship="DataModel.DeviceCommunicator_Read" FromRole="Device" ToRole="Communicator" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
-          <NavigationProperty Name="InboundValues" Relationship="DataModel.DeviceInboundValue" FromRole="Device" ToRole="Value" />
-          <NavigationProperty Name="OutboundValues" Relationship="DataModel.DeviceOutboundValue" FromRole="Device" ToRole="Value" />
+          <NavigationProperty Name="Inboundvalues" Relationship="DataModel.DeviceInboundvalue" FromRole="Device" ToRole="value" />
+          <NavigationProperty Name="Outboundvalues" Relationship="DataModel.DeviceOutboundvalue" FromRole="Device" ToRole="value" />
         </EntityType>
         <EntityType Name="Rule">
           <Key>
@@ -350,18 +350,18 @@
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="DataModel.RuleType" Nullable="false" />
         </EntityType>
-        <EntityType Name="Value">
+        <EntityType Name="value">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EventTime" Type="DateTime" Nullable="false" />
-          <Property Name="StringValue" Type="String" Nullable="false" />
+          <Property Name="Stringvalue" Type="String" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
-          <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
-          <NavigationProperty Name="Device" Relationship="DataModel.DeviceInboundValue" FromRole="Value" ToRole="Device" />
+          <Property Name="Type" Type="DataModel.valueType" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceInboundvalue" FromRole="value" ToRole="Device" />
         </EntityType>
-        <EnumType Name="ValueType" UnderlyingType="Int16">
+        <EnumType Name="valueType" UnderlyingType="Int16">
           <Member Name="String" />
           <Member Name="Integer" />
           <Member Name="Float" />
@@ -427,13 +427,13 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
-        <Association Name="DeviceInboundValue">
+        <Association Name="DeviceInboundvalue">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
+          <End Type="DataModel.value" Role="value" Multiplicity="*" />
         </Association>
-        <Association Name="DeviceOutboundValue">
+        <Association Name="DeviceOutboundvalue">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
+          <End Type="DataModel.value" Role="value" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -445,7 +445,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.Action)">
         <MappingFragment StoreEntitySet="Actions">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OutputValue" ColumnName="OutputValue" />
+          <ScalarProperty Name="Outputvalue" ColumnName="Outputvalue" />
           <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -458,7 +458,7 @@
           <ScalarProperty Name="EndChar" ColumnName="EndChar" />
           <ScalarProperty Name="LastReadTime" ColumnName="LastReadTime" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="valueType" ColumnName="valueType" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.FileCommunicator)">
@@ -506,12 +506,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Values">
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Value)">
-        <MappingFragment StoreEntitySet="Values">
+    <EntitySetMapping Name="values">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.value)">
+        <MappingFragment StoreEntitySet="values">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EventTime" ColumnName="EventTime" />
-          <ScalarProperty Name="StringValue" ColumnName="StringValue" />
+          <ScalarProperty Name="Stringvalue" ColumnName="Stringvalue" />
           <ScalarProperty Name="Inbound" ColumnName="Inbound" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
@@ -543,19 +543,19 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceInboundValue" TypeName="DataModel.DeviceInboundValue" StoreEntitySet="Values">
+    <AssociationSetMapping Name="DeviceInboundvalue" TypeName="DataModel.DeviceInboundvalue" StoreEntitySet="values">
       <EndProperty Name="Device">
         <ScalarProperty Name="Id" ColumnName="Device_Id" />
       </EndProperty>
-      <EndProperty Name="Value">
+      <EndProperty Name="value">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceOutboundValue" TypeName="DataModel.DeviceOutboundValue" StoreEntitySet="Values">
+    <AssociationSetMapping Name="DeviceOutboundvalue" TypeName="DataModel.DeviceOutboundvalue" StoreEntitySet="values">
       <EndProperty Name="Device">
-        <ScalarProperty Name="Id" ColumnName="DeviceOutboundValue_Value_Id" />
+        <ScalarProperty Name="Id" ColumnName="DeviceOutboundvalue_value_Id" />
       </EndProperty>
-      <EndProperty Name="Value">
+      <EndProperty Name="value">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
@@ -566,16 +566,16 @@
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+        <DesignerProperty Name="MetadataArtifactProcessing" value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
     </Connection>
     <Options>
       <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ValidateOnBuild" value="true" />
+        <DesignerProperty Name="EnablePluralization" value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" value="true" />
+        <DesignerProperty Name="UseLegacyProvider" value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
