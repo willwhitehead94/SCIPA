@@ -140,17 +140,17 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
+        public ICollection<DOM.Communicator> RetrieveAllCommunicators()
         {
             return _dbController.RetrieveAllCommunicators().Select(comm => _converter.ConvertToDomain(comm)).ToList();
         }
 
-        public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
+        public ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
             return _dbController.RetrieveCommunicatorsByDeviceId(deviceId).Select(comm => _converter.ConvertToDomain(comm)).ToList();
         }
 
-        public DOM.Communicator RetrieveCommunicatorById(int id)
+        public DOM.Communicator RetrieveCommunicator(int id)
         {
             return _converter.ConvertToDomain(_dbController.RetrieveAllCommunicators().FirstOrDefault(comm => comm.Id == id));
         }

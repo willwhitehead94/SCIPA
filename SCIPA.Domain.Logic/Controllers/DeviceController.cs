@@ -32,9 +32,9 @@ namespace SCIPA.Domain.Logic
                 GetAllDevices(true);
                 return AllDevices.Max(dev => dev.Id);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                DebugOutput.Print("There are no devices existing in the datbase.");
+                DebugOutput.Print("There are no devices existing in the datbase.",e.Message);
                 return 0;
             }
             

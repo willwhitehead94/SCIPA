@@ -62,6 +62,12 @@ namespace SCIPA.Data.Repository
 
         //ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
 
+        DOM.Communicator RetrieveCommunicator(int id);
+
+        ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId);
+
+        ICollection<DOM.Communicator> RetrieveAllCommunicators();  
+
         void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
         void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
