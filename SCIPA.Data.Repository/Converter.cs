@@ -8,7 +8,7 @@ namespace SCIPA.Data.Repository
     {
         public DAL.Device ConvertToData(DOM.Device domainModel)
         {
-            throw new NotImplementedException();
+
         }
 
         public DOM.Device ConvertToDomain(DAL.Device dataModel)
