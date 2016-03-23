@@ -252,7 +252,9 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = RetrieveAction(action.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(action, new DOM.Action());
+
+            _mapper.Map(action, dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -273,7 +275,8 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == databaseCommunicator.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(databaseCommunicator, new DAL.DatabaseCommunicator());
+            _mapper.Map(databaseCommunicator, dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -295,7 +298,8 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == fileCommunicator.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
+            _mapper.Map(fileCommunicator,dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -334,7 +338,8 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == serialCommunicator.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(serialCommunicator, new DAL.SerialCommunicator());
+            _mapper.Map(serialCommunicator, dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -371,7 +376,8 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(rule, new DAL.Rule());
+            _mapper.Map(rule, dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
@@ -408,7 +414,8 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Values.FirstOrDefault(v => v.Id == value.Id);
             if (dbValue == null) return;
-            dbValue = _mapper.Map(value, new DAL.Value());
+            _mapper.Map(value, dbValue);
+            _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
