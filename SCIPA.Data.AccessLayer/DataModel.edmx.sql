@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/23/2016 21:41:49
+-- Date Created: 03/23/2016 23:46:53
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -124,8 +124,7 @@ CREATE TABLE [dbo].[Values] (
     [StringValue] nvarchar(max)  NOT NULL,
     [Inbound] bit  NOT NULL,
     [Type] smallint  NOT NULL,
-    [Device_Id] int  NOT NULL,
-    [DeviceOutboundValue_Value_Id] int  NOT NULL
+    [Device_Id] int  NOT NULL
 );
 GO
 
@@ -274,32 +273,17 @@ GO
 
 -- Creating foreign key on [Device_Id] in table 'Values'
 ALTER TABLE [dbo].[Values]
-ADD CONSTRAINT [FK_DeviceInboundValue]
+ADD CONSTRAINT [FK_DeviceValue]
     FOREIGN KEY ([Device_Id])
     REFERENCES [dbo].[Devices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceInboundValue'
-CREATE INDEX [IX_FK_DeviceInboundValue]
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeviceValue'
+CREATE INDEX [IX_FK_DeviceValue]
 ON [dbo].[Values]
     ([Device_Id]);
-GO
-
--- Creating foreign key on [DeviceOutboundValue_Value_Id] in table 'Values'
-ALTER TABLE [dbo].[Values]
-ADD CONSTRAINT [FK_DeviceOutboundValue]
-    FOREIGN KEY ([DeviceOutboundValue_Value_Id])
-    REFERENCES [dbo].[Devices]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceOutboundValue'
-CREATE INDEX [IX_FK_DeviceOutboundValue]
-ON [dbo].[Values]
-    ([DeviceOutboundValue_Value_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

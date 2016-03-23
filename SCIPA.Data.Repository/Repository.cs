@@ -53,10 +53,8 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
-                .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Rules, opt => opt.Ignore())
-                .ForMember(m => m.InboundValues, opt => opt.Ignore())
-                .ForMember(m => m.OutboundValues, opt => opt.Ignore());
+                    .ForMember(m => m.Actions, opt => opt.Ignore())
+                    .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
@@ -95,10 +93,8 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DAL.FileCommunicator, DOM.FileCommunicator>();
 
                 cfg.CreateMap<DAL.Device, DOM.Device>()
-                .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Rules, opt => opt.Ignore())
-                .ForMember(m => m.InboundValues, opt => opt.Ignore())
-                .ForMember(m => m.OutboundValues, opt => opt.Ignore());
+                    .ForMember(m => m.Actions, opt => opt.Ignore())
+                    .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
                     .ForMember(m => m.Device, opt => opt.Ignore());
@@ -389,7 +385,9 @@ namespace SCIPA.Data.Repository
 
         public void CreateValue(DOM.Value value)
         {
-            _db.Values.Add(_mapper.Map(value, new DAL.Value()));
+            var dbVal = _mapper.Map(value, new DAL.Value());
+            dbVal.Device = _mapper.Map(RetrieveDevice(value.Device.Id), new DAL.Device());
+            _db.Values.Add(dbVal);
             _db.SaveChanges();
         }
 

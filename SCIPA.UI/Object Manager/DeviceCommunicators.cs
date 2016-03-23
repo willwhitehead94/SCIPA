@@ -72,6 +72,7 @@ namespace SCIPA.UI.Object_Manager
                 while (reader.AvailableValues() > 0)
                 {
                     lbValues.Items.Add(reader.GetNextValueAsString());
+                    lbValues.Refresh();
                 }
                 Thread.Sleep(500);
             }

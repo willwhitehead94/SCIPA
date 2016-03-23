@@ -27,11 +27,7 @@
       <End Role="Device" EntitySet="Devices" />
       <End Role="Rule" EntitySet="Rules" />
     </AssociationSet>
-    <AssociationSet Name="DeviceInboundValue" Association="DataModel.Store.DeviceInboundValue">
-      <End Role="Device" EntitySet="Devices" />
-      <End Role="Value" EntitySet="Values" />
-    </AssociationSet>
-    <AssociationSet Name="DeviceOutboundValue" Association="DataModel.Store.DeviceOutboundValue">
+    <AssociationSet Name="DeviceValue" Association="DataModel.Store.DeviceValue">
       <End Role="Device" EntitySet="Devices" />
       <End Role="Value" EntitySet="Values" />
     </AssociationSet>
@@ -97,7 +93,6 @@
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="Device_Id" Type="int" Nullable="false" />
-    <Property Name="DeviceOutboundValue_Value_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -171,7 +166,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeviceInboundValue">
+  <Association Name="DeviceValue">
     <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
     <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
     <ReferentialConstraint>
@@ -180,18 +175,6 @@
       </Principal>
       <Dependent Role="Value">
         <PropertyRef Name="Device_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="DeviceOutboundValue">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
-    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Device">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Value">
-        <PropertyRef Name="DeviceOutboundValue_Value_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -260,11 +243,7 @@
             <End Role="Rule" EntitySet="Rules" />
           </AssociationSet>
           <EntitySet Name="AppData" EntityType="DataModel.AppData" />
-          <AssociationSet Name="DeviceInboundValue" Association="DataModel.DeviceInboundValue">
-            <End Role="Device" EntitySet="Devices" />
-            <End Role="Value" EntitySet="Values" />
-          </AssociationSet>
-          <AssociationSet Name="DeviceOutboundValue" Association="DataModel.DeviceOutboundValue">
+          <AssociationSet Name="DeviceValue" Association="DataModel.DeviceValue">
             <End Role="Device" EntitySet="Devices" />
             <End Role="Value" EntitySet="Values" />
           </AssociationSet>
@@ -317,8 +296,6 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
-          <NavigationProperty Name="InboundValues" Relationship="DataModel.DeviceInboundValue" FromRole="Device" ToRole="Value" />
-          <NavigationProperty Name="OutboundValues" Relationship="DataModel.DeviceOutboundValue" FromRole="Device" ToRole="Value" />
         </EntityType>
         <EntityType Name="Rule">
           <Key>
@@ -338,7 +315,7 @@
           <Property Name="StringValue" Type="String" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
           <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
-          <NavigationProperty Name="Device" Relationship="DataModel.DeviceInboundValue" FromRole="Value" ToRole="Device" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceValue" FromRole="Value" ToRole="Device" />
         </EntityType>
         <EnumType Name="ValueType" UnderlyingType="Int16">
           <Member Name="String" />
@@ -402,11 +379,7 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
-        <Association Name="DeviceInboundValue">
-          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
-        </Association>
-        <Association Name="DeviceOutboundValue">
+        <Association Name="DeviceValue">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
           <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
         </Association>
@@ -511,17 +484,9 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceInboundValue" TypeName="DataModel.DeviceInboundValue" StoreEntitySet="Values">
+    <AssociationSetMapping Name="DeviceValue" TypeName="DataModel.DeviceValue" StoreEntitySet="Values">
       <EndProperty Name="Device">
         <ScalarProperty Name="Id" ColumnName="Device_Id" />
-      </EndProperty>
-      <EndProperty Name="Value">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceOutboundValue" TypeName="DataModel.DeviceOutboundValue" StoreEntitySet="Values">
-      <EndProperty Name="Device">
-        <ScalarProperty Name="Id" ColumnName="DeviceOutboundValue_Value_Id" />
       </EndProperty>
       <EndProperty Name="Value">
         <ScalarProperty Name="Id" ColumnName="Id" />

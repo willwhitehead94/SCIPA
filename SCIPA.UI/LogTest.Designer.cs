@@ -222,10 +222,10 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(424, 924);
+            this.button11.Location = new System.Drawing.Point(208, 841);
             this.button11.Margin = new System.Windows.Forms.Padding(7);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(227, 99);
+            this.button11.Size = new System.Drawing.Size(202, 116);
             this.button11.TabIndex = 16;
             this.button11.Text = "Reader Test";
             this.button11.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 1127);
+            this.ClientSize = new System.Drawing.Size(679, 958);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
