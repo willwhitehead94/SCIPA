@@ -120,10 +120,15 @@ namespace SCIPA.UI
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            var devList = new List<Device>();
+            if (_communicator.Device != null)
+            {
+                devList= _communicator.Device.ToList();
+            }
+
+
             if (_communicator is DatabaseCommunicator)
             {
-                List<Device> devList = _communicator.Device.ToList();
-
                 _communicator = new DatabaseCommunicator()
                 {
                     DbType = (DatabaseType)cbDBType.SelectedItem,
@@ -137,8 +142,6 @@ namespace SCIPA.UI
             }
             else if (_communicator is SerialCommunicator)
             {
-                List<Device> devList = _communicator.Device.ToList();
-
                 _communicator =new SerialCommunicator()
                 {
                     StartChar = GetStartChar(),
@@ -154,8 +157,6 @@ namespace SCIPA.UI
             }
             else if (_communicator is FileCommunicator)
             {
-                List<Device> devList = _communicator.Device.ToList();
-
                 _communicator =new FileCommunicator()
                 {
                     FilePath = tFilePath.Text,
