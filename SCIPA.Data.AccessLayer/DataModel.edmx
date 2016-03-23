@@ -70,6 +70,8 @@
     <Property Name="LastReadTime" Type="datetime" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="ValueType" Type="smallint" Nullable="false" />
+    <Property Name="Device_Id" Type="int" Nullable="false" />
+    <Property Name="DeviceCommunicator_Read_Communicator_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -80,8 +82,6 @@
     <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Custodian" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
-    <Property Name="Writer_Id" Type="int" Nullable="false" />
-    <Property Name="Reader_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Rules">
     <Key>
@@ -152,26 +152,26 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeviceCommunicator_Write">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
-    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1" />
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Communicator">
+      <Principal Role="Device">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Device">
-        <PropertyRef Name="Writer_Id" />
+      <Dependent Role="Communicator">
+        <PropertyRef Name="Device_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="DeviceCommunicator_Read">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
-    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1" />
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Communicator">
+      <Principal Role="Device">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Device">
-        <PropertyRef Name="Reader_Id" />
+      <Dependent Role="Communicator">
+        <PropertyRef Name="DeviceCommunicator_Read_Communicator_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -400,11 +400,11 @@
         </Association>
         <Association Name="DeviceCommunicator_Write">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="0..1" />
         </Association>
         <Association Name="DeviceCommunicator_Read">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="0..1" />
         </Association>
         <Association Name="DeviceRule">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
@@ -527,19 +527,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="DeviceCommunicator_Write" TypeName="DataModel.DeviceCommunicator_Write" StoreEntitySet="Devices">
-      <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Writer_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="DeviceCommunicator_Write" TypeName="DataModel.DeviceCommunicator_Write" StoreEntitySet="Communicators">
       <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Device_Id" />
+      </EndProperty>
+      <EndProperty Name="Communicator">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceCommunicator_Read" TypeName="DataModel.DeviceCommunicator_Read" StoreEntitySet="Devices">
-      <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Reader_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="DeviceCommunicator_Read" TypeName="DataModel.DeviceCommunicator_Read" StoreEntitySet="Communicators">
       <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="DeviceCommunicator_Read_Communicator_Id" />
+      </EndProperty>
+      <EndProperty Name="Communicator">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

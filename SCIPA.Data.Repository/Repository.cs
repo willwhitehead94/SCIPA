@@ -13,8 +13,7 @@ namespace SCIPA.Data.Repository
         /// Data Controller object from the DAL. Acts as the intermediary between the repository and 
         /// the database.
         /// </summary>
-        //readonly DAL.DataController _db = new AccessLayer.DataController();
-        readonly DAL.SCIPAEntities _db = new DAL.SCIPAEntities();
+        private readonly DAL.SCIPAEntities _db = new DAL.SCIPAEntities();
 
 
         /// <summary>
@@ -27,33 +26,32 @@ namespace SCIPA.Data.Repository
             // Configure AutoMapper for update operations.
             _mapper = new MapperConfiguration(cfg =>
             {
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.Action, DOM.Action>()
+                /*
+                * All Maps will ignore the ID and any form of navigational
+                * properties. Reduces any issues AutoMapper may face
+                * with regards to Circular dependencies.
+                */
+
+                // Domain to Data Converstions
+                cfg.CreateMap<DOM.Action, DAL.Action>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore());
 
-                // Leave out navigation property.
-                cfg.CreateMap<DAL.AppData, DOM.AppData>();
+                cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
-                // Leave out navigation property.
-                cfg.CreateMap<DAL.Communicator, DOM.Communicator>()
+                cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore());
 
-                // Leave out navigation property.
-                cfg.CreateMap<DAL.CommunicatorType, DOM.CommunicatorType>();
+                cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.DatabaseCommunicator, DOM.DatabaseCommunicator>();
+                cfg.CreateMap<DOM.DatabaseCommunicator, DAL.DatabaseCommunicator>();
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.SerialCommunicator, DOM.SerialCommunicator>();
+                cfg.CreateMap<DOM.SerialCommunicator, DAL.SerialCommunicator>();
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.FileCommunicator, DOM.FileCommunicator>();
+                cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.Device, DOM.Device>()
+                cfg.CreateMap<DOM.Device, DAL.Device>()
                 .ForMember(m=>m.Id,opt=>opt.Ignore())
                 .ForMember(m=>m.Actions, opt=>opt.Ignore())
                 .ForMember(m=>m.Writer, opt=>opt.Ignore())
@@ -62,21 +60,56 @@ namespace SCIPA.Data.Repository
                 .ForMember(m=>m.InboundValues, opt=>opt.Ignore())
                 .ForMember(m=>m.OutboundValues, opt=>opt.Ignore());
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.Rule, DOM.Rule>()
+                cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m=>m.Device,opt=>opt.Ignore());
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.RuleType, DOM.RuleType>();
+                cfg.CreateMap<DOM.RuleType, DAL.RuleType>();
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DAL.Value, DOM.Value>()
+                cfg.CreateMap<DOM.Value, DAL.Value>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m=>m.Device,opt=>opt.Ignore());
 
-                // Leave out navigation properties.
-                cfg.CreateMap<DOM.ValueType, DOM.ValueType>();
+                cfg.CreateMap<DAL.ValueType, DAL.ValueType>();
+
+
+
+
+                // Domain to Data Converstions
+                cfg.CreateMap<DOM.Action, DAL.Action>()
+                    .ForMember(m => m.Device, opt => opt.Ignore());
+
+                cfg.CreateMap<DOM.AppData, DAL.AppData>();
+
+                cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
+                    .ForMember(m => m.Device, opt => opt.Ignore());
+
+                cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
+
+                cfg.CreateMap<DOM.DatabaseCommunicator, DAL.DatabaseCommunicator>();
+
+                cfg.CreateMap<DOM.SerialCommunicator, DAL.SerialCommunicator>();
+
+                cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
+
+                cfg.CreateMap<DOM.Device, DAL.Device>()
+                .ForMember(m => m.Actions, opt => opt.Ignore())
+                .ForMember(m => m.Writer, opt => opt.Ignore())
+                .ForMember(m => m.Reader, opt => opt.Ignore())
+                .ForMember(m => m.Rules, opt => opt.Ignore())
+                .ForMember(m => m.InboundValues, opt => opt.Ignore())
+                .ForMember(m => m.OutboundValues, opt => opt.Ignore());
+
+                cfg.CreateMap<DOM.Rule, DAL.Rule>()
+                    .ForMember(m => m.Device, opt => opt.Ignore());
+
+                cfg.CreateMap<DOM.RuleType, DAL.RuleType>();
+
+                cfg.CreateMap<DOM.Value, DAL.Value>()
+                    .ForMember(m => m.Device, opt => opt.Ignore());
+
+                cfg.CreateMap<DAL.ValueType, DAL.ValueType>();
+
             }).CreateMapper();
         }
 
