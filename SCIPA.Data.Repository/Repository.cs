@@ -53,7 +53,6 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
-                //.ForMember(m => m.Id, opt => opt.Ignore())
                 .ForMember(m => m.Actions, opt => opt.Ignore())
                 .ForMember(m => m.Communicators, opt=>opt.Ignore())
                 .ForMember(m => m.Rules, opt => opt.Ignore())
@@ -141,10 +140,9 @@ namespace SCIPA.Data.Repository
         public void UpdateDevice(DOM.Device device)
         {
             var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
-            var dalDevice = _mapper.Map(device, new DAL.Device());
+            _mapper.Map(device, dbCurrent);
 
-            dbCurrent = _mapper.Map(dalDevice, dbCurrent);
-            //var dal = _mapper.Map(dbValue, new DAL.Device());
+            _db.Entry(dbCurrent).State=EntityState.Modified;
             _db.SaveChanges();
         }
 

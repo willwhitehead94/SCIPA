@@ -66,6 +66,7 @@
     <Property Name="LastReadTime" Type="datetime" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="ValueType" Type="smallint" Nullable="false" />
+    <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Device_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
@@ -434,6 +435,7 @@
           <ScalarProperty Name="LastReadTime" ColumnName="LastReadTime" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="Inbound" ColumnName="Inbound" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.FileCommunicator)">
