@@ -66,7 +66,7 @@ namespace SCIPA.Domain.Logic
                 if (devExists)
                 {
                     _repo.UpdateDevice(device);
-                    AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
+                    //AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
                 }
                 else
                 {

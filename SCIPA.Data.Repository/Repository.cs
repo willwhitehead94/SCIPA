@@ -53,7 +53,7 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
-                .ForMember(m => m.Id, opt => opt.Ignore())
+                //.ForMember(m => m.Id, opt => opt.Ignore())
                 .ForMember(m => m.Actions, opt => opt.Ignore())
                 .ForMember(m => m.Writer, opt => opt.Ignore())
                 .ForMember(m => m.Reader, opt => opt.Ignore())
