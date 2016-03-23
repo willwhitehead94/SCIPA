@@ -87,7 +87,6 @@ namespace SCIPA.Domain.Logic
         public void SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
         {
             ffComm.Device = parentDevice;
-            
             _repo.CreateFileCommunicator(ffComm);
         }
 

@@ -13,6 +13,7 @@ using SCIPA.Domain.Inbound;
 using SCIPA.Domain.Logic;
 using SCIPA.DomainLogic;
 using SCIPA.Models;
+using SCIPA.UI.Object_Manager;
 using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.UI
@@ -252,6 +253,12 @@ namespace SCIPA.UI
             var firstDev = cont.RetrieveDevice(1);
             var window = new SetDeviceCommunicators(firstDev);
             window.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            DeviceCommunicators dc = new DeviceCommunicators();
+            dc.Show();
         }
     }
 }

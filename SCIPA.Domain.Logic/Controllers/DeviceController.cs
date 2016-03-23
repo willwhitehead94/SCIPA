@@ -17,6 +17,8 @@ namespace SCIPA.Domain.Logic
 
         public IEnumerable<Device> GetAllDevices(bool refresh=false)
         {
+            if (AllDevices == null || AllDevices.Count == 0) refresh = true;
+
             if (refresh)
             {
                 AllDevices=new List<Device>();

@@ -28,5 +28,10 @@ namespace SCIPA.Models
         public virtual IEnumerable<Value> InboundValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Value> OutboundValues { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id.ToString()}: {Name} ({Location}, {Custodian})";
+        }
     }
 }
