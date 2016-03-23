@@ -19,7 +19,11 @@ namespace SCIPA.Domain.Logic
         {
             if (refresh)
             {
-                AllDevices = _repo.RetrieveAllDevices().ToList();
+                AllDevices=new List<Device>();
+                foreach (var device in _repo.RetrieveAllDevices())
+                {
+                    AllDevices.Add(device);   
+                }
             }
 
             return AllDevices;
@@ -93,6 +97,17 @@ namespace SCIPA.Domain.Logic
             {
                 return null;
             }
+        }
+
+
+        public AppData RetrieveAppData()
+        {
+            return _repo.GetApplicationInformation();
+        }
+
+        public void UpdateAppData(AppData ad)
+        {
+            _repo.SetApplicationInformation(ad);
         }
     }
 }
