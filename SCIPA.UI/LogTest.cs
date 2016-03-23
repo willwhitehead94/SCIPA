@@ -234,5 +234,16 @@ namespace SCIPA.UI
             var cd = new CreateDevice();
             cd.ShowDialog();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var deviceController = new DeviceController();
+
+            //var appName = deviceController.RetrieveAppData().BusinessName;
+
+            //System.Windows.Forms.MessageBox.Show(appName);
+
+            deviceController.UpdateAppData(new AppData() {BusinessName = "test"});
+        }
     }
 }
