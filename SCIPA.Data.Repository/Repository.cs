@@ -41,8 +41,7 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Devices, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
@@ -80,14 +79,14 @@ namespace SCIPA.Data.Repository
 
 
 
-                // Domain to Data Converstions
+                // Data to Domain Converstions
                 cfg.CreateMap<DAL.Action, DOM.Action>()
                     .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.AppData, DOM.AppData>();
 
                 cfg.CreateMap<DAL.Communicator, DOM.Communicator>()
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.CommunicatorType, DOM.CommunicatorType>();
 
@@ -142,9 +141,13 @@ namespace SCIPA.Data.Repository
 
         public void UpdateDevice(DOM.Device device)
         {
-            var dbValue = RetrieveDevice(device.Id);
-            if (dbValue == null) return;
-            dbValue = device;
+            var dalDevice = _mapper.Map(device, new DAL.Device());
+            var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
+
+
+
+            dbCurrent = dalDevice;
+            //var dal = _mapper.Map(dbValue, new DAL.Device());
             _db.SaveChanges();
         }
 
@@ -229,11 +232,7 @@ namespace SCIPA.Data.Repository
 
         public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
-            var model = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
-
-            //model.Device.Writer = model;
-
-            _db.Communicators.Add(model);
+            _db.Communicators.Add(_mapper.Map(fileCommunicator, new DAL.FileCommunicator()));
             _db.SaveChanges();
         }
 

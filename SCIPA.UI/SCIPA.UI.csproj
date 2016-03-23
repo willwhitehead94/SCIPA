@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetDeviceCommunicators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetDeviceCommunicators.Designer.cs">
+      <DependentUpon>SetDeviceCommunicators.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddInbound.resx">
       <DependentUpon>AddInbound.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SetDeviceCommunicators.resx">
+      <DependentUpon>SetDeviceCommunicators.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

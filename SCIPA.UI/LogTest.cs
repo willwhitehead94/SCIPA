@@ -245,5 +245,13 @@ namespace SCIPA.UI
 
             deviceController.UpdateAppData(new AppData() {BusinessName = "test"});
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            var cont = new DeviceController();
+            var firstDev = cont.RetrieveDevice(1);
+            var window = new SetDeviceCommunicators(firstDev);
+            window.Show();
+        }
     }
 }

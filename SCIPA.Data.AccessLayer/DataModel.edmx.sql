@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/23/2016 13:20:52
+-- Date Created: 03/23/2016 15:29:24
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -21,10 +21,10 @@ IF OBJECT_ID(N'[dbo].[FK_DeviceAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_DeviceAction];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Write]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
+    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Read]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
+    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];

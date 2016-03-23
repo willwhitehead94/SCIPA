@@ -86,17 +86,21 @@ namespace SCIPA.Domain.Logic
 
         public Device RetrieveDevice(int id, bool secondPass=false)
         {
-            var dev = AllDevices.First(d => d.Id == id);
+            var dev = _repo.RetrieveDevice(id);
 
-            if (dev == null && !secondPass)
-            {
-                GetAllDevices(true);
-                return RetrieveDevice(id,true);
-            }
-            else
-            {
-                return null;
-            }
+            return dev;
+
+            //var dev = AllDevices.FirstOrDefault(d => d.Id == id);
+
+            //if (dev == null && !secondPass)
+            //{
+            //    GetAllDevices(true);
+            //    return RetrieveDevice(id,true);
+            //}
+            //else
+            //{
+            //    return null;
+            //}
         }
 
 
