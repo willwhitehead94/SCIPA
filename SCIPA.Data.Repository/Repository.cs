@@ -145,6 +145,7 @@ namespace SCIPA.Data.Repository
             var dbValue = RetrieveDevice(device.Id);
             if (dbValue == null) return;
             _db.Devices.Remove(_mapper.Map(dbValue,new DAL.Device()));
+            _db.SaveChanges();
         }
 
         public void CreateOrUpdateDevice(DOM.Device device)
@@ -163,6 +164,7 @@ namespace SCIPA.Data.Repository
         public void CreateAction(DOM.Action action)
         {
             _db.Actions.Add(_mapper.Map(action, new DAL.Action()));
+            _db.SaveChanges();
         }
 
         public DOM.Action RetrieveAction(int id)
@@ -193,6 +195,7 @@ namespace SCIPA.Data.Repository
             var dbValue = RetrieveAction(action.Id);
             if (dbValue == null) return;
             _db.Actions.Remove(_mapper.Map(action, new DAL.Action()));
+            _db.SaveChanges();
         }
 
         public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
