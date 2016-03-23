@@ -39,7 +39,7 @@ namespace SCIPA.Data.AccessLayer
             return _db.Devices.FirstOrDefault(dev => dev.Id == deviceId);
         }
 
-        public ICollection<Device> RetrieveDevices()
+        public IEnumerable<Device> RetrieveDevices()
         {
             return _db.Devices.ToList();
         }
@@ -66,12 +66,12 @@ namespace SCIPA.Data.AccessLayer
             return _db.Actions.FirstOrDefault(a => a.Id == id);
         }
 
-        public ICollection<Action> RetrieveActionsForDevice(int deviceId)
+        public IEnumerable<Action> RetrieveActionsForDevice(int deviceId)
         {
             return _db.Actions.Where(a => a.Device.Id == deviceId).ToList();
         }
 
-        public ICollection<Action> RetrieveActions()
+        public IEnumerable<Action> RetrieveActions()
         {
             return _db.Actions.ToList();
         }
@@ -108,12 +108,12 @@ namespace SCIPA.Data.AccessLayer
             return (DatabaseCommunicator)_db.Communicators.FirstOrDefault(dc => dc.Id == id);
         }
 
-        //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
+        //public IEnumerable<DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId)
         //{
         //    return _db.Communicators.Where(comm => comm.Device.Id == deviceId);
         //}
 
-        //public ICollection<DatabaseCommunicator> RetrieveDatabaseCommunicators()
+        //public IEnumerable<DatabaseCommunicator> RetrieveDatabaseCommunicators()
         //{
         //    return _db.DatabaseCommunicators.ToList();
         //}
@@ -151,13 +151,13 @@ namespace SCIPA.Data.AccessLayer
             return (FileCommunicator)_db.Communicators.FirstOrDefault(fc => fc.Id == id);
         }
 
-        //public ICollection<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
+        //public IEnumerable<FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId)
         //{
         //    return null;
         //    //return _db.FileCommunicators.Where(fc => fc.Device.Id == deviceId).ToList();
         //}
 
-        //public ICollection<FileCommunicator> RetrieveFileCommunicators()
+        //public IEnumerable<FileCommunicator> RetrieveFileCommunicators()
         //{
         //    return _db.FileCommunicators.ToList();
         //}
@@ -194,13 +194,13 @@ namespace SCIPA.Data.AccessLayer
             return (SerialCommunicator)_db.Communicators.FirstOrDefault(sc => sc.Id == id);
         }
 
-        //public ICollection<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
+        //public IEnumerable<SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId)
         //{
         //    return null;
         //    //return _db.SerialCommunicators.Where(sc => sc.Device.Id == deviceId).ToList();
         //}
 
-        //public ICollection<SerialCommunicator> RetrieveSerialCommunicators()
+        //public IEnumerable<SerialCommunicator> RetrieveSerialCommunicators()
         //{
         //    return _db.SerialCommunicators.ToList();
         //}
@@ -257,12 +257,12 @@ namespace SCIPA.Data.AccessLayer
             return _db.Rules.FirstOrDefault(rule => rule.Id == id);
         }
 
-        public ICollection<Rule> RetrieveRulesForDevice(int deviceId)
+        public IEnumerable<Rule> RetrieveRulesForDevice(int deviceId)
         {
             return _db.Rules.Where(rule => rule.Device.Id == deviceId).ToList();
         }
 
-        public ICollection<Rule> RetrieveRules()
+        public IEnumerable<Rule> RetrieveRules()
         {
             return _db.Rules.ToList();
         }
@@ -299,12 +299,12 @@ namespace SCIPA.Data.AccessLayer
             return _db.Values.FirstOrDefault(Value => Value.Id == id);
         }
 
-        public ICollection<Value> RetrieveValuesForDevice(int deviceId)
+        public IEnumerable<Value> RetrieveValuesForDevice(int deviceId)
         {
             return _db.Values.Where(value => value.Device.Id == deviceId).ToList();
         }
 
-        public ICollection<Value> RetrieveValues()
+        public IEnumerable<Value> RetrieveValues()
         {
             return _db.Values.ToList();
         }
