@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
@@ -141,21 +142,79 @@ namespace SCIPA.Data.Repository
 
         public void UpdateDevice(DOM.Device device)
         {
-            var dalDevice = _mapper.Map(device, new DAL.Device());
             var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
+            var dalDevice = ConvertDeviceToDAL(device);
 
-
-
-            dbCurrent = dalDevice;
+            dbCurrent = _mapper.Map(dalDevice, dbCurrent);
             //var dal = _mapper.Map(dbValue, new DAL.Device());
             _db.SaveChanges();
+        }
+
+        private DAL.Device ConvertDeviceToDAL(DOM.Device device)
+        {
+            var dalDevice = _mapper.Map(device, new DAL.Device());
+
+            object reader = null, writer = null;
+
+            if (device.Reader != null)
+            {
+                var mappedReader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
+                var updatedList = mappedReader.Devices.ToList();
+                updatedList.Add(dalDevice);
+
+                switch (device.Reader.Type)
+                {
+                    case DOM.CommunicatorType.Database:
+                        reader = _mapper.Map(device.Reader, new DAL.DatabaseCommunicator());
+                        break;
+                    case DOM.CommunicatorType.FlatFile:
+                        reader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
+                        break;
+                    case DOM.CommunicatorType.Serial:
+                        reader = _mapper.Map(device.Reader, new DAL.SerialCommunicator());
+                        break;
+                    default:
+                        DebugOutput.Print("Could not convert device reader within the repository.");
+                        break;
+                }
+            }
+
+            if (device.Writer != null)
+            {
+                var mappedWriter = _mapper.Map(device.Writer, new DAL.FileCommunicator());
+                var updatedList = mappedWriter.Devices.ToList();
+                updatedList.Add(dalDevice);
+
+                switch (device.Writer.Type)
+                {
+                    case DOM.CommunicatorType.Database:
+                        reader = _mapper.Map(device.Writer, new DAL.DatabaseCommunicator().Devices=updatedList);
+                        break;
+                    case DOM.CommunicatorType.FlatFile:
+                        reader = _mapper.Map(device.Writer, new DAL.FileCommunicator().Devices = updatedList);
+                        break;
+                    case DOM.CommunicatorType.Serial:
+                        reader = _mapper.Map(device.Writer, new DAL.SerialCommunicator().Devices = updatedList);
+                        break;
+                    default:
+                        DebugOutput.Print("Could not convert device writer within the repository.");
+                        break;
+                }
+
+                
+            }
+
+            dalDevice.Reader = (DAL.Communicator)reader;
+            dalDevice.Writer = (DAL.Communicator)writer;
+
+            return dalDevice;
         }
 
         public void DisableDevice(DOM.Device device)
         {
             var dbValue = RetrieveDevice(device.Id);
             if (dbValue == null) return;
-            _db.Devices.Remove(_mapper.Map(dbValue,new DAL.Device()));
+            _db.Devices.Remove(_mapper.Map(dbValue, new DAL.Device()));
             _db.SaveChanges();
         }
 
@@ -267,7 +326,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
-            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Devices.Any(dev=>dev.Id==deviceId))).ToList();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Devices.Any(dev => dev.Id == deviceId))).ToList();
         }
 
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
@@ -314,7 +373,7 @@ namespace SCIPA.Data.Repository
 
         public void UpdateRule(DOM.Rule rule)
         {
-            var dbValue = _db.Rules.FirstOrDefault(r=> r.Id==rule.Id);
+            var dbValue = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
             if (dbValue == null) return;
             dbValue = _mapper.Map(rule, new DAL.Rule());
             _db.SaveChanges();
@@ -386,14 +445,10 @@ namespace SCIPA.Data.Repository
         }
 
 
-
-
-
         ///
         /// Methods below this point are PRIVATE and are used as 'helper methods'
         /// for this class only. 
         /// 
-
         /// <summary>
         /// Used to iteratively go through a list of communicator objects and convert them to Domain models.
         /// </summary>
