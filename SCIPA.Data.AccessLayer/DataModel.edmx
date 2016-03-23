@@ -288,6 +288,7 @@
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicators" FromRole="Communicator" ToRole="Device" />
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
           <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
+          <Property Name="Inbound" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
