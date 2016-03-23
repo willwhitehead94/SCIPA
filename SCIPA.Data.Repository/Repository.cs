@@ -54,7 +54,6 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
                 .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Communicators, opt=>opt.Ignore())
                 .ForMember(m => m.Rules, opt => opt.Ignore())
                 .ForMember(m => m.InboundValues, opt => opt.Ignore())
                 .ForMember(m => m.OutboundValues, opt => opt.Ignore());
@@ -97,7 +96,6 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DAL.Device, DOM.Device>()
                 .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Communicators,opt=>opt.Ignore())
                 .ForMember(m => m.Rules, opt => opt.Ignore())
                 .ForMember(m => m.InboundValues, opt => opt.Ignore())
                 .ForMember(m => m.OutboundValues, opt => opt.Ignore());

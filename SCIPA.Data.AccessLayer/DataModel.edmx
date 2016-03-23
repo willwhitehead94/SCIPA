@@ -316,7 +316,6 @@
           <Property Name="Custodian" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
-          <NavigationProperty Name="Communicators" Relationship="DataModel.DeviceCommunicators" FromRole="Device" ToRole="Communicator" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
           <NavigationProperty Name="InboundValues" Relationship="DataModel.DeviceInboundValue" FromRole="Device" ToRole="Value" />
           <NavigationProperty Name="OutboundValues" Relationship="DataModel.DeviceOutboundValue" FromRole="Device" ToRole="Value" />
