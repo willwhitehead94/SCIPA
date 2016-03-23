@@ -14,12 +14,6 @@ namespace SCIPA.Data.AccessLayer
     
     public abstract partial class Communicator
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Communicator()
-        {
-            this.Devices = new HashSet<Device>();
-        }
-    
         public int Id { get; set; }
         public int StartChar { get; set; }
         public int EndChar { get; set; }
@@ -27,7 +21,6 @@ namespace SCIPA.Data.AccessLayer
         public CommunicatorType Type { get; set; }
         public ValueType ValueType { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual IEnumerable<Device> Devices { get; set; }
+        public virtual Device Device { get; set; }
     }
 }

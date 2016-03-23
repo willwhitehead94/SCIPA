@@ -124,16 +124,16 @@ namespace SCIPA.UI
                 Name = "Arduino Uno Trend App",
                 Location = "Desk 1",
                 Custodian = "W. Whitehead",
-                Reader = new SerialCommunicator()
-                {
-                    ComPort = "COM3",
-                    StartChar = 0,
-                    EndChar = 0,
-                    BaudRate = 9600,
-                    DataBits = 8,
-                    IsDTR = false,
-                    IsRTS = false
-                }
+                //Reader = new SerialCommunicator()
+                //{
+                //    ComPort = "COM3",
+                //    StartChar = 0,
+                //    EndChar = 0,
+                //    BaudRate = 9600,
+                //    DataBits = 8,
+                //    IsDTR = false,
+                //    IsRTS = false
+                //}
                 //InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
                 //{
                 //    Id = 1,

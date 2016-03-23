@@ -44,7 +44,6 @@ namespace SCIPA.UI
                     "You cannot select the same communicator for both reading and writing");
                 return;
             }
-            localisedDevice.Reader = (Communicator)cbReader.SelectedItem;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,7 +61,6 @@ namespace SCIPA.UI
                     "You cannot select the same communicator for both reading and writing");
                 return;
             }
-            localisedDevice.Writer = (Communicator)cbWriter.SelectedItem;
         }
     }
 }

@@ -594,8 +594,7 @@
         <InheritanceConnector EntityType="DataModel.SerialCommunicator" ManuallyRouted="false" />
         <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceAction" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.DeviceCommunicator_Write" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.DeviceCommunicator_Read" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.DeviceCommunicators" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceRule" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceInboundValue" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceOutboundValue" ManuallyRouted="false" />

@@ -59,7 +59,6 @@ namespace SCIPA.Domain.Logic
         public bool SaveDevice(Device device)
         {
             bool devExists = _repo.RetrieveDevice(device.Id) != null;
-            device = PrepareCommunicatorInfo(device);
 
             try
             {
@@ -76,12 +75,6 @@ namespace SCIPA.Domain.Logic
                 return true;
             }
             catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
-        }
-
-        public Device PrepareCommunicatorInfo(Device device)
-        {
-            device.Reader = (Communicator) device.Reader;
-            return device;
         }
 
         public Device RetrieveDevice(int id, bool secondPass=false)

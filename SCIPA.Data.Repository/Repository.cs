@@ -55,8 +55,7 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.Device, DAL.Device>()
                 //.ForMember(m => m.Id, opt => opt.Ignore())
                 .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Writer, opt => opt.Ignore())
-                .ForMember(m => m.Reader, opt => opt.Ignore())
+                .ForMember(m => m.Communicators, opt=>opt.Ignore())
                 .ForMember(m => m.Rules, opt => opt.Ignore())
                 .ForMember(m => m.InboundValues, opt => opt.Ignore())
                 .ForMember(m => m.OutboundValues, opt => opt.Ignore());
@@ -99,8 +98,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DAL.Device, DOM.Device>()
                 .ForMember(m => m.Actions, opt => opt.Ignore())
-                .ForMember(m => m.Writer, opt => opt.Ignore())
-                .ForMember(m => m.Reader, opt => opt.Ignore())
+                .ForMember(m => m.Communicators,opt=>opt.Ignore())
                 .ForMember(m => m.Rules, opt => opt.Ignore())
                 .ForMember(m => m.InboundValues, opt => opt.Ignore())
                 .ForMember(m => m.OutboundValues, opt => opt.Ignore());
@@ -143,72 +141,72 @@ namespace SCIPA.Data.Repository
         public void UpdateDevice(DOM.Device device)
         {
             var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
-            var dalDevice = ConvertDeviceToDAL(device);
+            var dalDevice = _mapper.Map(device, new DAL.Device());
 
             dbCurrent = _mapper.Map(dalDevice, dbCurrent);
             //var dal = _mapper.Map(dbValue, new DAL.Device());
             _db.SaveChanges();
         }
 
-        private DAL.Device ConvertDeviceToDAL(DOM.Device device)
-        {
-            var dalDevice = _mapper.Map(device, new DAL.Device());
+        //private DAL.Device ConvertDeviceToDAL(DOM.Device device)
+        //{
+        //    var dalDevice = _mapper.Map(device, new DAL.Device());
 
-            object reader = null, writer = null;
+        //    object reader = null, writer = null;
 
-            if (device.Reader != null)
-            {
-                var mappedReader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
-                var updatedList = mappedReader.Devices.ToList();
-                updatedList.Add(dalDevice);
+        //    if (device.Reader != null)
+        //    {
+        //        var mappedReader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
+        //        var updatedList = mappedReader.Devices.ToList();
+        //        updatedList.Add(dalDevice);
 
-                switch (device.Reader.Type)
-                {
-                    case DOM.CommunicatorType.Database:
-                        reader = _mapper.Map(device.Reader, new DAL.DatabaseCommunicator());
-                        break;
-                    case DOM.CommunicatorType.FlatFile:
-                        reader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
-                        break;
-                    case DOM.CommunicatorType.Serial:
-                        reader = _mapper.Map(device.Reader, new DAL.SerialCommunicator());
-                        break;
-                    default:
-                        DebugOutput.Print("Could not convert device reader within the repository.");
-                        break;
-                }
-            }
+        //        switch (device.Reader.Type)
+        //        {
+        //            case DOM.CommunicatorType.Database:
+        //                reader = _mapper.Map(device.Reader, new DAL.DatabaseCommunicator());
+        //                break;
+        //            case DOM.CommunicatorType.FlatFile:
+        //                reader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
+        //                break;
+        //            case DOM.CommunicatorType.Serial:
+        //                reader = _mapper.Map(device.Reader, new DAL.SerialCommunicator());
+        //                break;
+        //            default:
+        //                DebugOutput.Print("Could not convert device reader within the repository.");
+        //                break;
+        //        }
+        //    }
 
-            if (device.Writer != null)
-            {
-                var mappedWriter = _mapper.Map(device.Writer, new DAL.FileCommunicator());
-                var updatedList = mappedWriter.Devices.ToList();
-                updatedList.Add(dalDevice);
+        //    if (device.Writer != null)
+        //    {
+        //        var mappedWriter = _mapper.Map(device.Writer, new DAL.FileCommunicator());
+        //        var updatedList = mappedWriter.Devices.ToList();
+        //        updatedList.Add(dalDevice);
 
-                switch (device.Writer.Type)
-                {
-                    case DOM.CommunicatorType.Database:
-                        reader = _mapper.Map(device.Writer, new DAL.DatabaseCommunicator().Devices=updatedList);
-                        break;
-                    case DOM.CommunicatorType.FlatFile:
-                        reader = _mapper.Map(device.Writer, new DAL.FileCommunicator().Devices = updatedList);
-                        break;
-                    case DOM.CommunicatorType.Serial:
-                        reader = _mapper.Map(device.Writer, new DAL.SerialCommunicator().Devices = updatedList);
-                        break;
-                    default:
-                        DebugOutput.Print("Could not convert device writer within the repository.");
-                        break;
-                }
+        //        switch (device.Writer.Type)
+        //        {
+        //            case DOM.CommunicatorType.Database:
+        //                reader = _mapper.Map(device.Writer, new DAL.DatabaseCommunicator().Devices=updatedList);
+        //                break;
+        //            case DOM.CommunicatorType.FlatFile:
+        //                reader = _mapper.Map(device.Writer, new DAL.FileCommunicator().Devices = updatedList);
+        //                break;
+        //            case DOM.CommunicatorType.Serial:
+        //                reader = _mapper.Map(device.Writer, new DAL.SerialCommunicator().Devices = updatedList);
+        //                break;
+        //            default:
+        //                DebugOutput.Print("Could not convert device writer within the repository.");
+        //                break;
+        //        }
 
                 
-            }
+        //    }
 
-            dalDevice.Reader = (DAL.Communicator)reader;
-            dalDevice.Writer = (DAL.Communicator)writer;
+        //    dalDevice.Reader = (DAL.Communicator)reader;
+        //    dalDevice.Writer = (DAL.Communicator)writer;
 
-            return dalDevice;
-        }
+        //    return dalDevice;
+        //}
 
         public void DisableDevice(DOM.Device device)
         {
@@ -326,7 +324,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
-            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Devices.Any(dev => dev.Id == deviceId))).ToList();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId)).ToList();
         }
 
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()

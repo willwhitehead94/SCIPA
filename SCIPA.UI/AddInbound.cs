@@ -120,13 +120,6 @@ namespace SCIPA.UI
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            var devList = new List<Device>();
-            if (_communicator.Device != null)
-            {
-                devList= _communicator.Device.ToList();
-            }
-
-
             if (_communicator is DatabaseCommunicator)
             {
                 _communicator = new DatabaseCommunicator()
@@ -137,7 +130,7 @@ namespace SCIPA.UI
                     Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = devList
+                    Device = _communicator.Device
                 };
             }
             else if (_communicator is SerialCommunicator)
@@ -152,7 +145,7 @@ namespace SCIPA.UI
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
-                    Device = devList
+                    Device = _communicator.Device
                 };
             }
             else if (_communicator is FileCommunicator)
@@ -163,11 +156,11 @@ namespace SCIPA.UI
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = devList
+                    Device = _communicator.Device
                 };
             }
             
-            _device.Reader = _communicator;
+            //_device.Reader = _communicator;
             _controller.SaveCommunicator(_communicator, _device);
         }
 

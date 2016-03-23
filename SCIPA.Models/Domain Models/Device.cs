@@ -9,6 +9,7 @@ namespace SCIPA.Models
         public Device()
         {
             this.Actions = new HashSet<Action>();
+            this.Communicators = new HashSet<Communicator>();
             this.Rules = new HashSet<Rule>();
             this.InboundValues = new HashSet<Value>();
             this.OutboundValues = new HashSet<Value>();
@@ -22,8 +23,8 @@ namespace SCIPA.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Action> Actions { get; set; }
-        public virtual Communicator Writer { get; set; }
-        public virtual Communicator Reader { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual IEnumerable<Communicator> Communicators { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Rule> Rules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

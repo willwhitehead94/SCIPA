@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/23/2016 15:29:24
+-- Date Created: 03/23/2016 21:09:10
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -96,7 +96,8 @@ CREATE TABLE [dbo].[Communicators] (
     [EndChar] int  NOT NULL,
     [LastReadTime] datetime  NOT NULL,
     [Type] smallint  NOT NULL,
-    [ValueType] smallint  NOT NULL
+    [ValueType] smallint  NOT NULL,
+    [Devices_Id] int  NOT NULL
 );
 GO
 
@@ -106,9 +107,7 @@ CREATE TABLE [dbo].[Devices] (
     [Name] nvarchar(max)  NOT NULL,
     [Location] nvarchar(max)  NOT NULL,
     [Custodian] nvarchar(max)  NOT NULL,
-    [Enabled] bit  NOT NULL,
-    [Writer_Id] int  NULL,
-    [Reader_Id] int  NULL
+    [Enabled] bit  NOT NULL
 );
 GO
 
@@ -245,34 +244,19 @@ ON [dbo].[Actions]
     ([DeviceId]);
 GO
 
--- Creating foreign key on [Writer_Id] in table 'Devices'
-ALTER TABLE [dbo].[Devices]
-ADD CONSTRAINT [FK_DeviceCommunicator_Write]
-    FOREIGN KEY ([Writer_Id])
-    REFERENCES [dbo].[Communicators]
+-- Creating foreign key on [Devices_Id] in table 'Communicators'
+ALTER TABLE [dbo].[Communicators]
+ADD CONSTRAINT [FK_DeviceCommunicators]
+    FOREIGN KEY ([Devices_Id])
+    REFERENCES [dbo].[Devices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicator_Write'
-CREATE INDEX [IX_FK_DeviceCommunicator_Write]
-ON [dbo].[Devices]
-    ([Writer_Id]);
-GO
-
--- Creating foreign key on [Reader_Id] in table 'Devices'
-ALTER TABLE [dbo].[Devices]
-ADD CONSTRAINT [FK_DeviceCommunicator_Read]
-    FOREIGN KEY ([Reader_Id])
-    REFERENCES [dbo].[Communicators]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicator_Read'
-CREATE INDEX [IX_FK_DeviceCommunicator_Read]
-ON [dbo].[Devices]
-    ([Reader_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicators'
+CREATE INDEX [IX_FK_DeviceCommunicators]
+ON [dbo].[Communicators]
+    ([Devices_Id]);
 GO
 
 -- Creating foreign key on [DeviceId] in table 'Rules'

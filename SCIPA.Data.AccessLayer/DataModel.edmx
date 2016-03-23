@@ -19,11 +19,7 @@
       <End Role="Device" EntitySet="Devices" />
       <End Role="Action" EntitySet="Actions" />
     </AssociationSet>
-    <AssociationSet Name="DeviceCommunicator_Write" Association="DataModel.Store.DeviceCommunicator_Write">
-      <End Role="Device" EntitySet="Devices" />
-      <End Role="Communicator" EntitySet="Communicators" />
-    </AssociationSet>
-    <AssociationSet Name="DeviceCommunicator_Read" Association="DataModel.Store.DeviceCommunicator_Read">
+    <AssociationSet Name="DeviceCommunicators" Association="DataModel.Store.DeviceCommunicators">
       <End Role="Device" EntitySet="Devices" />
       <End Role="Communicator" EntitySet="Communicators" />
     </AssociationSet>
@@ -70,6 +66,7 @@
     <Property Name="LastReadTime" Type="datetime" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="ValueType" Type="smallint" Nullable="false" />
+    <Property Name="Devices_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -80,8 +77,6 @@
     <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Custodian" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
-    <Property Name="Writer_Id" Type="int" Nullable="true" />
-    <Property Name="Reader_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Rules">
     <Key>
@@ -151,27 +146,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeviceCommunicator_Write">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
-    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="0..1" />
+  <Association Name="DeviceCommunicators">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Communicator">
+      <Principal Role="Device">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Device">
-        <PropertyRef Name="Writer_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="DeviceCommunicator_Read">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="*" />
-    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Communicator">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Device">
-        <PropertyRef Name="Reader_Id" />
+      <Dependent Role="Communicator">
+        <PropertyRef Name="Devices_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -267,11 +250,7 @@
             <End Role="Device" EntitySet="Devices" />
             <End Role="Action" EntitySet="Actions" />
           </AssociationSet>
-          <AssociationSet Name="DeviceCommunicator_Write" Association="DataModel.DeviceCommunicator_Write">
-            <End Role="Device" EntitySet="Devices" />
-            <End Role="Communicator" EntitySet="Communicators" />
-          </AssociationSet>
-          <AssociationSet Name="DeviceCommunicator_Read" Association="DataModel.DeviceCommunicator_Read">
+          <AssociationSet Name="DeviceCommunicators" Association="DataModel.DeviceCommunicators">
             <End Role="Device" EntitySet="Devices" />
             <End Role="Communicator" EntitySet="Communicators" />
           </AssociationSet>
@@ -306,7 +285,7 @@
           <Property Name="StartChar" Type="Int32" Nullable="false" />
           <Property Name="EndChar" Type="Int32" Nullable="false" />
           <Property Name="LastReadTime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Devices" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Communicator" ToRole="Device" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceCommunicators" FromRole="Communicator" ToRole="Device" />
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
           <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
         </EntityType>
@@ -335,8 +314,7 @@
           <Property Name="Custodian" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
-          <NavigationProperty Name="Writer" Relationship="DataModel.DeviceCommunicator_Write" FromRole="Device" ToRole="Communicator" />
-          <NavigationProperty Name="Reader" Relationship="DataModel.DeviceCommunicator_Read" FromRole="Device" ToRole="Communicator" />
+          <NavigationProperty Name="Communicators" Relationship="DataModel.DeviceCommunicators" FromRole="Device" ToRole="Communicator" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
           <NavigationProperty Name="InboundValues" Relationship="DataModel.DeviceInboundValue" FromRole="Device" ToRole="Value" />
           <NavigationProperty Name="OutboundValues" Relationship="DataModel.DeviceOutboundValue" FromRole="Device" ToRole="Value" />
@@ -398,13 +376,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="DeviceCommunicator_Write">
-          <End Type="DataModel.Device" Role="Device" Multiplicity="*" />
-          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="0..1" />
-        </Association>
-        <Association Name="DeviceCommunicator_Read">
-          <End Type="DataModel.Device" Role="Device" Multiplicity="*" />
-          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="0..1" />
+        <Association Name="DeviceCommunicators">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="*" />
         </Association>
         <Association Name="DeviceRule">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
@@ -527,23 +501,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="DeviceCommunicator_Write" TypeName="DataModel.DeviceCommunicator_Write" StoreEntitySet="Devices">
-      <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Writer_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="DeviceCommunicators" TypeName="DataModel.DeviceCommunicators" StoreEntitySet="Communicators">
       <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Devices_Id" />
+      </EndProperty>
+      <EndProperty Name="Communicator">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-      <Condition ColumnName="Writer_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceCommunicator_Read" TypeName="DataModel.DeviceCommunicator_Read" StoreEntitySet="Devices">
-      <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Reader_Id" />
-      </EndProperty>
-      <EndProperty Name="Device">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Reader_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="DeviceInboundValue" TypeName="DataModel.DeviceInboundValue" StoreEntitySet="Values">
       <EndProperty Name="Device">
