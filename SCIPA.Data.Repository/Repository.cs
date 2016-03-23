@@ -115,11 +115,8 @@ namespace SCIPA.Data.Repository
 
         public void CreateDevice(DOM.Device device)
         {
-            using (var db = new DAL.SCIPAEntities())
-            {
-                _db.Devices.Add(_mapper.Map(device, new DAL.Device()));
-                db.SaveChanges();
-            }
+            _db.Devices.Add(_mapper.Map(device, new DAL.Device()));
+            _db.SaveChanges();
         }
 
         public DOM.Device RetrieveDevice(int id)
