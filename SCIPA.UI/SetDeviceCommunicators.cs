@@ -49,6 +49,7 @@ namespace SCIPA.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            localisedDevice = localisedDevice;
             var cont = new DeviceController();
             cont.SaveDevice(localisedDevice);
         }
