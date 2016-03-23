@@ -239,7 +239,7 @@ namespace SCIPA.Data.AccessLayer
 
         public IEnumerable<Communicator> RetrieveCommunicatorsByDeviceId(int id)
         {
-            return _db.Communicators.Where(comm => comm.Device.Id == id).ToList();
+            return _db.Communicators.Where(comm => comm.Devices.Any(dev=>dev.Id == id)).ToList();
         }
 
 

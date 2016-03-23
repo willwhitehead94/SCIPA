@@ -42,7 +42,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Devices, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
@@ -229,7 +229,11 @@ namespace SCIPA.Data.Repository
 
         public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
-            _db.Communicators.Add(_mapper.Map(fileCommunicator, new DAL.FileCommunicator()));
+            var model = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
+
+            //model.Device.Writer = model;
+
+            _db.Communicators.Add(model);
             _db.SaveChanges();
         }
 
@@ -264,7 +268,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
-            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId)).ToList();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Devices.Any(dev=>dev.Id==deviceId))).ToList();
         }
 
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/23/2016 10:03:52
+-- Date Created: 03/23/2016 13:20:52
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -21,10 +21,10 @@ IF OBJECT_ID(N'[dbo].[FK_DeviceAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_DeviceAction];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Write]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
+    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Read]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
+    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];
@@ -96,9 +96,7 @@ CREATE TABLE [dbo].[Communicators] (
     [EndChar] int  NOT NULL,
     [LastReadTime] datetime  NOT NULL,
     [Type] smallint  NOT NULL,
-    [ValueType] smallint  NOT NULL,
-    [Device_Id] int  NOT NULL,
-    [DeviceCommunicator_Read_Communicator_Id] int  NOT NULL
+    [ValueType] smallint  NOT NULL
 );
 GO
 
@@ -108,7 +106,9 @@ CREATE TABLE [dbo].[Devices] (
     [Name] nvarchar(max)  NOT NULL,
     [Location] nvarchar(max)  NOT NULL,
     [Custodian] nvarchar(max)  NOT NULL,
-    [Enabled] bit  NOT NULL
+    [Enabled] bit  NOT NULL,
+    [Writer_Id] int  NULL,
+    [Reader_Id] int  NULL
 );
 GO
 
@@ -245,34 +245,34 @@ ON [dbo].[Actions]
     ([DeviceId]);
 GO
 
--- Creating foreign key on [Device_Id] in table 'Communicators'
-ALTER TABLE [dbo].[Communicators]
+-- Creating foreign key on [Writer_Id] in table 'Devices'
+ALTER TABLE [dbo].[Devices]
 ADD CONSTRAINT [FK_DeviceCommunicator_Write]
-    FOREIGN KEY ([Device_Id])
-    REFERENCES [dbo].[Devices]
+    FOREIGN KEY ([Writer_Id])
+    REFERENCES [dbo].[Communicators]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicator_Write'
 CREATE INDEX [IX_FK_DeviceCommunicator_Write]
-ON [dbo].[Communicators]
-    ([Device_Id]);
+ON [dbo].[Devices]
+    ([Writer_Id]);
 GO
 
--- Creating foreign key on [DeviceCommunicator_Read_Communicator_Id] in table 'Communicators'
-ALTER TABLE [dbo].[Communicators]
+-- Creating foreign key on [Reader_Id] in table 'Devices'
+ALTER TABLE [dbo].[Devices]
 ADD CONSTRAINT [FK_DeviceCommunicator_Read]
-    FOREIGN KEY ([DeviceCommunicator_Read_Communicator_Id])
-    REFERENCES [dbo].[Devices]
+    FOREIGN KEY ([Reader_Id])
+    REFERENCES [dbo].[Communicators]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicator_Read'
 CREATE INDEX [IX_FK_DeviceCommunicator_Read]
-ON [dbo].[Communicators]
-    ([DeviceCommunicator_Read_Communicator_Id]);
+ON [dbo].[Devices]
+    ([Reader_Id]);
 GO
 
 -- Creating foreign key on [DeviceId] in table 'Rules'

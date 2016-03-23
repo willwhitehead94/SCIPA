@@ -12,6 +12,7 @@ namespace SCIPA.Models
         public CommunicatorType Type { get; set; }
         public ValueType ValueType { get; set; }
 
-        public virtual Device Device { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual IEnumerable<Device> Device { get; set; }
     }
 }

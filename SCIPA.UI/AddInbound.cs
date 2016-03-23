@@ -122,6 +122,8 @@ namespace SCIPA.UI
         {
             if (_communicator is DatabaseCommunicator)
             {
+                List<Device> devList = _communicator.Device.ToList();
+
                 _communicator = new DatabaseCommunicator()
                 {
                     DbType = (DatabaseType)cbDBType.SelectedItem,
@@ -130,12 +132,14 @@ namespace SCIPA.UI
                     Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _device
+                    Device = devList
                 };
             }
             else if (_communicator is SerialCommunicator)
             {
-                _communicator=new SerialCommunicator()
+                List<Device> devList = _communicator.Device.ToList();
+
+                _communicator =new SerialCommunicator()
                 {
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
@@ -145,18 +149,20 @@ namespace SCIPA.UI
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
-                    Device = _device
+                    Device = devList
                 };
             }
             else if (_communicator is FileCommunicator)
             {
-                _communicator=new FileCommunicator()
+                List<Device> devList = _communicator.Device.ToList();
+
+                _communicator =new FileCommunicator()
                 {
                     FilePath = tFilePath.Text,
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _device
+                    Device = devList
                 };
             }
             

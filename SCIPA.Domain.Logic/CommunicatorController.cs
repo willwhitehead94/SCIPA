@@ -9,7 +9,7 @@ namespace SCIPA.Domain.Logic
 {
     public class CommunicatorController
     {
-        private readonly DataRepository _repo = new DataRepository();
+        private readonly IRepository _repo = new Repository();
 
         /// <summary>
         /// Returns collection of all File Communicators in the database.
@@ -86,10 +86,17 @@ namespace SCIPA.Domain.Logic
 
         public void SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
         {
-            ffComm.Device = parentDevice;
+            List<Device> devList = ffComm.Device.ToList();
+            devList.Add(parentDevice);
+
+            ffComm.Device = devList;
             _repo.CreateFileCommunicator(ffComm);
             var deviceController = new DeviceController();
-            var x = deviceController.SaveDevice(ffComm.Device);
+
+            foreach (var dev in devList)
+            {
+                deviceController.SaveDevice(dev);
+            }
         }
 
         public void SaveCommunicator(Communicator generalComm, Device parentDevice)
