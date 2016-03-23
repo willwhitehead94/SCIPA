@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/23/2016 21:09:10
+-- Date Created: 03/23/2016 21:26:09
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -20,11 +20,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_DeviceAction];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Write]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Write];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicator_Read]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Devices] DROP CONSTRAINT [FK_DeviceCommunicator_Read];
+IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicators]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicators];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];
@@ -97,7 +94,7 @@ CREATE TABLE [dbo].[Communicators] (
     [LastReadTime] datetime  NOT NULL,
     [Type] smallint  NOT NULL,
     [ValueType] smallint  NOT NULL,
-    [Devices_Id] int  NOT NULL
+    [Device_Id] int  NOT NULL
 );
 GO
 
@@ -244,10 +241,10 @@ ON [dbo].[Actions]
     ([DeviceId]);
 GO
 
--- Creating foreign key on [Devices_Id] in table 'Communicators'
+-- Creating foreign key on [Device_Id] in table 'Communicators'
 ALTER TABLE [dbo].[Communicators]
 ADD CONSTRAINT [FK_DeviceCommunicators]
-    FOREIGN KEY ([Devices_Id])
+    FOREIGN KEY ([Device_Id])
     REFERENCES [dbo].[Devices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -256,7 +253,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeviceCommunicators'
 CREATE INDEX [IX_FK_DeviceCommunicators]
 ON [dbo].[Communicators]
-    ([Devices_Id]);
+    ([Device_Id]);
 GO
 
 -- Creating foreign key on [DeviceId] in table 'Rules'
