@@ -15,7 +15,7 @@ namespace SCIPA.Domain.Logic
         /// Returns collection of all File Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<Communicator> GetAllFileCommunicators()
+        public IEnumerable<Communicator> GetAllFileCommunicators()
         {
             return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.FlatFile).ToList();
         }
@@ -24,7 +24,7 @@ namespace SCIPA.Domain.Logic
         /// Returns collection of all Database Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<Communicator> GetAllDatabaseCommunicators()
+        public IEnumerable<Communicator> GetAllDatabaseCommunicators()
         {
             return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Database).ToList();
         }
@@ -33,7 +33,7 @@ namespace SCIPA.Domain.Logic
         /// Returns collection of all Serial Communicators in the database.
         /// </summary>
         /// <returns></returns>
-        public ICollection<Communicator> GetAllSerialCommunicators()
+        public IEnumerable<Communicator> GetAllSerialCommunicators()
         {
             return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Serial).ToList();
         }
@@ -57,15 +57,15 @@ namespace SCIPA.Domain.Logic
             {
                 case "DatabaseCommunicator":
                     var allDbComms = GetAllDatabaseCommunicators();
-                    dbValue = allDbComms.Count == 0 ? allDbComms.Count : allDbComms.Max(c => c.Id);
+                    dbValue = allDbComms.Count() == 0 ? allDbComms.Count() : allDbComms.Max(c => c.Id);
                     break;
                 case "SerialCommunicator":
                     var allSComms = GetAllSerialCommunicators();
-                    dbValue = allSComms.Count == 0 ? allSComms.Count : allSComms.Max(c => c.Id);
+                    dbValue = allSComms.Count() == 0 ? allSComms.Count() : allSComms.Max(c => c.Id);
                     break;
                 case "FileCommunicator":
                     var allFfComms = GetAllFileCommunicators();
-                    dbValue = allFfComms.Count == 0 ? allFfComms.Count : allFfComms.Max(c => c.Id);
+                    dbValue = allFfComms.Count() == 0 ? allFfComms.Count() : allFfComms.Max(c => c.Id);
                     break;
                 default:
                     return int.MinValue;
@@ -100,11 +100,11 @@ namespace SCIPA.Domain.Logic
             {
                 case "DatabaseCommunicator":
                     var allDbComms = GetAllDatabaseCommunicators();
-                    dbValue = allDbComms.Count == 0 ? allDbComms.Count : allDbComms.Max(c => c.Id);
+                    dbValue = allDbComms.Count() == 0 ? allDbComms.Count() : allDbComms.Max(c => c.Id);
                     break;
                 case "SerialCommunicator":
                     var allSComms = GetAllSerialCommunicators();
-                    dbValue = allSComms.Count == 0 ? allSComms.Count : allSComms.Max(c => c.Id);
+                    dbValue = allSComms.Count() == 0 ? allSComms.Count() : allSComms.Max(c => c.Id);
                     break;
                 case "FileCommunicator":
                     SaveCommunicator((FileCommunicator)generalComm, parentDevice);

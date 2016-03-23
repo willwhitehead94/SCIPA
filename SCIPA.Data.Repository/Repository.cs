@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using SCIPA.Domain.Generic;
@@ -124,9 +125,15 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Devices.FirstOrDefault(dev => dev.Id == id), new DOM.Device());
         }
 
-        public ICollection<DOM.Device> RetrieveAllDevices()
+        public IEnumerable<DOM.Device> RetrieveAllDevices()
         {
-            return _db.Devices.Select(device => _mapper.Map(device, new DOM.Device())).ToList();
+            var dbObj = _db.Devices.ToList();
+            var mapped = dbObj.Select(device => _mapper.Map(device, new DOM.Device()));
+            //IEnumerable<DOM.Device> test = mapped.ToList();
+
+            //var allObjects = 
+            //var listObject = allObjects.ToList();
+            return _db.Devices.ToList().Select(device => _mapper.Map(device, new DOM.Device()));
         }
 
         public void UpdateDevice(DOM.Device device)
@@ -169,12 +176,12 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Actions.FirstOrDefault(act => act.Id == id), new DOM.Action());
         }
 
-        public ICollection<DOM.Action> RetrieveActionsForDevice(int deviceId)
+        public IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId)
         {
             return _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
-        public ICollection<DOM.Action> RetrieveAllActions()
+        public IEnumerable<DOM.Action> RetrieveAllActions()
         {
             return _db.Actions.Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
@@ -251,12 +258,12 @@ namespace SCIPA.Data.Repository
             return ConvertDALCommunicatorToDOM(dbValue);
         }
 
-        public ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
+        public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
             return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId)).ToList();
         }
 
-        public ICollection<DOM.Communicator> RetrieveAllCommunicators()
+        public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
         {
             return ConvertDALCommunicatorsToDOM(_db.Communicators).ToList();
         }
@@ -288,12 +295,12 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Rules.FirstOrDefault(rule => rule.Id == id), new DOM.Rule());
         }
 
-        public ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId)
+        public IEnumerable<DOM.Rule> RetrieveRulesForDevice(int deviceId)
         {
             return _db.Rules.Where(rule => rule.DeviceId == deviceId).Select(rule => _mapper.Map(rule, new DOM.Rule())).ToList();
         }
 
-        public ICollection<DOM.Rule> RetrieveAllRules()
+        public IEnumerable<DOM.Rule> RetrieveAllRules()
         {
             return _db.Rules.Select(rule => _mapper.Map(rule, new DOM.Rule())).ToList();
         }
@@ -325,12 +332,12 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Values.FirstOrDefault(v => v.Id == id), new DOM.Value());
         }
 
-        public ICollection<DOM.Value> RetrieveValuesForDevice(int deviceId)
+        public IEnumerable<DOM.Value> RetrieveValuesForDevice(int deviceId)
         {
             return _db.Values.Where(v => v.Device.Id == deviceId).Select(v => _mapper.Map(v, new DOM.Value())).ToList();
         }
 
-        public ICollection<DOM.Value> RetrieveAllValues()
+        public IEnumerable<DOM.Value> RetrieveAllValues()
         {
             return _db.Values.Select(v => _mapper.Map(v, new DOM.Value())).ToList();
         }

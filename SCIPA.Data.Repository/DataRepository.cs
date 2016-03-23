@@ -31,7 +31,7 @@ namespace SCIPA.Data.Repository
             return _converter.ConvertToDomain(_dbController.RetrieveDevice(id));
         }
 
-        public ICollection<DOM.Device> RetrieveAllDevices()
+        public IEnumerable<DOM.Device> RetrieveAllDevices()
         {
             return _dbController.RetrieveDevices().Select(dev => _converter.ConvertToDomain(dev)).ToList();
         }
@@ -75,12 +75,12 @@ namespace SCIPA.Data.Repository
             return _converter.ConvertToDomain(_dbController.RetrieveAction(id));
         }
 
-        public ICollection<Action> RetrieveActionsForDevice(int deviceId)
+        public IEnumerable<Action> RetrieveActionsForDevice(int deviceId)
         {
             return _dbController.RetrieveActionsForDevice(deviceId).Select(action => _converter.ConvertToDomain(action)).ToList();
         }
 
-        public ICollection<Action> RetrieveAllActions()
+        public IEnumerable<Action> RetrieveAllActions()
         {
             return _dbController.RetrieveActions().Select(action => _converter.ConvertToDomain(action)).ToList();
         }
@@ -140,12 +140,12 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public ICollection<DOM.Communicator> RetrieveAllCommunicators()
+        public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
         {
             return _dbController.RetrieveAllCommunicators().Select(comm => _converter.ConvertToDomain(comm)).ToList();
         }
 
-        public ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
+        public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
             return _dbController.RetrieveCommunicatorsByDeviceId(deviceId).Select(comm => _converter.ConvertToDomain(comm)).ToList();
         }
@@ -165,12 +165,12 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId)
+        public IEnumerable<DOM.Rule> RetrieveRulesForDevice(int deviceId)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<DOM.Rule> RetrieveAllRules()
+        public IEnumerable<DOM.Rule> RetrieveAllRules()
         {
             throw new NotImplementedException();
         }
@@ -195,12 +195,12 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public ICollection<DOM.Value> RetrieveValuesForDevice(int deviceId)
+        public IEnumerable<DOM.Value> RetrieveValuesForDevice(int deviceId)
         {
             throw new NotImplementedException();
         }
 
-        public ICollection<DOM.Value> RetrieveAllValues()
+        public IEnumerable<DOM.Value> RetrieveAllValues()
         {
             throw new NotImplementedException();
         }

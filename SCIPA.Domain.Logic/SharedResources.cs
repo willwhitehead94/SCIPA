@@ -17,7 +17,7 @@ namespace SCIPA.DomainLogic
 
         public int GetValueCount()
         {
-            return _repo.RetrieveAllValues().Count;
+            return _repo.RetrieveAllValues().Count();
         }
     }
 }

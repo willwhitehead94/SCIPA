@@ -10,7 +10,7 @@ namespace SCIPA.Data.Repository
 
         DOM.Device RetrieveDevice(int id);
 
-        ICollection<DOM.Device> RetrieveAllDevices();
+        IEnumerable<DOM.Device> RetrieveAllDevices();
 
         void UpdateDevice(DOM.Device device);
 
@@ -22,9 +22,9 @@ namespace SCIPA.Data.Repository
 
         DOM.Action RetrieveAction(int id);
 
-        ICollection<DOM.Action> RetrieveActionsForDevice(int deviceId);
+        IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId);
 
-        ICollection<DOM.Action> RetrieveAllActions();
+        IEnumerable<DOM.Action> RetrieveAllActions();
 
         void UpdateAction(DOM.Action action);
 
@@ -34,9 +34,9 @@ namespace SCIPA.Data.Repository
 
         //DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
 
-        //ICollection<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
+        //IEnumerable<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
 
-        //ICollection<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
+        //IEnumerable<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
 
         void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
@@ -46,9 +46,9 @@ namespace SCIPA.Data.Repository
 
         //DOM.FileCommunicator RetrieveFileCommunicator(int id);
 
-        //ICollection<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
+        //IEnumerable<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
 
-        //ICollection<DOM.FileCommunicator> RetrieveAllFileCommunicators();
+        //IEnumerable<DOM.FileCommunicator> RetrieveAllFileCommunicators();
 
         void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
@@ -58,15 +58,15 @@ namespace SCIPA.Data.Repository
 
         //DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
 
-        //ICollection<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
+        //IEnumerable<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
 
-        //ICollection<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
+        //IEnumerable<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
 
         DOM.Communicator RetrieveCommunicator(int id);
 
-        ICollection<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId);
+        IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId);
 
-        ICollection<DOM.Communicator> RetrieveAllCommunicators();  
+        IEnumerable<DOM.Communicator> RetrieveAllCommunicators();  
 
         void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
@@ -76,9 +76,9 @@ namespace SCIPA.Data.Repository
 
         DOM.Rule RetrieveRule(int id);
 
-        ICollection<DOM.Rule> RetrieveRulesForDevice(int deviceId);
+        IEnumerable<DOM.Rule> RetrieveRulesForDevice(int deviceId);
 
-        ICollection<DOM.Rule> RetrieveAllRules();
+        IEnumerable<DOM.Rule> RetrieveAllRules();
 
         void UpdateRule(DOM.Rule rule);
 
@@ -88,9 +88,9 @@ namespace SCIPA.Data.Repository
 
         DOM.Value RetrieveValue(int id);
 
-        ICollection<DOM.Value> RetrieveValuesForDevice(int deviceId);
+        IEnumerable<DOM.Value> RetrieveValuesForDevice(int deviceId);
 
-        ICollection<DOM.Value> RetrieveAllValues();
+        IEnumerable<DOM.Value> RetrieveAllValues();
 
         void UpdateValue(DOM.Value value);
 

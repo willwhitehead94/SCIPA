@@ -30,14 +30,14 @@ namespace SCIPA.Data.AccessLayer
         public bool Enabled { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Action> Actions { get; set; }
+        public virtual IEnumerable<Action> Actions { get; set; }
         public virtual Communicator Writer { get; set; }
         public virtual Communicator Reader { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rule> Rules { get; set; }
+        public virtual IEnumerable<Rule> Rules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Value> InboundValues { get; set; }
+        public virtual IEnumerable<Value> InboundValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Value> OutboundValues { get; set; }
+        public virtual IEnumerable<Value> OutboundValues { get; set; }
     }
 }

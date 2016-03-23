@@ -15,7 +15,7 @@ namespace SCIPA.Domain.Logic
 
         private readonly IRepository _repo = new Repository();
 
-        public ICollection<Device> GetAllDevices(bool refresh=false)
+        public IEnumerable<Device> GetAllDevices(bool refresh=false)
         {
             if (refresh)
             {
@@ -54,29 +54,24 @@ namespace SCIPA.Domain.Logic
 
         public bool SaveDevice(Device device)
         {
-            var dev = device;
-            _repo.CreateDevice(dev);
+            bool devExists = _repo.RetrieveDevice(device.Id) != null;
+            device = PrepareCommunicatorInfo(device);
 
-            return true;
-
-            //bool devExists = _repo.RetrieveDevice(device.Id) != null;
-            //device = PrepareCommunicatorInfo(device);
-
-            //try
-            //{
-            //    if (devExists)
-            //    {
-            //        _repo.UpdateDevice(device);
-            //        AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
-            //    }
-            //    else
-            //    {
-            //        _repo.CreateDevice(device);
-            //        AllDevices.Add(device);
-            //    }
-            //    return true;
-            //}
-            //catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
+            try
+            {
+                if (devExists)
+                {
+                    _repo.UpdateDevice(device);
+                    AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
+                }
+                else
+                {
+                    _repo.CreateDevice(device);
+                    AllDevices.Add(device);
+                }
+                return true;
+            }
+            catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
         }
 
         public Device PrepareCommunicatorInfo(Device device)
