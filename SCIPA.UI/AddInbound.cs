@@ -137,7 +137,7 @@ namespace SCIPA.UI
                     Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = devList
+                    Device = _device
                 };
             }
             else if (_communicator is SerialCommunicator)
@@ -152,7 +152,7 @@ namespace SCIPA.UI
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
-                    Device = devList
+                    Device = _device
                 };
             }
             else if (_communicator is FileCommunicator)
@@ -163,11 +163,10 @@ namespace SCIPA.UI
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = devList
+                    Device = _device
                 };
             }
-            
-            _device.Reader = _communicator;
+           
             _controller.SaveCommunicator(_communicator, _device);
         }
 

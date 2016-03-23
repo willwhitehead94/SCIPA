@@ -146,7 +146,6 @@ namespace SCIPA.Data.Repository
             var dalDevice = ConvertDeviceToDAL(device);
 
             dbCurrent = _mapper.Map(dalDevice, dbCurrent);
-            //var dal = _mapper.Map(dbValue, new DAL.Device());
             _db.SaveChanges();
         }
 
@@ -155,6 +154,14 @@ namespace SCIPA.Data.Repository
             var dalDevice = _mapper.Map(device, new DAL.Device());
 
             object reader = null, writer = null;
+
+            if (device.Communicators != null)
+            {
+                //Create list of Communicator objects
+                var commList = new List<DAL.Communicator>();
+
+                foreach 
+            }
 
             if (device.Reader != null)
             {
@@ -326,7 +333,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
-            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Devices.Any(dev => dev.Id == deviceId))).ToList();
+            return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId));
         }
 
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()

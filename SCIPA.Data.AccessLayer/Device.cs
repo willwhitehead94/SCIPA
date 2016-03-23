@@ -21,6 +21,7 @@ namespace SCIPA.Data.AccessLayer
             this.Rules = new HashSet<Rule>();
             this.InboundValues = new HashSet<Value>();
             this.OutboundValues = new HashSet<Value>();
+            this.Communicators = new HashSet<Communicator>();
         }
     
         public int Id { get; set; }
@@ -31,13 +32,13 @@ namespace SCIPA.Data.AccessLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Action> Actions { get; set; }
-        public virtual Communicator Writer { get; set; }
-        public virtual Communicator Reader { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Rule> Rules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Value> InboundValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Value> OutboundValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual IEnumerable<Communicator> Communicators { get; set; }
     }
 }

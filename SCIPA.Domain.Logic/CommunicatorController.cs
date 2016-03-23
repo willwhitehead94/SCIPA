@@ -86,17 +86,11 @@ namespace SCIPA.Domain.Logic
 
         public void SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
         {
-            List<Device> devList = ffComm.Device.ToList();
-            devList.Add(parentDevice);
-
-            ffComm.Device = devList;
+            ffComm.Device = parentDevice;
             _repo.CreateFileCommunicator(ffComm);
             var deviceController = new DeviceController();
 
-            foreach (var dev in devList)
-            {
-                deviceController.SaveDevice(dev);
-            }
+            deviceController.SaveDevice(parentDevice);
         }
 
         public void SaveCommunicator(Communicator generalComm, Device parentDevice)
