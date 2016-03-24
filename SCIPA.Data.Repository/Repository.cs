@@ -284,7 +284,10 @@ namespace SCIPA.Data.Repository
 
         public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
-            _db.Communicators.Add(_mapper.Map(fileCommunicator, new DAL.FileCommunicator()));
+            var ffComm = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
+
+            _db.Entry(ffComm.Device).State = EntityState.Modified;
+            _db.Communicators.Add(ffComm);
             _db.SaveChanges();
         }
 
@@ -386,7 +389,9 @@ namespace SCIPA.Data.Repository
         public void CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
-            dbVal.Device = _mapper.Map(RetrieveDevice(value.Device.Id), new DAL.Device());
+            dbVal.Device = _mapper.Map(RetrieveDevice(value.Device.Id), dbVal.Device);
+
+            _db.Entry(dbVal.Device).State = EntityState.Added;
             _db.Values.Add(dbVal);
             _db.SaveChanges();
         }
