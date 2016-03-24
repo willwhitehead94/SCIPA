@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SCIPA.Domain.Logic;
+using SCIPA.Models;
 
 namespace SCIPA.Domain.Inbound
 {
@@ -14,10 +15,11 @@ namespace SCIPA.Domain.Inbound
         /// Constructor, required only a working Flat File Handler.
         /// </summary>
         /// <param name="handler"></param>
-        public FlatFileReader(FlatFileHandler handler)
+        public FlatFileReader(FlatFileHandler handler, Device device)
         {
             HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
+            _parentDevice = device;
         }
     }
 }

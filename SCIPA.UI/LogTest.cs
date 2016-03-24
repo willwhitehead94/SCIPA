@@ -67,34 +67,34 @@ namespace SCIPA.UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DatabaseCommunicator dbComm = new DatabaseCommunicator()
-            {
-                DbType = DatabaseType.SQL,
-                ValueType = ValueType.String,
-                ConnectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
-                Query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
-            };
+            //DatabaseCommunicator dbComm = new DatabaseCommunicator()
+            //{
+            //    DbType = DatabaseType.SQL,
+            //    ValueType = ValueType.String,
+            //    ConnectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
+            //    Query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
+            //};
 
-            var dbRead = new DatabaseReader(new DatabaseHandler(dbComm));
-            //basicobj = dbRead;
+            //var dbRead = new DatabaseReader(new DatabaseHandler(dbComm));
+            ////basicobj = dbRead;
             
-            FileCommunicator ffComm = new FileCommunicator()
-            {
-                FilePath = @"C:\scipa\values.dat",
-                ValueType = ValueType.String,
-                StartChar = 0,
-                EndChar = 0
-            };
-            var fileRead = new FlatFileReader(new FlatFileHandler(ffComm));
+            //FileCommunicator ffComm = new FileCommunicator()
+            //{
+            //    FilePath = @"C:\scipa\values.dat",
+            //    ValueType = ValueType.String,
+            //    StartChar = 0,
+            //    EndChar = 0
+            //};
+            //var fileRead = new FlatFileReader(new FlatFileHandler(ffComm));
 
-            SerialCommunicator sdComm = new SerialCommunicator()
-            {
-                ComPort = "COM3",
-                ValueType = ValueType.String,
-                StartChar = 0,
-                EndChar = 0
-            };
-            var serialRead = new SerialDataReader(new SerialDataHandler(sdComm));
+            //SerialCommunicator sdComm = new SerialCommunicator()
+            //{
+            //    ComPort = "COM3",
+            //    ValueType = ValueType.String,
+            //    StartChar = 0,
+            //    EndChar = 0
+            //};
+            //var serialRead = new SerialDataReader(new SerialDataHandler(sdComm));
 
         }
 

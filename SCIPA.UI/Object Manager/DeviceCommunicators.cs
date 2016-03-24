@@ -19,6 +19,7 @@ namespace SCIPA.UI.Object_Manager
         DeviceController devCont = new DeviceController();
         CommunicatorController commCont = new CommunicatorController();
         private DataReader reader;
+        private Device selectedDevice;
 
         public DeviceCommunicators()
         {
@@ -42,8 +43,8 @@ namespace SCIPA.UI.Object_Manager
         {
             bStart.Enabled = false;
             cbCommunicators.Items.Clear();
-            var device = (Device)cbDevices.SelectedItem;
-            var commList = commCont.GetAllFileCommunicators().Where(comm => comm.Device.Id == device.Id);
+            selectedDevice = (Device)cbDevices.SelectedItem;
+            var commList = commCont.GetAllFileCommunicators().Where(comm => comm.Device.Id == selectedDevice.Id);
 
             foreach (var comm in commList)
             {
@@ -61,7 +62,7 @@ namespace SCIPA.UI.Object_Manager
 
         private void bStart_Click(object sender, EventArgs e)
         {
-            reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem));
+            reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem), selectedDevice);
             Loop(null);
         }
 

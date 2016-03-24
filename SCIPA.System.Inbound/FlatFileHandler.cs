@@ -171,7 +171,7 @@ namespace SCIPA.Domain.Inbound
                     Type = ValueType.String,
                     EventTime = DateTime.Now,
                     StringValue = fileText,
-                    Inbound = true
+                    Inbound = true  
                 });
 
                 //InboundDataQueue.Enqueue(new Value()

@@ -16,6 +16,11 @@ namespace SCIPA.Domain.Inbound
         protected DataHandler _handler = null;
 
         /// <summary>
+        /// The device that owns (has produced) any values incoming.
+        /// </summary>
+        protected Device _parentDevice = null;
+
+        /// <summary>
         /// Returns the number of values available in the queue.
         /// </summary>
         /// <returns></returns>
@@ -207,6 +212,10 @@ namespace SCIPA.Domain.Inbound
             if (AvailableValues() > 0)
             {
                 GetRequiredValue();
+
+                //If not null, the Value's parent device is attributed here.
+                if (InboundData!=null) InboundData.Device = _parentDevice;
+
                 return InboundData;
             }
 
