@@ -105,10 +105,8 @@ namespace SCIPA.Domain.Logic
             }
         }
 
-        public int? SaveCommunicator(Communicator generalComm, Device parentDevice)
+        public int? SaveCommunicator(Communicator generalComm)
         {
-            generalComm.Device = parentDevice;
-
             switch (generalComm.GetType().Name)
             {
                 case "DatabaseCommunicator":
@@ -118,7 +116,7 @@ namespace SCIPA.Domain.Logic
                     var allSComms = GetAllSerialCommunicators();
                     break;
                 case "FileCommunicator":
-                    return SaveCommunicator((FileCommunicator)generalComm, parentDevice);
+                    return SaveCommunicator((FileCommunicator)generalComm);
                     break;
                 default:
                     break;

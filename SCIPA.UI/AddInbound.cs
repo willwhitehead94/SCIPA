@@ -169,7 +169,7 @@ namespace SCIPA.UI
                 };
             }
             
-            var Id = _controller.SaveCommunicator(_communicator, _device);
+            var Id = _controller.SaveCommunicator(_communicator);
             if (Id != null) _communicator.Id = (int)Id;
             System.Windows.Forms.MessageBox.Show("New communicator created; ID: " + Id);
             this.Close();

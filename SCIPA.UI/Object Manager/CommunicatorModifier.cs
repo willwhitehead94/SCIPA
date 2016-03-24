@@ -137,7 +137,7 @@ namespace SCIPA.UI.Object_Manager
 
                 UpdateCommunicatorObject();
 
-                controller.SaveCommunicator(_communicator, _communicator.Device);
+                controller.SaveCommunicator(_communicator);
             }
 
             
