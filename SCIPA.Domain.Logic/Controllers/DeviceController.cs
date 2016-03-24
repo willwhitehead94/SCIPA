@@ -90,7 +90,7 @@ namespace SCIPA.Domain.Logic
         {
             CommunicatorController commCont = new CommunicatorController();
 
-            return commCont.GetAllCommunicators();
+            return commCont.GetAllCommunicators().Where(comm=>comm.Id==id);
         }
     }
 }

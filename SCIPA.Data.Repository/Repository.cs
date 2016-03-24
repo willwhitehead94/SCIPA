@@ -287,10 +287,12 @@ namespace SCIPA.Data.Repository
         public int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
             var ffComm = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
+            var ffDev = _mapper.Map(fileCommunicator.Device, ffComm.Device);
+            ffComm.Device = ffDev;
 
             try
             {
-                _db.Entry(ffComm.Device).State = EntityState.Detached;
+                _db.Entry(ffComm.Device).State = EntityState.Unchanged;
                 _db.Communicators.Add(ffComm);
 
                 _db.SaveChanges();
