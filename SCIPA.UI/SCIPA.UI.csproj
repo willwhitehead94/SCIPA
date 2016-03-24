@@ -67,6 +67,12 @@
     <Compile Include="AddInbound.Designer.cs">
       <DependentUpon>AddInbound.cs</DependentUpon>
     </Compile>
+    <Compile Include="Object Manager\CommunicatorModifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Object Manager\CommunicatorModifier.Designer.cs">
+      <DependentUpon>CommunicatorModifier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object Manager\CreateDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="AddInbound.resx">
       <DependentUpon>AddInbound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Object Manager\CommunicatorModifier.resx">
+      <DependentUpon>CommunicatorModifier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Object Manager\CreateDevice.resx">
       <DependentUpon>CreateDevice.cs</DependentUpon>

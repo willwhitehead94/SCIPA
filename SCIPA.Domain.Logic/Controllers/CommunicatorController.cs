@@ -92,10 +92,8 @@ namespace SCIPA.Domain.Logic
 
         }
 
-        public int? SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
+        public int? SaveCommunicator(FileCommunicator ffComm)
         {
-
-
             if (ffComm.Id == 0)
             {
                 return _repo.CreateFileCommunicator(ffComm);

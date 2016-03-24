@@ -23,6 +23,14 @@ namespace SCIPA.Data.Repository
         /// </summary>
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Initialises the AutoMapper configuration for detailed and complex maps between
+        /// Domain and Data models used within the application. 
+        /// Important to note is that the mapping of 'virtual' properties should always
+        /// be ignored so as to prevent circular mapping, as well as any ID fields
+        /// when used as primary keys so as not to override EF's database and entity
+        /// understanding incorrectly.
+        /// </summary>
         public Repository()
         {
             // Configure AutoMapper for update operations.
@@ -311,7 +319,12 @@ namespace SCIPA.Data.Repository
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == fileCommunicator.Id);
             if (dbValue == null) return;
             _mapper.Map(fileCommunicator,dbValue);
+
+            //Tell EF that the object has been updated.
             _db.Entry(dbValue).State = EntityState.Modified;
+            
+            //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
+            _db.Entry(dbValue.Device).State = EntityState.Unchanged;
             _db.SaveChanges();
         }
 

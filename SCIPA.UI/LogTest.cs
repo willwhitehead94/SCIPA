@@ -211,8 +211,10 @@ namespace SCIPA.UI
 
         private void button6_Click(object sender, EventArgs e)
         {
-            CreateDevice cd = new CreateDevice();
-            cd.Show();
+            var cont = new CommunicatorController();
+            
+            CommunicatorModifier cm = new CommunicatorModifier(cont.GetAllFileCommunicators().First());
+            cm.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)
