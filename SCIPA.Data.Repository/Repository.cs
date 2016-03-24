@@ -119,21 +119,34 @@ namespace SCIPA.Data.Repository
             }).CreateMapper();
         }
 
+        /// <summary>
+        /// Creates a new Device object within the database.
+        /// </summary>
+        /// <param name="device"></param>
         public void CreateDevice(DOM.Device device)
         {
             _db.Devices.Add(_mapper.Map(device, new DAL.Device()));
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Returns a single Device matching the parametised ID number.
+        /// </summary>
+        /// <param name="id">ID Number</param>
+        /// <returns>Domain model of the database object.</returns>
         public DOM.Device RetrieveDevice(int id)
         {
             return _mapper.Map(_db.Devices.FirstOrDefault(dev => dev.Id == id), new DOM.Device());
         }
 
+        /// <summary>
+        /// Returns all of the Devices on the database in Domain models.
+        /// </summary>
+        /// <returns>Domain models of the database objects.</returns>
         public IEnumerable<DOM.Device> RetrieveAllDevices()
         {
-            DAL.Device dal = _db.Devices.First();
-            DOM.Device dom = new DOM.Device();
+            var dal = _db.Devices.First();
+            var dom = new DOM.Device();
 
             _mapper.Map<DAL.Device, DOM.Device>(dal, dom);
             dom = _mapper.Map<DAL.Device, DOM.Device>(dal, dom);
@@ -141,6 +154,10 @@ namespace SCIPA.Data.Repository
             return _db.Devices.ToList().Select(device => _mapper.Map(device, new DOM.Device()));
         }
 
+        /// <summary>
+        /// Updates the database copy of the parametised domain model.
+        /// </summary>
+        /// <param name="device"></param>
         public void UpdateDevice(DOM.Device device)
         {
             var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
@@ -149,68 +166,12 @@ namespace SCIPA.Data.Repository
             _db.Entry(dbCurrent).State=EntityState.Modified;
             _db.SaveChanges();
         }
-
-        //private DAL.Device ConvertDeviceToDAL(DOM.Device device)
-        //{
-        //    var dalDevice = _mapper.Map(device, new DAL.Device());
-
-        //    object reader = null, writer = null;
-
-        //    if (device.Reader != null)
-        //    {
-        //        var mappedReader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
-        //        var updatedList = mappedReader.Devices.ToList();
-        //        updatedList.Add(dalDevice);
-
-        //        switch (device.Reader.Type)
-        //        {
-        //            case DOM.CommunicatorType.Database:
-        //                reader = _mapper.Map(device.Reader, new DAL.DatabaseCommunicator());
-        //                break;
-        //            case DOM.CommunicatorType.FlatFile:
-        //                reader = _mapper.Map(device.Reader, new DAL.FileCommunicator());
-        //                break;
-        //            case DOM.CommunicatorType.Serial:
-        //                reader = _mapper.Map(device.Reader, new DAL.SerialCommunicator());
-        //                break;
-        //            default:
-        //                DebugOutput.Print("Could not convert device reader within the repository.");
-        //                break;
-        //        }
-        //    }
-
-        //    if (device.Writer != null)
-        //    {
-        //        var mappedWriter = _mapper.Map(device.Writer, new DAL.FileCommunicator());
-        //        var updatedList = mappedWriter.Devices.ToList();
-        //        updatedList.Add(dalDevice);
-
-        //        switch (device.Writer.Type)
-        //        {
-        //            case DOM.CommunicatorType.Database:
-        //                reader = _mapper.Map(device.Writer, new DAL.DatabaseCommunicator().Devices=updatedList);
-        //                break;
-        //            case DOM.CommunicatorType.FlatFile:
-        //                reader = _mapper.Map(device.Writer, new DAL.FileCommunicator().Devices = updatedList);
-        //                break;
-        //            case DOM.CommunicatorType.Serial:
-        //                reader = _mapper.Map(device.Writer, new DAL.SerialCommunicator().Devices = updatedList);
-        //                break;
-        //            default:
-        //                DebugOutput.Print("Could not convert device writer within the repository.");
-        //                break;
-        //        }
-
-                
-        //    }
-
-        //    dalDevice.Reader = (DAL.Communicator)reader;
-        //    dalDevice.Writer = (DAL.Communicator)writer;
-
-        //    return dalDevice;
-        //}
-
-        public void DisableDevice(DOM.Device device)
+        
+        /// <summary>
+        /// Updates the database to remove the device from the system.
+        /// </summary>
+        /// <param name="device"></param>
+        public void DeleteDevice(DOM.Device device)
         {
             var dbValue = RetrieveDevice(device.Id);
             if (dbValue == null) return;
@@ -218,6 +179,11 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Decides on behalf of the user whether to create a new Device 
+        /// entity or whether to update an entity that exists in its place.
+        /// </summary>
+        /// <param name="device"></param>
         public void CreateOrUpdateDevice(DOM.Device device)
         {
             var dbValue = RetrieveDevice(device.Id);
@@ -231,27 +197,50 @@ namespace SCIPA.Data.Repository
             }
         }
 
+        /// <summary>
+        /// Creates a new Action object within the database.
+        /// </summary>
+        /// <param name="action"></param>
         public void CreateAction(DOM.Action action)
         {
             _db.Actions.Add(_mapper.Map(action, new DAL.Action()));
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Returns a single Action object from the parametised ID number.
+        /// </summary>
+        /// <param name="id">ID Number.</param>
+        /// <returns>Domain model of the database object.</returns>
         public DOM.Action RetrieveAction(int id)
         {
             return _mapper.Map(_db.Actions.FirstOrDefault(act => act.Id == id), new DOM.Action());
         }
 
+        /// <summary>
+        /// Returns all database actions for a given device via the parametised Id.
+        /// </summary>
+        /// <param name="deviceId">Device ID Number</param>
+        /// <returns>Domain models of the database objects.</returns>
         public IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId)
         {
             return _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
+        /// <summary>
+        /// Returns all known Actions from the database within Domain models.
+        /// </summary>
+        /// <returns>Domain models of the database objects.</returns>
         public IEnumerable<DOM.Action> RetrieveAllActions()
         {
             return _db.Actions.Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
+        /// <summary>
+        /// Updates the database Action entity based on the changes made in
+        /// the parammetised Domain model.
+        /// </summary>
+        /// <param name="action">Domain model to update.</param>
         public void UpdateAction(DOM.Action action)
         {
             var dbValue = RetrieveAction(action.Id);
@@ -262,6 +251,10 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Removes the action from the database.
+        /// </summary>
+        /// <param name="action">Action to remove.</param>
         public void DeleteAction(DOM.Action action)
         {
             var dbValue = RetrieveAction(action.Id);
@@ -270,6 +263,12 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Creates a new Communicator object on the database. Automatically
+        /// handles each of the subsidary Communicator types internally.
+        /// </summary>
+        /// <param name="communicator">The domain model to push up to the database.</param>
+        /// <returns>The new ID number</returns>
         public int? CreateCommunicator(DOM.Communicator communicator)
         {
             var ffComm = _mapper.Map(communicator, new DAL.FileCommunicator());

@@ -14,7 +14,7 @@ namespace SCIPA.Data.Repository
 
         void UpdateDevice(DOM.Device device);
 
-        void DisableDevice(DOM.Device device);
+        void DeleteDevice(DOM.Device device);
 
         void CreateOrUpdateDevice(Models.Device device);
 
