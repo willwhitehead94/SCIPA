@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter.cs" />
-    <Compile Include="DataRepository.cs" />
     <Compile Include="GenericRepo\Base.cs" />
     <Compile Include="GenericRepo\GenericRepository.cs" />
     <Compile Include="GenericRepo\IGenericRepository.cs" />

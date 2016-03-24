@@ -96,11 +96,11 @@ namespace SCIPA.Domain.Logic
         {
             if (ffComm.Id == 0)
             {
-                return _repo.CreateFileCommunicator(ffComm);
+                return _repo.CreateCommunicator(ffComm);
             }
             else
             {
-                _repo.UpdateFileCommunicator(ffComm);
+                _repo.UpdateCommunicator(ffComm);
                 return ffComm.Id;
             }
         }

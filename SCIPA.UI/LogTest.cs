@@ -179,29 +179,7 @@ namespace SCIPA.UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //Domain.Logic.DeviceController temp = new DeviceController();
-            //temp.GetAllDevices();
-
-            DomainLogic.SharedResources sr = new SharedResources();
-            System.Windows.Forms.MessageBox.Show(sr.GetValueCount().ToString());
-
-            //if (myDevice != null)
-            //{
-            //    DataReader myReader = (DataReader)myDevice.InboundReader;
-
-            //    if (myDevice.InboundValues == null)
-            //    {
-            //        myDevice.InboundValues = new List<Value>();
-            //    }
-
-            //    List<Value> newValues = new List<Value>();
-            //    while (myReader.AvailableValues() > 0)
-            //    {
-            //        myDevice.InboundValues.Add(myReader.GetNextValue());
-            //    }
-
-            //    System.Windows.Forms.MessageBox.Show(myDevice.InboundValues.Count.ToString());
-            //}
+            
         }
 
         private void LogTest_Load(object sender, EventArgs e)

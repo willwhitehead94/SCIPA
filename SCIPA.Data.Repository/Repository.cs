@@ -270,32 +270,10 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
-        public void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
+        public int? CreateCommunicator(DOM.Communicator communicator)
         {
-            _db.Communicators.Add(_mapper.Map(databaseCommunicator, new DAL.DatabaseCommunicator()));
-        }
-
-        public void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        {
-            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == databaseCommunicator.Id);
-            if (dbValue == null) return;
-            _mapper.Map(databaseCommunicator, dbValue);
-            _db.Entry(dbValue).State = EntityState.Modified;
-            _db.SaveChanges();
-        }
-
-        public void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator)
-        {
-            var dbValue = RetrieveCommunicator(databaseCommunicator.Id);
-            if (dbValue == null) return;
-            _db.Communicators.Remove(_mapper.Map(databaseCommunicator, new DAL.DatabaseCommunicator()));
-            _db.SaveChanges();
-        }
-
-        public int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        {
-            var ffComm = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
-            var ffDev = _mapper.Map(fileCommunicator.Device, ffComm.Device);
+            var ffComm = _mapper.Map(communicator, new DAL.FileCommunicator());
+            var ffDev = _mapper.Map(communicator.Device, ffComm.Device);
             ffComm.Device = ffDev;
 
             try
@@ -314,31 +292,17 @@ namespace SCIPA.Data.Repository
             return null;
         }
 
-        public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        public void UpdateCommunicator(DOM.Communicator communicator)
         {
-            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == fileCommunicator.Id);
+            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == communicator.Id);
             if (dbValue == null) return;
-            _mapper.Map(fileCommunicator,dbValue);
+            _mapper.Map(communicator,dbValue);
 
             //Tell EF that the object has been updated.
             _db.Entry(dbValue).State = EntityState.Modified;
             
             //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
             _db.Entry(dbValue.Device).State = EntityState.Unchanged;
-            _db.SaveChanges();
-        }
-
-        public void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator)
-        {
-            var dbValue = RetrieveCommunicator(fileCommunicator.Id);
-            if (dbValue == null) return;
-            _db.Communicators.Remove(_mapper.Map(fileCommunicator, new DAL.FileCommunicator()));
-            _db.SaveChanges();
-        }
-
-        public void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        {
-            _db.Communicators.Add(_mapper.Map(serialCommunicator, new DAL.SerialCommunicator()));
             _db.SaveChanges();
         }
 
@@ -357,23 +321,6 @@ namespace SCIPA.Data.Repository
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
         {
             return ConvertDALCommunicatorsToDOM(_db.Communicators).ToList();
-        }
-
-        public void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        {
-            var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == serialCommunicator.Id);
-            if (dbValue == null) return;
-            _mapper.Map(serialCommunicator, dbValue);
-            _db.Entry(dbValue).State = EntityState.Modified;
-            _db.SaveChanges();
-        }
-
-        public void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator)
-        {
-            var dbValue = RetrieveCommunicator(serialCommunicator.Id);
-            if (dbValue == null) return;
-            _db.Communicators.Remove(_mapper.Map(serialCommunicator, new DAL.SerialCommunicator()));
-            _db.SaveChanges();
         }
 
         public void CreateRule(DOM.Rule rule)

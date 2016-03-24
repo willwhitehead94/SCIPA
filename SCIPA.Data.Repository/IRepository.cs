@@ -30,7 +30,7 @@ namespace SCIPA.Data.Repository
 
         void DeleteAction(DOM.Action action);
 
-        void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
+        //void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
         //DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
 
@@ -38,11 +38,11 @@ namespace SCIPA.Data.Repository
 
         //IEnumerable<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
 
-        void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
+        //void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
+        //void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator);
+        int? CreateCommunicator(DOM.Communicator communicator);
 
         //DOM.FileCommunicator RetrieveFileCommunicator(int id);
 
@@ -50,11 +50,11 @@ namespace SCIPA.Data.Repository
 
         //IEnumerable<DOM.FileCommunicator> RetrieveAllFileCommunicators();
 
-        void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator);
+        void UpdateCommunicator(DOM.Communicator communicator);
 
-        void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator);
+        //void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
-        void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
+        //void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
         //DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
 
@@ -68,9 +68,9 @@ namespace SCIPA.Data.Repository
 
         IEnumerable<DOM.Communicator> RetrieveAllCommunicators();  
 
-        void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
+        //void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
-        void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
+        //void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
         void CreateRule(DOM.Rule rule);
 
