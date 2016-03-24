@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices;
 using AutoMapper;
 using SCIPA.Domain.Generic;
 using DAL = SCIPA.Data.AccessLayer;
@@ -363,11 +364,21 @@ namespace SCIPA.Data.Repository
         public void CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
-            dbVal.Device = _mapper.Map(RetrieveDevice(value.Device.Id), dbVal.Device);
 
-            _db.Entry(dbVal.Device).State = EntityState.Added;
-            _db.Values.Add(dbVal);
-            _db.SaveChanges();
+            try
+            {
+                _db.Entry(dbVal.Device).State=EntityState.Unchanged;
+                _db.Values.Add(dbVal);
+                _db.SaveChanges();
+
+                DebugOutput.Print($"{value.Device.Id}'s new value, '{value.StringValue}', was captured!");
+
+            }
+            catch (Exception)
+            {
+                var msg = $"{value.Device.Id}'s new value, '{value.StringValue}', could not be captured!";
+                DebugOutput.Print("Could not store the new value!", msg );
+            }
         }
 
         public DOM.Value RetrieveValue(int id)
