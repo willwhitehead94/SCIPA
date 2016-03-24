@@ -79,34 +79,18 @@ namespace SCIPA.Domain.Logic
             catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
         }
 
-        public Device RetrieveDevice(int id, bool secondPass=false)
+        public Device RetrieveDevice(int id)
         {
             var dev = _repo.RetrieveDevice(id);
 
             return dev;
-
-            //var dev = AllDevices.FirstOrDefault(d => d.Id == id);
-
-            //if (dev == null && !secondPass)
-            //{
-            //    GetAllDevices(true);
-            //    return RetrieveDevice(id,true);
-            //}
-            //else
-            //{
-            //    return null;
-            //}
         }
 
-
-        public AppData RetrieveAppData()
+        public IEnumerable<Communicator> GetCommunicatorsForDevice(int id)
         {
-            return _repo.GetApplicationInformation();
-        }
+            CommunicatorController commCont = new CommunicatorController();
 
-        public void UpdateAppData(AppData ad)
-        {
-            _repo.SetApplicationInformation(ad);
+            return commCont.GetAllCommunicators();
         }
     }
 }

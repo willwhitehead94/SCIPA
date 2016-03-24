@@ -58,6 +58,9 @@ namespace SCIPA.UI
                 bSave.PerformClick();
                 AddInbound ai = new AddInbound(_device);
                 ai.ShowDialog();
+
+                var counter = _controller.GetCommunicatorsForDevice(_device.Id).Count(comm => comm.Inbound);
+                lSource.Text = "(" + counter + ")";
             }
         }
 

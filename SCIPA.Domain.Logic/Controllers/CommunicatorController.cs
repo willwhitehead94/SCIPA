@@ -38,6 +38,11 @@ namespace SCIPA.Domain.Logic
             return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Serial).ToList();
         }
 
+        public IEnumerable<Communicator> GetAllCommunicators()
+        {
+            return _repo.RetrieveAllCommunicators();
+        } 
+
         /// <summary>
         /// Collects the maximum ID number for the desired communicator type 
         /// from the controller. Returns int.MinValue upon error.
@@ -48,7 +53,7 @@ namespace SCIPA.Domain.Logic
         {
             var dbValue = int.MinValue;
 
-            if (typeof(T).BaseType != typeof(Communicator))
+            if (typeof(T).BaseType != typeof(Communicator)&&typeof(T).Name != typeof(Communicator).Name)
             {
                 throw new Exception("Method only handles Communicator objects.");
             }
@@ -67,6 +72,9 @@ namespace SCIPA.Domain.Logic
                     var allFfComms = GetAllFileCommunicators();
                     dbValue = allFfComms.Count() == 0 ? allFfComms.Count() : allFfComms.Max(c => c.Id);
                     break;
+                case "Communicator":
+                    dbValue = _repo.RetrieveAllCommunicators().Count();
+                    break;
                 default:
                     return int.MinValue;
             }
@@ -84,32 +92,43 @@ namespace SCIPA.Domain.Logic
 
         }
 
-        public void SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
+        public int? SaveCommunicator(FileCommunicator ffComm, Device parentDevice)
         {
-            ffComm.Device = parentDevice;
-            _repo.CreateFileCommunicator(ffComm);
+
+
+            if (ffComm.Id == 0)
+            {
+                return _repo.CreateFileCommunicator(ffComm);
+            }
+            else
+            {
+                _repo.UpdateFileCommunicator(ffComm);
+                return ffComm.Id;
+            }
         }
 
-        public void SaveCommunicator(Communicator generalComm, Device parentDevice)
+        public int? SaveCommunicator(Communicator generalComm, Device parentDevice)
         {
-            var dbValue = 0;
+            generalComm.Device = parentDevice;
 
             switch (generalComm.GetType().Name)
             {
                 case "DatabaseCommunicator":
                     var allDbComms = GetAllDatabaseCommunicators();
-                    dbValue = allDbComms.Count() == 0 ? allDbComms.Count() : allDbComms.Max(c => c.Id);
                     break;
                 case "SerialCommunicator":
                     var allSComms = GetAllSerialCommunicators();
-                    dbValue = allSComms.Count() == 0 ? allSComms.Count() : allSComms.Max(c => c.Id);
                     break;
                 case "FileCommunicator":
-                    SaveCommunicator((FileCommunicator)generalComm, parentDevice);
+                    return SaveCommunicator((FileCommunicator)generalComm, parentDevice);
                     break;
                 default:
-                    return;
+                    break;
             }
+
+            return -1;
+
+
 
         }
     }

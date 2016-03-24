@@ -130,7 +130,10 @@ namespace SCIPA.UI
                     Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _communicator.Device
+                    Device = _communicator.Device,
+                    //Id = GetNextIdNumber(),
+                    Inbound = true,
+                    Type = CommunicatorType.Database
                 };
             }
             else if (_communicator is SerialCommunicator)
@@ -145,7 +148,10 @@ namespace SCIPA.UI
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
-                    Device = _communicator.Device
+                    Device = _communicator.Device,
+                    Inbound = true,
+                    Type = CommunicatorType.Serial,
+                    //Id = GetNextIdNumber()
                 };
             }
             else if (_communicator is FileCommunicator)
@@ -156,12 +162,17 @@ namespace SCIPA.UI
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _communicator.Device
+                    Device = _communicator.Device,
+                    Type = CommunicatorType.FlatFile,
+                    Inbound = true,
+                    //Id = GetNextIdNumber()
                 };
             }
             
-            //_device.Reader = _communicator;
-            _controller.SaveCommunicator(_communicator, _device);
+            var Id = _controller.SaveCommunicator(_communicator, _device);
+            if (Id != null) _communicator.Id = (int)Id;
+            System.Windows.Forms.MessageBox.Show("New communicator created; ID: " + Id);
+            this.Close();
         }
 
         private int GetStartChar()
@@ -183,6 +194,11 @@ namespace SCIPA.UI
             }
 
             return end;
+        }
+
+        public int GetNextIdNumber()
+        {
+            return _controller.GetMaxId<Communicator>()+1;
         }
 
         /// <summary>

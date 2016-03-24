@@ -110,7 +110,7 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        public int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
             throw new NotImplementedException();
         }

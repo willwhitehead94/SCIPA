@@ -42,7 +42,8 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
@@ -82,7 +83,8 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DAL.AppData, DOM.AppData>();
 
                 cfg.CreateMap<DAL.Communicator, DOM.Communicator>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.CommunicatorType, DOM.CommunicatorType>();
 
@@ -282,13 +284,24 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
-        public void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
+        public int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator)
         {
             var ffComm = _mapper.Map(fileCommunicator, new DAL.FileCommunicator());
 
-            _db.Entry(ffComm.Device).State = EntityState.Modified;
-            _db.Communicators.Add(ffComm);
-            _db.SaveChanges();
+            try
+            {
+                _db.Entry(ffComm.Device).State = EntityState.Detached;
+                _db.Communicators.Add(ffComm);
+
+                _db.SaveChanges();
+                return _db.Communicators.Find(ffComm.Id).Id;
+            }
+            catch(Exception e)
+            {
+                DebugOutput.Print("System was unable to detatch the Device from the new Communicator! ", e.Message);
+            }
+
+            return null;
         }
 
         public void UpdateFileCommunicator(DOM.FileCommunicator fileCommunicator)

@@ -42,7 +42,7 @@ namespace SCIPA.Data.Repository
 
         void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
 
-        void CreateFileCommunicator(DOM.FileCommunicator fileCommunicator);
+        int? CreateFileCommunicator(DOM.FileCommunicator fileCommunicator);
 
         //DOM.FileCommunicator RetrieveFileCommunicator(int id);
 
