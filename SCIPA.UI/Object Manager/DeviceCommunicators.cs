@@ -62,7 +62,24 @@ namespace SCIPA.UI.Object_Manager
 
         private void bStart_Click(object sender, EventArgs e)
         {
-            reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem));
+            Communicator selectedCommunicator = (Communicator)cbCommunicators.SelectedItem;
+
+            switch (selectedCommunicator.Type)
+            {
+                case CommunicatorType.FlatFile:
+                    reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem));
+                    break;
+                case CommunicatorType.Serial:
+                    reader = new SerialDataReader(new SerialDataHandler((SerialCommunicator)cbCommunicators.SelectedItem));
+                    break;
+                case CommunicatorType.Database:
+                    reader = new DatabaseReader(new DatabaseHandler((DatabaseCommunicator)cbCommunicators.SelectedItem));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+           
             Loop(null);
         }
 
@@ -77,7 +94,6 @@ namespace SCIPA.UI.Object_Manager
                 }
                 Thread.Sleep(500);
             }
-            
         }
     }
 }

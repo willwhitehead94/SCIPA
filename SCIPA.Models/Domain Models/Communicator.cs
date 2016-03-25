@@ -14,5 +14,10 @@ namespace SCIPA.Models
         public bool Inbound { get; set; }
 
         public virtual Device Device { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}: ({Type}) Inbound:{Inbound}";
+        }
     }
 }
