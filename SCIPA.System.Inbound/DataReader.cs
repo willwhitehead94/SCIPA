@@ -44,8 +44,30 @@ namespace SCIPA.Domain.Inbound
         protected Value InboundData { get; set; }
 
         /// <summary>
+        /// String convert of the most recent 'Value' object.
+        /// </summary>
+        protected string InboundData_Str { get; set; }
+
+        /// <summary>
+        /// Integer convert of the most recent 'Value' object.
+        /// </summary>
+        protected int InboundData_Int { get; set; }
+
+        /// <summary>
+        /// Float convert of the most recent 'Value' object.
+        /// Stored as Decimal because of database constraints.s
+        /// </summary>
+        protected decimal InboundData_Flt { get; set; }
+
+        /// <summary>
+        /// Boolean convert of the most recent 'Value' object.
+        /// </summary>
+        protected bool InboundData_Bln { get; set; }
+
+        /// <summary>
         /// Checks the value is both readable and deqeued from the handler.
         /// If so, the value is taken, converted and stored locally.
+        /// Once stored locally, the system will record the 'Value' in the database.
         /// </summary>
         private void GetRequiredValue()
         {
@@ -53,7 +75,10 @@ namespace SCIPA.Domain.Inbound
             {
                 if (CutToRequiredLength())
                 {
-                    ConvertValueToFormat();
+                    if (ConvertValueToFormat())
+                    {
+                        CommitValueToDatabase();
+                    }
                 }
             }
         }
@@ -138,52 +163,78 @@ namespace SCIPA.Domain.Inbound
             DebugOutput.Print("Converting the value to ", HandlerValueType.ToString());
             bool ConvertedOk = false;
 
-            switch (HandlerValueType)
+            if (InboundData != null)
             {
-                case ValueType.Integer:
-                    {
-                        int convertedInt = int.MinValue;
-                        if (int.TryParse(InboundData.StringValue, out convertedInt))
-                        {
-                            Data = convertedInt.ToString();
-                            InboundData.StringValue = Data;
-                            ConvertedOk = true;
-                        }
+                string tempStr;
+                tempStr = InboundData.StringValue.ToString();
+                InboundData_Str = tempStr;
+                InboundData.StringValue = InboundData_Str;
 
-                        break;
-                    }
-                case ValueType.Float:
-                    {
-                        float convertedFloat = float.MinValue;
-                        if (float.TryParse(InboundData.StringValue, out convertedFloat))
-                        {
-                            Data = convertedFloat.ToString();
-                            InboundData.StringValue = Data;
-                            ConvertedOk = true;
-                        }
+                int tempInt;
+                int.TryParse(InboundData.StringValue, out tempInt);
+                InboundData_Int = tempInt;
+                InboundData.IntegerValue = InboundData_Int;
 
-                        break;
-                    }
-                case ValueType.Boolean:
-                    {
-                        bool returnValue = false;
-                        if (bool.TryParse(InboundData.StringValue, out returnValue))
-                        {
-                            Data = returnValue.ToString();
-                            InboundData.StringValue = Data;
-                            ConvertedOk = true;
-                        }
+                decimal tempDecimal;
+                decimal.TryParse(InboundData.StringValue, out tempDecimal);
+                InboundData_Flt = tempDecimal;
+                InboundData.FloatValue = InboundData_Flt;
 
-                        break;
-                    }
-                case Models.ValueType.String:
-                    {
-                        Data = InboundData.StringValue.ToString();
-                        InboundData.StringValue = Data;
-                        ConvertedOk = true;
-                        break;
-                    }
+                bool tempBool;
+                bool.TryParse(InboundData.StringValue, out tempBool);
+                InboundData_Bln = tempBool;
+                InboundData.BooleanValue = InboundData_Bln;
+
+                ConvertedOk = true;
             }
+
+
+            //switch (HandlerValueType)
+            //{
+            //    case ValueType.Integer:
+            //        {
+            //            int convertedInt = int.MinValue;
+            //            if (int.TryParse(InboundData.StringValue, out convertedInt))
+            //            {
+            //                Data = convertedInt.ToString();
+            //                InboundData.StringValue = Data;
+            //                ConvertedOk = true;
+            //            }
+
+            //            break;
+            //        }
+            //    case ValueType.Float:
+            //        {
+            //            float convertedFloat = float.MinValue;
+            //            if (float.TryParse(InboundData.StringValue, out convertedFloat))
+            //            {
+            //                Data = convertedFloat.ToString();
+            //                InboundData.StringValue = Data;
+            //                ConvertedOk = true;
+            //            }
+
+            //            break;
+            //        }
+            //    case ValueType.Boolean:
+            //        {
+            //            bool returnValue = false;
+            //            if (bool.TryParse(InboundData.StringValue, out returnValue))
+            //            {
+            //                Data = returnValue.ToString();
+            //                InboundData.StringValue = Data;
+            //                ConvertedOk = true;
+            //            }
+
+            //            break;
+            //        }
+            //    case Models.ValueType.String:
+            //        {
+            //            Data = InboundData.StringValue.ToString();
+            //            InboundData.StringValue = Data;
+            //            ConvertedOk = true;
+            //            break;
+            //        }
+            //}
 
             //If the value conversion was successful, print to console.
             if (ConvertedOk)
@@ -199,6 +250,17 @@ namespace SCIPA.Domain.Inbound
             return ConvertedOk;
         }
 
+        private void CommitValueToDatabase()
+        {
+            InboundData.Device = _handler.GetCommunicator().Device;
+            InboundData.DeviceId = _handler.GetCommunicator().Device.Id;
+            InboundData.CommunicatorId = _handler.GetCommunicator().Id;
+            _handler._repo.CreateValue(InboundData);
+
+            var comm = _handler.GetCommunicator();
+            comm.LastReadTime = InboundData.EventTime;
+            _handler._repo.UpdateCommunicator(comm);
+        }
 
         /// <summary>
         /// Gets the next inbound Value object from the reader. Returns null if there are no new values.

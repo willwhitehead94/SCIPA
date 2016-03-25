@@ -10,7 +10,7 @@ namespace SCIPA.Domain.Inbound
         /// <summary>
         /// Private repo object allow for automatic output to the database.
         /// </summary>
-        private IRepository _repo = new Repository();
+        public IRepository _repo = new Repository();
 
         /// <summary>
         /// Maximum number of incoming messages allowed per second.
@@ -30,8 +30,8 @@ namespace SCIPA.Domain.Inbound
         public void EnqueueData(Value newValue)
         {
             InboundDataQueue.Enqueue(newValue);
-            newValue.Device = GetCommunicator().Device;
-            _repo.CreateValue(newValue);
+            //newValue.Device = GetCommunicator().Device;
+            //_repo.CreateValue(newValue);
         }
 
         /// <summary>
