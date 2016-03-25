@@ -250,6 +250,11 @@ namespace SCIPA.Domain.Inbound
             return ConvertedOk;
         }
 
+        /// <summary>
+        /// Commits the Value to the database as per the DB requirements. 
+        /// Also updates the Communicator's 'LastReadTime' value to be the value
+        /// from the Value's Update event.
+        /// </summary>
         private void CommitValueToDatabase()
         {
             InboundData.Device = _handler.GetCommunicator().Device;
