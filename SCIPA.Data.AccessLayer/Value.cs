@@ -19,6 +19,7 @@ namespace SCIPA.Data.AccessLayer
         public string StringValue { get; set; }
         public bool Inbound { get; set; }
         public ValueType Type { get; set; }
+        public int DeviceId { get; set; }
     
         public virtual Device Device { get; set; }
     }

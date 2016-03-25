@@ -130,7 +130,7 @@ namespace SCIPA.UI
                     Query = tQuery.Text,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _communicator.Device,
+                    Device = _device,
                     //Id = GetNextIdNumber(),
                     Inbound = true,
                     Type = CommunicatorType.Database
@@ -148,7 +148,7 @@ namespace SCIPA.UI
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
-                    Device = _communicator.Device,
+                    Device = _device,
                     Inbound = true,
                     Type = CommunicatorType.Serial,
                     //Id = GetNextIdNumber()
@@ -162,7 +162,7 @@ namespace SCIPA.UI
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    Device = _communicator.Device,
+                    Device = _device,
                     Type = CommunicatorType.FlatFile,
                     Inbound = true,
                     //Id = GetNextIdNumber()

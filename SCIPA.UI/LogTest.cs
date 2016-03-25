@@ -197,14 +197,8 @@ namespace SCIPA.UI
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Device testDev = new Device()
-            {
-                Id = 1,
-                Name = "Arduino Uno Trend App",
-                Location = "Desk 1",
-                Custodian = "W. Whitehead",
-                Enabled = true
-            };
+            var controller = new DeviceController();
+            Device testDev = controller.GetAllDevices().First();
 
             AddInbound ai = new AddInbound(testDev);
             ai.ShowDialog();

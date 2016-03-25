@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/24/2016 00:27:51
+-- Date Created: 03/25/2016 00:34:10
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[Values] (
     [StringValue] nvarchar(max)  NOT NULL,
     [Inbound] bit  NOT NULL,
     [Type] smallint  NOT NULL,
-    [Device_Id] int  NOT NULL
+    [DeviceId] int  NOT NULL
 );
 GO
 
@@ -268,10 +268,10 @@ ON [dbo].[Rules]
     ([DeviceId]);
 GO
 
--- Creating foreign key on [Device_Id] in table 'Values'
+-- Creating foreign key on [DeviceId] in table 'Values'
 ALTER TABLE [dbo].[Values]
 ADD CONSTRAINT [FK_DeviceValue]
-    FOREIGN KEY ([Device_Id])
+    FOREIGN KEY ([DeviceId])
     REFERENCES [dbo].[Devices]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -280,7 +280,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeviceValue'
 CREATE INDEX [IX_FK_DeviceValue]
 ON [dbo].[Values]
-    ([Device_Id]);
+    ([DeviceId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

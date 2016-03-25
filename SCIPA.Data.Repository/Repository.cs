@@ -64,7 +64,8 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
                     .ForMember(m => m.Actions, opt => opt.Ignore())
-                    .ForMember(m => m.Rules, opt => opt.Ignore());
+                    .ForMember(m => m.Rules, opt => opt.Ignore())
+                    .ForMember(m=>m.Values, opt=>opt.Ignore());
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
@@ -105,7 +106,8 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DAL.Device, DOM.Device>()
                     .ForMember(m => m.Actions, opt => opt.Ignore())
-                    .ForMember(m => m.Rules, opt => opt.Ignore());
+                    .ForMember(m => m.Rules, opt => opt.Ignore())
+                    .ForMember(m => m.Values, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
                     .ForMember(m => m.Device, opt => opt.Ignore());
@@ -367,19 +369,20 @@ namespace SCIPA.Data.Repository
             var dev = _mapper.Map(value.Device, dbVal.Device);
 
             dbVal.Device = dev;
+            dbVal.DeviceId = dev.Id;
 
             try
             {
-                _db.Entry(dbVal.Device).State=EntityState.Unchanged;
+                _db.Entry(dbVal.Device).State = EntityState.Unchanged;
+                _db.Entry(dbVal.Device.Values).State=EntityState.Modified;
                 _db.Values.Add(dbVal);
                 _db.SaveChanges();
 
-                DebugOutput.Print($"{value.Device.Id}'s new value, '{value.StringValue}', was captured!");
-
+                DebugOutput.Print($"Communicator #{value.Device.Id}'s new value, '{value.StringValue}', was captured!");
             }
             catch (Exception)
             {
-                var msg = $"{value.Device.Id}'s new value, '{value.StringValue}', could not be captured!";
+                var msg = $"Communicator #{value.Device.Id}'s new value, '{value.StringValue}', could not be captured!";
                 DebugOutput.Print("Could not store the new value!", msg );
             }
         }
