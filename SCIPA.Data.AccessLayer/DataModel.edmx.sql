@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/25/2016 02:05:37
+-- Date Created: 03/25/2016 02:21:29
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -25,9 +25,6 @@ IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicators]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DeviceValue]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Values] DROP CONSTRAINT [FK_DeviceValue];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FileCommunicator_inherits_Communicator]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Communicators_FileCommunicator] DROP CONSTRAINT [FK_FileCommunicator_inherits_Communicator];
@@ -118,10 +115,14 @@ GO
 CREATE TABLE [dbo].[Values] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [EventTime] datetime  NOT NULL,
-    [StringValue] nvarchar(max)  NOT NULL,
     [Inbound] bit  NOT NULL,
     [Type] smallint  NOT NULL,
-    [DeviceId] int  NOT NULL
+    [DeviceId] int  NOT NULL,
+    [CommunicatorId] int  NOT NULL,
+    [IntegerValue] int  NOT NULL,
+    [FloatValue] decimal(18,0)  NOT NULL,
+    [BooleanValue] bit  NOT NULL,
+    [StringValue] nvarchar(max)  NOT NULL
 );
 GO
 

@@ -85,10 +85,14 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EventTime" Type="datetime" Nullable="false" />
-    <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="CommunicatorId" Type="int" Nullable="false" />
+    <Property Name="IntegerValue" Type="int" Nullable="false" />
+    <Property Name="FloatValue" Type="decimal" Nullable="false" />
+    <Property Name="BooleanValue" Type="bit" Nullable="false" />
+    <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -292,10 +296,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EventTime" Type="DateTime" Nullable="false" />
-          <Property Name="StringValue" Type="String" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
           <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="CommunicatorId" Type="Int32" Nullable="false" />
+          <Property Name="IntegerValue" Type="Int32" Nullable="false" />
+          <Property Name="FloatValue" Type="Decimal" Nullable="false" />
+          <Property Name="BooleanValue" Type="Boolean" Nullable="false" />
+          <Property Name="StringValue" Type="String" Nullable="false" />
         </EntityType>
         <EnumType Name="ValueType" UnderlyingType="Int16">
           <Member Name="String" />
@@ -436,10 +444,14 @@
         <MappingFragment StoreEntitySet="Values">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EventTime" ColumnName="EventTime" />
-          <ScalarProperty Name="StringValue" ColumnName="StringValue" />
           <ScalarProperty Name="Inbound" ColumnName="Inbound" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="CommunicatorId" ColumnName="CommunicatorId" />
+          <ScalarProperty Name="IntegerValue" ColumnName="IntegerValue" />
+          <ScalarProperty Name="FloatValue" ColumnName="FloatValue" />
+          <ScalarProperty Name="BooleanValue" ColumnName="BooleanValue" />
+          <ScalarProperty Name="StringValue" ColumnName="StringValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Data.Common;
-using System.IO;
 using SCIPA.Domain.Generic;
-using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using ValueType = SCIPA.Models.ValueType;
 
