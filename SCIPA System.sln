@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Testing.Interfaces", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Domain.Generic", "SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj", "{7804F99A-5A1A-4270-BAB5-B69C4C5D0D3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Data.MongoLayer", "SCIPA.Data.MongoLayer\SCIPA.Data.MongoLayer.csproj", "{0C951B3D-CC3E-4D9B-924B-533B9294D82D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +171,14 @@ Global
 		{7804F99A-5A1A-4270-BAB5-B69C4C5D0D3E}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{7804F99A-5A1A-4270-BAB5-B69C4C5D0D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7804F99A-5A1A-4270-BAB5-B69C4C5D0D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C951B3D-CC3E-4D9B-924B-533B9294D82D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
