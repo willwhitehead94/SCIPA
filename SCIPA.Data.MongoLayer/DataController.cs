@@ -10,26 +10,47 @@ namespace SCIPA.Data.MongoLayer
     class DataController
     {
         private MongoClient _client = null;
+        private IMongoDatabase _db = null;
 
+        /// <summary>
+        /// Constructor automatically attempts to connect to the local
+        /// MongoDb instance and sets the local variables to that effect.
+        /// </summary>
         public DataController()
         {
             //Connect to the local MongoDB instance.
             _client=new MongoClient("127.0.0.1");
+
+            //Access the SCIPA database on the server.
+            _db = _client.GetDatabase("SCIPA");
         }
 
+        /// <summary>
+        /// Posts the parametised Value object directly into the database.
+        /// </summary>
+        /// <param name="value"></param>
         public void AddNewValue(Value value)
         {
-
+            _db.GetCollection<Value>("Values").InsertOne(value);
         }
 
-        public void SaveNewDevice(Device device)
+        /// <summary>
+        /// Posts the parametised Device object directly into the database.
+        /// </summary>
+        /// <param name="device"></param>
+        public void AddNewDevice(Device device)
         {
-            throw new NotImplementedException();
+            _db.GetCollection<Device>("Devices").InsertOne(device);
         }
 
+        /// <summary>
+        /// Repalces the current Device in the database with the parametised Device's ID
+        /// with the parametised Device.
+        /// </summary>
+        /// <param name="device"></param>
         public void UpdateDevice(Device device)
         {
-            throw new NotImplementedException();
+            _db.GetCollection<Device>("Devices").FindOneAndReplace(dev => dev.Id == device.Id, device);
         }
     }
 }
