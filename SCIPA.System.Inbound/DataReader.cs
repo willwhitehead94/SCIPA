@@ -355,12 +355,26 @@ namespace SCIPA.Domain.Inbound
         {
             GetRequiredValue();
 
-            if (Data.Equals(""))
-            {
-                DebugOutput.Print("No data available!"); //TODO See note at top - add CommunicatorModel in!
-            }
+            //if (Data.Equals(""))
+            //{
+            //    DebugOutput.Print("No data available!"); //TODO See note at top - add CommunicatorModel in!
+            //}
 
-            return Data;
+
+            if (HandlerValueType == Models.ValueType.String)
+            {
+                if (AvailableValues() > 0)
+                {
+                    GetRequiredValue();
+                    return Data;
+                }
+                else
+                {
+                    DebugOutput.Print("No data available!");
+                }
+
+            }
+            return null;
         }
     }
 }

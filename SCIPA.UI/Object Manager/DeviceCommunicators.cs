@@ -44,7 +44,8 @@ namespace SCIPA.UI.Object_Manager
             bStart.Enabled = false;
             cbCommunicators.Items.Clear();
             selectedDevice = (Device)cbDevices.SelectedItem;
-            var commList = commCont.GetAllFileCommunicators().Where(comm => comm.Device.Id == selectedDevice.Id);
+
+            var commList = commCont.GetAllCommunicators().Where(comm => comm.Device.Id == selectedDevice.Id);
 
             foreach (var comm in commList)
             {
@@ -87,12 +88,19 @@ namespace SCIPA.UI.Object_Manager
         {
             while (true)
             {
+                lbValues.Refresh();
                 while (reader.AvailableValues() > 0)
                 {
-                    lbValues.Items.Add(reader.GetNextValueAsString());
+                    var newValue = reader.GetNextValueAsString();
+
+                    if (newValue != null)
+                    {
+                        lbValues.Items.Add(newValue);
+                    }
+                    
                     lbValues.Refresh();
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(2000);
             }
         }
     }
