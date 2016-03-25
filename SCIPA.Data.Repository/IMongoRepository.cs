@@ -1,14 +1,13 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using SCIPA.Models;
+﻿using MON = SCIPA.Data.MongoLayer;
 
 namespace SCIPA.Data.Repository
 {
     public interface IMongoRepository
     {
-        void SaveNewDevice(Device device);
+        void AddNewDevice(MON.Device device);
 
-        void UpdateDevice(Device device);
+        void UpdateDevice(MON.Device device);
 
-        void AddNewValue(Value value);
+        void AddNewValue(MON.Value value);
     }
 }

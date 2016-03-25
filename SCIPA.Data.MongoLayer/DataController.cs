@@ -7,7 +7,7 @@ using MongoDB.Driver;
 
 namespace SCIPA.Data.MongoLayer
 {
-    class DataController
+    public class DataController
     {
         private MongoClient _client = null;
         private IMongoDatabase _db = null;
