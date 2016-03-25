@@ -10,7 +10,6 @@ namespace SCIPA.Models
         {
             this.Actions = new HashSet<Action>();
             this.Rules = new HashSet<Rule>();
-            this.Values = new HashSet<Value>();
         }
 
         public int Id { get; set; }
@@ -23,8 +22,6 @@ namespace SCIPA.Models
         public virtual IEnumerable<Action> Actions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Rule> Rules { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual IEnumerable<Value> Values { get; set; }
 
         public override string ToString()
         {

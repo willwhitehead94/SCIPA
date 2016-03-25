@@ -92,7 +92,7 @@
     <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
-    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Device_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -174,7 +174,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Value">
-        <PropertyRef Name="DeviceId" />
+        <PropertyRef Name="Device_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -296,7 +296,6 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
-          <NavigationProperty Name="Values" Relationship="DataModel.DeviceValue" FromRole="Device" ToRole="Value" />
         </EntityType>
         <EntityType Name="Rule">
           <Key>
@@ -316,7 +315,6 @@
           <Property Name="StringValue" Type="String" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
           <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
-          <Property Name="DeviceId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceValue" FromRole="Value" ToRole="Device" />
         </EntityType>
         <EnumType Name="ValueType" UnderlyingType="Int16">
@@ -384,14 +382,6 @@
         <Association Name="DeviceValue">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
           <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Device">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Value">
-              <PropertyRef Name="DeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -473,7 +463,6 @@
           <ScalarProperty Name="StringValue" ColumnName="StringValue" />
           <ScalarProperty Name="Inbound" ColumnName="Inbound" />
           <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -492,6 +481,14 @@
         <ScalarProperty Name="Id" ColumnName="Device_Id" />
       </EndProperty>
       <EndProperty Name="Communicator">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeviceValue" TypeName="DataModel.DeviceValue" StoreEntitySet="Values">
+      <EndProperty Name="Device">
+        <ScalarProperty Name="Id" ColumnName="Device_Id" />
+      </EndProperty>
+      <EndProperty Name="Value">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

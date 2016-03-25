@@ -64,8 +64,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
                     .ForMember(m => m.Actions, opt => opt.Ignore())
-                    .ForMember(m => m.Rules, opt => opt.Ignore())
-                    .ForMember(m=>m.Values, opt=>opt.Ignore());
+                    .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
@@ -106,8 +105,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DAL.Device, DOM.Device>()
                     .ForMember(m => m.Actions, opt => opt.Ignore())
-                    .ForMember(m => m.Rules, opt => opt.Ignore())
-                    .ForMember(m => m.Values, opt => opt.Ignore());
+                    .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
                     .ForMember(m => m.Device, opt => opt.Ignore());
@@ -366,15 +364,16 @@ namespace SCIPA.Data.Repository
         public void CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
-            var dev = _mapper.Map(value.Device, dbVal.Device);
+            var dev = _mapper.Map(value.Device, new DAL.Device());
 
             dbVal.Device = dev;
-            dbVal.DeviceId = dev.Id;
+           
 
             try
             {
-                _db.Entry(dbVal.Device).State = EntityState.Unchanged;
-                _db.Entry(dbVal.Device.Values).State=EntityState.Modified;
+                _db.Entry(dbVal.Device).State = EntityState.Modified;
+                //_db.Entry(dbVal.Device.Values).State=EntityState.Detached;
+                //_db.Entry(dbVal.Device.Values).State=EntityState.Modified;
                 _db.Values.Add(dbVal);
                 _db.SaveChanges();
 
