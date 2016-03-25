@@ -15,11 +15,10 @@ namespace SCIPA.Domain.Inbound
         /// Constructor, required only a working Flat File Handler.
         /// </summary>
         /// <param name="handler"></param>
-        public FlatFileReader(FlatFileHandler handler, Device device)
+        public FlatFileReader(FlatFileHandler handler)
         {
             HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
-            _parentDevice = device;
         }
     }
 }

@@ -8,11 +8,10 @@ namespace SCIPA.Domain.Inbound
         /// Constructor, required only a working Database Handler.
         /// </summary>
         /// <param name="handler"></param>
-        public DatabaseReader(DatabaseHandler handler, Device device)
+        public DatabaseReader(DatabaseHandler handler)
         {
             HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
-            _parentDevice = device;
         }
     }
 }

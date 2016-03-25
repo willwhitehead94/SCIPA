@@ -213,9 +213,6 @@ namespace SCIPA.Domain.Inbound
             {
                 GetRequiredValue();
 
-                //If not null, the Value's parent device is attributed here.
-                if (InboundData!=null) InboundData.Device = _parentDevice;
-
                 return InboundData;
             }
 

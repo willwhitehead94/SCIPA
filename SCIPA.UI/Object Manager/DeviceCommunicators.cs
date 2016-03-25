@@ -62,7 +62,7 @@ namespace SCIPA.UI.Object_Manager
 
         private void bStart_Click(object sender, EventArgs e)
         {
-            reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem), selectedDevice);
+            reader = new FlatFileReader(new FlatFileHandler((FileCommunicator)cbCommunicators.SelectedItem));
             Loop(null);
         }
 

@@ -15,11 +15,10 @@ namespace SCIPA.Domain.Inbound
         /// Constructor, required only a working Serial Handler.
         /// </summary>
         /// <param name="handler"></param>
-        public SerialDataReader(SerialDataHandler handler, Device device)
+        public SerialDataReader(SerialDataHandler handler)
         {
             HandlerValueType = handler.Communicator.ValueType;
             _handler = handler;
-            _parentDevice = device;
         }
     }
 }
