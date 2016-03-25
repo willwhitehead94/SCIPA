@@ -107,20 +107,31 @@ namespace SCIPA.Domain.Logic
 
         public int? SaveCommunicator(Communicator generalComm)
         {
-            switch (generalComm.GetType().Name)
+            if (generalComm.Id == 0)
             {
-                case "DatabaseCommunicator":
-                    var allDbComms = GetAllDatabaseCommunicators();
-                    break;
-                case "SerialCommunicator":
-                    var allSComms = GetAllSerialCommunicators();
-                    break;
-                case "FileCommunicator":
-                    return SaveCommunicator((FileCommunicator)generalComm);
-                    break;
-                default:
-                    break;
+                return _repo.CreateCommunicator(generalComm);
             }
+            else
+            {
+                _repo.UpdateCommunicator(generalComm);
+                return generalComm.Id;
+            }
+
+
+            //switch (generalComm.GetType().Name)
+            //{
+            //    case "DatabaseCommunicator":
+            //        var allDbComms = GetAllDatabaseCommunicators();
+            //        break;
+            //    case "SerialCommunicator":
+            //        return SaveCommunicator((SerialCommunicator) generalComm);
+            //        break;
+            //    case "FileCommunicator":
+            //        return SaveCommunicator((FileCommunicator)generalComm);
+            //        break;
+            //    default:
+            //        break;
+            //}
 
             return -1;
 
