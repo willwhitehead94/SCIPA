@@ -460,7 +460,7 @@ namespace SCIPA.Data.Repository
         /// <returns>DOM Communicators.</returns>
         private IEnumerable<DOM.Communicator> ConvertDALCommunicatorsToDOM(IEnumerable<DAL.Communicator> communicators)
         {
-            return communicators.Select(comm => ConvertDALCommunicatorToDOM(comm)).ToList();
+            return communicators.Select(ConvertDALCommunicatorToDOM).ToList();
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace SCIPA.Data.Repository
         /// Adds a new Device to the MongoDB database.
         /// </summary>
         /// <param name="device"></param>
-        public void AddNewDevice(MON.Device device)
+        public void AddNewDevice(DOM.Device device)
         {
             _controller.AddNewDevice(_mapper.Map(device, new MON.Device()));
         }
@@ -71,7 +71,7 @@ namespace SCIPA.Data.Repository
         /// Updates and existing Device within the MongoDB datbase.
         /// </summary>
         /// <param name="device"></param>
-        public void UpdateDevice(MON.Device device)
+        public void UpdateDevice(DOM.Device device)
         {
             _controller.UpdateDevice(_mapper.Map(device, new MON.Device()));
         }
@@ -80,7 +80,7 @@ namespace SCIPA.Data.Repository
         /// Adds a new value to the MongoDB database.
         /// </summary>
         /// <param name="value"></param>
-        public void AddNewValue(MON.Value value)
+        public void AddNewValue(DOM.Value value)
         {
             _controller.AddNewValue(_mapper.Map(value, new MON.Value()));
         }

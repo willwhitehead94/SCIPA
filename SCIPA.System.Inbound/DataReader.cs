@@ -257,14 +257,21 @@ namespace SCIPA.Domain.Inbound
         /// </summary>
         private void CommitValueToDatabase()
         {
+            //Commit the Value
             InboundData.Device = _handler.GetCommunicator().Device;
             InboundData.DeviceId = _handler.GetCommunicator().Device.Id;
             InboundData.CommunicatorId = _handler.GetCommunicator().Id;
             _handler._repo.CreateValue(InboundData);
 
+            //Update the Communicator
             var comm = _handler.GetCommunicator();
             comm.LastReadTime = InboundData.EventTime;
             _handler._repo.UpdateCommunicator(comm);
+
+            //Commit to MongoDb
+            var mongodb = new Data.Repository.MongoRepository();
+            //SCIPA.Models.Value newVal = InboundData;
+            mongodb.AddNewValue(InboundData);
         }
 
         /// <summary>

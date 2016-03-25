@@ -27,7 +27,7 @@ namespace SCIPA.Data.MongoLayer
         public DataController()
         {
             //Connect to the local MongoDB instance.
-            _client=new MongoClient("127.0.0.1");
+            _client=new MongoClient();
 
             //Access the SCIPA database on the server.
             _db = _client.GetDatabase("SCIPA");

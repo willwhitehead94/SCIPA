@@ -1,13 +1,13 @@
-﻿using MON = SCIPA.Data.MongoLayer;
+﻿using DOM = SCIPA.Models;
 
 namespace SCIPA.Data.Repository
 {
     public interface IMongoRepository
     {
-        void AddNewDevice(MON.Device device);
+        void AddNewDevice(DOM.Device device);
 
-        void UpdateDevice(MON.Device device);
+        void UpdateDevice(DOM.Device device);
 
-        void AddNewValue(MON.Value value);
+        void AddNewValue(DOM.Value value);
     }
 }
