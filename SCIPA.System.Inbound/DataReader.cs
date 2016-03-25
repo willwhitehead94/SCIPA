@@ -270,7 +270,6 @@ namespace SCIPA.Domain.Inbound
 
             //Commit to MongoDb
             var mongodb = new Data.Repository.MongoRepository();
-            //SCIPA.Models.Value newVal = InboundData;
             mongodb.AddNewValue(InboundData);
         }
 
