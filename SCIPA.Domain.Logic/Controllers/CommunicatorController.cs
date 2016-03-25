@@ -9,7 +9,7 @@ namespace SCIPA.Domain.Logic
 {
     public class CommunicatorController
     {
-        private readonly IRepository _repo = new Repository();
+        private readonly IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
         /// Returns collection of all File Communicators in the database.
@@ -82,29 +82,6 @@ namespace SCIPA.Domain.Logic
             return dbValue;
         }
 
-        public void SaveCommunicator(DatabaseCommunicator dbComm)
-        {
-
-        }
-
-        public void SaveCommunicator(SerialCommunicator sComm)
-        {
-
-        }
-
-        public int? SaveCommunicator(FileCommunicator ffComm)
-        {
-            if (ffComm.Id == 0)
-            {
-                return _repo.CreateCommunicator(ffComm);
-            }
-            else
-            {
-                _repo.UpdateCommunicator(ffComm);
-                return ffComm.Id;
-            }
-        }
-
         public int? SaveCommunicator(Communicator generalComm)
         {
             if (generalComm.Id == 0)
@@ -116,27 +93,6 @@ namespace SCIPA.Domain.Logic
                 _repo.UpdateCommunicator(generalComm);
                 return generalComm.Id;
             }
-
-
-            //switch (generalComm.GetType().Name)
-            //{
-            //    case "DatabaseCommunicator":
-            //        var allDbComms = GetAllDatabaseCommunicators();
-            //        break;
-            //    case "SerialCommunicator":
-            //        return SaveCommunicator((SerialCommunicator) generalComm);
-            //        break;
-            //    case "FileCommunicator":
-            //        return SaveCommunicator((FileCommunicator)generalComm);
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-            return -1;
-
-
-
         }
     }
 }

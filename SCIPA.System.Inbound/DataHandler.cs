@@ -10,7 +10,7 @@ namespace SCIPA.Domain.Inbound
         /// <summary>
         /// Private repo object allow for automatic output to the database.
         /// </summary>
-        public IRepository _repo = new Repository();
+        public IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
         /// Maximum number of incoming messages allowed per second.

@@ -13,7 +13,7 @@ namespace SCIPA.Domain.Logic
         
         public static List<Device> DevicesInAlarm = new List<Device>();
 
-        private readonly IRepository _repo = new Repository();
+        private readonly IRelationalRepository _repo = new RelationalRepository();
 
         public IEnumerable<Device> GetAllDevices(bool refresh=false)
         {

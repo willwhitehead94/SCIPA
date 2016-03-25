@@ -10,7 +10,7 @@ using DOM = SCIPA.Models;
 
 namespace SCIPA.Data.Repository
 {
-    public class Repository : IRepository
+    public class RelationalRepository : IRelationalRepository
     {
         /// <summary>
         /// Data Controller object from the DAL. Acts as the intermediary between the repository and 
@@ -32,7 +32,7 @@ namespace SCIPA.Data.Repository
         /// when used as primary keys so as not to override EF's database and entity
         /// understanding incorrectly.
         /// </summary>
-        public Repository()
+        public RelationalRepository()
         {
             // Configure AutoMapper for update operations.
             _mapper = new MapperConfiguration(cfg =>

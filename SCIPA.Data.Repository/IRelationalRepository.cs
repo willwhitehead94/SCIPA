@@ -4,7 +4,7 @@ using DOM = SCIPA.Models; //Domain Layer Models
 
 namespace SCIPA.Data.Repository
 {
-    public interface IRepository
+    public interface IRelationalRepository
     {
         void CreateDevice(DOM.Device device);
 
