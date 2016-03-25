@@ -596,7 +596,6 @@
         <AssociationConnector Association="DataModel.DeviceAction" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceCommunicators" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceRule" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.DeviceValue" />
       </Diagram>
     </Diagrams>
   </Designer>

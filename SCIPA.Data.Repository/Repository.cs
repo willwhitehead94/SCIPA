@@ -73,8 +73,7 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.RuleType, DAL.RuleType>();
 
                 cfg.CreateMap<DOM.Value, DAL.Value>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m=>m.Device,opt=>opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.ValueType, DAL.ValueType>();
 
@@ -366,14 +365,12 @@ namespace SCIPA.Data.Repository
             var dbVal = _mapper.Map(value, new DAL.Value());
             var dev = _mapper.Map(value.Device, new DAL.Device());
 
-            dbVal.Device = dev;
+            dbVal.DeviceId = dev.Id;
            
 
             try
             {
-                _db.Entry(dbVal.Device).State = EntityState.Modified;
-                //_db.Entry(dbVal.Device.Values).State=EntityState.Detached;
-                //_db.Entry(dbVal.Device.Values).State=EntityState.Modified;
+                //_db.Entry(dbVal.Device).State = EntityState.Detached;
                 _db.Values.Add(dbVal);
                 _db.SaveChanges();
 
@@ -393,7 +390,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Value> RetrieveValuesForDevice(int deviceId)
         {
-            return _db.Values.Where(v => v.Device.Id == deviceId).Select(v => _mapper.Map(v, new DOM.Value())).ToList();
+            return _db.Values.Where(v => v.DeviceId == deviceId).Select(v => _mapper.Map(v, new DOM.Value())).ToList();
         }
 
         public IEnumerable<DOM.Value> RetrieveAllValues()

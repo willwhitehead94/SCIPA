@@ -27,10 +27,6 @@
       <End Role="Device" EntitySet="Devices" />
       <End Role="Rule" EntitySet="Rules" />
     </AssociationSet>
-    <AssociationSet Name="DeviceValue" Association="DataModel.Store.DeviceValue">
-      <End Role="Device" EntitySet="Devices" />
-      <End Role="Value" EntitySet="Values" />
-    </AssociationSet>
     <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
       <End Role="Communicator" EntitySet="Communicators" />
       <End Role="FileCommunicator" EntitySet="Communicators_FileCommunicator" />
@@ -92,7 +88,7 @@
     <Property Name="StringValue" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Type" Type="smallint" Nullable="false" />
-    <Property Name="Device_Id" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AppData">
     <Key>
@@ -166,18 +162,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeviceValue">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
-    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Device">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Value">
-        <PropertyRef Name="Device_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_FileCommunicator_inherits_Communicator">
     <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -243,10 +227,6 @@
             <End Role="Rule" EntitySet="Rules" />
           </AssociationSet>
           <EntitySet Name="AppData" EntityType="DataModel.AppData" />
-          <AssociationSet Name="DeviceValue" Association="DataModel.DeviceValue">
-            <End Role="Device" EntitySet="Devices" />
-            <End Role="Value" EntitySet="Values" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
           <Key>
@@ -315,7 +295,7 @@
           <Property Name="StringValue" Type="String" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
           <Property Name="Type" Type="DataModel.ValueType" Nullable="false" />
-          <NavigationProperty Name="Device" Relationship="DataModel.DeviceValue" FromRole="Value" ToRole="Device" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
         </EntityType>
         <EnumType Name="ValueType" UnderlyingType="Int16">
           <Member Name="String" />
@@ -379,10 +359,6 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
-        <Association Name="DeviceValue">
-          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Value" Role="Value" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -463,6 +439,7 @@
           <ScalarProperty Name="StringValue" ColumnName="StringValue" />
           <ScalarProperty Name="Inbound" ColumnName="Inbound" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -481,14 +458,6 @@
         <ScalarProperty Name="Id" ColumnName="Device_Id" />
       </EndProperty>
       <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="DeviceValue" TypeName="DataModel.DeviceValue" StoreEntitySet="Values">
-      <EndProperty Name="Device">
-        <ScalarProperty Name="Id" ColumnName="Device_Id" />
-      </EndProperty>
-      <EndProperty Name="Value">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

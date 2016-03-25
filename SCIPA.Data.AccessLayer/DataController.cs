@@ -301,7 +301,7 @@ namespace SCIPA.Data.AccessLayer
 
         public IEnumerable<Value> RetrieveValuesForDevice(int deviceId)
         {
-            return _db.Values.Where(value => value.Device.Id == deviceId).ToList();
+            return _db.Values.Where(value => value.DeviceId == deviceId).ToList();
         }
 
         public IEnumerable<Value> RetrieveValues()
