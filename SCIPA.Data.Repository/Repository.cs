@@ -271,19 +271,35 @@ namespace SCIPA.Data.Repository
         /// <returns>The new ID number</returns>
         public int? CreateCommunicator(DOM.Communicator communicator)
         {
-            var ffComm = _mapper.Map(communicator, new DAL.FileCommunicator());
-            var ffDev = _mapper.Map(communicator.Device, ffComm.Device);
-            ffComm.Device = ffDev;
+            DAL.Communicator dbVal;
+
+            switch (communicator.Type)
+            {
+                case DOM.CommunicatorType.FlatFile:
+                    dbVal = _mapper.Map(communicator, new DAL.FileCommunicator());
+                    break;
+                case DOM.CommunicatorType.Serial:
+                    dbVal= _mapper.Map(communicator, new DAL.SerialCommunicator());
+                    break;
+                case DOM.CommunicatorType.Database:
+                    dbVal = _mapper.Map(communicator, new DAL.DatabaseCommunicator());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            var dalDevice = _mapper.Map(communicator.Device, dbVal.Device);
+            dbVal.Device = dalDevice;
 
             try
             {
-                _db.Entry(ffComm.Device).State = EntityState.Unchanged;
-                _db.Communicators.Add(ffComm);
+                _db.Entry(dbVal.Device).State = EntityState.Unchanged;
+                _db.Communicators.Add(dbVal);
 
                 _db.SaveChanges();
-                return _db.Communicators.Find(ffComm.Id).Id;
+                return _db.Communicators.Find(dbVal.Id).Id;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 DebugOutput.Print("System was unable to detatch the Device from the new Communicator! ", e.Message);
             }
@@ -295,11 +311,11 @@ namespace SCIPA.Data.Repository
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == communicator.Id);
             if (dbValue == null) return;
-            _mapper.Map(communicator,dbValue);
+            _mapper.Map(communicator, dbValue);
 
             //Tell EF that the object has been updated.
             _db.Entry(dbValue).State = EntityState.Modified;
-            
+
             //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
             _db.Entry(dbValue.Device).State = EntityState.Unchanged;
             _db.SaveChanges();
@@ -364,7 +380,7 @@ namespace SCIPA.Data.Repository
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
             dbVal.DeviceId = value.Device.Id;
-           
+
 
             try
             {
@@ -376,7 +392,7 @@ namespace SCIPA.Data.Repository
             catch (Exception)
             {
                 var msg = $"Communicator #{value.Device.Id}'s new value, '{value.StringValue}', could not be captured!";
-                DebugOutput.Print("Could not store the new value!", msg );
+                DebugOutput.Print("Could not store the new value!", msg);
             }
         }
 

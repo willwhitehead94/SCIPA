@@ -144,7 +144,7 @@ namespace SCIPA.UI
                     EndChar = GetEndChar(),
                     ValueType = (Models.ValueType)cbValueType.SelectedItem,
                     BaudRate = Convert.ToInt32(tBaud.Text),
-                    ComPort = cbComPort.SelectedText,
+                    ComPort = cbComPort.SelectedItem.ToString(),
                     DataBits = Convert.ToByte(tBit.Text),
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,

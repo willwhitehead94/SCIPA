@@ -171,7 +171,7 @@ namespace SCIPA.UI.Object_Manager
             else if (_communicator is SerialCommunicator)
             {
                 var temp = (SerialCommunicator)_communicator;
-                temp.ComPort = cbComPort.SelectedText;
+                temp.ComPort = cbComPort.SelectedItem.ToString();
                 temp.BaudRate = Convert.ToInt32(tBaudRate.Text);
                 temp.DataBits = Convert.ToByte(tDataBits.Text);
                 temp.IsDTR = cbDtr.Checked;
