@@ -363,14 +363,11 @@ namespace SCIPA.Data.Repository
         public void CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
-            var dev = _mapper.Map(value.Device, new DAL.Device());
-
-            dbVal.DeviceId = dev.Id;
+            dbVal.DeviceId = value.Device.Id;
            
 
             try
             {
-                //_db.Entry(dbVal.Device).State = EntityState.Detached;
                 _db.Values.Add(dbVal);
                 _db.SaveChanges();
 
