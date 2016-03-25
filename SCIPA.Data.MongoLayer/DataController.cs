@@ -9,7 +9,15 @@ namespace SCIPA.Data.MongoLayer
 {
     public class DataController
     {
+        /// <summary>
+        /// Local instantiation of the MongoDB client.
+        /// </summary>
         private MongoClient _client = null;
+
+        /// <summary>
+        /// Local representation of the desired database to use
+        /// within MongoDB.
+        /// </summary>
         private IMongoDatabase _db = null;
 
         /// <summary>

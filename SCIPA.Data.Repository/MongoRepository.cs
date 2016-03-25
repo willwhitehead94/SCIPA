@@ -11,6 +11,9 @@ namespace SCIPA.Data.Repository
         /// </summary>
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// Local instantiation of the data controller object from the Mongo layer.
+        /// </summary>
         private readonly MON.DataController _controller;
 
         /// <summary>
@@ -55,16 +58,28 @@ namespace SCIPA.Data.Repository
             }).CreateMapper();
         }
 
+        /// <summary>
+        /// Adds a new Device to the MongoDB database.
+        /// </summary>
+        /// <param name="device"></param>
         public void AddNewDevice(MON.Device device)
         {
             _controller.AddNewDevice(_mapper.Map(device, new MON.Device()));
         }
 
+        /// <summary>
+        /// Updates and existing Device within the MongoDB datbase.
+        /// </summary>
+        /// <param name="device"></param>
         public void UpdateDevice(MON.Device device)
         {
             _controller.UpdateDevice(_mapper.Map(device, new MON.Device()));
         }
 
+        /// <summary>
+        /// Adds a new value to the MongoDB database.
+        /// </summary>
+        /// <param name="value"></param>
         public void AddNewValue(MON.Value value)
         {
             _controller.AddNewValue(_mapper.Map(value, new MON.Value()));
