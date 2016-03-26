@@ -1079,7 +1079,7 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
   <ReportParameters>
     <ReportParameter Name="DevId">
       <DataType>String</DataType>
-      <Prompt>Dev Id</Prompt>
+      <Prompt>Device ID</Prompt>
     </ReportParameter>
     <ReportParameter Name="StartDate">
       <DataType>String</DataType>

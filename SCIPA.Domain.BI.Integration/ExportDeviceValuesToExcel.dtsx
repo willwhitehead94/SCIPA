@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ExportDeviceValuesToExcel"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{94AF8B36-D72B-4C6C-BB81-2115623AD46E}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{DE6EF7B8-249F-4C38-B7A0-B9F2BAE2201D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -40,13 +40,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Export To Excel Data Flow"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{0D0042DB-A11D-4C83-BFF9-A120EF8CA4D5}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="Export To Excel Data Flow"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -54,7 +54,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Device Information"
+              refId="Package\Export To Excel Data Flow\Device Information"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -103,7 +103,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Device Information.Connections[OleDbConnection]"
+                  refId="Package\Export To Excel Data Flow\Device Information.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[SCIPA Database]"
                   connectionManagerRefId="Package.ConnectionManagers[SCIPA Database]"
                   description="The OLE DB runtime connection used to access the database."
@@ -111,119 +111,119 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output]"
+                  refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Id]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Id]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Id]"
                       name="Id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Name]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Name]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Name]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Name]"
                       name="Name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Location]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Location]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Location]"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Location]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Location]"
                       name="Location"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Custodian]"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Custodian]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]"
                       name="Custodian"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]"
                       dataType="bool"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Enabled]"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Enabled]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]"
                       name="Enabled"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
                       dataType="i4"
                       name="Id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Name]"
                       dataType="nText"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Location]"
                       dataType="nText"
                       name="Location" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Custodian]"
                       dataType="nText"
                       name="Custodian" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].ExternalColumns[Enabled]"
                       dataType="bool"
                       name="Enabled" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Id]"
                       name="Id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Name]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Name]"
                       name="Name" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Location]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Location]"
                       name="Location" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Custodian]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Custodian]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Custodian]"
                       name="Custodian" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Enabled]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[Enabled]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[Enabled]"
                       name="Enabled" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -232,7 +232,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Excel Destination"
+              refId="Package\Export To Excel Data Flow\Excel Destination"
               componentClassID="Microsoft.ExcelDestination"
               contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Excel Destination"
@@ -246,7 +246,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">Excel_Destination</property>
+                  name="OpenRowset">Export$</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -280,7 +280,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Excel Destination.Connections[OleDbConnection]"
+                  refId="Package\Export To Excel Data Flow\Excel Destination.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -288,157 +288,171 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]"
+                  refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Excel Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[ID]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[ID]"
                       cachedDataType="i4"
                       cachedName="ID"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ID]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ID]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[ID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Name]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Name]"
                       cachedDataType="nText"
                       cachedName="Name"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Name]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Location]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Location]"
                       cachedDataType="nText"
                       cachedName="Location"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Location]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Location]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Custodian]"
                       cachedDataType="nText"
                       cachedName="Custodian"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Custodian]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Custodian]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Custodian]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Custodian]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Enabled]"
                       cachedDataType="bool"
                       cachedName="Enabled"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Enabled]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Enabled]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Enabled]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Enabled]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Value ID]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Value ID]"
                       cachedDataType="i4"
                       cachedName="Value ID"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Value ID]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Value ID]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Value ID]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Value ID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Event Time]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Event Time"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Event Time]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Event Time]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[Inbound]"
                       cachedDataType="bool"
                       cachedName="Inbound"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Inbound]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Inbound]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[StringValue]"
                       cachedDataType="nText"
                       cachedName="StringValue"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[StringValue]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[StringValue]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[IntegerValue]"
                       cachedDataType="i4"
                       cachedName="IntegerValue"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[IntegerValue]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[IntegerValue]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[FloatValue]"
                       cachedDataType="numeric"
                       cachedName="FloatValue"
                       cachedPrecision="18"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[FloatValue]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[FloatValue]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].Columns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[BooleanValue]"
                       cachedDataType="bool"
                       cachedName="BooleanValue"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[BooleanValue]" />
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[BooleanValue]" />
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[EventTimestamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EventTimestamp"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventTimestamp]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventTimestamp]" />
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].Columns[EventDate]"
+                      cachedDataType="dbDate"
+                      cachedName="EventDate"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventDate]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ID]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ID]"
                       dataType="r8"
                       name="ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Name]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Name]"
                       dataType="nText"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Location]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Location]"
                       dataType="nText"
                       name="Location" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Custodian]"
                       dataType="nText"
                       name="Custodian" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Enabled]"
                       dataType="r8"
                       name="Enabled" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Value ID]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Value ID]"
                       dataType="r8"
                       name="Value ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Event Time]"
-                      dataType="date"
-                      name="Event Time" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
                       dataType="r8"
                       name="Inbound" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
                       dataType="nText"
                       name="StringValue" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
                       dataType="r8"
                       name="IntegerValue" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
                       dataType="r8"
                       name="FloatValue" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
                       dataType="r8"
                       name="BooleanValue" />
+                    <externalMetadataColumn
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventDate]"
+                      dataType="date"
+                      name="EventDate" />
+                    <externalMetadataColumn
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventTime]"
+                      dataType="date"
+                      name="EventTime" />
+                    <externalMetadataColumn
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventTimestamp]"
+                      dataType="date"
+                      name="EventTimestamp" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output]"
+                  refId="Package\Export To Excel Data Flow\Excel Destination.Outputs[Excel Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Excel Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]">
+                  synchronousInputId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Export To Excel Data Flow\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Export To Excel Data Flow\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Export To Excel Data Flow\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -447,7 +461,105 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Union All"
+              refId="Package\Export To Excel Data Flow\Split Date &amp; Time"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Split Date &amp; Time"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Inputs[Derived Column Input].Columns[EventTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EventTime"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">EventTime</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Export To Excel Data Flow\Split Date &amp; Time.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Output].Columns[CalcdEventDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Output].Columns[CalcdEventDate]"
+                      name="CalcdEventDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)#{Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)EventTime</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Export To Excel Data Flow\Split Date &amp; Time.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To Excel Data Flow\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
@@ -455,271 +567,276 @@
               version="1">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                  refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1]"
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Id]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1].Columns[Id]"
                       cachedDataType="i4"
                       cachedName="Id"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Id]">
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Id]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Name]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1].Columns[Name]"
                       cachedDataType="nText"
                       cachedName="Name"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Name]">
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Location]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1].Columns[Location]"
                       cachedDataType="nText"
                       cachedName="Location"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Location]">
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Location]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1].Columns[Custodian]"
                       cachedDataType="nText"
                       cachedName="Custodian"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]">
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Custodian]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Custodian]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Custodian]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1].Columns[Enabled]"
                       cachedDataType="bool"
                       cachedName="Enabled"
-                      lineageId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]">
+                      lineageId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output].Columns[Enabled]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Enabled]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Enabled]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3]"
                   hasSideEffects="true"
-                  name="Union All Input 2">
+                  name="Union All Input 3">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Id]"
-                      cachedDataType="i4"
-                      cachedName="Id"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Id]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Value ID]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[EventTime]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="EventTime"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Event Time]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[Inbound]"
                       cachedDataType="bool"
                       cachedName="Inbound"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]">
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Inbound]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Inbound]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[StringValue]"
-                      cachedDataType="nText"
-                      cachedName="StringValue"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[StringValue]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[IntegerValue]"
                       cachedDataType="i4"
                       cachedName="IntegerValue"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]">
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[IntegerValue]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[IntegerValue]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[FloatValue]"
                       cachedDataType="numeric"
                       cachedName="FloatValue"
                       cachedPrecision="18"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]">
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[FloatValue]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[FloatValue]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[BooleanValue]"
                       cachedDataType="bool"
                       cachedName="BooleanValue"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]">
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[BooleanValue]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[BooleanValue]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[DeviceId]"
-                      cachedDataType="i4"
-                      cachedName="DeviceId"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[DeviceId]">
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[StringValue]"
+                      cachedDataType="nText"
+                      cachedName="StringValue"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[StringValue]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Value ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[EventTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EventTime"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventTimestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3].Columns[CalcdEventDate]"
+                      cachedDataType="dbDate"
+                      cachedName="CalcdEventDate"
+                      lineageId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Output].Columns[CalcdEventDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventDate]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                  refId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 2]"
                   dangling="true"
                   hasSideEffects="true"
-                  name="Union All Input 3">
+                  name="Union All Input 2">
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]"
+                  refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1]"
                   name="Union All Output 1">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[ID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[ID]"
                       name="ID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Name]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Name]"
                       name="Name" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Location]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Location]"
                       name="Location" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Custodian]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Custodian]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Custodian]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Custodian]"
                       name="Custodian" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Enabled]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Enabled]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Enabled]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Enabled]"
                       name="Enabled" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Value ID]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Value ID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Value ID]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Value ID]"
                       name="Value ID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Event Time]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventTimestamp]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Event Time]"
-                      name="Event Time" />
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventTimestamp]"
+                      name="EventTimestamp" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Inbound]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Inbound]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[Inbound]"
                       name="Inbound" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[StringValue]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[StringValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[StringValue]"
                       name="StringValue" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[IntegerValue]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[IntegerValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[IntegerValue]"
                       name="IntegerValue" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[FloatValue]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[FloatValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[FloatValue]"
                       name="FloatValue"
                       precision="18" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[BooleanValue]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[BooleanValue]"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[BooleanValue]"
                       name="BooleanValue" />
+                    <outputColumn
+                      refId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1].Columns[EventDate]"
+                      name="EventDate" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Value Information"
+              refId="Package\Export To Excel Data Flow\Value Information"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -768,7 +885,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Value Information.Connections[OleDbConnection]"
+                  refId="Package\Export To Excel Data Flow\Value Information.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[SCIPA Database]"
                   connectionManagerRefId="Package.ConnectionManagers[SCIPA Database]"
                   description="The OLE DB runtime connection used to access the database."
@@ -776,212 +893,212 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output]"
+                  refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Id]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Id]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Id]"
                       name="Id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[EventTime]"
                       name="EventTime"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]"
                       dataType="bool"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Inbound]"
                       name="Inbound"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Type]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Type]"
                       dataType="i2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Type]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[Type]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[Type]"
                       name="Type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[DeviceId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[DeviceId]"
                       name="DeviceId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
                       name="CommunicatorId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[IntegerValue]"
                       name="IntegerValue"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[FloatValue]"
                       name="FloatValue"
                       precision="18"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]"
                       dataType="bool"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[BooleanValue]"
                       name="BooleanValue"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]"
                       dataType="nText"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      externalMetadataColumnId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].Columns[StringValue]"
                       name="StringValue"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Id]"
                       dataType="i4"
                       name="Id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
                       dataType="dbTimeStamp"
                       name="EventTime" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
                       dataType="bool"
                       name="Inbound" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[Type]"
                       dataType="i2"
                       name="Type" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
                       dataType="i4"
                       name="DeviceId" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
                       dataType="i4"
                       name="CommunicatorId" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
                       dataType="i4"
                       name="IntegerValue" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
                       dataType="numeric"
                       name="FloatValue"
                       precision="18" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
                       dataType="bool"
                       name="BooleanValue" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
                       dataType="nText"
                       name="StringValue" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Id]"
                       name="Id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[EventTime]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[EventTime]"
                       name="EventTime" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Inbound]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Inbound]"
                       name="Inbound" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Type]"
                       dataType="i2"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[Type]"
                       name="Type" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
                       name="DeviceId" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
                       name="CommunicatorId" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
                       name="IntegerValue" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
                       name="FloatValue"
                       precision="18" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
                       dataType="bool"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
                       name="BooleanValue" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[StringValue]"
                       dataType="nText"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[StringValue]"
                       name="StringValue" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -992,20 +1109,25 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Device Information.Outputs[OLE DB Source Output]" />
+              refId="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
+              endId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Export To Excel Data Flow\Split Date &amp; Time.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+              refId="Package\Export To Excel Data Flow.Paths[OLE DB Source Output]"
+              endId="Package\Export To Excel Data Flow\Union All.Inputs[Union All Input 1]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Value Information.Outputs[OLE DB Source Output]" />
+              startId="Package\Export To Excel Data Flow\Device Information.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Union All Output 1]"
-              endId="Package\Data Flow Task\Excel Destination.Inputs[Excel Destination Input]"
+              refId="Package\Export To Excel Data Flow.Paths[OLE DB Source Output1]"
+              endId="Package\Export To Excel Data Flow\Split Date &amp; Time.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To Excel Data Flow\Value Information.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To Excel Data Flow.Paths[Union All Output 1]"
+              endId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input]"
               name="Union All Output 1"
-              startId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]" />
+              startId="Package\Export To Excel Data Flow\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1024,31 +1146,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151.111111111112,41.7777777777778"
-          Id="Package\Data Flow Task"
+          Size="202.222222222223,41.7777777777778"
+          Id="Package\Export To Excel Data Flow"
           TopLeft="80.1851819989123,26.8965526086397" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\Export To Excel Data Flow">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="168.444444444445,41.7777777777778"
-          Id="Package\Data Flow Task\Device Information"
-          TopLeft="26.481480429202,16.5363990112378" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163.111111111112,41.7777777777778"
-          Id="Package\Data Flow Task\Value Information"
+          Id="Package\Export To Excel Data Flow\Value Information"
           TopLeft="208.333325054911,18.6615587235253" />
         <NodeLayout
+          Size="159.111111111112,41.7777777777778"
+          Id="Package\Export To Excel Data Flow\Excel Destination"
+          TopLeft="98.4567862111356,244.061310708027" />
+        <NodeLayout
+          Size="161.333333333334,41.7777777777778"
+          Id="Package\Export To Excel Data Flow\Split Date &amp; Time"
+          TopLeft="277.296287591075,132.306517439359" />
+        <NodeLayout
           Size="120.444444444445,41.7777777777778"
-          Id="Package\Data Flow Task\Union All"
+          Id="Package\Export To Excel Data Flow\Union All"
           TopLeft="125.617278959035,132.490425812929" />
+        <NodeLayout
+          Size="168.444444444445,41.7777777777778"
+          Id="Package\Export To Excel Data Flow\Device Information"
+          TopLeft="26.481480429202,16.5363990112378" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          Id="Package\Export To Excel Data Flow.Paths[OLE DB Source Output]"
           TopLeft="110.703702651424,58.3141767890155">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1082,31 +1212,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="289.888880610466,60.4393365013031">
+          Id="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
+          TopLeft="277.296287591075,153.287360515033">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-85.3086386884682,72.0510893116258"
+              EndConnector="-31.2345641875957,0"
               Start="0,0"
-              End="-85.3086386884682,64.5510893116258">
+              End="-23.7345641875957,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.6639006630384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.6639006630384"
-                    Point2="0,42.6639006630384"
-                    Point3="-4,42.6639006630384" />
-                  <mssgle:LineSegment
-                    End="-81.3086386884682,42.6639006630384" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-81.3086386884682,42.6639006630384"
-                    Point2="-85.3086386884682,42.6639006630384"
-                    Point3="-85.3086386884682,46.6639006630384" />
-                  <mssgle:LineSegment
-                    End="-85.3086386884682,64.5510893116258" />
+                    End="-23.7345641875957,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1115,12 +1233,8 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="159.111111111112,41.7777777777778"
-          Id="Package\Data Flow Task\Excel Destination"
-          TopLeft="98.4567862111356,244.061310708027" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          Id="Package\Export To Excel Data Flow.Paths[Union All Output 1]"
           TopLeft="181.925921473974,174.268203590707">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1141,11 +1255,45 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To Excel Data Flow.Paths[OLE DB Source Output1]"
+          TopLeft="289.888880610467,60.4393365013031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68.0740736472752,71.8671809380556"
+              Start="0,0"
+              End="68.0740736472752,64.3671809380556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9335904690278" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.9335904690278"
+                    Point2="0,35.9335904690278"
+                    Point3="4,35.9335904690278" />
+                  <mssgle:LineSegment
+                    End="64.0740736472752,35.9335904690278" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.0740736472752,35.9335904690278"
+                    Point2="68.0740736472752,35.9335904690278"
+                    Point3="68.0740736472752,39.9335904690278" />
+                  <mssgle:LineSegment
+                    End="68.0740736472752,64.3671809380556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Device Information">
+    design-time-name="Package\Export To Excel Data Flow\Value Information">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1158,7 +1306,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Value Information">
+    design-time-name="Package\Export To Excel Data Flow\Excel Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1171,7 +1319,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Excel Destination">
+    design-time-name="Package\Export To Excel Data Flow\Device Information">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
