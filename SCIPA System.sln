@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Domain.Outbound", "SC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.UI.Service", "SCIPA.UI.Service\SCIPA.UI.Service.csproj", "{5F7F0319-A3DA-474C-97E9-228D691A9A35}"
 EndProject
-Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SCIPA.Domain.BI.Reporting", "SCIPA.Domain.BI.Reporting\SCIPA.Domain.BI.Reporting.rptproj", "{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}"
-EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "SCIPA.Domain.BI.Mining", "SCIPA.Domain.BI.Mining\SCIPA.Domain.BI.Mining.dwproj", "{585346AB-DBB4-467A-8FF8-9D714699D027}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Testing.Data", "SCIPA.Testing.Data\SCIPA.Testing.Data.csproj", "{D5CDFCEB-A88B-4F41-9965-017818D8DC02}"
@@ -34,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Data.MongoLayer", "SCIPA.Data.MongoLayer\SCIPA.Data.MongoLayer.csproj", "{0C951B3D-CC3E-4D9B-924B-533B9294D82D}"
 EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SCIPA.Domain.BI.Integration", "SCIPA.Domain.BI.Integration\SCIPA.Domain.BI.Integration.dtproj", "{241DFC97-23CF-4C63-A99C-89E36BD5FE90}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SCIPA.Domain.BI.Reporting", "SCIPA.Domain.BI.Reporting\SCIPA.Domain.BI.Reporting.rptproj", "{E6434B13-56D0-4AC0-B222-AD590587303D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -108,17 +108,6 @@ Global
 		{5F7F0319-A3DA-474C-97E9-228D691A9A35}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{5F7F0319-A3DA-474C-97E9-228D691A9A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F7F0319-A3DA-474C-97E9-228D691A9A35}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Debug|Any CPU.ActiveCfg = Debug
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Debug|Any CPU.Build.0 = Debug
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Debug|Any CPU.Deploy.0 = Debug
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.DebugLocal|Any CPU.Build.0 = DebugLocal
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Development|Any CPU.ActiveCfg = DebugLocal
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Development|Any CPU.Build.0 = DebugLocal
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Development|Any CPU.Deploy.0 = DebugLocal
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Release|Any CPU.ActiveCfg = Release
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Release|Any CPU.Build.0 = Release
-		{FC2ED0E4-BE0C-4291-AF23-72C73AAA84BC}.Release|Any CPU.Deploy.0 = Release
 		{585346AB-DBB4-467A-8FF8-9D714699D027}.Debug|Any CPU.ActiveCfg = Development
 		{585346AB-DBB4-467A-8FF8-9D714699D027}.Debug|Any CPU.Build.0 = Development
 		{585346AB-DBB4-467A-8FF8-9D714699D027}.Debug|Any CPU.Deploy.0 = Development
@@ -179,6 +168,16 @@ Global
 		{241DFC97-23CF-4C63-A99C-89E36BD5FE90}.Development|Any CPU.Build.0 = Development
 		{241DFC97-23CF-4C63-A99C-89E36BD5FE90}.Release|Any CPU.ActiveCfg = Development
 		{241DFC97-23CF-4C63-A99C-89E36BD5FE90}.Release|Any CPU.Build.0 = Development
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Debug|Any CPU.ActiveCfg = Debug
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Debug|Any CPU.Build.0 = Debug
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Debug|Any CPU.Deploy.0 = Debug
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.DebugLocal|Any CPU.ActiveCfg = DebugLocal
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.DebugLocal|Any CPU.Build.0 = DebugLocal
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Development|Any CPU.ActiveCfg = DebugLocal
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Development|Any CPU.Build.0 = DebugLocal
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Release|Any CPU.ActiveCfg = Release
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Release|Any CPU.Build.0 = Release
+		{E6434B13-56D0-4AC0-B222-AD590587303D}.Release|Any CPU.Deploy.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

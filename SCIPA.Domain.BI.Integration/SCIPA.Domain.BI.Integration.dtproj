@@ -26,26 +26,26 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-81SM1A6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyu5IDv7TeUWhNowonqTWnwAAAAACAAAAAAAQZgAAAAEAACAAAABMAd/MaGtAcu2E1BTkb6KDdzqJGiG6R4h5gYAnZVQmTwAAAAAOgAAAAAIAACAAAADqUuac2m0uycpzXIe6tIpzGcaymn9xJR3iJoZEL1j+tpAAAADIHcpclSflv+TEUscWmObfGpa+0mrPC6JQgrQ4PRVpTtrct1fld6QKLq/MExnmb/KY7v7QunFSu9v0YiCR+Oy+FxnWwQcqhDLyPpmd7dHY/yT8ctzvE4i4kW8rf04O7Gbh/TXpnpJKGRced1PkPfYCNqD16e9y+GrUxKAyveyVtop5Zrr5JvvriF8KKHlNNbBAAAAA3eHIAKErNDs2uxH+dc8/QkMoWwWMQ+513g7qyCWj0pLgrqdE/GO2MOuqiyVzuGBWq2eyXb2ZlmQVEKho0aXgHg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyu5IDv7TeUWhNowonqTWnwAAAAACAAAAAAAQZgAAAAEAACAAAABwIUL3w5sOc4KSP/b/jysbLRXk+KzYQuQeqT938qlhgwAAAAAOgAAAAAIAACAAAAAENRCUl7A6+mw5SmIY5eU2Y5KaAPq33q3JQavdwDN31ZAAAACFQhmp/h7ER9SLq67u2i1fhj31xWs1RGdsok+9qrAPXTPegH+JaITA4G5yaoNPzF241BnLYDW+83dsy0mcqy+lXDoaNWmvgBxIwoP5Au4zNFGpsDSvUakNATbSivc+GoqHxi/ldVm7vYbAUX25nRtW8o8hk1z3bSENh0TDb4GR7OXd3w3x7yOeUnhyKPpGnghAAAAAK82vZ3UmhZ0UQl+dE506ZnLDvp9B/PDFxxAGTYmzNailb1SnzJrDv4JCt2WlDL3Phimz+1r6O4yWJR/4KU55uA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package1.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ExportDeviceValuesToExcel.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package1.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="ExportDeviceValuesToExcel.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{FA96B843-8A52-4CB5-A5C3-C59DE1561D04}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{8D2D003F-290B-40E4-90A5-A9DB096D0B03}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ExportDeviceValuesToExcel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{07790B88-CF89-41F4-9B55-5A3D1B4BB710}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{94AF8B36-D72B-4C6C-BB81-2115623AD46E}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
