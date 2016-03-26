@@ -66,7 +66,8 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m=>m.Device,opt=>opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Action, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.RuleType, DAL.RuleType>();
 
@@ -104,7 +105,8 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Action, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.RuleType, DOM.RuleType>();
 

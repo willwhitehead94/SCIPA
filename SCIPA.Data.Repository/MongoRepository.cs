@@ -39,7 +39,8 @@ namespace SCIPA.Data.Repository
                 */
 
                 // Domain to Data Converstions
-                cfg.CreateMap<DOM.Value, MON.Value>();
+                cfg.CreateMap<DOM.Value, MON.Value>()
+                    .ForMember(m=>m.Id, opt=>opt.Ignore());
 
                 cfg.CreateMap<DOM.Device, MON.Device>()
                     .ForMember(m => m.ObjectId, opt => opt.Ignore());
