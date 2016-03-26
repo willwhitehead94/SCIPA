@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/25/2016 18:46:29
+-- Date Created: 03/26/2016 18:01:01
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -76,7 +76,7 @@ GO
 CREATE TABLE [dbo].[Actions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [OutputValue] nvarchar(max)  NOT NULL,
-    [DeviceId] int  NOT NULL
+    [Rule_Id] int  NOT NULL
 );
 GO
 
@@ -107,7 +107,11 @@ GO
 CREATE TABLE [dbo].[Rules] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DeviceId] int  NOT NULL,
-    [Type] smallint  NOT NULL
+    [Name] nvarchar(max)  NOT NULL,
+    [ValueType] smallint  NOT NULL,
+    [RuleType] smallint  NOT NULL,
+    [Constraint] nvarchar(max)  NOT NULL,
+    [Alarm] bit  NOT NULL
 );
 GO
 
@@ -224,21 +228,6 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [DeviceId] in table 'Actions'
-ALTER TABLE [dbo].[Actions]
-ADD CONSTRAINT [FK_DeviceAction]
-    FOREIGN KEY ([DeviceId])
-    REFERENCES [dbo].[Devices]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceAction'
-CREATE INDEX [IX_FK_DeviceAction]
-ON [dbo].[Actions]
-    ([DeviceId]);
-GO
-
 -- Creating foreign key on [Device_Id] in table 'Communicators'
 ALTER TABLE [dbo].[Communicators]
 ADD CONSTRAINT [FK_DeviceCommunicators]
@@ -267,6 +256,21 @@ GO
 CREATE INDEX [IX_FK_DeviceRule]
 ON [dbo].[Rules]
     ([DeviceId]);
+GO
+
+-- Creating foreign key on [Rule_Id] in table 'Actions'
+ALTER TABLE [dbo].[Actions]
+ADD CONSTRAINT [FK_RuleAction]
+    FOREIGN KEY ([Rule_Id])
+    REFERENCES [dbo].[Rules]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RuleAction'
+CREATE INDEX [IX_FK_RuleAction]
+ON [dbo].[Actions]
+    ([Rule_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

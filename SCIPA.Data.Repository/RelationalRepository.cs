@@ -45,8 +45,7 @@ namespace SCIPA.Data.Repository
 
                 // Domain to Data Converstions
                 cfg.CreateMap<DOM.Action, DAL.Action>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
@@ -63,7 +62,6 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.FileCommunicator, DAL.FileCommunicator>();
 
                 cfg.CreateMap<DOM.Device, DAL.Device>()
-                    .ForMember(m => m.Actions, opt => opt.Ignore())
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
@@ -224,7 +222,8 @@ namespace SCIPA.Data.Repository
         /// <returns>Domain models of the database objects.</returns>
         public IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId)
         {
-            return _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
+            //TODO fix this!
+            return null;// _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
         }
 
         /// <summary>

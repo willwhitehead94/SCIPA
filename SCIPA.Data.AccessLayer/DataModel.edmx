@@ -15,10 +15,6 @@
     <EntitySet Name="Communicators_FileCommunicator" EntityType="DataModel.Store.Communicators_FileCommunicator" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_SerialCommunicator" EntityType="DataModel.Store.Communicators_SerialCommunicator" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_DatabaseCommunicator" EntityType="DataModel.Store.Communicators_DatabaseCommunicator" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="DeviceAction" Association="DataModel.Store.DeviceAction">
-      <End Role="Device" EntitySet="Devices" />
-      <End Role="Action" EntitySet="Actions" />
-    </AssociationSet>
     <AssociationSet Name="DeviceCommunicators" Association="DataModel.Store.DeviceCommunicators">
       <End Role="Device" EntitySet="Devices" />
       <End Role="Communicator" EntitySet="Communicators" />
@@ -26,6 +22,10 @@
     <AssociationSet Name="DeviceRule" Association="DataModel.Store.DeviceRule">
       <End Role="Device" EntitySet="Devices" />
       <End Role="Rule" EntitySet="Rules" />
+    </AssociationSet>
+    <AssociationSet Name="RuleAction" Association="DataModel.Store.RuleAction">
+      <End Role="Rule" EntitySet="Rules" />
+      <End Role="Action" EntitySet="Actions" />
     </AssociationSet>
     <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
       <End Role="Communicator" EntitySet="Communicators" />
@@ -46,7 +46,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OutputValue" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="Rule_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Communicators">
     <Key>
@@ -77,7 +77,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
-    <Property Name="Type" Type="smallint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ValueType" Type="smallint" Nullable="false" />
+    <Property Name="RuleType" Type="smallint" Nullable="false" />
+    <Property Name="Constraint" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Alarm" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Values">
     <Key>
@@ -130,18 +134,6 @@
     <Property Name="DbType" Type="smallint" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="DeviceAction">
-    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
-    <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Device">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Action">
-        <PropertyRef Name="DeviceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="DeviceCommunicators">
     <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
     <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="*" />
@@ -163,6 +155,18 @@
       </Principal>
       <Dependent Role="Rule">
         <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RuleAction">
+    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="1" />
+    <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="Rule_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -218,10 +222,6 @@
           <EntitySet Name="Devices" EntityType="DataModel.Device" />
           <EntitySet Name="Rules" EntityType="DataModel.Rule" />
           <EntitySet Name="Values" EntityType="DataModel.Value" />
-          <AssociationSet Name="DeviceAction" Association="DataModel.DeviceAction">
-            <End Role="Device" EntitySet="Devices" />
-            <End Role="Action" EntitySet="Actions" />
-          </AssociationSet>
           <AssociationSet Name="DeviceCommunicators" Association="DataModel.DeviceCommunicators">
             <End Role="Device" EntitySet="Devices" />
             <End Role="Communicator" EntitySet="Communicators" />
@@ -231,6 +231,10 @@
             <End Role="Rule" EntitySet="Rules" />
           </AssociationSet>
           <EntitySet Name="AppData" EntityType="DataModel.AppData" />
+          <AssociationSet Name="RuleAction" Association="DataModel.RuleAction">
+            <End Role="Rule" EntitySet="Rules" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
           <Key>
@@ -238,8 +242,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OutputValue" Type="String" Nullable="false" />
-          <NavigationProperty Name="Device" Relationship="DataModel.DeviceAction" FromRole="Action" ToRole="Device" />
-          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rule" Relationship="DataModel.RuleAction" FromRole="Action" ToRole="Rule" />
         </EntityType>
         <EntityType Name="Communicator" Abstract="true">
           <Key>
@@ -278,7 +281,6 @@
           <Property Name="Location" Type="String" Nullable="false" />
           <Property Name="Custodian" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
         </EntityType>
         <EntityType Name="Rule">
@@ -288,7 +290,12 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceRule" FromRole="Rule" ToRole="Device" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="DataModel.RuleType" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
+          <Property Name="RuleType" Type="DataModel.RuleType" Nullable="false" />
+          <Property Name="Constraint" Type="String" Nullable="false" />
+          <Property Name="Alarm" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Action" Relationship="DataModel.RuleAction" FromRole="Rule" ToRole="Action" />
         </EntityType>
         <EntityType Name="Value">
           <Key>
@@ -330,18 +337,6 @@
           <Member Name="Not" />
           <Member Name="Between" />
         </EnumType>
-        <Association Name="DeviceAction">
-          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
-          <End Type="DataModel.Action" Role="Action" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Device">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Action">
-              <PropertyRef Name="DeviceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="DeviceCommunicators">
           <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
           <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="*" />
@@ -367,6 +362,10 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
+        <Association Name="RuleAction">
+          <End Type="DataModel.Rule" Role="Rule" Multiplicity="1" />
+          <End Type="DataModel.Action" Role="Action" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -378,7 +377,6 @@
         <MappingFragment StoreEntitySet="Actions">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OutputValue" ColumnName="OutputValue" />
-          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -435,7 +433,11 @@
         <MappingFragment StoreEntitySet="Rules">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="RuleType" ColumnName="RuleType" />
+          <ScalarProperty Name="Constraint" ColumnName="Constraint" />
+          <ScalarProperty Name="Alarm" ColumnName="Alarm" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -470,6 +472,14 @@
         <ScalarProperty Name="Id" ColumnName="Device_Id" />
       </EndProperty>
       <EndProperty Name="Communicator">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RuleAction" TypeName="DataModel.RuleAction" StoreEntitySet="Actions">
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Id" ColumnName="Rule_Id" />
+      </EndProperty>
+      <EndProperty Name="Action">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

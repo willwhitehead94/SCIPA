@@ -581,21 +581,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram DiagramId="349fb669275f4867bf5cab5d2e8707ee" Name="Diagram1">
-        <EntityTypeShape EntityType="DataModel.Action" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Action" Width="1.5" PointX="5.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.Communicator" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.FileCommunicator" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.SerialCommunicator" Width="1.5" PointX="8" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.DatabaseCommunicator" Width="1.5" PointX="10.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.Device" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Rule" Width="1.5" PointX="3.125" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.Value" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.AppData" Width="1.5" PointX="3.375" PointY="0.75" IsExpanded="true" />
         <InheritanceConnector EntityType="DataModel.FileCommunicator" ManuallyRouted="false" />
         <InheritanceConnector EntityType="DataModel.SerialCommunicator" ManuallyRouted="false" />
         <InheritanceConnector EntityType="DataModel.DatabaseCommunicator" ManuallyRouted="false" />
-        <AssociationConnector Association="DataModel.DeviceAction" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceCommunicators" ManuallyRouted="false" />
         <AssociationConnector Association="DataModel.DeviceRule" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.RuleAction" />
       </Diagram>
     </Diagrams>
   </Designer>
