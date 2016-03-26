@@ -23,11 +23,10 @@
             <Value>=Parameters!EndDate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT [Values].Id AS ValueId, [Values].EventTime, [Values].Inbound, [Values].Type, [Values].IntegerValue, [Values].FloatValue, [Values].BooleanValue, [Values].StringValue, Devices.Name, Devices.Location, Devices.Custodian, Devices.Enabled
+        <CommandText>SELECT [Values].Id AS ValueId, [Values].EventTime, [Values].Inbound, [Values].Type, [Values].IntegerValue, [Values].FloatValue, [Values].BooleanValue, [Values].StringValue, Devices.Name, Devices.Location, Devices.Custodian, Devices.Enabled, [Values].DeviceId
 FROM   [Values] INNER JOIN
           Devices ON [Values].DeviceId = Devices.Id
 WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate AND @EndDate)</CommandText>
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
         <Field Name="ValueId">
@@ -78,6 +77,10 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
           <DataField>Enabled</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="DeviceId">
+          <DataField>DeviceId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -92,7 +95,23 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Report3</Value>
+                    <Value>Device </Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <Color>#1c3a70</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!DeviceId.Value</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <Color>#1c3a70</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>'s Overview Report</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>
