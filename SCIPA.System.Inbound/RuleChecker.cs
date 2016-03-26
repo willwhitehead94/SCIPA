@@ -50,29 +50,54 @@ namespace SCIPA.Domain.Inbound
             
         }
 
+        /// <summary>
+        /// Check each Rule for the given Device and "TakeAction" where neccessary.
+        /// </summary>
+        /// <param name="value"></param>
         public void CheckRulesForValue(Value value)
         {
+            //List of Rules for the appropriate device.
             var applicableRules = _rules.Where(r => r.DeviceId == value.DeviceId);
 
-            foreach (var rule in applicableRules)
-            {
-                
-            }
+            //For every rule associated with the Device, check the Value does not break any Rules.
+            //Any Rule that matches it's constraint will be passed to the 'TakeAction' method.
+            foreach (var rule in applicableRules.Where(rule => CriteraMet(rule, value))) TakeAction(rule,value);
         }
 
         private bool CriteraMet(Rule rule, Value value)
         {
-            var errorMsg = $"Could not check Rule {rule.Id} for '{rule.Device}'!";
+            //Prepare an error message to show if rule checking fails.
+            var errorMsg = $"Could not check Rule {rule.Id} for '{rule.Device}'! There may have been an issue with the RuleType?";
+            
+            //Prepare to handle Rules of type 'Between' by pre-splitting the constraints.
+            var betweenBreaker = '#';
+            string constraintValueOne="", constraintValueTwo="";
+            if (rule.RuleType == RuleType.Between)
+            {
+                //Attempt to split, if fail, print warning and fail the rule.
+                try
+                {
+                    //Constraint splitting.
+                    constraintValueOne = rule.Constraint.Substring(0, rule.Constraint.IndexOf(betweenBreaker));
+                    constraintValueTwo = rule.Constraint.Substring( rule.Constraint.IndexOf(betweenBreaker)+1);
+                }
+                catch (Exception)
+                {
+                    DebugOutput.Print($"The rule (#{rule.Id}) is set to investigate values between a set range, but this could not be understood. Check the constraint!");
+                    return false;
+                }
+            }
 
+            //Switching on the ValueType first as some values will not allow some RuleTypes (i.e. a string cannot be </>/<=/>=)
             switch (rule.ValueType)
             {
                 case ValueType.String:
                     switch (rule.RuleType)
                     {
                         case RuleType.EqualTo:
-                            break;
+                            return (value.StringValue.Trim().Equals(rule.Constraint.Trim()));
                         case RuleType.Not:
-                            break;
+                            return (value.StringValue.Trim().Equals(rule.Constraint.Trim()));
                         default:
                             DebugOutput.Print(errorMsg);
                             break;
@@ -82,19 +107,19 @@ namespace SCIPA.Domain.Inbound
                     switch (rule.RuleType)
                     {
                         case RuleType.LessThan:
-                            break;
+                            return (value.IntegerValue < ConvertInt(rule.Constraint));
                         case RuleType.LessThanEqualTo:
-                            break;
+                            return (value.IntegerValue <= ConvertInt(rule.Constraint));
                         case RuleType.EqualTo:
-                            break;
+                            return (value.IntegerValue == ConvertInt(rule.Constraint));
                         case RuleType.MoreThanEqualTo:
-                            break;
+                            return (value.IntegerValue >= ConvertInt(rule.Constraint));
                         case RuleType.MoreThan:
-                            break;
+                            return (value.IntegerValue > ConvertInt(rule.Constraint));
                         case RuleType.Not:
-                            break;
+                            return (value.IntegerValue != ConvertInt(rule.Constraint));
                         case RuleType.Between:
-                            break;
+                            return ((value.IntegerValue >= ConvertInt(constraintValueOne)) && (value.IntegerValue<=ConvertInt(constraintValueTwo)));
                         default:
                             DebugOutput.Print(errorMsg);
                             break;
@@ -104,19 +129,19 @@ namespace SCIPA.Domain.Inbound
                     switch (rule.RuleType)
                     {
                         case RuleType.LessThan:
-                            break;
+                            return (value.FloatValue < ConvertDecimal(rule.Constraint));
                         case RuleType.LessThanEqualTo:
-                            break;
+                            return (value.FloatValue <= ConvertDecimal(rule.Constraint));
                         case RuleType.EqualTo:
-                            break;
+                            return (value.FloatValue == ConvertDecimal(rule.Constraint));
                         case RuleType.MoreThanEqualTo:
-                            break;
+                            return (value.FloatValue >= ConvertDecimal(rule.Constraint));
                         case RuleType.MoreThan:
-                            break;
+                            return (value.FloatValue > ConvertDecimal(rule.Constraint));
                         case RuleType.Not:
-                            break;
+                            return (value.FloatValue != ConvertDecimal(rule.Constraint));
                         case RuleType.Between:
-                            break;
+                            return ((value.FloatValue>= ConvertDecimal(constraintValueOne)) && (value.FloatValue<= ConvertDecimal(constraintValueTwo)));
                         default:
                             DebugOutput.Print(errorMsg);
                             break;
@@ -126,7 +151,7 @@ namespace SCIPA.Domain.Inbound
                     switch (rule.RuleType)
                     {
                         case RuleType.EqualTo:
-                            break;
+                            return (value.BooleanValue == ConvertBool(rule.Constraint));
                         default:
                             DebugOutput.Print(errorMsg);
                             break;
@@ -136,8 +161,28 @@ namespace SCIPA.Domain.Inbound
                     DebugOutput.Print(errorMsg);
                     break;
             }
+
+            //Upon failure of conversion, the break statements will fall through.
+            return false;
         }
 
+        /// <summary>
+        /// When a Rule's critera have been met, this method is called to execute any
+        /// and all Actions as per the Rule's settings.
+        /// An Alarm is also raised from here.
+        /// </summary>
+        /// <param name="rule">The passed rule.</param>
+        /// <param name="value">The value that passed the rule.</param>
+        private void TakeAction(Rule rule, Value value)
+        {
+            
+        }
+
+        /// <summary>
+        /// Converts the constraint string to an Integer.
+        /// </summary>
+        /// <param name="constraint"></param>
+        /// <returns></returns>
         private int? ConvertInt(string constraint)
         {
             var intVal = int.MinValue;
@@ -149,6 +194,11 @@ namespace SCIPA.Domain.Inbound
             return null;
         }
 
+        /// <summary>
+        /// Converts the constraint string to an Decimal (Float).
+        /// </summary>
+        /// <param name="constraint"></param>
+        /// <returns></returns>
         private decimal? ConvertDecimal(string constraint)
         {
             var decVal = decimal.MinValue;
@@ -160,6 +210,11 @@ namespace SCIPA.Domain.Inbound
             return null;
         }
 
+        /// <summary>
+        /// Converts the constraint string to an Boolean.
+        /// </summary>
+        /// <param name="constraint"></param>
+        /// <returns></returns>
         private bool? ConvertBool(string constraint)
         {
             var boolVal = false;
@@ -171,32 +226,6 @@ namespace SCIPA.Domain.Inbound
             return null;
         }
 
-        //private T ConvertConstraint<T>(string constraint)
-        //{
-        //    if (T is Type(int))
-        //    {
 
-        //    }
-        //}
-
-        //private bool IntegerCheck(int value, string constraint)
-        //{
-
-        //}
-
-        //private bool FloatCheck(decimal value, string constraint)
-        //{
-
-        //}
-
-        //private bool BoolCheck(bool value, string constaint)
-        //{
-
-        //}
-
-        //private bool StringCheck(bool value, string constraint)
-        //{
-
-        //}
     }
 }
