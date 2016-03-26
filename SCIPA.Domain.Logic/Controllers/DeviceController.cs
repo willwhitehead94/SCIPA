@@ -92,5 +92,10 @@ namespace SCIPA.Domain.Logic
 
             return commCont.GetAllCommunicators().Where(comm=>comm.Id==id);
         }
+
+        public void CreateRule(Rule rule)
+        {
+            var model = rule;
+        }
     }
 }
