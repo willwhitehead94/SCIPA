@@ -54,126 +54,21 @@ namespace SCIPA.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Models.FileCommunicator ffc = new Models.FileCommunicator()
-            {
-                FilePath = @"C:\scipa\values.dat",
-                StartChar = 0,
-                EndChar = 4,
-                ValueType = Models.ValueType.String
-            };
+            var controller = new DeviceController();
+            Device testDev = controller.GetAllDevices().Last();
 
-            Domain.Inbound.FlatFileHandler ffh = new Domain.Inbound.FlatFileHandler(ffc);
+            AddRule ar = new AddRule(testDev);
+            ar.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //DatabaseCommunicator dbComm = new DatabaseCommunicator()
-            //{
-            //    DbType = DatabaseType.SQL,
-            //    ValueType = ValueType.String,
-            //    ConnectionString = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=SCIPA;Integrated Security=True",
-            //    Query = "SELECT TOP 1 Id FROM dbo.Alarm ORDER BY Id DESC"
-            //};
-
-            //var dbRead = new DatabaseReader(new DatabaseHandler(dbComm));
-            ////basicobj = dbRead;
             
-            //FileCommunicator ffComm = new FileCommunicator()
-            //{
-            //    FilePath = @"C:\scipa\values.dat",
-            //    ValueType = ValueType.String,
-            //    StartChar = 0,
-            //    EndChar = 0
-            //};
-            //var fileRead = new FlatFileReader(new FlatFileHandler(ffComm));
-
-            //SerialCommunicator sdComm = new SerialCommunicator()
-            //{
-            //    ComPort = "COM3",
-            //    ValueType = ValueType.String,
-            //    StartChar = 0,
-            //    EndChar = 0
-            //};
-            //var serialRead = new SerialDataReader(new SerialDataHandler(sdComm));
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //myDevice = new Device()
-            //{
-            //    Id = 1,
-            //    Name = "Arduino Uno Trend App",
-            //    Location = "Desk 1",
-            //    Custodian = "W. Whitehead",
-            //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
-            //    {
-            //        Id = 1,
-            //        comPort = "COM3",
-            //        StartChar = 0,
-            //        EndChar = 0,
-            //        baudRate = 9600,
-            //        dataBits = 8,
-            //        isDTR = false,
-            //        isRTS = false
-            //    }))
-            //};
-
-            Domain.Logic.DeviceController.AllDevices.Add(new Device()
-            {
-                Id = 1,
-                Name = "Arduino Uno Trend App",
-                Location = "Desk 1",
-                Custodian = "W. Whitehead",
-                //Reader = new SerialCommunicator()
-                //{
-                //    ComPort = "COM3",
-                //    StartChar = 0,
-                //    EndChar = 0,
-                //    BaudRate = 9600,
-                //    DataBits = 8,
-                //    IsDTR = false,
-                //    IsRTS = false
-                //}
-                //InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
-                //{
-                //    Id = 1,
-
-                //}))
-            });
-
-            //Domain.Logic.DeviceController.AllCommunicators.Add(new Device()
-            //{
-            //    Id = 2,
-            //    Name = "Arduino Uno Trend App 2",
-            //    Location = "Desk 1",
-            //    Custodian = "W. Whitehead",
-            //    InboundReader = new DatabaseReader(new DatabaseHandler(new DatabaseCommunicator()
-            //    {
-            //        Id = ,
-            //        EndChar = ,
-            //        StartChar = ,
-            //        LastReadTime = ,
-            //        ValueValueType = ,
-            //        DatabaseType = ,
-            //        connectionString = ,
-            //        query = ,
-            //        databaseTypeId = 
-            //    }));
-            //    InboundReader = new SerialDataReader(new SerialDataHandler(new SerialCommunicator()
-            //    {
-            //        Id = 1,
-            //        comPort = "COM3",
-            //        StartChar = 0,
-            //        EndChar = 0,
-            //        baudRate = 9600,
-            //        dataBits = 8,
-            //        isDTR = false,
-            //        isRTS = false
-            //    }))
-            //});
-
-            //DebugOutput.Print(myDevice.Custodian+"'s " + myDevice.Name + " now starting...");
+            
 
         }
 
