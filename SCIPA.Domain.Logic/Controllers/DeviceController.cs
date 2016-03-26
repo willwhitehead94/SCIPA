@@ -96,6 +96,7 @@ namespace SCIPA.Domain.Logic
         public void CreateRule(Rule rule)
         {
             var model = rule;
+            _repo.CreateRule(rule);
         }
     }
 }

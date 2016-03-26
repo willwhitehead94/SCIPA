@@ -340,8 +340,24 @@ namespace SCIPA.Data.Repository
 
         public void CreateRule(DOM.Rule rule)
         {
-            _db.Rules.Add(_mapper.Map(rule, new DAL.Rule()));
-            _db.SaveChanges();
+            //Map to DAL object.
+            var dbVal = _mapper.Map(rule, new DAL.Rule());
+
+            //The Device does not need individual mapping for Rules.
+
+            try
+            {
+                //Save to Database.
+                _db.Rules.Add(dbVal);
+
+                //Save the changes made to the database.
+                _db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                //Report fault back up the chain.
+                DebugOutput.Print("Rule insertion to database failed. ", e.Message);
+            }
         }
 
         public DOM.Rule RetrieveRule(int id)
