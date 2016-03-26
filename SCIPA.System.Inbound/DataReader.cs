@@ -271,6 +271,10 @@ namespace SCIPA.Domain.Inbound
             //Commit to MongoDb
             var mongodb = new Data.Repository.MongoRepository();
             mongodb.AddNewValue(InboundData);
+
+            //Check Rules against the Value
+            var ruleChecker = new RuleChecker();
+            ruleChecker.CheckRulesForValue(InboundData);
         }
 
         /// <summary>

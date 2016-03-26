@@ -39,7 +39,7 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="value"></param>
         public void AddNewValue(Value value)
         {
-            _db.GetCollection<Value>("Values").InsertOne(value);
+           // _db.GetCollection<Value>("Values").InsertOne(value);
         }
 
         /// <summary>

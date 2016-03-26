@@ -13,7 +13,7 @@ namespace SCIPA.Domain.Inbound
         /// <summary>
         /// All rules as on the database.
         /// </summary>
-        private static ICollection<Rule> _rules;
+        private static ICollection<Rule> _rules = new List<Rule>();
 
         /// <summary>
         /// If true, the ICollection of Rules may be out of date and, as such,
@@ -36,6 +36,11 @@ namespace SCIPA.Domain.Inbound
         public void UpdateRuleCollection()
         {
             if (!_updateRuleList) return;
+            //foreach (var rule in _repo.RetrieveAllRules())
+            //{
+            //    _rules.Add(rule);
+            //}
+
             _rules = _repo.RetrieveAllRules().ToList();
             _updateRuleList = false;
         }
@@ -175,7 +180,10 @@ namespace SCIPA.Domain.Inbound
         /// <param name="value">The value that passed the rule.</param>
         private void TakeAction(Rule rule, Value value)
         {
-            
+            //Handle any requirement to Alarm.
+
+
+            //Handle any Actions to be taken.
         }
 
         /// <summary>

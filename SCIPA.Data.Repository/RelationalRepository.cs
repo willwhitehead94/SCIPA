@@ -105,6 +105,7 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
+                    .ForMember(m=>m.Id, opt=>opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore())
                     .ForMember(m => m.Action, opt => opt.Ignore());
 
@@ -372,7 +373,7 @@ namespace SCIPA.Data.Repository
 
         public IEnumerable<DOM.Rule> RetrieveAllRules()
         {
-            return _db.Rules.Select(rule => _mapper.Map(rule, new DOM.Rule())).ToList();
+            return _db.Rules.ToList().Select(rule => _mapper.Map(rule, new DOM.Rule()));
         }
 
         public void UpdateRule(DOM.Rule rule)
