@@ -50,7 +50,6 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<MON.Device, DOM.Device>()
-                    .ForMember(m => m.Actions, opt => opt.Ignore())
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
 
