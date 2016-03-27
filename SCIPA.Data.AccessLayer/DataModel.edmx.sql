@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/27/2016 17:19:39
+-- Date Created: 03/27/2016 21:58:49
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -79,7 +79,11 @@ GO
 CREATE TABLE [dbo].[Actions] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [OutputValue] nvarchar(max)  NOT NULL,
-    [Rule_Id] int  NOT NULL
+    [RuleId] int  NOT NULL,
+    [CommunicatorId] int  NOT NULL,
+    [Enabled] bit  NOT NULL,
+    [Rule_Id] int  NOT NULL,
+    [Communicator_Id] int  NOT NULL
 );
 GO
 
@@ -291,6 +295,21 @@ GO
 CREATE INDEX [IX_FK_RuleAction]
 ON [dbo].[Actions]
     ([Rule_Id]);
+GO
+
+-- Creating foreign key on [Communicator_Id] in table 'Actions'
+ALTER TABLE [dbo].[Actions]
+ADD CONSTRAINT [FK_ActionCommunicator]
+    FOREIGN KEY ([Communicator_Id])
+    REFERENCES [dbo].[Communicators]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActionCommunicator'
+CREATE INDEX [IX_FK_ActionCommunicator]
+ON [dbo].[Actions]
+    ([Communicator_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

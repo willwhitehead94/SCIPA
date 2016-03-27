@@ -598,7 +598,6 @@
         <AssociationConnector Association="DataModel.RuleAction" />
         <EntityTypeShape EntityType="DataModel.Alarm" Width="1.5" PointX="11.5" PointY="1.5" />
         <AssociationConnector Association="DataModel.ActionCommunicator" />
-        <AssociationConnector Association="DataModel.DeviceAction" />
       </Diagram>
     </Diagrams>
   </Designer>

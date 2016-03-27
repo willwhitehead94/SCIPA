@@ -28,6 +28,5 @@ namespace SCIPA.Data.AccessLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual IEnumerable<Rule> Rules { get; set; }
-        public virtual Action Actions { get; set; }
     }
 }

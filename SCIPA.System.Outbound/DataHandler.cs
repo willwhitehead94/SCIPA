@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SCIPA.Data.Repository;
 using SCIPA.Models;
 
 namespace SCIPA.Domain.Outbound
