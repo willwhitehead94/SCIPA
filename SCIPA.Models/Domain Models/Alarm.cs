@@ -2,7 +2,7 @@
 {
     public partial class Alarm
     {
-        public System.Guid Id { get; set; }
+        public int Id { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public int DeviceId { get; set; }
         public int ValueId { get; set; }

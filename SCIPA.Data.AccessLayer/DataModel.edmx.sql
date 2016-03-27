@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/27/2016 16:49:08
+-- Date Created: 03/27/2016 17:19:39
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -25,15 +25,6 @@ IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_RuleAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_RuleAction];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DeviceAlarm]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Alarms] DROP CONSTRAINT [FK_DeviceAlarm];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ValueAlarm]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Alarms] DROP CONSTRAINT [FK_ValueAlarm];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RuleAlarm]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Alarms] DROP CONSTRAINT [FK_RuleAlarm];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FileCommunicator_inherits_Communicator]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Communicators_FileCommunicator] DROP CONSTRAINT [FK_FileCommunicator_inherits_Communicator];
@@ -153,7 +144,7 @@ GO
 
 -- Creating table 'Alarms'
 CREATE TABLE [dbo].[Alarms] (
-    [Id] uniqueidentifier  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [TimeStamp] datetime  NOT NULL,
     [DeviceId] int  NOT NULL,
     [ValueId] int  NOT NULL,

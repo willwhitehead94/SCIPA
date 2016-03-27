@@ -112,7 +112,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TimeStamp" Type="datetime" Nullable="false" />
     <Property Name="DeviceId" Type="int" Nullable="false" />
     <Property Name="ValueId" Type="int" Nullable="false" />
@@ -383,7 +383,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="ValueId" Type="Int32" Nullable="false" />

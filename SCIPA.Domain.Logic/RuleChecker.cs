@@ -159,7 +159,7 @@ namespace SCIPA.Domain.Inbound
                 //Create a new Alarm object as per the model.
                 var alarm = new Alarm()
                 {
-                    Id = Guid.NewGuid(),
+                    //Id = Guid.NewGuid(),
                     Rule = rule,
                     RuleId = rule.Id,
                     Device = rule.Device,
