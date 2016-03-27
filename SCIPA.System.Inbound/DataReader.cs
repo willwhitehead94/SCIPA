@@ -261,7 +261,7 @@ namespace SCIPA.Domain.Inbound
             InboundData.Device = _handler.GetCommunicator().Device;
             InboundData.DeviceId = _handler.GetCommunicator().Device.Id;
             InboundData.CommunicatorId = _handler.GetCommunicator().Id;
-            _handler._repo.CreateValue(InboundData);
+            var newObj = _handler._repo.CreateValue(InboundData);
 
             //Update the Communicator
             var comm = _handler.GetCommunicator();
@@ -270,11 +270,11 @@ namespace SCIPA.Domain.Inbound
 
             //Commit to MongoDb
             var mongodb = new Data.Repository.MongoRepository();
-            mongodb.AddNewValue(InboundData);
+            mongodb.AddNewValue(newObj);
 
             //Check Rules against the Value
             var ruleChecker = new RuleChecker();
-            ruleChecker.CheckRulesForValue(InboundData);
+            ruleChecker.CheckRulesForValue(newObj);
         }
 
         /// <summary>

@@ -49,7 +49,14 @@ namespace SCIPA.Domain.Logic
         /// <param name="rule"></param>
         public Rule CreateRule(Rule rule)
         {
-            return _repo.CreateRule(rule);
+            //Create new rule and store the new object.
+            var newObj = _repo.CreateRule(rule);
+
+            //Add the new rule to the list of rules.
+            _rules.Add(newObj);
+
+            //Return the new rule to the caller.
+            return newObj;
         }
     }
 }

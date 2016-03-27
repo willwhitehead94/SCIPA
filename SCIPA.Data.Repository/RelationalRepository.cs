@@ -420,24 +420,28 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
-        public void CreateValue(DOM.Value value)
+        public DOM.Value CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
             dbVal.DeviceId = value.Device.Id;
-
 
             try
             {
                 _db.Values.Add(dbVal);
                 _db.SaveChanges();
 
-                DebugOutput.Print($"Communicator #{value.Device.Id}'s new value, '{value.StringValue}', was captured!");
+                DebugOutput.Print($"Communicator #{dbVal.DeviceId}'s new value, '{dbVal.StringValue}', was captured!");
+
+                return _mapper.Map(dbVal, new DOM.Value());
             }
             catch (Exception)
             {
                 var msg = $"Communicator #{value.Device.Id}'s new value, '{value.StringValue}', could not be captured!";
                 DebugOutput.Print("Could not store the new value!", msg);
             }
+
+            //Return null on fail.
+            return null;
         }
 
         public DOM.Value RetrieveValue(int id)
@@ -498,24 +502,30 @@ namespace SCIPA.Data.Repository
             var dbVal = _mapper.Map(alarm, new DAL.Alarm());
 
             //dbVal.DeviceId = alarm.Device.Id;
-            dbVal.RuleId = alarm.Rule.Id;
-            dbVal.ValueId = alarm.Value.Id;
+            // dbVal.RuleId = alarm.Rule.Id;
+            //dbVal.ValueId = alarm.Value.Id;
 
             //Convert Child objects.
-            var dev = _mapper.Map(alarm.Device, new DAL.Device());
+            //var dev = _mapper.Map(alarm.Device, new DAL.Device());
             var val = _mapper.Map(alarm.Value, new DAL.Value());
             var rul = _mapper.Map(alarm.Rule, new DAL.Rule());
 
             //Assign the Child objects back to Alarm.
-            dbVal.Device = dev;
-            dbVal.Value = val;
-            dbVal.Rule = rul;
+            // dbVal.Device = dev;
+             dbVal.Value = val;
+             dbVal.Rule = rul;
+
+            dbVal.Value.Id = dbVal.ValueId;
+            dbVal.Rule.Id = dbVal.RuleId;
 
             //Tell EF that the object has been updated.
             //_db.Entry(dbVal).State = EntityState.Modified;
 
             //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
-            _db.Entry(dbVal.Device).State = EntityState.Unchanged;
+            //_db.Entry(dbVal.Device).State = EntityState.Unchanged;
+            //_db.Entry(dbVal.Rule).State = EntityState.Unchanged;
+            //_db.Entry(dbVal.Value).State = EntityState.Unchanged;
+
             _db.Entry(dbVal.Rule).State = EntityState.Unchanged;
             _db.Entry(dbVal.Value).State = EntityState.Unchanged;
 

@@ -15,6 +15,7 @@ namespace SCIPA.UI.Object_Manager
     public partial class AddRule : Form
     {
         private Device _device;
+        private Models.Rule _rule;
 
         public AddRule(Device device)
         {
@@ -47,7 +48,7 @@ namespace SCIPA.UI.Object_Manager
             };
 
             var controller = new RuleController();
-            controller.CreateRule(model);
+            _rule = controller.CreateRule(model);
         }
     }
 }

@@ -86,7 +86,7 @@ namespace SCIPA.UI
         {
             var cont = new CommunicatorController();
             
-            CommunicatorModifier cm = new CommunicatorModifier(cont.GetAllFileCommunicators().First());
+            CommunicatorModifier cm = new CommunicatorModifier(cont.GetAllCommunicators().First());
             cm.Show();
         }
 

@@ -53,7 +53,7 @@ namespace SCIPA.Data.Repository
 
         void DeleteRule(DOM.Rule rule);
 
-        void CreateValue(DOM.Value value);
+        DOM.Value CreateValue(DOM.Value value);
 
         DOM.Value RetrieveValue(int id);
 
