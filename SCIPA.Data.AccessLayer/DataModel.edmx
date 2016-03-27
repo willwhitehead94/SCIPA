@@ -235,6 +235,19 @@
             <End Role="Rule" EntitySet="Rules" />
             <End Role="Action" EntitySet="Actions" />
           </AssociationSet>
+          <EntitySet Name="Alarms" EntityType="DataModel.Alarm" />
+          <AssociationSet Name="DeviceAlarm" Association="DataModel.DeviceAlarm">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Alarm" EntitySet="Alarms" />
+          </AssociationSet>
+          <AssociationSet Name="ValueAlarm" Association="DataModel.ValueAlarm">
+            <End Role="Value" EntitySet="Values" />
+            <End Role="Alarm" EntitySet="Alarms" />
+          </AssociationSet>
+          <AssociationSet Name="RuleAlarm" Association="DataModel.RuleAlarm">
+            <End Role="Rule" EntitySet="Rules" />
+            <End Role="Alarm" EntitySet="Alarms" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
           <Key>
@@ -282,6 +295,7 @@
           <Property Name="Custodian" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
+          <NavigationProperty Name="Alarms" Relationship="DataModel.DeviceAlarm" FromRole="Device" ToRole="Alarm" />
         </EntityType>
         <EntityType Name="Rule">
           <Key>
@@ -365,6 +379,56 @@
         <Association Name="RuleAction">
           <End Type="DataModel.Rule" Role="Rule" Multiplicity="1" />
           <End Type="DataModel.Action" Role="Action" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Alarm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="TimeStamp" Type="Time" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="ValueId" Type="Int32" Nullable="false" />
+          <Property Name="RuleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceAlarm" FromRole="Alarm" ToRole="Device" />
+          <NavigationProperty Name="Value" Relationship="DataModel.ValueAlarm" FromRole="Alarm" ToRole="Value" />
+          <NavigationProperty Name="Rule" Relationship="DataModel.RuleAlarm" FromRole="Alarm" ToRole="Rule" />
+          <Property Name="Accepted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="DeviceAlarm">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Alarm" Role="Alarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Alarm">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ValueAlarm">
+          <End Type="DataModel.Value" Role="Value" Multiplicity="1" />
+          <End Type="DataModel.Alarm" Role="Alarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Value">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Alarm">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RuleAlarm">
+          <End Type="DataModel.Rule" Role="Rule" Multiplicity="1" />
+          <End Type="DataModel.Alarm" Role="Alarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Alarm">
+              <PropertyRef Name="RuleId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>

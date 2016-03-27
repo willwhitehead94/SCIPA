@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using SCIPA.Domain.Generic;
 
 namespace SCIPA.Data.MongoLayer
 {
@@ -13,13 +15,13 @@ namespace SCIPA.Data.MongoLayer
         /// <summary>
         /// Local instantiation of the MongoDB client.
         /// </summary>
-        private MongoClient _client = null;
+        private static MongoClient _client = null;
 
         /// <summary>
         /// Local representation of the desired database to use
         /// within MongoDB.
         /// </summary>
-        private IMongoDatabase _db = null;
+        private static IMongoDatabase _db = null;
 
         /// <summary>
         /// Constructor automatically attempts to connect to the local
@@ -28,10 +30,10 @@ namespace SCIPA.Data.MongoLayer
         public DataController()
         {
             //Connect to the local MongoDB instance.
-            _client=new MongoClient();
+            if (_client == null) _client =new MongoClient();
 
             //Access the SCIPA database on the server.
-            _db = _client.GetDatabase("SCIPA");
+            if (_db == null) _db = _client.GetDatabase("SCIPA");
         }
 
         /// <summary>
@@ -42,11 +44,11 @@ namespace SCIPA.Data.MongoLayer
         {
             try
             {
-                //value.ObjectId=new ObjectId();
                 _db.GetCollection<Value>("Values").InsertOne(value);
             }
-            catch
+            catch (Exception e)
             {
+                DebugOutput.Print($"Could not store Value {value.Id}'s value ({value.StringValue}) in MongoDb. ",e.Message);
             }
         }
 

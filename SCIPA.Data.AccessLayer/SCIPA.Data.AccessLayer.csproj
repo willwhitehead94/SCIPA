@@ -54,6 +54,9 @@
     <Compile Include="Action.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Alarm.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

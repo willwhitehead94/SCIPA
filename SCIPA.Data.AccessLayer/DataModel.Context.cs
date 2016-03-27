@@ -31,5 +31,6 @@ namespace SCIPA.Data.AccessLayer
         public virtual DbSet<Rule> Rules { get; set; }
         public virtual DbSet<Value> Values { get; set; }
         public virtual DbSet<AppData> AppData { get; set; }
+        public virtual DbSet<Alarm> Alarms { get; set; }
     }
 }
