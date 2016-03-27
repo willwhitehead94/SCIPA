@@ -115,7 +115,6 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
-                    .ForMember(m=>m.Id, opt=>opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore())
                     .ForMember(m => m.Action, opt => opt.Ignore());
 
@@ -498,36 +497,8 @@ namespace SCIPA.Data.Repository
             //Convert the main Alarm object.
             var dbVal = _mapper.Map(alarm, new DAL.Alarm());
 
-            //dbVal.DeviceId = alarm.Device.Id;
-            // dbVal.RuleId = alarm.Rule.Id;
-            //dbVal.ValueId = alarm.Value.Id;
-
-            //Convert Child objects.
-            //var dev = _mapper.Map(alarm.Device, new DAL.Device());
-            var val = _mapper.Map(alarm.Value, new DAL.Value());
-            var rul = _mapper.Map(alarm.Rule, new DAL.Rule());
-
-            //Assign the Child objects back to Alarm.
-            // dbVal.Device = dev;
-             //dbVal.Value = val;
-             //dbVal.Rule = rul;
-
-            //dbVal.Value.Id = dbVal.ValueId;
-            //dbVal.Rule.Id = dbVal.RuleId;
-
-            //Tell EF that the object has been updated.
-            //_db.Entry(dbVal).State = EntityState.Modified;
-
-            //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
-            //_db.Entry(dbVal.Device).State = EntityState.Unchanged;
-            //_db.Entry(dbVal.Rule).State = EntityState.Unchanged;
-            //_db.Entry(dbVal.Value).State = EntityState.Unchanged;
-
-            //_db.Entry(dbVal.Rule).State = EntityState.Unchanged;
-            //_db.Entry(dbVal.Value).State = EntityState.Unchanged;
-
             //Create a new Globally Unique Identifier.
-            dbVal.Id = Guid.NewGuid();
+            //dbVal.Id = Guid.NewGuid();
 
             //Add the Alarm object to the Entity Context and Save changes to the Online Store.
             _db.Alarms.Add(dbVal);
