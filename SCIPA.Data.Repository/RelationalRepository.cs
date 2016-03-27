@@ -327,6 +327,10 @@ namespace SCIPA.Data.Repository
             return null;
         }
 
+        /// <summary>
+        /// Updates the Communicator as housed on the database.
+        /// </summary>
+        /// <param name="communicator"></param>
         public void UpdateCommunicator(DOM.Communicator communicator)
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == communicator.Id);
@@ -341,6 +345,11 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Retrieves a single Communicator object as per the Communicator's ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DOM.Communicator RetrieveCommunicator(int id)
         {
             var dbValue = _db.Communicators.FirstOrDefault(comm => comm.Id == id);
@@ -348,16 +357,31 @@ namespace SCIPA.Data.Repository
             return ConvertDALCommunicatorToDOM(dbValue);
         }
 
+        /// <summary>
+        /// Returns all Communicator objects for the given Device via the Device Id.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId)
         {
             return ConvertDALCommunicatorsToDOM(_db.Communicators.Where(comm => comm.Device.Id == deviceId)).ToList();
         }
 
+        /// <summary>
+        /// Returns all Communicator objects from the database.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<DOM.Communicator> RetrieveAllCommunicators()
         {
             return ConvertDALCommunicatorsToDOM(_db.Communicators).ToList();
         }
 
+        /// <summary>
+        /// Creates a new instance of a Rule object. The returned
+        /// object includes all created Identity information.
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
         public DOM.Rule CreateRule(DOM.Rule rule)
         {
             //Map to DAL object.
@@ -386,21 +410,42 @@ namespace SCIPA.Data.Repository
             return null;
         }
 
+        /// <summary>
+        /// Retrieves a single Rule object based on the ID of the Rule.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DOM.Rule RetrieveRule(int id)
         {
             return _mapper.Map(_db.Rules.FirstOrDefault(rule => rule.Id == id), new DOM.Rule());
         }
 
+        /// <summary>
+        /// Returns all Rules associated to a Device via the given Device
+        /// Id.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Rule> RetrieveRulesForDevice(int deviceId)
         {
             return _db.Rules.Where(rule => rule.DeviceId == deviceId).Select(rule => _mapper.Map(rule, new DOM.Rule())).ToList();
         }
 
+        /// <summary>
+        /// Returns all Rules on the database.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<DOM.Rule> RetrieveAllRules()
         {
             return _db.Rules.ToList().Select(rule => _mapper.Map(rule, new DOM.Rule()));
         }
 
+        /// <summary>
+        /// Updates the Rule object on the database, the returned
+        /// object includes all created Identity information.
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
         public DOM.Rule UpdateRule(DOM.Rule rule)
         {
             var dbVal = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
@@ -413,6 +458,10 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(dbVal, new DOM.Rule());
         }
 
+        /// <summary>
+        /// Removes the Rule from the database.
+        /// </summary>
+        /// <param name="rule"></param>
         public void DeleteRule(DOM.Rule rule)
         {
             var dbValue = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
