@@ -11,8 +11,19 @@ namespace SCIPA.Domain.Generic
 {
     public static class DebugOutput
     {
+        /// <summary>
+        /// Local copy of the LogPath from the Config.
+        /// </summary>
         private static readonly string _logPath = Configuration.LogFilePath;
+
+        /// <summary>
+        /// Queue used for the Logging system. 
+        /// </summary>
         private static readonly Queue<string> _logQueue = new Queue<string>();
+
+        /// <summary>
+        /// Printing to Log boolean.
+        /// </summary>
         private static bool _printingToLog = false;
 
         /// <summary>
