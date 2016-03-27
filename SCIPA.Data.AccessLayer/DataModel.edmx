@@ -248,6 +248,14 @@
             <End Role="Action" EntitySet="Actions" />
           </AssociationSet>
           <EntitySet Name="Alarms" EntityType="DataModel.Alarm" />
+          <AssociationSet Name="ActionCommunicator" Association="DataModel.ActionCommunicator">
+            <End Role="Action" EntitySet="Actions" />
+            <End Role="Communicator" EntitySet="Communicators" />
+          </AssociationSet>
+          <AssociationSet Name="DeviceAction" Association="DataModel.DeviceAction">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
           <Key>
@@ -256,6 +264,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OutputValue" Type="String" Nullable="false" />
           <NavigationProperty Name="Rule" Relationship="DataModel.RuleAction" FromRole="Action" ToRole="Rule" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="CommunicatorId" Type="Int32" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Communicator" Relationship="DataModel.ActionCommunicator" FromRole="Action" ToRole="Communicator" />
+          <NavigationProperty Name="Device" Relationship="DataModel.DeviceAction" FromRole="Action" ToRole="Device" />
         </EntityType>
         <EntityType Name="Communicator" Abstract="true">
           <Key>
@@ -269,6 +282,7 @@
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
           <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Action" Relationship="DataModel.ActionCommunicator" FromRole="Communicator" ToRole="Action" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
@@ -295,6 +309,7 @@
           <Property Name="Custodian" Type="String" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Rules" Relationship="DataModel.DeviceRule" FromRole="Device" ToRole="Rule" />
+          <NavigationProperty Name="Actions" Relationship="DataModel.DeviceAction" FromRole="Device" ToRole="Action" />
         </EntityType>
         <EntityType Name="Rule">
           <Key>
@@ -390,6 +405,14 @@
           <Property Name="RuleId" Type="Int32" Nullable="false" />
           <Property Name="Accepted" Type="Boolean" Nullable="false" />
         </EntityType>
+        <Association Name="ActionCommunicator">
+          <End Type="DataModel.Action" Role="Action" Multiplicity="1" />
+          <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
+        </Association>
+        <Association Name="DeviceAction">
+          <End Type="DataModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="DataModel.Action" Role="Action" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

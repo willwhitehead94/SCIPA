@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using SCIPA.Data.Repository;
 using SCIPA.Models;
 
-namespace SCIPA.Domain.Inbound
+namespace SCIPA.Domain.Outbound
 {
     public abstract class DataHandler
     {
