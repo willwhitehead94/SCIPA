@@ -470,6 +470,12 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Creates a new Value object on the database. The returned
+        /// object includes all created Identity information.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public DOM.Value CreateValue(DOM.Value value)
         {
             var dbVal = _mapper.Map(value, new DAL.Value());
@@ -494,21 +500,41 @@ namespace SCIPA.Data.Repository
             return null;
         }
 
+        /// <summary>
+        /// Returns a single Value object from the database
+        /// based upon the ID for that Value.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DOM.Value RetrieveValue(int id)
         {
             return _mapper.Map(_db.Values.FirstOrDefault(v => v.Id == id), new DOM.Value());
         }
 
+        /// <summary>
+        /// Returns all Values on the database for the given Device
+        /// via the Device's Id.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Value> RetrieveValuesForDevice(int deviceId)
         {
             return _db.Values.Where(v => v.DeviceId == deviceId).Select(v => _mapper.Map(v, new DOM.Value())).ToList();
         }
 
+        /// <summary>
+        /// Returns all Values on the database for all Devices.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<DOM.Value> RetrieveAllValues()
         {
             return _db.Values.Select(v => _mapper.Map(v, new DOM.Value())).ToList();
         }
 
+        /// <summary>
+        /// Updates the Value object on the database.
+        /// </summary>
+        /// <param name="value"></param>
         public void UpdateValue(DOM.Value value)
         {
             var dbValue = _db.Values.FirstOrDefault(v => v.Id == value.Id);
@@ -518,6 +544,10 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Removes the single Value from the database, if it exists.
+        /// </summary>
+        /// <param name="value"></param>
         public void DeleteValue(DOM.Value value)
         {
             var dbValue = _db.Values.FirstOrDefault(v => v.Id == value.Id);
@@ -526,11 +556,19 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Get's the App Data as stored on the database.
+        /// </summary>
+        /// <returns></returns>
         public DOM.AppData GetApplicationInformation()
         {
             return _mapper.Map(_db.AppData.First(), new DOM.AppData());
         }
 
+        /// <summary>
+        /// Set the App Data for future use.
+        /// </summary>
+        /// <param name="ai"></param>
         public void SetApplicationInformation(DOM.AppData ai)
         {
             var dbValue = _db.AppData.First();
@@ -546,6 +584,12 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
+        /// <summary>
+        /// Creates a new Alarm object on the database. The returned
+        /// object includes all created Identity information.
+        /// </summary>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
         public DOM.Alarm CreateAlarm(DOM.Alarm alarm)
         {
             //Convert the main Alarm object.
@@ -562,21 +606,42 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(dbVal, new DOM.Alarm());
         }
 
+        /// <summary>
+        /// Returns all Alarms on the database.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns all the Alarm objects on the database
+        /// for the given Device via the Device's Id.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarmsForDevice(int deviceId)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Returns all the Alarm objects on the database for the 
+        /// given Rule via the Rule's Id.
+        /// </summary>
+        /// <param name="ruleId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarmsForRule(int ruleId)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Updates the Alarm object on the database.
+        /// </summary>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
         public DOM.Alarm UpdateAlarm(DOM.Alarm alarm)
         {
             var dbCurrent = _db.Alarms.FirstOrDefault(alm => alm.Id == alarm.Id);
