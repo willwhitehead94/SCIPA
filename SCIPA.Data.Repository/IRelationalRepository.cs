@@ -7,17 +7,17 @@ namespace SCIPA.Data.Repository
 {
     public interface IRelationalRepository
     {
-        void CreateDevice(DOM.Device device);
+        DOM.Device CreateDevice(DOM.Device device);
 
         DOM.Device RetrieveDevice(int id);
 
         IEnumerable<DOM.Device> RetrieveAllDevices();
 
-        void UpdateDevice(DOM.Device device);
+        DOM.Device UpdateDevice(DOM.Device device);
 
         void DeleteDevice(DOM.Device device);
 
-        void CreateOrUpdateDevice(Models.Device device);
+        DOM.Device CreateOrUpdateDevice(Models.Device device);
 
         void CreateAction(DOM.Action action);
 
@@ -41,7 +41,7 @@ namespace SCIPA.Data.Repository
 
         IEnumerable<DOM.Communicator> RetrieveAllCommunicators();  
 
-        void CreateRule(DOM.Rule rule);
+        DOM.Rule CreateRule(DOM.Rule rule);
 
         DOM.Rule RetrieveRule(int id);
 
@@ -49,7 +49,7 @@ namespace SCIPA.Data.Repository
 
         IEnumerable<DOM.Rule> RetrieveAllRules();
 
-        void UpdateRule(DOM.Rule rule);
+        DOM.Rule UpdateRule(DOM.Rule rule);
 
         void DeleteRule(DOM.Rule rule);
 
@@ -69,7 +69,7 @@ namespace SCIPA.Data.Repository
 
         void SetApplicationInformation(DOM.AppData ai);
 
-        void CreateAlarm(DOM.Alarm alarm);
+        DOM.Alarm CreateAlarm(DOM.Alarm alarm);
 
         IEnumerable<DOM.Alarm> RetrieveAlarms();
 
@@ -77,6 +77,6 @@ namespace SCIPA.Data.Repository
 
         IEnumerable<DOM.Alarm> RetrieveAlarmsForRule(int ruleId);
 
-        void UpdateAlarm(DOM.Alarm alarm);
+        DOM.Alarm UpdateAlarm(DOM.Alarm alarm);
     }
 }

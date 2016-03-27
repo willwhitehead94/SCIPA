@@ -56,7 +56,7 @@ namespace SCIPA.Domain.Logic
             };
         }
 
-        public bool SaveDevice(Device device)
+        public Device SaveDevice(Device device)
         {
             bool devExists = _repo.RetrieveDevice(device.Id) != null;
 
@@ -64,17 +64,16 @@ namespace SCIPA.Domain.Logic
             {
                 if (devExists)
                 {
-                    _repo.UpdateDevice(device);
-                    //AllDevices[AllDevices.FindIndex(d => device.Id == d.Id)] = device;
+                    AllDevices[AllDevices.FindIndex(d => d.Id == device.Id)] = device;
+                    return _repo.UpdateDevice(device);
                 }
                 else
                 {
-                    _repo.CreateDevice(device);
                     AllDevices.Add(device);
+                    return _repo.CreateDevice(device);
                 }
-                return true;
             }
-            catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return false; }
+            catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return null; }
         }
 
         public Device RetrieveDevice(int id)

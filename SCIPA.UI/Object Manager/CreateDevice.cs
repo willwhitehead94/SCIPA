@@ -31,7 +31,7 @@ namespace SCIPA.UI
         {
             bool enabled = rbTrue.Checked && !rbFalse.Checked;
             _device = _controller.GetDeviceObject(Convert.ToInt32(tId.Text), tName.Text, tLocation.Text, tCustodian.Text, enabled);
-            if (!_controller.SaveDevice(_device))
+            if (_controller.SaveDevice(_device) == null)
             {
                 MessageBox.Show("There was an error saving the Device...");
             }

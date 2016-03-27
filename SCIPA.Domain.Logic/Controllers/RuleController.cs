@@ -47,9 +47,9 @@ namespace SCIPA.Domain.Logic
         /// Create a new Rule on the database.
         /// </summary>
         /// <param name="rule"></param>
-        public void CreateRule(Rule rule)
+        public Rule CreateRule(Rule rule)
         {
-            _repo.CreateRule(rule);
+            return _repo.CreateRule(rule);
         }
     }
 }

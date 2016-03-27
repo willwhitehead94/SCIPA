@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.InteropServices;
 using AutoMapper;
@@ -135,10 +136,13 @@ namespace SCIPA.Data.Repository
         /// Creates a new Device object within the database.
         /// </summary>
         /// <param name="device"></param>
-        public void CreateDevice(DOM.Device device)
+        public DOM.Device CreateDevice(DOM.Device device)
         {
-            _db.Devices.Add(_mapper.Map(device, new DAL.Device()));
+            var dbVal = _mapper.Map(device, new DAL.Device());
+            _db.Devices.Add(dbVal);
             _db.SaveChanges();
+
+            return _mapper.Map(dbVal, new DOM.Device());
         }
 
         /// <summary>
@@ -170,13 +174,15 @@ namespace SCIPA.Data.Repository
         /// Updates the database copy of the parametised domain model.
         /// </summary>
         /// <param name="device"></param>
-        public void UpdateDevice(DOM.Device device)
+        public DOM.Device UpdateDevice(DOM.Device device)
         {
             var dbCurrent = _db.Devices.FirstOrDefault(dev => dev.Id == device.Id);
             _mapper.Map(device, dbCurrent);
 
             _db.Entry(dbCurrent).State=EntityState.Modified;
             _db.SaveChanges();
+
+            return _mapper.Map(dbCurrent, new DOM.Device());
         }
         
         /// <summary>
@@ -196,16 +202,16 @@ namespace SCIPA.Data.Repository
         /// entity or whether to update an entity that exists in its place.
         /// </summary>
         /// <param name="device"></param>
-        public void CreateOrUpdateDevice(DOM.Device device)
+        public DOM.Device CreateOrUpdateDevice(DOM.Device device)
         {
             var dbValue = RetrieveDevice(device.Id);
             if (dbValue == null)
             {
-                CreateDevice(device);
+                return CreateDevice(device);
             }
             else
             {
-                UpdateDevice(device);
+                return UpdateDevice(device);
             }
         }
 
@@ -351,7 +357,7 @@ namespace SCIPA.Data.Repository
             return ConvertDALCommunicatorsToDOM(_db.Communicators).ToList();
         }
 
-        public void CreateRule(DOM.Rule rule)
+        public DOM.Rule CreateRule(DOM.Rule rule)
         {
             //Map to DAL object.
             var dbVal = _mapper.Map(rule, new DAL.Rule());
@@ -365,12 +371,18 @@ namespace SCIPA.Data.Repository
 
                 //Save the changes made to the database.
                 _db.SaveChanges();
+
+                //Return the updated Domain object.
+                return _mapper.Map(dbVal, new DOM.Rule());
             }
             catch (Exception e)
             {
                 //Report fault back up the chain.
                 DebugOutput.Print("Rule insertion to database failed. ", e.Message);
             }
+
+            //Return null on failure.
+            return null;
         }
 
         public DOM.Rule RetrieveRule(int id)
@@ -388,13 +400,16 @@ namespace SCIPA.Data.Repository
             return _db.Rules.ToList().Select(rule => _mapper.Map(rule, new DOM.Rule()));
         }
 
-        public void UpdateRule(DOM.Rule rule)
+        public DOM.Rule UpdateRule(DOM.Rule rule)
         {
-            var dbValue = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
-            if (dbValue == null) return;
-            _mapper.Map(rule, dbValue);
-            _db.Entry(dbValue).State = EntityState.Modified;
+            var dbVal = _db.Rules.FirstOrDefault(r => r.Id == rule.Id);
+            if (dbVal == null) return null;
+            _mapper.Map(rule, dbVal);
+            _db.Entry(dbVal).State = EntityState.Modified;
             _db.SaveChanges();
+
+            //Return the updated Domain object.
+            return _mapper.Map(dbVal, new DOM.Rule());
         }
 
         public void DeleteRule(DOM.Rule rule)
@@ -477,10 +492,14 @@ namespace SCIPA.Data.Repository
             _db.SaveChanges();
         }
 
-        public void CreateAlarm(DOM.Alarm alarm)
+        public DOM.Alarm CreateAlarm(DOM.Alarm alarm)
         {
             //Convert the main Alarm object.
             var dbVal = _mapper.Map(alarm, new DAL.Alarm());
+
+            //dbVal.DeviceId = alarm.Device.Id;
+            dbVal.RuleId = alarm.Rule.Id;
+            dbVal.ValueId = alarm.Value.Id;
 
             //Convert Child objects.
             var dev = _mapper.Map(alarm.Device, new DAL.Device());
@@ -496,7 +515,7 @@ namespace SCIPA.Data.Repository
             //_db.Entry(dbVal).State = EntityState.Modified;
 
             //Ensure that EF is aware this child object has not changed (and thus does not need changing/creating).
-            //_db.Entry(dbVal.Device).State = EntityState.Unchanged;
+            _db.Entry(dbVal.Device).State = EntityState.Unchanged;
             _db.Entry(dbVal.Rule).State = EntityState.Unchanged;
             _db.Entry(dbVal.Value).State = EntityState.Unchanged;
 
@@ -506,6 +525,9 @@ namespace SCIPA.Data.Repository
             //Add the Alarm object to the Entity Context and Save changes to the Online Store.
             _db.Alarms.Add(dbVal);
             _db.SaveChanges();
+
+            //Return the new Alarm.
+            return _mapper.Map(dbVal, new DOM.Alarm());
         }
 
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
@@ -523,9 +545,15 @@ namespace SCIPA.Data.Repository
             throw new NotImplementedException();
         }
 
-        public void UpdateAlarm(DOM.Alarm alarm)
+        public DOM.Alarm UpdateAlarm(DOM.Alarm alarm)
         {
-            throw new NotImplementedException();
+            var dbCurrent = _db.Alarms.FirstOrDefault(alm => alm.Id == alarm.Id);
+            _mapper.Map(alarm, dbCurrent);
+
+            _db.Entry(dbCurrent).State = EntityState.Modified;
+            _db.SaveChanges();
+
+            return _mapper.Map(dbCurrent, new DOM.Alarm());
         }
 
 
