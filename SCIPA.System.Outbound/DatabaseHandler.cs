@@ -1,11 +1,7 @@
-﻿
-using System;
-using System.Threading;
+﻿using System;
 using SCIPA.Domain.Generic;
 using SCIPA.Models;
 using SCIPA.Domain.Logic;
-using SCIPA.Domain.Outbound;
-using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Outbound
 {
