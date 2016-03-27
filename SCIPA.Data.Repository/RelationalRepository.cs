@@ -47,6 +47,12 @@ namespace SCIPA.Data.Repository
                 cfg.CreateMap<DOM.Action, DAL.Action>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
 
+                cfg.CreateMap<DOM.Alarm, DAL.Alarm>()
+                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Value, opt => opt.Ignore())
+                    .ForMember(m => m.Rule, opt => opt.Ignore());
+
                 cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
@@ -86,6 +92,12 @@ namespace SCIPA.Data.Repository
                 // Data to Domain Converstions
                 cfg.CreateMap<DAL.Action, DOM.Action>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
+
+                cfg.CreateMap<DAL.Alarm, DOM.Alarm>()
+                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Value, opt => opt.Ignore())
+                    .ForMember(m => m.Rule, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.AppData, DOM.AppData>();
 

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain Models\Action.cs" />
+    <Compile Include="Domain Models\Alarm.cs" />
     <Compile Include="Domain Models\AppData.cs" />
     <Compile Include="Domain Models\Communicator.cs" />
     <Compile Include="Domain Models\CommunicatorType.cs" />
