@@ -45,32 +45,11 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="value"></param>
         public void AddNewValue(Value value)
         {
-            List<Value> vals = new List<Value>();
-            value.ObjectId = ObjectId.GenerateNewId();
-            vals.Add(value);
-            value.ValueId++;
-            value.ObjectId = ObjectId.GenerateNewId();
-            vals.Add(value);
-            value.ValueId++;
-            value.ObjectId = ObjectId.GenerateNewId();
-            vals.Add(value);
-            IEnumerable<Value> allValues = vals;
-
-            var processData = new Process()
-            {
-                DeviceId = value.DeviceId,
-                Custodian = "Whitehead",
-                Enabled = true,
-                Location = "Home",
-                Name = "Boiler",
-                ObjectId = ObjectId.GenerateNewId(),
-                Values = vals
-            };
-            PushProcessData(processData);
-
             try
             {
                 _db.GetCollection<Value>("Values").InsertOne(value);
+
+                PushProcessData(value);
             }
             catch (Exception e)
             {
@@ -78,14 +57,22 @@ namespace SCIPA.Data.MongoLayer
             }
         }
 
-        /// <summary>
-        /// Posts the parametised Device object directly into the database.
-        /// </summary>
-        /// <param name="device"></param>
-        public void AddNewDevice(Device device)
+        private Process ConvertDeviceToProcess(Device device)
         {
-            _db.GetCollection<Device>("Devices").InsertOne(device);
+            var _id = device.ObjectId == null ?  ObjectId.GenerateNewId() :  device.ObjectId;
+
+            return new Process()
+            {
+                ObjectId = _id,
+                DeviceId = device.Id,
+                Custodian = device.Custodian,
+                Enabled = device.Enabled,
+                Location = device.Location,
+                Name = device.Name,
+                Values = new List<Value>()
+            };
         }
+
 
         /// <summary>
         /// Repalces the current Device in the database with the parametised Device's ID
@@ -94,31 +81,62 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="device"></param>
         public void UpdateDevice(Device device)
         {
-            _db.GetCollection<Device>("Devices").FindOneAndReplace(dev => dev.Id == device.Id, device);
+            var collection = _db.GetCollection<Process>("ProcessData");
+            var filter = Builders<Process>.Filter.Eq("DeviceId", device.Id);
+            var result = collection.Find(filter).ToList();
+
+            if (result.Count > 0)
+            {
+                var entity = result[0];
+                device.ObjectId = entity.ObjectId;
+            }
+
+            var process = ConvertDeviceToProcess(device);
+
+            var update = collection.ReplaceOne
+                    (
+                        item => item.DeviceId == device.Id,
+                        process,
+                        new UpdateOptions { IsUpsert = true }
+                    );
         }
 
-        public void PushProcessData(Process data)
+        /// <summary>
+        /// Posts the parametised Device object directly into the database.
+        /// </summary>
+        /// <param name="device"></param>
+        public void AddNewDevice(Device device)
         {
-            ////Replaces the entire Device document
-            //var collection = _db.GetCollection<Process>("ProcessData");
-            //var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
-            //var result = collection.Find(filter).ToList();
+            var processObj = new Process()
+            {
+                ObjectId = ObjectId.GenerateNewId(),
+                DeviceId = device.Id,
+                Custodian = device.Custodian,
+                Enabled = device.Enabled,
+                Location = device.Location,
+                Name = device.Name,
+                Values = new List<Value>()
+            };
 
-            //if (result.Count > 0)
-            //{
-            //    var entity = result[0];
-            //    data.ObjectId = entity.ObjectId;
-            //}
+            _db.GetCollection<Process>("ProcessData").InsertOne(processObj);
+        }
 
-            //var update = collection.ReplaceOne
-            //        (
-            //            item => item.DeviceId == data.DeviceId,
-            //            data,
-            //            new UpdateOptions { IsUpsert = true }
-            //        );
-            //// END OF DOCUMENT REPLACEMENT
+        private void PushProcessData(Value data)
+        {
+            //Merges all values then replaces the entire document.
+            var collection = _db.GetCollection<Process>("ProcessData");
+            var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
+            var result = collection.Find(filter).ToList();
 
+            if (result.Count > 0)
+            {
+                //Submit the returned Device and the new Value for commital.
+                PushProcessData(result[0],data);
+            }
+        }
 
+        private void PushProcessData(Process data, Value newValue = null)
+        {
             //Merges all values then replaces the entire document.
             var collection = _db.GetCollection<Process>("ProcessData");
             var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
@@ -129,7 +147,11 @@ namespace SCIPA.Data.MongoLayer
                 var entity = result[0];
                 data.ObjectId = entity.ObjectId;
                 var currentVals = result[0].Values;
-                List<Value> allValues = new List<Value>();
+                var allValues = new List<Value>();
+
+                //If not null, add the new value to the device's collection.
+                if (newValue != null) allValues.Add(newValue);
+
                 allValues.AddRange(currentVals);
                 allValues.AddRange(data.Values);
                 data.Values = allValues;
@@ -141,30 +163,6 @@ namespace SCIPA.Data.MongoLayer
                         data,
                         new UpdateOptions { IsUpsert = true }
                     );
-            // END OF DOCUMENT REPLACEMENT
-
-
-            //Merges all values then replaces the entire document.
-            //var collection = _db.GetCollection<Process>("ProcessData");
-            //var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
-            //var result = collection.Find(filter).ToList();
-
-
-            //var valueCollection = _db.GetCollection<Value>("ProcessData.Values");
-            //var valueFilter = Builders<Value>.Filter.Eq("DeviceId", data.DeviceId);
-            //var valueResult = valueCollection.Find(valueFilter).ToList();
-            //foreach (Value val in data.Values)
-            //{
-            //    var valueUpdate = valueCollection.ReplaceOne
-            //        (
-            //            item => item.ValueId == val.ValueId,
-            //            val,
-            //            new UpdateOptions { IsUpsert = true }
-            //        );
-            //}
-
-
-            // END OF DOCUMENT REPLACEMENT
         }
     }
 }
