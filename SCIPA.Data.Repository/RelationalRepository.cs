@@ -49,10 +49,7 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Alarm, DAL.Alarm>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore())
-                    .ForMember(m => m.Value, opt => opt.Ignore())
-                    .ForMember(m => m.Rule, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.AppData, DAL.AppData>();
 
@@ -512,11 +509,11 @@ namespace SCIPA.Data.Repository
 
             //Assign the Child objects back to Alarm.
             // dbVal.Device = dev;
-             dbVal.Value = val;
-             dbVal.Rule = rul;
+             //dbVal.Value = val;
+             //dbVal.Rule = rul;
 
-            dbVal.Value.Id = dbVal.ValueId;
-            dbVal.Rule.Id = dbVal.RuleId;
+            //dbVal.Value.Id = dbVal.ValueId;
+            //dbVal.Rule.Id = dbVal.RuleId;
 
             //Tell EF that the object has been updated.
             //_db.Entry(dbVal).State = EntityState.Modified;
@@ -526,8 +523,8 @@ namespace SCIPA.Data.Repository
             //_db.Entry(dbVal.Rule).State = EntityState.Unchanged;
             //_db.Entry(dbVal.Value).State = EntityState.Unchanged;
 
-            _db.Entry(dbVal.Rule).State = EntityState.Unchanged;
-            _db.Entry(dbVal.Value).State = EntityState.Unchanged;
+            //_db.Entry(dbVal.Rule).State = EntityState.Unchanged;
+            //_db.Entry(dbVal.Value).State = EntityState.Unchanged;
 
             //Create a new Globally Unique Identifier.
             dbVal.Id = Guid.NewGuid();
