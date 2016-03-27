@@ -12,6 +12,7 @@
     <EntitySet Name="Rules" EntityType="DataModel.Store.Rules" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Values" EntityType="DataModel.Store.Values" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AppData" EntityType="DataModel.Store.AppData" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Alarms" EntityType="DataModel.Store.Alarms" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_FileCommunicator" EntityType="DataModel.Store.Communicators_FileCommunicator" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_SerialCommunicator" EntityType="DataModel.Store.Communicators_SerialCommunicator" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Communicators_DatabaseCommunicator" EntityType="DataModel.Store.Communicators_DatabaseCommunicator" store:Type="Tables" Schema="dbo" />
@@ -26,6 +27,18 @@
     <AssociationSet Name="RuleAction" Association="DataModel.Store.RuleAction">
       <End Role="Rule" EntitySet="Rules" />
       <End Role="Action" EntitySet="Actions" />
+    </AssociationSet>
+    <AssociationSet Name="DeviceAlarm" Association="DataModel.Store.DeviceAlarm">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Alarm" EntitySet="Alarms" />
+    </AssociationSet>
+    <AssociationSet Name="ValueAlarm" Association="DataModel.Store.ValueAlarm">
+      <End Role="Value" EntitySet="Values" />
+      <End Role="Alarm" EntitySet="Alarms" />
+    </AssociationSet>
+    <AssociationSet Name="RuleAlarm" Association="DataModel.Store.RuleAlarm">
+      <End Role="Rule" EntitySet="Rules" />
+      <End Role="Alarm" EntitySet="Alarms" />
     </AssociationSet>
     <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
       <End Role="Communicator" EntitySet="Communicators" />
@@ -107,6 +120,17 @@
     <Property Name="Enabled" Type="bit" Nullable="false" />
     <Property Name="Instance" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <EntityType Name="Alarms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="ValueId" Type="int" Nullable="false" />
+    <Property Name="RuleId" Type="int" Nullable="false" />
+    <Property Name="Accepted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Communicators_FileCommunicator">
     <Key>
       <PropertyRef Name="Id" />
@@ -167,6 +191,42 @@
       </Principal>
       <Dependent Role="Action">
         <PropertyRef Name="Rule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeviceAlarm">
+    <End Role="Device" Type="DataModel.Store.Devices" Multiplicity="1" />
+    <End Role="Alarm" Type="DataModel.Store.Alarms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Alarm">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ValueAlarm">
+    <End Role="Value" Type="DataModel.Store.Values" Multiplicity="1" />
+    <End Role="Alarm" Type="DataModel.Store.Alarms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Value">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Alarm">
+        <PropertyRef Name="ValueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RuleAlarm">
+    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="1" />
+    <End Role="Alarm" Type="DataModel.Store.Alarms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Alarm">
+        <PropertyRef Name="RuleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -385,8 +445,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="TimeStamp" Type="Time" Nullable="false" />
-          <Property Name="DeviceId" Type="Int32" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" />
+          <Property Name="DeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="ValueId" Type="Int32" Nullable="false" />
           <Property Name="RuleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="DataModel.DeviceAlarm" FromRole="Alarm" ToRole="Device" />
@@ -528,6 +588,18 @@
           <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
           <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
           <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alarms">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Alarm)">
+        <MappingFragment StoreEntitySet="Alarms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

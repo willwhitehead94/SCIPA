@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/27/2016 00:28:48
+-- Date Created: 03/27/2016 02:55:55
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -139,6 +139,17 @@ CREATE TABLE [dbo].[AppData] (
 );
 GO
 
+-- Creating table 'Alarms'
+CREATE TABLE [dbo].[Alarms] (
+    [Id] uniqueidentifier  NOT NULL,
+    [TimeStamp] datetime  NOT NULL,
+    [DeviceId] int  NOT NULL,
+    [ValueId] int  NOT NULL,
+    [RuleId] int  NOT NULL,
+    [Accepted] bit  NOT NULL
+);
+GO
+
 -- Creating table 'Communicators_FileCommunicator'
 CREATE TABLE [dbo].[Communicators_FileCommunicator] (
     [FilePath] nvarchar(max)  NOT NULL,
@@ -206,6 +217,12 @@ ADD CONSTRAINT [PK_AppData]
     PRIMARY KEY CLUSTERED ([Instance] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'Alarms'
+ALTER TABLE [dbo].[Alarms]
+ADD CONSTRAINT [PK_Alarms]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'Communicators_FileCommunicator'
 ALTER TABLE [dbo].[Communicators_FileCommunicator]
 ADD CONSTRAINT [PK_Communicators_FileCommunicator]
@@ -271,6 +288,51 @@ GO
 CREATE INDEX [IX_FK_RuleAction]
 ON [dbo].[Actions]
     ([Rule_Id]);
+GO
+
+-- Creating foreign key on [DeviceId] in table 'Alarms'
+ALTER TABLE [dbo].[Alarms]
+ADD CONSTRAINT [FK_DeviceAlarm]
+    FOREIGN KEY ([DeviceId])
+    REFERENCES [dbo].[Devices]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeviceAlarm'
+CREATE INDEX [IX_FK_DeviceAlarm]
+ON [dbo].[Alarms]
+    ([DeviceId]);
+GO
+
+-- Creating foreign key on [ValueId] in table 'Alarms'
+ALTER TABLE [dbo].[Alarms]
+ADD CONSTRAINT [FK_ValueAlarm]
+    FOREIGN KEY ([ValueId])
+    REFERENCES [dbo].[Values]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ValueAlarm'
+CREATE INDEX [IX_FK_ValueAlarm]
+ON [dbo].[Alarms]
+    ([ValueId]);
+GO
+
+-- Creating foreign key on [RuleId] in table 'Alarms'
+ALTER TABLE [dbo].[Alarms]
+ADD CONSTRAINT [FK_RuleAlarm]
+    FOREIGN KEY ([RuleId])
+    REFERENCES [dbo].[Rules]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RuleAlarm'
+CREATE INDEX [IX_FK_RuleAlarm]
+ON [dbo].[Alarms]
+    ([RuleId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'
