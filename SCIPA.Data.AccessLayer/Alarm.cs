@@ -20,9 +20,5 @@ namespace SCIPA.Data.AccessLayer
         public int ValueId { get; set; }
         public int RuleId { get; set; }
         public bool Accepted { get; set; }
-    
-        public virtual Device Device { get; set; }
-        public virtual Value Value { get; set; }
-        public virtual Rule Rule { get; set; }
     }
 }

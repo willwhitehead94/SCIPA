@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/27/2016 15:56:07
+-- Date Created: 03/27/2016 16:49:08
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -300,51 +300,6 @@ GO
 CREATE INDEX [IX_FK_RuleAction]
 ON [dbo].[Actions]
     ([Rule_Id]);
-GO
-
--- Creating foreign key on [DeviceId] in table 'Alarms'
-ALTER TABLE [dbo].[Alarms]
-ADD CONSTRAINT [FK_DeviceAlarm]
-    FOREIGN KEY ([DeviceId])
-    REFERENCES [dbo].[Devices]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_DeviceAlarm'
-CREATE INDEX [IX_FK_DeviceAlarm]
-ON [dbo].[Alarms]
-    ([DeviceId]);
-GO
-
--- Creating foreign key on [ValueId] in table 'Alarms'
-ALTER TABLE [dbo].[Alarms]
-ADD CONSTRAINT [FK_ValueAlarm]
-    FOREIGN KEY ([ValueId])
-    REFERENCES [dbo].[Values]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ValueAlarm'
-CREATE INDEX [IX_FK_ValueAlarm]
-ON [dbo].[Alarms]
-    ([ValueId]);
-GO
-
--- Creating foreign key on [RuleId] in table 'Alarms'
-ALTER TABLE [dbo].[Alarms]
-ADD CONSTRAINT [FK_RuleAlarm]
-    FOREIGN KEY ([RuleId])
-    REFERENCES [dbo].[Rules]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RuleAlarm'
-CREATE INDEX [IX_FK_RuleAlarm]
-ON [dbo].[Alarms]
-    ([RuleId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'
