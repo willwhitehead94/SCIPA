@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data Models\Device.cs" />
+    <Compile Include="Data Models\Process.cs" />
     <Compile Include="DataController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data Models\Value.cs" />

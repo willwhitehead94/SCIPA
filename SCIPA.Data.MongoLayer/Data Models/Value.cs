@@ -7,7 +7,7 @@ namespace SCIPA.Data.MongoLayer
     {
         [BsonId]
         public ObjectId ObjectId { get; set; }
-        public int Id { get; set; }
+        public int ValueId { get; set; }
         public System.DateTime EventTime { get; set; }
         public bool Inbound { get; set; }
         public string Type { get; set; }
