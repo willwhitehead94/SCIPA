@@ -138,6 +138,11 @@ namespace SCIPA.Data.Repository
             _db.Devices.Add(dbVal);
             _db.SaveChanges();
 
+            //Update MongoDB accordingly
+            var mongorepo = new MongoRepository();
+            mongorepo.AddNewDevice(device);
+            //MongoDB Updated!
+
             return _mapper.Map(dbVal, new DOM.Device());
         }
 

@@ -93,7 +93,7 @@ namespace SCIPA.UI
         private void button7_Click(object sender, EventArgs e)
         {
             var controller = new DeviceController();
-            Device testDev = controller.GetAllDevices().First();
+            Device testDev = controller.GetAllDevices().Last();
 
             AddInbound ai = new AddInbound(testDev);
             ai.ShowDialog();
