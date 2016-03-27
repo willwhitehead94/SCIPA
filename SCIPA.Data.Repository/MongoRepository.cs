@@ -43,15 +43,15 @@ namespace SCIPA.Data.Repository
                     .ForMember(m=>m.Id, opt=>opt.Ignore());
 
                 cfg.CreateMap<DOM.Device, MON.Device>()
-                    .ForMember(m => m.ObjectId, opt => opt.Ignore());
+                   .ForMember(m => m.ObjectId, opt => opt.Ignore());
 
 
                 // Data to domain Converstions
                 cfg.CreateMap<MON.Value, DOM.Value>()
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                   .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<MON.Device, DOM.Device>()
-                    .ForMember(m => m.Rules, opt => opt.Ignore());
+                .ForMember(m => m.Rules, opt => opt.Ignore());
 
 
 

@@ -1,7 +1,12 @@
-﻿namespace SCIPA.Data.MongoLayer
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace SCIPA.Data.MongoLayer
 {
     public class Value
     {
+        [BsonId]
+        public ObjectId ObjectId { get; set; }
         public int Id { get; set; }
         public System.DateTime EventTime { get; set; }
         public bool Inbound { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace SCIPA.Data.MongoLayer
@@ -39,7 +40,14 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="value"></param>
         public void AddNewValue(Value value)
         {
-           // _db.GetCollection<Value>("Values").InsertOne(value);
+            try
+            {
+                //value.ObjectId=new ObjectId();
+                _db.GetCollection<Value>("Values").InsertOne(value);
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>

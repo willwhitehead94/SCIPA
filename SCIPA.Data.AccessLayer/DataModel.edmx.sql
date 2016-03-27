@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/26/2016 18:01:01
+-- Date Created: 03/27/2016 00:28:48
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,14 +17,14 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_DeviceAction]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_DeviceAction];
-GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceCommunicators]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_DeviceCommunicators];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeviceRule]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_DeviceRule];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RuleAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_RuleAction];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FileCommunicator_inherits_Communicator]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Communicators_FileCommunicator] DROP CONSTRAINT [FK_FileCommunicator_inherits_Communicator];
