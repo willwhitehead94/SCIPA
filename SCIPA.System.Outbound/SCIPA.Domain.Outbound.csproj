@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DatabaseHandler.cs" />
     <Compile Include="DataHandler.cs" />
+    <Compile Include="FlatFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialDataHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SCIPA.Data.Repository\SCIPA.Data.Repository.csproj">

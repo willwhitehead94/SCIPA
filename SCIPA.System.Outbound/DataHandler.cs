@@ -10,33 +10,13 @@ namespace SCIPA.Domain.Outbound
         /// <summary>
         /// Private repo object allow for automatic output to the database.
         /// </summary>
-        public IRelationalRepository _repo = new RelationalRepository();
+        protected IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
-        /// Maximum number of incoming messages allowed per second.
+        /// The communicator object for this Handler.
         /// </summary>
-        protected const int MaximumReadsPerMinute = 100;
+        protected Communicator _communicator = null;
 
-        /// <summary>
-        /// DateTime of the last inbound message.
-        /// </summary>
-        protected DateTime _lastIncomingMessage;
-
-        /// <summary>
-        /// Queue of the recieved data.
-        /// </summary>
-        public Queue<Value> InboundDataQueue = new Queue<Value>();
-
-        public void EnqueueData(Value newValue)
-        {
-            InboundDataQueue.Enqueue(newValue);
-        }
-
-        /// <summary>
-        /// Abstract method ensures that implementing members must provide an
-        /// access method for their communicator objects.
-        /// </summary>
-        /// <returns></returns>
-        public abstract Communicator GetCommunicator();
+        
     }
 }
