@@ -23,7 +23,6 @@ namespace SCIPA.Domain.Inbound
 
         public RuleChecker()
         {
-            
         }
 
         /// <summary>
@@ -152,9 +151,34 @@ namespace SCIPA.Domain.Inbound
         private void TakeAction(Rule rule, Value value)
         {
             //Handle any requirement to Alarm.
+            if (rule.Alarm)
+            {
+                //Create accessor to the AlarmController class.
+                var controller = new AlarmController();
 
+                //Create a new Alarm object as per the model.
+                var alarm = new Alarm()
+                {
+                    Id = Guid.NewGuid(),
+                    Rule = rule,
+                    RuleId = rule.Id,
+                    Device = rule.Device,
+                    DeviceId = rule.DeviceId,
+                    Value = value,
+                    ValueId = value.Id,
+                    TimeStamp = value.EventTime,
+                    Accepted = false
+                };
+
+                //Pass the alarm object to the AlarmController.
+                controller.CreateAlarm(alarm);
+            }
 
             //Handle any Actions to be taken.
+            if (rule.Action != null)
+            {
+                //TODO Implement the required action!
+            }
         }
 
         /// <summary>

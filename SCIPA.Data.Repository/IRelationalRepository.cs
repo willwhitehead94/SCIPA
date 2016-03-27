@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DAL = SCIPA.Data.AccessLayer; //Data Access Layer Models
 using DOM = SCIPA.Models; //Domain Layer Models
 
@@ -30,47 +31,15 @@ namespace SCIPA.Data.Repository
 
         void DeleteAction(DOM.Action action);
 
-        //void CreateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
-
-        //DOM.DatabaseCommunicator RetrieveDatabaseCommunicator(int id);
-
-        //IEnumerable<DOM.DatabaseCommunicator> RetrieveDatabaseCommunicatorsForDevice(int deviceId);
-
-        //IEnumerable<DOM.DatabaseCommunicator> RetrieveAllDatabaseCommunicators();
-
-        //void UpdateDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
-
-        //void DeleteDatabaseCommunicator(DOM.DatabaseCommunicator databaseCommunicator);
-
         int? CreateCommunicator(DOM.Communicator communicator);
 
-        //DOM.FileCommunicator RetrieveFileCommunicator(int id);
-
-        //IEnumerable<DOM.FileCommunicator> RetrieveFileCommunicatorsForDevice(int deviceId);
-
-        //IEnumerable<DOM.FileCommunicator> RetrieveAllFileCommunicators();
-
         void UpdateCommunicator(DOM.Communicator communicator);
-
-        //void DeleteFileCommunicator(DOM.FileCommunicator fileCommunicator);
-
-        //void CreateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
-
-        //DOM.SerialCommunicator RetrieveSerialCommunicator(int id);
-
-        //IEnumerable<DOM.SerialCommunicator> RetrieveSerialCommunicatorsForDevice(int deviceId);
-
-        //IEnumerable<DOM.SerialCommunicator> RetrieveAllSerialCommunicators();
 
         DOM.Communicator RetrieveCommunicator(int id);
 
         IEnumerable<DOM.Communicator> RetrieveCommunicatorsForDevice(int deviceId);
 
         IEnumerable<DOM.Communicator> RetrieveAllCommunicators();  
-
-        //void UpdateSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
-
-        //void DeleteSerialCommunicator(DOM.SerialCommunicator serialCommunicator);
 
         void CreateRule(DOM.Rule rule);
 
@@ -99,5 +68,15 @@ namespace SCIPA.Data.Repository
         DOM.AppData GetApplicationInformation();
 
         void SetApplicationInformation(DOM.AppData ai);
+
+        void CreateAlarm(DOM.Alarm alarm);
+
+        IEnumerable<DOM.Alarm> RetrieveAlarms();
+
+        IEnumerable<DOM.Alarm> RetrieveAlarmsForDevice(int deviceId);
+
+        IEnumerable<DOM.Alarm> RetrieveAlarmsForRule(int ruleId);
+
+        void UpdateAlarm(DOM.Alarm alarm);
     }
 }
