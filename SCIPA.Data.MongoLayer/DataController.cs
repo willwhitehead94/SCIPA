@@ -13,6 +13,9 @@ namespace SCIPA.Data.MongoLayer
 {
     public class DataController
     {
+        /// <summary>
+        /// The local Mongo connection string.
+        /// </summary>
         private static string ConnectionString = "mongodb://localhost:27017";
 
         /// <summary>
@@ -57,6 +60,12 @@ namespace SCIPA.Data.MongoLayer
             }
         }
 
+        /// <summary>
+        /// Internal conversion between a basic Device object and the logical-parent
+        /// Process.
+        /// </summary>
+        /// <param name="device">Basic Device object.</param>
+        /// <returns>Updated Process object.</returns>
         private Process ConvertDeviceToProcess(Device device)
         {
             var _id = device.ObjectId == null ?  ObjectId.GenerateNewId() :  device.ObjectId;
@@ -121,6 +130,10 @@ namespace SCIPA.Data.MongoLayer
             _db.GetCollection<Process>("ProcessData").InsertOne(processObj);
         }
 
+        /// <summary>
+        /// Pushes a value to it's parent data stream on MongoDB.
+        /// </summary>
+        /// <param name="data"></param>
         private void PushProcessData(Value data)
         {
             //Merges all values then replaces the entire document.
@@ -135,6 +148,11 @@ namespace SCIPA.Data.MongoLayer
             }
         }
 
+        /// <summary>
+        /// Push the Process object and the newest value to MongoDB.
+        /// Finds the Device header in Mongo's ProcessData and appends
+        /// the new value to it.
+        /// </summary>
         private void PushProcessData(Process data, Value newValue = null)
         {
             //Merges all values then replaces the entire document.
