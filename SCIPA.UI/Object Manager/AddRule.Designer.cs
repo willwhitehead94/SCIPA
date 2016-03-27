@@ -142,6 +142,7 @@
             this.cbValueType.Name = "cbValueType";
             this.cbValueType.Size = new System.Drawing.Size(542, 37);
             this.cbValueType.TabIndex = 15;
+            this.cbValueType.SelectedIndexChanged += new System.EventHandler(this.cbValueType_SelectedIndexChanged);
             // 
             // cbRuleType
             // 

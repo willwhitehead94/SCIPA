@@ -28,8 +28,8 @@ namespace SCIPA.UI.Object_Manager
             this.Text = _device.ToString();
             lDevice.Text = _device.ToString();
 
+            //Create list of available Value Types to read for this rule.
             cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
-            cbRuleType.DataSource = Enum.GetValues(typeof(Models.RuleType));
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -49,6 +49,35 @@ namespace SCIPA.UI.Object_Manager
 
             var controller = new RuleController();
             _rule = controller.CreateRule(model);
+        }
+
+        private void cbValueType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Set the Rule Types available dependant on the selected ValueType.
+            var selected = (Models.ValueType)(cbValueType.SelectedItem);
+
+            //Clear the current list.
+            cbRuleType.DataSource = null;
+            cbRuleType.Items.Clear();
+
+            //Integer and Float have all options (so Integer falls through).
+            switch (selected)
+            {
+                case Models.ValueType.Integer:
+                case Models.ValueType.Float:
+                    cbRuleType.DataSource = Enum.GetValues(typeof(Models.RuleType));
+                    break;
+                case Models.ValueType.String:
+                    cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    cbRuleType.Items.Add(Models.RuleType.Not);
+                    break;
+                case Models.ValueType.Boolean:
+                    cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    break;
+            }
+
+            //Refresh the ComboBox.
+            cbRuleType.Refresh();
         }
     }
 }
