@@ -46,8 +46,8 @@ namespace SCIPA.UI.Object_Manager
                 Name = tName.Text
             };
 
-            var deviceController = new DeviceController();
-            deviceController.CreateRule(model);
+            var controller = new RuleController();
+            controller.CreateRule(model);
         }
     }
 }

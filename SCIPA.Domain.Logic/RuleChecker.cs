@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SCIPA.Data.Repository;
 using SCIPA.Domain.Generic;
+using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using ValueType = SCIPA.Models.ValueType;
 
@@ -11,46 +12,16 @@ namespace SCIPA.Domain.Inbound
     public class RuleChecker
     {
         /// <summary>
-        /// All rules as on the database.
-        /// </summary>
-        private static ICollection<Rule> _rules = new List<Rule>();
-
-        /// <summary>
-        /// If true, the ICollection of Rules may be out of date and, as such,
-        /// the system should download a new copy of the list from the database
-        /// when is next appropriate.
-        /// 
-        /// Set to True initially to enable the population of the collection.
-        /// </summary>
-        private static bool _updateRuleList = true;
-
-        /// <summary>
         /// Access to the relationtional data repository.
         /// </summary>
         private IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
-        /// Downloads all rules from the database if the system is due to refresh
-        /// Rule collection, otherwise does nothing.
+        /// Instance of the RuleController class.
         /// </summary>
-        public void UpdateRuleCollection()
-        {
-            if (!_updateRuleList) return;
-            //foreach (var rule in _repo.RetrieveAllRules())
-            //{
-            //    _rules.Add(rule);
-            //}
-
-            _rules = _repo.RetrieveAllRules().ToList();
-            _updateRuleList = false;
-        }
+        private RuleController _controller = new RuleController();
 
         public RuleChecker()
-        {
-            UpdateRuleCollection();
-        }
-
-        public void CheckRulesForDevice(Device device)
         {
             
         }
@@ -62,7 +33,7 @@ namespace SCIPA.Domain.Inbound
         public void CheckRulesForValue(Value value)
         {
             //List of Rules for the appropriate device.
-            var applicableRules = _rules.Where(r => r.DeviceId == value.DeviceId);
+            var applicableRules = RuleController.GetAllRules().Where(r => r.DeviceId == value.DeviceId);
 
             //For every rule associated with the Device, check the Value does not break any Rules.
             //Any Rule that matches it's constraint will be passed to the 'TakeAction' method.

@@ -48,6 +48,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\RuleController.cs" />
+    <Compile Include="RuleChecker.cs" />
     <Compile Include="SharedResources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,8 +10,6 @@ namespace SCIPA.Domain.Logic
     public class DeviceController
     {
         public static List<Device> AllDevices = new List<Device>();
-        
-        public static List<Device> DevicesInAlarm = new List<Device>();
 
         private readonly IRelationalRepository _repo = new RelationalRepository();
 
@@ -91,12 +89,6 @@ namespace SCIPA.Domain.Logic
             CommunicatorController commCont = new CommunicatorController();
 
             return commCont.GetAllCommunicators().Where(comm=>comm.Id==id);
-        }
-
-        public void CreateRule(Rule rule)
-        {
-            var model = rule;
-            _repo.CreateRule(rule);
         }
     }
 }
