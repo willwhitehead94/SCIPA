@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/28/2016 17:36:05
+-- Date Created: 03/28/2016 17:54:50
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -27,7 +27,7 @@ IF OBJECT_ID(N'[dbo].[FK_RuleAction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_RuleAction];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ActionCommunicator]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Actions] DROP CONSTRAINT [FK_ActionCommunicator];
+    ALTER TABLE [dbo].[Communicators] DROP CONSTRAINT [FK_ActionCommunicator];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FileCommunicator_inherits_Communicator]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Communicators_FileCommunicator] DROP CONSTRAINT [FK_FileCommunicator_inherits_Communicator];
@@ -84,8 +84,7 @@ CREATE TABLE [dbo].[Actions] (
     [OutputValue] nvarchar(max)  NOT NULL,
     [RuleId] int  NOT NULL,
     [CommunicatorId] int  NOT NULL,
-    [Enabled] bit  NOT NULL,
-    [Rule_Id] int  NULL
+    [Enabled] bit  NOT NULL
 );
 GO
 
@@ -98,8 +97,7 @@ CREATE TABLE [dbo].[Communicators] (
     [Type] smallint  NOT NULL,
     [ValueType] smallint  NOT NULL,
     [Inbound] bit  NOT NULL,
-    [Device_Id] int  NOT NULL,
-    [Action_Id] int  NULL
+    [Device_Id] int  NOT NULL
 );
 GO
 
@@ -283,36 +281,6 @@ GO
 CREATE INDEX [IX_FK_DeviceRule]
 ON [dbo].[Rules]
     ([DeviceId]);
-GO
-
--- Creating foreign key on [Rule_Id] in table 'Actions'
-ALTER TABLE [dbo].[Actions]
-ADD CONSTRAINT [FK_RuleAction]
-    FOREIGN KEY ([Rule_Id])
-    REFERENCES [dbo].[Rules]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RuleAction'
-CREATE INDEX [IX_FK_RuleAction]
-ON [dbo].[Actions]
-    ([Rule_Id]);
-GO
-
--- Creating foreign key on [Action_Id] in table 'Communicators'
-ALTER TABLE [dbo].[Communicators]
-ADD CONSTRAINT [FK_ActionCommunicator]
-    FOREIGN KEY ([Action_Id])
-    REFERENCES [dbo].[Actions]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ActionCommunicator'
-CREATE INDEX [IX_FK_ActionCommunicator]
-ON [dbo].[Communicators]
-    ([Action_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

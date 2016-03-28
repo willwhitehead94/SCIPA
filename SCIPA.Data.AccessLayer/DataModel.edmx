@@ -24,14 +24,6 @@
       <End Role="Device" EntitySet="Devices" />
       <End Role="Rule" EntitySet="Rules" />
     </AssociationSet>
-    <AssociationSet Name="RuleAction" Association="DataModel.Store.RuleAction">
-      <End Role="Rule" EntitySet="Rules" />
-      <End Role="Action" EntitySet="Actions" />
-    </AssociationSet>
-    <AssociationSet Name="ActionCommunicator" Association="DataModel.Store.ActionCommunicator">
-      <End Role="Action" EntitySet="Actions" />
-      <End Role="Communicator" EntitySet="Communicators" />
-    </AssociationSet>
     <AssociationSet Name="FK_FileCommunicator_inherits_Communicator" Association="DataModel.Store.FK_FileCommunicator_inherits_Communicator">
       <End Role="Communicator" EntitySet="Communicators" />
       <End Role="FileCommunicator" EntitySet="Communicators_FileCommunicator" />
@@ -54,7 +46,6 @@
     <Property Name="RuleId" Type="int" Nullable="false" />
     <Property Name="CommunicatorId" Type="int" Nullable="false" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
-    <Property Name="Rule_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Communicators">
     <Key>
@@ -68,7 +59,6 @@
     <Property Name="ValueType" Type="smallint" Nullable="false" />
     <Property Name="Inbound" Type="bit" Nullable="false" />
     <Property Name="Device_Id" Type="int" Nullable="false" />
-    <Property Name="Action_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Devices">
     <Key>
@@ -175,30 +165,6 @@
       </Principal>
       <Dependent Role="Rule">
         <PropertyRef Name="DeviceId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RuleAction">
-    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="0..1" />
-    <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Rule">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Action">
-        <PropertyRef Name="Rule_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ActionCommunicator">
-    <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="0..1" />
-    <End Role="Communicator" Type="DataModel.Store.Communicators" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Action">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Communicator">
-        <PropertyRef Name="Action_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
