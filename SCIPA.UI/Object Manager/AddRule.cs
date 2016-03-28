@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
+using Rule = SCIPA.Models.Rule;
 
 namespace SCIPA.UI.Object_Manager
 {
@@ -34,6 +35,7 @@ namespace SCIPA.UI.Object_Manager
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            //Create new model.
             var model = new Models.Rule()
             {
                 DeviceId = _device.Id,
@@ -47,8 +49,18 @@ namespace SCIPA.UI.Object_Manager
                 Name = tName.Text
             };
 
+            //Push to Database.
             var controller = new RuleController();
             _rule = controller.CreateRule(model);
+
+            //Update the global Device object.
+            var devController = new DeviceController();
+            var index = DeviceController.AllDevices.FindIndex(d => d.Id == _device.Id);
+            var allRules = new List<Rule>();
+            allRules.AddRange(_device.Rules);
+            allRules.Add(_rule);
+            _device.Rules = allRules;
+            DeviceController.AllDevices[index] = _device;
         }
 
         private void cbValueType_SelectedIndexChanged(object sender, EventArgs e)

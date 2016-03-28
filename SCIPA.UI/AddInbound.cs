@@ -134,7 +134,7 @@ namespace SCIPA.UI
                     //Id = GetNextIdNumber(),
                     Inbound = true,
                     Type = CommunicatorType.Database,
-                    Action = 
+                    Action = null
                 };
             }
             else if (_communicator is SerialCommunicator)
@@ -152,6 +152,7 @@ namespace SCIPA.UI
                     Device = _device,
                     Inbound = true,
                     Type = CommunicatorType.Serial,
+                    Action = null
                     //Id = GetNextIdNumber()
                 };
             }
@@ -166,6 +167,7 @@ namespace SCIPA.UI
                     Device = _device,
                     Type = CommunicatorType.FlatFile,
                     Inbound = true,
+                    Action = null
                     //Id = GetNextIdNumber()
                 };
             }

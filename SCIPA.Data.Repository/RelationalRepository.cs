@@ -46,7 +46,9 @@ namespace SCIPA.Data.Repository
 
                 // Domain to Data Converstions
                 cfg.CreateMap<DOM.Action, DAL.Action>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    .ForMember(m => m.Rule, opt => opt.Ignore())
+                    .ForMember(m => m.Communicator, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Alarm, DAL.Alarm>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
@@ -55,7 +57,8 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Action, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
@@ -89,19 +92,19 @@ namespace SCIPA.Data.Repository
 
                 // Data to Domain Converstions
                 cfg.CreateMap<DAL.Action, DOM.Action>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+    .ForMember(m => m.Id, opt => opt.Ignore())
+    .ForMember(m => m.Rule, opt => opt.Ignore())
+    .ForMember(m => m.Communicator, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Alarm, DOM.Alarm>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore())
-                    .ForMember(m => m.Value, opt => opt.Ignore())
-                    .ForMember(m => m.Rule, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.AppData, DOM.AppData>();
 
                 cfg.CreateMap<DAL.Communicator, DOM.Communicator>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore())
+                    .ForMember(m => m.Action, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.CommunicatorType, DOM.CommunicatorType>();
 
@@ -115,15 +118,16 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
+                    .ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore())
                     .ForMember(m => m.Action, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.RuleType, DOM.RuleType>();
 
                 cfg.CreateMap<DAL.Value, DOM.Value>()
-                    .ForMember(m => m.Device, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
-                cfg.CreateMap<DAL.ValueType, DOM.ValueType>();
+                cfg.CreateMap<DOM.ValueType, DOM.ValueType>();
 
             }).CreateMapper();
         }
