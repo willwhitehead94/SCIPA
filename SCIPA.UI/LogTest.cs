@@ -99,7 +99,7 @@ namespace SCIPA.UI
             var controller = new DeviceController();
             Device testDev = controller.GetAllDevices().Last();
 
-            AddInbound ai = new AddInbound(testDev);
+            AddCommunicator ai = new AddCommunicator(testDev);
             ai.ShowDialog();
         }
 

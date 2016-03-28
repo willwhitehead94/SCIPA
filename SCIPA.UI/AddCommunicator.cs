@@ -14,13 +14,13 @@ using SCIPA.Models;
 
 namespace SCIPA.UI
 {
-    public partial class AddInbound : Form
+    public partial class AddCommunicator : Form
     {
         private Device _device = null;
         public Communicator _communicator = null;
         private CommunicatorController _controller = new CommunicatorController();
 
-        public AddInbound(Device device)
+        public AddCommunicator(Device device)
         {
             InitializeComponent();
             _device = device;

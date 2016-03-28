@@ -1,6 +1,6 @@
 ﻿namespace SCIPA.UI
 {
-    partial class AddInbound
+    partial class AddCommunicator
     {
         /// <summary>
         /// Required designer variable.

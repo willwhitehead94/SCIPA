@@ -61,11 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddInbound.cs">
+    <Compile Include="AddCommunicator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddInbound.Designer.cs">
-      <DependentUpon>AddInbound.cs</DependentUpon>
+    <Compile Include="AddCommunicator.Designer.cs">
+      <DependentUpon>AddCommunicator.cs</DependentUpon>
     </Compile>
     <Compile Include="Object Manager\AddAction.cs">
       <SubType>Form</SubType>
@@ -111,8 +111,8 @@
     <Compile Include="SetDeviceCommunicators.Designer.cs">
       <DependentUpon>SetDeviceCommunicators.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddInbound.resx">
-      <DependentUpon>AddInbound.cs</DependentUpon>
+    <EmbeddedResource Include="AddCommunicator.resx">
+      <DependentUpon>AddCommunicator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Object Manager\AddAction.resx">
       <DependentUpon>AddAction.cs</DependentUpon>

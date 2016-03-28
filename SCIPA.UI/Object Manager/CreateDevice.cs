@@ -56,7 +56,7 @@ namespace SCIPA.UI
             if (result == DialogResult.Yes)
             {
                 bSave.PerformClick();
-                AddInbound ai = new AddInbound(_device);
+                AddCommunicator ai = new AddCommunicator(_device);
                 ai.ShowDialog();
 
                 var counter = _controller.GetCommunicatorsForDevice(_device.Id).Count(comm => comm.Inbound);

@@ -56,7 +56,7 @@ namespace SCIPA.UI.Object_Manager
                 var devCont = new DeviceController();
                 var device = devCont.RetrieveDevice(_rule.DeviceId);
 
-                var ai = new AddInbound(device);
+                var ai = new AddCommunicator(device);
                 ai.ShowDialog();
                 _comm = ai._communicator;
             }
