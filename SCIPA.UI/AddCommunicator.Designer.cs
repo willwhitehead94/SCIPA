@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddInbound));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCommunicator));
             this.lHeader = new System.Windows.Forms.Label();
             this.tcSourceType = new System.Windows.Forms.TabControl();
             this.tpDatabase = new System.Windows.Forms.TabPage();
@@ -72,11 +72,11 @@
             // 
             // lHeader
             // 
-            this.lHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lHeader.Location = new System.Drawing.Point(28, 20);
+            this.lHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lHeader.Location = new System.Drawing.Point(28, 9);
             this.lHeader.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lHeader.Name = "lHeader";
-            this.lHeader.Size = new System.Drawing.Size(887, 51);
+            this.lHeader.Size = new System.Drawing.Size(887, 93);
             this.lHeader.TabIndex = 0;
             this.lHeader.Text = "Adding a data source for device {0}, \"{1}\".";
             this.lHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             this.tcSourceType.Controls.Add(this.tpDatabase);
             this.tcSourceType.Controls.Add(this.tpFile);
             this.tcSourceType.Controls.Add(this.tpSerial);
-            this.tcSourceType.Location = new System.Drawing.Point(28, 78);
+            this.tcSourceType.Location = new System.Drawing.Point(28, 109);
             this.tcSourceType.Margin = new System.Windows.Forms.Padding(7);
             this.tcSourceType.Name = "tcSourceType";
             this.tcSourceType.SelectedIndex = 0;
@@ -379,7 +379,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 544);
+            this.label3.Location = new System.Drawing.Point(58, 575);
             this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 29);
@@ -389,7 +389,7 @@
             // cbValueType
             // 
             this.cbValueType.FormattingEnabled = true;
-            this.cbValueType.Location = new System.Drawing.Point(329, 538);
+            this.cbValueType.Location = new System.Drawing.Point(329, 569);
             this.cbValueType.Margin = new System.Windows.Forms.Padding(7);
             this.cbValueType.Name = "cbValueType";
             this.cbValueType.Size = new System.Drawing.Size(557, 37);
@@ -397,7 +397,7 @@
             // 
             // tStartChar
             // 
-            this.tStartChar.Location = new System.Drawing.Point(329, 598);
+            this.tStartChar.Location = new System.Drawing.Point(329, 629);
             this.tStartChar.Margin = new System.Windows.Forms.Padding(7);
             this.tStartChar.Name = "tStartChar";
             this.tStartChar.Size = new System.Drawing.Size(478, 35);
@@ -407,7 +407,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 605);
+            this.label5.Location = new System.Drawing.Point(58, 636);
             this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(228, 29);
@@ -416,7 +416,7 @@
             // 
             // tEndChar
             // 
-            this.tEndChar.Location = new System.Drawing.Point(329, 656);
+            this.tEndChar.Location = new System.Drawing.Point(329, 687);
             this.tEndChar.Margin = new System.Windows.Forms.Padding(7);
             this.tEndChar.Name = "tEndChar";
             this.tEndChar.Size = new System.Drawing.Size(478, 35);
@@ -426,7 +426,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 663);
+            this.label6.Location = new System.Drawing.Point(58, 694);
             this.label6.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(236, 29);
@@ -435,7 +435,7 @@
             // 
             // bStartEndHelp
             // 
-            this.bStartEndHelp.Location = new System.Drawing.Point(826, 598);
+            this.bStartEndHelp.Location = new System.Drawing.Point(826, 629);
             this.bStartEndHelp.Margin = new System.Windows.Forms.Padding(7);
             this.bStartEndHelp.Name = "bStartEndHelp";
             this.bStartEndHelp.Size = new System.Drawing.Size(65, 103);
@@ -444,7 +444,7 @@
             this.bStartEndHelp.UseVisualStyleBackColor = true;
             this.bStartEndHelp.Click += new System.EventHandler(this.bStartEndHelp_Click);
             // 
-            // AddInbound
+            // AddCommunicator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -464,7 +464,7 @@
             this.Margin = new System.Windows.Forms.Padding(7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddInbound";
+            this.Name = "AddCommunicator";
             this.Text = "Add Data Source";
             this.Load += new System.EventHandler(this.AddInbound_Load);
             this.tcSourceType.ResumeLayout(false);

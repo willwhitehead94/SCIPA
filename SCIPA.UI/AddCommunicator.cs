@@ -19,16 +19,20 @@ namespace SCIPA.UI
         private Device _device = null;
         public Communicator _communicator = null;
         private CommunicatorController _controller = new CommunicatorController();
+        private bool _inbound = false;
 
-        public AddCommunicator(Device device)
+        public AddCommunicator(Device device, bool inbound)
         {
             InitializeComponent();
             _device = device;
+            _inbound = inbound;
         }
 
         private void AddInbound_Load(object sender, EventArgs e)
         {
-            lHeader.Text = string.Format(lHeader.Text, _device.Id.ToString(), _device.Name);
+            var type = _inbound ? "inbound" : "outbound";
+            lHeader.Text = $"Creating new communicator for Device #{_device.Id} ({_device.Name}) on the {type}.";
+
             cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
             cbDBType.DataSource = Enum.GetValues(typeof (DatabaseType));
             bReloadSerialCommList.PerformClick();
@@ -132,7 +136,7 @@ namespace SCIPA.UI
                     EndChar = GetEndChar(),
                     Device = _device,
                     //Id = GetNextIdNumber(),
-                    Inbound = true,
+                    Inbound = _inbound,
                     Type = CommunicatorType.Database,
                     Action = null
                 };
@@ -150,7 +154,7 @@ namespace SCIPA.UI
                     IsDTR = cDTR.Checked,
                     IsRTS = cRTS.Checked,
                     Device = _device,
-                    Inbound = true,
+                    Inbound = _inbound,
                     Type = CommunicatorType.Serial,
                     Action = null
                     //Id = GetNextIdNumber()
@@ -166,7 +170,7 @@ namespace SCIPA.UI
                     EndChar = GetEndChar(),
                     Device = _device,
                     Type = CommunicatorType.FlatFile,
-                    Inbound = true,
+                    Inbound = _inbound,
                     Action = null
                     //Id = GetNextIdNumber()
                 };
