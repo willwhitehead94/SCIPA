@@ -29,17 +29,40 @@ namespace SCIPA.Data.MongoLayer
         /// </summary>
         private static IMongoDatabase _db = null;
 
+        private static bool _mongoAccessible = false;
+
         /// <summary>
         /// Constructor automatically attempts to connect to the local
         /// MongoDb instance and sets the local variables to that effect.
         /// </summary>
         public DataController()
         {
-            //Connect to the local MongoDB instance.
-            if (_client == null) _client =new MongoClient(ConnectionString);
+            try
+            {
+                //Connect to the local MongoDB instance.
+                if (_client == null) _client = new MongoClient(ConnectionString);
 
-            //Access the SCIPA database on the server.
-            if (_db == null) _db = _client.GetDatabase("SCIPA");
+                //Access the SCIPA database on the server.
+                if (_db == null) _db = _client.GetDatabase("SCIPA");
+
+                if (_db != null)
+                {
+                    DebugOutput.Print("Connected to MongoDB.");
+                    _mongoAccessible = true;
+                    return;
+                }
+
+                //If Mongo instance cannot be verified as success, ignore calls to it until next connection.
+                _mongoAccessible = false;
+                DebugOutput.Print($"Could not connect to MongoDB. Ensure the the Mongo Daemon (Mongod.exe) is running!");
+            }
+            catch (Exception)
+            {
+                //Could not access the Mongo instance.
+                //Ignore any attempt to use the database.
+                _mongoAccessible = false;
+            }
+
         }
 
         /// <summary>
@@ -48,6 +71,7 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="value"></param>
         public void AddNewValue(Value value)
         {
+            if (!_mongoAccessible) return;
             try
             {
                 _db.GetCollection<Value>("Values").InsertOne(value);
@@ -56,7 +80,8 @@ namespace SCIPA.Data.MongoLayer
             }
             catch (Exception e)
             {
-                DebugOutput.Print($"Could not store Value {value.ValueId}'s value ({value.StringValue}) in MongoDb. ",e.Message);
+                DebugOutput.Print(
+                    $"Could not store Value {value.ValueId}'s value ({value.StringValue}) in MongoDb. ", e.Message);
             }
         }
 
@@ -82,7 +107,6 @@ namespace SCIPA.Data.MongoLayer
             };
         }
 
-
         /// <summary>
         /// Repalces the current Device in the database with the parametised Device's ID
         /// with the parametised Device.
@@ -90,6 +114,9 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="device"></param>
         public void UpdateDevice(Device device)
         {
+            //If Mongo unaccessible, ignore!
+            if (!_mongoAccessible) return;
+
             var collection = _db.GetCollection<Process>("ProcessData");
             var filter = Builders<Process>.Filter.Eq("DeviceId", device.Id);
             var result = collection.Find(filter).ToList();
@@ -116,6 +143,9 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="device"></param>
         public void AddNewDevice(Device device)
         {
+            //If Mongo unaccessible, ignore!
+            if (!_mongoAccessible) return;
+
             var processObj = new Process()
             {
                 ObjectId = ObjectId.GenerateNewId(),
@@ -136,6 +166,9 @@ namespace SCIPA.Data.MongoLayer
         /// <param name="data"></param>
         private void PushProcessData(Value data)
         {
+            //If Mongo unaccessible, ignore!
+            if (!_mongoAccessible) return;
+
             //Merges all values then replaces the entire document.
             var collection = _db.GetCollection<Process>("ProcessData");
             var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
@@ -155,6 +188,9 @@ namespace SCIPA.Data.MongoLayer
         /// </summary>
         private void PushProcessData(Process data, Value newValue = null)
         {
+            //If Mongo unaccessible, ignore!
+            if (!_mongoAccessible) return;
+
             //Merges all values then replaces the entire document.
             var collection = _db.GetCollection<Process>("ProcessData");
             var filter = Builders<Process>.Filter.Eq("DeviceId", data.DeviceId);
