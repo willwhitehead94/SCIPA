@@ -133,7 +133,8 @@ namespace SCIPA.UI
                     Device = _device,
                     //Id = GetNextIdNumber(),
                     Inbound = true,
-                    Type = CommunicatorType.Database
+                    Type = CommunicatorType.Database,
+                    Action = 
                 };
             }
             else if (_communicator is SerialCommunicator)

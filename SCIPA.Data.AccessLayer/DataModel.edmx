@@ -420,7 +420,7 @@
           <Property Name="Accepted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="ActionCommunicator">
-          <End Type="DataModel.Action" Role="Action" Multiplicity="1" />
+          <End Type="DataModel.Action" Role="Action" Multiplicity="0..1" />
           <End Type="DataModel.Communicator" Role="Communicator" Multiplicity="1" />
         </Association>
       </Schema>
