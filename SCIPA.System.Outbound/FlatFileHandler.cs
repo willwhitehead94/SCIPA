@@ -6,6 +6,9 @@ using SCIPA.Domain.Generic;
 
 namespace SCIPA.Domain.Outbound
 {
+    /// <summary>
+    /// Flat file variant of the Handler class for outbound data.
+    /// </summary>
     public class FlatFileHandler : DataHandler
     {
         /// <summary>

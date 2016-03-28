@@ -14,6 +14,9 @@ using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Outbound
 {
+    /// <summary>
+    /// Serial variant of the Handler class for outbound data.
+    /// </summary>
     public class SerialDataHandler:DataHandler
     {
         /// <summary>

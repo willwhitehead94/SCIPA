@@ -5,6 +5,9 @@ using SCIPA.Domain.Logic;
 
 namespace SCIPA.Domain.Outbound
 {
+    /// <summary>
+    /// Database variant of the Handler class for outbound data.
+    /// </summary>
     public class DatabaseHandler:DataHandler
     {
         /// <summary>

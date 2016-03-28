@@ -5,6 +5,9 @@ using SCIPA.Models;
 
 namespace SCIPA.Domain.Outbound
 {
+    /// <summary>
+    /// Abstract parent of the Handler classes for outbound data.
+    /// </summary>
     public abstract class DataHandler
     {
         /// <summary>
