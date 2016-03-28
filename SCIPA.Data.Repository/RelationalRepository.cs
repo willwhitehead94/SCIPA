@@ -11,6 +11,11 @@ using DOM = SCIPA.Models;
 
 namespace SCIPA.Data.Repository
 {
+    /// <summary>
+    /// Application facing class for the relational database. Allows the application to interact
+    /// with the SQL database without any requirement of repeated knowledge as to the 
+    /// collection, the documents or the entities used within it.
+    /// </summary>
     public class RelationalRepository : IRelationalRepository
     {
         /// <summary>

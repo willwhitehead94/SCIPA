@@ -4,6 +4,10 @@ using DOM = SCIPA.Models; //Domain Layer Models
 
 namespace SCIPA.Data.Repository
 {
+    /// <summary>
+    /// If AutoMapper cannot be used, this Converter class could be used 
+    /// to handle conversions between Domain and Data models.
+    /// </summary>
     public class Converter : IConverter
     {
         public DAL.Device ConvertToData(DOM.Device domainModel)

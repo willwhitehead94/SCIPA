@@ -3,6 +3,9 @@ using DAL = SCIPA.Data.AccessLayer;
 
 namespace SCIPA.Data.Repository
 {
+    /// <summary>
+    /// Interface for the Converter class.
+    /// </summary>
     public interface IConverter
     {
         DAL.Device ConvertToData(DOM.Device domainModel);

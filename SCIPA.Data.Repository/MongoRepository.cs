@@ -4,6 +4,11 @@ using MON = SCIPA.Data.MongoLayer;
 
 namespace SCIPA.Data.Repository
 {
+    /// <summary>
+    /// Application facing class for the MongoDB. Allows the application to interact
+    /// with the Mongo database without any requirement of repeated knowledge as to the 
+    /// collection, the documents or the entities used within it.
+    /// </summary>
     public class MongoRepository : IMongoRepository
     {
         /// <summary>

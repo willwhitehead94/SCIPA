@@ -5,6 +5,9 @@ using DOM = SCIPA.Models; //Domain Layer Models
 
 namespace SCIPA.Data.Repository
 {
+    /// <summary>
+    /// Interface for the Relational Database Repository.
+    /// </summary>
     public interface IRelationalRepository
     {
         DOM.Device CreateDevice(DOM.Device device);
