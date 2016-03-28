@@ -7,12 +7,26 @@ using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
 {
+    /// <summary>
+    /// Controller class for all Device objects within the application.
+    /// </summary>
     public class DeviceController
     {
+        /// <summary>
+        /// Static list available application wide of all known Device objects.
+        /// </summary>
         public static List<Device> AllDevices = new List<Device>();
 
+        /// <summary>
+        /// Local access to the SQL Database repository.
+        /// </summary>
         private readonly IRelationalRepository _repo = new RelationalRepository();
 
+        /// <summary>
+        /// Returns a list of all Devices to the caller.
+        /// </summary>
+        /// <param name="refresh"></param>
+        /// <returns></returns>
         public IEnumerable<Device> GetAllDevices(bool refresh=false)
         {
             if (AllDevices == null || AllDevices.Count == 0) refresh = true;
@@ -29,6 +43,10 @@ namespace SCIPA.Domain.Logic
             return AllDevices;
         }
 
+        /// <summary>
+        /// Returns the current highest ID number on the database.
+        /// </summary>
+        /// <returns></returns>
         public int CurrentMaxId()
         {
             try
@@ -44,6 +62,15 @@ namespace SCIPA.Domain.Logic
             
         }
 
+        /// <summary>
+        /// Basic converter for each param into a single Device object.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="location"></param>
+        /// <param name="custodian"></param>
+        /// <param name="enabled"></param>
+        /// <returns></returns>
         public Device GetDeviceObject(int id, string name, string location, string custodian, bool enabled)
         {
             return new Device()
@@ -56,6 +83,12 @@ namespace SCIPA.Domain.Logic
             };
         }
 
+        /// <summary>
+        /// Takes a Device object and posts it to the SQL Server database.
+        /// This, in turn, casuses the next avaliable Mongo instance to be updated also.
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public Device SaveDevice(Device device)
         {
             bool devExists = _repo.RetrieveDevice(device.Id) != null;
@@ -76,6 +109,11 @@ namespace SCIPA.Domain.Logic
             catch (Exception e) { DebugOutput.Print("Device creation failed.", e.Message); return null; }
         }
 
+        /// <summary>
+        /// Returns a single device via the parametised ID number.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Device RetrieveDevice(int id)
         {
             var dev = _repo.RetrieveDevice(id);
@@ -83,6 +121,12 @@ namespace SCIPA.Domain.Logic
             return dev;
         }
 
+        /// <summary>
+        /// Returns a list of Communicator objects for the given Device via the
+        /// parametised Device ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IEnumerable<Communicator> GetCommunicatorsForDevice(int id)
         {
             CommunicatorController commCont = new CommunicatorController();

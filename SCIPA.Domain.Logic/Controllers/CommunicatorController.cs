@@ -7,8 +7,14 @@ using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
 {
+    /// <summary>
+    /// Controller class for all Communicator objects within the application.
+    /// </summary>
     public class CommunicatorController
     {
+        /// <summary>
+        /// Local access to the SQL Database repository.
+        /// </summary>
         private readonly IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
@@ -38,6 +44,10 @@ namespace SCIPA.Domain.Logic
             return _repo.RetrieveAllCommunicators().Where(comm => comm.Type == CommunicatorType.Serial).ToList();
         }
 
+        /// <summary>
+        /// Retrieves a list of all Communicators and returns it to the caller.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Communicator> GetAllCommunicators()
         {
             return _repo.RetrieveAllCommunicators();
@@ -82,6 +92,11 @@ namespace SCIPA.Domain.Logic
             return dbValue;
         }
 
+        /// <summary>
+        /// Saves the new Communicator object on the database.
+        /// </summary>
+        /// <param name="generalComm"></param>
+        /// <returns></returns>
         public int? SaveCommunicator(Communicator generalComm)
         {
             if (generalComm.Id == 0)

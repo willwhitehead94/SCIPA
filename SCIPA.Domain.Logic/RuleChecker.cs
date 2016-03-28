@@ -9,6 +9,9 @@ using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
 {
+    /// <summary>
+    /// This class is used to check values against any Rules that may be in place for the device.
+    /// </summary>
     public class RuleChecker
     {
         /// <summary>
@@ -20,10 +23,6 @@ namespace SCIPA.Domain.Inbound
         /// Instance of the RuleController class.
         /// </summary>
         private RuleController _controller = new RuleController();
-
-        public RuleChecker()
-        {
-        }
 
         /// <summary>
         /// Check each Rule for the given Device and "TakeAction" where neccessary.
@@ -39,6 +38,13 @@ namespace SCIPA.Domain.Inbound
             foreach (var rule in applicableRules.Where(rule => CriteraMet(rule, value))) TakeAction(rule,value);
         }
 
+        /// <summary>
+        /// Determines whether or not the Rule's criteria has been met depending on the values selected by the
+        /// Rule.
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private bool CriteraMet(Rule rule, Value value)
         {
             //Prepare an error message to show if rule checking fails.

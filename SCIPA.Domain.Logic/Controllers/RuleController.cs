@@ -5,6 +5,9 @@ using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
 {
+    /// <summary>
+    /// Controller class for all Rule objects within the application.
+    /// </summary>
     public class RuleController
     {
         /// <summary>
@@ -26,6 +29,10 @@ namespace SCIPA.Domain.Logic
         /// </summary>
         private static IRelationalRepository _repo = new RelationalRepository();
 
+        /// <summary>
+        /// Returns a list of all known Rule objects to the caller.
+        /// </summary>
+        /// <returns></returns>
         public static ICollection<Rule> GetAllRules()
         {
             UpdateRuleCollection();
@@ -60,6 +67,11 @@ namespace SCIPA.Domain.Logic
             return newObj;
         }
 
+        /// <summary>
+        /// Returns a single Rule object via it's ID number.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Rule RetrieveRuleById(int id)
         {
             if (_rules == null || _rules.Count ==0)
@@ -71,6 +83,12 @@ namespace SCIPA.Domain.Logic
             return _rules.FirstOrDefault(r => r.Id == id);
         }
 
+        /// <summary>
+        /// Returns a list of Rules that are associated with 
+        /// a given Device via the Device ID.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public IEnumerable<Rule> RetrieveRulesForDevice(int deviceId)
         {
             if (_rules == null || _rules.Count == 0)
@@ -82,12 +100,21 @@ namespace SCIPA.Domain.Logic
             return _rules.Where(r => r.DeviceId == deviceId);
         }
 
+        /// <summary>
+        /// Updates a Rule that already exists on the database.
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
         public Rule UpdateRule(Rule rule)
         {
             return rule;
         }
 
-
+        /// <summary>
+        /// Used during development, this method simply returns the newest 
+        /// Rule on the database.
+        /// </summary>
+        /// <returns></returns>
         public Rule TestMethod_GetLatestRule()
         {
             UpdateRuleCollection();
