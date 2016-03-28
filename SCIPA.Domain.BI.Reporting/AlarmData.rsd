@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>SCIPADatabase</DataSourceReference>
+      <CommandText>SELECT Alarms.Id AS AlarmId, Alarms.TimeStamp, Devices.Id AS DeviceId, Devices.Name AS DeviceName, Rules.Id AS RuleId, Rules.Name AS RuleName, [Values].Id AS ValueId, [Values].Inbound, [Values].IntegerValue, [Values].FloatValue, [Values].BooleanValue, [Values].StringValue, Alarms.Accepted AS AlarmAccepted
+FROM   Alarms INNER JOIN
+          Devices ON Alarms.Id = Devices.Id INNER JOIN
+          Rules ON Devices.Id = Rules.DeviceId INNER JOIN
+          [Values] ON Alarms.Id = [Values].Id</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="AlarmId">
+        <DataField>AlarmId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TimeStamp">
+        <DataField>TimeStamp</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="DeviceId">
+        <DataField>DeviceId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="DeviceName">
+        <DataField>DeviceName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RuleId">
+        <DataField>RuleId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="RuleName">
+        <DataField>RuleName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ValueId">
+        <DataField>ValueId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Inbound">
+        <DataField>Inbound</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="IntegerValue">
+        <DataField>IntegerValue</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="FloatValue">
+        <DataField>FloatValue</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="BooleanValue">
+        <DataField>BooleanValue</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="StringValue">
+        <DataField>StringValue</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AlarmAccepted">
+        <DataField>AlarmAccepted</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

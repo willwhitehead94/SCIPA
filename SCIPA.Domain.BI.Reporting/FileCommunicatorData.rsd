@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>SCIPADatabase</DataSourceReference>
+      <CommandText>SELECT Communicators.Id, Communicators.StartChar, Communicators.EndChar, Communicators.LastReadTime, Communicators.Type, Communicators.ValueType, Communicators.Inbound, Communicators_FileCommunicator.FilePath, Communicators.Device_Id
+FROM   Communicators INNER JOIN
+          Communicators_FileCommunicator ON Communicators.Id = Communicators_FileCommunicator.Id</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Id">
+        <DataField>Id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="StartChar">
+        <DataField>StartChar</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="EndChar">
+        <DataField>EndChar</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="LastReadTime">
+        <DataField>LastReadTime</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Type">
+        <DataField>Type</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="ValueType">
+        <DataField>ValueType</DataField>
+        <rd:TypeName>System.Int16</rd:TypeName>
+      </Field>
+      <Field Name="Inbound">
+        <DataField>Inbound</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="FilePath">
+        <DataField>FilePath</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Device_Id">
+        <DataField>Device_Id</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

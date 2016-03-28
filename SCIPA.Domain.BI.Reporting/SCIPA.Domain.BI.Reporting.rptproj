@@ -7,15 +7,36 @@
       <FullPath>SCIPADatabase.rds</FullPath>
     </ProjectItem>
   </DataSources>
-  <DataSets />
-  <Reports>
+  <DataSets>
     <ProjectItem>
-      <Name>DeviceValuesReport.rdl</Name>
-      <FullPath>DeviceValuesReport.rdl</FullPath>
+      <Name>AlarmData.rsd</Name>
+      <FullPath>AlarmData.rsd</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>DeviceData.rsd</Name>
+      <FullPath>DeviceData.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DatabaseCommunicatorData.rsd</Name>
+      <FullPath>DatabaseCommunicatorData.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>FileCommunicatorData.rsd</Name>
+      <FullPath>FileCommunicatorData.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SerialCommunicatorData.rsd</Name>
+      <FullPath>SerialCommunicatorData.rsd</FullPath>
+    </ProjectItem>
+  </DataSets>
+  <Reports>
     <ProjectItem>
       <Name>DeviceValuesOverview.rdl</Name>
       <FullPath>DeviceValuesOverview.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DeviceValuesReport.rdl</Name>
+      <FullPath>DeviceValuesReport.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>
