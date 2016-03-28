@@ -9,6 +9,14 @@ using System.Threading.Tasks;
 
 namespace SCIPA.Domain.Generic
 {
+    /// <summary>
+    /// DebugOutput is a globally accessible class that prints debug messages to both the 
+    /// Debug console and the Log File. The Log File can be used to find issues after-the-face,
+    /// and to improve the design of process loops.
+    /// 
+    /// The debugger process runs within it's own thread (as part of the thread pool) so as not 
+    /// to interfere with application at run time.
+    /// </summary>
     public static class DebugOutput
     {
         /// <summary>
@@ -73,6 +81,12 @@ namespace SCIPA.Domain.Generic
             //While this is the only printer, there is something to print, and the file is available
             while (_printingToLog)
             {
+                /*
+                * Following the latest writing of output messages, 200ms delay gives OS
+                * time to access the file for indexing operations if required.
+                */
+                Thread.Sleep(200);
+
                 //Inform all that the log is currently in use
                 _printingToLog = true;
 
@@ -82,17 +96,24 @@ namespace SCIPA.Domain.Generic
                     var message = _logQueue.Dequeue();
                     Debug.WriteLine(message);
 
-                    //Attempt to print to file; on fail, print only to the Debug console
-                    try { File.AppendAllText(_logPath, message + Environment.NewLine); }
-                    catch (IOException ioe) { Debug.WriteLine("IO Error accessing the log! ", ioe.Message); }
-                    catch { Debug.WriteLine("General exception occured writing to log..."); }
-                }
+                    //If the Application Configuration file has disabled Outputting data to the log,
+                    //move on without storing to the file.
+                    if (!Configuration.OutputToLogFile) continue;
 
-                /*
-                * Following the latest writing of output messages, 200ms delay gives OS
-                * time to access the file for indexing operations if required.
-                */            
-                Thread.Sleep(200);
+                    //Attempt to print to file; on fail, print only to the Debug console
+                    try
+                    {
+                        File.AppendAllText(_logPath, message + Environment.NewLine);
+                    }
+                    catch (IOException ioe)
+                    {
+                        Debug.WriteLine("IO Error accessing the log! ", ioe.Message);
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("General exception occured writing to log...");
+                    }
+                }
             }
         }
     }
