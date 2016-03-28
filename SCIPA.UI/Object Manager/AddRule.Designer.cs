@@ -179,6 +179,7 @@
             this.bSetAction.TabIndex = 19;
             this.bSetAction.Text = "Set Action";
             this.bSetAction.UseVisualStyleBackColor = true;
+            this.bSetAction.Click += new System.EventHandler(this.bSetAction_Click);
             // 
             // bSave
             // 

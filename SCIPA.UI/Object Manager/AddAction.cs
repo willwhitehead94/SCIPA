@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SCIPA.Domain.Logic;
+using Action = SCIPA.Models.Action;
 
 namespace SCIPA.UI.Object_Manager
 {
@@ -85,6 +86,11 @@ namespace SCIPA.UI.Object_Manager
                 _action = controller.CreateAction(_action);
                 if (_action.Id > 0) System.Windows.Forms.MessageBox.Show("Success!");
             }
+        }
+
+        public Action GetAction()
+        {
+            return _action;
         }
     }
 }

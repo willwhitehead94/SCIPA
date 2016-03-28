@@ -17,6 +17,7 @@ namespace SCIPA.UI.Object_Manager
     {
         private Device _device;
         private Models.Rule _rule;
+        private Models.Action _action;
 
         public AddRule(Device device)
         {
@@ -90,6 +91,15 @@ namespace SCIPA.UI.Object_Manager
 
             //Refresh the ComboBox.
             cbRuleType.Refresh();
+        }
+
+        private void bSetAction_Click(object sender, EventArgs e)
+        {
+            var addAction = new AddAction(_rule);
+            addAction.ShowDialog();
+            bSetAction.Text = "Action set!";
+            bSetAction.Enabled = false;
+            _action = addAction.GetAction();
         }
     }
 }
