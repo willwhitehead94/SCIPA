@@ -54,7 +54,7 @@
     <Property Name="RuleId" Type="int" Nullable="false" />
     <Property Name="CommunicatorId" Type="int" Nullable="false" />
     <Property Name="Enabled" Type="bit" Nullable="false" />
-    <Property Name="Rule_Id" Type="int" Nullable="false" />
+    <Property Name="Rule_Id" Type="int" Nullable="true" />
     <Property Name="Communicator_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Communicators">
@@ -179,7 +179,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="RuleAction">
-    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="1" />
+    <End Role="Rule" Type="DataModel.Store.Rules" Multiplicity="0..1" />
     <End Role="Action" Type="DataModel.Store.Actions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Rule">
@@ -405,7 +405,7 @@
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
         <Association Name="RuleAction">
-          <End Type="DataModel.Rule" Role="Rule" Multiplicity="1" />
+          <End Type="DataModel.Rule" Role="Rule" Multiplicity="0..1" />
           <End Type="DataModel.Action" Role="Action" Multiplicity="0..1" />
         </Association>
         <EntityType Name="Alarm">
@@ -554,6 +554,7 @@
       <EndProperty Name="Action">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Rule_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="ActionCommunicator" TypeName="DataModel.ActionCommunicator" StoreEntitySet="Actions">
       <EndProperty Name="Communicator">

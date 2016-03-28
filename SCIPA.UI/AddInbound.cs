@@ -17,7 +17,7 @@ namespace SCIPA.UI
     public partial class AddInbound : Form
     {
         private Device _device = null;
-        private Communicator _communicator = null;
+        public Communicator _communicator = null;
         private CommunicatorController _controller = new CommunicatorController();
 
         public AddInbound(Device device)

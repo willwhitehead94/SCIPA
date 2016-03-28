@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Actions are used to output set data upon the criteria of a Rule being met for a given Device. For example, a Rule could be that any Value from a given Device that is greater than a certain amount requires SCIPA to output a string to a text file.</value>
+  </data>
 </root>

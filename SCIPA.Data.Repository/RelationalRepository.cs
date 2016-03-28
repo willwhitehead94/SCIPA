@@ -224,10 +224,17 @@ namespace SCIPA.Data.Repository
         /// Creates a new Action object within the database.
         /// </summary>
         /// <param name="action"></param>
-        public void CreateAction(DOM.Action action)
+        public DOM.Action CreateAction(DOM.Action action)
         {
-            _db.Actions.Add(_mapper.Map(action, new DAL.Action()));
+            var dbVal = (_mapper.Map(action, new DAL.Action()));
+            var rule = _mapper.Map(action.Rule, new DAL.Rule());
+            dbVal.Rule = rule;
+            _db.Entry(dbVal.Rule).State=EntityState.Unchanged;
+
+            _db.Actions.Add(dbVal);
             _db.SaveChanges();
+
+            return _mapper.Map(dbVal, new DOM.Action());
         }
 
         /// <summary>
@@ -265,14 +272,15 @@ namespace SCIPA.Data.Repository
         /// the parammetised Domain model.
         /// </summary>
         /// <param name="action">Domain model to update.</param>
-        public void UpdateAction(DOM.Action action)
+        public DOM.Action UpdateAction(DOM.Action action)
         {
             var dbValue = RetrieveAction(action.Id);
-            if (dbValue == null) return;
+            if (dbValue == null) return null;
 
             _mapper.Map(action, dbValue);
             _db.Entry(dbValue).State = EntityState.Modified;
             _db.SaveChanges();
+            return _mapper.Map(dbValue, new DOM.Action());
         }
 
         /// <summary>

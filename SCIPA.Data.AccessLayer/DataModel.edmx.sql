@@ -1,8 +1,8 @@
-
+Up
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/28/2016 15:45:04
+-- Date Created: 03/28/2016 17:30:32
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE [dbo].[Actions] (
     [RuleId] int  NOT NULL,
     [CommunicatorId] int  NOT NULL,
     [Enabled] bit  NOT NULL,
-    [Rule_Id] int  NOT NULL,
+    [Rule_Id] int  NULL,
     [Communicator_Id] int  NOT NULL
 );
 GO

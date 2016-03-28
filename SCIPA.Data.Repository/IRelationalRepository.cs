@@ -19,7 +19,7 @@ namespace SCIPA.Data.Repository
 
         DOM.Device CreateOrUpdateDevice(Models.Device device);
 
-        void CreateAction(DOM.Action action);
+        DOM.Action CreateAction(DOM.Action action);
 
         DOM.Action RetrieveAction(int id);
 
@@ -27,7 +27,7 @@ namespace SCIPA.Data.Repository
 
         IEnumerable<DOM.Action> RetrieveAllActions();
 
-        void UpdateAction(DOM.Action action);
+        DOM.Action UpdateAction(DOM.Action action);
 
         void DeleteAction(DOM.Action action);
 
