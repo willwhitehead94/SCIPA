@@ -1,8 +1,8 @@
-Up
+
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/28/2016 17:30:32
+-- Date Created: 03/28/2016 17:36:05
 -- Generated from EDMX file: C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Data.AccessLayer\DataModel.edmx
 -- --------------------------------------------------
 
@@ -85,8 +85,7 @@ CREATE TABLE [dbo].[Actions] (
     [RuleId] int  NOT NULL,
     [CommunicatorId] int  NOT NULL,
     [Enabled] bit  NOT NULL,
-    [Rule_Id] int  NULL,
-    [Communicator_Id] int  NOT NULL
+    [Rule_Id] int  NULL
 );
 GO
 
@@ -99,7 +98,8 @@ CREATE TABLE [dbo].[Communicators] (
     [Type] smallint  NOT NULL,
     [ValueType] smallint  NOT NULL,
     [Inbound] bit  NOT NULL,
-    [Device_Id] int  NOT NULL
+    [Device_Id] int  NOT NULL,
+    [Action_Id] int  NULL
 );
 GO
 
@@ -300,19 +300,19 @@ ON [dbo].[Actions]
     ([Rule_Id]);
 GO
 
--- Creating foreign key on [Communicator_Id] in table 'Actions'
-ALTER TABLE [dbo].[Actions]
+-- Creating foreign key on [Action_Id] in table 'Communicators'
+ALTER TABLE [dbo].[Communicators]
 ADD CONSTRAINT [FK_ActionCommunicator]
-    FOREIGN KEY ([Communicator_Id])
-    REFERENCES [dbo].[Communicators]
+    FOREIGN KEY ([Action_Id])
+    REFERENCES [dbo].[Actions]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ActionCommunicator'
 CREATE INDEX [IX_FK_ActionCommunicator]
-ON [dbo].[Actions]
-    ([Communicator_Id]);
+ON [dbo].[Communicators]
+    ([Action_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Communicators_FileCommunicator'

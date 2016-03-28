@@ -39,6 +39,7 @@ namespace SCIPA.Domain.Logic
         private static void UpdateRuleCollection()
         {
             if (!UpdateRequired) return;
+            _rules.Clear();
             _rules = _repo.RetrieveAllRules().ToList();
             UpdateRequired = false;
         }
@@ -90,6 +91,13 @@ namespace SCIPA.Domain.Logic
         public Rule TestMethod_GetLatestRule()
         {
             UpdateRuleCollection();
+            if (_rules.Where(r => r.Id == 0).Any())
+            {
+                //dont want 0 IDs
+                UpdateRequired = true;
+                UpdateRuleCollection();
+            }
+
             return _rules.Last();
         }
     }

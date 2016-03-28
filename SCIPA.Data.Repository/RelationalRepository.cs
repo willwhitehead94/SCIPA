@@ -118,7 +118,7 @@ namespace SCIPA.Data.Repository
                     .ForMember(m => m.Rules, opt => opt.Ignore());
 
                 cfg.CreateMap<DAL.Rule, DOM.Rule>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
+                    //.ForMember(m => m.Id, opt => opt.Ignore())
                     .ForMember(m => m.Device, opt => opt.Ignore())
                     .ForMember(m => m.Action, opt => opt.Ignore());
 
@@ -229,7 +229,11 @@ namespace SCIPA.Data.Repository
             var dbVal = (_mapper.Map(action, new DAL.Action()));
             var rule = _mapper.Map(action.Rule, new DAL.Rule());
             dbVal.Rule = rule;
-            _db.Entry(dbVal.Rule).State=EntityState.Unchanged;
+            _db.Entry(dbVal.Rule).State=EntityState.Modified;
+
+            var comm = ConvertDOMCommunicatorToDAL(action.Communicator);
+            dbVal.Communicator = comm;
+            _db.Entry(dbVal.Communicator).State = EntityState.Modified;
 
             _db.Actions.Add(dbVal);
             _db.SaveChanges();
@@ -695,6 +699,28 @@ namespace SCIPA.Data.Repository
                     return (_mapper.Map(communicator, new DOM.SerialCommunicator()));
                 case DAL.CommunicatorType.FlatFile:
                     return (_mapper.Map(communicator, new DOM.FileCommunicator()));
+                default:
+                    DebugOutput.Print("Unable to convert/understand Communicator...", communicator.Id.ToString());
+                    return null;
+            }
+        }
+
+
+        /// <summary>
+        /// Converts a single DOM Communicator to DAL.
+        /// </summary>
+        /// <param name="communicator">DOM Communicator.</param>
+        /// <returns>DAL Communicator.</returns>
+        private DAL.Communicator ConvertDOMCommunicatorToDAL(DOM.Communicator communicator)
+        {
+            switch (communicator.Type)
+            {
+                case DOM.CommunicatorType.Database:
+                    return (_mapper.Map(communicator, new DAL.DatabaseCommunicator()));
+                case DOM.CommunicatorType.Serial:
+                    return (_mapper.Map(communicator, new DAL.SerialCommunicator()));
+                case DOM.CommunicatorType.FlatFile:
+                    return (_mapper.Map(communicator, new DAL.FileCommunicator()));
                 default:
                     DebugOutput.Print("Unable to convert/understand Communicator...", communicator.Id.ToString());
                     return null;
