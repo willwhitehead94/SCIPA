@@ -263,15 +263,7 @@
             <End Role="Rule" EntitySet="Rules" />
           </AssociationSet>
           <EntitySet Name="AppData" EntityType="DataModel.AppData" />
-          <AssociationSet Name="RuleAction" Association="DataModel.RuleAction">
-            <End EntitySet="Rules" Role="Rule" />
-            <End EntitySet="Actions" Role="Action" />
-          </AssociationSet>
           <EntitySet Name="Alarms" EntityType="DataModel.Alarm" />
-          <AssociationSet Name="ActionCommunicator" Association="DataModel.ActionCommunicator">
-            <End EntitySet="Actions" Role="Action" />
-            <End EntitySet="Communicators" Role="Communicator" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Action">
           <Key>
@@ -279,11 +271,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OutputValue" Type="String" Nullable="false" />
-          <NavigationProperty Name="Rule" Relationship="DataModel.RuleAction" FromRole="Action" ToRole="Rule" />
           <Property Name="RuleId" Type="Int32" Nullable="false" />
           <Property Name="CommunicatorId" Type="Int32" Nullable="false" />
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Communicator" Relationship="DataModel.ActionCommunicator" FromRole="Action" ToRole="Communicator" />
         </EntityType>
         <EntityType Name="Communicator" Abstract="true">
           <Key>
@@ -297,7 +287,6 @@
           <Property Name="Type" Type="DataModel.CommunicatorType" Nullable="false" />
           <Property Name="ValueType" Type="DataModel.ValueType" Nullable="false" />
           <Property Name="Inbound" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Action" Relationship="DataModel.ActionCommunicator" FromRole="Communicator" ToRole="Action" />
         </EntityType>
         <EntityType Name="FileCommunicator" BaseType="DataModel.Communicator" >
           <Property Name="FilePath" Type="String" Nullable="false" />
@@ -337,7 +326,6 @@
           <Property Name="RuleType" Type="DataModel.RuleType" Nullable="false" />
           <Property Name="Constraint" Type="String" Nullable="false" />
           <Property Name="Alarm" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Action" Relationship="DataModel.RuleAction" FromRole="Rule" ToRole="Action" />
         </EntityType>
         <EntityType Name="Value">
           <Key>
@@ -404,10 +392,6 @@
           <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <Property Name="Instance" Type="Guid" Nullable="false" />
         </EntityType>
-        <Association Name="RuleAction">
-          <End Type="DataModel.Rule" Multiplicity="0..1" Role="Rule" />
-          <End Type="DataModel.Action" Multiplicity="0..1" Role="Action" />
-        </Association>
         <EntityType Name="Alarm">
           <Key>
             <PropertyRef Name="Id" />
@@ -419,10 +403,6 @@
           <Property Name="RuleId" Type="Int32" Nullable="false" />
           <Property Name="Accepted" Type="Boolean" Nullable="false" />
         </EntityType>
-        <Association Name="ActionCommunicator">
-          <End Type="DataModel.Action" Multiplicity="0..1" Role="Action" />
-          <End Type="DataModel.Communicator" Multiplicity="0..1" Role="Communicator" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -546,24 +526,6 @@
       <EndProperty Name="Communicator">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RuleAction" TypeName="DataModel.RuleAction" StoreEntitySet="Actions">
-      <EndProperty Name="Rule">
-        <ScalarProperty Name="Id" ColumnName="Rule_Id" />
-      </EndProperty>
-      <EndProperty Name="Action">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Rule_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ActionCommunicator" TypeName="DataModel.ActionCommunicator" StoreEntitySet="Communicators">
-      <EndProperty Name="Action">
-        <ScalarProperty Name="Id" ColumnName="Action_Id" />
-      </EndProperty>
-      <EndProperty Name="Communicator">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Action_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

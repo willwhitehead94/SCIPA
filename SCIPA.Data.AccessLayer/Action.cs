@@ -19,8 +19,5 @@ namespace SCIPA.Data.AccessLayer
         public int RuleId { get; set; }
         public int CommunicatorId { get; set; }
         public bool Enabled { get; set; }
-    
-        public virtual Rule Rule { get; set; }
-        public virtual Communicator Communicator { get; set; }
     }
 }

@@ -23,6 +23,5 @@ namespace SCIPA.Data.AccessLayer
         public bool Inbound { get; set; }
     
         public virtual Device Device { get; set; }
-        public virtual Action Action { get; set; }
     }
 }
