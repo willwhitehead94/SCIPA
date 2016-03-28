@@ -46,9 +46,7 @@ namespace SCIPA.Data.Repository
 
                 // Domain to Data Converstions
                 cfg.CreateMap<DOM.Action, DAL.Action>()
-                    .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Rule, opt => opt.Ignore())
-                    .ForMember(m => m.Communicator, opt => opt.Ignore());
+                    .ForMember(m => m.Id, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.Alarm, DAL.Alarm>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
@@ -57,8 +55,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Communicator, DAL.Communicator>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore())
-                    .ForMember(m => m.Action, opt => opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.CommunicatorType, DAL.CommunicatorType>();
 
@@ -73,8 +70,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DOM.Rule, DAL.Rule>()
                     .ForMember(m => m.Id, opt => opt.Ignore())
-                    .ForMember(m => m.Device, opt => opt.Ignore())
-                    .ForMember(m => m.Action, opt => opt.Ignore());
+                    .ForMember(m => m.Device, opt => opt.Ignore());
 
                 cfg.CreateMap<DOM.RuleType, DAL.RuleType>();
 
@@ -227,13 +223,13 @@ namespace SCIPA.Data.Repository
         public DOM.Action CreateAction(DOM.Action action)
         {
             var dbVal = (_mapper.Map(action, new DAL.Action()));
-            var rule = _mapper.Map(action.Rule, new DAL.Rule());
-            dbVal.Rule = rule;
-            _db.Entry(dbVal.Rule).State=EntityState.Modified;
+            //var rule = _mapper.Map(action.Rule, new DAL.Rule());
+            //dbVal.Rule = rule;
+            //_db.Entry(dbVal.Rule).State=EntityState.Modified;
 
-            var comm = ConvertDOMCommunicatorToDAL(action.Communicator);
-            dbVal.Communicator = comm;
-            _db.Entry(dbVal.Communicator).State = EntityState.Modified;
+            //var comm = ConvertDOMCommunicatorToDAL(action.Communicator);
+            //dbVal.Communicator = comm;
+            //_db.Entry(dbVal.Communicator).State = EntityState.Modified;
 
             _db.Actions.Add(dbVal);
             _db.SaveChanges();
