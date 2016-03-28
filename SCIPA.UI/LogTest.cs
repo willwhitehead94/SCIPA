@@ -63,7 +63,11 @@ namespace SCIPA.UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            var controller = new RuleController();
+            var ruleObj = controller.TestMethod_GetLatestRule();
+
+            AddAction aa = new AddAction(ruleObj);
+            aa.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)

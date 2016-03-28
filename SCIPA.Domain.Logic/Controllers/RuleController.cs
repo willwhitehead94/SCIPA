@@ -58,5 +58,39 @@ namespace SCIPA.Domain.Logic
             //Return the new rule to the caller.
             return newObj;
         }
+
+        public Rule RetrieveRuleById(int id)
+        {
+            if (_rules == null || _rules.Count ==0)
+            {
+                UpdateRequired = true;
+                UpdateRuleCollection();
+            }
+
+            return _rules.FirstOrDefault(r => r.Id == id);
+        }
+
+        public IEnumerable<Rule> RetrieveRulesForDevice(int deviceId)
+        {
+            if (_rules == null || _rules.Count == 0)
+            {
+                UpdateRequired = true;
+                UpdateRuleCollection();
+            }
+
+            return _rules.Where(r => r.DeviceId == deviceId);
+        }
+
+        public Rule UpdateRule(Rule rule)
+        {
+            return rule;
+        }
+
+
+        public Rule TestMethod_GetLatestRule()
+        {
+            UpdateRuleCollection();
+            return _rules.Last();
+        }
     }
 }

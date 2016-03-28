@@ -15,5 +15,10 @@ namespace SCIPA.Models
 
         public virtual Device Device { get; set; }
         public virtual Action Action { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}: {Name} for Device #{DeviceId}";
+        }
     }
 }

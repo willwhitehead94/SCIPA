@@ -67,6 +67,12 @@
     <Compile Include="AddInbound.Designer.cs">
       <DependentUpon>AddInbound.cs</DependentUpon>
     </Compile>
+    <Compile Include="Object Manager\AddAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Object Manager\AddAction.Designer.cs">
+      <DependentUpon>AddAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object Manager\AddRule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="AddInbound.resx">
       <DependentUpon>AddInbound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Object Manager\AddAction.resx">
+      <DependentUpon>AddAction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Object Manager\AddRule.resx">
       <DependentUpon>AddRule.cs</DependentUpon>
