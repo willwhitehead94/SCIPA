@@ -6,6 +6,15 @@ using ValueType = SCIPA.Models.ValueType;
 
 namespace SCIPA.Domain.Inbound
 {
+    /// <summary>
+    /// Handler class for Database connections. The Handler classes are used to monitor the connection
+    /// and trigger internal events when data is sent or recieved. It is important to remember the hierachical
+    /// structure of INBOUND data is as follows ( '>' indicates that {left} is part of {right} )
+    /// Communicator > Handler > Reader
+    /// 
+    /// Device's use the above hierachy to read, handle and work with both in and outbound data to/from 
+    /// the process.
+    /// </summary>
     public class DatabaseHandler:DataHandler
     {
         /// <summary>
@@ -24,6 +33,9 @@ namespace SCIPA.Domain.Inbound
         /// </summary>
         private bool _currentlyAttemptingConnection = false;
 
+        /// <summary>
+        /// Boolean to determine whether the Database should be repeatedly checked.
+        /// </summary>
         private bool _keepingChecking = true;
 
         /// <summary>
@@ -40,6 +52,9 @@ namespace SCIPA.Domain.Inbound
             StartWatchingDatabase();
         }
 
+        /// <summary>
+        /// Method starts the internal 'watching' of the Database in question.
+        /// </summary>
         private void StartWatchingDatabase()
         {
             ThreadPool.QueueUserWorkItem(ConnectAndCollect);
@@ -91,6 +106,10 @@ namespace SCIPA.Domain.Inbound
             }
         }
 
+        /// <summary>
+        /// Overriden method to return the Handler's Communicator.
+        /// </summary>
+        /// <returns></returns>
         public override Communicator GetCommunicator()
         {
             return Communicator;

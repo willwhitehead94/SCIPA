@@ -5,6 +5,15 @@ using SCIPA.Models;
 
 namespace SCIPA.Domain.Inbound
 {
+    /// <summary>
+    /// Abstract class for all Handler types. The Handler classes are used to monitor the connection
+    /// and trigger internal events when data is sent or recieved. It is important to remember the hierachical
+    /// structure of INBOUND data is as follows ( '>' indicates that {left} is part of {right} )
+    /// Communicator > Handler > Reader
+    /// 
+    /// Device's use the above hierachy to read, handle and work with both in and outbound data to/from 
+    /// the process.
+    /// </summary>
     public abstract class DataHandler
     {
         /// <summary>
@@ -27,6 +36,10 @@ namespace SCIPA.Domain.Inbound
         /// </summary>
         public Queue<Value> InboundDataQueue = new Queue<Value>();
 
+        /// <summary>
+        /// Method enqueues the new Value onto the stack for the Reader object on the next pass.
+        /// </summary>
+        /// <param name="newValue"></param>
         public void EnqueueData(Value newValue)
         {
             InboundDataQueue.Enqueue(newValue);

@@ -10,8 +10,18 @@ using SCIPA.Domain.Generic;
 using ValueType = SCIPA.Models.ValueType;
 
 
+
 namespace SCIPA.Domain.Inbound
 {
+    /// <summary>
+    /// Handler class for Flat File connections. The Handler classes are used to monitor the connection
+    /// and trigger internal events when data is sent or recieved. It is important to remember the hierachical
+    /// structure of INBOUND data is as follows ( '>' indicates that {left} is part of {right} )
+    /// Communicator > Handler > Reader
+    /// 
+    /// Device's use the above hierachy to read, handle and work with both in and outbound data to/from 
+    /// the process.
+    /// </summary>
     public class FlatFileHandler : DataHandler
     {
         /// <summary>
@@ -229,6 +239,10 @@ namespace SCIPA.Domain.Inbound
             return fileContents;
         }
 
+        /// <summary>
+        /// Overridden method from the abstract class to return the Handler's communicator object.
+        /// </summary>
+        /// <returns></returns>
         public override Communicator GetCommunicator()
         {
             return Communicator;
