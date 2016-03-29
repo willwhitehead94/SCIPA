@@ -43,18 +43,21 @@
             this.pButtons = new System.Windows.Forms.Panel();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lStaticMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
+            this.bToggle = new System.Windows.Forms.Button();
             this.pStop = new System.Windows.Forms.TabPage();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
             this.pReports = new System.Windows.Forms.TabPage();
             this.pAlarms = new System.Windows.Forms.TabPage();
-            this.lStaticMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.pHeader.SuspendLayout();
             this.pButtons.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            this.pStart.SuspendLayout();
             this.SuspendLayout();
             // 
             // pHeader
@@ -219,6 +222,7 @@
             this.statusBar.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lStaticMessage,
+            this.lStatusPreceder,
             this.lStatusMessage});
             this.statusBar.Location = new System.Drawing.Point(0, 646);
             this.statusBar.Name = "statusBar";
@@ -230,8 +234,23 @@
             // 
             this.lStatusMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lStatusMessage.Name = "lStatusMessage";
-            this.lStatusMessage.Size = new System.Drawing.Size(261, 38);
-            this.lStatusMessage.Text = "Welcome to SCIPA";
+            this.lStatusMessage.Size = new System.Drawing.Size(385, 38);
+            this.lStatusMessage.Text = "Application Status Messages";
+            // 
+            // lStaticMessage
+            // 
+            this.lStaticMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lStaticMessage.Name = "lStaticMessage";
+            this.lStaticMessage.Size = new System.Drawing.Size(193, 38);
+            this.lStaticMessage.Text = "SCIPA System";
+            // 
+            // lStatusPreceder
+            // 
+            this.lStatusPreceder.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lStatusPreceder.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lStatusPreceder.Name = "lStatusPreceder";
+            this.lStatusPreceder.Size = new System.Drawing.Size(222, 38);
+            this.lStatusPreceder.Text = "Minor Messages";
             // 
             // mainPanel
             // 
@@ -246,16 +265,26 @@
             this.mainPanel.SelectedIndex = 0;
             this.mainPanel.Size = new System.Drawing.Size(1314, 411);
             this.mainPanel.TabIndex = 14;
-            this.mainPanel.UseWaitCursor = true;
             // 
             // pStart
             // 
+            this.pStart.Controls.Add(this.bToggle);
             this.pStart.Location = new System.Drawing.Point(10, 47);
             this.pStart.Name = "pStart";
             this.pStart.Size = new System.Drawing.Size(1294, 354);
             this.pStart.TabIndex = 0;
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
+            // 
+            // bToggle
+            // 
+            this.bToggle.Location = new System.Drawing.Point(1064, 3);
+            this.bToggle.Name = "bToggle";
+            this.bToggle.Size = new System.Drawing.Size(227, 67);
+            this.bToggle.TabIndex = 0;
+            this.bToggle.Text = "Toggle Size";
+            this.bToggle.UseVisualStyleBackColor = true;
+            this.bToggle.Click += new System.EventHandler(this.bToggle_Click);
             // 
             // pStop
             // 
@@ -265,7 +294,6 @@
             this.pStop.TabIndex = 1;
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
-            this.pStop.UseWaitCursor = true;
             // 
             // pAddNewDevice
             // 
@@ -275,7 +303,6 @@
             this.pAddNewDevice.TabIndex = 2;
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
-            this.pAddNewDevice.UseWaitCursor = true;
             // 
             // pModifyDevice
             // 
@@ -285,7 +312,6 @@
             this.pModifyDevice.TabIndex = 3;
             this.pModifyDevice.Text = "ModifyDevice";
             this.pModifyDevice.UseVisualStyleBackColor = true;
-            this.pModifyDevice.UseWaitCursor = true;
             // 
             // pReports
             // 
@@ -295,7 +321,6 @@
             this.pReports.TabIndex = 4;
             this.pReports.Text = "Reports";
             this.pReports.UseVisualStyleBackColor = true;
-            this.pReports.UseWaitCursor = true;
             // 
             // pAlarms
             // 
@@ -305,14 +330,6 @@
             this.pAlarms.TabIndex = 5;
             this.pAlarms.Text = "Alarms";
             this.pAlarms.UseVisualStyleBackColor = true;
-            this.pAlarms.UseWaitCursor = true;
-            // 
-            // lStaticMessage
-            // 
-            this.lStaticMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lStaticMessage.Name = "lStaticMessage";
-            this.lStaticMessage.Size = new System.Drawing.Size(193, 38);
-            this.lStaticMessage.Text = "SCIPA System";
             // 
             // Dashboard
             // 
@@ -339,6 +356,7 @@
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.mainPanel.ResumeLayout(false);
+            this.pStart.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,6 +387,8 @@
         private System.Windows.Forms.TabPage pReports;
         private System.Windows.Forms.TabPage pAlarms;
         private System.Windows.Forms.ToolStripStatusLabel lStaticMessage;
+        private System.Windows.Forms.Button bToggle;
+        private System.Windows.Forms.ToolStripStatusLabel lStatusPreceder;
     }
 }
 
