@@ -41,24 +41,35 @@
             this.bModify = new System.Windows.Forms.Button();
             this.bReports = new System.Windows.Forms.Button();
             this.bAlarms = new System.Windows.Forms.Button();
-            this.pButtons = new System.Windows.Forms.Panel();
+            this.pButtonPannel = new System.Windows.Forms.Panel();
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStaticMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mainPanel = new SCIPA.UI.HMI.CustomTabControl();
+            this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pBackPanel = new System.Windows.Forms.Panel();
+            this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
-            this.bToggle = new System.Windows.Forms.Button();
+            this.bTogglePanelSize_Start = new System.Windows.Forms.Button();
             this.pStop = new System.Windows.Forms.TabPage();
+            this.bTogglePanelSize_Stop = new System.Windows.Forms.Button();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
+            this.bTogglePanelSize_AddNew = new System.Windows.Forms.Button();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
+            this.bTogglePanelSize_Modify = new System.Windows.Forms.Button();
             this.pReports = new System.Windows.Forms.TabPage();
+            this.bTogglePanelSize_Reports = new System.Windows.Forms.Button();
             this.pAlarms = new System.Windows.Forms.TabPage();
+            this.bTogglePanelSize_Alarms = new System.Windows.Forms.Button();
             this.pHeader.SuspendLayout();
-            this.pButtons.SuspendLayout();
+            this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
-            this.mainPanel.SuspendLayout();
+            this.pTabPanel.SuspendLayout();
             this.pStart.SuspendLayout();
+            this.pStop.SuspendLayout();
+            this.pAddNewDevice.SuspendLayout();
+            this.pModifyDevice.SuspendLayout();
+            this.pReports.SuspendLayout();
+            this.pAlarms.SuspendLayout();
             this.SuspendLayout();
             // 
             // pHeader
@@ -204,19 +215,19 @@
             this.bAlarms.UseVisualStyleBackColor = false;
             this.bAlarms.Click += new System.EventHandler(this.bAlarms_Click);
             // 
-            // pButtons
+            // pButtonPannel
             // 
-            this.pButtons.BackColor = System.Drawing.Color.Transparent;
-            this.pButtons.Controls.Add(this.bStopProcess);
-            this.pButtons.Controls.Add(this.bAlarms);
-            this.pButtons.Controls.Add(this.bStartProcess);
-            this.pButtons.Controls.Add(this.bReports);
-            this.pButtons.Controls.Add(this.bAddNew);
-            this.pButtons.Controls.Add(this.bModify);
-            this.pButtons.Location = new System.Drawing.Point(12, 129);
-            this.pButtons.Name = "pButtons";
-            this.pButtons.Size = new System.Drawing.Size(1314, 85);
-            this.pButtons.TabIndex = 13;
+            this.pButtonPannel.BackColor = System.Drawing.Color.Transparent;
+            this.pButtonPannel.Controls.Add(this.bStopProcess);
+            this.pButtonPannel.Controls.Add(this.bAlarms);
+            this.pButtonPannel.Controls.Add(this.bStartProcess);
+            this.pButtonPannel.Controls.Add(this.bReports);
+            this.pButtonPannel.Controls.Add(this.bAddNew);
+            this.pButtonPannel.Controls.Add(this.bModify);
+            this.pButtonPannel.Location = new System.Drawing.Point(11, 130);
+            this.pButtonPannel.Name = "pButtonPannel";
+            this.pButtonPannel.Size = new System.Drawing.Size(1314, 85);
+            this.pButtonPannel.TabIndex = 13;
             // 
             // statusBar
             // 
@@ -230,13 +241,6 @@
             this.statusBar.Size = new System.Drawing.Size(1338, 38);
             this.statusBar.TabIndex = 15;
             this.statusBar.Text = "statusStrip1";
-            // 
-            // lStatusMessage
-            // 
-            this.lStatusMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lStatusMessage.Name = "lStatusMessage";
-            this.lStatusMessage.Size = new System.Drawing.Size(385, 33);
-            this.lStatusMessage.Text = "Application Status Messages";
             // 
             // lStaticMessage
             // 
@@ -254,84 +258,161 @@
             this.lStatusPreceder.Size = new System.Drawing.Size(222, 33);
             this.lStatusPreceder.Text = "Minor Messages";
             // 
-            // mainPanel
+            // lStatusMessage
             // 
-            this.mainPanel.Controls.Add(this.pStart);
-            this.mainPanel.Controls.Add(this.pStop);
-            this.mainPanel.Controls.Add(this.pAddNewDevice);
-            this.mainPanel.Controls.Add(this.pModifyDevice);
-            this.mainPanel.Controls.Add(this.pReports);
-            this.mainPanel.Controls.Add(this.pAlarms);
-            this.mainPanel.Location = new System.Drawing.Point(12, 220);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.SelectedIndex = 0;
-            this.mainPanel.Size = new System.Drawing.Size(1314, 411);
-            this.mainPanel.TabIndex = 14;
+            this.lStatusMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lStatusMessage.Name = "lStatusMessage";
+            this.lStatusMessage.Size = new System.Drawing.Size(385, 33);
+            this.lStatusMessage.Text = "Application Status Messages";
+            // 
+            // pBackPanel
+            // 
+            this.pBackPanel.BackColor = System.Drawing.Color.Transparent;
+            this.pBackPanel.Location = new System.Drawing.Point(12, 129);
+            this.pBackPanel.Name = "pBackPanel";
+            this.pBackPanel.Size = new System.Drawing.Size(1314, 502);
+            this.pBackPanel.TabIndex = 16;
+            // 
+            // pTabPanel
+            // 
+            this.pTabPanel.Controls.Add(this.pStart);
+            this.pTabPanel.Controls.Add(this.pStop);
+            this.pTabPanel.Controls.Add(this.pAddNewDevice);
+            this.pTabPanel.Controls.Add(this.pModifyDevice);
+            this.pTabPanel.Controls.Add(this.pReports);
+            this.pTabPanel.Controls.Add(this.pAlarms);
+            this.pTabPanel.Location = new System.Drawing.Point(11, 221);
+            this.pTabPanel.Name = "pTabPanel";
+            this.pTabPanel.SelectedIndex = 0;
+            this.pTabPanel.Size = new System.Drawing.Size(1315, 407);
+            this.pTabPanel.TabIndex = 14;
             // 
             // pStart
             // 
-            this.pStart.Controls.Add(this.bToggle);
+            this.pStart.Controls.Add(this.bTogglePanelSize_Start);
             this.pStart.Location = new System.Drawing.Point(10, 47);
             this.pStart.Name = "pStart";
-            this.pStart.Size = new System.Drawing.Size(1294, 354);
+            this.pStart.Size = new System.Drawing.Size(1295, 350);
             this.pStart.TabIndex = 0;
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
             // 
-            // bToggle
+            // bTogglePanelSize_Start
             // 
-            this.bToggle.Location = new System.Drawing.Point(1064, 3);
-            this.bToggle.Name = "bToggle";
-            this.bToggle.Size = new System.Drawing.Size(227, 67);
-            this.bToggle.TabIndex = 0;
-            this.bToggle.Text = "Toggle Size";
-            this.bToggle.UseVisualStyleBackColor = true;
-            this.bToggle.Click += new System.EventHandler(this.bToggle_Click);
+            this.bTogglePanelSize_Start.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Start.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_Start.Name = "bTogglePanelSize_Start";
+            this.bTogglePanelSize_Start.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_Start.TabIndex = 0;
+            this.bTogglePanelSize_Start.Text = "Fullscreen";
+            this.bTogglePanelSize_Start.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Start.Click += new System.EventHandler(this.bTogglePanelSize_Click);
             // 
             // pStop
             // 
+            this.pStop.Controls.Add(this.bTogglePanelSize_Stop);
             this.pStop.Location = new System.Drawing.Point(10, 47);
             this.pStop.Name = "pStop";
-            this.pStop.Size = new System.Drawing.Size(1294, 354);
+            this.pStop.Size = new System.Drawing.Size(1295, 350);
             this.pStop.TabIndex = 1;
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
             // 
+            // bTogglePanelSize_Stop
+            // 
+            this.bTogglePanelSize_Stop.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Stop.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_Stop.Name = "bTogglePanelSize_Stop";
+            this.bTogglePanelSize_Stop.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_Stop.TabIndex = 1;
+            this.bTogglePanelSize_Stop.Text = "Fullscreen";
+            this.bTogglePanelSize_Stop.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Stop.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
             // pAddNewDevice
             // 
+            this.pAddNewDevice.AutoScroll = true;
+            this.pAddNewDevice.Controls.Add(this.bTogglePanelSize_AddNew);
             this.pAddNewDevice.Location = new System.Drawing.Point(10, 47);
             this.pAddNewDevice.Name = "pAddNewDevice";
-            this.pAddNewDevice.Size = new System.Drawing.Size(1294, 354);
+            this.pAddNewDevice.Size = new System.Drawing.Size(1295, 350);
             this.pAddNewDevice.TabIndex = 2;
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
             // 
+            // bTogglePanelSize_AddNew
+            // 
+            this.bTogglePanelSize_AddNew.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_AddNew.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_AddNew.Name = "bTogglePanelSize_AddNew";
+            this.bTogglePanelSize_AddNew.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_AddNew.TabIndex = 1;
+            this.bTogglePanelSize_AddNew.Text = "Fullscreen";
+            this.bTogglePanelSize_AddNew.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_AddNew.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
             // pModifyDevice
             // 
+            this.pModifyDevice.Controls.Add(this.bTogglePanelSize_Modify);
             this.pModifyDevice.Location = new System.Drawing.Point(10, 47);
             this.pModifyDevice.Name = "pModifyDevice";
-            this.pModifyDevice.Size = new System.Drawing.Size(1294, 354);
+            this.pModifyDevice.Size = new System.Drawing.Size(1295, 350);
             this.pModifyDevice.TabIndex = 3;
             this.pModifyDevice.Text = "ModifyDevice";
             this.pModifyDevice.UseVisualStyleBackColor = true;
             // 
+            // bTogglePanelSize_Modify
+            // 
+            this.bTogglePanelSize_Modify.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Modify.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_Modify.Name = "bTogglePanelSize_Modify";
+            this.bTogglePanelSize_Modify.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_Modify.TabIndex = 1;
+            this.bTogglePanelSize_Modify.Text = "Fullscreen";
+            this.bTogglePanelSize_Modify.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Modify.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
             // pReports
             // 
+            this.pReports.Controls.Add(this.bTogglePanelSize_Reports);
             this.pReports.Location = new System.Drawing.Point(10, 47);
             this.pReports.Name = "pReports";
-            this.pReports.Size = new System.Drawing.Size(1294, 354);
+            this.pReports.Size = new System.Drawing.Size(1295, 350);
             this.pReports.TabIndex = 4;
             this.pReports.Text = "Reports";
             this.pReports.UseVisualStyleBackColor = true;
             // 
+            // bTogglePanelSize_Reports
+            // 
+            this.bTogglePanelSize_Reports.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Reports.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_Reports.Name = "bTogglePanelSize_Reports";
+            this.bTogglePanelSize_Reports.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_Reports.TabIndex = 1;
+            this.bTogglePanelSize_Reports.Text = "Fullscreen";
+            this.bTogglePanelSize_Reports.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Reports.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
             // pAlarms
             // 
+            this.pAlarms.Controls.Add(this.bTogglePanelSize_Alarms);
             this.pAlarms.Location = new System.Drawing.Point(10, 47);
             this.pAlarms.Name = "pAlarms";
-            this.pAlarms.Size = new System.Drawing.Size(1294, 354);
+            this.pAlarms.Size = new System.Drawing.Size(1295, 350);
             this.pAlarms.TabIndex = 5;
             this.pAlarms.Text = "Alarms";
             this.pAlarms.UseVisualStyleBackColor = true;
+            // 
+            // bTogglePanelSize_Alarms
+            // 
+            this.bTogglePanelSize_Alarms.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Alarms.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_Alarms.Name = "bTogglePanelSize_Alarms";
+            this.bTogglePanelSize_Alarms.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_Alarms.TabIndex = 1;
+            this.bTogglePanelSize_Alarms.Text = "Fullscreen";
+            this.bTogglePanelSize_Alarms.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Alarms.Click += new System.EventHandler(this.bTogglePanelSize_Click);
             // 
             // Dashboard
             // 
@@ -340,10 +421,11 @@
             this.BackgroundImage = global::SCIPA.UI.HMI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1338, 689);
+            this.Controls.Add(this.pTabPanel);
             this.Controls.Add(this.statusBar);
-            this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.pButtons);
+            this.Controls.Add(this.pButtonPannel);
             this.Controls.Add(this.pHeader);
+            this.Controls.Add(this.pBackPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -356,11 +438,16 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.pHeader.ResumeLayout(false);
             this.pHeader.PerformLayout();
-            this.pButtons.ResumeLayout(false);
+            this.pButtonPannel.ResumeLayout(false);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
-            this.mainPanel.ResumeLayout(false);
+            this.pTabPanel.ResumeLayout(false);
             this.pStart.ResumeLayout(false);
+            this.pStop.ResumeLayout(false);
+            this.pAddNewDevice.ResumeLayout(false);
+            this.pModifyDevice.ResumeLayout(false);
+            this.pReports.ResumeLayout(false);
+            this.pAlarms.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,8 +467,8 @@
         private System.Windows.Forms.Button bModify;
         private System.Windows.Forms.Button bReports;
         private System.Windows.Forms.Button bAlarms;
-        private System.Windows.Forms.Panel pButtons;
-        private CustomTabControl mainPanel;
+        private System.Windows.Forms.Panel pButtonPannel;
+        private CustomTabControl pTabPanel;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel lStatusMessage;
         private System.Windows.Forms.TabPage pStart;
@@ -391,8 +478,14 @@
         private System.Windows.Forms.TabPage pReports;
         private System.Windows.Forms.TabPage pAlarms;
         private System.Windows.Forms.ToolStripStatusLabel lStaticMessage;
-        private System.Windows.Forms.Button bToggle;
+        private System.Windows.Forms.Button bTogglePanelSize_Start;
         private System.Windows.Forms.ToolStripStatusLabel lStatusPreceder;
+        private System.Windows.Forms.Panel pBackPanel;
+        private System.Windows.Forms.Button bTogglePanelSize_Stop;
+        private System.Windows.Forms.Button bTogglePanelSize_AddNew;
+        private System.Windows.Forms.Button bTogglePanelSize_Modify;
+        private System.Windows.Forms.Button bTogglePanelSize_Reports;
+        private System.Windows.Forms.Button bTogglePanelSize_Alarms;
     }
 }
 
