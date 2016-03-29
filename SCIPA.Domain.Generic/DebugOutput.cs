@@ -30,6 +30,11 @@ namespace SCIPA.Domain.Generic
         private static readonly Queue<string> _logQueue = new Queue<string>();
 
         /// <summary>
+        /// The last message recieved and handled by the Debugging service.
+        /// </summary>
+        public static string LastMessage = "";
+
+        /// <summary>
         /// Printing to Log boolean.
         /// </summary>
         private static bool _printingToLog = false;
@@ -95,6 +100,9 @@ namespace SCIPA.Domain.Generic
                     //Get latest value from the queue and print to Debug console
                     var message = _logQueue.Dequeue();
                     Debug.WriteLine(message);
+
+                    //Store this message in the global accessor.
+                    LastMessage = message.Trim();
 
                     //If the Application Configuration file has disabled Outputting data to the log,
                     //move on without storing to the file.
