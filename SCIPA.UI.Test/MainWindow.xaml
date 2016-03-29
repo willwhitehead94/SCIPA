@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCIPA.UI.Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="435,294,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+        Title="MainWindow" Height="768" Width="1366" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="background.png"/>
+    </Window.Background>
+    <Label x:Name="lHeader" Content="SCIPA" HorizontalAlignment="Left" Margin="4,-23,0,0" VerticalAlignment="Top" Height="133" Width="516" Background="#00000000" Foreground="White" FontSize="96"/>
 </Window>
