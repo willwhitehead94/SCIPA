@@ -47,12 +47,34 @@
             this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.pBackPanel = new System.Windows.Forms.Panel();
+            this.bTogglePanelSize_Status = new System.Windows.Forms.Button();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
             this.bTogglePanelSize_Start = new System.Windows.Forms.Button();
             this.pStop = new System.Windows.Forms.TabPage();
             this.bTogglePanelSize_Stop = new System.Windows.Forms.Button();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
+            this.lRules = new System.Windows.Forms.Label();
+            this.bAddRule = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lDestination = new System.Windows.Forms.Label();
+            this.bAddDestination = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lSource = new System.Windows.Forms.Label();
+            this.bAddSource = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rbFalse = new System.Windows.Forms.RadioButton();
+            this.rbTrue = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tLocation = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tCustodian = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tName = new System.Windows.Forms.TextBox();
+            this.tId = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lId = new System.Windows.Forms.Label();
+            this.lHeader_Add = new System.Windows.Forms.Label();
             this.bTogglePanelSize_AddNew = new System.Windows.Forms.Button();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
             this.bTogglePanelSize_Modify = new System.Windows.Forms.Button();
@@ -273,6 +295,17 @@
             this.pBackPanel.Size = new System.Drawing.Size(1314, 502);
             this.pBackPanel.TabIndex = 16;
             // 
+            // bTogglePanelSize_Status
+            // 
+            this.bTogglePanelSize_Status.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.bTogglePanelSize_Status.Location = new System.Drawing.Point(1118, 616);
+            this.bTogglePanelSize_Status.Name = "bTogglePanelSize_Status";
+            this.bTogglePanelSize_Status.Size = new System.Drawing.Size(209, 65);
+            this.bTogglePanelSize_Status.TabIndex = 1;
+            this.bTogglePanelSize_Status.Text = "Fullscreen";
+            this.bTogglePanelSize_Status.UseVisualStyleBackColor = true;
+            this.bTogglePanelSize_Status.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
             // pTabPanel
             // 
             this.pTabPanel.Controls.Add(this.pStart);
@@ -332,6 +365,27 @@
             // pAddNewDevice
             // 
             this.pAddNewDevice.AutoScroll = true;
+            this.pAddNewDevice.Controls.Add(this.lRules);
+            this.pAddNewDevice.Controls.Add(this.bAddRule);
+            this.pAddNewDevice.Controls.Add(this.label10);
+            this.pAddNewDevice.Controls.Add(this.lDestination);
+            this.pAddNewDevice.Controls.Add(this.bAddDestination);
+            this.pAddNewDevice.Controls.Add(this.label8);
+            this.pAddNewDevice.Controls.Add(this.lSource);
+            this.pAddNewDevice.Controls.Add(this.bAddSource);
+            this.pAddNewDevice.Controls.Add(this.label5);
+            this.pAddNewDevice.Controls.Add(this.rbFalse);
+            this.pAddNewDevice.Controls.Add(this.rbTrue);
+            this.pAddNewDevice.Controls.Add(this.label4);
+            this.pAddNewDevice.Controls.Add(this.tLocation);
+            this.pAddNewDevice.Controls.Add(this.label3);
+            this.pAddNewDevice.Controls.Add(this.tCustodian);
+            this.pAddNewDevice.Controls.Add(this.label2);
+            this.pAddNewDevice.Controls.Add(this.tName);
+            this.pAddNewDevice.Controls.Add(this.tId);
+            this.pAddNewDevice.Controls.Add(this.label1);
+            this.pAddNewDevice.Controls.Add(this.lId);
+            this.pAddNewDevice.Controls.Add(this.lHeader_Add);
             this.pAddNewDevice.Controls.Add(this.bTogglePanelSize_AddNew);
             this.pAddNewDevice.Location = new System.Drawing.Point(10, 47);
             this.pAddNewDevice.Name = "pAddNewDevice";
@@ -340,12 +394,243 @@
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
             // 
+            // lRules
+            // 
+            this.lRules.AutoSize = true;
+            this.lRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lRules.Location = new System.Drawing.Point(692, 498);
+            this.lRules.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lRules.Name = "lRules";
+            this.lRules.Size = new System.Drawing.Size(227, 48);
+            this.lRules.TabIndex = 40;
+            this.lRules.Text = "No Rules...";
+            // 
+            // bAddRule
+            // 
+            this.bAddRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAddRule.Location = new System.Drawing.Point(349, 487);
+            this.bAddRule.Margin = new System.Windows.Forms.Padding(7);
+            this.bAddRule.Name = "bAddRule";
+            this.bAddRule.Size = new System.Drawing.Size(329, 51);
+            this.bAddRule.TabIndex = 39;
+            this.bAddRule.Text = "Add Rule";
+            this.bAddRule.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(50, 498);
+            this.label10.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(139, 48);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Rules:";
+            // 
+            // lDestination
+            // 
+            this.lDestination.AutoSize = true;
+            this.lDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDestination.Location = new System.Drawing.Point(692, 434);
+            this.lDestination.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lDestination.Name = "lDestination";
+            this.lDestination.Size = new System.Drawing.Size(330, 48);
+            this.lDestination.TabIndex = 37;
+            this.lDestination.Text = "No Destination...";
+            // 
+            // bAddDestination
+            // 
+            this.bAddDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAddDestination.Location = new System.Drawing.Point(349, 423);
+            this.bAddDestination.Margin = new System.Windows.Forms.Padding(7);
+            this.bAddDestination.Name = "bAddDestination";
+            this.bAddDestination.Size = new System.Drawing.Size(329, 51);
+            this.bAddDestination.TabIndex = 36;
+            this.bAddDestination.Text = "Add Outbound Destination";
+            this.bAddDestination.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(50, 434);
+            this.label8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(242, 48);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Destination:";
+            // 
+            // lSource
+            // 
+            this.lSource.AutoSize = true;
+            this.lSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lSource.Location = new System.Drawing.Point(692, 369);
+            this.lSource.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lSource.Name = "lSource";
+            this.lSource.Size = new System.Drawing.Size(273, 48);
+            this.lSource.TabIndex = 34;
+            this.lSource.Text = "No Sources...";
+            // 
+            // bAddSource
+            // 
+            this.bAddSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAddSource.Location = new System.Drawing.Point(349, 358);
+            this.bAddSource.Margin = new System.Windows.Forms.Padding(7);
+            this.bAddSource.Name = "bAddSource";
+            this.bAddSource.Size = new System.Drawing.Size(329, 51);
+            this.bAddSource.TabIndex = 33;
+            this.bAddSource.Text = "Add Inbound Source";
+            this.bAddSource.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(50, 369);
+            this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(164, 48);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Source:";
+            // 
+            // rbFalse
+            // 
+            this.rbFalse.AutoSize = true;
+            this.rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFalse.Location = new System.Drawing.Point(472, 307);
+            this.rbFalse.Margin = new System.Windows.Forms.Padding(7);
+            this.rbFalse.Name = "rbFalse";
+            this.rbFalse.Size = new System.Drawing.Size(154, 52);
+            this.rbFalse.TabIndex = 31;
+            this.rbFalse.TabStop = true;
+            this.rbFalse.Text = "False";
+            this.rbFalse.UseVisualStyleBackColor = true;
+            // 
+            // rbTrue
+            // 
+            this.rbTrue.AutoSize = true;
+            this.rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTrue.Location = new System.Drawing.Point(349, 307);
+            this.rbTrue.Margin = new System.Windows.Forms.Padding(7);
+            this.rbTrue.Name = "rbTrue";
+            this.rbTrue.Size = new System.Drawing.Size(137, 52);
+            this.rbTrue.TabIndex = 30;
+            this.rbTrue.TabStop = true;
+            this.rbTrue.Text = "True";
+            this.rbTrue.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(50, 311);
+            this.label4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 48);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Enabled:";
+            // 
+            // tLocation
+            // 
+            this.tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tLocation.Location = new System.Drawing.Point(349, 188);
+            this.tLocation.Margin = new System.Windows.Forms.Padding(7);
+            this.tLocation.Name = "tLocation";
+            this.tLocation.Size = new System.Drawing.Size(569, 55);
+            this.tLocation.TabIndex = 28;
+            this.tLocation.Text = "Under - Desk";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(50, 195);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(190, 48);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Location:";
+            // 
+            // tCustodian
+            // 
+            this.tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tCustodian.Location = new System.Drawing.Point(349, 246);
+            this.tCustodian.Margin = new System.Windows.Forms.Padding(7);
+            this.tCustodian.Name = "tCustodian";
+            this.tCustodian.Size = new System.Drawing.Size(569, 55);
+            this.tCustodian.TabIndex = 26;
+            this.tCustodian.Text = "W. Whitehead";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(50, 253);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(220, 48);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Custodian:";
+            // 
+            // tName
+            // 
+            this.tName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tName.Location = new System.Drawing.Point(349, 130);
+            this.tName.Margin = new System.Windows.Forms.Padding(7);
+            this.tName.Name = "tName";
+            this.tName.Size = new System.Drawing.Size(569, 55);
+            this.tName.TabIndex = 24;
+            this.tName.Text = "Test Arduino";
+            // 
+            // tId
+            // 
+            this.tId.Enabled = false;
+            this.tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tId.Location = new System.Drawing.Point(349, 72);
+            this.tId.Margin = new System.Windows.Forms.Padding(7);
+            this.tId.Name = "tId";
+            this.tId.Size = new System.Drawing.Size(569, 55);
+            this.tId.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(50, 137);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(282, 48);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Device Name:";
+            // 
+            // lId
+            // 
+            this.lId.AutoSize = true;
+            this.lId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lId.Location = new System.Drawing.Point(50, 79);
+            this.lId.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lId.Name = "lId";
+            this.lId.Size = new System.Drawing.Size(233, 48);
+            this.lId.TabIndex = 21;
+            this.lId.Text = "ID Number:";
+            // 
+            // lHeader_Add
+            // 
+            this.lHeader_Add.AutoSize = true;
+            this.lHeader_Add.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lHeader_Add.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lHeader_Add.Location = new System.Drawing.Point(6, 2);
+            this.lHeader_Add.Name = "lHeader_Add";
+            this.lHeader_Add.Size = new System.Drawing.Size(370, 51);
+            this.lHeader_Add.TabIndex = 2;
+            this.lHeader_Add.Text = "Add New Device";
+            // 
             // bTogglePanelSize_AddNew
             // 
             this.bTogglePanelSize_AddNew.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.bTogglePanelSize_AddNew.Location = new System.Drawing.Point(1096, -1);
+            this.bTogglePanelSize_AddNew.Location = new System.Drawing.Point(1040, 0);
             this.bTogglePanelSize_AddNew.Name = "bTogglePanelSize_AddNew";
-            this.bTogglePanelSize_AddNew.Size = new System.Drawing.Size(209, 45);
+            this.bTogglePanelSize_AddNew.Size = new System.Drawing.Size(214, 85);
             this.bTogglePanelSize_AddNew.TabIndex = 1;
             this.bTogglePanelSize_AddNew.Text = "Fullscreen";
             this.bTogglePanelSize_AddNew.UseVisualStyleBackColor = true;
@@ -421,6 +706,7 @@
             this.BackgroundImage = global::SCIPA.UI.HMI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1338, 689);
+            this.Controls.Add(this.bTogglePanelSize_Status);
             this.Controls.Add(this.pTabPanel);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.pButtonPannel);
@@ -445,6 +731,7 @@
             this.pStart.ResumeLayout(false);
             this.pStop.ResumeLayout(false);
             this.pAddNewDevice.ResumeLayout(false);
+            this.pAddNewDevice.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
             this.pReports.ResumeLayout(false);
             this.pAlarms.ResumeLayout(false);
@@ -486,6 +773,28 @@
         private System.Windows.Forms.Button bTogglePanelSize_Modify;
         private System.Windows.Forms.Button bTogglePanelSize_Reports;
         private System.Windows.Forms.Button bTogglePanelSize_Alarms;
+        private System.Windows.Forms.Label lHeader_Add;
+        private System.Windows.Forms.Button bTogglePanelSize_Status;
+        private System.Windows.Forms.Label lRules;
+        private System.Windows.Forms.Button bAddRule;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lDestination;
+        private System.Windows.Forms.Button bAddDestination;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lSource;
+        private System.Windows.Forms.Button bAddSource;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rbFalse;
+        private System.Windows.Forms.RadioButton rbTrue;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tLocation;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tCustodian;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tName;
+        private System.Windows.Forms.TextBox tId;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lId;
     }
 }
 
