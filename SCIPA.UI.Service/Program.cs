@@ -4,6 +4,7 @@ using SCIPA.DomainLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,12 +13,13 @@ using SCIPA.Models;
 
 namespace SCIPA.UI.Service
 {
-    class Program
+    public class Program
     {
 
         private static List<string> _logEntries = new List<string>();
         private static DateTime _lastLogUpdate;
         private static int ReaderRunning = 0;
+        public string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
         static void Main(string[] args)
         {

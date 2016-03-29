@@ -91,6 +91,13 @@
       <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
       <Name>SCIPA.Domain.Generic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SCIPA.UI.Service\SCIPA.UI.Service.csproj">
+      <Project>{5f7f0319-a3da-474c-97e9-228d691a9a35}</Project>
+      <Name>SCIPA.UI.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

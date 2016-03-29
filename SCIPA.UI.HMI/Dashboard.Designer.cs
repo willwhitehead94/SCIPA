@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pHeader = new System.Windows.Forms.Panel();
             this.lHeaderAlarmCount = new System.Windows.Forms.Label();
             this.lDate = new System.Windows.Forms.Label();
@@ -224,9 +225,9 @@
             this.lStaticMessage,
             this.lStatusPreceder,
             this.lStatusMessage});
-            this.statusBar.Location = new System.Drawing.Point(0, 646);
+            this.statusBar.Location = new System.Drawing.Point(0, 651);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(1338, 43);
+            this.statusBar.Size = new System.Drawing.Size(1338, 38);
             this.statusBar.TabIndex = 15;
             this.statusBar.Text = "statusStrip1";
             // 
@@ -234,22 +235,23 @@
             // 
             this.lStatusMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lStatusMessage.Name = "lStatusMessage";
-            this.lStatusMessage.Size = new System.Drawing.Size(385, 38);
+            this.lStatusMessage.Size = new System.Drawing.Size(385, 33);
             this.lStatusMessage.Text = "Application Status Messages";
             // 
             // lStaticMessage
             // 
             this.lStaticMessage.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lStaticMessage.Name = "lStaticMessage";
-            this.lStaticMessage.Size = new System.Drawing.Size(193, 38);
+            this.lStaticMessage.Size = new System.Drawing.Size(193, 33);
             this.lStaticMessage.Text = "SCIPA System";
+            this.lStaticMessage.Click += new System.EventHandler(this.lStaticMessage_Click);
             // 
             // lStatusPreceder
             // 
             this.lStatusPreceder.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lStatusPreceder.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.lStatusPreceder.Name = "lStatusPreceder";
-            this.lStatusPreceder.Size = new System.Drawing.Size(222, 38);
+            this.lStatusPreceder.Size = new System.Drawing.Size(222, 33);
             this.lStatusPreceder.Text = "Minor Messages";
             // 
             // mainPanel
@@ -344,9 +346,11 @@
             this.Controls.Add(this.pHeader);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCIPA Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
