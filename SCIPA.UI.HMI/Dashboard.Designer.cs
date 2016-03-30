@@ -51,7 +51,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
             this.pStop = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
             this.bClearNewDevice = new System.Windows.Forms.Button();
             this.bSaveNewDevice = new System.Windows.Forms.Button();
@@ -77,19 +79,43 @@
             this.lId = new System.Windows.Forms.Label();
             this.lHeader_Add = new System.Windows.Forms.Label();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
-            this.bTogglePanelSize_Modify = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lbDeviceList = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.pReports = new System.Windows.Forms.TabPage();
-            this.bTogglePanelSize_Reports = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.pAlarms = new System.Windows.Forms.TabPage();
-            this.bTogglePanelSize_Alarms = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.pSettings = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tSettingsPassword = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.pTabPanel.SuspendLayout();
+            this.pStart.SuspendLayout();
+            this.pStop.SuspendLayout();
             this.pAddNewDevice.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
+            this.pSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // pHeader
@@ -300,7 +326,7 @@
             // 
             // bSettings
             // 
-            this.bSettings.BackColor = System.Drawing.Color.Gainsboro;
+            this.bSettings.BackColor = System.Drawing.Color.DarkGray;
             this.bSettings.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bSettings.Location = new System.Drawing.Point(1679, 0);
             this.bSettings.Name = "bSettings";
@@ -329,6 +355,7 @@
             this.pTabPanel.Controls.Add(this.pModifyDevice);
             this.pTabPanel.Controls.Add(this.pReports);
             this.pTabPanel.Controls.Add(this.pAlarms);
+            this.pTabPanel.Controls.Add(this.pSettings);
             this.pTabPanel.Location = new System.Drawing.Point(11, 221);
             this.pTabPanel.Name = "pTabPanel";
             this.pTabPanel.SelectedIndex = 0;
@@ -337,6 +364,7 @@
             // 
             // pStart
             // 
+            this.pStart.Controls.Add(this.label17);
             this.pStart.Location = new System.Drawing.Point(10, 47);
             this.pStart.Name = "pStart";
             this.pStart.Size = new System.Drawing.Size(1929, 902);
@@ -344,14 +372,37 @@
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label17.Location = new System.Drawing.Point(6, 2);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(728, 51);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Start Process Monitoring by Device";
+            // 
             // pStop
             // 
+            this.pStop.Controls.Add(this.label18);
             this.pStop.Location = new System.Drawing.Point(10, 47);
             this.pStop.Name = "pStop";
             this.pStop.Size = new System.Drawing.Size(1929, 902);
             this.pStop.TabIndex = 1;
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label18.Location = new System.Drawing.Point(6, 2);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(729, 51);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Stop Process Monitoring by Device";
             // 
             // pAddNewDevice
             // 
@@ -388,9 +439,10 @@
             // 
             // bClearNewDevice
             // 
+            this.bClearNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bClearNewDevice.BackColor = System.Drawing.Color.Gainsboro;
             this.bClearNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bClearNewDevice.Location = new System.Drawing.Point(1259, 205);
+            this.bClearNewDevice.Location = new System.Drawing.Point(655, 785);
             this.bClearNewDevice.Name = "bClearNewDevice";
             this.bClearNewDevice.Size = new System.Drawing.Size(612, 85);
             this.bClearNewDevice.TabIndex = 41;
@@ -399,9 +451,10 @@
             // 
             // bSaveNewDevice
             // 
+            this.bSaveNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bSaveNewDevice.BackColor = System.Drawing.Color.Gainsboro;
             this.bSaveNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSaveNewDevice.Location = new System.Drawing.Point(1259, 72);
+            this.bSaveNewDevice.Location = new System.Drawing.Point(1273, 760);
             this.bSaveNewDevice.Name = "bSaveNewDevice";
             this.bSaveNewDevice.Size = new System.Drawing.Size(612, 110);
             this.bSaveNewDevice.TabIndex = 14;
@@ -641,7 +694,24 @@
             // 
             // pModifyDevice
             // 
-            this.pModifyDevice.Controls.Add(this.bTogglePanelSize_Modify);
+            this.pModifyDevice.Controls.Add(this.button5);
+            this.pModifyDevice.Controls.Add(this.button4);
+            this.pModifyDevice.Controls.Add(this.button3);
+            this.pModifyDevice.Controls.Add(this.button1);
+            this.pModifyDevice.Controls.Add(this.button2);
+            this.pModifyDevice.Controls.Add(this.radioButton1);
+            this.pModifyDevice.Controls.Add(this.radioButton2);
+            this.pModifyDevice.Controls.Add(this.label9);
+            this.pModifyDevice.Controls.Add(this.textBox1);
+            this.pModifyDevice.Controls.Add(this.label11);
+            this.pModifyDevice.Controls.Add(this.textBox2);
+            this.pModifyDevice.Controls.Add(this.label12);
+            this.pModifyDevice.Controls.Add(this.textBox3);
+            this.pModifyDevice.Controls.Add(this.textBox4);
+            this.pModifyDevice.Controls.Add(this.label13);
+            this.pModifyDevice.Controls.Add(this.label14);
+            this.pModifyDevice.Controls.Add(this.lbDeviceList);
+            this.pModifyDevice.Controls.Add(this.label7);
             this.pModifyDevice.Location = new System.Drawing.Point(10, 47);
             this.pModifyDevice.Name = "pModifyDevice";
             this.pModifyDevice.Size = new System.Drawing.Size(1929, 902);
@@ -649,20 +719,217 @@
             this.pModifyDevice.Text = "ModifyDevice";
             this.pModifyDevice.UseVisualStyleBackColor = true;
             // 
-            // bTogglePanelSize_Modify
+            // button5
             // 
-            this.bTogglePanelSize_Modify.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.bTogglePanelSize_Modify.Location = new System.Drawing.Point(1096, -1);
-            this.bTogglePanelSize_Modify.Name = "bTogglePanelSize_Modify";
-            this.bTogglePanelSize_Modify.Size = new System.Drawing.Size(209, 45);
-            this.bTogglePanelSize_Modify.TabIndex = 1;
-            this.bTogglePanelSize_Modify.Text = "Fullscreen";
-            this.bTogglePanelSize_Modify.UseVisualStyleBackColor = true;
-            this.bTogglePanelSize_Modify.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(1569, 431);
+            this.button5.Margin = new System.Windows.Forms.Padding(7);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(316, 85);
+            this.button5.TabIndex = 47;
+            this.button5.Text = "Modify Actions";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(1273, 431);
+            this.button4.Margin = new System.Windows.Forms.Padding(7);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(282, 85);
+            this.button4.TabIndex = 46;
+            this.button4.Text = "Modify Rules";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(800, 431);
+            this.button3.Margin = new System.Windows.Forms.Padding(7);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(460, 85);
+            this.button3.TabIndex = 45;
+            this.button3.Text = "Modify Communicators";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(655, 785);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(612, 85);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "CLEAR ALL FIELDS";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.Gainsboro;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1273, 760);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(612, 110);
+            this.button2.TabIndex = 43;
+            this.button2.Text = "SAVE DEVICE INFORMATION";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(1256, 343);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(7);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(154, 52);
+            this.radioButton1.TabIndex = 42;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "False";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(1091, 341);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(7);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(137, 52);
+            this.radioButton2.TabIndex = 41;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "True";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(792, 345);
+            this.label9.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(185, 48);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Enabled:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(1091, 203);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(794, 55);
+            this.textBox1.TabIndex = 39;
+            this.textBox1.Text = "Under - Desk";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(792, 210);
+            this.label11.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(190, 48);
+            this.label11.TabIndex = 38;
+            this.label11.Text = "Location:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(1091, 272);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(794, 55);
+            this.textBox2.TabIndex = 37;
+            this.textBox2.Text = "W. Whitehead";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(792, 279);
+            this.label12.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(220, 48);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Custodian:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(1091, 134);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(794, 55);
+            this.textBox3.TabIndex = 35;
+            this.textBox3.Text = "Test Arduino";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(1091, 65);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(794, 55);
+            this.textBox4.TabIndex = 34;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(792, 141);
+            this.label13.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(282, 48);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Device Name:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(792, 72);
+            this.label14.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(233, 48);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "ID Number:";
+            // 
+            // lbDeviceList
+            // 
+            this.lbDeviceList.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDeviceList.FormattingEnabled = true;
+            this.lbDeviceList.ItemHeight = 65;
+            this.lbDeviceList.Items.AddRange(new object[] {
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device"});
+            this.lbDeviceList.Location = new System.Drawing.Point(53, 72);
+            this.lbDeviceList.Name = "lbDeviceList";
+            this.lbDeviceList.Size = new System.Drawing.Size(713, 784);
+            this.lbDeviceList.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label7.Location = new System.Drawing.Point(6, 2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(566, 51);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Modify Device Information";
             // 
             // pReports
             // 
-            this.pReports.Controls.Add(this.bTogglePanelSize_Reports);
+            this.pReports.Controls.Add(this.label15);
             this.pReports.Location = new System.Drawing.Point(10, 47);
             this.pReports.Name = "pReports";
             this.pReports.Size = new System.Drawing.Size(1929, 902);
@@ -670,20 +937,20 @@
             this.pReports.Text = "Reports";
             this.pReports.UseVisualStyleBackColor = true;
             // 
-            // bTogglePanelSize_Reports
+            // label15
             // 
-            this.bTogglePanelSize_Reports.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.bTogglePanelSize_Reports.Location = new System.Drawing.Point(1096, -1);
-            this.bTogglePanelSize_Reports.Name = "bTogglePanelSize_Reports";
-            this.bTogglePanelSize_Reports.Size = new System.Drawing.Size(209, 45);
-            this.bTogglePanelSize_Reports.TabIndex = 1;
-            this.bTogglePanelSize_Reports.Text = "Fullscreen";
-            this.bTogglePanelSize_Reports.UseVisualStyleBackColor = true;
-            this.bTogglePanelSize_Reports.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label15.Location = new System.Drawing.Point(6, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(338, 51);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Process Reports";
             // 
             // pAlarms
             // 
-            this.pAlarms.Controls.Add(this.bTogglePanelSize_Alarms);
+            this.pAlarms.Controls.Add(this.label16);
             this.pAlarms.Location = new System.Drawing.Point(10, 47);
             this.pAlarms.Name = "pAlarms";
             this.pAlarms.Size = new System.Drawing.Size(1929, 902);
@@ -691,16 +958,60 @@
             this.pAlarms.Text = "Alarms";
             this.pAlarms.UseVisualStyleBackColor = true;
             // 
-            // bTogglePanelSize_Alarms
+            // label16
             // 
-            this.bTogglePanelSize_Alarms.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.bTogglePanelSize_Alarms.Location = new System.Drawing.Point(1096, -1);
-            this.bTogglePanelSize_Alarms.Name = "bTogglePanelSize_Alarms";
-            this.bTogglePanelSize_Alarms.Size = new System.Drawing.Size(209, 45);
-            this.bTogglePanelSize_Alarms.TabIndex = 1;
-            this.bTogglePanelSize_Alarms.Text = "Fullscreen";
-            this.bTogglePanelSize_Alarms.UseVisualStyleBackColor = true;
-            this.bTogglePanelSize_Alarms.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label16.Location = new System.Drawing.Point(6, 2);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(321, 51);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Process Alarms";
+            // 
+            // pSettings
+            // 
+            this.pSettings.Controls.Add(this.label20);
+            this.pSettings.Controls.Add(this.tSettingsPassword);
+            this.pSettings.Controls.Add(this.label19);
+            this.pSettings.Location = new System.Drawing.Point(10, 47);
+            this.pSettings.Name = "pSettings";
+            this.pSettings.Size = new System.Drawing.Size(1929, 902);
+            this.pSettings.TabIndex = 6;
+            this.pSettings.Text = "Settings";
+            this.pSettings.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label20.Location = new System.Drawing.Point(3, 384);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(1926, 51);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Enter Administrator Password";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tSettingsPassword
+            // 
+            this.tSettingsPassword.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tSettingsPassword.Location = new System.Drawing.Point(566, 450);
+            this.tSettingsPassword.Name = "tSettingsPassword";
+            this.tSettingsPassword.PasswordChar = '*';
+            this.tSettingsPassword.Size = new System.Drawing.Size(798, 59);
+            this.tSettingsPassword.TabIndex = 5;
+            this.tSettingsPassword.TextChanged += new System.EventHandler(this.tSettingsPassword_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label19.Location = new System.Drawing.Point(6, 2);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(177, 51);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Settings";
             // 
             // Dashboard
             // 
@@ -732,11 +1043,20 @@
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.pTabPanel.ResumeLayout(false);
+            this.pStart.ResumeLayout(false);
+            this.pStart.PerformLayout();
+            this.pStop.ResumeLayout(false);
+            this.pStop.PerformLayout();
             this.pAddNewDevice.ResumeLayout(false);
             this.pAddNewDevice.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
+            this.pModifyDevice.PerformLayout();
             this.pReports.ResumeLayout(false);
+            this.pReports.PerformLayout();
             this.pAlarms.ResumeLayout(false);
+            this.pAlarms.PerformLayout();
+            this.pSettings.ResumeLayout(false);
+            this.pSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,9 +1088,6 @@
         private System.Windows.Forms.TabPage pAlarms;
         private System.Windows.Forms.ToolStripStatusLabel lStaticMessage;
         private System.Windows.Forms.ToolStripStatusLabel lStatusPreceder;
-        private System.Windows.Forms.Button bTogglePanelSize_Modify;
-        private System.Windows.Forms.Button bTogglePanelSize_Reports;
-        private System.Windows.Forms.Button bTogglePanelSize_Alarms;
         private System.Windows.Forms.Label lHeader_Add;
         private System.Windows.Forms.Button bTogglePanelSize_Status;
         private System.Windows.Forms.Label lRules;
@@ -797,6 +1114,32 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button bClearNewDevice;
         private System.Windows.Forms.Button bSaveNewDevice;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox lbDeviceList;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TabPage pSettings;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tSettingsPassword;
+        private System.Windows.Forms.Label label19;
     }
 }
 

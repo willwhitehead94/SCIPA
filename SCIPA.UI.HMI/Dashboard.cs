@@ -19,6 +19,11 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private int _activeAlarmCount = 0;
 
+        /// <summary>
+        /// The password required to access Admin settings from the dashboard.
+        /// </summary>
+        private string _settingsPassword = "letmein";
+
         
         /// <summary>
         /// Initialise the Dashboard window.
@@ -194,6 +199,12 @@ namespace SCIPA.UI.HMI
             pTabPanel.SelectedTab = pAlarms;
         }
 
+        private void bSettings_Click(object sender, EventArgs e)
+        {
+            DebugOutput.Print("Dashboard: Settings");
+            pTabPanel.SelectedTab = pSettings;
+        }
+
         /// <summary>
         /// Toggles the docking state of the mainPanel.
         /// Also triggers the "full screen" message.
@@ -233,8 +244,12 @@ namespace SCIPA.UI.HMI
             System.Diagnostics.Process.Start(@"cmd.exe", @consoleApp.exePath);
         }
 
-        private void bSettings_Click(object sender, EventArgs e)
+        private void tSettingsPassword_TextChanged(object sender, EventArgs e)
         {
+            if (tSettingsPassword.Text == _settingsPassword)
+            {
+                DebugOutput.Print("Showing Admin Panel!");
+            }
         }
     }
 }
