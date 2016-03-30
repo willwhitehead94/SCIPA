@@ -17,6 +17,8 @@ namespace SCIPA.Domain.Logic
         /// </summary>
         public static List<Device> AllDevices = new List<Device>();
 
+        private static List<Device> ActiveDevices = new List<Device>(); 
+
         /// <summary>
         /// Local access to the SQL Database repository.
         /// </summary>
@@ -41,6 +43,17 @@ namespace SCIPA.Domain.Logic
             }
 
             return AllDevices;
+        }
+
+        public static ICollection<Device> GetActiveDevices()
+        {
+            return ActiveDevices;
+        }
+
+        public static void StartDeviceProcess(Device device)
+        {
+            //TODO break here and add dthe start logic!
+            ActiveDevices.Add(device);
         }
 
         /// <summary>

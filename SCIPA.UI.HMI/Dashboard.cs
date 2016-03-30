@@ -9,6 +9,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SCIPA.Domain.Generic;
+using SCIPA.Domain.Inbound;
+using SCIPA.Domain.Logic;
+using SCIPA.Models;
+using Action = System.Action;
 
 namespace SCIPA.UI.HMI
 {
@@ -23,6 +27,11 @@ namespace SCIPA.UI.HMI
         /// The password required to access Admin settings from the dashboard.
         /// </summary>
         private string _settingsPassword = "letmein";
+
+        /// <summary>
+        /// The Device object currently selected.
+        /// </summary>
+        private Device _selectedDevice = null;
 
         
         /// <summary>
@@ -166,13 +175,30 @@ namespace SCIPA.UI.HMI
 
         private void bStartProcess_Click(object sender, EventArgs e)
         {
-            DebugOutput.Print("Dashboard: Start");
+            //Print output statement as to the event.
+            DebugOutput.Print("Dashboard: Start Device Process");
+
+            //Populate appropriate objects/fields.
+            var controller = new DeviceController();
+            start_lbDevice.Items.Clear();
+            foreach (var dev in controller.GetAllDevices())
+            { start_lbDevice.Items.Add(dev);}
+
+            //Bring page to user's view.
             pTabPanel.SelectedTab = pStart;
         }
 
         private void bStopProcess_Click(object sender, EventArgs e)
         {
-            DebugOutput.Print("Dashboard: Stop");
+            //Print output statement as to the event.
+            DebugOutput.Print("Dashboard: Stop Device Process");
+
+            //Populate appropriate objects/fields.
+            stop_lbDevice.Items.Clear();
+            foreach (var dev in DeviceController.GetActiveDevices())
+            { stop_lbDevice.Items.Add(dev); }
+
+            //Bring page to user's view.
             pTabPanel.SelectedTab = pStop;
         }
 
@@ -252,5 +278,41 @@ namespace SCIPA.UI.HMI
                 DebugOutput.Print("Showing Admin Panel!");
             }
         }
+
+        #region Start Page
+
+        private void start_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedDevice = (Device) start_lbDevice.SelectedItem;
+            start_tId.Text = selectedDevice.Id.ToString();
+            start_tDevName.Text = selectedDevice.Name;
+            start_tLocation.Text = selectedDevice.Location;
+            start_tCustodian.Text = selectedDevice.Custodian;
+            start_bStart.Enabled = selectedDevice.Enabled;
+        }
+
+        private void start_bStart_Click(object sender, EventArgs e)
+        {
+            var controller = new CommunicatorController();
+            var commList = controller.GetAllCommunicators().Where(comm => comm.Device.Id == _selectedDevice.Id);
+
+            foreach(var comm in commList)
+                new Inbound(comm);
+
+        }
+
+#endregion Start Page
+
+        private void stop_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedDevice = (Device)start_lbDevice.SelectedItem;
+            stop_tId.Text = selectedDevice.Id.ToString();
+            stop_tDevName.Text = selectedDevice.Name;
+            stop_tLocation.Text = selectedDevice.Location;
+            stop_tCustodian.Text = selectedDevice.Custodian;
+            stop_bStop.Enabled = selectedDevice.Enabled;
+        }
+
+
     }
 }

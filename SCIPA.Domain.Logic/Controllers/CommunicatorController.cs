@@ -109,5 +109,11 @@ namespace SCIPA.Domain.Logic
                 return generalComm.Id;
             }
         }
+
+
+
+
+
+        
     }
 }

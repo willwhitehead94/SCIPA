@@ -42,15 +42,21 @@
             this.bReports = new System.Windows.Forms.Button();
             this.bAlarms = new System.Windows.Forms.Button();
             this.pButtonPannel = new System.Windows.Forms.Panel();
+            this.bSettings = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.lStaticMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.bTogglePanelSize_Status = new System.Windows.Forms.Button();
-            this.bSettings = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
+            this.Home = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
             this.pStart = new System.Windows.Forms.TabPage();
+            this.start_tLocation = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.start_tCustodian = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.start_tDevName = new System.Windows.Forms.TextBox();
             this.start_tId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -59,6 +65,10 @@
             this.start_lbDevice = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pStop = new System.Windows.Forms.TabPage();
+            this.stop_tLocation = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.stop_tCustodian = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.stop_tDevName = new System.Windows.Forms.TextBox();
             this.stop_tId = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -67,6 +77,10 @@
             this.stop_lbDevice = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
+            this.add_tcInnerPages = new SCIPA.UI.HMI.CustomTabControl();
+            this.pSources = new System.Windows.Forms.TabPage();
+            this.pDestinations = new System.Windows.Forms.TabPage();
+            this.pRules = new System.Windows.Forms.TabPage();
             this.add_bClearNewDevice = new System.Windows.Forms.Button();
             this.add_bSaveNewDevice = new System.Windows.Forms.Button();
             this.add_lRules = new System.Windows.Forms.Label();
@@ -139,9 +153,11 @@
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.pTabPanel.SuspendLayout();
+            this.Home.SuspendLayout();
             this.pStart.SuspendLayout();
             this.pStop.SuspendLayout();
             this.pAddNewDevice.SuspendLayout();
+            this.add_tcInnerPages.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
@@ -308,6 +324,29 @@
             this.pButtonPannel.Size = new System.Drawing.Size(1949, 85);
             this.pButtonPannel.TabIndex = 13;
             // 
+            // bSettings
+            // 
+            this.bSettings.BackColor = System.Drawing.Color.DarkGray;
+            this.bSettings.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSettings.Location = new System.Drawing.Point(1679, 0);
+            this.bSettings.Name = "bSettings";
+            this.bSettings.Size = new System.Drawing.Size(270, 85);
+            this.bSettings.TabIndex = 13;
+            this.bSettings.Text = "SETTINGS";
+            this.bSettings.UseVisualStyleBackColor = false;
+            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label6.Location = new System.Drawing.Point(1633, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 74);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "|";
+            // 
             // statusBar
             // 
             this.statusBar.ImageScalingSize = new System.Drawing.Size(36, 36);
@@ -355,31 +394,9 @@
             this.bTogglePanelSize_Status.UseVisualStyleBackColor = true;
             this.bTogglePanelSize_Status.Click += new System.EventHandler(this.bTogglePanelSize_Click);
             // 
-            // bSettings
-            // 
-            this.bSettings.BackColor = System.Drawing.Color.DarkGray;
-            this.bSettings.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSettings.Location = new System.Drawing.Point(1679, 0);
-            this.bSettings.Name = "bSettings";
-            this.bSettings.Size = new System.Drawing.Size(270, 85);
-            this.bSettings.TabIndex = 13;
-            this.bSettings.Text = "SETTINGS";
-            this.bSettings.UseVisualStyleBackColor = false;
-            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(1633, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 74);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "|";
-            // 
             // pTabPanel
             // 
+            this.pTabPanel.Controls.Add(this.Home);
             this.pTabPanel.Controls.Add(this.pStart);
             this.pTabPanel.Controls.Add(this.pStop);
             this.pTabPanel.Controls.Add(this.pAddNewDevice);
@@ -393,8 +410,33 @@
             this.pTabPanel.Size = new System.Drawing.Size(1949, 959);
             this.pTabPanel.TabIndex = 14;
             // 
+            // Home
+            // 
+            this.Home.Controls.Add(this.label30);
+            this.Home.Location = new System.Drawing.Point(10, 47);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(1929, 902);
+            this.Home.TabIndex = 7;
+            this.Home.Text = "pHome";
+            this.Home.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label30.Location = new System.Drawing.Point(-9, 18);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(1960, 894);
+            this.label30.TabIndex = 1;
+            this.label30.Text = "SCIPA";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pStart
             // 
+            this.pStart.Controls.Add(this.start_tLocation);
+            this.pStart.Controls.Add(this.label31);
+            this.pStart.Controls.Add(this.start_tCustodian);
+            this.pStart.Controls.Add(this.label32);
             this.pStart.Controls.Add(this.start_tDevName);
             this.pStart.Controls.Add(this.start_tId);
             this.pStart.Controls.Add(this.label21);
@@ -409,6 +451,48 @@
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
             // 
+            // start_tLocation
+            // 
+            this.start_tLocation.Enabled = false;
+            this.start_tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_tLocation.Location = new System.Drawing.Point(1095, 201);
+            this.start_tLocation.Margin = new System.Windows.Forms.Padding(7);
+            this.start_tLocation.Name = "start_tLocation";
+            this.start_tLocation.Size = new System.Drawing.Size(799, 55);
+            this.start_tLocation.TabIndex = 42;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(796, 208);
+            this.label31.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(190, 48);
+            this.label31.TabIndex = 41;
+            this.label31.Text = "Location:";
+            // 
+            // start_tCustodian
+            // 
+            this.start_tCustodian.Enabled = false;
+            this.start_tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_tCustodian.Location = new System.Drawing.Point(1095, 270);
+            this.start_tCustodian.Margin = new System.Windows.Forms.Padding(7);
+            this.start_tCustodian.Name = "start_tCustodian";
+            this.start_tCustodian.Size = new System.Drawing.Size(799, 55);
+            this.start_tCustodian.TabIndex = 40;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(796, 277);
+            this.label32.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(220, 48);
+            this.label32.TabIndex = 39;
+            this.label32.Text = "Custodian:";
+            // 
             // start_tDevName
             // 
             this.start_tDevName.Enabled = false;
@@ -418,7 +502,6 @@
             this.start_tDevName.Name = "start_tDevName";
             this.start_tDevName.Size = new System.Drawing.Size(799, 55);
             this.start_tDevName.TabIndex = 38;
-            this.start_tDevName.Text = "Test Arduino";
             // 
             // start_tId
             // 
@@ -454,14 +537,16 @@
             // 
             // start_bStart
             // 
+            this.start_bStart.Enabled = false;
             this.start_bStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.start_bStart.Location = new System.Drawing.Point(888, 249);
+            this.start_bStart.Location = new System.Drawing.Point(876, 393);
             this.start_bStart.Margin = new System.Windows.Forms.Padding(7);
             this.start_bStart.Name = "start_bStart";
             this.start_bStart.Size = new System.Drawing.Size(960, 128);
             this.start_bStart.TabIndex = 34;
             this.start_bStart.Text = "Start Selected Device";
             this.start_bStart.UseVisualStyleBackColor = true;
+            this.start_bStart.Click += new System.EventHandler(this.start_bStart_Click);
             // 
             // start_lbDevice
             // 
@@ -483,6 +568,7 @@
             this.start_lbDevice.Name = "start_lbDevice";
             this.start_lbDevice.Size = new System.Drawing.Size(713, 784);
             this.start_lbDevice.TabIndex = 5;
+            this.start_lbDevice.SelectedIndexChanged += new System.EventHandler(this.start_lbDevice_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -497,6 +583,10 @@
             // 
             // pStop
             // 
+            this.pStop.Controls.Add(this.stop_tLocation);
+            this.pStop.Controls.Add(this.label33);
+            this.pStop.Controls.Add(this.stop_tCustodian);
+            this.pStop.Controls.Add(this.label34);
             this.pStop.Controls.Add(this.stop_tDevName);
             this.pStop.Controls.Add(this.stop_tId);
             this.pStop.Controls.Add(this.label23);
@@ -511,6 +601,48 @@
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
             // 
+            // stop_tLocation
+            // 
+            this.stop_tLocation.Enabled = false;
+            this.stop_tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_tLocation.Location = new System.Drawing.Point(1099, 203);
+            this.stop_tLocation.Margin = new System.Windows.Forms.Padding(7);
+            this.stop_tLocation.Name = "stop_tLocation";
+            this.stop_tLocation.Size = new System.Drawing.Size(799, 55);
+            this.stop_tLocation.TabIndex = 48;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(800, 210);
+            this.label33.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(190, 48);
+            this.label33.TabIndex = 47;
+            this.label33.Text = "Location:";
+            // 
+            // stop_tCustodian
+            // 
+            this.stop_tCustodian.Enabled = false;
+            this.stop_tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_tCustodian.Location = new System.Drawing.Point(1099, 272);
+            this.stop_tCustodian.Margin = new System.Windows.Forms.Padding(7);
+            this.stop_tCustodian.Name = "stop_tCustodian";
+            this.stop_tCustodian.Size = new System.Drawing.Size(799, 55);
+            this.stop_tCustodian.TabIndex = 46;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(800, 279);
+            this.label34.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(220, 48);
+            this.label34.TabIndex = 45;
+            this.label34.Text = "Custodian:";
+            // 
             // stop_tDevName
             // 
             this.stop_tDevName.Enabled = false;
@@ -520,7 +652,6 @@
             this.stop_tDevName.Name = "stop_tDevName";
             this.stop_tDevName.Size = new System.Drawing.Size(799, 55);
             this.stop_tDevName.TabIndex = 44;
-            this.stop_tDevName.Text = "Test Arduino";
             // 
             // stop_tId
             // 
@@ -556,8 +687,9 @@
             // 
             // stop_bStop
             // 
+            this.stop_bStop.Enabled = false;
             this.stop_bStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_bStop.Location = new System.Drawing.Point(892, 251);
+            this.stop_bStop.Location = new System.Drawing.Point(876, 393);
             this.stop_bStop.Margin = new System.Windows.Forms.Padding(7);
             this.stop_bStop.Name = "stop_bStop";
             this.stop_bStop.Size = new System.Drawing.Size(960, 128);
@@ -585,6 +717,7 @@
             this.stop_lbDevice.Name = "stop_lbDevice";
             this.stop_lbDevice.Size = new System.Drawing.Size(713, 784);
             this.stop_lbDevice.TabIndex = 39;
+            this.stop_lbDevice.SelectedIndexChanged += new System.EventHandler(this.stop_lbDevice_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -600,6 +733,7 @@
             // pAddNewDevice
             // 
             this.pAddNewDevice.AutoScroll = true;
+            this.pAddNewDevice.Controls.Add(this.add_tcInnerPages);
             this.pAddNewDevice.Controls.Add(this.add_bClearNewDevice);
             this.pAddNewDevice.Controls.Add(this.add_bSaveNewDevice);
             this.pAddNewDevice.Controls.Add(this.add_lRules);
@@ -629,6 +763,44 @@
             this.pAddNewDevice.TabIndex = 2;
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
+            // 
+            // add_tcInnerPages
+            // 
+            this.add_tcInnerPages.Controls.Add(this.pSources);
+            this.add_tcInnerPages.Controls.Add(this.pDestinations);
+            this.add_tcInnerPages.Controls.Add(this.pRules);
+            this.add_tcInnerPages.Location = new System.Drawing.Point(1022, 27);
+            this.add_tcInnerPages.Name = "add_tcInnerPages";
+            this.add_tcInnerPages.SelectedIndex = 0;
+            this.add_tcInnerPages.Size = new System.Drawing.Size(863, 715);
+            this.add_tcInnerPages.TabIndex = 42;
+            // 
+            // pSources
+            // 
+            this.pSources.Location = new System.Drawing.Point(10, 47);
+            this.pSources.Name = "pSources";
+            this.pSources.Size = new System.Drawing.Size(843, 658);
+            this.pSources.TabIndex = 0;
+            this.pSources.Text = "Sources";
+            this.pSources.UseVisualStyleBackColor = true;
+            // 
+            // pDestinations
+            // 
+            this.pDestinations.Location = new System.Drawing.Point(10, 47);
+            this.pDestinations.Name = "pDestinations";
+            this.pDestinations.Size = new System.Drawing.Size(843, 658);
+            this.pDestinations.TabIndex = 1;
+            this.pDestinations.Text = "Destinations";
+            this.pDestinations.UseVisualStyleBackColor = true;
+            // 
+            // pRules
+            // 
+            this.pRules.Location = new System.Drawing.Point(10, 47);
+            this.pRules.Name = "pRules";
+            this.pRules.Size = new System.Drawing.Size(843, 658);
+            this.pRules.TabIndex = 2;
+            this.pRules.Text = "Rules";
+            this.pRules.UseVisualStyleBackColor = true;
             // 
             // add_bClearNewDevice
             // 
@@ -1476,12 +1648,14 @@
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.pTabPanel.ResumeLayout(false);
+            this.Home.ResumeLayout(false);
             this.pStart.ResumeLayout(false);
             this.pStart.PerformLayout();
             this.pStop.ResumeLayout(false);
             this.pStop.PerformLayout();
             this.pAddNewDevice.ResumeLayout(false);
             this.pAddNewDevice.PerformLayout();
+            this.add_tcInnerPages.ResumeLayout(false);
             this.pModifyDevice.ResumeLayout(false);
             this.pModifyDevice.PerformLayout();
             this.pReports.ResumeLayout(false);
@@ -1605,6 +1779,20 @@
         private System.Windows.Forms.TextBox alarm_tDevice;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
+        private CustomTabControl add_tcInnerPages;
+        private System.Windows.Forms.TabPage pSources;
+        private System.Windows.Forms.TabPage pDestinations;
+        private System.Windows.Forms.TabPage pRules;
+        private System.Windows.Forms.TabPage Home;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox start_tLocation;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox start_tCustodian;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox stop_tLocation;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox stop_tCustodian;
+        private System.Windows.Forms.Label label34;
     }
 }
 
