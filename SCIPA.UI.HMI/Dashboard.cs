@@ -306,6 +306,9 @@ namespace SCIPA.UI.HMI
             foreach(var comm in commList)
                 new Inbound(comm);
 
+            //Once started, stops allowing a second start.
+            start_bStart.Enabled = false;
+
         }
 
 #endregion Start Page
