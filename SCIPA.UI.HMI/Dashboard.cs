@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SCIPA.Domain.Generic;
 
-namespace SCIPA.UI.Test
+namespace SCIPA.UI.HMI
 {
     public partial class Dashboard : Form
     {
@@ -215,7 +215,7 @@ namespace SCIPA.UI.Test
             {
                 pTabPanel.Dock = DockStyle.None;
                 lStatusPreceder.Text = $"";
-                //btn.Text = "Fullscreen";
+                btn.Text = "Fullscreen";
             }
 
         }
@@ -231,6 +231,10 @@ namespace SCIPA.UI.Test
                 "When the console opens, type 'SCIPA.UI.Service' to run the Service application");
             var consoleApp = new SCIPA.UI.Service.Program();
             System.Diagnostics.Process.Start(@"cmd.exe", @consoleApp.exePath);
+        }
+
+        private void bSettings_Click(object sender, EventArgs e)
+        {
         }
     }
 }

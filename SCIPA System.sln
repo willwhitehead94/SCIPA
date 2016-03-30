@@ -37,8 +37,6 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SCIPA.Domain.BI.Reporting",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.UI.HMI", "SCIPA.UI.HMI\SCIPA.UI.HMI.csproj", "{3581C951-71EC-4186-872B-4EC188450836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.UI.Test", "SCIPA.UI.Test\SCIPA.UI.Test.csproj", "{22785B0B-22C7-468B-AD4C-7E466FB372BF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -190,14 +188,6 @@ Global
 		{3581C951-71EC-4186-872B-4EC188450836}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{3581C951-71EC-4186-872B-4EC188450836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3581C951-71EC-4186-872B-4EC188450836}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Development|Any CPU.ActiveCfg = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Development|Any CPU.Build.0 = Debug|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22785B0B-22C7-468B-AD4C-7E466FB372BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
