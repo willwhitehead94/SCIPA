@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -33,6 +34,12 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Device _selectedDevice = null;
 
+        /// <summary>
+        /// Local object for temporarily storing Communicator data.
+        /// Used as part of the Addition page.
+        /// </summary>
+        private Communicator _communicator = null;
+
         
         /// <summary>
         /// Initialise the Dashboard window.
@@ -57,6 +64,13 @@ namespace SCIPA.UI.HMI
             //Start the live dashboard update outside of the main thread.
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateDashboard));
             this.report_rvReportViewer.RefreshReport();
+
+            //Prepare any Data Sources required for the ComboBoxes.
+            add_cbCommType.DataSource = Enum.GetValues(typeof(Models.CommunicatorType));
+            add_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
+            add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
+            add_cbComPort.DataSource = SerialPort.GetPortNames();
+
         }
 
         /// <summary>
@@ -205,6 +219,9 @@ namespace SCIPA.UI.HMI
         private void bAddNew_Click(object sender, EventArgs e)
         {
             DebugOutput.Print("Dashboard: Add New Device");
+
+            var _controller = new DeviceController();
+            add_tId.Text = (_controller.CurrentMaxId() + 1).ToString();
             pTabPanel.SelectedTab = pAddNewDevice;
         }
 
@@ -279,7 +296,7 @@ namespace SCIPA.UI.HMI
             }
         }
 
-        #region Start Page
+#region Start Page
 
         private void start_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -311,8 +328,9 @@ namespace SCIPA.UI.HMI
 
         }
 
-#endregion Start Page
+        #endregion Start Page
 
+#region Stop Page
         private void stop_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedDevice = (Device)start_lbDevice.SelectedItem;
@@ -325,8 +343,149 @@ namespace SCIPA.UI.HMI
             //Allow global access
             _selectedDevice = selectedDevice;
         }
+        #endregion Stop Page
+
+#region Add New Device Page
 
         private void pSources_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_bAddSource_Click(object sender, EventArgs e)
+        {
+            //Save the new Device.
+            add_bSaveNewDevice.PerformClick();
+
+            //Show Add Source
+            add_tcInnerPages.SelectedTab = pSources;
+        }
+
+        private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var specalism = (CommunicatorType)add_cbCommType.SelectedItem;
+            switch (specalism)
+            {
+                case CommunicatorType.FlatFile:
+                    _communicator=new FileCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pFlatFile;
+                    break;
+                case CommunicatorType.Serial:
+                    _communicator=new SerialCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pSerial;
+                    break;
+                case CommunicatorType.Database:
+                    _communicator = new DatabaseCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pDatabase;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void add_bRefreshComPorts_Click(object sender, EventArgs e)
+        {
+            add_cbComPort.DataSource = SerialPort.GetPortNames();
+            add_cbComPort.Refresh();
+        }
+
+
+        #endregion Add New Device Page
+
+        private void add_bSaveSource_Click(object sender, EventArgs e)
+        {
+            if (_communicator is DatabaseCommunicator)
+            {
+                _communicator = new DatabaseCommunicator()
+                {
+                    DbType = (DatabaseType) add_cbDatabaseType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
+                    ConnectionString = add_tConnectionString.Text,
+                    Query = add_tQuery.Text,
+                    StartChar = GetStartChar(),
+                    EndChar = GetEndChar(),
+                    Device = _selectedDevice,
+                    //Id = GetNextIdNumber(),
+                    Inbound = true,
+                    Type = CommunicatorType.Database,
+                    Action = null
+                };
+            }
+            else if (_communicator is SerialCommunicator)
+            {
+                _communicator = new SerialCommunicator()
+                {
+                    StartChar = GetStartChar(),
+                    EndChar = GetEndChar(),
+                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    BaudRate = Convert.ToInt32(add_tBaudRate.Text),
+                    ComPort = add_cbComPort.SelectedItem.ToString(),
+                    DataBits = Convert.ToByte(add_tDataBits.Text),
+                    IsDTR = add_cbDtr.Checked,
+                    IsRTS = add_cbRts.Checked,
+                    Device = _selectedDevice,
+                    Inbound = true,
+                    Type = CommunicatorType.Serial,
+                    Action = null
+                    //Id = GetNextIdNumber()
+                };
+            }
+            else if (_communicator is FileCommunicator)
+            {
+                _communicator = new FileCommunicator()
+                {
+                    FilePath = add_tFilePath.Text,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
+                    StartChar = GetStartChar(),
+                    EndChar = GetEndChar(),
+                    Device = _selectedDevice,
+                    Type = CommunicatorType.FlatFile,
+                    Inbound = true,
+                    Action = null
+                    //Id = GetNextIdNumber()
+                };
+            }
+
+            var _controller = new CommunicatorController();
+            var Id = _controller.SaveCommunicator(_communicator);
+            if (Id != null) _communicator.Id = (int)Id;
+            DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
+        }
+
+        private int GetStartChar()
+        {
+            var start = 0;
+
+            int.TryParse(add_tStartChar.Text, out start);
+
+            return start;
+        }
+
+        private int GetEndChar()
+        {
+            var end = 0;
+            int.TryParse(add_tEnd.Text, out end);
+            if (end > 0)
+            {
+                return GetStartChar() + end;
+            }
+
+            return end;
+        }
+
+        private void add_bSaveNewDevice_Click(object sender, EventArgs e)
+        {
+            var _controller = new DeviceController();
+
+            bool enabled = add_rbTrue.Checked && !add_rbFalse.Checked;
+            _selectedDevice = _controller.GetDeviceObject(Convert.ToInt32(add_tId.Text), add_tName.Text, add_tLocation.Text, add_tCustodian.Text, enabled);
+            if (_controller.SaveDevice(_selectedDevice) == null)
+            {
+                MessageBox.Show("There was an error saving the Device...");
+            }
+        }
+
+        private void add_cbValueType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

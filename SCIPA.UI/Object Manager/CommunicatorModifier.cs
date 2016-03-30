@@ -192,5 +192,10 @@ namespace SCIPA.UI.Object_Manager
                 _communicator = temp;
             }
         }
+
+        private void cbCommType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

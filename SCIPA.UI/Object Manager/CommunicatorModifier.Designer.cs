@@ -141,6 +141,7 @@
             this.cbCommType.Name = "cbCommType";
             this.cbCommType.Size = new System.Drawing.Size(630, 37);
             this.cbCommType.TabIndex = 9;
+            this.cbCommType.SelectedIndexChanged += new System.EventHandler(this.cbCommType_SelectedIndexChanged);
             // 
             // tLastReadTime
             // 
