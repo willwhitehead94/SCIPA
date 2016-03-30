@@ -299,6 +299,8 @@ namespace SCIPA.UI.HMI
             if (tSettingsPassword.Text == _settingsPassword)
             {
                 DebugOutput.Print("Showing Admin Panel!");
+                tSettingsPassword.Text = "";
+                System.Windows.Forms.MessageBox.Show("Settings panel would open at this point...");
             }
         }
 

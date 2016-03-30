@@ -193,12 +193,14 @@
             this.label37 = new System.Windows.Forms.Label();
             this.add_bAddAction = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.add_cbRule = new System.Windows.Forms.ComboBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.add_cbCommunicatorDestination = new System.Windows.Forms.ComboBox();
+            this.add_cActionEnabled = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.add_tOutputValue = new System.Windows.Forms.TextBox();
+            this.add_rbCommInbound = new System.Windows.Forms.RadioButton();
+            this.add_rbCommOutbound = new System.Windows.Forms.RadioButton();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -856,6 +858,8 @@
             // pSources
             // 
             this.pSources.AutoScroll = true;
+            this.pSources.Controls.Add(this.add_rbCommOutbound);
+            this.pSources.Controls.Add(this.add_rbCommInbound);
             this.pSources.Controls.Add(this.add_bSaveSource);
             this.pSources.Controls.Add(this.add_tcInnerPagesSourceSetting);
             this.pSources.Controls.Add(this.label46);
@@ -878,7 +882,7 @@
             // add_bSaveSource
             // 
             this.add_bSaveSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bSaveSource.Location = new System.Drawing.Point(321, 620);
+            this.add_bSaveSource.Location = new System.Drawing.Point(321, 653);
             this.add_bSaveSource.Name = "add_bSaveSource";
             this.add_bSaveSource.Size = new System.Drawing.Size(295, 98);
             this.add_bSaveSource.TabIndex = 44;
@@ -891,7 +895,7 @@
             this.add_tcInnerPagesSourceSetting.Controls.Add(this.pFlatFile);
             this.add_tcInnerPagesSourceSetting.Controls.Add(this.pSerial);
             this.add_tcInnerPagesSourceSetting.Controls.Add(this.pDatabase);
-            this.add_tcInnerPagesSourceSetting.Location = new System.Drawing.Point(6, 320);
+            this.add_tcInnerPagesSourceSetting.Location = new System.Drawing.Point(21, 377);
             this.add_tcInnerPagesSourceSetting.Name = "add_tcInnerPagesSourceSetting";
             this.add_tcInnerPagesSourceSetting.SelectedIndex = 0;
             this.add_tcInnerPagesSourceSetting.Size = new System.Drawing.Size(847, 390);
@@ -1192,13 +1196,13 @@
             // 
             // pActions
             // 
-            this.pActions.Controls.Add(this.checkBox1);
+            this.pActions.Controls.Add(this.add_cActionEnabled);
             this.pActions.Controls.Add(this.label55);
-            this.pActions.Controls.Add(this.textBox1);
+            this.pActions.Controls.Add(this.add_tOutputValue);
             this.pActions.Controls.Add(this.label54);
-            this.pActions.Controls.Add(this.comboBox2);
+            this.pActions.Controls.Add(this.add_cbCommunicatorDestination);
             this.pActions.Controls.Add(this.label8);
-            this.pActions.Controls.Add(this.comboBox1);
+            this.pActions.Controls.Add(this.add_cbRule);
             this.pActions.Controls.Add(this.label37);
             this.pActions.Location = new System.Drawing.Point(10, 47);
             this.pActions.Name = "pActions";
@@ -1772,6 +1776,7 @@
             // alarm_rbFalse
             // 
             this.alarm_rbFalse.AutoSize = true;
+            this.alarm_rbFalse.Enabled = false;
             this.alarm_rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_rbFalse.Location = new System.Drawing.Point(1246, 416);
             this.alarm_rbFalse.Margin = new System.Windows.Forms.Padding(7);
@@ -1784,6 +1789,7 @@
             // alarm_rbTrue
             // 
             this.alarm_rbTrue.AutoSize = true;
+            this.alarm_rbTrue.Enabled = false;
             this.alarm_rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_rbTrue.Location = new System.Drawing.Point(1095, 416);
             this.alarm_rbTrue.Margin = new System.Windows.Forms.Padding(7);
@@ -1877,13 +1883,13 @@
             // 
             // alarm_tValue
             // 
+            this.alarm_tValue.Enabled = false;
             this.alarm_tValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_tValue.Location = new System.Drawing.Point(1095, 347);
             this.alarm_tValue.Margin = new System.Windows.Forms.Padding(7);
             this.alarm_tValue.Name = "alarm_tValue";
             this.alarm_tValue.Size = new System.Drawing.Size(794, 55);
             this.alarm_tValue.TabIndex = 46;
-            this.alarm_tValue.Text = "Under - Desk";
             // 
             // label25
             // 
@@ -1898,13 +1904,13 @@
             // 
             // alarm_tDateTime
             // 
+            this.alarm_tDateTime.Enabled = false;
             this.alarm_tDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_tDateTime.Location = new System.Drawing.Point(1095, 278);
             this.alarm_tDateTime.Margin = new System.Windows.Forms.Padding(7);
             this.alarm_tDateTime.Name = "alarm_tDateTime";
             this.alarm_tDateTime.Size = new System.Drawing.Size(794, 55);
             this.alarm_tDateTime.TabIndex = 44;
-            this.alarm_tDateTime.Text = "Test Arduino";
             // 
             // alarm_tDevice
             // 
@@ -2151,14 +2157,14 @@
             this.label8.TabIndex = 34;
             this.label8.Text = "Rule:";
             // 
-            // comboBox1
+            // add_cbRule
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(263, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(627, 56);
-            this.comboBox1.TabIndex = 33;
+            this.add_cbRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbRule.FormattingEnabled = true;
+            this.add_cbRule.Location = new System.Drawing.Point(263, 59);
+            this.add_cbRule.Name = "add_cbRule";
+            this.add_cbRule.Size = new System.Drawing.Size(627, 56);
+            this.add_cbRule.TabIndex = 33;
             // 
             // label54
             // 
@@ -2170,25 +2176,25 @@
             this.label54.TabIndex = 36;
             this.label54.Text = "Destination:";
             // 
-            // comboBox2
+            // add_cbCommunicatorDestination
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(263, 121);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(627, 56);
-            this.comboBox2.TabIndex = 35;
+            this.add_cbCommunicatorDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbCommunicatorDestination.FormattingEnabled = true;
+            this.add_cbCommunicatorDestination.Location = new System.Drawing.Point(263, 121);
+            this.add_cbCommunicatorDestination.Name = "add_cbCommunicatorDestination";
+            this.add_cbCommunicatorDestination.Size = new System.Drawing.Size(627, 56);
+            this.add_cbCommunicatorDestination.TabIndex = 35;
             // 
-            // checkBox1
+            // add_cActionEnabled
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.checkBox1.Location = new System.Drawing.Point(341, 274);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(205, 52);
-            this.checkBox1.TabIndex = 39;
-            this.checkBox1.Text = "Enabled";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.add_cActionEnabled.AutoSize = true;
+            this.add_cActionEnabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cActionEnabled.Location = new System.Drawing.Point(341, 274);
+            this.add_cActionEnabled.Name = "add_cActionEnabled";
+            this.add_cActionEnabled.Size = new System.Drawing.Size(205, 52);
+            this.add_cActionEnabled.TabIndex = 39;
+            this.add_cActionEnabled.Text = "Enabled";
+            this.add_cActionEnabled.UseVisualStyleBackColor = true;
             // 
             // label55
             // 
@@ -2196,17 +2202,41 @@
             this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label55.Location = new System.Drawing.Point(17, 186);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(223, 48);
+            this.label55.Size = new System.Drawing.Size(158, 48);
             this.label55.TabIndex = 38;
-            this.label55.Text = "Constraint:";
+            this.label55.Text = "Output:";
             // 
-            // textBox1
+            // add_tOutputValue
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.textBox1.Location = new System.Drawing.Point(263, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 55);
-            this.textBox1.TabIndex = 37;
+            this.add_tOutputValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_tOutputValue.Location = new System.Drawing.Point(263, 183);
+            this.add_tOutputValue.Name = "add_tOutputValue";
+            this.add_tOutputValue.Size = new System.Drawing.Size(628, 55);
+            this.add_tOutputValue.TabIndex = 37;
+            // 
+            // add_rbCommInbound
+            // 
+            this.add_rbCommInbound.AutoSize = true;
+            this.add_rbCommInbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_rbCommInbound.Location = new System.Drawing.Point(117, 317);
+            this.add_rbCommInbound.Name = "add_rbCommInbound";
+            this.add_rbCommInbound.Size = new System.Drawing.Size(300, 52);
+            this.add_rbCommInbound.TabIndex = 45;
+            this.add_rbCommInbound.TabStop = true;
+            this.add_rbCommInbound.Text = "Inbound Data";
+            this.add_rbCommInbound.UseVisualStyleBackColor = true;
+            // 
+            // add_rbCommOutbound
+            // 
+            this.add_rbCommOutbound.AutoSize = true;
+            this.add_rbCommOutbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_rbCommOutbound.Location = new System.Drawing.Point(435, 317);
+            this.add_rbCommOutbound.Name = "add_rbCommOutbound";
+            this.add_rbCommOutbound.Size = new System.Drawing.Size(333, 52);
+            this.add_rbCommOutbound.TabIndex = 46;
+            this.add_rbCommOutbound.TabStop = true;
+            this.add_rbCommOutbound.Text = "Outbound Data";
+            this.add_rbCommOutbound.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 
@@ -2440,12 +2470,14 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button add_bAddAction;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox add_cbCommunicatorDestination;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox add_cbRule;
+        private System.Windows.Forms.CheckBox add_cActionEnabled;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox add_tOutputValue;
+        private System.Windows.Forms.RadioButton add_rbCommOutbound;
+        private System.Windows.Forms.RadioButton add_rbCommInbound;
     }
 }
 
