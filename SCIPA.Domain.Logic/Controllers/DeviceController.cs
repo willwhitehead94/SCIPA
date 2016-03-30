@@ -50,6 +50,11 @@ namespace SCIPA.Domain.Logic
             return ActiveDevices;
         }
 
+        public static void AddActiveDevice(Device device)
+        {
+            ActiveDevices.Add(device);
+        }
+
         public static void StartDeviceProcess(Device device)
         {
             //TODO break here and add dthe start logic!

@@ -289,6 +289,9 @@ namespace SCIPA.UI.HMI
             start_tLocation.Text = selectedDevice.Location;
             start_tCustodian.Text = selectedDevice.Custodian;
             start_bStart.Enabled = selectedDevice.Enabled;
+
+            //Allow global access
+            _selectedDevice = selectedDevice;
         }
 
         private void start_bStart_Click(object sender, EventArgs e)
@@ -311,6 +314,9 @@ namespace SCIPA.UI.HMI
             stop_tLocation.Text = selectedDevice.Location;
             stop_tCustodian.Text = selectedDevice.Custodian;
             stop_bStop.Enabled = selectedDevice.Enabled;
+
+            //Allow global access
+            _selectedDevice = selectedDevice;
         }
 
 
