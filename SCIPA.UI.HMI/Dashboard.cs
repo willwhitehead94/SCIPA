@@ -290,6 +290,10 @@ namespace SCIPA.UI.HMI
             start_tCustodian.Text = selectedDevice.Custodian;
             start_bStart.Enabled = selectedDevice.Enabled;
 
+            //Disallow starting if already started.
+            if (Inbound.GetStartedDevices().Where(dev => dev.Id == selectedDevice.Id).Any())
+                start_bStart.Enabled = false;
+
             //Allow global access
             _selectedDevice = selectedDevice;
         }
