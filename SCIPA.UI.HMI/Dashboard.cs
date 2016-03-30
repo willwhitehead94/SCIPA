@@ -67,6 +67,8 @@ namespace SCIPA.UI.HMI
         /// <param name="e"></param>
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'SCIPAAlarmDataSet.Alarms' table. You can move, or remove it, as needed.
+            this.AlarmsTableAdapter.Fill(this.SCIPAAlarmDataSet.Alarms);
             //Start the live dashboard update outside of the main thread.
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateDashboard));
             this.report_rvReportViewer.RefreshReport();
@@ -251,7 +253,7 @@ namespace SCIPA.UI.HMI
             alarm_lbAlarms.Items.Clear();
             
             var controller=  new AlarmController();
-            alarm_lbAlarms.Items.Add(controller.)
+           // alarm_lbAlarms.Items.Add(controller.)
         }
 
         private void bSettings_Click(object sender, EventArgs e)
@@ -520,8 +522,12 @@ namespace SCIPA.UI.HMI
             add_tcInnerPages.SelectedTab = pRules;
         }
 
-#endregion Add New Device Page
 
+        #endregion Add New Device Page
 
+        private void alarm_cbPeriod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.pHeader = new System.Windows.Forms.Panel();
             this.lHeaderAlarmCount = new System.Windows.Forms.Label();
@@ -49,6 +51,9 @@
             this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.bTogglePanelSize_Status = new System.Windows.Forms.Button();
+            this.SCIPAAlarmDataSet = new SCIPA.UI.HMI.SCIPAAlarmDataSet();
+            this.AlarmsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AlarmsTableAdapter = new SCIPA.UI.HMI.SCIPAAlarmDataSetTableAdapters.AlarmsTableAdapter();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.Home = new System.Windows.Forms.TabPage();
             this.label35 = new System.Windows.Forms.Label();
@@ -204,6 +209,8 @@
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             this.pTabPanel.SuspendLayout();
             this.Home.SuspendLayout();
             this.pStart.SuspendLayout();
@@ -452,6 +459,20 @@
             this.bTogglePanelSize_Status.Text = "Fullscreen";
             this.bTogglePanelSize_Status.UseVisualStyleBackColor = true;
             this.bTogglePanelSize_Status.Click += new System.EventHandler(this.bTogglePanelSize_Click);
+            // 
+            // SCIPAAlarmDataSet
+            // 
+            this.SCIPAAlarmDataSet.DataSetName = "SCIPAAlarmDataSet";
+            this.SCIPAAlarmDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // AlarmsBindingSource
+            // 
+            this.AlarmsBindingSource.DataMember = "Alarms";
+            this.AlarmsBindingSource.DataSource = this.SCIPAAlarmDataSet;
+            // 
+            // AlarmsTableAdapter
+            // 
+            this.AlarmsTableAdapter.ClearBeforeFill = true;
             // 
             // pTabPanel
             // 
@@ -1929,9 +1950,12 @@
             this.report_rvReportViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.AlarmsBindingSource;
+            this.report_rvReportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            this.report_rvReportViewer.LocalReport.ReportEmbeddedResource = "SCIPA.UI.HMI.Report1.rdlc";
             this.report_rvReportViewer.Location = new System.Drawing.Point(772, 72);
             this.report_rvReportViewer.Name = "report_rvReportViewer";
-            this.report_rvReportViewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
             this.report_rvReportViewer.Size = new System.Drawing.Size(1154, 784);
             this.report_rvReportViewer.TabIndex = 41;
             // 
@@ -2065,6 +2089,7 @@
             this.alarm_cbPeriod.Name = "alarm_cbPeriod";
             this.alarm_cbPeriod.Size = new System.Drawing.Size(660, 59);
             this.alarm_cbPeriod.TabIndex = 0;
+            this.alarm_cbPeriod.SelectedIndexChanged += new System.EventHandler(this.alarm_cbPeriod_SelectedIndexChanged);
             // 
             // alarm_Acknowledge
             // 
@@ -2267,6 +2292,8 @@
             this.pButtonPannel.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).EndInit();
             this.pTabPanel.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.pStart.ResumeLayout(false);
@@ -2478,6 +2505,9 @@
         private System.Windows.Forms.TextBox add_tOutputValue;
         private System.Windows.Forms.RadioButton add_rbCommOutbound;
         private System.Windows.Forms.RadioButton add_rbCommInbound;
+        private System.Windows.Forms.BindingSource AlarmsBindingSource;
+        private SCIPAAlarmDataSet SCIPAAlarmDataSet;
+        private SCIPAAlarmDataSetTableAdapters.AlarmsTableAdapter AlarmsTableAdapter;
     }
 }
 
