@@ -389,17 +389,14 @@ namespace SCIPA.UI.HMI
             add_cbComPort.Refresh();
         }
 
-
-        #endregion Add New Device Page
-
         private void add_bSaveSource_Click(object sender, EventArgs e)
         {
             if (_communicator is DatabaseCommunicator)
             {
                 _communicator = new DatabaseCommunicator()
                 {
-                    DbType = (DatabaseType) add_cbDatabaseType.SelectedItem,
-                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
+                    DbType = (DatabaseType)add_cbDatabaseType.SelectedItem,
+                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
                     ConnectionString = add_tConnectionString.Text,
                     Query = add_tQuery.Text,
                     StartChar = GetStartChar(),
@@ -435,7 +432,7 @@ namespace SCIPA.UI.HMI
                 _communicator = new FileCommunicator()
                 {
                     FilePath = add_tFilePath.Text,
-                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
                     Device = _selectedDevice,
@@ -450,6 +447,17 @@ namespace SCIPA.UI.HMI
             var Id = _controller.SaveCommunicator(_communicator);
             if (Id != null) _communicator.Id = (int)Id;
             DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
+
+            UpdateStartLabels();
+
+        }
+
+        private void UpdateStartLabels()
+        {
+            var _controller = new CommunicatorController();
+
+            //Update labels.
+            add_lSource.Text = $"{_controller.CountCommunicatorsForDevice(_communicator.Device.Id)} Sources...";
         }
 
         private int GetStartChar()
@@ -489,5 +497,18 @@ namespace SCIPA.UI.HMI
         {
 
         }
+
+        private void add_bAddRule_Click(object sender, EventArgs e)
+        {
+            //Save the new Device.
+            add_bSaveNewDevice.PerformClick();
+
+            //Show Add Rule
+            add_tcInnerPages.SelectedTab = pRules;
+        }
+
+#endregion Add New Device Page
+
+
     }
 }

@@ -109,5 +109,15 @@ namespace SCIPA.Domain.Logic
                 return generalComm.Id;
             }
         }
+
+        /// <summary>
+        /// Returns the number of Communicators associated with a device on the database.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public int? CountCommunicatorsForDevice(int deviceId)
+        {
+            return _repo.RetrieveAllCommunicators().Count(c => c.Device.Id == deviceId);
+        }
     }
 }
