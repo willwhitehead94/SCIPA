@@ -80,6 +80,20 @@
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
             this.add_tcInnerPages = new SCIPA.UI.HMI.CustomTabControl();
             this.pSources = new System.Windows.Forms.TabPage();
+            this.tcInnerPagesSourceSetting = new SCIPA.UI.HMI.CustomTabControl();
+            this.pFlatFile = new System.Windows.Forms.TabPage();
+            this.pSerial = new System.Windows.Forms.TabPage();
+            this.pDatabase = new System.Windows.Forms.TabPage();
+            this.label46 = new System.Windows.Forms.Label();
+            this.cbValueType = new System.Windows.Forms.ComboBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.cbCommType = new System.Windows.Forms.ComboBox();
+            this.tEnd = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.tStart = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.tId = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.pDestinations = new System.Windows.Forms.TabPage();
             this.pRules = new System.Windows.Forms.TabPage();
@@ -151,6 +165,22 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.cbDtr = new System.Windows.Forms.CheckBox();
+            this.cbRts = new System.Windows.Forms.CheckBox();
+            this.tDataBits = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.tBaudRate = new System.Windows.Forms.TextBox();
+            this.cbComPort = new System.Windows.Forms.ComboBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.tFilePath = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.tQuery = new System.Windows.Forms.TextBox();
+            this.cbDatabaseType = new System.Windows.Forms.ComboBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.tConnectionString = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -161,6 +191,10 @@
             this.pAddNewDevice.SuspendLayout();
             this.add_tcInnerPages.SuspendLayout();
             this.pSources.SuspendLayout();
+            this.tcInnerPagesSourceSetting.SuspendLayout();
+            this.pFlatFile.SuspendLayout();
+            this.pSerial.SuspendLayout();
+            this.pDatabase.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
@@ -792,6 +826,18 @@
             // 
             // pSources
             // 
+            this.pSources.AutoScroll = true;
+            this.pSources.Controls.Add(this.tcInnerPagesSourceSetting);
+            this.pSources.Controls.Add(this.label46);
+            this.pSources.Controls.Add(this.cbValueType);
+            this.pSources.Controls.Add(this.label47);
+            this.pSources.Controls.Add(this.cbCommType);
+            this.pSources.Controls.Add(this.tEnd);
+            this.pSources.Controls.Add(this.label49);
+            this.pSources.Controls.Add(this.tStart);
+            this.pSources.Controls.Add(this.label50);
+            this.pSources.Controls.Add(this.tId);
+            this.pSources.Controls.Add(this.label51);
             this.pSources.Controls.Add(this.label36);
             this.pSources.Location = new System.Drawing.Point(10, 47);
             this.pSources.Name = "pSources";
@@ -799,6 +845,155 @@
             this.pSources.TabIndex = 0;
             this.pSources.Text = "Sources";
             this.pSources.UseVisualStyleBackColor = true;
+            this.pSources.Click += new System.EventHandler(this.pSources_Click);
+            // 
+            // tcInnerPagesSourceSetting
+            // 
+            this.tcInnerPagesSourceSetting.Controls.Add(this.pFlatFile);
+            this.tcInnerPagesSourceSetting.Controls.Add(this.pSerial);
+            this.tcInnerPagesSourceSetting.Controls.Add(this.pDatabase);
+            this.tcInnerPagesSourceSetting.Location = new System.Drawing.Point(0, 382);
+            this.tcInnerPagesSourceSetting.Name = "tcInnerPagesSourceSetting";
+            this.tcInnerPagesSourceSetting.SelectedIndex = 0;
+            this.tcInnerPagesSourceSetting.Size = new System.Drawing.Size(847, 390);
+            this.tcInnerPagesSourceSetting.TabIndex = 35;
+            // 
+            // pFlatFile
+            // 
+            this.pFlatFile.Controls.Add(this.tFilePath);
+            this.pFlatFile.Controls.Add(this.label44);
+            this.pFlatFile.Location = new System.Drawing.Point(10, 47);
+            this.pFlatFile.Name = "pFlatFile";
+            this.pFlatFile.Size = new System.Drawing.Size(827, 467);
+            this.pFlatFile.TabIndex = 0;
+            this.pFlatFile.Text = "Flat File";
+            this.pFlatFile.UseVisualStyleBackColor = true;
+            // 
+            // pSerial
+            // 
+            this.pSerial.Controls.Add(this.cbDtr);
+            this.pSerial.Controls.Add(this.cbRts);
+            this.pSerial.Controls.Add(this.tDataBits);
+            this.pSerial.Controls.Add(this.label38);
+            this.pSerial.Controls.Add(this.tBaudRate);
+            this.pSerial.Controls.Add(this.cbComPort);
+            this.pSerial.Controls.Add(this.label39);
+            this.pSerial.Controls.Add(this.label40);
+            this.pSerial.Location = new System.Drawing.Point(10, 47);
+            this.pSerial.Name = "pSerial";
+            this.pSerial.Size = new System.Drawing.Size(827, 333);
+            this.pSerial.TabIndex = 1;
+            this.pSerial.Text = "Serial";
+            this.pSerial.UseVisualStyleBackColor = true;
+            // 
+            // pDatabase
+            // 
+            this.pDatabase.Controls.Add(this.label41);
+            this.pDatabase.Controls.Add(this.tQuery);
+            this.pDatabase.Controls.Add(this.cbDatabaseType);
+            this.pDatabase.Controls.Add(this.label42);
+            this.pDatabase.Controls.Add(this.tConnectionString);
+            this.pDatabase.Controls.Add(this.label43);
+            this.pDatabase.Location = new System.Drawing.Point(10, 47);
+            this.pDatabase.Name = "pDatabase";
+            this.pDatabase.Size = new System.Drawing.Size(827, 467);
+            this.pDatabase.TabIndex = 2;
+            this.pDatabase.Text = "Database";
+            this.pDatabase.UseVisualStyleBackColor = true;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label46.Location = new System.Drawing.Point(7, 314);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(243, 48);
+            this.label46.TabIndex = 34;
+            this.label46.Text = "Value Type:";
+            // 
+            // cbValueType
+            // 
+            this.cbValueType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbValueType.FormattingEnabled = true;
+            this.cbValueType.Location = new System.Drawing.Point(251, 311);
+            this.cbValueType.Name = "cbValueType";
+            this.cbValueType.Size = new System.Drawing.Size(596, 56);
+            this.cbValueType.TabIndex = 33;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label47.Location = new System.Drawing.Point(7, 252);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(125, 48);
+            this.label47.TabIndex = 32;
+            this.label47.Text = "Type:";
+            // 
+            // cbCommType
+            // 
+            this.cbCommType.Enabled = false;
+            this.cbCommType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbCommType.FormattingEnabled = true;
+            this.cbCommType.Location = new System.Drawing.Point(251, 249);
+            this.cbCommType.Name = "cbCommType";
+            this.cbCommType.Size = new System.Drawing.Size(596, 56);
+            this.cbCommType.TabIndex = 29;
+            // 
+            // tEnd
+            // 
+            this.tEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tEnd.Location = new System.Drawing.Point(251, 188);
+            this.tEnd.Name = "tEnd";
+            this.tEnd.Size = new System.Drawing.Size(596, 55);
+            this.tEnd.TabIndex = 28;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label49.Location = new System.Drawing.Point(7, 191);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(207, 48);
+            this.label49.TabIndex = 27;
+            this.label49.Text = "End Char:";
+            // 
+            // tStart
+            // 
+            this.tStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tStart.Location = new System.Drawing.Point(251, 127);
+            this.tStart.Name = "tStart";
+            this.tStart.Size = new System.Drawing.Size(596, 55);
+            this.tStart.TabIndex = 26;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label50.Location = new System.Drawing.Point(7, 130);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(222, 48);
+            this.label50.TabIndex = 25;
+            this.label50.Text = "Start Char:";
+            // 
+            // tId
+            // 
+            this.tId.Enabled = false;
+            this.tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tId.Location = new System.Drawing.Point(251, 66);
+            this.tId.Name = "tId";
+            this.tId.Size = new System.Drawing.Size(596, 55);
+            this.tId.TabIndex = 24;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label51.Location = new System.Drawing.Point(7, 69);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(74, 48);
+            this.label51.TabIndex = 23;
+            this.label51.Text = "ID:";
             // 
             // label36
             // 
@@ -815,7 +1010,7 @@
             // 
             this.pDestinations.Location = new System.Drawing.Point(10, 47);
             this.pDestinations.Name = "pDestinations";
-            this.pDestinations.Size = new System.Drawing.Size(843, 682);
+            this.pDestinations.Size = new System.Drawing.Size(900, 682);
             this.pDestinations.TabIndex = 1;
             this.pDestinations.Text = "Destinations";
             this.pDestinations.UseVisualStyleBackColor = true;
@@ -824,7 +1019,7 @@
             // 
             this.pRules.Location = new System.Drawing.Point(10, 47);
             this.pRules.Name = "pRules";
-            this.pRules.Size = new System.Drawing.Size(843, 682);
+            this.pRules.Size = new System.Drawing.Size(900, 682);
             this.pRules.TabIndex = 2;
             this.pRules.Text = "Rules";
             this.pRules.UseVisualStyleBackColor = true;
@@ -1645,6 +1840,156 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Settings";
             // 
+            // cbDtr
+            // 
+            this.cbDtr.AutoSize = true;
+            this.cbDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbDtr.Location = new System.Drawing.Point(6, 255);
+            this.cbDtr.Name = "cbDtr";
+            this.cbDtr.Size = new System.Drawing.Size(686, 52);
+            this.cbDtr.TabIndex = 37;
+            this.cbDtr.Text = "DTR (Data Terminal Ready) Mode";
+            this.cbDtr.UseVisualStyleBackColor = true;
+            // 
+            // cbRts
+            // 
+            this.cbRts.AutoSize = true;
+            this.cbRts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbRts.Location = new System.Drawing.Point(5, 197);
+            this.cbRts.Name = "cbRts";
+            this.cbRts.Size = new System.Drawing.Size(613, 52);
+            this.cbRts.TabIndex = 36;
+            this.cbRts.Text = "RTS (Request To Send) Mode";
+            this.cbRts.UseVisualStyleBackColor = true;
+            // 
+            // tDataBits
+            // 
+            this.tDataBits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tDataBits.Location = new System.Drawing.Point(241, 136);
+            this.tDataBits.Name = "tDataBits";
+            this.tDataBits.Size = new System.Drawing.Size(596, 55);
+            this.tDataBits.TabIndex = 35;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label38.Location = new System.Drawing.Point(-1, 139);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(202, 48);
+            this.label38.TabIndex = 32;
+            this.label38.Text = "Data Bits:";
+            // 
+            // tBaudRate
+            // 
+            this.tBaudRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tBaudRate.Location = new System.Drawing.Point(241, 75);
+            this.tBaudRate.Name = "tBaudRate";
+            this.tBaudRate.Size = new System.Drawing.Size(596, 55);
+            this.tBaudRate.TabIndex = 34;
+            // 
+            // cbComPort
+            // 
+            this.cbComPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbComPort.FormattingEnabled = true;
+            this.cbComPort.Location = new System.Drawing.Point(241, 13);
+            this.cbComPort.Name = "cbComPort";
+            this.cbComPort.Size = new System.Drawing.Size(596, 56);
+            this.cbComPort.TabIndex = 30;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label39.Location = new System.Drawing.Point(-1, 78);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(228, 48);
+            this.label39.TabIndex = 33;
+            this.label39.Text = "Baud Rate:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label40.Location = new System.Drawing.Point(-3, 16);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(218, 48);
+            this.label40.TabIndex = 31;
+            this.label40.Text = "COM Port:";
+            // 
+            // tFilePath
+            // 
+            this.tFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tFilePath.Location = new System.Drawing.Point(241, 3);
+            this.tFilePath.Name = "tFilePath";
+            this.tFilePath.Size = new System.Drawing.Size(596, 55);
+            this.tFilePath.TabIndex = 26;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label44.Location = new System.Drawing.Point(-3, 6);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(198, 48);
+            this.label44.TabIndex = 25;
+            this.label44.Text = "File Path:";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label41.Location = new System.Drawing.Point(-3, 137);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(248, 48);
+            this.label41.TabIndex = 29;
+            this.label41.Text = "Technology:";
+            // 
+            // tQuery
+            // 
+            this.tQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tQuery.Location = new System.Drawing.Point(241, 73);
+            this.tQuery.Name = "tQuery";
+            this.tQuery.Size = new System.Drawing.Size(596, 55);
+            this.tQuery.TabIndex = 32;
+            // 
+            // cbDatabaseType
+            // 
+            this.cbDatabaseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbDatabaseType.FormattingEnabled = true;
+            this.cbDatabaseType.Location = new System.Drawing.Point(241, 134);
+            this.cbDatabaseType.Name = "cbDatabaseType";
+            this.cbDatabaseType.Size = new System.Drawing.Size(596, 56);
+            this.cbDatabaseType.TabIndex = 27;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label42.Location = new System.Drawing.Point(-3, 76);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(146, 48);
+            this.label42.TabIndex = 31;
+            this.label42.Text = "Query:";
+            // 
+            // tConnectionString
+            // 
+            this.tConnectionString.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.tConnectionString.Location = new System.Drawing.Point(241, 12);
+            this.tConnectionString.Name = "tConnectionString";
+            this.tConnectionString.Size = new System.Drawing.Size(596, 55);
+            this.tConnectionString.TabIndex = 30;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label43.Location = new System.Drawing.Point(-3, 15);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(208, 48);
+            this.label43.TabIndex = 28;
+            this.label43.Text = "Conn. Str:";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -1685,6 +2030,13 @@
             this.add_tcInnerPages.ResumeLayout(false);
             this.pSources.ResumeLayout(false);
             this.pSources.PerformLayout();
+            this.tcInnerPagesSourceSetting.ResumeLayout(false);
+            this.pFlatFile.ResumeLayout(false);
+            this.pFlatFile.PerformLayout();
+            this.pSerial.ResumeLayout(false);
+            this.pSerial.PerformLayout();
+            this.pDatabase.ResumeLayout(false);
+            this.pDatabase.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
             this.pModifyDevice.PerformLayout();
             this.pReports.ResumeLayout(false);
@@ -1824,6 +2176,36 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.ComboBox cbValueType;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.ComboBox cbCommType;
+        private System.Windows.Forms.TextBox tEnd;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox tStart;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox tId;
+        private System.Windows.Forms.Label label51;
+        private CustomTabControl tcInnerPagesSourceSetting;
+        private System.Windows.Forms.TabPage pFlatFile;
+        private System.Windows.Forms.TabPage pSerial;
+        private System.Windows.Forms.TabPage pDatabase;
+        private System.Windows.Forms.CheckBox cbDtr;
+        private System.Windows.Forms.CheckBox cbRts;
+        private System.Windows.Forms.TextBox tDataBits;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox tBaudRate;
+        private System.Windows.Forms.ComboBox cbComPort;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox tFilePath;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox tQuery;
+        private System.Windows.Forms.ComboBox cbDatabaseType;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox tConnectionString;
+        private System.Windows.Forms.Label label43;
     }
 }
 

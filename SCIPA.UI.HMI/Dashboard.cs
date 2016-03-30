@@ -326,6 +326,9 @@ namespace SCIPA.UI.HMI
             _selectedDevice = selectedDevice;
         }
 
+        private void pSources_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
