@@ -119,9 +119,6 @@
             this.add_lRules = new System.Windows.Forms.Label();
             this.add_bAddRule = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.add_lAction = new System.Windows.Forms.Label();
-            this.add_bAddAction = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.add_lSource = new System.Windows.Forms.Label();
             this.add_bAddSource = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -193,6 +190,15 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.add_bSaveRule = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.add_bAddAction = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -207,6 +213,7 @@
             this.pFlatFile.SuspendLayout();
             this.pSerial.SuspendLayout();
             this.pDatabase.SuspendLayout();
+            this.pActions.SuspendLayout();
             this.pRules.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
@@ -801,9 +808,6 @@
             this.pAddNewDevice.Controls.Add(this.add_lRules);
             this.pAddNewDevice.Controls.Add(this.add_bAddRule);
             this.pAddNewDevice.Controls.Add(this.label10);
-            this.pAddNewDevice.Controls.Add(this.add_lAction);
-            this.pAddNewDevice.Controls.Add(this.add_bAddAction);
-            this.pAddNewDevice.Controls.Add(this.label8);
             this.pAddNewDevice.Controls.Add(this.add_lSource);
             this.pAddNewDevice.Controls.Add(this.add_bAddSource);
             this.pAddNewDevice.Controls.Add(this.label5);
@@ -1188,6 +1192,14 @@
             // 
             // pActions
             // 
+            this.pActions.Controls.Add(this.checkBox1);
+            this.pActions.Controls.Add(this.label55);
+            this.pActions.Controls.Add(this.textBox1);
+            this.pActions.Controls.Add(this.label54);
+            this.pActions.Controls.Add(this.comboBox2);
+            this.pActions.Controls.Add(this.label8);
+            this.pActions.Controls.Add(this.comboBox1);
+            this.pActions.Controls.Add(this.label37);
             this.pActions.Location = new System.Drawing.Point(10, 47);
             this.pActions.Name = "pActions";
             this.pActions.Size = new System.Drawing.Size(900, 682);
@@ -1197,6 +1209,7 @@
             // 
             // pRules
             // 
+            this.pRules.Controls.Add(this.add_bAddAction);
             this.pRules.Controls.Add(this.add_bSaveRule);
             this.pRules.Controls.Add(this.add_cbRuleCheckValue);
             this.pRules.Controls.Add(this.label53);
@@ -1244,7 +1257,7 @@
             // 
             this.add_lRules.AutoSize = true;
             this.add_lRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_lRules.Location = new System.Drawing.Point(691, 531);
+            this.add_lRules.Location = new System.Drawing.Point(682, 531);
             this.add_lRules.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.add_lRules.Name = "add_lRules";
             this.add_lRules.Size = new System.Drawing.Size(227, 48);
@@ -1273,39 +1286,6 @@
             this.label10.Size = new System.Drawing.Size(139, 48);
             this.label10.TabIndex = 38;
             this.label10.Text = "Rules:";
-            // 
-            // add_lAction
-            // 
-            this.add_lAction.AutoSize = true;
-            this.add_lAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_lAction.Location = new System.Drawing.Point(682, 630);
-            this.add_lAction.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.add_lAction.Name = "add_lAction";
-            this.add_lAction.Size = new System.Drawing.Size(258, 48);
-            this.add_lAction.TabIndex = 37;
-            this.add_lAction.Text = "No Actions...";
-            // 
-            // add_bAddAction
-            // 
-            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_bAddAction.Location = new System.Drawing.Point(339, 612);
-            this.add_bAddAction.Margin = new System.Windows.Forms.Padding(7);
-            this.add_bAddAction.Name = "add_bAddAction";
-            this.add_bAddAction.Size = new System.Drawing.Size(329, 85);
-            this.add_bAddAction.TabIndex = 36;
-            this.add_bAddAction.Text = "Set Action";
-            this.add_bAddAction.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(50, 630);
-            this.label8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(170, 48);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Actions:";
             // 
             // add_lSource
             // 
@@ -2133,12 +2113,100 @@
             // add_bSaveRule
             // 
             this.add_bSaveRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bSaveRule.Location = new System.Drawing.Point(305, 418);
+            this.add_bSaveRule.Location = new System.Drawing.Point(311, 538);
             this.add_bSaveRule.Name = "add_bSaveRule";
             this.add_bSaveRule.Size = new System.Drawing.Size(295, 98);
             this.add_bSaveRule.TabIndex = 45;
             this.add_bSaveRule.Text = "Save Rule";
             this.add_bSaveRule.UseVisualStyleBackColor = true;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label37.Location = new System.Drawing.Point(-9, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(254, 51);
+            this.label37.TabIndex = 29;
+            this.label37.Text = "Add Action";
+            // 
+            // add_bAddAction
+            // 
+            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_bAddAction.Location = new System.Drawing.Point(267, 410);
+            this.add_bAddAction.Name = "add_bAddAction";
+            this.add_bAddAction.Size = new System.Drawing.Size(387, 98);
+            this.add_bAddAction.TabIndex = 46;
+            this.add_bAddAction.Text = "Add Action";
+            this.add_bAddAction.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label8.Location = new System.Drawing.Point(19, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 48);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Rule:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(263, 59);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(627, 56);
+            this.comboBox1.TabIndex = 33;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label54.Location = new System.Drawing.Point(19, 124);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(242, 48);
+            this.label54.TabIndex = 36;
+            this.label54.Text = "Destination:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(263, 121);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(627, 56);
+            this.comboBox2.TabIndex = 35;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.checkBox1.Location = new System.Drawing.Point(341, 274);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(205, 52);
+            this.checkBox1.TabIndex = 39;
+            this.checkBox1.Text = "Enabled";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label55.Location = new System.Drawing.Point(17, 186);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(223, 48);
+            this.label55.TabIndex = 38;
+            this.label55.Text = "Constraint:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.textBox1.Location = new System.Drawing.Point(263, 183);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(628, 55);
+            this.textBox1.TabIndex = 37;
             // 
             // Dashboard
             // 
@@ -2187,6 +2255,8 @@
             this.pSerial.PerformLayout();
             this.pDatabase.ResumeLayout(false);
             this.pDatabase.PerformLayout();
+            this.pActions.ResumeLayout(false);
+            this.pActions.PerformLayout();
             this.pRules.ResumeLayout(false);
             this.pRules.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
@@ -2235,9 +2305,6 @@
         private System.Windows.Forms.Label add_lRules;
         private System.Windows.Forms.Button add_bAddRule;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label add_lAction;
-        private System.Windows.Forms.Button add_bAddAction;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label add_lSource;
         private System.Windows.Forms.Button add_bAddSource;
         private System.Windows.Forms.Label label5;
@@ -2370,6 +2437,15 @@
         private System.Windows.Forms.TextBox add_tRuleName;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Button add_bSaveRule;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button add_bAddAction;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

@@ -40,6 +40,12 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Communicator _communicator = null;
 
+        /// <summary>
+        /// Local object for temporarily storing Rule data.
+        /// Used as part of the Addition page.
+        /// </summary>
+        private Models.Rule _rule = null;
+
         
         /// <summary>
         /// Initialise the Dashboard window.
