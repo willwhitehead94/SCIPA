@@ -247,6 +247,11 @@ namespace SCIPA.UI.HMI
         {
             DebugOutput.Print("Dashboard: Alarms");
             pTabPanel.SelectedTab = pAlarms;
+
+            alarm_lbAlarms.Items.Clear();
+            
+            var controller=  new AlarmController();
+            alarm_lbAlarms.Items.Add(controller.)
         }
 
         private void bSettings_Click(object sender, EventArgs e)
@@ -366,7 +371,7 @@ namespace SCIPA.UI.HMI
             add_bSaveNewDevice.PerformClick();
 
             //Show Add Source
-            add_tcInnerPages.SelectedTab = pSources;
+            add_tcInnerPages.SelectedTab = pDataConnection;
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)

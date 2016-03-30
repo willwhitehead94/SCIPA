@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using SCIPA.Data.Repository;
 using SCIPA.Models;
 
@@ -24,5 +26,17 @@ namespace SCIPA.Domain.Logic
             if (alarm == null) return;
             _repo.CreateAlarm(alarm);
         }
+
+        public ICollection<Alarm> GetAllAlarms(int hours)
+        {
+            //Make positive number negative.
+            hours = hours - (2*hours);
+
+            //The earliest time to retrieve.
+            var earliest = DateTime.Now.AddHours(hours);
+
+            //Returns all alarms as a list where they fall within the given period.
+            return _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest).ToList();
+        } 
     }
 }

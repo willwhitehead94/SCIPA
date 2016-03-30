@@ -80,7 +80,9 @@
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
             this.add_tcInnerPages = new SCIPA.UI.HMI.CustomTabControl();
             this.Blank = new System.Windows.Forms.TabPage();
-            this.pSources = new System.Windows.Forms.TabPage();
+            this.pDataConnection = new System.Windows.Forms.TabPage();
+            this.add_rbCommOutbound = new System.Windows.Forms.RadioButton();
+            this.add_rbCommInbound = new System.Windows.Forms.RadioButton();
             this.add_bSaveSource = new System.Windows.Forms.Button();
             this.add_tcInnerPagesSourceSetting = new SCIPA.UI.HMI.CustomTabControl();
             this.pFlatFile = new System.Windows.Forms.TabPage();
@@ -112,8 +114,28 @@
             this.add_tStartChar = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.pActions = new System.Windows.Forms.TabPage();
             this.pRules = new System.Windows.Forms.TabPage();
+            this.add_bAddAction = new System.Windows.Forms.Button();
+            this.add_bSaveRule = new System.Windows.Forms.Button();
+            this.add_cbRuleCheckValue = new System.Windows.Forms.ComboBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.add_cAlarm = new System.Windows.Forms.CheckBox();
+            this.add_cbRuleType = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.add_tConstraint = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.add_tRuleName = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.pActions = new System.Windows.Forms.TabPage();
+            this.add_cActionEnabled = new System.Windows.Forms.CheckBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.add_tOutputValue = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.add_cbCommunicatorDestination = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.add_cbRule = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.add_bClearNewDevice = new System.Windows.Forms.Button();
             this.add_bSaveNewDevice = new System.Windows.Forms.Button();
             this.add_lRules = new System.Windows.Forms.Label();
@@ -179,28 +201,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.add_cAlarm = new System.Windows.Forms.CheckBox();
-            this.add_cbRuleType = new System.Windows.Forms.ComboBox();
-            this.add_cbRuleCheckValue = new System.Windows.Forms.ComboBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.add_tConstraint = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.add_tRuleName = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.add_bSaveRule = new System.Windows.Forms.Button();
-            this.label37 = new System.Windows.Forms.Label();
-            this.add_bAddAction = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.add_cbRule = new System.Windows.Forms.ComboBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.add_cbCommunicatorDestination = new System.Windows.Forms.ComboBox();
-            this.add_cActionEnabled = new System.Windows.Forms.CheckBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.add_tOutputValue = new System.Windows.Forms.TextBox();
-            this.add_rbCommInbound = new System.Windows.Forms.RadioButton();
-            this.add_rbCommOutbound = new System.Windows.Forms.RadioButton();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -210,13 +210,13 @@
             this.pStop.SuspendLayout();
             this.pAddNewDevice.SuspendLayout();
             this.add_tcInnerPages.SuspendLayout();
-            this.pSources.SuspendLayout();
+            this.pDataConnection.SuspendLayout();
             this.add_tcInnerPagesSourceSetting.SuspendLayout();
             this.pFlatFile.SuspendLayout();
             this.pSerial.SuspendLayout();
             this.pDatabase.SuspendLayout();
-            this.pActions.SuspendLayout();
             this.pRules.SuspendLayout();
+            this.pActions.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
@@ -837,7 +837,7 @@
             this.add_tcInnerPages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.add_tcInnerPages.Controls.Add(this.Blank);
-            this.add_tcInnerPages.Controls.Add(this.pSources);
+            this.add_tcInnerPages.Controls.Add(this.pDataConnection);
             this.add_tcInnerPages.Controls.Add(this.pRules);
             this.add_tcInnerPages.Controls.Add(this.pActions);
             this.add_tcInnerPages.Location = new System.Drawing.Point(1006, 3);
@@ -855,29 +855,53 @@
             this.Blank.Text = "tBlank";
             this.Blank.UseVisualStyleBackColor = true;
             // 
-            // pSources
+            // pDataConnection
             // 
-            this.pSources.AutoScroll = true;
-            this.pSources.Controls.Add(this.add_rbCommOutbound);
-            this.pSources.Controls.Add(this.add_rbCommInbound);
-            this.pSources.Controls.Add(this.add_bSaveSource);
-            this.pSources.Controls.Add(this.add_tcInnerPagesSourceSetting);
-            this.pSources.Controls.Add(this.label46);
-            this.pSources.Controls.Add(this.add_cbValueType);
-            this.pSources.Controls.Add(this.label47);
-            this.pSources.Controls.Add(this.add_cbCommType);
-            this.pSources.Controls.Add(this.add_tEnd);
-            this.pSources.Controls.Add(this.label49);
-            this.pSources.Controls.Add(this.add_tStartChar);
-            this.pSources.Controls.Add(this.label50);
-            this.pSources.Controls.Add(this.label36);
-            this.pSources.Location = new System.Drawing.Point(10, 47);
-            this.pSources.Name = "pSources";
-            this.pSources.Size = new System.Drawing.Size(900, 682);
-            this.pSources.TabIndex = 0;
-            this.pSources.Text = "Sources";
-            this.pSources.UseVisualStyleBackColor = true;
-            this.pSources.Click += new System.EventHandler(this.pSources_Click);
+            this.pDataConnection.AutoScroll = true;
+            this.pDataConnection.Controls.Add(this.add_rbCommOutbound);
+            this.pDataConnection.Controls.Add(this.add_rbCommInbound);
+            this.pDataConnection.Controls.Add(this.add_bSaveSource);
+            this.pDataConnection.Controls.Add(this.add_tcInnerPagesSourceSetting);
+            this.pDataConnection.Controls.Add(this.label46);
+            this.pDataConnection.Controls.Add(this.add_cbValueType);
+            this.pDataConnection.Controls.Add(this.label47);
+            this.pDataConnection.Controls.Add(this.add_cbCommType);
+            this.pDataConnection.Controls.Add(this.add_tEnd);
+            this.pDataConnection.Controls.Add(this.label49);
+            this.pDataConnection.Controls.Add(this.add_tStartChar);
+            this.pDataConnection.Controls.Add(this.label50);
+            this.pDataConnection.Controls.Add(this.label36);
+            this.pDataConnection.Location = new System.Drawing.Point(10, 47);
+            this.pDataConnection.Name = "pDataConnection";
+            this.pDataConnection.Size = new System.Drawing.Size(900, 682);
+            this.pDataConnection.TabIndex = 0;
+            this.pDataConnection.Text = "Data Connections";
+            this.pDataConnection.UseVisualStyleBackColor = true;
+            this.pDataConnection.Click += new System.EventHandler(this.pSources_Click);
+            // 
+            // add_rbCommOutbound
+            // 
+            this.add_rbCommOutbound.AutoSize = true;
+            this.add_rbCommOutbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_rbCommOutbound.Location = new System.Drawing.Point(435, 317);
+            this.add_rbCommOutbound.Name = "add_rbCommOutbound";
+            this.add_rbCommOutbound.Size = new System.Drawing.Size(333, 52);
+            this.add_rbCommOutbound.TabIndex = 46;
+            this.add_rbCommOutbound.TabStop = true;
+            this.add_rbCommOutbound.Text = "Outbound Data";
+            this.add_rbCommOutbound.UseVisualStyleBackColor = true;
+            // 
+            // add_rbCommInbound
+            // 
+            this.add_rbCommInbound.AutoSize = true;
+            this.add_rbCommInbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_rbCommInbound.Location = new System.Drawing.Point(117, 317);
+            this.add_rbCommInbound.Name = "add_rbCommInbound";
+            this.add_rbCommInbound.Size = new System.Drawing.Size(300, 52);
+            this.add_rbCommInbound.TabIndex = 45;
+            this.add_rbCommInbound.TabStop = true;
+            this.add_rbCommInbound.Text = "Inbound Data";
+            this.add_rbCommInbound.UseVisualStyleBackColor = true;
             // 
             // add_bSaveSource
             // 
@@ -1190,26 +1214,9 @@
             this.label36.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label36.Location = new System.Drawing.Point(3, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(482, 51);
+            this.label36.Size = new System.Drawing.Size(585, 51);
             this.label36.TabIndex = 3;
-            this.label36.Text = "Add New Data Source";
-            // 
-            // pActions
-            // 
-            this.pActions.Controls.Add(this.add_cActionEnabled);
-            this.pActions.Controls.Add(this.label55);
-            this.pActions.Controls.Add(this.add_tOutputValue);
-            this.pActions.Controls.Add(this.label54);
-            this.pActions.Controls.Add(this.add_cbCommunicatorDestination);
-            this.pActions.Controls.Add(this.label8);
-            this.pActions.Controls.Add(this.add_cbRule);
-            this.pActions.Controls.Add(this.label37);
-            this.pActions.Location = new System.Drawing.Point(10, 47);
-            this.pActions.Name = "pActions";
-            this.pActions.Size = new System.Drawing.Size(900, 682);
-            this.pActions.TabIndex = 1;
-            this.pActions.Text = "Actions";
-            this.pActions.UseVisualStyleBackColor = true;
+            this.label36.Text = "Add New Data Connection";
             // 
             // pRules
             // 
@@ -1231,6 +1238,217 @@
             this.pRules.TabIndex = 2;
             this.pRules.Text = "Rules";
             this.pRules.UseVisualStyleBackColor = true;
+            // 
+            // add_bAddAction
+            // 
+            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_bAddAction.Location = new System.Drawing.Point(267, 410);
+            this.add_bAddAction.Name = "add_bAddAction";
+            this.add_bAddAction.Size = new System.Drawing.Size(387, 98);
+            this.add_bAddAction.TabIndex = 46;
+            this.add_bAddAction.Text = "Add Action";
+            this.add_bAddAction.UseVisualStyleBackColor = true;
+            // 
+            // add_bSaveRule
+            // 
+            this.add_bSaveRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_bSaveRule.Location = new System.Drawing.Point(311, 538);
+            this.add_bSaveRule.Name = "add_bSaveRule";
+            this.add_bSaveRule.Size = new System.Drawing.Size(295, 98);
+            this.add_bSaveRule.TabIndex = 45;
+            this.add_bSaveRule.Text = "Save Rule";
+            this.add_bSaveRule.UseVisualStyleBackColor = true;
+            // 
+            // add_cbRuleCheckValue
+            // 
+            this.add_cbRuleCheckValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbRuleCheckValue.FormattingEnabled = true;
+            this.add_cbRuleCheckValue.Location = new System.Drawing.Point(257, 124);
+            this.add_cbRuleCheckValue.Name = "add_cbRuleCheckValue";
+            this.add_cbRuleCheckValue.Size = new System.Drawing.Size(628, 56);
+            this.add_cbRuleCheckValue.TabIndex = 25;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label53.Location = new System.Drawing.Point(3, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(312, 51);
+            this.label53.TabIndex = 28;
+            this.label53.Text = "Add New Rule";
+            // 
+            // add_cAlarm
+            // 
+            this.add_cAlarm.AutoSize = true;
+            this.add_cAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cAlarm.Location = new System.Drawing.Point(149, 335);
+            this.add_cAlarm.Name = "add_cAlarm";
+            this.add_cAlarm.Size = new System.Drawing.Size(649, 52);
+            this.add_cAlarm.TabIndex = 27;
+            this.add_cAlarm.Text = "Raise Alarm Criterion Being Met";
+            this.add_cAlarm.UseVisualStyleBackColor = true;
+            // 
+            // add_cbRuleType
+            // 
+            this.add_cbRuleType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbRuleType.FormattingEnabled = true;
+            this.add_cbRuleType.Location = new System.Drawing.Point(257, 186);
+            this.add_cbRuleType.Name = "add_cbRuleType";
+            this.add_cbRuleType.Size = new System.Drawing.Size(628, 56);
+            this.add_cbRuleType.TabIndex = 26;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label45.Location = new System.Drawing.Point(11, 251);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(223, 48);
+            this.label45.TabIndex = 23;
+            this.label45.Text = "Constraint:";
+            // 
+            // add_tConstraint
+            // 
+            this.add_tConstraint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_tConstraint.Location = new System.Drawing.Point(257, 248);
+            this.add_tConstraint.Name = "add_tConstraint";
+            this.add_tConstraint.Size = new System.Drawing.Size(628, 55);
+            this.add_tConstraint.TabIndex = 22;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label48.Location = new System.Drawing.Point(11, 189);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(222, 48);
+            this.label48.TabIndex = 21;
+            this.label48.Text = "Rule Type:";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label51.Location = new System.Drawing.Point(11, 127);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(254, 48);
+            this.label51.TabIndex = 20;
+            this.label51.Text = "Check Type:";
+            // 
+            // add_tRuleName
+            // 
+            this.add_tRuleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_tRuleName.Location = new System.Drawing.Point(257, 63);
+            this.add_tRuleName.Name = "add_tRuleName";
+            this.add_tRuleName.Size = new System.Drawing.Size(628, 55);
+            this.add_tRuleName.TabIndex = 19;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label52.Location = new System.Drawing.Point(11, 66);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(240, 48);
+            this.label52.TabIndex = 18;
+            this.label52.Text = "Rule Name:";
+            // 
+            // pActions
+            // 
+            this.pActions.Controls.Add(this.add_cActionEnabled);
+            this.pActions.Controls.Add(this.label55);
+            this.pActions.Controls.Add(this.add_tOutputValue);
+            this.pActions.Controls.Add(this.label54);
+            this.pActions.Controls.Add(this.add_cbCommunicatorDestination);
+            this.pActions.Controls.Add(this.label8);
+            this.pActions.Controls.Add(this.add_cbRule);
+            this.pActions.Controls.Add(this.label37);
+            this.pActions.Location = new System.Drawing.Point(10, 47);
+            this.pActions.Name = "pActions";
+            this.pActions.Size = new System.Drawing.Size(900, 682);
+            this.pActions.TabIndex = 1;
+            this.pActions.Text = "Actions";
+            this.pActions.UseVisualStyleBackColor = true;
+            // 
+            // add_cActionEnabled
+            // 
+            this.add_cActionEnabled.AutoSize = true;
+            this.add_cActionEnabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cActionEnabled.Location = new System.Drawing.Point(341, 274);
+            this.add_cActionEnabled.Name = "add_cActionEnabled";
+            this.add_cActionEnabled.Size = new System.Drawing.Size(205, 52);
+            this.add_cActionEnabled.TabIndex = 39;
+            this.add_cActionEnabled.Text = "Enabled";
+            this.add_cActionEnabled.UseVisualStyleBackColor = true;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label55.Location = new System.Drawing.Point(17, 186);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(158, 48);
+            this.label55.TabIndex = 38;
+            this.label55.Text = "Output:";
+            // 
+            // add_tOutputValue
+            // 
+            this.add_tOutputValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_tOutputValue.Location = new System.Drawing.Point(263, 183);
+            this.add_tOutputValue.Name = "add_tOutputValue";
+            this.add_tOutputValue.Size = new System.Drawing.Size(628, 55);
+            this.add_tOutputValue.TabIndex = 37;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label54.Location = new System.Drawing.Point(19, 124);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(242, 48);
+            this.label54.TabIndex = 36;
+            this.label54.Text = "Destination:";
+            // 
+            // add_cbCommunicatorDestination
+            // 
+            this.add_cbCommunicatorDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbCommunicatorDestination.FormattingEnabled = true;
+            this.add_cbCommunicatorDestination.Location = new System.Drawing.Point(263, 121);
+            this.add_cbCommunicatorDestination.Name = "add_cbCommunicatorDestination";
+            this.add_cbCommunicatorDestination.Size = new System.Drawing.Size(627, 56);
+            this.add_cbCommunicatorDestination.TabIndex = 35;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label8.Location = new System.Drawing.Point(19, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 48);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "Rule:";
+            // 
+            // add_cbRule
+            // 
+            this.add_cbRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.add_cbRule.FormattingEnabled = true;
+            this.add_cbRule.Location = new System.Drawing.Point(263, 59);
+            this.add_cbRule.Name = "add_cbRule";
+            this.add_cbRule.Size = new System.Drawing.Size(627, 56);
+            this.add_cbRule.TabIndex = 33;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label37.Location = new System.Drawing.Point(-9, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(254, 51);
+            this.label37.TabIndex = 29;
+            this.label37.Text = "Add Action";
             // 
             // add_bClearNewDevice
             // 
@@ -1264,9 +1482,9 @@
             this.add_lRules.Location = new System.Drawing.Point(682, 531);
             this.add_lRules.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.add_lRules.Name = "add_lRules";
-            this.add_lRules.Size = new System.Drawing.Size(227, 48);
+            this.add_lRules.Size = new System.Drawing.Size(197, 48);
             this.add_lRules.TabIndex = 40;
-            this.add_lRules.Text = "No Rules...";
+            this.add_lRules.Text = "0 Rules...";
             // 
             // add_bAddRule
             // 
@@ -1298,9 +1516,9 @@
             this.add_lSource.Location = new System.Drawing.Point(682, 432);
             this.add_lSource.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.add_lSource.Name = "add_lSource";
-            this.add_lSource.Size = new System.Drawing.Size(273, 48);
+            this.add_lSource.Size = new System.Drawing.Size(322, 48);
             this.add_lSource.TabIndex = 34;
-            this.add_lSource.Text = "No Sources...";
+            this.add_lSource.Text = "0 Connections...";
             // 
             // add_bAddSource
             // 
@@ -1310,7 +1528,7 @@
             this.add_bAddSource.Name = "add_bAddSource";
             this.add_bAddSource.Size = new System.Drawing.Size(329, 85);
             this.add_bAddSource.TabIndex = 33;
-            this.add_bAddSource.Text = "Set Source";
+            this.add_bAddSource.Text = "Add Data";
             this.add_bAddSource.UseVisualStyleBackColor = true;
             this.add_bAddSource.Click += new System.EventHandler(this.add_bAddSource_Click);
             // 
@@ -1321,9 +1539,9 @@
             this.label5.Location = new System.Drawing.Point(50, 432);
             this.label5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(164, 48);
+            this.label5.Size = new System.Drawing.Size(264, 48);
             this.label5.TabIndex = 32;
-            this.label5.Text = "Source:";
+            this.label5.Text = "Connections:";
             // 
             // add_rbFalse
             // 
@@ -2020,224 +2238,6 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Settings";
             // 
-            // add_cAlarm
-            // 
-            this.add_cAlarm.AutoSize = true;
-            this.add_cAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cAlarm.Location = new System.Drawing.Point(149, 335);
-            this.add_cAlarm.Name = "add_cAlarm";
-            this.add_cAlarm.Size = new System.Drawing.Size(649, 52);
-            this.add_cAlarm.TabIndex = 27;
-            this.add_cAlarm.Text = "Raise Alarm Criterion Being Met";
-            this.add_cAlarm.UseVisualStyleBackColor = true;
-            // 
-            // add_cbRuleType
-            // 
-            this.add_cbRuleType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cbRuleType.FormattingEnabled = true;
-            this.add_cbRuleType.Location = new System.Drawing.Point(257, 186);
-            this.add_cbRuleType.Name = "add_cbRuleType";
-            this.add_cbRuleType.Size = new System.Drawing.Size(628, 56);
-            this.add_cbRuleType.TabIndex = 26;
-            // 
-            // add_cbRuleCheckValue
-            // 
-            this.add_cbRuleCheckValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cbRuleCheckValue.FormattingEnabled = true;
-            this.add_cbRuleCheckValue.Location = new System.Drawing.Point(257, 124);
-            this.add_cbRuleCheckValue.Name = "add_cbRuleCheckValue";
-            this.add_cbRuleCheckValue.Size = new System.Drawing.Size(628, 56);
-            this.add_cbRuleCheckValue.TabIndex = 25;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label45.Location = new System.Drawing.Point(11, 251);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(223, 48);
-            this.label45.TabIndex = 23;
-            this.label45.Text = "Constraint:";
-            // 
-            // add_tConstraint
-            // 
-            this.add_tConstraint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_tConstraint.Location = new System.Drawing.Point(257, 248);
-            this.add_tConstraint.Name = "add_tConstraint";
-            this.add_tConstraint.Size = new System.Drawing.Size(628, 55);
-            this.add_tConstraint.TabIndex = 22;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label48.Location = new System.Drawing.Point(11, 189);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(222, 48);
-            this.label48.TabIndex = 21;
-            this.label48.Text = "Rule Type:";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label51.Location = new System.Drawing.Point(11, 127);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(254, 48);
-            this.label51.TabIndex = 20;
-            this.label51.Text = "Check Type:";
-            // 
-            // add_tRuleName
-            // 
-            this.add_tRuleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_tRuleName.Location = new System.Drawing.Point(257, 63);
-            this.add_tRuleName.Name = "add_tRuleName";
-            this.add_tRuleName.Size = new System.Drawing.Size(628, 55);
-            this.add_tRuleName.TabIndex = 19;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label52.Location = new System.Drawing.Point(11, 66);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(240, 48);
-            this.label52.TabIndex = 18;
-            this.label52.Text = "Rule Name:";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label53.Location = new System.Drawing.Point(3, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(312, 51);
-            this.label53.TabIndex = 28;
-            this.label53.Text = "Add New Rule";
-            // 
-            // add_bSaveRule
-            // 
-            this.add_bSaveRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bSaveRule.Location = new System.Drawing.Point(311, 538);
-            this.add_bSaveRule.Name = "add_bSaveRule";
-            this.add_bSaveRule.Size = new System.Drawing.Size(295, 98);
-            this.add_bSaveRule.TabIndex = 45;
-            this.add_bSaveRule.Text = "Save Rule";
-            this.add_bSaveRule.UseVisualStyleBackColor = true;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label37.Location = new System.Drawing.Point(-9, 0);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(254, 51);
-            this.label37.TabIndex = 29;
-            this.label37.Text = "Add Action";
-            // 
-            // add_bAddAction
-            // 
-            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bAddAction.Location = new System.Drawing.Point(267, 410);
-            this.add_bAddAction.Name = "add_bAddAction";
-            this.add_bAddAction.Size = new System.Drawing.Size(387, 98);
-            this.add_bAddAction.TabIndex = 46;
-            this.add_bAddAction.Text = "Add Action";
-            this.add_bAddAction.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label8.Location = new System.Drawing.Point(19, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 48);
-            this.label8.TabIndex = 34;
-            this.label8.Text = "Rule:";
-            // 
-            // add_cbRule
-            // 
-            this.add_cbRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cbRule.FormattingEnabled = true;
-            this.add_cbRule.Location = new System.Drawing.Point(263, 59);
-            this.add_cbRule.Name = "add_cbRule";
-            this.add_cbRule.Size = new System.Drawing.Size(627, 56);
-            this.add_cbRule.TabIndex = 33;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label54.Location = new System.Drawing.Point(19, 124);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(242, 48);
-            this.label54.TabIndex = 36;
-            this.label54.Text = "Destination:";
-            // 
-            // add_cbCommunicatorDestination
-            // 
-            this.add_cbCommunicatorDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cbCommunicatorDestination.FormattingEnabled = true;
-            this.add_cbCommunicatorDestination.Location = new System.Drawing.Point(263, 121);
-            this.add_cbCommunicatorDestination.Name = "add_cbCommunicatorDestination";
-            this.add_cbCommunicatorDestination.Size = new System.Drawing.Size(627, 56);
-            this.add_cbCommunicatorDestination.TabIndex = 35;
-            // 
-            // add_cActionEnabled
-            // 
-            this.add_cActionEnabled.AutoSize = true;
-            this.add_cActionEnabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_cActionEnabled.Location = new System.Drawing.Point(341, 274);
-            this.add_cActionEnabled.Name = "add_cActionEnabled";
-            this.add_cActionEnabled.Size = new System.Drawing.Size(205, 52);
-            this.add_cActionEnabled.TabIndex = 39;
-            this.add_cActionEnabled.Text = "Enabled";
-            this.add_cActionEnabled.UseVisualStyleBackColor = true;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label55.Location = new System.Drawing.Point(17, 186);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(158, 48);
-            this.label55.TabIndex = 38;
-            this.label55.Text = "Output:";
-            // 
-            // add_tOutputValue
-            // 
-            this.add_tOutputValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_tOutputValue.Location = new System.Drawing.Point(263, 183);
-            this.add_tOutputValue.Name = "add_tOutputValue";
-            this.add_tOutputValue.Size = new System.Drawing.Size(628, 55);
-            this.add_tOutputValue.TabIndex = 37;
-            // 
-            // add_rbCommInbound
-            // 
-            this.add_rbCommInbound.AutoSize = true;
-            this.add_rbCommInbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_rbCommInbound.Location = new System.Drawing.Point(117, 317);
-            this.add_rbCommInbound.Name = "add_rbCommInbound";
-            this.add_rbCommInbound.Size = new System.Drawing.Size(300, 52);
-            this.add_rbCommInbound.TabIndex = 45;
-            this.add_rbCommInbound.TabStop = true;
-            this.add_rbCommInbound.Text = "Inbound Data";
-            this.add_rbCommInbound.UseVisualStyleBackColor = true;
-            // 
-            // add_rbCommOutbound
-            // 
-            this.add_rbCommOutbound.AutoSize = true;
-            this.add_rbCommOutbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_rbCommOutbound.Location = new System.Drawing.Point(435, 317);
-            this.add_rbCommOutbound.Name = "add_rbCommOutbound";
-            this.add_rbCommOutbound.Size = new System.Drawing.Size(333, 52);
-            this.add_rbCommOutbound.TabIndex = 46;
-            this.add_rbCommOutbound.TabStop = true;
-            this.add_rbCommOutbound.Text = "Outbound Data";
-            this.add_rbCommOutbound.UseVisualStyleBackColor = true;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -2276,8 +2276,8 @@
             this.pAddNewDevice.ResumeLayout(false);
             this.pAddNewDevice.PerformLayout();
             this.add_tcInnerPages.ResumeLayout(false);
-            this.pSources.ResumeLayout(false);
-            this.pSources.PerformLayout();
+            this.pDataConnection.ResumeLayout(false);
+            this.pDataConnection.PerformLayout();
             this.add_tcInnerPagesSourceSetting.ResumeLayout(false);
             this.pFlatFile.ResumeLayout(false);
             this.pFlatFile.PerformLayout();
@@ -2285,10 +2285,10 @@
             this.pSerial.PerformLayout();
             this.pDatabase.ResumeLayout(false);
             this.pDatabase.PerformLayout();
-            this.pActions.ResumeLayout(false);
-            this.pActions.PerformLayout();
             this.pRules.ResumeLayout(false);
             this.pRules.PerformLayout();
+            this.pActions.ResumeLayout(false);
+            this.pActions.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
             this.pModifyDevice.PerformLayout();
             this.pReports.ResumeLayout(false);
@@ -2410,7 +2410,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private CustomTabControl add_tcInnerPages;
-        private System.Windows.Forms.TabPage pSources;
+        private System.Windows.Forms.TabPage pDataConnection;
         private System.Windows.Forms.TabPage pActions;
         private System.Windows.Forms.TabPage pRules;
         private System.Windows.Forms.TabPage Home;
