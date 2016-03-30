@@ -51,6 +51,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pStop = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
@@ -105,6 +107,16 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -364,6 +376,12 @@
             // 
             // pStart
             // 
+            this.pStart.Controls.Add(this.textBox5);
+            this.pStart.Controls.Add(this.textBox6);
+            this.pStart.Controls.Add(this.label21);
+            this.pStart.Controls.Add(this.label22);
+            this.pStart.Controls.Add(this.button6);
+            this.pStart.Controls.Add(this.listBox1);
             this.pStart.Controls.Add(this.label17);
             this.pStart.Location = new System.Drawing.Point(10, 47);
             this.pStart.Name = "pStart";
@@ -371,6 +389,36 @@
             this.pStart.TabIndex = 0;
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(888, 249);
+            this.button6.Margin = new System.Windows.Forms.Padding(7);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(960, 128);
+            this.button6.TabIndex = 34;
+            this.button6.Text = "Start Selected Device";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 65;
+            this.listBox1.Items.AddRange(new object[] {
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device"});
+            this.listBox1.Location = new System.Drawing.Point(53, 72);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(713, 784);
+            this.listBox1.TabIndex = 5;
             // 
             // label17
             // 
@@ -385,6 +433,12 @@
             // 
             // pStop
             // 
+            this.pStop.Controls.Add(this.textBox7);
+            this.pStop.Controls.Add(this.textBox8);
+            this.pStop.Controls.Add(this.label23);
+            this.pStop.Controls.Add(this.label24);
+            this.pStop.Controls.Add(this.button7);
+            this.pStop.Controls.Add(this.listBox2);
             this.pStop.Controls.Add(this.label18);
             this.pStop.Location = new System.Drawing.Point(10, 47);
             this.pStop.Name = "pStop";
@@ -1013,6 +1067,122 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Settings";
             // 
+            // textBox5
+            // 
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(1095, 132);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(799, 55);
+            this.textBox5.TabIndex = 38;
+            this.textBox5.Text = "Test Arduino";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Enabled = false;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(1095, 63);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(799, 55);
+            this.textBox6.TabIndex = 37;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(796, 139);
+            this.label21.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(282, 48);
+            this.label21.TabIndex = 36;
+            this.label21.Text = "Device Name:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(796, 70);
+            this.label22.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(233, 48);
+            this.label22.TabIndex = 35;
+            this.label22.Text = "ID Number:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Enabled = false;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(1099, 134);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(799, 55);
+            this.textBox7.TabIndex = 44;
+            this.textBox7.Text = "Test Arduino";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Enabled = false;
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(1099, 65);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(7);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(799, 55);
+            this.textBox8.TabIndex = 43;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(800, 141);
+            this.label23.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(282, 48);
+            this.label23.TabIndex = 42;
+            this.label23.Text = "Device Name:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(800, 72);
+            this.label24.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(233, 48);
+            this.label24.TabIndex = 41;
+            this.label24.Text = "ID Number:";
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(892, 251);
+            this.button7.Margin = new System.Windows.Forms.Padding(7);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(960, 128);
+            this.button7.TabIndex = 40;
+            this.button7.Text = "Stop Selected Device";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // listBox2
+            // 
+            this.listBox2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 65;
+            this.listBox2.Items.AddRange(new object[] {
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device",
+            "Device"});
+            this.listBox2.Location = new System.Drawing.Point(53, 72);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(713, 784);
+            this.listBox2.TabIndex = 39;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -1140,6 +1310,18 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tSettingsPassword;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }
 
