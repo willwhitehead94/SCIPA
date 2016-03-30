@@ -51,90 +51,90 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.pStart = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.start_tDevName = new System.Windows.Forms.TextBox();
+            this.start_tId = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.start_bStart = new System.Windows.Forms.Button();
+            this.start_lbDevice = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pStop = new System.Windows.Forms.TabPage();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.stop_tDevName = new System.Windows.Forms.TextBox();
+            this.stop_tId = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.stop_bStop = new System.Windows.Forms.Button();
+            this.stop_lbDevice = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
-            this.bClearNewDevice = new System.Windows.Forms.Button();
-            this.bSaveNewDevice = new System.Windows.Forms.Button();
-            this.lRules = new System.Windows.Forms.Label();
-            this.bAddRule = new System.Windows.Forms.Button();
+            this.add_bClearNewDevice = new System.Windows.Forms.Button();
+            this.add_bSaveNewDevice = new System.Windows.Forms.Button();
+            this.add_lRules = new System.Windows.Forms.Label();
+            this.add_bAddRule = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.lDestination = new System.Windows.Forms.Label();
-            this.bAddDestination = new System.Windows.Forms.Button();
+            this.add_lDestination = new System.Windows.Forms.Label();
+            this.add_bAddDestination = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.lSource = new System.Windows.Forms.Label();
-            this.bAddSource = new System.Windows.Forms.Button();
+            this.add_lSource = new System.Windows.Forms.Label();
+            this.add_bAddSource = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.rbFalse = new System.Windows.Forms.RadioButton();
-            this.rbTrue = new System.Windows.Forms.RadioButton();
+            this.add_rbFalse = new System.Windows.Forms.RadioButton();
+            this.add_rbTrue = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.tLocation = new System.Windows.Forms.TextBox();
+            this.add_tLocation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tCustodian = new System.Windows.Forms.TextBox();
+            this.add_tCustodian = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tName = new System.Windows.Forms.TextBox();
-            this.tId = new System.Windows.Forms.TextBox();
+            this.add_tName = new System.Windows.Forms.TextBox();
+            this.add_tId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lId = new System.Windows.Forms.Label();
             this.lHeader_Add = new System.Windows.Forms.Label();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.modify_bActions = new System.Windows.Forms.Button();
+            this.modify_bRules = new System.Windows.Forms.Button();
+            this.modify_bComms = new System.Windows.Forms.Button();
+            this.modify_bClear = new System.Windows.Forms.Button();
+            this.modify_bSave = new System.Windows.Forms.Button();
+            this.modify_rbFalse = new System.Windows.Forms.RadioButton();
+            this.modify_rbTrue = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.modify_tLocation = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.modify_tCustodian = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.modify_tDevName = new System.Windows.Forms.TextBox();
+            this.modify_tId = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lbDeviceList = new System.Windows.Forms.ListBox();
+            this.modify_lbDeviceList = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pReports = new System.Windows.Forms.TabPage();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.report_rvReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.report_lbReports = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.pAlarms = new System.Windows.Forms.TabPage();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.alarm_rbFalse = new System.Windows.Forms.RadioButton();
+            this.alarm_rbTrue = new System.Windows.Forms.RadioButton();
+            this.label29 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.alarm_cbPeriod = new System.Windows.Forms.ComboBox();
+            this.alarm_Acknowledge = new System.Windows.Forms.Button();
+            this.alarm_Rule = new System.Windows.Forms.Button();
+            this.alarm_bDevice = new System.Windows.Forms.Button();
+            this.alarm_tValue = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.alarm_tDateTime = new System.Windows.Forms.TextBox();
+            this.alarm_tDevice = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.alarm_lbAlarms = new System.Windows.Forms.ListBox();
             this.label16 = new System.Windows.Forms.Label();
             this.pSettings = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
@@ -145,8 +145,8 @@
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
-            this.pSettings.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // pHeader
@@ -395,12 +395,12 @@
             // 
             // pStart
             // 
-            this.pStart.Controls.Add(this.textBox5);
-            this.pStart.Controls.Add(this.textBox6);
+            this.pStart.Controls.Add(this.start_tDevName);
+            this.pStart.Controls.Add(this.start_tId);
             this.pStart.Controls.Add(this.label21);
             this.pStart.Controls.Add(this.label22);
-            this.pStart.Controls.Add(this.button6);
-            this.pStart.Controls.Add(this.listBox1);
+            this.pStart.Controls.Add(this.start_bStart);
+            this.pStart.Controls.Add(this.start_lbDevice);
             this.pStart.Controls.Add(this.label17);
             this.pStart.Location = new System.Drawing.Point(10, 47);
             this.pStart.Name = "pStart";
@@ -409,26 +409,26 @@
             this.pStart.Text = "StartProcess";
             this.pStart.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // start_tDevName
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(1095, 132);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(799, 55);
-            this.textBox5.TabIndex = 38;
-            this.textBox5.Text = "Test Arduino";
+            this.start_tDevName.Enabled = false;
+            this.start_tDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_tDevName.Location = new System.Drawing.Point(1095, 132);
+            this.start_tDevName.Margin = new System.Windows.Forms.Padding(7);
+            this.start_tDevName.Name = "start_tDevName";
+            this.start_tDevName.Size = new System.Drawing.Size(799, 55);
+            this.start_tDevName.TabIndex = 38;
+            this.start_tDevName.Text = "Test Arduino";
             // 
-            // textBox6
+            // start_tId
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(1095, 63);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(799, 55);
-            this.textBox6.TabIndex = 37;
+            this.start_tId.Enabled = false;
+            this.start_tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_tId.Location = new System.Drawing.Point(1095, 63);
+            this.start_tId.Margin = new System.Windows.Forms.Padding(7);
+            this.start_tId.Name = "start_tId";
+            this.start_tId.Size = new System.Drawing.Size(799, 55);
+            this.start_tId.TabIndex = 37;
             // 
             // label21
             // 
@@ -452,25 +452,25 @@
             this.label22.TabIndex = 35;
             this.label22.Text = "ID Number:";
             // 
-            // button6
+            // start_bStart
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(888, 249);
-            this.button6.Margin = new System.Windows.Forms.Padding(7);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(960, 128);
-            this.button6.TabIndex = 34;
-            this.button6.Text = "Start Selected Device";
-            this.button6.UseVisualStyleBackColor = true;
+            this.start_bStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_bStart.Location = new System.Drawing.Point(888, 249);
+            this.start_bStart.Margin = new System.Windows.Forms.Padding(7);
+            this.start_bStart.Name = "start_bStart";
+            this.start_bStart.Size = new System.Drawing.Size(960, 128);
+            this.start_bStart.TabIndex = 34;
+            this.start_bStart.Text = "Start Selected Device";
+            this.start_bStart.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // start_lbDevice
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.start_lbDevice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 65;
-            this.listBox1.Items.AddRange(new object[] {
+            this.start_lbDevice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_lbDevice.FormattingEnabled = true;
+            this.start_lbDevice.ItemHeight = 65;
+            this.start_lbDevice.Items.AddRange(new object[] {
             "Device",
             "Device",
             "Device",
@@ -479,10 +479,10 @@
             "Device",
             "Device",
             "Device"});
-            this.listBox1.Location = new System.Drawing.Point(53, 72);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(713, 784);
-            this.listBox1.TabIndex = 5;
+            this.start_lbDevice.Location = new System.Drawing.Point(53, 72);
+            this.start_lbDevice.Name = "start_lbDevice";
+            this.start_lbDevice.Size = new System.Drawing.Size(713, 784);
+            this.start_lbDevice.TabIndex = 5;
             // 
             // label17
             // 
@@ -497,12 +497,12 @@
             // 
             // pStop
             // 
-            this.pStop.Controls.Add(this.textBox7);
-            this.pStop.Controls.Add(this.textBox8);
+            this.pStop.Controls.Add(this.stop_tDevName);
+            this.pStop.Controls.Add(this.stop_tId);
             this.pStop.Controls.Add(this.label23);
             this.pStop.Controls.Add(this.label24);
-            this.pStop.Controls.Add(this.button7);
-            this.pStop.Controls.Add(this.listBox2);
+            this.pStop.Controls.Add(this.stop_bStop);
+            this.pStop.Controls.Add(this.stop_lbDevice);
             this.pStop.Controls.Add(this.label18);
             this.pStop.Location = new System.Drawing.Point(10, 47);
             this.pStop.Name = "pStop";
@@ -511,26 +511,26 @@
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // stop_tDevName
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(1099, 134);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(799, 55);
-            this.textBox7.TabIndex = 44;
-            this.textBox7.Text = "Test Arduino";
+            this.stop_tDevName.Enabled = false;
+            this.stop_tDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_tDevName.Location = new System.Drawing.Point(1099, 134);
+            this.stop_tDevName.Margin = new System.Windows.Forms.Padding(7);
+            this.stop_tDevName.Name = "stop_tDevName";
+            this.stop_tDevName.Size = new System.Drawing.Size(799, 55);
+            this.stop_tDevName.TabIndex = 44;
+            this.stop_tDevName.Text = "Test Arduino";
             // 
-            // textBox8
+            // stop_tId
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(1099, 65);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(799, 55);
-            this.textBox8.TabIndex = 43;
+            this.stop_tId.Enabled = false;
+            this.stop_tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_tId.Location = new System.Drawing.Point(1099, 65);
+            this.stop_tId.Margin = new System.Windows.Forms.Padding(7);
+            this.stop_tId.Name = "stop_tId";
+            this.stop_tId.Size = new System.Drawing.Size(799, 55);
+            this.stop_tId.TabIndex = 43;
             // 
             // label23
             // 
@@ -554,25 +554,25 @@
             this.label24.TabIndex = 41;
             this.label24.Text = "ID Number:";
             // 
-            // button7
+            // stop_bStop
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(892, 251);
-            this.button7.Margin = new System.Windows.Forms.Padding(7);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(960, 128);
-            this.button7.TabIndex = 40;
-            this.button7.Text = "Stop Selected Device";
-            this.button7.UseVisualStyleBackColor = true;
+            this.stop_bStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_bStop.Location = new System.Drawing.Point(892, 251);
+            this.stop_bStop.Margin = new System.Windows.Forms.Padding(7);
+            this.stop_bStop.Name = "stop_bStop";
+            this.stop_bStop.Size = new System.Drawing.Size(960, 128);
+            this.stop_bStop.TabIndex = 40;
+            this.stop_bStop.Text = "Stop Selected Device";
+            this.stop_bStop.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // stop_lbDevice
             // 
-            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.stop_lbDevice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 65;
-            this.listBox2.Items.AddRange(new object[] {
+            this.stop_lbDevice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_lbDevice.FormattingEnabled = true;
+            this.stop_lbDevice.ItemHeight = 65;
+            this.stop_lbDevice.Items.AddRange(new object[] {
             "Device",
             "Device",
             "Device",
@@ -581,10 +581,10 @@
             "Device",
             "Device",
             "Device"});
-            this.listBox2.Location = new System.Drawing.Point(53, 72);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(713, 784);
-            this.listBox2.TabIndex = 39;
+            this.stop_lbDevice.Location = new System.Drawing.Point(53, 72);
+            this.stop_lbDevice.Name = "stop_lbDevice";
+            this.stop_lbDevice.Size = new System.Drawing.Size(713, 784);
+            this.stop_lbDevice.TabIndex = 39;
             // 
             // label18
             // 
@@ -600,26 +600,26 @@
             // pAddNewDevice
             // 
             this.pAddNewDevice.AutoScroll = true;
-            this.pAddNewDevice.Controls.Add(this.bClearNewDevice);
-            this.pAddNewDevice.Controls.Add(this.bSaveNewDevice);
-            this.pAddNewDevice.Controls.Add(this.lRules);
-            this.pAddNewDevice.Controls.Add(this.bAddRule);
+            this.pAddNewDevice.Controls.Add(this.add_bClearNewDevice);
+            this.pAddNewDevice.Controls.Add(this.add_bSaveNewDevice);
+            this.pAddNewDevice.Controls.Add(this.add_lRules);
+            this.pAddNewDevice.Controls.Add(this.add_bAddRule);
             this.pAddNewDevice.Controls.Add(this.label10);
-            this.pAddNewDevice.Controls.Add(this.lDestination);
-            this.pAddNewDevice.Controls.Add(this.bAddDestination);
+            this.pAddNewDevice.Controls.Add(this.add_lDestination);
+            this.pAddNewDevice.Controls.Add(this.add_bAddDestination);
             this.pAddNewDevice.Controls.Add(this.label8);
-            this.pAddNewDevice.Controls.Add(this.lSource);
-            this.pAddNewDevice.Controls.Add(this.bAddSource);
+            this.pAddNewDevice.Controls.Add(this.add_lSource);
+            this.pAddNewDevice.Controls.Add(this.add_bAddSource);
             this.pAddNewDevice.Controls.Add(this.label5);
-            this.pAddNewDevice.Controls.Add(this.rbFalse);
-            this.pAddNewDevice.Controls.Add(this.rbTrue);
+            this.pAddNewDevice.Controls.Add(this.add_rbFalse);
+            this.pAddNewDevice.Controls.Add(this.add_rbTrue);
             this.pAddNewDevice.Controls.Add(this.label4);
-            this.pAddNewDevice.Controls.Add(this.tLocation);
+            this.pAddNewDevice.Controls.Add(this.add_tLocation);
             this.pAddNewDevice.Controls.Add(this.label3);
-            this.pAddNewDevice.Controls.Add(this.tCustodian);
+            this.pAddNewDevice.Controls.Add(this.add_tCustodian);
             this.pAddNewDevice.Controls.Add(this.label2);
-            this.pAddNewDevice.Controls.Add(this.tName);
-            this.pAddNewDevice.Controls.Add(this.tId);
+            this.pAddNewDevice.Controls.Add(this.add_tName);
+            this.pAddNewDevice.Controls.Add(this.add_tId);
             this.pAddNewDevice.Controls.Add(this.label1);
             this.pAddNewDevice.Controls.Add(this.lId);
             this.pAddNewDevice.Controls.Add(this.lHeader_Add);
@@ -630,51 +630,51 @@
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
             // 
-            // bClearNewDevice
+            // add_bClearNewDevice
             // 
-            this.bClearNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bClearNewDevice.BackColor = System.Drawing.Color.Gainsboro;
-            this.bClearNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bClearNewDevice.Location = new System.Drawing.Point(655, 785);
-            this.bClearNewDevice.Name = "bClearNewDevice";
-            this.bClearNewDevice.Size = new System.Drawing.Size(612, 85);
-            this.bClearNewDevice.TabIndex = 41;
-            this.bClearNewDevice.Text = "CLEAR ALL FIELDS";
-            this.bClearNewDevice.UseVisualStyleBackColor = false;
+            this.add_bClearNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.add_bClearNewDevice.BackColor = System.Drawing.Color.Gainsboro;
+            this.add_bClearNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bClearNewDevice.Location = new System.Drawing.Point(655, 785);
+            this.add_bClearNewDevice.Name = "add_bClearNewDevice";
+            this.add_bClearNewDevice.Size = new System.Drawing.Size(612, 85);
+            this.add_bClearNewDevice.TabIndex = 41;
+            this.add_bClearNewDevice.Text = "CLEAR ALL FIELDS";
+            this.add_bClearNewDevice.UseVisualStyleBackColor = false;
             // 
-            // bSaveNewDevice
+            // add_bSaveNewDevice
             // 
-            this.bSaveNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bSaveNewDevice.BackColor = System.Drawing.Color.Gainsboro;
-            this.bSaveNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSaveNewDevice.Location = new System.Drawing.Point(1273, 760);
-            this.bSaveNewDevice.Name = "bSaveNewDevice";
-            this.bSaveNewDevice.Size = new System.Drawing.Size(612, 110);
-            this.bSaveNewDevice.TabIndex = 14;
-            this.bSaveNewDevice.Text = "SAVE DEVICE INFORMATION";
-            this.bSaveNewDevice.UseVisualStyleBackColor = false;
+            this.add_bSaveNewDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.add_bSaveNewDevice.BackColor = System.Drawing.Color.Gainsboro;
+            this.add_bSaveNewDevice.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bSaveNewDevice.Location = new System.Drawing.Point(1273, 760);
+            this.add_bSaveNewDevice.Name = "add_bSaveNewDevice";
+            this.add_bSaveNewDevice.Size = new System.Drawing.Size(612, 110);
+            this.add_bSaveNewDevice.TabIndex = 14;
+            this.add_bSaveNewDevice.Text = "SAVE DEVICE INFORMATION";
+            this.add_bSaveNewDevice.UseVisualStyleBackColor = false;
             // 
-            // lRules
+            // add_lRules
             // 
-            this.lRules.AutoSize = true;
-            this.lRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lRules.Location = new System.Drawing.Point(691, 630);
-            this.lRules.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.lRules.Name = "lRules";
-            this.lRules.Size = new System.Drawing.Size(227, 48);
-            this.lRules.TabIndex = 40;
-            this.lRules.Text = "No Rules...";
+            this.add_lRules.AutoSize = true;
+            this.add_lRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lRules.Location = new System.Drawing.Point(691, 630);
+            this.add_lRules.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lRules.Name = "add_lRules";
+            this.add_lRules.Size = new System.Drawing.Size(227, 48);
+            this.add_lRules.TabIndex = 40;
+            this.add_lRules.Text = "No Rules...";
             // 
-            // bAddRule
+            // add_bAddRule
             // 
-            this.bAddRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAddRule.Location = new System.Drawing.Point(339, 612);
-            this.bAddRule.Margin = new System.Windows.Forms.Padding(7);
-            this.bAddRule.Name = "bAddRule";
-            this.bAddRule.Size = new System.Drawing.Size(329, 85);
-            this.bAddRule.TabIndex = 39;
-            this.bAddRule.Text = "Add Rule";
-            this.bAddRule.UseVisualStyleBackColor = true;
+            this.add_bAddRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bAddRule.Location = new System.Drawing.Point(339, 612);
+            this.add_bAddRule.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bAddRule.Name = "add_bAddRule";
+            this.add_bAddRule.Size = new System.Drawing.Size(329, 85);
+            this.add_bAddRule.TabIndex = 39;
+            this.add_bAddRule.Text = "Add Rule";
+            this.add_bAddRule.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -687,27 +687,27 @@
             this.label10.TabIndex = 38;
             this.label10.Text = "Rules:";
             // 
-            // lDestination
+            // add_lDestination
             // 
-            this.lDestination.AutoSize = true;
-            this.lDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lDestination.Location = new System.Drawing.Point(682, 531);
-            this.lDestination.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.lDestination.Name = "lDestination";
-            this.lDestination.Size = new System.Drawing.Size(330, 48);
-            this.lDestination.TabIndex = 37;
-            this.lDestination.Text = "No Destination...";
+            this.add_lDestination.AutoSize = true;
+            this.add_lDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lDestination.Location = new System.Drawing.Point(682, 531);
+            this.add_lDestination.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lDestination.Name = "add_lDestination";
+            this.add_lDestination.Size = new System.Drawing.Size(330, 48);
+            this.add_lDestination.TabIndex = 37;
+            this.add_lDestination.Text = "No Destination...";
             // 
-            // bAddDestination
+            // add_bAddDestination
             // 
-            this.bAddDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAddDestination.Location = new System.Drawing.Point(339, 513);
-            this.bAddDestination.Margin = new System.Windows.Forms.Padding(7);
-            this.bAddDestination.Name = "bAddDestination";
-            this.bAddDestination.Size = new System.Drawing.Size(329, 85);
-            this.bAddDestination.TabIndex = 36;
-            this.bAddDestination.Text = "Set Destination";
-            this.bAddDestination.UseVisualStyleBackColor = true;
+            this.add_bAddDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bAddDestination.Location = new System.Drawing.Point(339, 513);
+            this.add_bAddDestination.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bAddDestination.Name = "add_bAddDestination";
+            this.add_bAddDestination.Size = new System.Drawing.Size(329, 85);
+            this.add_bAddDestination.TabIndex = 36;
+            this.add_bAddDestination.Text = "Set Destination";
+            this.add_bAddDestination.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -720,27 +720,27 @@
             this.label8.TabIndex = 35;
             this.label8.Text = "Destination:";
             // 
-            // lSource
+            // add_lSource
             // 
-            this.lSource.AutoSize = true;
-            this.lSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lSource.Location = new System.Drawing.Point(682, 432);
-            this.lSource.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.lSource.Name = "lSource";
-            this.lSource.Size = new System.Drawing.Size(273, 48);
-            this.lSource.TabIndex = 34;
-            this.lSource.Text = "No Sources...";
+            this.add_lSource.AutoSize = true;
+            this.add_lSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lSource.Location = new System.Drawing.Point(682, 432);
+            this.add_lSource.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lSource.Name = "add_lSource";
+            this.add_lSource.Size = new System.Drawing.Size(273, 48);
+            this.add_lSource.TabIndex = 34;
+            this.add_lSource.Text = "No Sources...";
             // 
-            // bAddSource
+            // add_bAddSource
             // 
-            this.bAddSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAddSource.Location = new System.Drawing.Point(339, 414);
-            this.bAddSource.Margin = new System.Windows.Forms.Padding(7);
-            this.bAddSource.Name = "bAddSource";
-            this.bAddSource.Size = new System.Drawing.Size(329, 85);
-            this.bAddSource.TabIndex = 33;
-            this.bAddSource.Text = "Set Source";
-            this.bAddSource.UseVisualStyleBackColor = true;
+            this.add_bAddSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bAddSource.Location = new System.Drawing.Point(339, 414);
+            this.add_bAddSource.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bAddSource.Name = "add_bAddSource";
+            this.add_bAddSource.Size = new System.Drawing.Size(329, 85);
+            this.add_bAddSource.TabIndex = 33;
+            this.add_bAddSource.Text = "Set Source";
+            this.add_bAddSource.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -753,31 +753,31 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Source:";
             // 
-            // rbFalse
+            // add_rbFalse
             // 
-            this.rbFalse.AutoSize = true;
-            this.rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFalse.Location = new System.Drawing.Point(514, 350);
-            this.rbFalse.Margin = new System.Windows.Forms.Padding(7);
-            this.rbFalse.Name = "rbFalse";
-            this.rbFalse.Size = new System.Drawing.Size(154, 52);
-            this.rbFalse.TabIndex = 31;
-            this.rbFalse.TabStop = true;
-            this.rbFalse.Text = "False";
-            this.rbFalse.UseVisualStyleBackColor = true;
+            this.add_rbFalse.AutoSize = true;
+            this.add_rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_rbFalse.Location = new System.Drawing.Point(514, 350);
+            this.add_rbFalse.Margin = new System.Windows.Forms.Padding(7);
+            this.add_rbFalse.Name = "add_rbFalse";
+            this.add_rbFalse.Size = new System.Drawing.Size(154, 52);
+            this.add_rbFalse.TabIndex = 31;
+            this.add_rbFalse.TabStop = true;
+            this.add_rbFalse.Text = "False";
+            this.add_rbFalse.UseVisualStyleBackColor = true;
             // 
-            // rbTrue
+            // add_rbTrue
             // 
-            this.rbTrue.AutoSize = true;
-            this.rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbTrue.Location = new System.Drawing.Point(349, 348);
-            this.rbTrue.Margin = new System.Windows.Forms.Padding(7);
-            this.rbTrue.Name = "rbTrue";
-            this.rbTrue.Size = new System.Drawing.Size(137, 52);
-            this.rbTrue.TabIndex = 30;
-            this.rbTrue.TabStop = true;
-            this.rbTrue.Text = "True";
-            this.rbTrue.UseVisualStyleBackColor = true;
+            this.add_rbTrue.AutoSize = true;
+            this.add_rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_rbTrue.Location = new System.Drawing.Point(349, 348);
+            this.add_rbTrue.Margin = new System.Windows.Forms.Padding(7);
+            this.add_rbTrue.Name = "add_rbTrue";
+            this.add_rbTrue.Size = new System.Drawing.Size(137, 52);
+            this.add_rbTrue.TabIndex = 30;
+            this.add_rbTrue.TabStop = true;
+            this.add_rbTrue.Text = "True";
+            this.add_rbTrue.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -790,15 +790,15 @@
             this.label4.TabIndex = 29;
             this.label4.Text = "Enabled:";
             // 
-            // tLocation
+            // add_tLocation
             // 
-            this.tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tLocation.Location = new System.Drawing.Point(349, 210);
-            this.tLocation.Margin = new System.Windows.Forms.Padding(7);
-            this.tLocation.Name = "tLocation";
-            this.tLocation.Size = new System.Drawing.Size(569, 55);
-            this.tLocation.TabIndex = 28;
-            this.tLocation.Text = "Under - Desk";
+            this.add_tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_tLocation.Location = new System.Drawing.Point(349, 210);
+            this.add_tLocation.Margin = new System.Windows.Forms.Padding(7);
+            this.add_tLocation.Name = "add_tLocation";
+            this.add_tLocation.Size = new System.Drawing.Size(569, 55);
+            this.add_tLocation.TabIndex = 28;
+            this.add_tLocation.Text = "Under - Desk";
             // 
             // label3
             // 
@@ -811,15 +811,15 @@
             this.label3.TabIndex = 27;
             this.label3.Text = "Location:";
             // 
-            // tCustodian
+            // add_tCustodian
             // 
-            this.tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tCustodian.Location = new System.Drawing.Point(349, 279);
-            this.tCustodian.Margin = new System.Windows.Forms.Padding(7);
-            this.tCustodian.Name = "tCustodian";
-            this.tCustodian.Size = new System.Drawing.Size(569, 55);
-            this.tCustodian.TabIndex = 26;
-            this.tCustodian.Text = "W. Whitehead";
+            this.add_tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_tCustodian.Location = new System.Drawing.Point(349, 279);
+            this.add_tCustodian.Margin = new System.Windows.Forms.Padding(7);
+            this.add_tCustodian.Name = "add_tCustodian";
+            this.add_tCustodian.Size = new System.Drawing.Size(569, 55);
+            this.add_tCustodian.TabIndex = 26;
+            this.add_tCustodian.Text = "W. Whitehead";
             // 
             // label2
             // 
@@ -832,25 +832,25 @@
             this.label2.TabIndex = 25;
             this.label2.Text = "Custodian:";
             // 
-            // tName
+            // add_tName
             // 
-            this.tName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tName.Location = new System.Drawing.Point(349, 141);
-            this.tName.Margin = new System.Windows.Forms.Padding(7);
-            this.tName.Name = "tName";
-            this.tName.Size = new System.Drawing.Size(569, 55);
-            this.tName.TabIndex = 24;
-            this.tName.Text = "Test Arduino";
+            this.add_tName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_tName.Location = new System.Drawing.Point(349, 141);
+            this.add_tName.Margin = new System.Windows.Forms.Padding(7);
+            this.add_tName.Name = "add_tName";
+            this.add_tName.Size = new System.Drawing.Size(569, 55);
+            this.add_tName.TabIndex = 24;
+            this.add_tName.Text = "Test Arduino";
             // 
-            // tId
+            // add_tId
             // 
-            this.tId.Enabled = false;
-            this.tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tId.Location = new System.Drawing.Point(349, 72);
-            this.tId.Margin = new System.Windows.Forms.Padding(7);
-            this.tId.Name = "tId";
-            this.tId.Size = new System.Drawing.Size(569, 55);
-            this.tId.TabIndex = 23;
+            this.add_tId.Enabled = false;
+            this.add_tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_tId.Location = new System.Drawing.Point(349, 72);
+            this.add_tId.Margin = new System.Windows.Forms.Padding(7);
+            this.add_tId.Name = "add_tId";
+            this.add_tId.Size = new System.Drawing.Size(569, 55);
+            this.add_tId.TabIndex = 23;
             // 
             // label1
             // 
@@ -887,23 +887,23 @@
             // 
             // pModifyDevice
             // 
-            this.pModifyDevice.Controls.Add(this.button5);
-            this.pModifyDevice.Controls.Add(this.button4);
-            this.pModifyDevice.Controls.Add(this.button3);
-            this.pModifyDevice.Controls.Add(this.button1);
-            this.pModifyDevice.Controls.Add(this.button2);
-            this.pModifyDevice.Controls.Add(this.radioButton1);
-            this.pModifyDevice.Controls.Add(this.radioButton2);
+            this.pModifyDevice.Controls.Add(this.modify_bActions);
+            this.pModifyDevice.Controls.Add(this.modify_bRules);
+            this.pModifyDevice.Controls.Add(this.modify_bComms);
+            this.pModifyDevice.Controls.Add(this.modify_bClear);
+            this.pModifyDevice.Controls.Add(this.modify_bSave);
+            this.pModifyDevice.Controls.Add(this.modify_rbFalse);
+            this.pModifyDevice.Controls.Add(this.modify_rbTrue);
             this.pModifyDevice.Controls.Add(this.label9);
-            this.pModifyDevice.Controls.Add(this.textBox1);
+            this.pModifyDevice.Controls.Add(this.modify_tLocation);
             this.pModifyDevice.Controls.Add(this.label11);
-            this.pModifyDevice.Controls.Add(this.textBox2);
+            this.pModifyDevice.Controls.Add(this.modify_tCustodian);
             this.pModifyDevice.Controls.Add(this.label12);
-            this.pModifyDevice.Controls.Add(this.textBox3);
-            this.pModifyDevice.Controls.Add(this.textBox4);
+            this.pModifyDevice.Controls.Add(this.modify_tDevName);
+            this.pModifyDevice.Controls.Add(this.modify_tId);
             this.pModifyDevice.Controls.Add(this.label13);
             this.pModifyDevice.Controls.Add(this.label14);
-            this.pModifyDevice.Controls.Add(this.lbDeviceList);
+            this.pModifyDevice.Controls.Add(this.modify_lbDeviceList);
             this.pModifyDevice.Controls.Add(this.label7);
             this.pModifyDevice.Location = new System.Drawing.Point(10, 47);
             this.pModifyDevice.Name = "pModifyDevice";
@@ -912,88 +912,88 @@
             this.pModifyDevice.Text = "ModifyDevice";
             this.pModifyDevice.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // modify_bActions
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(1569, 431);
-            this.button5.Margin = new System.Windows.Forms.Padding(7);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(316, 85);
-            this.button5.TabIndex = 47;
-            this.button5.Text = "Modify Actions";
-            this.button5.UseVisualStyleBackColor = true;
+            this.modify_bActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_bActions.Location = new System.Drawing.Point(1569, 431);
+            this.modify_bActions.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_bActions.Name = "modify_bActions";
+            this.modify_bActions.Size = new System.Drawing.Size(316, 85);
+            this.modify_bActions.TabIndex = 47;
+            this.modify_bActions.Text = "Modify Actions";
+            this.modify_bActions.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // modify_bRules
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(1273, 431);
-            this.button4.Margin = new System.Windows.Forms.Padding(7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(282, 85);
-            this.button4.TabIndex = 46;
-            this.button4.Text = "Modify Rules";
-            this.button4.UseVisualStyleBackColor = true;
+            this.modify_bRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_bRules.Location = new System.Drawing.Point(1273, 431);
+            this.modify_bRules.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_bRules.Name = "modify_bRules";
+            this.modify_bRules.Size = new System.Drawing.Size(282, 85);
+            this.modify_bRules.TabIndex = 46;
+            this.modify_bRules.Text = "Modify Rules";
+            this.modify_bRules.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // modify_bComms
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(800, 431);
-            this.button3.Margin = new System.Windows.Forms.Padding(7);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(460, 85);
-            this.button3.TabIndex = 45;
-            this.button3.Text = "Modify Communicators";
-            this.button3.UseVisualStyleBackColor = true;
+            this.modify_bComms.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_bComms.Location = new System.Drawing.Point(800, 431);
+            this.modify_bComms.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_bComms.Name = "modify_bComms";
+            this.modify_bComms.Size = new System.Drawing.Size(460, 85);
+            this.modify_bComms.TabIndex = 45;
+            this.modify_bComms.Text = "Modify Communicators";
+            this.modify_bComms.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // modify_bClear
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(655, 785);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(612, 85);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "CLEAR ALL FIELDS";
-            this.button1.UseVisualStyleBackColor = false;
+            this.modify_bClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modify_bClear.BackColor = System.Drawing.Color.Gainsboro;
+            this.modify_bClear.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_bClear.Location = new System.Drawing.Point(655, 785);
+            this.modify_bClear.Name = "modify_bClear";
+            this.modify_bClear.Size = new System.Drawing.Size(612, 85);
+            this.modify_bClear.TabIndex = 44;
+            this.modify_bClear.Text = "CLEAR ALL FIELDS";
+            this.modify_bClear.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // modify_bSave
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Gainsboro;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1273, 760);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(612, 110);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "SAVE DEVICE INFORMATION";
-            this.button2.UseVisualStyleBackColor = false;
+            this.modify_bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modify_bSave.BackColor = System.Drawing.Color.Gainsboro;
+            this.modify_bSave.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_bSave.Location = new System.Drawing.Point(1273, 760);
+            this.modify_bSave.Name = "modify_bSave";
+            this.modify_bSave.Size = new System.Drawing.Size(612, 110);
+            this.modify_bSave.TabIndex = 43;
+            this.modify_bSave.Text = "SAVE DEVICE INFORMATION";
+            this.modify_bSave.UseVisualStyleBackColor = false;
             // 
-            // radioButton1
+            // modify_rbFalse
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(1256, 343);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(7);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(154, 52);
-            this.radioButton1.TabIndex = 42;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "False";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.modify_rbFalse.AutoSize = true;
+            this.modify_rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_rbFalse.Location = new System.Drawing.Point(1256, 343);
+            this.modify_rbFalse.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_rbFalse.Name = "modify_rbFalse";
+            this.modify_rbFalse.Size = new System.Drawing.Size(154, 52);
+            this.modify_rbFalse.TabIndex = 42;
+            this.modify_rbFalse.TabStop = true;
+            this.modify_rbFalse.Text = "False";
+            this.modify_rbFalse.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // modify_rbTrue
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(1091, 341);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(7);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(137, 52);
-            this.radioButton2.TabIndex = 41;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "True";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.modify_rbTrue.AutoSize = true;
+            this.modify_rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_rbTrue.Location = new System.Drawing.Point(1091, 341);
+            this.modify_rbTrue.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_rbTrue.Name = "modify_rbTrue";
+            this.modify_rbTrue.Size = new System.Drawing.Size(137, 52);
+            this.modify_rbTrue.TabIndex = 41;
+            this.modify_rbTrue.TabStop = true;
+            this.modify_rbTrue.Text = "True";
+            this.modify_rbTrue.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -1006,15 +1006,15 @@
             this.label9.TabIndex = 40;
             this.label9.Text = "Enabled:";
             // 
-            // textBox1
+            // modify_tLocation
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1091, 203);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(794, 55);
-            this.textBox1.TabIndex = 39;
-            this.textBox1.Text = "Under - Desk";
+            this.modify_tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_tLocation.Location = new System.Drawing.Point(1091, 203);
+            this.modify_tLocation.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_tLocation.Name = "modify_tLocation";
+            this.modify_tLocation.Size = new System.Drawing.Size(794, 55);
+            this.modify_tLocation.TabIndex = 39;
+            this.modify_tLocation.Text = "Under - Desk";
             // 
             // label11
             // 
@@ -1027,15 +1027,15 @@
             this.label11.TabIndex = 38;
             this.label11.Text = "Location:";
             // 
-            // textBox2
+            // modify_tCustodian
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1091, 272);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(794, 55);
-            this.textBox2.TabIndex = 37;
-            this.textBox2.Text = "W. Whitehead";
+            this.modify_tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_tCustodian.Location = new System.Drawing.Point(1091, 272);
+            this.modify_tCustodian.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_tCustodian.Name = "modify_tCustodian";
+            this.modify_tCustodian.Size = new System.Drawing.Size(794, 55);
+            this.modify_tCustodian.TabIndex = 37;
+            this.modify_tCustodian.Text = "W. Whitehead";
             // 
             // label12
             // 
@@ -1048,25 +1048,25 @@
             this.label12.TabIndex = 36;
             this.label12.Text = "Custodian:";
             // 
-            // textBox3
+            // modify_tDevName
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(1091, 134);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(794, 55);
-            this.textBox3.TabIndex = 35;
-            this.textBox3.Text = "Test Arduino";
+            this.modify_tDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_tDevName.Location = new System.Drawing.Point(1091, 134);
+            this.modify_tDevName.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_tDevName.Name = "modify_tDevName";
+            this.modify_tDevName.Size = new System.Drawing.Size(794, 55);
+            this.modify_tDevName.TabIndex = 35;
+            this.modify_tDevName.Text = "Test Arduino";
             // 
-            // textBox4
+            // modify_tId
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(1091, 65);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(794, 55);
-            this.textBox4.TabIndex = 34;
+            this.modify_tId.Enabled = false;
+            this.modify_tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_tId.Location = new System.Drawing.Point(1091, 65);
+            this.modify_tId.Margin = new System.Windows.Forms.Padding(7);
+            this.modify_tId.Name = "modify_tId";
+            this.modify_tId.Size = new System.Drawing.Size(794, 55);
+            this.modify_tId.TabIndex = 34;
             // 
             // label13
             // 
@@ -1090,14 +1090,14 @@
             this.label14.TabIndex = 32;
             this.label14.Text = "ID Number:";
             // 
-            // lbDeviceList
+            // modify_lbDeviceList
             // 
-            this.lbDeviceList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.modify_lbDeviceList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbDeviceList.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDeviceList.FormattingEnabled = true;
-            this.lbDeviceList.ItemHeight = 65;
-            this.lbDeviceList.Items.AddRange(new object[] {
+            this.modify_lbDeviceList.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modify_lbDeviceList.FormattingEnabled = true;
+            this.modify_lbDeviceList.ItemHeight = 65;
+            this.modify_lbDeviceList.Items.AddRange(new object[] {
             "Device",
             "Device",
             "Device",
@@ -1106,10 +1106,10 @@
             "Device",
             "Device",
             "Device"});
-            this.lbDeviceList.Location = new System.Drawing.Point(53, 72);
-            this.lbDeviceList.Name = "lbDeviceList";
-            this.lbDeviceList.Size = new System.Drawing.Size(713, 784);
-            this.lbDeviceList.TabIndex = 4;
+            this.modify_lbDeviceList.Location = new System.Drawing.Point(53, 72);
+            this.modify_lbDeviceList.Name = "modify_lbDeviceList";
+            this.modify_lbDeviceList.Size = new System.Drawing.Size(713, 784);
+            this.modify_lbDeviceList.TabIndex = 4;
             // 
             // label7
             // 
@@ -1124,8 +1124,8 @@
             // 
             // pReports
             // 
-            this.pReports.Controls.Add(this.reportViewer1);
-            this.pReports.Controls.Add(this.listBox3);
+            this.pReports.Controls.Add(this.report_rvReportViewer);
+            this.pReports.Controls.Add(this.report_lbReports);
             this.pReports.Controls.Add(this.label15);
             this.pReports.Location = new System.Drawing.Point(10, 47);
             this.pReports.Name = "pReports";
@@ -1134,24 +1134,25 @@
             this.pReports.Text = "Reports";
             this.pReports.UseVisualStyleBackColor = true;
             // 
-            // reportViewer1
+            // report_rvReportViewer
             // 
-            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.report_rvReportViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportViewer1.Location = new System.Drawing.Point(772, 72);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(1154, 784);
-            this.reportViewer1.TabIndex = 41;
+            this.report_rvReportViewer.Location = new System.Drawing.Point(772, 72);
+            this.report_rvReportViewer.Name = "report_rvReportViewer";
+            this.report_rvReportViewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
+            this.report_rvReportViewer.Size = new System.Drawing.Size(1154, 784);
+            this.report_rvReportViewer.TabIndex = 41;
             // 
-            // listBox3
+            // report_lbReports
             // 
-            this.listBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.report_lbReports.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 65;
-            this.listBox3.Items.AddRange(new object[] {
+            this.report_lbReports.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.report_lbReports.FormattingEnabled = true;
+            this.report_lbReports.ItemHeight = 65;
+            this.report_lbReports.Items.AddRange(new object[] {
             "Device",
             "Device",
             "Device",
@@ -1160,10 +1161,10 @@
             "Device",
             "Device",
             "Device"});
-            this.listBox3.Location = new System.Drawing.Point(53, 72);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(713, 784);
-            this.listBox3.TabIndex = 40;
+            this.report_lbReports.Location = new System.Drawing.Point(53, 72);
+            this.report_lbReports.Name = "report_lbReports";
+            this.report_lbReports.Size = new System.Drawing.Size(713, 784);
+            this.report_lbReports.TabIndex = 40;
             // 
             // label15
             // 
@@ -1178,20 +1179,20 @@
             // 
             // pAlarms
             // 
-            this.pAlarms.Controls.Add(this.radioButton4);
-            this.pAlarms.Controls.Add(this.radioButton3);
+            this.pAlarms.Controls.Add(this.alarm_rbFalse);
+            this.pAlarms.Controls.Add(this.alarm_rbTrue);
             this.pAlarms.Controls.Add(this.label29);
             this.pAlarms.Controls.Add(this.groupBox1);
-            this.pAlarms.Controls.Add(this.button8);
-            this.pAlarms.Controls.Add(this.button9);
-            this.pAlarms.Controls.Add(this.button10);
-            this.pAlarms.Controls.Add(this.textBox9);
+            this.pAlarms.Controls.Add(this.alarm_Acknowledge);
+            this.pAlarms.Controls.Add(this.alarm_Rule);
+            this.pAlarms.Controls.Add(this.alarm_bDevice);
+            this.pAlarms.Controls.Add(this.alarm_tValue);
             this.pAlarms.Controls.Add(this.label25);
-            this.pAlarms.Controls.Add(this.textBox10);
-            this.pAlarms.Controls.Add(this.textBox11);
+            this.pAlarms.Controls.Add(this.alarm_tDateTime);
+            this.pAlarms.Controls.Add(this.alarm_tDevice);
             this.pAlarms.Controls.Add(this.label26);
             this.pAlarms.Controls.Add(this.label27);
-            this.pAlarms.Controls.Add(this.listBox4);
+            this.pAlarms.Controls.Add(this.alarm_lbAlarms);
             this.pAlarms.Controls.Add(this.label16);
             this.pAlarms.Location = new System.Drawing.Point(10, 47);
             this.pAlarms.Name = "pAlarms";
@@ -1200,14 +1201,183 @@
             this.pAlarms.Text = "Alarms";
             this.pAlarms.UseVisualStyleBackColor = true;
             // 
-            // listBox4
+            // alarm_rbFalse
             // 
-            this.listBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.alarm_rbFalse.AutoSize = true;
+            this.alarm_rbFalse.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_rbFalse.Location = new System.Drawing.Point(1246, 416);
+            this.alarm_rbFalse.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_rbFalse.Name = "alarm_rbFalse";
+            this.alarm_rbFalse.Size = new System.Drawing.Size(154, 52);
+            this.alarm_rbFalse.TabIndex = 54;
+            this.alarm_rbFalse.Text = "False";
+            this.alarm_rbFalse.UseVisualStyleBackColor = true;
+            // 
+            // alarm_rbTrue
+            // 
+            this.alarm_rbTrue.AutoSize = true;
+            this.alarm_rbTrue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_rbTrue.Location = new System.Drawing.Point(1095, 416);
+            this.alarm_rbTrue.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_rbTrue.Name = "alarm_rbTrue";
+            this.alarm_rbTrue.Size = new System.Drawing.Size(137, 52);
+            this.alarm_rbTrue.TabIndex = 53;
+            this.alarm_rbTrue.TabStop = true;
+            this.alarm_rbTrue.Text = "True";
+            this.alarm_rbTrue.UseVisualStyleBackColor = true;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(796, 420);
+            this.label29.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(303, 48);
+            this.label29.TabIndex = 52;
+            this.label29.Text = "Acknowledged:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.alarm_cbPeriod);
+            this.groupBox1.Location = new System.Drawing.Point(788, 72);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1119, 114);
+            this.groupBox1.TabIndex = 51;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "View Settings";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(10, 34);
+            this.label28.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(420, 48);
+            this.label28.TabIndex = 52;
+            this.label28.Text = "View alarms from last";
+            // 
+            // alarm_cbPeriod
+            // 
+            this.alarm_cbPeriod.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_cbPeriod.FormattingEnabled = true;
+            this.alarm_cbPeriod.Items.AddRange(new object[] {
+            "1 hour",
+            "2 hours",
+            "6 hours",
+            "24 hours",
+            "72 hours"});
+            this.alarm_cbPeriod.Location = new System.Drawing.Point(440, 32);
+            this.alarm_cbPeriod.Name = "alarm_cbPeriod";
+            this.alarm_cbPeriod.Size = new System.Drawing.Size(660, 59);
+            this.alarm_cbPeriod.TabIndex = 0;
+            // 
+            // alarm_Acknowledge
+            // 
+            this.alarm_Acknowledge.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_Acknowledge.Location = new System.Drawing.Point(1047, 653);
+            this.alarm_Acknowledge.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_Acknowledge.Name = "alarm_Acknowledge";
+            this.alarm_Acknowledge.Size = new System.Drawing.Size(648, 133);
+            this.alarm_Acknowledge.TabIndex = 50;
+            this.alarm_Acknowledge.Text = "Acknowledge Alarm";
+            this.alarm_Acknowledge.UseVisualStyleBackColor = true;
+            // 
+            // alarm_Rule
+            // 
+            this.alarm_Rule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_Rule.Location = new System.Drawing.Point(1528, 513);
+            this.alarm_Rule.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_Rule.Name = "alarm_Rule";
+            this.alarm_Rule.Size = new System.Drawing.Size(361, 85);
+            this.alarm_Rule.TabIndex = 49;
+            this.alarm_Rule.Text = "View Rule";
+            this.alarm_Rule.UseVisualStyleBackColor = true;
+            // 
+            // alarm_bDevice
+            // 
+            this.alarm_bDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_bDevice.Location = new System.Drawing.Point(804, 513);
+            this.alarm_bDevice.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_bDevice.Name = "alarm_bDevice";
+            this.alarm_bDevice.Size = new System.Drawing.Size(710, 85);
+            this.alarm_bDevice.TabIndex = 48;
+            this.alarm_bDevice.Text = "View Device";
+            this.alarm_bDevice.UseVisualStyleBackColor = true;
+            // 
+            // alarm_tValue
+            // 
+            this.alarm_tValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_tValue.Location = new System.Drawing.Point(1095, 347);
+            this.alarm_tValue.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_tValue.Name = "alarm_tValue";
+            this.alarm_tValue.Size = new System.Drawing.Size(794, 55);
+            this.alarm_tValue.TabIndex = 46;
+            this.alarm_tValue.Text = "Under - Desk";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(796, 354);
+            this.label25.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(139, 48);
+            this.label25.TabIndex = 45;
+            this.label25.Text = "Value:";
+            // 
+            // alarm_tDateTime
+            // 
+            this.alarm_tDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_tDateTime.Location = new System.Drawing.Point(1095, 278);
+            this.alarm_tDateTime.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_tDateTime.Name = "alarm_tDateTime";
+            this.alarm_tDateTime.Size = new System.Drawing.Size(794, 55);
+            this.alarm_tDateTime.TabIndex = 44;
+            this.alarm_tDateTime.Text = "Test Arduino";
+            // 
+            // alarm_tDevice
+            // 
+            this.alarm_tDevice.Enabled = false;
+            this.alarm_tDevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_tDevice.Location = new System.Drawing.Point(1095, 209);
+            this.alarm_tDevice.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_tDevice.Name = "alarm_tDevice";
+            this.alarm_tDevice.Size = new System.Drawing.Size(794, 55);
+            this.alarm_tDevice.TabIndex = 43;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(796, 285);
+            this.label26.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(225, 48);
+            this.label26.TabIndex = 42;
+            this.label26.Text = "Date Time:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(796, 216);
+            this.label27.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(160, 48);
+            this.label27.TabIndex = 41;
+            this.label27.Text = "Device:";
+            // 
+            // alarm_lbAlarms
+            // 
+            this.alarm_lbAlarms.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 65;
-            this.listBox4.Items.AddRange(new object[] {
+            this.alarm_lbAlarms.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_lbAlarms.FormattingEnabled = true;
+            this.alarm_lbAlarms.ItemHeight = 65;
+            this.alarm_lbAlarms.Items.AddRange(new object[] {
             "Device",
             "Device",
             "Device",
@@ -1216,10 +1386,10 @@
             "Device",
             "Device",
             "Device"});
-            this.listBox4.Location = new System.Drawing.Point(53, 72);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(713, 784);
-            this.listBox4.TabIndex = 40;
+            this.alarm_lbAlarms.Location = new System.Drawing.Point(53, 72);
+            this.alarm_lbAlarms.Name = "alarm_lbAlarms";
+            this.alarm_lbAlarms.Size = new System.Drawing.Size(713, 784);
+            this.alarm_lbAlarms.TabIndex = 40;
             // 
             // label16
             // 
@@ -1276,175 +1446,6 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Settings";
             // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(1095, 347);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(794, 55);
-            this.textBox9.TabIndex = 46;
-            this.textBox9.Text = "Under - Desk";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(796, 354);
-            this.label25.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(190, 48);
-            this.label25.TabIndex = 45;
-            this.label25.Text = "Location:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(1095, 278);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(794, 55);
-            this.textBox10.TabIndex = 44;
-            this.textBox10.Text = "Test Arduino";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Enabled = false;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(1095, 209);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(7);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(794, 55);
-            this.textBox11.TabIndex = 43;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(796, 285);
-            this.label26.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(282, 48);
-            this.label26.TabIndex = 42;
-            this.label26.Text = "Device Name:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(796, 216);
-            this.label27.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(233, 48);
-            this.label27.TabIndex = 41;
-            this.label27.Text = "ID Number:";
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(1047, 653);
-            this.button8.Margin = new System.Windows.Forms.Padding(7);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(648, 133);
-            this.button8.TabIndex = 50;
-            this.button8.Text = "Acknowledge Alarm";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(1528, 513);
-            this.button9.Margin = new System.Windows.Forms.Padding(7);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(361, 85);
-            this.button9.TabIndex = 49;
-            this.button9.Text = "View Rule";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(804, 513);
-            this.button10.Margin = new System.Windows.Forms.Padding(7);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(710, 85);
-            this.button10.TabIndex = 48;
-            this.button10.Text = "View Device";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(788, 72);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1119, 114);
-            this.groupBox1.TabIndex = 51;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "View Settings";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1 hour",
-            "2 hours",
-            "6 hours",
-            "24 hours",
-            "72 hours"});
-            this.comboBox1.Location = new System.Drawing.Point(440, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(660, 59);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(10, 34);
-            this.label28.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(420, 48);
-            this.label28.TabIndex = 52;
-            this.label28.Text = "View alarms from last";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(796, 420);
-            this.label29.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(303, 48);
-            this.label29.TabIndex = 52;
-            this.label29.Text = "Acknowledged:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(1095, 416);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(7);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(137, 52);
-            this.radioButton3.TabIndex = 53;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "True";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(1246, 416);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(7);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(154, 52);
-            this.radioButton4.TabIndex = 54;
-            this.radioButton4.Text = "False";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -1487,10 +1488,10 @@
             this.pReports.PerformLayout();
             this.pAlarms.ResumeLayout(false);
             this.pAlarms.PerformLayout();
-            this.pSettings.ResumeLayout(false);
-            this.pSettings.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pSettings.ResumeLayout(false);
+            this.pSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1524,46 +1525,46 @@
         private System.Windows.Forms.ToolStripStatusLabel lStatusPreceder;
         private System.Windows.Forms.Label lHeader_Add;
         private System.Windows.Forms.Button bTogglePanelSize_Status;
-        private System.Windows.Forms.Label lRules;
-        private System.Windows.Forms.Button bAddRule;
+        private System.Windows.Forms.Label add_lRules;
+        private System.Windows.Forms.Button add_bAddRule;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lDestination;
-        private System.Windows.Forms.Button bAddDestination;
+        private System.Windows.Forms.Label add_lDestination;
+        private System.Windows.Forms.Button add_bAddDestination;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lSource;
-        private System.Windows.Forms.Button bAddSource;
+        private System.Windows.Forms.Label add_lSource;
+        private System.Windows.Forms.Button add_bAddSource;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton rbFalse;
-        private System.Windows.Forms.RadioButton rbTrue;
+        private System.Windows.Forms.RadioButton add_rbFalse;
+        private System.Windows.Forms.RadioButton add_rbTrue;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tLocation;
+        private System.Windows.Forms.TextBox add_tLocation;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tCustodian;
+        private System.Windows.Forms.TextBox add_tCustodian;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tName;
-        private System.Windows.Forms.TextBox tId;
+        private System.Windows.Forms.TextBox add_tName;
+        private System.Windows.Forms.TextBox add_tId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lId;
         private System.Windows.Forms.Button bSettings;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button bClearNewDevice;
-        private System.Windows.Forms.Button bSaveNewDevice;
+        private System.Windows.Forms.Button add_bClearNewDevice;
+        private System.Windows.Forms.Button add_bSaveNewDevice;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox lbDeviceList;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.ListBox modify_lbDeviceList;
+        private System.Windows.Forms.Button modify_bActions;
+        private System.Windows.Forms.Button modify_bRules;
+        private System.Windows.Forms.Button modify_bComms;
+        private System.Windows.Forms.Button modify_bClear;
+        private System.Windows.Forms.Button modify_bSave;
+        private System.Windows.Forms.RadioButton modify_rbFalse;
+        private System.Windows.Forms.RadioButton modify_rbTrue;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox modify_tLocation;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox modify_tCustodian;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox modify_tDevName;
+        private System.Windows.Forms.TextBox modify_tId;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label17;
@@ -1574,34 +1575,34 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tSettingsPassword;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button start_bStart;
+        private System.Windows.Forms.ListBox start_lbDevice;
+        private System.Windows.Forms.TextBox start_tDevName;
+        private System.Windows.Forms.TextBox start_tId;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox stop_tDevName;
+        private System.Windows.Forms.TextBox stop_tId;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ListBox listBox2;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Button stop_bStop;
+        private System.Windows.Forms.ListBox stop_lbDevice;
+        private Microsoft.Reporting.WinForms.ReportViewer report_rvReportViewer;
+        private System.Windows.Forms.ListBox report_lbReports;
+        private System.Windows.Forms.ListBox alarm_lbAlarms;
+        private System.Windows.Forms.RadioButton alarm_rbFalse;
+        private System.Windows.Forms.RadioButton alarm_rbTrue;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.ComboBox alarm_cbPeriod;
+        private System.Windows.Forms.Button alarm_Acknowledge;
+        private System.Windows.Forms.Button alarm_Rule;
+        private System.Windows.Forms.Button alarm_bDevice;
+        private System.Windows.Forms.TextBox alarm_tValue;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox alarm_tDateTime;
+        private System.Windows.Forms.TextBox alarm_tDevice;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
     }

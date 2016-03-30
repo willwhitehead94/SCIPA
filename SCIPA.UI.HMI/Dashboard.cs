@@ -47,7 +47,7 @@ namespace SCIPA.UI.HMI
         {
             //Start the live dashboard update outside of the main thread.
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateDashboard));
-            this.reportViewer1.RefreshReport();
+            this.report_rvReportViewer.RefreshReport();
         }
 
         /// <summary>
