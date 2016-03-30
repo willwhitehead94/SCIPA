@@ -51,6 +51,7 @@
             this.bTogglePanelSize_Status = new System.Windows.Forms.Button();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.Home = new System.Windows.Forms.TabPage();
+            this.label35 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.pStart = new System.Windows.Forms.TabPage();
             this.start_tLocation = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
             this.add_tcInnerPages = new SCIPA.UI.HMI.CustomTabControl();
             this.pSources = new System.Windows.Forms.TabPage();
+            this.label36 = new System.Windows.Forms.Label();
             this.pDestinations = new System.Windows.Forms.TabPage();
             this.pRules = new System.Windows.Forms.TabPage();
             this.add_bClearNewDevice = new System.Windows.Forms.Button();
@@ -86,8 +88,8 @@
             this.add_lRules = new System.Windows.Forms.Label();
             this.add_bAddRule = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.add_lDestination = new System.Windows.Forms.Label();
-            this.add_bAddDestination = new System.Windows.Forms.Button();
+            this.add_lAction = new System.Windows.Forms.Label();
+            this.add_bAddAction = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.add_lSource = new System.Windows.Forms.Label();
             this.add_bAddSource = new System.Windows.Forms.Button();
@@ -158,6 +160,7 @@
             this.pStop.SuspendLayout();
             this.pAddNewDevice.SuspendLayout();
             this.add_tcInnerPages.SuspendLayout();
+            this.pSources.SuspendLayout();
             this.pModifyDevice.SuspendLayout();
             this.pReports.SuspendLayout();
             this.pAlarms.SuspendLayout();
@@ -412,6 +415,7 @@
             // 
             // Home
             // 
+            this.Home.Controls.Add(this.label35);
             this.Home.Controls.Add(this.label30);
             this.Home.Location = new System.Drawing.Point(10, 47);
             this.Home.Name = "Home";
@@ -420,13 +424,24 @@
             this.Home.Text = "pHome";
             this.Home.UseVisualStyleBackColor = true;
             // 
+            // label35
+            // 
+            this.label35.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold);
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label35.Location = new System.Drawing.Point(0, 504);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(1939, 398);
+            this.label35.TabIndex = 2;
+            this.label35.Text = "SOFTWARE CONTROLLED INDUSTRIAL\r\nPROCESS AUTOMATION SYSTEM";
+            this.label35.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // label30
             // 
-            this.label30.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 100F, System.Drawing.FontStyle.Bold);
             this.label30.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label30.Location = new System.Drawing.Point(-9, 18);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(1960, 894);
+            this.label30.Size = new System.Drawing.Size(1960, 614);
             this.label30.TabIndex = 1;
             this.label30.Text = "SCIPA";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -739,8 +754,8 @@
             this.pAddNewDevice.Controls.Add(this.add_lRules);
             this.pAddNewDevice.Controls.Add(this.add_bAddRule);
             this.pAddNewDevice.Controls.Add(this.label10);
-            this.pAddNewDevice.Controls.Add(this.add_lDestination);
-            this.pAddNewDevice.Controls.Add(this.add_bAddDestination);
+            this.pAddNewDevice.Controls.Add(this.add_lAction);
+            this.pAddNewDevice.Controls.Add(this.add_bAddAction);
             this.pAddNewDevice.Controls.Add(this.label8);
             this.pAddNewDevice.Controls.Add(this.add_lSource);
             this.pAddNewDevice.Controls.Add(this.add_bAddSource);
@@ -769,26 +784,38 @@
             this.add_tcInnerPages.Controls.Add(this.pSources);
             this.add_tcInnerPages.Controls.Add(this.pDestinations);
             this.add_tcInnerPages.Controls.Add(this.pRules);
-            this.add_tcInnerPages.Location = new System.Drawing.Point(1022, 27);
+            this.add_tcInnerPages.Location = new System.Drawing.Point(1006, 3);
             this.add_tcInnerPages.Name = "add_tcInnerPages";
             this.add_tcInnerPages.SelectedIndex = 0;
-            this.add_tcInnerPages.Size = new System.Drawing.Size(863, 715);
+            this.add_tcInnerPages.Size = new System.Drawing.Size(920, 739);
             this.add_tcInnerPages.TabIndex = 42;
             // 
             // pSources
             // 
+            this.pSources.Controls.Add(this.label36);
             this.pSources.Location = new System.Drawing.Point(10, 47);
             this.pSources.Name = "pSources";
-            this.pSources.Size = new System.Drawing.Size(843, 658);
+            this.pSources.Size = new System.Drawing.Size(900, 682);
             this.pSources.TabIndex = 0;
             this.pSources.Text = "Sources";
             this.pSources.UseVisualStyleBackColor = true;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label36.Location = new System.Drawing.Point(3, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(482, 51);
+            this.label36.TabIndex = 3;
+            this.label36.Text = "Add New Data Source";
             // 
             // pDestinations
             // 
             this.pDestinations.Location = new System.Drawing.Point(10, 47);
             this.pDestinations.Name = "pDestinations";
-            this.pDestinations.Size = new System.Drawing.Size(843, 658);
+            this.pDestinations.Size = new System.Drawing.Size(843, 682);
             this.pDestinations.TabIndex = 1;
             this.pDestinations.Text = "Destinations";
             this.pDestinations.UseVisualStyleBackColor = true;
@@ -797,7 +824,7 @@
             // 
             this.pRules.Location = new System.Drawing.Point(10, 47);
             this.pRules.Name = "pRules";
-            this.pRules.Size = new System.Drawing.Size(843, 658);
+            this.pRules.Size = new System.Drawing.Size(843, 682);
             this.pRules.TabIndex = 2;
             this.pRules.Text = "Rules";
             this.pRules.UseVisualStyleBackColor = true;
@@ -859,27 +886,27 @@
             this.label10.TabIndex = 38;
             this.label10.Text = "Rules:";
             // 
-            // add_lDestination
+            // add_lAction
             // 
-            this.add_lDestination.AutoSize = true;
-            this.add_lDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_lDestination.Location = new System.Drawing.Point(682, 531);
-            this.add_lDestination.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.add_lDestination.Name = "add_lDestination";
-            this.add_lDestination.Size = new System.Drawing.Size(330, 48);
-            this.add_lDestination.TabIndex = 37;
-            this.add_lDestination.Text = "No Destination...";
+            this.add_lAction.AutoSize = true;
+            this.add_lAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lAction.Location = new System.Drawing.Point(682, 531);
+            this.add_lAction.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lAction.Name = "add_lAction";
+            this.add_lAction.Size = new System.Drawing.Size(258, 48);
+            this.add_lAction.TabIndex = 37;
+            this.add_lAction.Text = "No Actions...";
             // 
-            // add_bAddDestination
+            // add_bAddAction
             // 
-            this.add_bAddDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_bAddDestination.Location = new System.Drawing.Point(339, 513);
-            this.add_bAddDestination.Margin = new System.Windows.Forms.Padding(7);
-            this.add_bAddDestination.Name = "add_bAddDestination";
-            this.add_bAddDestination.Size = new System.Drawing.Size(329, 85);
-            this.add_bAddDestination.TabIndex = 36;
-            this.add_bAddDestination.Text = "Set Destination";
-            this.add_bAddDestination.UseVisualStyleBackColor = true;
+            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bAddAction.Location = new System.Drawing.Point(339, 513);
+            this.add_bAddAction.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bAddAction.Name = "add_bAddAction";
+            this.add_bAddAction.Size = new System.Drawing.Size(329, 85);
+            this.add_bAddAction.TabIndex = 36;
+            this.add_bAddAction.Text = "Set Action";
+            this.add_bAddAction.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -888,9 +915,9 @@
             this.label8.Location = new System.Drawing.Point(50, 531);
             this.label8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(242, 48);
+            this.label8.Size = new System.Drawing.Size(170, 48);
             this.label8.TabIndex = 35;
-            this.label8.Text = "Destination:";
+            this.label8.Text = "Actions:";
             // 
             // add_lSource
             // 
@@ -1656,6 +1683,8 @@
             this.pAddNewDevice.ResumeLayout(false);
             this.pAddNewDevice.PerformLayout();
             this.add_tcInnerPages.ResumeLayout(false);
+            this.pSources.ResumeLayout(false);
+            this.pSources.PerformLayout();
             this.pModifyDevice.ResumeLayout(false);
             this.pModifyDevice.PerformLayout();
             this.pReports.ResumeLayout(false);
@@ -1702,8 +1731,8 @@
         private System.Windows.Forms.Label add_lRules;
         private System.Windows.Forms.Button add_bAddRule;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label add_lDestination;
-        private System.Windows.Forms.Button add_bAddDestination;
+        private System.Windows.Forms.Label add_lAction;
+        private System.Windows.Forms.Button add_bAddAction;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label add_lSource;
         private System.Windows.Forms.Button add_bAddSource;
@@ -1793,6 +1822,8 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox stop_tCustodian;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
     }
 }
 
