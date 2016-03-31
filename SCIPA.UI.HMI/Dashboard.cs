@@ -628,6 +628,49 @@ namespace SCIPA.UI.HMI
             }
         }
 
+        private void modcomms_bBack_Click(object sender, EventArgs e)
+        {
+            pTabPanel.SelectedTab = pModifyDevice;
+        }
+
+
         #endregion Modify Communicator Information Page.
+
+        private void modcomms_lbComms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (Communicator) modcomms_lbComms.SelectedItem;
+
+            modcomms_tStart.Text = selected.StartChar.ToString();
+            modcomms_tEnd.Text = selected.EndChar.ToString();
+            modcomms_tLastReadTime.Text = selected.LastReadTime.ToString();
+            modcomms_cbValueType.SelectedItem = (Models.ValueType) selected.ValueType;
+            modcomms_cbCommType.SelectedItem = selected.Type;
+            modcomms_rbInbound.Checked = selected.Inbound;
+            modcomms_rbOutbound.Checked = !selected.Inbound;
+
+            switch (selected.Type)
+            {
+                case CommunicatorType.FlatFile:
+                    var fTemp = (FileCommunicator) selected;
+                    modcomms_tFilePath.Text = fTemp.FilePath;
+                    break;
+                case CommunicatorType.Serial:
+                    var sTemp = (SerialCommunicator)selected;
+                    modcomms_cbComPort.SelectedText = sTemp.ComPort;
+                    modcomms_tBaudRate.Text = sTemp.BaudRate.ToString();
+                    modcomms_tDataBits.Text = sTemp.DataBits.ToString();
+                    modcomms_cbDtr.Checked = sTemp.IsDTR;
+                    modcomms_cbRts.Checked = sTemp.IsRTS;
+                    break;
+                case CommunicatorType.Database:
+                    var dTemp = (DatabaseCommunicator)selected;
+                    modcomms_tConnectionString.Text = dTemp.ConnectionString;
+                    modcomms_tQuery.Text = dTemp.Query;
+                    modcomms_cbDatabaseType.SelectedItem = dTemp.DbType;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
