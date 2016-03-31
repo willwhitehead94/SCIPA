@@ -75,8 +75,11 @@ namespace SCIPA.UI.HMI
 
             //Prepare any Data Sources required for the ComboBoxes.
             add_cbCommType.DataSource = Enum.GetValues(typeof(Models.CommunicatorType));
+            modcomms_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
             add_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
+            modcomms_cbValueType.DataSource=Enum.GetValues(typeof(Models.ValueType));
             add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
+            modcomms_cbDatabaseType.DataSource= Enum.GetValues(typeof(Models.DatabaseType));
             add_cbComPort.DataSource = SerialPort.GetPortNames();
 
         }
@@ -560,7 +563,7 @@ namespace SCIPA.UI.HMI
             }
         }
 
-        #endregion Modify Device Page
+
 
         private void modify_bSave_Click(object sender, EventArgs e)
         {
@@ -591,5 +594,40 @@ namespace SCIPA.UI.HMI
                 DebugOutput.Print("Device was updated successfully. ",_selectedDevice.ToString());
             }
         }
+
+        private void modify_bComms_Click(object sender, EventArgs e)
+        {
+            //Loads the relevant communicators.
+            var controller = new CommunicatorController();
+            modcomms_lbComms.Items.Clear();
+            modcomms_lbComms.Items.AddRange(controller.GetAllCommunicators().Where(dev=>dev.Id==_selectedDevice.Id).ToArray());
+
+            //Shows the modify tab.
+            pTabPanel.SelectedTab = pModifyCommunicators;
+        }
+
+        #endregion Modify Device Page
+
+#region Modify Communicator Information PAge
+        private void modcomms_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (CommunicatorType)modcomms_cbCommType.SelectedItem;
+            switch (selected)
+            {
+                case CommunicatorType.FlatFile:
+                    modcomms_tpCommType.SelectedTab = pModFile;
+                    break;
+                case CommunicatorType.Serial:
+                    modcomms_tpCommType.SelectedTab = pModSerial;
+                    break;
+                case CommunicatorType.Database:
+                    modcomms_tpCommType.SelectedTab = pModDatabase;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        #endregion Modify Communicator Information Page.
     }
 }

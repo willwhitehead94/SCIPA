@@ -229,7 +229,6 @@
             // 
             // pFile
             // 
-            this.pFile.Controls.Add(this.pDatabase);
             this.pFile.Controls.Add(this.tFilePath);
             this.pFile.Controls.Add(this.label4);
             this.pFile.Location = new System.Drawing.Point(7, 35);
@@ -239,20 +238,20 @@
             // 
             // pDatabase
             // 
-            this.pDatabase.Controls.Add(this.pSerial);
             this.pDatabase.Controls.Add(this.label11);
             this.pDatabase.Controls.Add(this.tQuery);
             this.pDatabase.Controls.Add(this.cbDatabaseType);
             this.pDatabase.Controls.Add(this.label10);
             this.pDatabase.Controls.Add(this.tConnectionString);
             this.pDatabase.Controls.Add(this.label9);
-            this.pDatabase.Location = new System.Drawing.Point(0, 0);
+            this.pDatabase.Location = new System.Drawing.Point(3, 139);
             this.pDatabase.Name = "pDatabase";
             this.pDatabase.Size = new System.Drawing.Size(911, 259);
             this.pDatabase.TabIndex = 25;
             // 
             // pSerial
             // 
+            this.pSerial.Controls.Add(this.pDatabase);
             this.pSerial.Controls.Add(this.label15);
             this.pSerial.Controls.Add(this.cbDtr);
             this.pSerial.Controls.Add(this.cbRts);
@@ -262,7 +261,7 @@
             this.pSerial.Controls.Add(this.cbComPort);
             this.pSerial.Controls.Add(this.label13);
             this.pSerial.Controls.Add(this.label14);
-            this.pSerial.Location = new System.Drawing.Point(2, 2);
+            this.pSerial.Location = new System.Drawing.Point(48, 6);
             this.pSerial.Name = "pSerial";
             this.pSerial.Size = new System.Drawing.Size(909, 257);
             this.pSerial.TabIndex = 27;
@@ -457,6 +456,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 933);
+            this.Controls.Add(this.pSerial);
             this.Controls.Add(this.bResetDate);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.bReset);

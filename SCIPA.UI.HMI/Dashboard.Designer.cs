@@ -206,6 +206,48 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.pModifyCommunicators = new System.Windows.Forms.TabPage();
+            this.modcomms_bSaveComm = new System.Windows.Forms.Button();
+            this.modcomms_tpCommType = new SCIPA.UI.HMI.CustomTabControl();
+            this.pModBlank = new System.Windows.Forms.TabPage();
+            this.pModFile = new System.Windows.Forms.TabPage();
+            this.modcomms_tFilePath = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.pModDatabase = new System.Windows.Forms.TabPage();
+            this.label67 = new System.Windows.Forms.Label();
+            this.modcomms_tQuery = new System.Windows.Forms.TextBox();
+            this.modcomms_cbDatabaseType = new System.Windows.Forms.ComboBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.modcomms_tConnectionString = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.pModSerial = new System.Windows.Forms.TabPage();
+            this.label63 = new System.Windows.Forms.Label();
+            this.modcomms_cbDtr = new System.Windows.Forms.CheckBox();
+            this.modcomms_cbRts = new System.Windows.Forms.CheckBox();
+            this.modcomms_tDataBits = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.modcomms_tBaudRate = new System.Windows.Forms.TextBox();
+            this.modcomms_cbComPort = new System.Windows.Forms.ComboBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.modcomms_bResetDate = new System.Windows.Forms.Button();
+            this.modcomms_rbOutbound = new System.Windows.Forms.RadioButton();
+            this.modcomms_rbInbound = new System.Windows.Forms.RadioButton();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.modcomms_cbValueType = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.modcomms_tLastReadTime = new System.Windows.Forms.TextBox();
+            this.modcomms_cbCommType = new System.Windows.Forms.ComboBox();
+            this.modcomms_tEnd = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.modcomms_tStart = new System.Windows.Forms.TextBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.modcomms_lbComms = new System.Windows.Forms.ListBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.pModifyRules = new System.Windows.Forms.TabPage();
+            this.pModifyActions = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -229,6 +271,11 @@
             this.pAlarms.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pSettings.SuspendLayout();
+            this.pModifyCommunicators.SuspendLayout();
+            this.modcomms_tpCommType.SuspendLayout();
+            this.pModFile.SuspendLayout();
+            this.pModDatabase.SuspendLayout();
+            this.pModSerial.SuspendLayout();
             this.SuspendLayout();
             // 
             // AlarmsBindingSource
@@ -484,6 +531,9 @@
             this.pTabPanel.Controls.Add(this.pReports);
             this.pTabPanel.Controls.Add(this.pAlarms);
             this.pTabPanel.Controls.Add(this.pSettings);
+            this.pTabPanel.Controls.Add(this.pModifyCommunicators);
+            this.pTabPanel.Controls.Add(this.pModifyRules);
+            this.pTabPanel.Controls.Add(this.pModifyActions);
             this.pTabPanel.Location = new System.Drawing.Point(11, 221);
             this.pTabPanel.Name = "pTabPanel";
             this.pTabPanel.SelectedIndex = 0;
@@ -1755,6 +1805,7 @@
             this.modify_bComms.TabIndex = 45;
             this.modify_bComms.Text = "Modify Communicators";
             this.modify_bComms.UseVisualStyleBackColor = true;
+            this.modify_bComms.Click += new System.EventHandler(this.modify_bComms_Click);
             // 
             // modify_bClear
             // 
@@ -2244,6 +2295,451 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Settings";
             // 
+            // pModifyCommunicators
+            // 
+            this.pModifyCommunicators.Controls.Add(this.modcomms_bSaveComm);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_tpCommType);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_bResetDate);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_rbOutbound);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_rbInbound);
+            this.pModifyCommunicators.Controls.Add(this.label57);
+            this.pModifyCommunicators.Controls.Add(this.label58);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_cbValueType);
+            this.pModifyCommunicators.Controls.Add(this.label59);
+            this.pModifyCommunicators.Controls.Add(this.label60);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_tLastReadTime);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_cbCommType);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_tEnd);
+            this.pModifyCommunicators.Controls.Add(this.label61);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_tStart);
+            this.pModifyCommunicators.Controls.Add(this.label62);
+            this.pModifyCommunicators.Controls.Add(this.modcomms_lbComms);
+            this.pModifyCommunicators.Controls.Add(this.label56);
+            this.pModifyCommunicators.Location = new System.Drawing.Point(10, 47);
+            this.pModifyCommunicators.Name = "pModifyCommunicators";
+            this.pModifyCommunicators.Size = new System.Drawing.Size(1929, 902);
+            this.pModifyCommunicators.TabIndex = 8;
+            this.pModifyCommunicators.Text = "ModifyCommunicators";
+            this.pModifyCommunicators.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_bSaveComm
+            // 
+            this.modcomms_bSaveComm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modcomms_bSaveComm.BackColor = System.Drawing.Color.Gainsboro;
+            this.modcomms_bSaveComm.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modcomms_bSaveComm.Location = new System.Drawing.Point(1273, 760);
+            this.modcomms_bSaveComm.Name = "modcomms_bSaveComm";
+            this.modcomms_bSaveComm.Size = new System.Drawing.Size(612, 110);
+            this.modcomms_bSaveComm.TabIndex = 44;
+            this.modcomms_bSaveComm.Text = "SAVE COMMUNICATOR INFORMATION";
+            this.modcomms_bSaveComm.UseVisualStyleBackColor = false;
+            // 
+            // modcomms_tpCommType
+            // 
+            this.modcomms_tpCommType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.modcomms_tpCommType.Controls.Add(this.pModBlank);
+            this.modcomms_tpCommType.Controls.Add(this.pModFile);
+            this.modcomms_tpCommType.Controls.Add(this.pModDatabase);
+            this.modcomms_tpCommType.Controls.Add(this.pModSerial);
+            this.modcomms_tpCommType.Location = new System.Drawing.Point(777, 432);
+            this.modcomms_tpCommType.Name = "modcomms_tpCommType";
+            this.modcomms_tpCommType.SelectedIndex = 0;
+            this.modcomms_tpCommType.Size = new System.Drawing.Size(1134, 364);
+            this.modcomms_tpCommType.TabIndex = 43;
+            // 
+            // pModBlank
+            // 
+            this.pModBlank.Location = new System.Drawing.Point(10, 47);
+            this.pModBlank.Name = "pModBlank";
+            this.pModBlank.Size = new System.Drawing.Size(1114, 307);
+            this.pModBlank.TabIndex = 0;
+            this.pModBlank.Text = "Blank Page";
+            this.pModBlank.UseVisualStyleBackColor = true;
+            // 
+            // pModFile
+            // 
+            this.pModFile.Controls.Add(this.modcomms_tFilePath);
+            this.pModFile.Controls.Add(this.label70);
+            this.pModFile.Location = new System.Drawing.Point(10, 47);
+            this.pModFile.Name = "pModFile";
+            this.pModFile.Size = new System.Drawing.Size(1114, 307);
+            this.pModFile.TabIndex = 1;
+            this.pModFile.Text = "File";
+            this.pModFile.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_tFilePath
+            // 
+            this.modcomms_tFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tFilePath.Location = new System.Drawing.Point(406, 0);
+            this.modcomms_tFilePath.Name = "modcomms_tFilePath";
+            this.modcomms_tFilePath.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tFilePath.TabIndex = 26;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label70.Location = new System.Drawing.Point(-18, 3);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(198, 48);
+            this.label70.TabIndex = 25;
+            this.label70.Text = "File Path:";
+            // 
+            // pModDatabase
+            // 
+            this.pModDatabase.Controls.Add(this.label67);
+            this.pModDatabase.Controls.Add(this.modcomms_tQuery);
+            this.pModDatabase.Controls.Add(this.modcomms_cbDatabaseType);
+            this.pModDatabase.Controls.Add(this.label68);
+            this.pModDatabase.Controls.Add(this.modcomms_tConnectionString);
+            this.pModDatabase.Controls.Add(this.label69);
+            this.pModDatabase.Location = new System.Drawing.Point(10, 47);
+            this.pModDatabase.Name = "pModDatabase";
+            this.pModDatabase.Size = new System.Drawing.Size(1114, 307);
+            this.pModDatabase.TabIndex = 2;
+            this.pModDatabase.Text = "Database";
+            this.pModDatabase.UseVisualStyleBackColor = true;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label67.Location = new System.Drawing.Point(-22, 122);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(314, 48);
+            this.label67.TabIndex = 29;
+            this.label67.Text = "Database Type:";
+            // 
+            // modcomms_tQuery
+            // 
+            this.modcomms_tQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tQuery.Location = new System.Drawing.Point(404, 58);
+            this.modcomms_tQuery.Name = "modcomms_tQuery";
+            this.modcomms_tQuery.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tQuery.TabIndex = 32;
+            // 
+            // modcomms_cbDatabaseType
+            // 
+            this.modcomms_cbDatabaseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbDatabaseType.FormattingEnabled = true;
+            this.modcomms_cbDatabaseType.Location = new System.Drawing.Point(404, 119);
+            this.modcomms_cbDatabaseType.Name = "modcomms_cbDatabaseType";
+            this.modcomms_cbDatabaseType.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbDatabaseType.TabIndex = 27;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label68.Location = new System.Drawing.Point(-22, 61);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(146, 48);
+            this.label68.TabIndex = 31;
+            this.label68.Text = "Query:";
+            // 
+            // modcomms_tConnectionString
+            // 
+            this.modcomms_tConnectionString.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tConnectionString.Location = new System.Drawing.Point(406, -3);
+            this.modcomms_tConnectionString.Name = "modcomms_tConnectionString";
+            this.modcomms_tConnectionString.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tConnectionString.TabIndex = 30;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label69.Location = new System.Drawing.Point(-20, 0);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(364, 48);
+            this.label69.TabIndex = 28;
+            this.label69.Text = "Connection String:";
+            // 
+            // pModSerial
+            // 
+            this.pModSerial.Controls.Add(this.label63);
+            this.pModSerial.Controls.Add(this.modcomms_cbDtr);
+            this.pModSerial.Controls.Add(this.modcomms_cbRts);
+            this.pModSerial.Controls.Add(this.modcomms_tDataBits);
+            this.pModSerial.Controls.Add(this.label64);
+            this.pModSerial.Controls.Add(this.modcomms_tBaudRate);
+            this.pModSerial.Controls.Add(this.modcomms_cbComPort);
+            this.pModSerial.Controls.Add(this.label65);
+            this.pModSerial.Controls.Add(this.label66);
+            this.pModSerial.Location = new System.Drawing.Point(10, 47);
+            this.pModSerial.Name = "pModSerial";
+            this.pModSerial.Size = new System.Drawing.Size(1114, 307);
+            this.pModSerial.TabIndex = 3;
+            this.pModSerial.Text = "Serial";
+            this.pModSerial.UseVisualStyleBackColor = true;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label63.Location = new System.Drawing.Point(-22, 182);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(352, 48);
+            this.label63.TabIndex = 39;
+            this.label63.Text = "Optional Settings:";
+            // 
+            // modcomms_cbDtr
+            // 
+            this.modcomms_cbDtr.AutoSize = true;
+            this.modcomms_cbDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbDtr.Location = new System.Drawing.Point(404, 245);
+            this.modcomms_cbDtr.Name = "modcomms_cbDtr";
+            this.modcomms_cbDtr.Size = new System.Drawing.Size(686, 52);
+            this.modcomms_cbDtr.TabIndex = 38;
+            this.modcomms_cbDtr.Text = "DTR (Data Terminal Ready) Mode";
+            this.modcomms_cbDtr.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_cbRts
+            // 
+            this.modcomms_cbRts.AutoSize = true;
+            this.modcomms_cbRts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbRts.Location = new System.Drawing.Point(404, 187);
+            this.modcomms_cbRts.Name = "modcomms_cbRts";
+            this.modcomms_cbRts.Size = new System.Drawing.Size(613, 52);
+            this.modcomms_cbRts.TabIndex = 37;
+            this.modcomms_cbRts.Text = "RTS (Request To Send) Mode";
+            this.modcomms_cbRts.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_tDataBits
+            // 
+            this.modcomms_tDataBits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tDataBits.Location = new System.Drawing.Point(404, 126);
+            this.modcomms_tDataBits.Name = "modcomms_tDataBits";
+            this.modcomms_tDataBits.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tDataBits.TabIndex = 36;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label64.Location = new System.Drawing.Point(-20, 123);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(202, 48);
+            this.label64.TabIndex = 33;
+            this.label64.Text = "Data Bits:";
+            // 
+            // modcomms_tBaudRate
+            // 
+            this.modcomms_tBaudRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tBaudRate.Location = new System.Drawing.Point(406, 65);
+            this.modcomms_tBaudRate.Name = "modcomms_tBaudRate";
+            this.modcomms_tBaudRate.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tBaudRate.TabIndex = 35;
+            // 
+            // modcomms_cbComPort
+            // 
+            this.modcomms_cbComPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbComPort.FormattingEnabled = true;
+            this.modcomms_cbComPort.Location = new System.Drawing.Point(406, 3);
+            this.modcomms_cbComPort.Name = "modcomms_cbComPort";
+            this.modcomms_cbComPort.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbComPort.TabIndex = 31;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label65.Location = new System.Drawing.Point(-18, 62);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(228, 48);
+            this.label65.TabIndex = 34;
+            this.label65.Text = "Baud Rate:";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label66.Location = new System.Drawing.Point(-18, 0);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(218, 48);
+            this.label66.TabIndex = 32;
+            this.label66.Text = "COM Port:";
+            // 
+            // modcomms_bResetDate
+            // 
+            this.modcomms_bResetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_bResetDate.Location = new System.Drawing.Point(1730, 188);
+            this.modcomms_bResetDate.Name = "modcomms_bResetDate";
+            this.modcomms_bResetDate.Size = new System.Drawing.Size(196, 56);
+            this.modcomms_bResetDate.TabIndex = 36;
+            this.modcomms_bResetDate.Text = "Reset";
+            this.modcomms_bResetDate.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_rbOutbound
+            // 
+            this.modcomms_rbOutbound.AutoSize = true;
+            this.modcomms_rbOutbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_rbOutbound.Location = new System.Drawing.Point(1517, 374);
+            this.modcomms_rbOutbound.Name = "modcomms_rbOutbound";
+            this.modcomms_rbOutbound.Size = new System.Drawing.Size(333, 52);
+            this.modcomms_rbOutbound.TabIndex = 35;
+            this.modcomms_rbOutbound.TabStop = true;
+            this.modcomms_rbOutbound.Text = "Outbound Data";
+            this.modcomms_rbOutbound.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_rbInbound
+            // 
+            this.modcomms_rbInbound.AutoSize = true;
+            this.modcomms_rbInbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_rbInbound.Location = new System.Drawing.Point(1191, 374);
+            this.modcomms_rbInbound.Name = "modcomms_rbInbound";
+            this.modcomms_rbInbound.Size = new System.Drawing.Size(300, 52);
+            this.modcomms_rbInbound.TabIndex = 34;
+            this.modcomms_rbInbound.TabStop = true;
+            this.modcomms_rbInbound.Text = "Inbound Data";
+            this.modcomms_rbInbound.UseVisualStyleBackColor = true;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label57.Location = new System.Drawing.Point(767, 376);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(297, 48);
+            this.label57.TabIndex = 33;
+            this.label57.Text = "Data Direction:";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label58.Location = new System.Drawing.Point(769, 315);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(243, 48);
+            this.label58.TabIndex = 32;
+            this.label58.Text = "Value Type:";
+            // 
+            // modcomms_cbValueType
+            // 
+            this.modcomms_cbValueType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbValueType.FormattingEnabled = true;
+            this.modcomms_cbValueType.Location = new System.Drawing.Point(1193, 312);
+            this.modcomms_cbValueType.Name = "modcomms_cbValueType";
+            this.modcomms_cbValueType.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbValueType.TabIndex = 31;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label59.Location = new System.Drawing.Point(769, 253);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(408, 48);
+            this.label59.TabIndex = 30;
+            this.label59.Text = "Communicator Type:";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label60.Location = new System.Drawing.Point(769, 192);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(326, 48);
+            this.label60.TabIndex = 29;
+            this.label60.Text = "Last Read Time:";
+            // 
+            // modcomms_tLastReadTime
+            // 
+            this.modcomms_tLastReadTime.Enabled = false;
+            this.modcomms_tLastReadTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tLastReadTime.Location = new System.Drawing.Point(1193, 189);
+            this.modcomms_tLastReadTime.Name = "modcomms_tLastReadTime";
+            this.modcomms_tLastReadTime.Size = new System.Drawing.Size(531, 55);
+            this.modcomms_tLastReadTime.TabIndex = 28;
+            // 
+            // modcomms_cbCommType
+            // 
+            this.modcomms_cbCommType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_cbCommType.FormattingEnabled = true;
+            this.modcomms_cbCommType.Location = new System.Drawing.Point(1193, 250);
+            this.modcomms_cbCommType.Name = "modcomms_cbCommType";
+            this.modcomms_cbCommType.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbCommType.TabIndex = 27;
+            this.modcomms_cbCommType.SelectedIndexChanged += new System.EventHandler(this.modcomms_cbCommType_SelectedIndexChanged);
+            // 
+            // modcomms_tEnd
+            // 
+            this.modcomms_tEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tEnd.Location = new System.Drawing.Point(1193, 128);
+            this.modcomms_tEnd.Name = "modcomms_tEnd";
+            this.modcomms_tEnd.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tEnd.TabIndex = 26;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label61.Location = new System.Drawing.Point(769, 131);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(207, 48);
+            this.label61.TabIndex = 25;
+            this.label61.Text = "End Char:";
+            // 
+            // modcomms_tStart
+            // 
+            this.modcomms_tStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modcomms_tStart.Location = new System.Drawing.Point(1193, 67);
+            this.modcomms_tStart.Name = "modcomms_tStart";
+            this.modcomms_tStart.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tStart.TabIndex = 24;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label62.Location = new System.Drawing.Point(769, 70);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(222, 48);
+            this.label62.TabIndex = 23;
+            this.label62.Text = "Start Char:";
+            // 
+            // modcomms_lbComms
+            // 
+            this.modcomms_lbComms.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.modcomms_lbComms.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modcomms_lbComms.FormattingEnabled = true;
+            this.modcomms_lbComms.ItemHeight = 65;
+            this.modcomms_lbComms.Location = new System.Drawing.Point(50, 70);
+            this.modcomms_lbComms.Name = "modcomms_lbComms";
+            this.modcomms_lbComms.Size = new System.Drawing.Size(713, 784);
+            this.modcomms_lbComms.TabIndex = 6;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label56.Location = new System.Drawing.Point(3, 0);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(652, 51);
+            this.label56.TabIndex = 5;
+            this.label56.Text = "Modify Communicator Settings";
+            // 
+            // pModifyRules
+            // 
+            this.pModifyRules.Location = new System.Drawing.Point(10, 47);
+            this.pModifyRules.Name = "pModifyRules";
+            this.pModifyRules.Size = new System.Drawing.Size(1929, 902);
+            this.pModifyRules.TabIndex = 9;
+            this.pModifyRules.Text = "Modify Rules";
+            this.pModifyRules.UseVisualStyleBackColor = true;
+            // 
+            // pModifyActions
+            // 
+            this.pModifyActions.Location = new System.Drawing.Point(10, 47);
+            this.pModifyActions.Name = "pModifyActions";
+            this.pModifyActions.Size = new System.Drawing.Size(1929, 902);
+            this.pModifyActions.TabIndex = 10;
+            this.pModifyActions.Text = "ModifyActions";
+            this.pModifyActions.UseVisualStyleBackColor = true;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -2307,6 +2803,15 @@
             this.groupBox1.PerformLayout();
             this.pSettings.ResumeLayout(false);
             this.pSettings.PerformLayout();
+            this.pModifyCommunicators.ResumeLayout(false);
+            this.pModifyCommunicators.PerformLayout();
+            this.modcomms_tpCommType.ResumeLayout(false);
+            this.pModFile.ResumeLayout(false);
+            this.pModFile.PerformLayout();
+            this.pModDatabase.ResumeLayout(false);
+            this.pModDatabase.PerformLayout();
+            this.pModSerial.ResumeLayout(false);
+            this.pModSerial.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2489,6 +2994,48 @@
         private System.Windows.Forms.BindingSource AlarmsBindingSource;
         private SCIPAAlarmDataSet SCIPAAlarmDataSet;
         private SCIPAAlarmDataSetTableAdapters.AlarmsTableAdapter AlarmsTableAdapter;
+        private System.Windows.Forms.TabPage pModifyCommunicators;
+        private System.Windows.Forms.ListBox modcomms_lbComms;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TabPage pModifyRules;
+        private System.Windows.Forms.TabPage pModifyActions;
+        private CustomTabControl modcomms_tpCommType;
+        private System.Windows.Forms.TabPage pModBlank;
+        private System.Windows.Forms.TabPage pModFile;
+        private System.Windows.Forms.TabPage pModDatabase;
+        private System.Windows.Forms.TabPage pModSerial;
+        private System.Windows.Forms.Button modcomms_bResetDate;
+        private System.Windows.Forms.RadioButton modcomms_rbOutbound;
+        private System.Windows.Forms.RadioButton modcomms_rbInbound;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.ComboBox modcomms_cbValueType;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox modcomms_tLastReadTime;
+        private System.Windows.Forms.ComboBox modcomms_cbCommType;
+        private System.Windows.Forms.TextBox modcomms_tEnd;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox modcomms_tStart;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.CheckBox modcomms_cbDtr;
+        private System.Windows.Forms.CheckBox modcomms_cbRts;
+        private System.Windows.Forms.TextBox modcomms_tDataBits;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox modcomms_tBaudRate;
+        private System.Windows.Forms.ComboBox modcomms_cbComPort;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TextBox modcomms_tQuery;
+        private System.Windows.Forms.ComboBox modcomms_cbDatabaseType;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox modcomms_tConnectionString;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.TextBox modcomms_tFilePath;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Button modcomms_bSaveComm;
     }
 }
 
