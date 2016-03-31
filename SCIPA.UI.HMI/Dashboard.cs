@@ -400,7 +400,7 @@ namespace SCIPA.UI.HMI
             window.ShowDialog();
 
             //Get the Comm object created.
-            window.GetCommunicator();
+            _communicator = window.GetCommunicator();
 
             //Update the labels.
             UpdateStartLabels();
