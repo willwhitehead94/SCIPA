@@ -235,7 +235,16 @@ namespace SCIPA.UI.HMI
 
         private void bModify_Click(object sender, EventArgs e)
         {
+            //Print output statement as to the event.
             DebugOutput.Print("Dashboard: Modify Device");
+
+            //Populate appropriate objects/fields.
+            modify_lbDeviceList.Items.Clear();
+            var controller = new DeviceController();
+            foreach (var dev in controller.GetAllDevices())
+            { modify_lbDeviceList.Items.Add(dev); }
+
+            //Bring page to user's view.
             pTabPanel.SelectedTab = pModifyDevice;
         }
 
@@ -528,6 +537,59 @@ namespace SCIPA.UI.HMI
         private void alarm_cbPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+#region Modify Device Page
+
+        private void modify_lbDeviceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedDevice = (Device) modify_lbDeviceList.SelectedItem;
+                _selectedDevice = selectedDevice;
+                modify_tId.Text = selectedDevice.Id.ToString();
+                modify_tDevName.Text = selectedDevice.Name;
+                modify_tCustodian.Text = selectedDevice.Custodian;
+                modify_tLocation.Text = selectedDevice.Location;
+                var enabled = (selectedDevice.Enabled) ? modify_rbTrue.Checked = true : modify_rbFalse.Checked = true;
+                DebugOutput.Print("Now reviewing device: ", selectedDevice.Name);
+            }
+            catch (Exception exception)
+            {
+                DebugOutput.Print("Error reviewing the selected device. ", exception.Message);
+            }
+        }
+
+        #endregion Modify Device Page
+
+        private void modify_bSave_Click(object sender, EventArgs e)
+        {
+            //Update the global object with any updates values.
+            _selectedDevice.Name = modify_tDevName.Text;
+            _selectedDevice.Custodian = modify_tCustodian.Text;
+            _selectedDevice.Location = modify_tLocation.Text;
+            _selectedDevice.Enabled = modify_rbTrue.Checked;
+
+            //Create new Device Controller.
+            var controller = new DeviceController();
+
+            //Save the Device.
+           var savedDevice = controller.SaveDevice(_selectedDevice);
+
+            //If the updated device is null or has been corupted (i.e. wrong device info), error!
+            if (savedDevice == null || savedDevice.Id != _selectedDevice.Id)
+            {
+                MessageBox.Show("There was an error saving the Device...", _selectedDevice.ToString());
+            }
+            else
+            {
+                //Updated the global variable with a database replica.
+                //(Should not change the object properties).
+                _selectedDevice = savedDevice;
+
+                //Inform the user
+                DebugOutput.Print("Device was updated successfully. ",_selectedDevice.ToString());
+            }
         }
     }
 }

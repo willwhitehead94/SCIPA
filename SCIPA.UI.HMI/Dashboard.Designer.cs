@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            this.AlarmsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SCIPAAlarmDataSet = new SCIPA.UI.HMI.SCIPAAlarmDataSet();
             this.pHeader = new System.Windows.Forms.Panel();
             this.lHeaderAlarmCount = new System.Windows.Forms.Label();
             this.lDate = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@
             this.lStatusPreceder = new System.Windows.Forms.ToolStripStatusLabel();
             this.lStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.bTogglePanelSize_Status = new System.Windows.Forms.Button();
-            this.SCIPAAlarmDataSet = new SCIPA.UI.HMI.SCIPAAlarmDataSet();
-            this.AlarmsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AlarmsTableAdapter = new SCIPA.UI.HMI.SCIPAAlarmDataSetTableAdapters.AlarmsTableAdapter();
             this.pTabPanel = new SCIPA.UI.HMI.CustomTabControl();
             this.Home = new System.Windows.Forms.TabPage();
@@ -206,11 +206,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
             this.statusBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             this.pTabPanel.SuspendLayout();
             this.Home.SuspendLayout();
             this.pStart.SuspendLayout();
@@ -230,6 +230,16 @@
             this.groupBox1.SuspendLayout();
             this.pSettings.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // AlarmsBindingSource
+            // 
+            this.AlarmsBindingSource.DataMember = "Alarms";
+            this.AlarmsBindingSource.DataSource = this.SCIPAAlarmDataSet;
+            // 
+            // SCIPAAlarmDataSet
+            // 
+            this.SCIPAAlarmDataSet.DataSetName = "SCIPAAlarmDataSet";
+            this.SCIPAAlarmDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pHeader
             // 
@@ -459,16 +469,6 @@
             this.bTogglePanelSize_Status.Text = "Fullscreen";
             this.bTogglePanelSize_Status.UseVisualStyleBackColor = true;
             this.bTogglePanelSize_Status.Click += new System.EventHandler(this.bTogglePanelSize_Click);
-            // 
-            // SCIPAAlarmDataSet
-            // 
-            this.SCIPAAlarmDataSet.DataSetName = "SCIPAAlarmDataSet";
-            this.SCIPAAlarmDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // AlarmsBindingSource
-            // 
-            this.AlarmsBindingSource.DataMember = "Alarms";
-            this.AlarmsBindingSource.DataSource = this.SCIPAAlarmDataSet;
             // 
             // AlarmsTableAdapter
             // 
@@ -1779,6 +1779,7 @@
             this.modify_bSave.TabIndex = 43;
             this.modify_bSave.Text = "SAVE DEVICE INFORMATION";
             this.modify_bSave.UseVisualStyleBackColor = false;
+            this.modify_bSave.Click += new System.EventHandler(this.modify_bSave_Click);
             // 
             // modify_rbFalse
             // 
@@ -1825,7 +1826,6 @@
             this.modify_tLocation.Name = "modify_tLocation";
             this.modify_tLocation.Size = new System.Drawing.Size(794, 55);
             this.modify_tLocation.TabIndex = 39;
-            this.modify_tLocation.Text = "Under - Desk";
             // 
             // label11
             // 
@@ -1846,7 +1846,6 @@
             this.modify_tCustodian.Name = "modify_tCustodian";
             this.modify_tCustodian.Size = new System.Drawing.Size(794, 55);
             this.modify_tCustodian.TabIndex = 37;
-            this.modify_tCustodian.Text = "W. Whitehead";
             // 
             // label12
             // 
@@ -1867,7 +1866,6 @@
             this.modify_tDevName.Name = "modify_tDevName";
             this.modify_tDevName.Size = new System.Drawing.Size(794, 55);
             this.modify_tDevName.TabIndex = 35;
-            this.modify_tDevName.Text = "Test Arduino";
             // 
             // modify_tId
             // 
@@ -1908,19 +1906,11 @@
             this.modify_lbDeviceList.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modify_lbDeviceList.FormattingEnabled = true;
             this.modify_lbDeviceList.ItemHeight = 65;
-            this.modify_lbDeviceList.Items.AddRange(new object[] {
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device"});
             this.modify_lbDeviceList.Location = new System.Drawing.Point(53, 72);
             this.modify_lbDeviceList.Name = "modify_lbDeviceList";
             this.modify_lbDeviceList.Size = new System.Drawing.Size(713, 784);
             this.modify_lbDeviceList.TabIndex = 4;
+            this.modify_lbDeviceList.SelectedIndexChanged += new System.EventHandler(this.modify_lbDeviceList_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -2194,15 +2184,6 @@
             this.alarm_lbAlarms.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_lbAlarms.FormattingEnabled = true;
             this.alarm_lbAlarms.ItemHeight = 65;
-            this.alarm_lbAlarms.Items.AddRange(new object[] {
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device"});
             this.alarm_lbAlarms.Location = new System.Drawing.Point(53, 72);
             this.alarm_lbAlarms.Name = "alarm_lbAlarms";
             this.alarm_lbAlarms.Size = new System.Drawing.Size(713, 784);
@@ -2286,14 +2267,14 @@
             this.Text = "SCIPA Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).EndInit();
             this.pHeader.ResumeLayout(false);
             this.pHeader.PerformLayout();
             this.pButtonPannel.ResumeLayout(false);
             this.pButtonPannel.PerformLayout();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).EndInit();
             this.pTabPanel.ResumeLayout(false);
             this.Home.ResumeLayout(false);
             this.pStart.ResumeLayout(false);
