@@ -688,6 +688,9 @@ namespace SCIPA.UI.HMI
 
         private void modcomms_bSaveComm_Click(object sender, EventArgs e)
         {
+            //Collect the selected item and store globally
+            _communicator = (Communicator)modcomms_lbComms.SelectedItem;
+
             /*
            * Preparing all of the standard (abstract) Communicator fields
            */
