@@ -249,6 +249,9 @@
             this.label56 = new System.Windows.Forms.Label();
             this.pModifyRules = new System.Windows.Forms.TabPage();
             this.pModifyActions = new System.Windows.Forms.TabPage();
+            this.add_lActions = new System.Windows.Forms.Label();
+            this.add_bNewAction = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -876,6 +879,9 @@
             // pAddNewDevice
             // 
             this.pAddNewDevice.AutoScroll = true;
+            this.pAddNewDevice.Controls.Add(this.add_lActions);
+            this.pAddNewDevice.Controls.Add(this.add_bNewAction);
+            this.pAddNewDevice.Controls.Add(this.label72);
             this.pAddNewDevice.Controls.Add(this.add_tcInnerPages);
             this.pAddNewDevice.Controls.Add(this.add_bClearNewDevice);
             this.pAddNewDevice.Controls.Add(this.add_bSaveNewDevice);
@@ -2760,6 +2766,40 @@
             this.pModifyActions.Text = "ModifyActions";
             this.pModifyActions.UseVisualStyleBackColor = true;
             // 
+            // add_lActions
+            // 
+            this.add_lActions.AutoSize = true;
+            this.add_lActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lActions.Location = new System.Drawing.Point(682, 630);
+            this.add_lActions.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lActions.Name = "add_lActions";
+            this.add_lActions.Size = new System.Drawing.Size(228, 48);
+            this.add_lActions.TabIndex = 45;
+            this.add_lActions.Text = "0 Actions...";
+            // 
+            // add_bNewAction
+            // 
+            this.add_bNewAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bNewAction.Location = new System.Drawing.Point(339, 612);
+            this.add_bNewAction.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bNewAction.Name = "add_bNewAction";
+            this.add_bNewAction.Size = new System.Drawing.Size(329, 85);
+            this.add_bNewAction.TabIndex = 44;
+            this.add_bNewAction.Text = "Add Action";
+            this.add_bNewAction.UseVisualStyleBackColor = true;
+            this.add_bNewAction.Click += new System.EventHandler(this.add_bNewAction_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(50, 630);
+            this.label72.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(170, 48);
+            this.label72.TabIndex = 43;
+            this.label72.Text = "Actions:";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -3057,6 +3097,9 @@
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Button modcomms_bSaveComm;
         private System.Windows.Forms.Button modcomms_bBack;
+        private System.Windows.Forms.Label add_lActions;
+        private System.Windows.Forms.Button add_bNewAction;
+        private System.Windows.Forms.Label label72;
     }
 }
 

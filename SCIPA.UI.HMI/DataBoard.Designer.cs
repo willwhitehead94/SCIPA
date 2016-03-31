@@ -113,7 +113,7 @@
             // 
             this.Blank.Location = new System.Drawing.Point(10, 47);
             this.Blank.Name = "Blank";
-            this.Blank.Size = new System.Drawing.Size(900, 682);
+            this.Blank.Size = new System.Drawing.Size(900, 818);
             this.Blank.TabIndex = 3;
             this.Blank.Text = "tBlank";
             this.Blank.UseVisualStyleBackColor = true;
@@ -411,6 +411,7 @@
             this.add_cbValueType.Name = "add_cbValueType";
             this.add_cbValueType.Size = new System.Drawing.Size(596, 56);
             this.add_cbValueType.TabIndex = 33;
+            this.add_cbValueType.SelectedIndexChanged += new System.EventHandler(this.add_cbValueType_SelectedIndexChanged);
             // 
             // label47
             // 
@@ -430,6 +431,7 @@
             this.add_cbCommType.Name = "add_cbCommType";
             this.add_cbCommType.Size = new System.Drawing.Size(596, 56);
             this.add_cbCommType.TabIndex = 29;
+            this.add_cbCommType.SelectedIndexChanged += new System.EventHandler(this.add_cbCommType_SelectedIndexChanged);
             // 
             // add_tEnd
             // 
@@ -506,8 +508,9 @@
             this.add_bAddAction.Name = "add_bAddAction";
             this.add_bAddAction.Size = new System.Drawing.Size(387, 98);
             this.add_bAddAction.TabIndex = 46;
-            this.add_bAddAction.Text = "Add Action";
+            this.add_bAddAction.Text = "Add Device Action";
             this.add_bAddAction.UseVisualStyleBackColor = true;
+            this.add_bAddAction.Click += new System.EventHandler(this.add_bAddAction_Click);
             // 
             // add_bSaveRule
             // 

@@ -46,6 +46,12 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Models.Rule _rule = null;
 
+        /// <summary>
+        /// Local object for temporarily storing Action data.
+        /// Used as part of the Addition page.
+        /// </summary>
+        private Models.Action _action = null;
+
 
         /// <summary>
         /// Initialise the Dashboard window.
@@ -570,7 +576,7 @@ namespace SCIPA.UI.HMI
             window.ShowDialog();
 
             //Get the Comm object created.
-            window.GetRule();
+            _rule = window.GetRule();
 
             //Update the labels.
             UpdateStartLabels();
@@ -804,6 +810,23 @@ namespace SCIPA.UI.HMI
         private void add_bSaveRule_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void add_bNewAction_Click(object sender, EventArgs e)
+        {
+            //Save the new Device.
+            add_bSaveNewDevice.PerformClick();
+
+            //Create and display the DataBoard form.
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToActionPage();
+            window.ShowDialog();
+
+            //Get the Comm object created.
+            _action = window.GetAction();
+
+            //Update the labels.
+            UpdateStartLabels();
         }
     }
 }

@@ -35,8 +35,8 @@ namespace SCIPA.UI.HMI
             {
                 _communicator = new DatabaseCommunicator()
                 {
-                    DbType = (DatabaseType)add_cbDatabaseType.SelectedItem,
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    DbType = (DatabaseType) add_cbDatabaseType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     ConnectionString = add_tConnectionString.Text,
                     Query = add_tQuery.Text,
                     StartChar = GetStartChar(),
@@ -54,7 +54,7 @@ namespace SCIPA.UI.HMI
                 {
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     BaudRate = Convert.ToInt32(add_tBaudRate.Text),
                     ComPort = add_cbComPort.SelectedItem.ToString(),
                     DataBits = Convert.ToByte(add_tDataBits.Text),
@@ -72,7 +72,7 @@ namespace SCIPA.UI.HMI
                 _communicator = new FileCommunicator()
                 {
                     FilePath = add_tFilePath.Text,
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
                     Device = _device,
@@ -87,7 +87,7 @@ namespace SCIPA.UI.HMI
 
             var _controller = new CommunicatorController();
             var Id = _controller.SaveCommunicator(_communicator);
-            if (Id != null) _communicator.Id = (int)Id;
+            if (Id != null) _communicator.Id = (int) Id;
             DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
 
             this.Close();
@@ -95,17 +95,30 @@ namespace SCIPA.UI.HMI
 
         private void DataBoard_Load(object sender, EventArgs e)
         {
-            add_cbCommType.DataSource = Enum.GetValues(typeof(Models.CommunicatorType));
-            add_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
-            add_cbDatabaseType.DataSource = Enum.GetValues(typeof(Models.DatabaseType));
+            add_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
+            add_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
+            add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             add_cbComPort.DataSource = SerialPort.GetPortNames();
+            add_cbRuleCheckValue.DataSource = Enum.GetValues(typeof (Models.ValueType));
+            add_cbRuleType.DataSource = Enum.GetValues(typeof (Models.RuleType));
+
+            //Adds known rules for the device to the list box.
+            var controller = new RuleController();
+            add_cbRule.Items.Clear();
+            foreach (Models.Rule rule in controller.RetrieveRulesForDevice(_device.Id)) add_cbRule.Items.Add(rule);
+
+            //Adds outbound comms to the Action list box.
+            var commController = new CommunicatorController();
+            add_cbCommunicatorDestination.Items.Clear();
+            add_cbCommunicatorDestination.DataSource =
+                commController.GetAllCommunicators().Where(c => c.Device.Id == _device.Id && c.Inbound == false);
         }
 
         private void add_bRefreshComPorts_Click(object sender, EventArgs e)
         {
             add_cbComPort.DataSource = SerialPort.GetPortNames();
             add_cbComPort.Refresh();
-    }
+        }
 
         private int GetStartChar()
         {
@@ -159,6 +172,38 @@ namespace SCIPA.UI.HMI
         }
 
         public void GoToActionPage()
+        {
+            add_tcInnerPages.SelectedTab = pActions;
+        }
+
+        private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var specalism = (CommunicatorType) add_cbCommType.SelectedItem;
+            switch (specalism)
+            {
+                case CommunicatorType.FlatFile:
+                    _communicator = new FileCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pFlatFile;
+                    break;
+                case CommunicatorType.Serial:
+                    _communicator = new SerialCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pSerial;
+                    break;
+                case CommunicatorType.Database:
+                    _communicator = new DatabaseCommunicator();
+                    add_tcInnerPagesSourceSetting.SelectedTab = pDatabase;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void add_cbValueType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_bAddAction_Click(object sender, EventArgs e)
         {
             add_tcInnerPages.SelectedTab = pActions;
         }
