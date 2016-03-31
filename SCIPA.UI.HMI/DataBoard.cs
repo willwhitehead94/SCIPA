@@ -205,7 +205,22 @@ namespace SCIPA.UI.HMI
 
         private void add_bAddAction_Click(object sender, EventArgs e)
         {
+            //Save the Rule
+            add_bSaveRule.PerformClick();
+
+            //Select this rule
+            add_cbRule.SelectedItem = _rule;
+
+            //Show the page.
             add_tcInnerPages.SelectedTab = pActions;
+        }
+
+        private void add_cbRule_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ruleController = new ActionController();
+
+
+            add_cbCommunicatorDestination.SelectedItem = ruleController.
         }
     }
 }

@@ -514,14 +514,12 @@ namespace SCIPA.UI.HMI
                 //Update labels.
                 add_lSource.Text = $"{comm_controller.CountCommunicatorsForDevice(_communicator.Device.Id)} Sources...";
                 add_lRules.Text = $"{rule_controller.RetrieveRulesForDevice(_selectedDevice.Id).Count()} Rules...";
-                add_lActions.Text = $"{acti_controller.RetrieveActionsForDevice(_selectedDevice.Id).Count()} Actions...";
             }
             catch
             {
                 //Update labels.
                 add_lSource.Text = $"0 Sources...";
                 add_lRules.Text = $"0 Rules...";
-                add_lActions.Text = $"0 Actions...";
             }
         }
 

@@ -87,6 +87,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.add_cbRule = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
+            this.bSaveAction = new System.Windows.Forms.Button();
+            this.bCancelAction = new System.Windows.Forms.Button();
             this.add_tcInnerPages.SuspendLayout();
             this.pDataConnection.SuspendLayout();
             this.add_tcInnerPagesSourceSetting.SuspendLayout();
@@ -620,6 +622,8 @@
             // 
             // pActions
             // 
+            this.pActions.Controls.Add(this.bCancelAction);
+            this.pActions.Controls.Add(this.bSaveAction);
             this.pActions.Controls.Add(this.add_cActionEnabled);
             this.pActions.Controls.Add(this.label55);
             this.pActions.Controls.Add(this.add_tOutputValue);
@@ -701,6 +705,7 @@
             this.add_cbRule.Name = "add_cbRule";
             this.add_cbRule.Size = new System.Drawing.Size(627, 56);
             this.add_cbRule.TabIndex = 33;
+            this.add_cbRule.SelectedIndexChanged += new System.EventHandler(this.add_cbRule_SelectedIndexChanged);
             // 
             // label37
             // 
@@ -712,6 +717,26 @@
             this.label37.Size = new System.Drawing.Size(254, 51);
             this.label37.TabIndex = 29;
             this.label37.Text = "Add Action";
+            // 
+            // bSaveAction
+            // 
+            this.bSaveAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bSaveAction.Location = new System.Drawing.Point(267, 410);
+            this.bSaveAction.Name = "bSaveAction";
+            this.bSaveAction.Size = new System.Drawing.Size(387, 98);
+            this.bSaveAction.TabIndex = 47;
+            this.bSaveAction.Text = "Save and Return";
+            this.bSaveAction.UseVisualStyleBackColor = true;
+            // 
+            // bCancelAction
+            // 
+            this.bCancelAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bCancelAction.Location = new System.Drawing.Point(267, 594);
+            this.bCancelAction.Name = "bCancelAction";
+            this.bCancelAction.Size = new System.Drawing.Size(387, 98);
+            this.bCancelAction.TabIndex = 48;
+            this.bCancelAction.Text = "Cancel and Return";
+            this.bCancelAction.UseVisualStyleBackColor = true;
             // 
             // DataBoard
             // 
@@ -805,5 +830,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox add_cbRule;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button bCancelAction;
+        private System.Windows.Forms.Button bSaveAction;
     }
 }
