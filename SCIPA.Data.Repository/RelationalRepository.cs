@@ -252,16 +252,10 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Actions.FirstOrDefault(act => act.Id == id), new DOM.Action());
         }
 
-        /// <summary>
-        /// Returns all database actions for a given device via the parametised Id.
-        /// </summary>
-        /// <param name="deviceId">Device ID Number</param>
-        /// <returns>Domain models of the database objects.</returns>
-        public IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId)
+        public IEnumerable<DOM.Action> RetrieveActionsForRule(int ruleId)
         {
-            //TODO fix this!
-            return null;// _db.Actions.Where(act => act.DeviceId == deviceId).Select(act => _mapper.Map(act, new DOM.Action())).ToList();
-        }
+            return _db.Actions.Where(a => a.RuleId == ruleId).Select(a => _mapper.Map(a, new DOM.Action()));
+        } 
 
         /// <summary>
         /// Returns all known Actions from the database within Domain models.

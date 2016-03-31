@@ -31,5 +31,12 @@ namespace SCIPA.Domain.Logic
             _allActions.Add(newAction);
             return newAction;
         }
+
+        public IEnumerable<Action> RetrieveActionsForRule(int ruleId)
+        {
+            return _repo.RetrieveActionsForDevice(deviceId);
+        } 
+
+
     }
 }

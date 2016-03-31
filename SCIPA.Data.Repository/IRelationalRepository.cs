@@ -26,7 +26,7 @@ namespace SCIPA.Data.Repository
 
         DOM.Action RetrieveAction(int id);
 
-        IEnumerable<DOM.Action> RetrieveActionsForDevice(int deviceId);
+        IEnumerable<DOM.Action> RetrieveActionsForRule(int ruleId)
 
         IEnumerable<DOM.Action> RetrieveAllActions();
 
