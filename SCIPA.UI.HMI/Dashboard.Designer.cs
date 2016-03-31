@@ -2586,6 +2586,7 @@
             this.modcomms_bResetDate.TabIndex = 36;
             this.modcomms_bResetDate.Text = "Reset";
             this.modcomms_bResetDate.UseVisualStyleBackColor = true;
+            this.modcomms_bResetDate.Click += new System.EventHandler(this.modcomms_bResetDate_Click);
             // 
             // modcomms_rbOutbound
             // 

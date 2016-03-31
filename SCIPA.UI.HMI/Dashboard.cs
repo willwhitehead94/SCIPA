@@ -614,8 +614,21 @@ namespace SCIPA.UI.HMI
             modcomms_lbComms.Items.AddRange(
                 controller.GetAllCommunicators().Where(dev => dev.Id == _selectedDevice.Id).ToArray());
 
-            //Shows the modify tab.
-            pTabPanel.SelectedTab = pModifyCommunicators;
+            if (modcomms_lbComms.Items.Count > 0)
+            {
+                //Select the first element
+                modcomms_lbComms.SelectedItem = modcomms_lbComms.Items[0];
+
+                //Shows the modify tab.
+                pTabPanel.SelectedTab = pModifyCommunicators;
+            }
+            else
+            {
+                var msg =
+                    System.Windows.Forms.MessageBox.Show(
+                        "There are no Communicators for this Device.", "No Communicators Available",
+                        MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
         }
 
         #endregion Modify Device Page
@@ -744,6 +757,12 @@ namespace SCIPA.UI.HMI
 
             //Inform user.
             DebugOutput.Print("Successfully updated Communicator settings for ", _communicator.ToString());
+        }
+
+        private void modcomms_bResetDate_Click(object sender, EventArgs e)
+        {
+            var dt =new DateTime(1980,01,01);
+            modcomms_tLastReadTime.Text = dt.ToString();
         }
     }
 }
