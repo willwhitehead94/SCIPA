@@ -394,8 +394,16 @@ namespace SCIPA.UI.HMI
             //Save the new Device.
             add_bSaveNewDevice.PerformClick();
 
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToCommunicatorPage();
+            window.ShowDialog();
+
+            window.GetCommunicator();
+
+            UpdateStartLabels();
+
             //Show Add Source
-            add_tcInnerPages.SelectedTab = pDataConnection;
+            //add_tcInnerPages.SelectedTab = pDataConnection;
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
@@ -525,7 +533,11 @@ namespace SCIPA.UI.HMI
             bool enabled = add_rbTrue.Checked && !add_rbFalse.Checked;
             _selectedDevice = _controller.GetDeviceObject(Convert.ToInt32(add_tId.Text), add_tName.Text,
                 add_tLocation.Text, add_tCustodian.Text, enabled);
-            if (_controller.SaveDevice(_selectedDevice) == null)
+
+            var newDevice = _controller.SaveDevice(_selectedDevice);
+            _selectedDevice = newDevice;
+
+            if (newDevice== null)
             {
                 MessageBox.Show("There was an error saving the Device...");
             }
@@ -763,6 +775,16 @@ namespace SCIPA.UI.HMI
         {
             var dt =new DateTime(1980,01,01);
             modcomms_tLastReadTime.Text = dt.ToString();
+        }
+
+        private void add_bAddAction_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_bSaveRule_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

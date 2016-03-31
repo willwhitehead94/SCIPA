@@ -1320,6 +1320,7 @@
             this.add_bAddAction.TabIndex = 46;
             this.add_bAddAction.Text = "Add Action";
             this.add_bAddAction.UseVisualStyleBackColor = true;
+            this.add_bAddAction.Click += new System.EventHandler(this.add_bAddAction_Click);
             // 
             // add_bSaveRule
             // 
@@ -1330,6 +1331,7 @@
             this.add_bSaveRule.TabIndex = 45;
             this.add_bSaveRule.Text = "Save Rule";
             this.add_bSaveRule.UseVisualStyleBackColor = true;
+            this.add_bSaveRule.Click += new System.EventHandler(this.add_bSaveRule_Click);
             // 
             // add_cbRuleCheckValue
             // 
