@@ -2371,16 +2371,16 @@
             // modcomms_tFilePath
             // 
             this.modcomms_tFilePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_tFilePath.Location = new System.Drawing.Point(406, 0);
+            this.modcomms_tFilePath.Location = new System.Drawing.Point(404, 5);
             this.modcomms_tFilePath.Name = "modcomms_tFilePath";
-            this.modcomms_tFilePath.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tFilePath.Size = new System.Drawing.Size(707, 55);
             this.modcomms_tFilePath.TabIndex = 26;
             // 
             // label70
             // 
             this.label70.AutoSize = true;
             this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label70.Location = new System.Drawing.Point(-18, 3);
+            this.label70.Location = new System.Drawing.Point(-9, 8);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(198, 48);
             this.label70.TabIndex = 25;
@@ -2405,7 +2405,7 @@
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label67.Location = new System.Drawing.Point(-22, 122);
+            this.label67.Location = new System.Drawing.Point(-10, 133);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(314, 48);
             this.label67.TabIndex = 29;
@@ -2414,25 +2414,25 @@
             // modcomms_tQuery
             // 
             this.modcomms_tQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_tQuery.Location = new System.Drawing.Point(404, 58);
+            this.modcomms_tQuery.Location = new System.Drawing.Point(404, 69);
             this.modcomms_tQuery.Name = "modcomms_tQuery";
-            this.modcomms_tQuery.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tQuery.Size = new System.Drawing.Size(707, 55);
             this.modcomms_tQuery.TabIndex = 32;
             // 
             // modcomms_cbDatabaseType
             // 
             this.modcomms_cbDatabaseType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.modcomms_cbDatabaseType.FormattingEnabled = true;
-            this.modcomms_cbDatabaseType.Location = new System.Drawing.Point(404, 119);
+            this.modcomms_cbDatabaseType.Location = new System.Drawing.Point(404, 130);
             this.modcomms_cbDatabaseType.Name = "modcomms_cbDatabaseType";
-            this.modcomms_cbDatabaseType.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbDatabaseType.Size = new System.Drawing.Size(707, 56);
             this.modcomms_cbDatabaseType.TabIndex = 27;
             // 
             // label68
             // 
             this.label68.AutoSize = true;
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label68.Location = new System.Drawing.Point(-22, 61);
+            this.label68.Location = new System.Drawing.Point(-10, 72);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(146, 48);
             this.label68.TabIndex = 31;
@@ -2441,16 +2441,16 @@
             // modcomms_tConnectionString
             // 
             this.modcomms_tConnectionString.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_tConnectionString.Location = new System.Drawing.Point(406, -3);
+            this.modcomms_tConnectionString.Location = new System.Drawing.Point(406, 8);
             this.modcomms_tConnectionString.Name = "modcomms_tConnectionString";
-            this.modcomms_tConnectionString.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tConnectionString.Size = new System.Drawing.Size(707, 55);
             this.modcomms_tConnectionString.TabIndex = 30;
             // 
             // label69
             // 
             this.label69.AutoSize = true;
             this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label69.Location = new System.Drawing.Point(-20, 0);
+            this.label69.Location = new System.Drawing.Point(-8, 11);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(364, 48);
             this.label69.TabIndex = 28;
@@ -2478,7 +2478,7 @@
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label63.Location = new System.Drawing.Point(-22, 182);
+            this.label63.Location = new System.Drawing.Point(-12, 195);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(352, 48);
             this.label63.TabIndex = 39;
@@ -2488,7 +2488,7 @@
             // 
             this.modcomms_cbDtr.AutoSize = true;
             this.modcomms_cbDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_cbDtr.Location = new System.Drawing.Point(404, 245);
+            this.modcomms_cbDtr.Location = new System.Drawing.Point(404, 252);
             this.modcomms_cbDtr.Name = "modcomms_cbDtr";
             this.modcomms_cbDtr.Size = new System.Drawing.Size(686, 52);
             this.modcomms_cbDtr.TabIndex = 38;
@@ -2499,7 +2499,7 @@
             // 
             this.modcomms_cbRts.AutoSize = true;
             this.modcomms_cbRts.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_cbRts.Location = new System.Drawing.Point(404, 187);
+            this.modcomms_cbRts.Location = new System.Drawing.Point(404, 194);
             this.modcomms_cbRts.Name = "modcomms_cbRts";
             this.modcomms_cbRts.Size = new System.Drawing.Size(613, 52);
             this.modcomms_cbRts.TabIndex = 37;
@@ -2509,16 +2509,16 @@
             // modcomms_tDataBits
             // 
             this.modcomms_tDataBits.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_tDataBits.Location = new System.Drawing.Point(404, 126);
+            this.modcomms_tDataBits.Location = new System.Drawing.Point(404, 133);
             this.modcomms_tDataBits.Name = "modcomms_tDataBits";
-            this.modcomms_tDataBits.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tDataBits.Size = new System.Drawing.Size(707, 55);
             this.modcomms_tDataBits.TabIndex = 36;
             // 
             // label64
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label64.Location = new System.Drawing.Point(-20, 123);
+            this.label64.Location = new System.Drawing.Point(-10, 136);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(202, 48);
             this.label64.TabIndex = 33;
@@ -2527,25 +2527,25 @@
             // modcomms_tBaudRate
             // 
             this.modcomms_tBaudRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modcomms_tBaudRate.Location = new System.Drawing.Point(406, 65);
+            this.modcomms_tBaudRate.Location = new System.Drawing.Point(406, 72);
             this.modcomms_tBaudRate.Name = "modcomms_tBaudRate";
-            this.modcomms_tBaudRate.Size = new System.Drawing.Size(733, 55);
+            this.modcomms_tBaudRate.Size = new System.Drawing.Size(707, 55);
             this.modcomms_tBaudRate.TabIndex = 35;
             // 
             // modcomms_cbComPort
             // 
             this.modcomms_cbComPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.modcomms_cbComPort.FormattingEnabled = true;
-            this.modcomms_cbComPort.Location = new System.Drawing.Point(406, 3);
+            this.modcomms_cbComPort.Location = new System.Drawing.Point(406, 10);
             this.modcomms_cbComPort.Name = "modcomms_cbComPort";
-            this.modcomms_cbComPort.Size = new System.Drawing.Size(733, 56);
+            this.modcomms_cbComPort.Size = new System.Drawing.Size(707, 56);
             this.modcomms_cbComPort.TabIndex = 31;
             // 
             // label65
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label65.Location = new System.Drawing.Point(-18, 62);
+            this.label65.Location = new System.Drawing.Point(-8, 75);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(228, 48);
             this.label65.TabIndex = 34;
@@ -2555,7 +2555,7 @@
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label66.Location = new System.Drawing.Point(-18, 0);
+            this.label66.Location = new System.Drawing.Point(-8, 13);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(218, 48);
             this.label66.TabIndex = 32;
