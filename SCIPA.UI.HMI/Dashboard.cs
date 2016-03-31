@@ -394,16 +394,16 @@ namespace SCIPA.UI.HMI
             //Save the new Device.
             add_bSaveNewDevice.PerformClick();
 
+            //Create and display the DataBoard form.
             var window = new DataBoard(_communicator, _selectedDevice);
             window.GoToCommunicatorPage();
             window.ShowDialog();
 
+            //Get the Comm object created.
             window.GetCommunicator();
 
+            //Update the labels.
             UpdateStartLabels();
-
-            //Show Add Source
-            //add_tcInnerPages.SelectedTab = pDataConnection;
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
@@ -499,10 +499,21 @@ namespace SCIPA.UI.HMI
 
         private void UpdateStartLabels()
         {
-            var _controller = new CommunicatorController();
+            var comm_controller = new CommunicatorController();
+            var rule_controller = new RuleController();
 
-            //Update labels.
-            add_lSource.Text = $"{_controller.CountCommunicatorsForDevice(_communicator.Device.Id)} Sources...";
+            try
+            {
+                //Update labels.
+                add_lSource.Text = $"{comm_controller.CountCommunicatorsForDevice(_communicator.Device.Id)} Sources...";
+                add_lRules.Text = $"{rule_controller.RetrieveRulesForDevice(_selectedDevice.Id).Count()} Rules...";
+            }
+            catch
+            {
+                //Update labels.
+                add_lSource.Text = $"0 Sources...";
+                add_lRules.Text = $"0 Rules...";
+            }
         }
 
         private int GetStartChar()
@@ -553,8 +564,16 @@ namespace SCIPA.UI.HMI
             //Save the new Device.
             add_bSaveNewDevice.PerformClick();
 
-            //Show Add Rule
-            add_tcInnerPages.SelectedTab = pRules;
+            //Create and display the DataBoard form.
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToRulePage();
+            window.ShowDialog();
+
+            //Get the Comm object created.
+            window.GetRule();
+
+            //Update the labels.
+            UpdateStartLabels();
         }
 
 
@@ -624,7 +643,7 @@ namespace SCIPA.UI.HMI
             var controller = new CommunicatorController();
             modcomms_lbComms.Items.Clear();
             modcomms_lbComms.Items.AddRange(
-                controller.GetAllCommunicators().Where(dev => dev.Id == _selectedDevice.Id).ToArray());
+                controller.GetAllCommunicators().Where(c => c.Device.Id == _selectedDevice.Id).ToArray());
 
             if (modcomms_lbComms.Items.Count > 0)
             {

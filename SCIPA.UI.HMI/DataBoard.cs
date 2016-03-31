@@ -89,6 +89,8 @@ namespace SCIPA.UI.HMI
             var Id = _controller.SaveCommunicator(_communicator);
             if (Id != null) _communicator.Id = (int)Id;
             DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
+
+            this.Close();
         }
 
         private void DataBoard_Load(object sender, EventArgs e)
