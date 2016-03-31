@@ -46,7 +46,7 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Models.Rule _rule = null;
 
-        
+
         /// <summary>
         /// Initialise the Dashboard window.
         /// </summary>
@@ -74,12 +74,12 @@ namespace SCIPA.UI.HMI
             this.report_rvReportViewer.RefreshReport();
 
             //Prepare any Data Sources required for the ComboBoxes.
-            add_cbCommType.DataSource = Enum.GetValues(typeof(Models.CommunicatorType));
+            add_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
             modcomms_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
-            add_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
-            modcomms_cbValueType.DataSource=Enum.GetValues(typeof(Models.ValueType));
+            add_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
+            modcomms_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
             add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
-            modcomms_cbDatabaseType.DataSource= Enum.GetValues(typeof(Models.DatabaseType));
+            modcomms_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             add_cbComPort.DataSource = SerialPort.GetPortNames();
 
         }
@@ -182,8 +182,10 @@ namespace SCIPA.UI.HMI
                 "Early Close Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
 
             //If the user clicks NO to remain in SCIPA, cancel the close.
-            if (result==DialogResult.No)
-            { e.Cancel = true; }
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void lHeaderAlarmCount_Click(object sender, EventArgs e)
@@ -207,7 +209,9 @@ namespace SCIPA.UI.HMI
             var controller = new DeviceController();
             start_lbDevice.Items.Clear();
             foreach (var dev in controller.GetAllDevices())
-            { start_lbDevice.Items.Add(dev);}
+            {
+                start_lbDevice.Items.Add(dev);
+            }
 
             //Bring page to user's view.
             pTabPanel.SelectedTab = pStart;
@@ -221,7 +225,9 @@ namespace SCIPA.UI.HMI
             //Populate appropriate objects/fields.
             stop_lbDevice.Items.Clear();
             foreach (var dev in DeviceController.GetActiveDevices())
-            { stop_lbDevice.Items.Add(dev); }
+            {
+                stop_lbDevice.Items.Add(dev);
+            }
 
             //Bring page to user's view.
             pTabPanel.SelectedTab = pStop;
@@ -245,7 +251,9 @@ namespace SCIPA.UI.HMI
             modify_lbDeviceList.Items.Clear();
             var controller = new DeviceController();
             foreach (var dev in controller.GetAllDevices())
-            { modify_lbDeviceList.Items.Add(dev); }
+            {
+                modify_lbDeviceList.Items.Add(dev);
+            }
 
             //Bring page to user's view.
             pTabPanel.SelectedTab = pModifyDevice;
@@ -263,9 +271,9 @@ namespace SCIPA.UI.HMI
             pTabPanel.SelectedTab = pAlarms;
 
             alarm_lbAlarms.Items.Clear();
-            
-            var controller=  new AlarmController();
-           // alarm_lbAlarms.Items.Add(controller.)
+
+            var controller = new AlarmController();
+            // alarm_lbAlarms.Items.Add(controller.)
         }
 
         private void bSettings_Click(object sender, EventArgs e)
@@ -282,7 +290,7 @@ namespace SCIPA.UI.HMI
         /// <param name="e"></param>
         private void bTogglePanelSize_Click(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
+            var btn = (Button) sender;
 
             if (pTabPanel.Dock == DockStyle.None)
             {
@@ -323,7 +331,7 @@ namespace SCIPA.UI.HMI
             }
         }
 
-#region Start Page
+        #region Start Page
 
         private void start_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -347,7 +355,7 @@ namespace SCIPA.UI.HMI
             var controller = new CommunicatorController();
             var commList = controller.GetAllCommunicators().Where(comm => comm.Device.Id == _selectedDevice.Id);
 
-            foreach(var comm in commList)
+            foreach (var comm in commList)
                 new Inbound(comm);
 
             //Once started, stops allowing a second start.
@@ -357,10 +365,11 @@ namespace SCIPA.UI.HMI
 
         #endregion Start Page
 
-#region Stop Page
+        #region Stop Page
+
         private void stop_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedDevice = (Device)start_lbDevice.SelectedItem;
+            var selectedDevice = (Device) start_lbDevice.SelectedItem;
             stop_tId.Text = selectedDevice.Id.ToString();
             stop_tDevName.Text = selectedDevice.Name;
             stop_tLocation.Text = selectedDevice.Location;
@@ -370,9 +379,10 @@ namespace SCIPA.UI.HMI
             //Allow global access
             _selectedDevice = selectedDevice;
         }
+
         #endregion Stop Page
 
-#region Add New Device Page
+        #region Add New Device Page
 
         private void pSources_Click(object sender, EventArgs e)
         {
@@ -390,15 +400,15 @@ namespace SCIPA.UI.HMI
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var specalism = (CommunicatorType)add_cbCommType.SelectedItem;
+            var specalism = (CommunicatorType) add_cbCommType.SelectedItem;
             switch (specalism)
             {
                 case CommunicatorType.FlatFile:
-                    _communicator=new FileCommunicator();
+                    _communicator = new FileCommunicator();
                     add_tcInnerPagesSourceSetting.SelectedTab = pFlatFile;
                     break;
                 case CommunicatorType.Serial:
-                    _communicator=new SerialCommunicator();
+                    _communicator = new SerialCommunicator();
                     add_tcInnerPagesSourceSetting.SelectedTab = pSerial;
                     break;
                 case CommunicatorType.Database:
@@ -422,8 +432,8 @@ namespace SCIPA.UI.HMI
             {
                 _communicator = new DatabaseCommunicator()
                 {
-                    DbType = (DatabaseType)add_cbDatabaseType.SelectedItem,
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    DbType = (DatabaseType) add_cbDatabaseType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     ConnectionString = add_tConnectionString.Text,
                     Query = add_tQuery.Text,
                     StartChar = GetStartChar(),
@@ -441,7 +451,7 @@ namespace SCIPA.UI.HMI
                 {
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     BaudRate = Convert.ToInt32(add_tBaudRate.Text),
                     ComPort = add_cbComPort.SelectedItem.ToString(),
                     DataBits = Convert.ToByte(add_tDataBits.Text),
@@ -459,7 +469,7 @@ namespace SCIPA.UI.HMI
                 _communicator = new FileCommunicator()
                 {
                     FilePath = add_tFilePath.Text,
-                    ValueType = (Models.ValueType)add_cbValueType.SelectedItem,
+                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
                     StartChar = GetStartChar(),
                     EndChar = GetEndChar(),
                     Device = _selectedDevice,
@@ -472,7 +482,7 @@ namespace SCIPA.UI.HMI
 
             var _controller = new CommunicatorController();
             var Id = _controller.SaveCommunicator(_communicator);
-            if (Id != null) _communicator.Id = (int)Id;
+            if (Id != null) _communicator.Id = (int) Id;
             DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
 
             UpdateStartLabels();
@@ -513,7 +523,8 @@ namespace SCIPA.UI.HMI
             var _controller = new DeviceController();
 
             bool enabled = add_rbTrue.Checked && !add_rbFalse.Checked;
-            _selectedDevice = _controller.GetDeviceObject(Convert.ToInt32(add_tId.Text), add_tName.Text, add_tLocation.Text, add_tCustodian.Text, enabled);
+            _selectedDevice = _controller.GetDeviceObject(Convert.ToInt32(add_tId.Text), add_tName.Text,
+                add_tLocation.Text, add_tCustodian.Text, enabled);
             if (_controller.SaveDevice(_selectedDevice) == null)
             {
                 MessageBox.Show("There was an error saving the Device...");
@@ -542,7 +553,7 @@ namespace SCIPA.UI.HMI
 
         }
 
-#region Modify Device Page
+        #region Modify Device Page
 
         private void modify_lbDeviceList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -577,7 +588,7 @@ namespace SCIPA.UI.HMI
             var controller = new DeviceController();
 
             //Save the Device.
-           var savedDevice = controller.SaveDevice(_selectedDevice);
+            var savedDevice = controller.SaveDevice(_selectedDevice);
 
             //If the updated device is null or has been corupted (i.e. wrong device info), error!
             if (savedDevice == null || savedDevice.Id != _selectedDevice.Id)
@@ -591,7 +602,7 @@ namespace SCIPA.UI.HMI
                 _selectedDevice = savedDevice;
 
                 //Inform the user
-                DebugOutput.Print("Device was updated successfully. ",_selectedDevice.ToString());
+                DebugOutput.Print("Device was updated successfully. ", _selectedDevice.ToString());
             }
         }
 
@@ -600,7 +611,8 @@ namespace SCIPA.UI.HMI
             //Loads the relevant communicators.
             var controller = new CommunicatorController();
             modcomms_lbComms.Items.Clear();
-            modcomms_lbComms.Items.AddRange(controller.GetAllCommunicators().Where(dev=>dev.Id==_selectedDevice.Id).ToArray());
+            modcomms_lbComms.Items.AddRange(
+                controller.GetAllCommunicators().Where(dev => dev.Id == _selectedDevice.Id).ToArray());
 
             //Shows the modify tab.
             pTabPanel.SelectedTab = pModifyCommunicators;
@@ -608,10 +620,11 @@ namespace SCIPA.UI.HMI
 
         #endregion Modify Device Page
 
-#region Modify Communicator Information PAge
+        #region Modify Communicator Information PAge
+
         private void modcomms_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selected = (CommunicatorType)modcomms_cbCommType.SelectedItem;
+            var selected = (CommunicatorType) modcomms_cbCommType.SelectedItem;
             switch (selected)
             {
                 case CommunicatorType.FlatFile:
@@ -655,7 +668,7 @@ namespace SCIPA.UI.HMI
                     modcomms_tFilePath.Text = fTemp.FilePath;
                     break;
                 case CommunicatorType.Serial:
-                    var sTemp = (SerialCommunicator)selected;
+                    var sTemp = (SerialCommunicator) selected;
                     modcomms_cbComPort.SelectedText = sTemp.ComPort;
                     modcomms_tBaudRate.Text = sTemp.BaudRate.ToString();
                     modcomms_tDataBits.Text = sTemp.DataBits.ToString();
@@ -663,7 +676,7 @@ namespace SCIPA.UI.HMI
                     modcomms_cbRts.Checked = sTemp.IsRTS;
                     break;
                 case CommunicatorType.Database:
-                    var dTemp = (DatabaseCommunicator)selected;
+                    var dTemp = (DatabaseCommunicator) selected;
                     modcomms_tConnectionString.Text = dTemp.ConnectionString;
                     modcomms_tQuery.Text = dTemp.Query;
                     modcomms_cbDatabaseType.SelectedItem = dTemp.DbType;
@@ -671,6 +684,63 @@ namespace SCIPA.UI.HMI
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void modcomms_bSaveComm_Click(object sender, EventArgs e)
+        {
+            /*
+           * Preparing all of the standard (abstract) Communicator fields
+           */
+            //Id does not update
+            _communicator.StartChar = Convert.ToInt32(modcomms_tStart.Text);
+            _communicator.EndChar = Convert.ToInt32(modcomms_tEnd.Text);
+            _communicator.LastReadTime = Convert.ToDateTime(modcomms_tLastReadTime.Text);
+            //CommType does not update
+            _communicator.ValueType = (Models.ValueType) modcomms_cbValueType.SelectedItem;
+            _communicator.Inbound = modcomms_rbInbound.Checked;
+
+            /*
+            * Preparing FileCommunicator fields
+            */
+            if (_communicator is FileCommunicator)
+            {
+                var temp = (FileCommunicator) _communicator;
+                temp.FilePath = modcomms_tFilePath.Text;
+
+                //Store this in the global variable.
+                _communicator = temp;
+            }
+
+            else if (_communicator is SerialCommunicator)
+            {
+                var temp = (SerialCommunicator) _communicator;
+                temp.ComPort = modcomms_cbComPort.SelectedItem.ToString();
+                temp.BaudRate = Convert.ToInt32(modcomms_tBaudRate.Text);
+                temp.DataBits = Convert.ToByte(modcomms_tDataBits.Text);
+                temp.IsDTR = modcomms_cbDtr.Checked;
+                temp.IsRTS = modcomms_cbRts.Checked;
+
+                //Store this in the global variable.
+                _communicator = temp;
+            }
+
+            else if (_communicator is DatabaseCommunicator)
+            {
+                var temp = (DatabaseCommunicator) _communicator;
+                temp.ConnectionString = modcomms_tConnectionString.Text;
+                temp.Query = modcomms_tQuery.Text;
+                temp.DbType = (Models.DatabaseType) modcomms_cbDatabaseType.SelectedItem;
+
+                //Store this in the global variable.
+                _communicator = temp;
+            }
+
+            //Save the Communicator
+            var controller = new CommunicatorController();
+            controller.SaveCommunicator(_communicator);
+
+            //Inform user.
+            DebugOutput.Print("Successfully updated Communicator settings for ", _communicator.ToString());
         }
     }
 }

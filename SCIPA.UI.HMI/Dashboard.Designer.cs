@@ -207,6 +207,7 @@
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.pModifyCommunicators = new System.Windows.Forms.TabPage();
+            this.modcomms_bBack = new System.Windows.Forms.Button();
             this.modcomms_bSaveComm = new System.Windows.Forms.Button();
             this.modcomms_tpCommType = new SCIPA.UI.HMI.CustomTabControl();
             this.pModBlank = new System.Windows.Forms.TabPage();
@@ -248,7 +249,6 @@
             this.label56 = new System.Windows.Forms.Label();
             this.pModifyRules = new System.Windows.Forms.TabPage();
             this.pModifyActions = new System.Windows.Forms.TabPage();
-            this.modcomms_bBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -2324,6 +2324,19 @@
             this.pModifyCommunicators.Text = "ModifyCommunicators";
             this.pModifyCommunicators.UseVisualStyleBackColor = true;
             // 
+            // modcomms_bBack
+            // 
+            this.modcomms_bBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modcomms_bBack.BackColor = System.Drawing.Color.Gainsboro;
+            this.modcomms_bBack.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modcomms_bBack.Location = new System.Drawing.Point(655, 785);
+            this.modcomms_bBack.Name = "modcomms_bBack";
+            this.modcomms_bBack.Size = new System.Drawing.Size(612, 85);
+            this.modcomms_bBack.TabIndex = 45;
+            this.modcomms_bBack.Text = "GO BACK TO DEVICES";
+            this.modcomms_bBack.UseVisualStyleBackColor = false;
+            this.modcomms_bBack.Click += new System.EventHandler(this.modcomms_bBack_Click);
+            // 
             // modcomms_bSaveComm
             // 
             this.modcomms_bSaveComm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -2335,6 +2348,7 @@
             this.modcomms_bSaveComm.TabIndex = 44;
             this.modcomms_bSaveComm.Text = "SAVE COMMUNICATOR INFORMATION";
             this.modcomms_bSaveComm.UseVisualStyleBackColor = false;
+            this.modcomms_bSaveComm.Click += new System.EventHandler(this.modcomms_bSaveComm_Click);
             // 
             // modcomms_tpCommType
             // 
@@ -2742,19 +2756,6 @@
             this.pModifyActions.TabIndex = 10;
             this.pModifyActions.Text = "ModifyActions";
             this.pModifyActions.UseVisualStyleBackColor = true;
-            // 
-            // modcomms_bBack
-            // 
-            this.modcomms_bBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.modcomms_bBack.BackColor = System.Drawing.Color.Gainsboro;
-            this.modcomms_bBack.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modcomms_bBack.Location = new System.Drawing.Point(655, 785);
-            this.modcomms_bBack.Name = "modcomms_bBack";
-            this.modcomms_bBack.Size = new System.Drawing.Size(612, 85);
-            this.modcomms_bBack.TabIndex = 45;
-            this.modcomms_bBack.Text = "GO BACK TO DEVICES";
-            this.modcomms_bBack.UseVisualStyleBackColor = false;
-            this.modcomms_bBack.Click += new System.EventHandler(this.modcomms_bBack_Click);
             // 
             // Dashboard
             // 
