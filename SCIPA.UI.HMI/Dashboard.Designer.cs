@@ -1517,6 +1517,7 @@
             this.alarm_bRule.TabIndex = 49;
             this.alarm_bRule.Text = "View Rule";
             this.alarm_bRule.UseVisualStyleBackColor = true;
+            this.alarm_bRule.Click += new System.EventHandler(this.alarm_bRule_Click);
             // 
             // alarm_bDevice
             // 
@@ -1528,6 +1529,7 @@
             this.alarm_bDevice.TabIndex = 48;
             this.alarm_bDevice.Text = "View Device";
             this.alarm_bDevice.UseVisualStyleBackColor = true;
+            this.alarm_bDevice.Click += new System.EventHandler(this.alarm_bDevice_Click);
             // 
             // alarm_tValue
             // 

@@ -1011,6 +1011,16 @@ namespace SCIPA.UI.HMI
             var controller = new AlarmController();
             controller.Acknowledge((Alarm)alarm_lbAlarms.SelectedItem);
         }
+
+        private void alarm_bDevice_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show(_selectedDevice.ToString(), "SCIPA");
+        }
+
+        private void alarm_bRule_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show(_rule.ToString(), "SCIPA");
+        }
     }
 
     #endregion Modify Rules Page
