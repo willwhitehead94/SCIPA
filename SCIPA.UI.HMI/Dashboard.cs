@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -419,7 +420,15 @@ namespace SCIPA.UI.HMI
             if (allValues != null && allValues.Any())
             {
                 var vals = allValues.Take(max).ToArray();
-                stop_lbValues.Items.AddRange(vals.OrderByDescending(v=>v.EventTime).ToArray());
+
+                var distinct = new List<string>();
+                foreach (var val in vals.Where(val => !distinct.Contains(val.ToString())))
+                {
+                    distinct.Add(val.ToString());
+                }
+
+
+                stop_lbValues.Items.AddRange(distinct.ToArray());
             }
 
             //Allow global access
