@@ -39,6 +39,12 @@ namespace SCIPA.Domain.Logic
             var alarms = _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest);
 
             return alarms != null && alarms.Any() ? alarms.ToList() : new List<Alarm>();
-        } 
+        }
+
+        public void Acknowledge(Alarm alarm)
+        {
+            alarm.Accepted = true;
+            _repo.UpdateAlarm(alarm);
+        }
     }
 }

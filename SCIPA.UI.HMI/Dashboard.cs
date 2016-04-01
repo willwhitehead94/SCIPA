@@ -156,7 +156,7 @@ namespace SCIPA.UI.HMI
             while (true)
             {
                 //Only counts alarms that have been active for longer than 24 hours.
-                _activeAlarmCount = controller.GetAllAlarms(24).Count(a => a.Accepted == false);
+                _activeAlarmCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
 
                 //Sleep for 5 seconds
                 System.Threading.Thread.Sleep(5000);
@@ -1061,15 +1061,28 @@ namespace SCIPA.UI.HMI
 
         private void alarm_lbAlarms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selected = (Alarm) alarm_lbAlarms.SelectedItem;
+            try
+            {
+                var selected = (Alarm) alarm_lbAlarms.SelectedItem;
 
-            var devController = new DeviceController();
-            alarm_tDevice.Text = devController.RetrieveDevice(selected.DeviceId).ToString();
+                var devController = new DeviceController();
+                alarm_tDevice.Text = devController.RetrieveDevice(selected.DeviceId).ToString();
 
-            alarm_tDateTime.Text = selected.TimeStamp.ToString();
-            //alarm_tValue.Text = selected.Value.StringValue;
-            alarm_rbTrue.Checked = selected.Accepted;
-            alarm_rbFalse.Checked = !selected.Accepted;
+                alarm_tDateTime.Text = selected.TimeStamp.ToString();
+                //alarm_tValue.Text = selected.Value.StringValue;
+                alarm_rbTrue.Checked = selected.Accepted;
+                alarm_rbFalse.Checked = !selected.Accepted;
+            }
+            catch
+            {
+                DebugOutput.Print("Attempted to load an alarm and failed...");
+            }
+        }
+
+        private void alarm_Acknowledge_Click(object sender, EventArgs e)
+        {
+            var controller = new AlarmController();
+            controller.Acknowledge((Alarm)alarm_lbAlarms.SelectedItem);
         }
     }
 

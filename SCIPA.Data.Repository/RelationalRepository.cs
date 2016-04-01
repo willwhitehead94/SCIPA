@@ -94,8 +94,7 @@ namespace SCIPA.Data.Repository
                 // Data to Domain Converstions
                 cfg.CreateMap<DAL.Action, DOM.Action>();
 
-                cfg.CreateMap<DAL.Alarm, DOM.Alarm>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+                cfg.CreateMap<DAL.Alarm, DOM.Alarm>();
 
                 cfg.CreateMap<DAL.AppData, DOM.AppData>();
 

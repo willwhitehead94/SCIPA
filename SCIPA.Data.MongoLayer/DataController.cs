@@ -225,10 +225,14 @@ namespace SCIPA.Data.MongoLayer
 
             var collection = _db.GetCollection<Process>("ProcessData");
             var filter = Builders<Process>.Filter.Eq("DeviceId", deviceId);
-            var result = collection.Find(filter).ToList();
+            var result = collection.Find(filter);
 
             if (result.Any())
-                return result[0].Values.ToList();
+            {
+                var list = result.ToList();
+                return list[0].Values.ToList();
+            }
+                
 
             return null;
         } 

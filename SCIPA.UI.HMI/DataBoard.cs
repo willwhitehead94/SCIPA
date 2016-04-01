@@ -231,9 +231,6 @@ namespace SCIPA.UI.HMI
         private void add_cbRule_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ruleController = new ActionController();
-
-
-            //add_cbCommunicatorDestination.SelectedItem = ruleController.RetrieveActionsForRule()
         }
 
         private void add_bSaveRule_Click(object sender, EventArgs e)
@@ -253,6 +250,7 @@ namespace SCIPA.UI.HMI
             };
 
             contoller.CreateRule(_rule);
+            contoller.UpdateRule(_rule);
         }
     }
 }
