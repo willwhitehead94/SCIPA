@@ -121,8 +121,7 @@ namespace SCIPA.Data.Repository
 
                 cfg.CreateMap<DAL.RuleType, DOM.RuleType>();
 
-                cfg.CreateMap<DAL.Value, DOM.Value>()
-                    .ForMember(m => m.Id, opt => opt.Ignore());
+                cfg.CreateMap<DAL.Value, DOM.Value>();
 
                 cfg.CreateMap<DOM.ValueType, DOM.ValueType>();
 
