@@ -79,6 +79,8 @@
             this.add_tRuleName = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.pActions = new System.Windows.Forms.TabPage();
+            this.bCancelAction = new System.Windows.Forms.Button();
+            this.bSaveAction = new System.Windows.Forms.Button();
             this.add_cActionEnabled = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
             this.add_tOutputValue = new System.Windows.Forms.TextBox();
@@ -87,8 +89,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.add_cbRule = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.bSaveAction = new System.Windows.Forms.Button();
-            this.bCancelAction = new System.Windows.Forms.Button();
             this.add_tcInnerPages.SuspendLayout();
             this.pDataConnection.SuspendLayout();
             this.add_tcInnerPagesSourceSetting.SuspendLayout();
@@ -523,6 +523,7 @@
             this.add_bSaveRule.TabIndex = 45;
             this.add_bSaveRule.Text = "Save Rule";
             this.add_bSaveRule.UseVisualStyleBackColor = true;
+            this.add_bSaveRule.Click += new System.EventHandler(this.add_bSaveRule_Click);
             // 
             // add_cbRuleCheckValue
             // 
@@ -639,6 +640,26 @@
             this.pActions.Text = "Actions";
             this.pActions.UseVisualStyleBackColor = true;
             // 
+            // bCancelAction
+            // 
+            this.bCancelAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bCancelAction.Location = new System.Drawing.Point(267, 594);
+            this.bCancelAction.Name = "bCancelAction";
+            this.bCancelAction.Size = new System.Drawing.Size(387, 98);
+            this.bCancelAction.TabIndex = 48;
+            this.bCancelAction.Text = "Cancel and Return";
+            this.bCancelAction.UseVisualStyleBackColor = true;
+            // 
+            // bSaveAction
+            // 
+            this.bSaveAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bSaveAction.Location = new System.Drawing.Point(267, 410);
+            this.bSaveAction.Name = "bSaveAction";
+            this.bSaveAction.Size = new System.Drawing.Size(387, 98);
+            this.bSaveAction.TabIndex = 47;
+            this.bSaveAction.Text = "Save and Return";
+            this.bSaveAction.UseVisualStyleBackColor = true;
+            // 
             // add_cActionEnabled
             // 
             this.add_cActionEnabled.AutoSize = true;
@@ -717,26 +738,6 @@
             this.label37.Size = new System.Drawing.Size(254, 51);
             this.label37.TabIndex = 29;
             this.label37.Text = "Add Action";
-            // 
-            // bSaveAction
-            // 
-            this.bSaveAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.bSaveAction.Location = new System.Drawing.Point(267, 410);
-            this.bSaveAction.Name = "bSaveAction";
-            this.bSaveAction.Size = new System.Drawing.Size(387, 98);
-            this.bSaveAction.TabIndex = 47;
-            this.bSaveAction.Text = "Save and Return";
-            this.bSaveAction.UseVisualStyleBackColor = true;
-            // 
-            // bCancelAction
-            // 
-            this.bCancelAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.bCancelAction.Location = new System.Drawing.Point(267, 594);
-            this.bCancelAction.Name = "bCancelAction";
-            this.bCancelAction.Size = new System.Drawing.Size(387, 98);
-            this.bCancelAction.TabIndex = 48;
-            this.bCancelAction.Text = "Cancel and Return";
-            this.bCancelAction.UseVisualStyleBackColor = true;
             // 
             // DataBoard
             // 

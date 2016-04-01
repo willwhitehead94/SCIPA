@@ -943,6 +943,12 @@ namespace SCIPA.UI.HMI
 
         private void modrules_tSave_Click(object sender, EventArgs e)
         {
+            _rule.Alarm = modrules_cAlarm.Checked;
+            _rule.Name = modrules_Name.Text;
+            _rule.Constraint = modrules_tConstraint.Text;
+            _rule.RuleType = (Models.RuleType) modrules_cbRuleType.SelectedItem;
+            _rule.ValueType = (Models.ValueType) modrules_cbValueType.SelectedItem;
+           
             var controller = new RuleController();
             var updated = controller.UpdateRule(_rule);
 
@@ -1039,9 +1045,11 @@ namespace SCIPA.UI.HMI
         {
             var selected = (Alarm) alarm_lbAlarms.SelectedItem;
 
+            var devController = new DeviceController();
+            alarm_tDevice.Text = devController.RetrieveDevice(selected.DeviceId).ToString();
+
             alarm_tDateTime.Text = selected.TimeStamp.ToString();
-            alarm_tDevice.Text = selected.Device.ToString();
-            alarm_tValue.Text = selected.Value.StringValue;
+            //alarm_tValue.Text = selected.Value.StringValue;
             alarm_rbTrue.Checked = selected.Accepted;
             alarm_rbFalse.Checked = !selected.Accepted;
         }

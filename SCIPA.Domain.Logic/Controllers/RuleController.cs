@@ -107,7 +107,7 @@ namespace SCIPA.Domain.Logic
         /// <returns></returns>
         public Rule UpdateRule(Rule rule)
         {
-            return rule;
+            return _repo.UpdateRule(rule);
         }
 
         /// <summary>

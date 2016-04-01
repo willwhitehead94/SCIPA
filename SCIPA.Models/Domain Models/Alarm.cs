@@ -12,5 +12,10 @@
         public virtual Device Device { get; set; }
         public virtual Value Value { get; set; }
         public virtual Rule Rule { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}: Device #{DeviceId.ToString("####")} at {TimeStamp}";
+        }
     }
 }

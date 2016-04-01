@@ -110,8 +110,9 @@ namespace SCIPA.UI.HMI
             //Adds outbound comms to the Action list box.
             var commController = new CommunicatorController();
             add_cbCommunicatorDestination.Items.Clear();
-            add_cbCommunicatorDestination.DataSource =
-                commController.GetAllCommunicators().Where(c => c.Device.Id == _device.Id && c.Inbound == false);
+            List<Communicator> allComms = commController.GetAllCommunicators().Where(c => c.Device.Id == _device.Id && c.Inbound == false).ToList();
+            add_cbCommunicatorDestination.Items.AddRange(allComms.ToArray());
+                
         }
 
         private void add_bRefreshComPorts_Click(object sender, EventArgs e)
@@ -233,6 +234,25 @@ namespace SCIPA.UI.HMI
 
 
             //add_cbCommunicatorDestination.SelectedItem = ruleController.RetrieveActionsForRule()
+        }
+
+        private void add_bSaveRule_Click(object sender, EventArgs e)
+        {
+            var contoller = new RuleController();
+
+            _rule = new Models.Rule()
+            {
+                Device = _device,
+                Action = _action,
+                Alarm = add_cAlarm.Checked,
+                Constraint = add_tConstraint.Text,
+                Name = add_tRuleName.Text,
+                DeviceId = _device.Id,
+                RuleType = (Models.RuleType)add_cbRuleType.SelectedItem,
+                ValueType = (Models.ValueType)add_cbValueType.SelectedItem
+            };
+
+            contoller.CreateRule(_rule);
         }
     }
 }

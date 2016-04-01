@@ -189,6 +189,7 @@
             this.alarm_rbTrue = new System.Windows.Forms.RadioButton();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.alarm_cbPeriod = new System.Windows.Forms.ComboBox();
             this.alarm_Acknowledge = new System.Windows.Forms.Button();
@@ -276,7 +277,6 @@
             this.modact_tRule = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -2142,6 +2142,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "View Settings";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(973, 39);
+            this.label24.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(136, 48);
+            this.label24.TabIndex = 53;
+            this.label24.Text = "hours.";
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -2163,7 +2174,8 @@
             "6",
             "12",
             "24",
-            "72"});
+            "72",
+            "10000"});
             this.alarm_cbPeriod.Location = new System.Drawing.Point(440, 32);
             this.alarm_cbPeriod.Name = "alarm_cbPeriod";
             this.alarm_cbPeriod.Size = new System.Drawing.Size(523, 59);
@@ -3103,17 +3115,6 @@
             this.label82.Size = new System.Drawing.Size(306, 51);
             this.label82.TabIndex = 60;
             this.label82.Text = "Modify Action";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(973, 39);
-            this.label24.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(136, 48);
-            this.label24.TabIndex = 53;
-            this.label24.Text = "hours.";
             // 
             // Dashboard
             // 
