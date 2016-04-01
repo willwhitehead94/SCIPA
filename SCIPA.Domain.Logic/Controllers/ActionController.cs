@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using SCIPA.Data.Repository;
 using SCIPA.Models;
 
@@ -36,7 +37,18 @@ namespace SCIPA.Domain.Logic
         {
             var temp = _repo.RetrieveActionsForRule(ruleId);
             return temp;
-        } 
+        }
+
+        /// <summary>
+        /// Updates the existing Action object on the database if it exists. Ignores otherwise.
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Action UpdateAction(Action action)
+        {
+            var temp = _repo.UpdateAction(action);
+            return temp;
+        }
 
 
     }

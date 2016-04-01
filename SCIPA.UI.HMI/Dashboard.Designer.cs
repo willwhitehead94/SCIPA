@@ -267,6 +267,18 @@
             this.modrules_lbRules = new System.Windows.Forms.ListBox();
             this.label73 = new System.Windows.Forms.Label();
             this.pModifyActions = new System.Windows.Forms.TabPage();
+            this.label78 = new System.Windows.Forms.Label();
+            this.modact_cEnabled = new System.Windows.Forms.CheckBox();
+            this.modact_tValue = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.modact_cbComm = new System.Windows.Forms.ComboBox();
+            this.modact_bBack = new System.Windows.Forms.Button();
+            this.modact_bSave = new System.Windows.Forms.Button();
+            this.modact_tRule = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.modact_bNewComm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -296,6 +308,7 @@
             this.pModDatabase.SuspendLayout();
             this.pModSerial.SuspendLayout();
             this.pModifyRules.SuspendLayout();
+            this.pModifyActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // AlarmsBindingSource
@@ -2982,12 +2995,148 @@
             // 
             // pModifyActions
             // 
+            this.pModifyActions.Controls.Add(this.modact_bNewComm);
+            this.pModifyActions.Controls.Add(this.label78);
+            this.pModifyActions.Controls.Add(this.modact_cEnabled);
+            this.pModifyActions.Controls.Add(this.modact_tValue);
+            this.pModifyActions.Controls.Add(this.label79);
+            this.pModifyActions.Controls.Add(this.label80);
+            this.pModifyActions.Controls.Add(this.modact_cbComm);
+            this.pModifyActions.Controls.Add(this.modact_bBack);
+            this.pModifyActions.Controls.Add(this.modact_bSave);
+            this.pModifyActions.Controls.Add(this.modact_tRule);
+            this.pModifyActions.Controls.Add(this.label81);
+            this.pModifyActions.Controls.Add(this.label82);
             this.pModifyActions.Location = new System.Drawing.Point(10, 47);
             this.pModifyActions.Name = "pModifyActions";
             this.pModifyActions.Size = new System.Drawing.Size(1929, 902);
             this.pModifyActions.TabIndex = 10;
             this.pModifyActions.Text = "ModifyActions";
             this.pModifyActions.UseVisualStyleBackColor = true;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label78.Location = new System.Drawing.Point(411, 433);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(156, 48);
+            this.label78.TabIndex = 70;
+            this.label78.Text = "Option:";
+            // 
+            // modact_cEnabled
+            // 
+            this.modact_cEnabled.AutoSize = true;
+            this.modact_cEnabled.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_cEnabled.Location = new System.Drawing.Point(835, 429);
+            this.modact_cEnabled.Name = "modact_cEnabled";
+            this.modact_cEnabled.Size = new System.Drawing.Size(205, 52);
+            this.modact_cEnabled.TabIndex = 69;
+            this.modact_cEnabled.Text = "Enabled";
+            this.modact_cEnabled.UseVisualStyleBackColor = true;
+            // 
+            // modact_tValue
+            // 
+            this.modact_tValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_tValue.Location = new System.Drawing.Point(835, 368);
+            this.modact_tValue.Name = "modact_tValue";
+            this.modact_tValue.Size = new System.Drawing.Size(733, 55);
+            this.modact_tValue.TabIndex = 68;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label79.Location = new System.Drawing.Point(411, 371);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(276, 48);
+            this.label79.TabIndex = 67;
+            this.label79.Text = "Output Value:";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label80.Location = new System.Drawing.Point(411, 247);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(304, 48);
+            this.label80.TabIndex = 66;
+            this.label80.Text = "Communicator:";
+            // 
+            // modact_cbComm
+            // 
+            this.modact_cbComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_cbComm.FormattingEnabled = true;
+            this.modact_cbComm.Location = new System.Drawing.Point(835, 244);
+            this.modact_cbComm.Name = "modact_cbComm";
+            this.modact_cbComm.Size = new System.Drawing.Size(530, 56);
+            this.modact_cbComm.TabIndex = 65;
+            // 
+            // modact_bBack
+            // 
+            this.modact_bBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modact_bBack.BackColor = System.Drawing.Color.Gainsboro;
+            this.modact_bBack.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modact_bBack.Location = new System.Drawing.Point(655, 785);
+            this.modact_bBack.Name = "modact_bBack";
+            this.modact_bBack.Size = new System.Drawing.Size(612, 85);
+            this.modact_bBack.TabIndex = 64;
+            this.modact_bBack.Text = "GO BACK TO DEVICES";
+            this.modact_bBack.UseVisualStyleBackColor = false;
+            this.modact_bBack.Click += new System.EventHandler(this.modact_bBack_Click);
+            // 
+            // modact_bSave
+            // 
+            this.modact_bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modact_bSave.BackColor = System.Drawing.Color.Gainsboro;
+            this.modact_bSave.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modact_bSave.Location = new System.Drawing.Point(1273, 760);
+            this.modact_bSave.Name = "modact_bSave";
+            this.modact_bSave.Size = new System.Drawing.Size(612, 110);
+            this.modact_bSave.TabIndex = 63;
+            this.modact_bSave.Text = "SAVE RULE INFORMATION";
+            this.modact_bSave.UseVisualStyleBackColor = false;
+            this.modact_bSave.Click += new System.EventHandler(this.modact_bSave_Click);
+            // 
+            // modact_tRule
+            // 
+            this.modact_tRule.Enabled = false;
+            this.modact_tRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_tRule.Location = new System.Drawing.Point(835, 183);
+            this.modact_tRule.Name = "modact_tRule";
+            this.modact_tRule.Size = new System.Drawing.Size(733, 55);
+            this.modact_tRule.TabIndex = 62;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label81.Location = new System.Drawing.Point(411, 186);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(118, 48);
+            this.label81.TabIndex = 61;
+            this.label81.Text = "Rule:";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label82.Location = new System.Drawing.Point(3, 0);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(306, 51);
+            this.label82.TabIndex = 60;
+            this.label82.Text = "Modify Action";
+            // 
+            // modact_bNewComm
+            // 
+            this.modact_bNewComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_bNewComm.Location = new System.Drawing.Point(1371, 244);
+            this.modact_bNewComm.Name = "modact_bNewComm";
+            this.modact_bNewComm.Size = new System.Drawing.Size(197, 56);
+            this.modact_bNewComm.TabIndex = 71;
+            this.modact_bNewComm.Text = "New";
+            this.modact_bNewComm.UseVisualStyleBackColor = true;
             // 
             // Dashboard
             // 
@@ -3063,6 +3212,8 @@
             this.pModSerial.PerformLayout();
             this.pModifyRules.ResumeLayout(false);
             this.pModifyRules.PerformLayout();
+            this.pModifyActions.ResumeLayout(false);
+            this.pModifyActions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3306,6 +3457,18 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.ListBox modrules_lbRules;
         private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.CheckBox modact_cEnabled;
+        private System.Windows.Forms.TextBox modact_tValue;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.ComboBox modact_cbComm;
+        private System.Windows.Forms.Button modact_bBack;
+        private System.Windows.Forms.Button modact_bSave;
+        private System.Windows.Forms.TextBox modact_tRule;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Button modact_bNewComm;
     }
 }
 

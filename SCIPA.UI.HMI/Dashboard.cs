@@ -698,17 +698,14 @@ namespace SCIPA.UI.HMI
             pTabPanel.SelectedTab = pModifyDevice;
         }
 
-
-        #endregion Modify Communicator Information Page.
-
         private void modcomms_lbComms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selected = (Communicator) modcomms_lbComms.SelectedItem;
+            var selected = (Communicator)modcomms_lbComms.SelectedItem;
 
             modcomms_tStart.Text = selected.StartChar.ToString();
             modcomms_tEnd.Text = selected.EndChar.ToString();
             modcomms_tLastReadTime.Text = selected.LastReadTime.ToString();
-            modcomms_cbValueType.SelectedItem = (Models.ValueType) selected.ValueType;
+            modcomms_cbValueType.SelectedItem = (Models.ValueType)selected.ValueType;
             modcomms_cbCommType.SelectedItem = selected.Type;
             modcomms_rbInbound.Checked = selected.Inbound;
             modcomms_rbOutbound.Checked = !selected.Inbound;
@@ -716,11 +713,11 @@ namespace SCIPA.UI.HMI
             switch (selected.Type)
             {
                 case CommunicatorType.FlatFile:
-                    var fTemp = (FileCommunicator) selected;
+                    var fTemp = (FileCommunicator)selected;
                     modcomms_tFilePath.Text = fTemp.FilePath;
                     break;
                 case CommunicatorType.Serial:
-                    var sTemp = (SerialCommunicator) selected;
+                    var sTemp = (SerialCommunicator)selected;
                     modcomms_cbComPort.SelectedText = sTemp.ComPort;
                     modcomms_tBaudRate.Text = sTemp.BaudRate.ToString();
                     modcomms_tDataBits.Text = sTemp.DataBits.ToString();
@@ -728,7 +725,7 @@ namespace SCIPA.UI.HMI
                     modcomms_cbRts.Checked = sTemp.IsRTS;
                     break;
                 case CommunicatorType.Database:
-                    var dTemp = (DatabaseCommunicator) selected;
+                    var dTemp = (DatabaseCommunicator)selected;
                     modcomms_tConnectionString.Text = dTemp.ConnectionString;
                     modcomms_tQuery.Text = dTemp.Query;
                     modcomms_cbDatabaseType.SelectedItem = dTemp.DbType;
@@ -751,7 +748,7 @@ namespace SCIPA.UI.HMI
             _communicator.EndChar = Convert.ToInt32(modcomms_tEnd.Text);
             _communicator.LastReadTime = Convert.ToDateTime(modcomms_tLastReadTime.Text);
             //CommType does not update
-            _communicator.ValueType = (Models.ValueType) modcomms_cbValueType.SelectedItem;
+            _communicator.ValueType = (Models.ValueType)modcomms_cbValueType.SelectedItem;
             _communicator.Inbound = modcomms_rbInbound.Checked;
 
             /*
@@ -759,7 +756,7 @@ namespace SCIPA.UI.HMI
             */
             if (_communicator is FileCommunicator)
             {
-                var temp = (FileCommunicator) _communicator;
+                var temp = (FileCommunicator)_communicator;
                 temp.FilePath = modcomms_tFilePath.Text;
 
                 //Store this in the global variable.
@@ -768,7 +765,7 @@ namespace SCIPA.UI.HMI
 
             else if (_communicator is SerialCommunicator)
             {
-                var temp = (SerialCommunicator) _communicator;
+                var temp = (SerialCommunicator)_communicator;
                 temp.ComPort = modcomms_cbComPort.SelectedItem.ToString();
                 temp.BaudRate = Convert.ToInt32(modcomms_tBaudRate.Text);
                 temp.DataBits = Convert.ToByte(modcomms_tDataBits.Text);
@@ -781,10 +778,10 @@ namespace SCIPA.UI.HMI
 
             else if (_communicator is DatabaseCommunicator)
             {
-                var temp = (DatabaseCommunicator) _communicator;
+                var temp = (DatabaseCommunicator)_communicator;
                 temp.ConnectionString = modcomms_tConnectionString.Text;
                 temp.Query = modcomms_tQuery.Text;
-                temp.DbType = (Models.DatabaseType) modcomms_cbDatabaseType.SelectedItem;
+                temp.DbType = (Models.DatabaseType)modcomms_cbDatabaseType.SelectedItem;
 
                 //Store this in the global variable.
                 _communicator = temp;
@@ -800,9 +797,13 @@ namespace SCIPA.UI.HMI
 
         private void modcomms_bResetDate_Click(object sender, EventArgs e)
         {
-            var dt =new DateTime(1980,01,01);
+            var dt = new DateTime(1980, 01, 01);
             modcomms_tLastReadTime.Text = dt.ToString();
         }
+
+        #endregion Modify Communicator Information Page.
+
+
 
         private void add_bAddAction_Click(object sender, EventArgs e)
         {
@@ -937,7 +938,7 @@ namespace SCIPA.UI.HMI
             modrules_tSave.PerformClick();
 
             var controller = new ActionController();
-            if (controller.RetrieveActionsForRule(_rule.Id).Count()>0)
+            if (controller.RetrieveActionsForRule(_rule.Id).Any())
             {
                 //Load the values required.
 
@@ -953,6 +954,24 @@ namespace SCIPA.UI.HMI
                 _action = db.GetAction();
             }
 
+        }
+
+        private void modact_bBack_Click(object sender, EventArgs e)
+        {
+            pTabPanel.SelectedTab = pModifyDevice;
+        }
+
+        private void modact_bSave_Click(object sender, EventArgs e)
+        {
+            _action.Rule = _rule;
+            _action.RuleId = _rule.Id;
+            _action.Communicator = _communicator;
+            _action.CommunicatorId = _communicator.Id;
+            _action.OutputValue = modact_tValue.Text;
+            _action.Enabled = modact_cEnabled.Checked;
+
+            var controller = new ActionController();
+            var updated = controller.UpdateAction(_action);
         }
     }
 
