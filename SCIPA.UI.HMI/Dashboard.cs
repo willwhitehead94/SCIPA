@@ -12,11 +12,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using Microsoft.ReportingServices.Interfaces;
+using Microsoft.SqlServer.Dts.Runtime;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Inbound;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using Action = System.Action;
+using Application = System.Windows.Forms.Application;
 
 namespace SCIPA.UI.HMI
 {
@@ -1057,10 +1059,32 @@ namespace SCIPA.UI.HMI
                     reportPath = $"{reportPath}AlarmOverview";
                     break;
                 case 4:
-                    reportPath = $"{reportPath}/";
+                    string pkgLocation;
+                    Package pkg;
+                    Microsoft.SqlServer.Dts.Runtime.Application app;
+                    DTSExecResult pkgResults;
+
+                    pkgLocation =
+                        @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
+                            +@"SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
+                    app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                    pkg = app.LoadPackage(pkgLocation, null);
+                    pkgResults = pkg.Execute();
+
+                    if (pkgResults == DTSExecResult.Failure)
+                    {
+                        DebugOutput.Print("Failed to Export data to Excel");
+                        return;
+                    }
+                    else
+                    {
+                        DebugOutput.Print("Successfully exported data to Excel");
+                        return;
+                    }
+
                     break;
                 case 5:
-                    reportPath = $"{reportPath}/";
+                    reportPath = $"{ reportPath}/";
                     break;
                 default:
                     break;
