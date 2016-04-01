@@ -61,7 +61,15 @@ FROM   Rules INNER JOIN
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>AlarmOverview</Value>
+                    <Value>Alarm Overview for </Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <Color>#1c3a70</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!DeviceId.Value</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -91,7 +99,7 @@ FROM   Rules INNER JOIN
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.92in</Height>
+                  <Height>1.45463in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -104,7 +112,33 @@ FROM   Rules INNER JOIN
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!DeviceId.Value</Value>
+                                      <Value>Device Location: </Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!Location.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Custodian: </Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!Custodian.Value</Value>
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>14pt</FontSize>
@@ -115,7 +149,7 @@ FROM   Rules INNER JOIN
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>DeviceId</rd:DefaultName>
-                              <Height>0.27in</Height>
+                              <Height>0.53852in</Height>
                               <Width>5in</Width>
                               <Style>
                                 <PaddingLeft>2pt</PaddingLeft>
@@ -166,7 +200,7 @@ FROM   Rules INNER JOIN
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>1in</Width>
+                                    <Width>1.28704in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -277,7 +311,7 @@ FROM   Rules INNER JOIN
                                       </SortExpression>
                                     </SortExpressions>
                                     <TablixHeader>
-                                      <Size>1in</Size>
+                                      <Size>2.02778in</Size>
                                       <CellContents>
                                         <Textbox Name="EventTime">
                                           <CanGrow>true</CanGrow>
@@ -319,12 +353,50 @@ FROM   Rules INNER JOIN
                               <RepeatColumnHeaders>true</RepeatColumnHeaders>
                               <RepeatRowHeaders>true</RepeatRowHeaders>
                               <DataSetName>DataSet1</DataSetName>
-                              <Top>0.5in</Top>
+                              <Top>0.625in</Top>
                               <Height>0.42in</Height>
-                              <Width>2in</Width>
+                              <Width>3.31481in</Width>
                               <ZIndex>1</ZIndex>
                               <Style />
                             </Tablix>
+                            <Textbox Name="ExecutionTime">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>The values shown on this report are the Float results.</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Devices are shown Per Page.</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+                              <Top>1.20463in</Top>
+                              <Height>0.25in</Height>
+                              <Width>5in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style />
@@ -366,7 +438,7 @@ FROM   Rules INNER JOIN
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Top>0.33in</Top>
-            <Height>0.92in</Height>
+            <Height>1.45463in</Height>
             <Width>5in</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -375,7 +447,7 @@ FROM   Rules INNER JOIN
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.25in</Height>
+        <Height>1.78463in</Height>
         <Style />
       </Body>
       <Width>5in</Width>
