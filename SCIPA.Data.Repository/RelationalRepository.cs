@@ -249,6 +249,11 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(_db.Actions.FirstOrDefault(act => act.Id == id), new DOM.Action());
         }
 
+        /// <summary>
+        /// Returns all/any rules associated with a given Rule.
+        /// </summary>
+        /// <param name="ruleId"></param>
+        /// <returns></returns>
         public IEnumerable<DOM.Action> RetrieveActionsForRule(int ruleId)
         { 
             var temp = _db.Actions.Where(a => a.RuleId == ruleId);
