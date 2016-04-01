@@ -288,7 +288,10 @@ namespace SCIPA.Data.Repository
             if (dbValue == null) return null;
 
             _mapper.Map(action, dbValue);
-            _db.Entry(dbValue).State = EntityState.Modified;
+            dbValue.Communicator = null;
+            //_db.Entry(dbValue).State = EntityState.Modified;
+
+
             _db.SaveChanges();
             return _mapper.Map(dbValue, new DOM.Action());
         }

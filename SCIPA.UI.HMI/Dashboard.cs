@@ -940,7 +940,28 @@ namespace SCIPA.UI.HMI
             var controller = new ActionController();
             if (controller.RetrieveActionsForRule(_rule.Id).Any())
             {
+                //Get the actual Action.
+                var action = controller.RetrieveActionsForRule(_rule.Id).FirstOrDefault();
+                _action = action;
+
                 //Load the values required.
+                modact_cEnabled.Checked = action.Enabled;
+                modact_tValue.Text = action.OutputValue;
+                modact_tRule.Text = _rule.ToString();
+
+                //Download the required communicator
+                var commController = new CommunicatorController();
+                var comm = commController.GetAllCommunicators().FirstOrDefault(c => c.Id == action.CommunicatorId);
+
+                if (comm != null)
+                {
+                    _action.Communicator = comm;
+                    modact_tComm.Text = comm.ToString();
+                }
+                else
+                {
+                    modact_tComm.Text = "";
+                }
 
                 //Actions exist.
                 pTabPanel.SelectedTab = pModifyActions;
@@ -972,6 +993,16 @@ namespace SCIPA.UI.HMI
 
             var controller = new ActionController();
             var updated = controller.UpdateAction(_action);
+
+            if (updated == null)
+            {
+                DebugOutput.Print("Update of the Action failed!");
+            }
+            else
+            {
+                _action = updated;
+                DebugOutput.Print("Action was updated successfully.");
+            }
         }
     }
 
