@@ -180,6 +180,10 @@ namespace SCIPA.UI.HMI
             //Create action for specific rule if rule was specified.
             add_cbRule.SelectedItem = rule;
             add_cbRule.Enabled = false;
+            add_rbCommInbound.Checked = false;
+            add_rbCommInbound.Enabled = false;
+            add_rbCommOutbound.Checked = true;
+            add_rbCommOutbound.Enabled = false;
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)

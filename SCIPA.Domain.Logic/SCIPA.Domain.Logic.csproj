@@ -43,6 +43,7 @@
     <Compile Include="Controllers\ActionController.cs" />
     <Compile Include="Controllers\AlarmController.cs" />
     <Compile Include="Controllers\CommunicatorController.cs" />
+    <Compile Include="Controllers\ValueController.cs" />
     <Compile Include="DatabaseConnectionManager.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

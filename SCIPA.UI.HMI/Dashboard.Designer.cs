@@ -71,15 +71,13 @@
             this.start_lbDevice = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pStop = new System.Windows.Forms.TabPage();
+            this.stop_lbValues = new System.Windows.Forms.ListBox();
             this.stop_tLocation = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.stop_tCustodian = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.stop_tDevName = new System.Windows.Forms.TextBox();
-            this.stop_tId = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.stop_bStop = new System.Windows.Forms.Button();
             this.stop_lbDevice = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
@@ -267,6 +265,7 @@
             this.modrules_lbRules = new System.Windows.Forms.ListBox();
             this.label73 = new System.Windows.Forms.Label();
             this.pModifyActions = new System.Windows.Forms.TabPage();
+            this.modact_tComm = new System.Windows.Forms.TextBox();
             this.modact_bNewComm = new System.Windows.Forms.Button();
             this.label78 = new System.Windows.Forms.Label();
             this.modact_cEnabled = new System.Windows.Forms.CheckBox();
@@ -278,7 +277,6 @@
             this.modact_tRule = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
-            this.modact_tComm = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -412,7 +410,7 @@
             this.bStopProcess.Name = "bStopProcess";
             this.bStopProcess.Size = new System.Drawing.Size(270, 85);
             this.bStopProcess.TabIndex = 8;
-            this.bStopProcess.Text = "STOP DEVICE PROCESSES";
+            this.bStopProcess.Text = "VALUE INVESTIGATOR";
             this.bStopProcess.UseVisualStyleBackColor = false;
             this.bStopProcess.Click += new System.EventHandler(this.bStopProcess_Click);
             // 
@@ -758,15 +756,13 @@
             // 
             // pStop
             // 
+            this.pStop.Controls.Add(this.stop_lbValues);
             this.pStop.Controls.Add(this.stop_tLocation);
             this.pStop.Controls.Add(this.label33);
             this.pStop.Controls.Add(this.stop_tCustodian);
             this.pStop.Controls.Add(this.label34);
             this.pStop.Controls.Add(this.stop_tDevName);
-            this.pStop.Controls.Add(this.stop_tId);
             this.pStop.Controls.Add(this.label23);
-            this.pStop.Controls.Add(this.label24);
-            this.pStop.Controls.Add(this.stop_bStop);
             this.pStop.Controls.Add(this.stop_lbDevice);
             this.pStop.Controls.Add(this.label18);
             this.pStop.Location = new System.Drawing.Point(10, 47);
@@ -776,11 +772,23 @@
             this.pStop.Text = "StopProcess";
             this.pStop.UseVisualStyleBackColor = true;
             // 
+            // stop_lbValues
+            // 
+            this.stop_lbValues.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.stop_lbValues.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stop_lbValues.FormattingEnabled = true;
+            this.stop_lbValues.ItemHeight = 65;
+            this.stop_lbValues.Location = new System.Drawing.Point(819, 276);
+            this.stop_lbValues.Name = "stop_lbValues";
+            this.stop_lbValues.Size = new System.Drawing.Size(1091, 589);
+            this.stop_lbValues.TabIndex = 49;
+            // 
             // stop_tLocation
             // 
             this.stop_tLocation.Enabled = false;
             this.stop_tLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_tLocation.Location = new System.Drawing.Point(1099, 203);
+            this.stop_tLocation.Location = new System.Drawing.Point(1111, 141);
             this.stop_tLocation.Margin = new System.Windows.Forms.Padding(7);
             this.stop_tLocation.Name = "stop_tLocation";
             this.stop_tLocation.Size = new System.Drawing.Size(799, 55);
@@ -790,7 +798,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(800, 210);
+            this.label33.Location = new System.Drawing.Point(812, 148);
             this.label33.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(190, 48);
@@ -801,7 +809,7 @@
             // 
             this.stop_tCustodian.Enabled = false;
             this.stop_tCustodian.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_tCustodian.Location = new System.Drawing.Point(1099, 272);
+            this.stop_tCustodian.Location = new System.Drawing.Point(1111, 210);
             this.stop_tCustodian.Margin = new System.Windows.Forms.Padding(7);
             this.stop_tCustodian.Name = "stop_tCustodian";
             this.stop_tCustodian.Size = new System.Drawing.Size(799, 55);
@@ -811,7 +819,7 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(800, 279);
+            this.label34.Location = new System.Drawing.Point(812, 217);
             this.label34.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(220, 48);
@@ -822,55 +830,22 @@
             // 
             this.stop_tDevName.Enabled = false;
             this.stop_tDevName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_tDevName.Location = new System.Drawing.Point(1099, 134);
+            this.stop_tDevName.Location = new System.Drawing.Point(1111, 72);
             this.stop_tDevName.Margin = new System.Windows.Forms.Padding(7);
             this.stop_tDevName.Name = "stop_tDevName";
             this.stop_tDevName.Size = new System.Drawing.Size(799, 55);
             this.stop_tDevName.TabIndex = 44;
             // 
-            // stop_tId
-            // 
-            this.stop_tId.Enabled = false;
-            this.stop_tId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_tId.Location = new System.Drawing.Point(1099, 65);
-            this.stop_tId.Margin = new System.Windows.Forms.Padding(7);
-            this.stop_tId.Name = "stop_tId";
-            this.stop_tId.Size = new System.Drawing.Size(799, 55);
-            this.stop_tId.TabIndex = 43;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(800, 141);
+            this.label23.Location = new System.Drawing.Point(812, 79);
             this.label23.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(282, 48);
             this.label23.TabIndex = 42;
             this.label23.Text = "Device Name:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(800, 72);
-            this.label24.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(233, 48);
-            this.label24.TabIndex = 41;
-            this.label24.Text = "ID Number:";
-            // 
-            // stop_bStop
-            // 
-            this.stop_bStop.Enabled = false;
-            this.stop_bStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stop_bStop.Location = new System.Drawing.Point(876, 393);
-            this.stop_bStop.Margin = new System.Windows.Forms.Padding(7);
-            this.stop_bStop.Name = "stop_bStop";
-            this.stop_bStop.Size = new System.Drawing.Size(960, 128);
-            this.stop_bStop.TabIndex = 40;
-            this.stop_bStop.Text = "Stop Selected Device";
-            this.stop_bStop.UseVisualStyleBackColor = true;
             // 
             // stop_lbDevice
             // 
@@ -901,9 +876,9 @@
             this.label18.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label18.Location = new System.Drawing.Point(6, 2);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(729, 51);
+            this.label18.Size = new System.Drawing.Size(393, 51);
             this.label18.TabIndex = 4;
-            this.label18.Text = "Stop Process Monitoring by Device";
+            this.label18.Text = "Value Investigator";
             // 
             // pAddNewDevice
             // 
@@ -3014,6 +2989,15 @@
             this.pModifyActions.Text = "ModifyActions";
             this.pModifyActions.UseVisualStyleBackColor = true;
             // 
+            // modact_tComm
+            // 
+            this.modact_tComm.Enabled = false;
+            this.modact_tComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modact_tComm.Location = new System.Drawing.Point(835, 244);
+            this.modact_tComm.Name = "modact_tComm";
+            this.modact_tComm.Size = new System.Drawing.Size(530, 55);
+            this.modact_tComm.TabIndex = 72;
+            // 
             // modact_bNewComm
             // 
             this.modact_bNewComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -3128,15 +3112,6 @@
             this.label82.Size = new System.Drawing.Size(306, 51);
             this.label82.TabIndex = 60;
             this.label82.Text = "Modify Action";
-            // 
-            // modact_tComm
-            // 
-            this.modact_tComm.Enabled = false;
-            this.modact_tComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.modact_tComm.Location = new System.Drawing.Point(835, 244);
-            this.modact_tComm.Name = "modact_tComm";
-            this.modact_tComm.Size = new System.Drawing.Size(530, 55);
-            this.modact_tComm.TabIndex = 72;
             // 
             // Dashboard
             // 
@@ -3301,10 +3276,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox stop_tDevName;
-        private System.Windows.Forms.TextBox stop_tId;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button stop_bStop;
         private System.Windows.Forms.ListBox stop_lbDevice;
         private Microsoft.Reporting.WinForms.ReportViewer report_rvReportViewer;
         private System.Windows.Forms.ListBox report_lbReports;
@@ -3469,6 +3441,7 @@
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Button modact_bNewComm;
         private System.Windows.Forms.TextBox modact_tComm;
+        private System.Windows.Forms.ListBox stop_lbValues;
     }
 }
 

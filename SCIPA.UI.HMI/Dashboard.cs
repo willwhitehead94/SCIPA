@@ -231,7 +231,8 @@ namespace SCIPA.UI.HMI
 
             //Populate appropriate objects/fields.
             stop_lbDevice.Items.Clear();
-            foreach (var dev in DeviceController.GetActiveDevices())
+            var controller = new DeviceController();
+            foreach (var dev in controller.GetAllDevices())
             {
                 stop_lbDevice.Items.Add(dev);
             }
@@ -376,12 +377,25 @@ namespace SCIPA.UI.HMI
 
         private void stop_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedDevice = (Device) start_lbDevice.SelectedItem;
-            stop_tId.Text = selectedDevice.Id.ToString();
+            var selectedDevice = (Device) stop_lbDevice.SelectedItem;
+            //stop_tId.Text = selectedDevice.Id.ToString(); //Removed.
             stop_tDevName.Text = selectedDevice.Name;
             stop_tLocation.Text = selectedDevice.Location;
             stop_tCustodian.Text = selectedDevice.Custodian;
-            stop_bStop.Enabled = selectedDevice.Enabled;
+
+            //Load the values from MongoDb
+            var max = 10000; //Max number of records to display
+            var controller = new ValueController();
+            stop_lbValues.Items.Clear();
+
+            //Only add upto the first 'max' values.
+            var allValues = controller.GetValuesForDevice(selectedDevice);
+
+            if (allValues != null && allValues.Any())
+            {
+                var vals = allValues.Take(max).ToArray();
+                stop_lbValues.Items.AddRange(vals);
+            }
 
             //Allow global access
             _selectedDevice = selectedDevice;
@@ -973,6 +987,7 @@ namespace SCIPA.UI.HMI
                 db.ShowDialog();
 
                 _action = db.GetAction();
+                DebugOutput.Print("Changes made in the Data Manager are saved.");
             }
 
         }

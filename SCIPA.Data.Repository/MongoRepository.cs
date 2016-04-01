@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using DOM = SCIPA.Models;
 using MON = SCIPA.Data.MongoLayer;
 
@@ -89,5 +91,27 @@ namespace SCIPA.Data.Repository
         {
             _controller.AddNewValue(_mapper.Map(value, new MON.Value()));
         }
+
+        public ICollection<DOM.Value> GetAllValuesForDevice(int deviceId)
+        {
+            var result  = _controller.GetAllProcessValuesForDevice(deviceId);
+
+            return result != null || result.Any() ? result.Select(dbVal => ConvertMONToDOMValues(dbVal)).ToList() : new List<DOM.Value>();
+        }
+
+        private DOM.Value ConvertMONToDOMValues(MON.Value dbVal)
+        {
+            return new DOM.Value()
+            {
+                Id = dbVal.ValueId,
+                BooleanValue = dbVal.BooleanValue,
+                FloatValue = dbVal.FloatValue,
+                IntegerValue = dbVal.IntegerValue,
+                StringValue = dbVal.StringValue,
+                Inbound = dbVal.Inbound,
+                EventTime = dbVal.EventTime
+            };
+        }
+
     }
 }

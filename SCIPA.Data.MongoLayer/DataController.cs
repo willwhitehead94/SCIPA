@@ -218,5 +218,19 @@ namespace SCIPA.Data.MongoLayer
                         new UpdateOptions { IsUpsert = true }
                     );
         }
+
+        public ICollection<Value> GetAllProcessValuesForDevice(int deviceId)
+        {
+            if (!_mongoAccessible) return null;
+
+            var collection = _db.GetCollection<Process>("ProcessData");
+            var filter = Builders<Process>.Filter.Eq("DeviceId", deviceId);
+            var result = collection.Find(filter).ToList();
+
+            if (result.Any())
+                return result[0].Values.ToList();
+
+            return null;
+        } 
     }
 }
