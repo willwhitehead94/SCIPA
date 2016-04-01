@@ -73,7 +73,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>DeviceValuesReport</Value>
+                    <Value>Device Values Report</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -794,8 +794,37 @@
               <FontSize>14pt</FontSize>
             </Style>
           </Tablix>
+          <Textbox Name="Language">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Devices are shown Per Page. Inbound and Outbound values are seperated.</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Language</rd:DefaultName>
+            <Top>1.96519in</Top>
+            <Height>0.25in</Height>
+            <Width>5in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>1.48in</Height>
+        <Height>2.21519in</Height>
         <Style />
       </Body>
       <Width>5in</Width>

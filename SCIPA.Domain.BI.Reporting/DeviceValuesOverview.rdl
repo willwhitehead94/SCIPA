@@ -163,9 +163,52 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                   </TextRuns>
                                   <Style />
                                 </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Location.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Custodian.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Enabled: </Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>=Fields!Enabled.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>14pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Name</rd:DefaultName>
-                              <Height>0.27in</Height>
+                              <Height>1.07556in</Height>
                               <Width>7in</Width>
                               <Style>
                                 <PaddingLeft>2pt</PaddingLeft>
@@ -189,33 +232,6 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                         <CellContents>
                                           <Rectangle Name="List2_Contents">
                                             <ReportItems>
-                                              <Textbox Name="Location">
-                                                <CanGrow>true</CanGrow>
-                                                <KeepTogether>true</KeepTogether>
-                                                <Paragraphs>
-                                                  <Paragraph>
-                                                    <TextRuns>
-                                                      <TextRun>
-                                                        <Value>=Fields!Location.Value</Value>
-                                                        <Style>
-                                                          <FontFamily>Tahoma</FontFamily>
-                                                          <FontSize>12pt</FontSize>
-                                                        </Style>
-                                                      </TextRun>
-                                                    </TextRuns>
-                                                    <Style />
-                                                  </Paragraph>
-                                                </Paragraphs>
-                                                <rd:DefaultName>Location</rd:DefaultName>
-                                                <Height>0.24in</Height>
-                                                <Width>7in</Width>
-                                                <Style>
-                                                  <PaddingLeft>2pt</PaddingLeft>
-                                                  <PaddingRight>2pt</PaddingRight>
-                                                  <PaddingTop>2pt</PaddingTop>
-                                                  <PaddingBottom>2pt</PaddingBottom>
-                                                </Style>
-                                              </Textbox>
                                               <Tablix Name="List3">
                                                 <TablixBody>
                                                   <TablixColumns>
@@ -231,32 +247,6 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                                           <CellContents>
                                                             <Rectangle Name="List3_Contents">
                                                               <ReportItems>
-                                                                <Textbox Name="Custodian">
-                                                                  <CanGrow>true</CanGrow>
-                                                                  <KeepTogether>true</KeepTogether>
-                                                                  <Paragraphs>
-                                                                    <Paragraph>
-                                                                      <TextRuns>
-                                                                        <TextRun>
-                                                                          <Value>=Fields!Custodian.Value</Value>
-                                                                          <Style>
-                                                                            <FontFamily>Tahoma</FontFamily>
-                                                                          </Style>
-                                                                        </TextRun>
-                                                                      </TextRuns>
-                                                                      <Style />
-                                                                    </Paragraph>
-                                                                  </Paragraphs>
-                                                                  <rd:DefaultName>Custodian</rd:DefaultName>
-                                                                  <Height>0.21in</Height>
-                                                                  <Width>7in</Width>
-                                                                  <Style>
-                                                                    <PaddingLeft>2pt</PaddingLeft>
-                                                                    <PaddingRight>2pt</PaddingRight>
-                                                                    <PaddingTop>2pt</PaddingTop>
-                                                                    <PaddingBottom>2pt</PaddingBottom>
-                                                                  </Style>
-                                                                </Textbox>
                                                                 <Tablix Name="List4">
                                                                   <TablixBody>
                                                                     <TablixColumns>
@@ -272,32 +262,6 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                                                             <CellContents>
                                                                               <Rectangle Name="List4_Contents">
                                                                                 <ReportItems>
-                                                                                  <Textbox Name="Enabled">
-                                                                                    <CanGrow>true</CanGrow>
-                                                                                    <KeepTogether>true</KeepTogether>
-                                                                                    <Paragraphs>
-                                                                                      <Paragraph>
-                                                                                        <TextRuns>
-                                                                                          <TextRun>
-                                                                                            <Value>=Fields!Enabled.Value</Value>
-                                                                                            <Style>
-                                                                                              <FontFamily>Tahoma</FontFamily>
-                                                                                            </Style>
-                                                                                          </TextRun>
-                                                                                        </TextRuns>
-                                                                                        <Style />
-                                                                                      </Paragraph>
-                                                                                    </Paragraphs>
-                                                                                    <rd:DefaultName>Enabled</rd:DefaultName>
-                                                                                    <Height>0.21in</Height>
-                                                                                    <Width>7in</Width>
-                                                                                    <Style>
-                                                                                      <PaddingLeft>2pt</PaddingLeft>
-                                                                                      <PaddingRight>2pt</PaddingRight>
-                                                                                      <PaddingTop>2pt</PaddingTop>
-                                                                                      <PaddingBottom>2pt</PaddingBottom>
-                                                                                    </Style>
-                                                                                  </Textbox>
                                                                                   <Tablix Name="matrix1">
                                                                                     <TablixCorner>
                                                                                       <TablixCornerRows>
@@ -862,10 +826,8 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                                                                     <RepeatColumnHeaders>true</RepeatColumnHeaders>
                                                                                     <RepeatRowHeaders>true</RepeatRowHeaders>
                                                                                     <DataSetName>DataSet1</DataSetName>
-                                                                                    <Top>0.5in</Top>
                                                                                     <Height>0.63in</Height>
                                                                                     <Width>7in</Width>
-                                                                                    <ZIndex>1</ZIndex>
                                                                                     <Style />
                                                                                   </Tablix>
                                                                                 </ReportItems>
@@ -911,7 +873,6 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                                                   <Top>0.5in</Top>
                                                                   <Height>1.13in</Height>
                                                                   <Width>7in</Width>
-                                                                  <ZIndex>1</ZIndex>
                                                                   <Style>
                                                                     <FontFamily>Tahoma</FontFamily>
                                                                   </Style>
@@ -959,7 +920,6 @@ WHERE  ([Values].DeviceId = @DevId) AND ([Values].EventTime BETWEEN @StartDate A
                                                 <Top>0.5in</Top>
                                                 <Height>1.63in</Height>
                                                 <Width>7in</Width>
-                                                <ZIndex>1</ZIndex>
                                                 <Style>
                                                   <FontFamily>Tahoma</FontFamily>
                                                 </Style>

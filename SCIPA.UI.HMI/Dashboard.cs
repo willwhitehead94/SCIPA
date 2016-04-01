@@ -1054,7 +1054,7 @@ namespace SCIPA.UI.HMI
                     reportPath = $"{reportPath}ValuesOverTime";
                     break;
                 case 3:
-                    reportPath = $"{reportPath}";
+                    reportPath = $"{reportPath}AlarmOverview";
                     break;
                 case 4:
                     reportPath = $"{reportPath}/";

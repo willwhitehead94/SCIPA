@@ -1360,7 +1360,8 @@
             this.report_lbReports.Items.AddRange(new object[] {
             "Values by Device Overview",
             "Values by Device Report",
-            "Device Values Over Time"});
+            "Device Values Over Time",
+            "Alarm Report"});
             this.report_lbReports.Location = new System.Drawing.Point(53, 72);
             this.report_lbReports.Name = "report_lbReports";
             this.report_lbReports.Size = new System.Drawing.Size(713, 784);
