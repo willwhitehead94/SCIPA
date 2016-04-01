@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ExportDeviceValuesToExcel"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{DE6EF7B8-249F-4C38-B7A0-B9F2BAE2201D}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{D63E807A-4DDF-41BF-9F8A-E482FCE5A2E1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -246,7 +246,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">Export$</property>
+                  name="OpenRowset">Excel_Destination</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -424,10 +424,6 @@
                       refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventDate]"
                       dataType="date"
                       name="EventDate" />
-                    <externalMetadataColumn
-                      refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventTime]"
-                      dataType="date"
-                      name="EventTime" />
                     <externalMetadataColumn
                       refId="Package\Export To Excel Data Flow\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[EventTimestamp]"
                       dataType="date"
@@ -1158,81 +1154,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163.111111111112,41.7777777777778"
-          Id="Package\Export To Excel Data Flow\Value Information"
-          TopLeft="208.333325054911,18.6615587235253" />
-        <NodeLayout
           Size="159.111111111112,41.7777777777778"
           Id="Package\Export To Excel Data Flow\Excel Destination"
           TopLeft="98.4567862111356,244.061310708027" />
+        <NodeLayout
+          Size="163.111111111112,41.7777777777778"
+          Id="Package\Export To Excel Data Flow\Value Information"
+          TopLeft="208.333325054911,18.6615587235253" />
         <NodeLayout
           Size="161.333333333334,41.7777777777778"
           Id="Package\Export To Excel Data Flow\Split Date &amp; Time"
           TopLeft="277.296287591075,132.306517439359" />
         <NodeLayout
-          Size="120.444444444445,41.7777777777778"
-          Id="Package\Export To Excel Data Flow\Union All"
-          TopLeft="125.617278959035,132.490425812929" />
-        <NodeLayout
           Size="168.444444444445,41.7777777777778"
           Id="Package\Export To Excel Data Flow\Device Information"
           TopLeft="26.481480429202,16.5363990112378" />
-        <EdgeLayout
-          Id="Package\Export To Excel Data Flow.Paths[OLE DB Source Output]"
-          TopLeft="110.703702651424,58.3141767890155">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="75.1357985298331,74.1762490239134"
-              Start="0,0"
-              End="75.1357985298331,66.6762490239134">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.0881245119567" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.0881245119567"
-                    Point2="0,37.0881245119567"
-                    Point3="4,37.0881245119567" />
-                  <mssgle:LineSegment
-                    End="71.1357985298331,37.0881245119567" />
-                  <mssgle:CubicBezierSegment
-                    Point1="71.1357985298331,37.0881245119567"
-                    Point2="75.1357985298331,37.0881245119567"
-                    Point3="75.1357985298331,41.0881245119567" />
-                  <mssgle:LineSegment
-                    End="75.1357985298331,66.6762490239134" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
-          TopLeft="277.296287591075,153.287360515033">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-31.2345641875957,0"
-              Start="0,0"
-              End="-23.7345641875957,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-23.7345641875957,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="120.444444444445,41.7777777777778"
+          Id="Package\Export To Excel Data Flow\Union All"
+          TopLeft="125.617278959035,132.490425812929" />
         <EdgeLayout
           Id="Package\Export To Excel Data Flow.Paths[Union All Output 1]"
           TopLeft="181.925921473974,174.268203590707">
@@ -1289,11 +1229,67 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To Excel Data Flow.Paths[OLE DB Source Output]"
+          TopLeft="110.703702651424,58.3141767890155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.1357985298331,74.1762490239134"
+              Start="0,0"
+              End="75.1357985298331,66.6762490239134">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0881245119567" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0881245119567"
+                    Point2="0,37.0881245119567"
+                    Point3="4,37.0881245119567" />
+                  <mssgle:LineSegment
+                    End="71.1357985298331,37.0881245119567" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.1357985298331,37.0881245119567"
+                    Point2="75.1357985298331,37.0881245119567"
+                    Point3="75.1357985298331,41.0881245119567" />
+                  <mssgle:LineSegment
+                    End="75.1357985298331,66.6762490239134" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
+          TopLeft="277.296287591075,153.287360515033">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.2345641875957,0"
+              Start="0,0"
+              End="-23.7345641875957,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-23.7345641875957,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Export To Excel Data Flow\Value Information">
+    design-time-name="Package\Export To Excel Data Flow\Excel Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1306,7 +1302,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Export To Excel Data Flow\Excel Destination">
+    design-time-name="Package\Export To Excel Data Flow\Value Information">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
