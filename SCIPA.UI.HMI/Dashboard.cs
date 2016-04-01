@@ -937,7 +937,7 @@ namespace SCIPA.UI.HMI
             modrules_tSave.PerformClick();
 
             var controller = new ActionController();
-            if (controller.RetrieveActionsForRule(_rule.Id).Any())
+            if (controller.RetrieveActionsForRule(_rule.Id).Count()>0)
             {
                 //Load the values required.
 

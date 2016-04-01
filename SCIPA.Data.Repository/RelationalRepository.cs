@@ -92,10 +92,7 @@ namespace SCIPA.Data.Repository
 
 
                 // Data to Domain Converstions
-                cfg.CreateMap<DAL.Action, DOM.Action>()
-    .ForMember(m => m.Id, opt => opt.Ignore())
-    .ForMember(m => m.Rule, opt => opt.Ignore())
-    .ForMember(m => m.Communicator, opt => opt.Ignore());
+                cfg.CreateMap<DAL.Action, DOM.Action>();
 
                 cfg.CreateMap<DAL.Alarm, DOM.Alarm>()
                     .ForMember(m => m.Id, opt => opt.Ignore());
@@ -253,7 +250,16 @@ namespace SCIPA.Data.Repository
         }
 
         public IEnumerable<DOM.Action> RetrieveActionsForRule(int ruleId)
-        {
+        { 
+            var temp = _db.Actions.Where(a => a.RuleId == ruleId);
+            List<DOM.Action> returnList = new List<DOM.Action>();
+            foreach (var act in temp)
+            {
+                returnList.Add(_mapper.Map(act, new DOM.Action()));
+            }
+
+            return returnList;
+
             return _db.Actions.Where(a => a.RuleId == ruleId).Select(a => _mapper.Map(a, new DOM.Action()));
         } 
 
