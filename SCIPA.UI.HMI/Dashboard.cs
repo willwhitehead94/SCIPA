@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using Microsoft.ReportingServices.Interfaces;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Inbound;
 using SCIPA.Domain.Logic;
 using SCIPA.Models;
 using Action = System.Action;
-using Application = System.Windows.Forms.Application;
 
 namespace SCIPA.UI.HMI
 {
@@ -1051,20 +1057,10 @@ namespace SCIPA.UI.HMI
                     reportPath = $"{reportPath}AlarmOverview";
                     break;
                 case 4:
-                    string pkgLocation;
-                    Package pkg;
-                    Application app;
-                    DTSExecResult pkgResults;
-
-                    pkgLocation =
-                        @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
-                    app = new Application();
-                    pkg = app.LoadPackage(pkgLocation, null);
-                    pkgResults = pkg.Execute();
-
+                    reportPath = $"{reportPath}/";
                     break;
                 case 5:
-                    reportPath = $"{ reportPath}/";
+                    reportPath = $"{reportPath}/";
                     break;
                 default:
                     break;
