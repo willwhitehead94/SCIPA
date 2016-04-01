@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using Microsoft.ReportingServices.Interfaces;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Inbound;
 using SCIPA.Domain.Logic;
@@ -1029,6 +1031,46 @@ namespace SCIPA.UI.HMI
         private void alarm_bRule_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.MessageBox.Show(_rule.ToString(), "SCIPA");
+        }
+
+        private void report_lbReports_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Report server URL is the current machine (localhost)
+            report_rvReportViewer.ServerReport.ReportServerUrl = new System.Uri("http://localhost/reportserver");
+
+            //All reports are deployed as part of SCIPA, and as such, reports follow
+            //the namespacing conventions.
+            var reportPath = "/SCIPA.Domain.BI.Reporting/";
+
+            switch (report_lbReports.SelectedIndex)
+            {
+                case 0:
+                    reportPath = $"{reportPath}DeviceValuesOverview";
+                    break;
+                case 1:
+                    reportPath = "/SCIPA.Domain.BI.Reporting/DeviceValuesReport";
+                    break;
+                case 3:
+                    reportPath = "";
+                    break;
+                case 4:
+                    reportPath = "";
+                    break;
+                case 5:
+                    reportPath = "";
+                    break;
+            }
+
+            //Set the desired report.
+            report_rvReportViewer.ServerReport.ReportPath = reportPath;
+
+
+            //Load the desired report.
+            report_rvReportViewer.RefreshReport();
+           // report_rvReportViewer.Refresh();
+            
+
+
         }
     }
 

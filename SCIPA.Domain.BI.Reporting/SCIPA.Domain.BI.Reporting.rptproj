@@ -13,12 +13,12 @@
       <FullPath>AlarmData.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>DeviceData.rsd</Name>
-      <FullPath>DeviceData.rsd</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>DatabaseCommunicatorData.rsd</Name>
       <FullPath>DatabaseCommunicatorData.rsd</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DeviceData.rsd</Name>
+      <FullPath>DeviceData.rsd</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>FileCommunicatorData.rsd</Name>
@@ -46,7 +46,7 @@
       <Options>
         <OutputPath>bin\Debug</OutputPath>
         <TargetServerVersion>SSRS2008R2</TargetServerVersion>
-        <TargetServerURL>http://desktop-81sm1a6/MSSQLSERVER</TargetServerURL>
+        <TargetServerURL>http://desktop-81sm1a6/ReportServer</TargetServerURL>
         <TargetFolder>SCIPA.Domain.BI.Reporting</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
         <TargetDatasetFolder>Datasets</TargetDatasetFolder>

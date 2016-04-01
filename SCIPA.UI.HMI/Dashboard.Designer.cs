@@ -1343,9 +1343,10 @@
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.AlarmsBindingSource;
             this.report_rvReportViewer.LocalReport.DataSources.Add(reportDataSource1);
-            this.report_rvReportViewer.LocalReport.ReportEmbeddedResource = "SCIPA.UI.HMI.Report1.rdlc";
             this.report_rvReportViewer.Location = new System.Drawing.Point(772, 72);
             this.report_rvReportViewer.Name = "report_rvReportViewer";
+            this.report_rvReportViewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
+            this.report_rvReportViewer.ServerReport.ReportPath = "/SCIPA.Domain.BI.Reporting/DeviceValuesOverview";
             this.report_rvReportViewer.Size = new System.Drawing.Size(1154, 784);
             this.report_rvReportViewer.TabIndex = 41;
             // 
@@ -1357,18 +1358,13 @@
             this.report_lbReports.FormattingEnabled = true;
             this.report_lbReports.ItemHeight = 65;
             this.report_lbReports.Items.AddRange(new object[] {
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device",
-            "Device"});
+            "Values by Device (Plain)",
+            "Values by Device (Graph)"});
             this.report_lbReports.Location = new System.Drawing.Point(53, 72);
             this.report_lbReports.Name = "report_lbReports";
             this.report_lbReports.Size = new System.Drawing.Size(713, 784);
             this.report_lbReports.TabIndex = 40;
+            this.report_lbReports.SelectedIndexChanged += new System.EventHandler(this.report_lbReports_SelectedIndexChanged);
             // 
             // label15
             // 
