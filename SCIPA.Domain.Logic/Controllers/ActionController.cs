@@ -34,7 +34,7 @@ namespace SCIPA.Domain.Logic
 
         public IEnumerable<Action> RetrieveActionsForRule(int ruleId)
         {
-            return _repo.RetrieveActionsForDevice(deviceId);
+            return _repo.RetrieveActionsForRule(ruleId);
         } 
 
 

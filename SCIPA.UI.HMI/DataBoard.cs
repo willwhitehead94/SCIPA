@@ -178,6 +178,8 @@ namespace SCIPA.UI.HMI
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            add_tcInnerPages = new CustomTabControl();
+
             var specalism = (CommunicatorType) add_cbCommType.SelectedItem;
             switch (specalism)
             {
@@ -220,7 +222,7 @@ namespace SCIPA.UI.HMI
             var ruleController = new ActionController();
 
 
-            add_cbCommunicatorDestination.SelectedItem = ruleController.
+            //add_cbCommunicatorDestination.SelectedItem = ruleController.RetrieveActionsForRule()
         }
     }
 }
