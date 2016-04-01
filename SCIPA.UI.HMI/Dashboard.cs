@@ -1059,29 +1059,37 @@ namespace SCIPA.UI.HMI
                     reportPath = $"{reportPath}AlarmOverview";
                     break;
                 case 4:
-                    string pkgLocation;
-                    Package pkg;
-                    Microsoft.SqlServer.Dts.Runtime.Application app;
-                    DTSExecResult pkgResults;
+                    //Case 4 is the Excel Export SSIS package.
 
-                    pkgLocation =
-                        @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
-                            +@"SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
-                    app = new Microsoft.SqlServer.Dts.Runtime.Application();
-                    pkg = app.LoadPackage(pkgLocation, null);
-                    pkgResults = pkg.Execute();
+                    //Ensure the file is there
+                    if (!System.IO.File.Exists(@"C:\Users\Will Whitehead\Desktop\Output.xls"))
+                    {
+                        //File doesnt exist - the blank template must exist.
+                        System.Windows.Forms.MessageBox.Show("You do not have the blank template available. Aborting...");
+                    }
 
-                    if (pkgResults == DTSExecResult.Failure)
+                    //Location of the SSIS Package.
+                    const string packageLocation = @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
+                                                   +@"SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
+                    var app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                    var package = app.LoadPackage(packageLocation, null);
+                    var packageResult = package.Execute();
+
+                    //Inform users of success/fail of package.
+                    if (packageResult == DTSExecResult.Failure)
                     {
                         DebugOutput.Print("Failed to Export data to Excel");
+                        System.Windows.Forms.MessageBox.Show("The export process failed. Aborted.");
                         return;
                     }
                     else
                     {
                         DebugOutput.Print("Successfully exported data to Excel");
+                        System.Windows.Forms.MessageBox.Show("The file on your desktop successfully updated.");
                         return;
                     }
 
+                    //Return to ensure that the report viewer doesn't refresh blankly.
                     break;
                 case 5:
                     reportPath = $"{ reportPath}/";
