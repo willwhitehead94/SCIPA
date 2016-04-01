@@ -16,5 +16,10 @@ namespace SCIPA.Models
         public decimal FloatValue { get; set; }
         public bool BooleanValue { get; set; }
         public string StringValue { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id.ToString("####")} [{EventTime}] {StringValue}";
+        }
     }
 }

@@ -96,7 +96,7 @@ namespace SCIPA.Data.Repository
         {
             var result  = _controller.GetAllProcessValuesForDevice(deviceId);
 
-            return result != null || result.Any() ? result.Select(dbVal => ConvertMONToDOMValues(dbVal)).ToList() : new List<DOM.Value>();
+            return result != null && result.Any() ? result.Select(dbVal => ConvertMONToDOMValues(dbVal)).ToList() : new List<DOM.Value>();
         }
 
         private DOM.Value ConvertMONToDOMValues(MON.Value dbVal)
