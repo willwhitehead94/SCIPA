@@ -184,7 +184,7 @@ namespace SCIPA.UI.HMI
                 this.Invoke(new Action(() => bAlarms.BackColor = standardColor));
 
             //Process Running (dependent on Process State)
-            if (_activeAlarmCount > 0)
+            if (DeviceController.GetActiveDevices().Count == 0)
                 this.Invoke(bStartProcess.BackColor == allOkayDark
                     ? new Action(() => bStartProcess.BackColor = allOkayLight)
                     : new Action(() => bStartProcess.BackColor = allOkayDark));
@@ -956,8 +956,14 @@ namespace SCIPA.UI.HMI
 
         private void alarm_lbAlarms_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Resetting the form.
             alarm_bRule.Enabled = false;
             alarm_bDevice.Enabled = false;
+            alarm_tDateTime.Text = "";
+            alarm_rbTrue.Checked = false;
+            alarm_rbFalse.Checked = false;
+            alarm_tValue.Text = "";
+            alarm_tDevice.Text = "";
 
             try
             {
@@ -972,6 +978,7 @@ namespace SCIPA.UI.HMI
                 {
                     var controller = new ValueController();
                     _value = controller.GetValueById(selected.ValueId);
+                    selected.Value = _value;
                     alarm_tValue.Text = selected.Value.StringValue;
                 }
 
@@ -988,7 +995,9 @@ namespace SCIPA.UI.HMI
                 {
                     var controller = new DeviceController();
                     _selectedDevice = controller.RetrieveDevice(selected.DeviceId);
+                    selected.Device = _selectedDevice;
                     alarm_tDevice.Text = _selectedDevice.ToString();
+                    alarm_bDevice.Enabled = true;
                 }
             }
             catch

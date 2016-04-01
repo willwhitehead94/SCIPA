@@ -15,7 +15,8 @@
 
         public override string ToString()
         {
-            return $"{Id}: Device #{DeviceId.ToString("####")} at {TimeStamp}";
+            var active = Accepted ? "(Acknowledged)" : "(Active)";
+            return $"{Id}: {TimeStamp} {active}";
         }
     }
 }
