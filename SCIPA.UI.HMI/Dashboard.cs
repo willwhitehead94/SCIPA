@@ -394,7 +394,7 @@ namespace SCIPA.UI.HMI
             if (allValues != null && allValues.Any())
             {
                 var vals = allValues.Take(max).ToArray();
-                stop_lbValues.Items.AddRange(vals);
+                stop_lbValues.Items.AddRange(vals.OrderByDescending(v=>v.EventTime).ToArray());
             }
 
             //Allow global access
@@ -603,7 +603,17 @@ namespace SCIPA.UI.HMI
 
         private void alarm_cbPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var hours = Convert.ToInt32(alarm_cbPeriod.SelectedItem);
 
+            var controller = new AlarmController();
+            var alarmList = controller.GetAllAlarms(hours);
+
+            alarm_lbAlarms.Items.Clear();
+
+            if (alarmList != null && alarmList.Any())
+            {
+                alarm_lbAlarms.Items.AddRange(alarmList.OrderByDescending(a=>a.TimeStamp).ToArray());
+            }
         }
 
         #region Modify Device Page
@@ -1018,6 +1028,22 @@ namespace SCIPA.UI.HMI
                 _action = updated;
                 DebugOutput.Print("Action was updated successfully.");
             }
+        }
+
+        private void modify_bActions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alarm_lbAlarms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (Alarm) alarm_lbAlarms.SelectedItem;
+
+            alarm_tDateTime.Text = selected.TimeStamp.ToString();
+            alarm_tDevice.Text = selected.Device.ToString();
+            alarm_tValue.Text = selected.Value.StringValue;
+            alarm_rbTrue.Checked = selected.Accepted;
+            alarm_rbFalse.Checked = !selected.Accepted;
         }
     }
 

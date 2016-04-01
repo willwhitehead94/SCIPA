@@ -637,7 +637,15 @@ namespace SCIPA.Data.Repository
         /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
         {
-            throw new NotImplementedException();
+            var alarms = _db.Alarms;
+
+            List<DOM.Alarm> allAlarms= new List<DOM.Alarm>();
+            foreach (var alarm in alarms)
+            {
+                allAlarms.Add(_mapper.Map(alarm, new DOM.Alarm()));
+            }
+
+            return allAlarms;
         }
 
         /// <summary>

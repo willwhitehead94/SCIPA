@@ -163,7 +163,6 @@
             this.lId = new System.Windows.Forms.Label();
             this.lHeader_Add = new System.Windows.Forms.Label();
             this.pModifyDevice = new System.Windows.Forms.TabPage();
-            this.modify_bActions = new System.Windows.Forms.Button();
             this.modify_bRules = new System.Windows.Forms.Button();
             this.modify_bComms = new System.Windows.Forms.Button();
             this.modify_bClear = new System.Windows.Forms.Button();
@@ -277,6 +276,7 @@
             this.modact_tRule = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -1795,7 +1795,6 @@
             // 
             // pModifyDevice
             // 
-            this.pModifyDevice.Controls.Add(this.modify_bActions);
             this.pModifyDevice.Controls.Add(this.modify_bRules);
             this.pModifyDevice.Controls.Add(this.modify_bComms);
             this.pModifyDevice.Controls.Add(this.modify_bClear);
@@ -1820,24 +1819,13 @@
             this.pModifyDevice.Text = "ModifyDevice";
             this.pModifyDevice.UseVisualStyleBackColor = true;
             // 
-            // modify_bActions
-            // 
-            this.modify_bActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modify_bActions.Location = new System.Drawing.Point(1569, 431);
-            this.modify_bActions.Margin = new System.Windows.Forms.Padding(7);
-            this.modify_bActions.Name = "modify_bActions";
-            this.modify_bActions.Size = new System.Drawing.Size(316, 85);
-            this.modify_bActions.TabIndex = 47;
-            this.modify_bActions.Text = "Modify Actions";
-            this.modify_bActions.UseVisualStyleBackColor = true;
-            // 
             // modify_bRules
             // 
             this.modify_bRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modify_bRules.Location = new System.Drawing.Point(1273, 431);
+            this.modify_bRules.Location = new System.Drawing.Point(1371, 443);
             this.modify_bRules.Margin = new System.Windows.Forms.Padding(7);
             this.modify_bRules.Name = "modify_bRules";
-            this.modify_bRules.Size = new System.Drawing.Size(282, 85);
+            this.modify_bRules.Size = new System.Drawing.Size(460, 85);
             this.modify_bRules.TabIndex = 46;
             this.modify_bRules.Text = "Modify Rules";
             this.modify_bRules.UseVisualStyleBackColor = true;
@@ -1846,7 +1834,7 @@
             // modify_bComms
             // 
             this.modify_bComms.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modify_bComms.Location = new System.Drawing.Point(800, 431);
+            this.modify_bComms.Location = new System.Drawing.Point(887, 443);
             this.modify_bComms.Margin = new System.Windows.Forms.Padding(7);
             this.modify_bComms.Name = "modify_bComms";
             this.modify_bComms.Size = new System.Drawing.Size(460, 85);
@@ -2144,6 +2132,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.alarm_cbPeriod);
             this.groupBox1.Location = new System.Drawing.Point(788, 72);
@@ -2169,14 +2158,15 @@
             this.alarm_cbPeriod.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarm_cbPeriod.FormattingEnabled = true;
             this.alarm_cbPeriod.Items.AddRange(new object[] {
-            "1 hour",
-            "2 hours",
-            "6 hours",
-            "24 hours",
-            "72 hours"});
+            "1",
+            "2",
+            "6",
+            "12",
+            "24",
+            "72"});
             this.alarm_cbPeriod.Location = new System.Drawing.Point(440, 32);
             this.alarm_cbPeriod.Name = "alarm_cbPeriod";
-            this.alarm_cbPeriod.Size = new System.Drawing.Size(660, 59);
+            this.alarm_cbPeriod.Size = new System.Drawing.Size(523, 59);
             this.alarm_cbPeriod.TabIndex = 0;
             this.alarm_cbPeriod.SelectedIndexChanged += new System.EventHandler(this.alarm_cbPeriod_SelectedIndexChanged);
             // 
@@ -2287,6 +2277,7 @@
             this.alarm_lbAlarms.Name = "alarm_lbAlarms";
             this.alarm_lbAlarms.Size = new System.Drawing.Size(713, 784);
             this.alarm_lbAlarms.TabIndex = 40;
+            this.alarm_lbAlarms.SelectedIndexChanged += new System.EventHandler(this.alarm_lbAlarms_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -3113,6 +3104,17 @@
             this.label82.TabIndex = 60;
             this.label82.Text = "Modify Action";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(973, 39);
+            this.label24.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(136, 48);
+            this.label24.TabIndex = 53;
+            this.label24.Text = "hours.";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -3245,7 +3247,6 @@
         private System.Windows.Forms.Button add_bSaveNewDevice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox modify_lbDeviceList;
-        private System.Windows.Forms.Button modify_bActions;
         private System.Windows.Forms.Button modify_bRules;
         private System.Windows.Forms.Button modify_bComms;
         private System.Windows.Forms.Button modify_bClear;
@@ -3442,6 +3443,7 @@
         private System.Windows.Forms.Button modact_bNewComm;
         private System.Windows.Forms.TextBox modact_tComm;
         private System.Windows.Forms.ListBox stop_lbValues;
+        private System.Windows.Forms.Label label24;
     }
 }
 

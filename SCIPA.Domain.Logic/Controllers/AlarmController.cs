@@ -36,7 +36,9 @@ namespace SCIPA.Domain.Logic
             var earliest = DateTime.Now.AddHours(hours);
 
             //Returns all alarms as a list where they fall within the given period.
-            return _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest).ToList();
+            var alarms = _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest);
+
+            return alarms != null && alarms.Any() ? alarms.ToList() : new List<Alarm>();
         } 
     }
 }
