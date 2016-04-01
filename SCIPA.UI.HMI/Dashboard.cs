@@ -1048,16 +1048,21 @@ namespace SCIPA.UI.HMI
                     reportPath = $"{reportPath}DeviceValuesOverview";
                     break;
                 case 1:
-                    reportPath = "/SCIPA.Domain.BI.Reporting/DeviceValuesReport";
+                    reportPath = $"{reportPath}DeviceValuesReport";
+                    break;
+                case 2:
+                    reportPath = $"{reportPath}ValuesOverTime";
                     break;
                 case 3:
-                    reportPath = "";
+                    reportPath = $"{reportPath}";
                     break;
                 case 4:
-                    reportPath = "";
+                    reportPath = $"{reportPath}/";
                     break;
                 case 5:
-                    reportPath = "";
+                    reportPath = $"{reportPath}/";
+                    break;
+                default:
                     break;
             }
 

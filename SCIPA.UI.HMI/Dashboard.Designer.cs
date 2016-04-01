@@ -1358,8 +1358,9 @@
             this.report_lbReports.FormattingEnabled = true;
             this.report_lbReports.ItemHeight = 65;
             this.report_lbReports.Items.AddRange(new object[] {
-            "Values by Device (Plain)",
-            "Values by Device (Graph)"});
+            "Values by Device Overview",
+            "Values by Device Report",
+            "Device Values Over Time"});
             this.report_lbReports.Location = new System.Drawing.Point(53, 72);
             this.report_lbReports.Name = "report_lbReports";
             this.report_lbReports.Size = new System.Drawing.Size(713, 784);

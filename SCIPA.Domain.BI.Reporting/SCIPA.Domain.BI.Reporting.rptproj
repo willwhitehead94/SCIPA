@@ -38,6 +38,14 @@
       <Name>DeviceValuesReport.rdl</Name>
       <FullPath>DeviceValuesReport.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>ValuesOverTime.rdl</Name>
+      <FullPath>ValuesOverTime.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AlarmOverview.rdl</Name>
+      <FullPath>AlarmOverview.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>
