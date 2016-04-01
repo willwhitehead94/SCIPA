@@ -81,13 +81,9 @@ namespace SCIPA.UI.HMI
             this.report_rvReportViewer.RefreshReport();
 
             //Prepare any Data Sources required for the ComboBoxes.
-            add_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
             modcomms_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
-            add_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
             modcomms_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
-            add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             modcomms_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
-            add_cbComPort.DataSource = SerialPort.GetPortNames();
             modrules_cbValueType.DataSource= Enum.GetValues(typeof(Models.ValueType));
 
         }
@@ -294,11 +290,17 @@ namespace SCIPA.UI.HMI
         private void bAlarms_Click(object sender, EventArgs e)
         {
             DebugOutput.Print("Dashboard: Alarms");
+
+            //Clear the ListBox and reload all alarms within the first period allotment.
+            alarm_lbAlarms.Items.Clear();
+            alarm_cbPeriod.SelectedItem = alarm_cbPeriod.Items[0];
+
+            //Show the page.
             pTabPanel.SelectedTab = pAlarms;
 
-            alarm_lbAlarms.Items.Clear();
+            
 
-            var controller = new AlarmController();
+            //var controller = new AlarmController();
             // alarm_lbAlarms.Items.Add(controller.)
         }
 
@@ -445,97 +447,6 @@ namespace SCIPA.UI.HMI
             UpdateStartLabels();
         }
 
-        private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var specalism = (CommunicatorType) add_cbCommType.SelectedItem;
-            switch (specalism)
-            {
-                case CommunicatorType.FlatFile:
-                    _communicator = new FileCommunicator();
-                    add_tcInnerPagesSourceSetting.SelectedTab = pFlatFile;
-                    break;
-                case CommunicatorType.Serial:
-                    _communicator = new SerialCommunicator();
-                    add_tcInnerPagesSourceSetting.SelectedTab = pSerial;
-                    break;
-                case CommunicatorType.Database:
-                    _communicator = new DatabaseCommunicator();
-                    add_tcInnerPagesSourceSetting.SelectedTab = pDatabase;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void add_bRefreshComPorts_Click(object sender, EventArgs e)
-        {
-            add_cbComPort.DataSource = SerialPort.GetPortNames();
-            add_cbComPort.Refresh();
-        }
-
-        private void add_bSaveSource_Click(object sender, EventArgs e)
-        {
-            if (_communicator is DatabaseCommunicator)
-            {
-                _communicator = new DatabaseCommunicator()
-                {
-                    DbType = (DatabaseType) add_cbDatabaseType.SelectedItem,
-                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
-                    ConnectionString = add_tConnectionString.Text,
-                    Query = add_tQuery.Text,
-                    StartChar = GetStartChar(),
-                    EndChar = GetEndChar(),
-                    Device = _selectedDevice,
-                    //Id = GetNextIdNumber(),
-                    Inbound = true,
-                    Type = CommunicatorType.Database,
-                    Action = null
-                };
-            }
-            else if (_communicator is SerialCommunicator)
-            {
-                _communicator = new SerialCommunicator()
-                {
-                    StartChar = GetStartChar(),
-                    EndChar = GetEndChar(),
-                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
-                    BaudRate = Convert.ToInt32(add_tBaudRate.Text),
-                    ComPort = add_cbComPort.SelectedItem.ToString(),
-                    DataBits = Convert.ToByte(add_tDataBits.Text),
-                    IsDTR = add_cbDtr.Checked,
-                    IsRTS = add_cbRts.Checked,
-                    Device = _selectedDevice,
-                    Inbound = true,
-                    Type = CommunicatorType.Serial,
-                    Action = null
-                    //Id = GetNextIdNumber()
-                };
-            }
-            else if (_communicator is FileCommunicator)
-            {
-                _communicator = new FileCommunicator()
-                {
-                    FilePath = add_tFilePath.Text,
-                    ValueType = (Models.ValueType) add_cbValueType.SelectedItem,
-                    StartChar = GetStartChar(),
-                    EndChar = GetEndChar(),
-                    Device = _selectedDevice,
-                    Type = CommunicatorType.FlatFile,
-                    Inbound = true,
-                    Action = null
-                    //Id = GetNextIdNumber()
-                };
-            }
-
-            var _controller = new CommunicatorController();
-            var Id = _controller.SaveCommunicator(_communicator);
-            if (Id != null) _communicator.Id = (int) Id;
-            DebugOutput.Print($"a new Communicator was created with ID {_communicator.Id.ToString()}");
-
-            UpdateStartLabels();
-
-        }
-
         private void UpdateStartLabels()
         {
             var comm_controller = new CommunicatorController();
@@ -554,27 +465,6 @@ namespace SCIPA.UI.HMI
                 add_lSource.Text = $"0 Sources...";
                 add_lRules.Text = $"0 Rules...";
             }
-        }
-
-        private int GetStartChar()
-        {
-            var start = 0;
-
-            int.TryParse(add_tStartChar.Text, out start);
-
-            return start;
-        }
-
-        private int GetEndChar()
-        {
-            var end = 0;
-            int.TryParse(add_tEnd.Text, out end);
-            if (end > 0)
-            {
-                return GetStartChar() + end;
-            }
-
-            return end;
         }
 
         private void add_bSaveNewDevice_Click(object sender, EventArgs e)
