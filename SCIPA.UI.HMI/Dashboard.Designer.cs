@@ -83,6 +83,9 @@
             this.stop_lbDevice = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.pAddNewDevice = new System.Windows.Forms.TabPage();
+            this.add_lActions = new System.Windows.Forms.Label();
+            this.add_bNewAction = new System.Windows.Forms.Button();
+            this.label72 = new System.Windows.Forms.Label();
             this.add_tcInnerPages = new SCIPA.UI.HMI.CustomTabControl();
             this.Blank = new System.Windows.Forms.TabPage();
             this.pDataConnection = new System.Windows.Forms.TabPage();
@@ -248,10 +251,22 @@
             this.modcomms_lbComms = new System.Windows.Forms.ListBox();
             this.label56 = new System.Windows.Forms.Label();
             this.pModifyRules = new System.Windows.Forms.TabPage();
+            this.modrules_bSetAction = new System.Windows.Forms.Button();
+            this.label77 = new System.Windows.Forms.Label();
+            this.modrules_cAlarm = new System.Windows.Forms.CheckBox();
+            this.modrules_tConstraint = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.modrules_cbRuleType = new System.Windows.Forms.ComboBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.modrules_cbValueType = new System.Windows.Forms.ComboBox();
+            this.modrules_tBack = new System.Windows.Forms.Button();
+            this.modrules_tSave = new System.Windows.Forms.Button();
+            this.modrules_Name = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.modrules_lbRules = new System.Windows.Forms.ListBox();
+            this.label73 = new System.Windows.Forms.Label();
             this.pModifyActions = new System.Windows.Forms.TabPage();
-            this.add_lActions = new System.Windows.Forms.Label();
-            this.add_bNewAction = new System.Windows.Forms.Button();
-            this.label72 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SCIPAAlarmDataSet)).BeginInit();
             this.pHeader.SuspendLayout();
@@ -280,6 +295,7 @@
             this.pModFile.SuspendLayout();
             this.pModDatabase.SuspendLayout();
             this.pModSerial.SuspendLayout();
+            this.pModifyRules.SuspendLayout();
             this.SuspendLayout();
             // 
             // AlarmsBindingSource
@@ -909,6 +925,40 @@
             this.pAddNewDevice.TabIndex = 2;
             this.pAddNewDevice.Text = "AddDevice";
             this.pAddNewDevice.UseVisualStyleBackColor = true;
+            // 
+            // add_lActions
+            // 
+            this.add_lActions.AutoSize = true;
+            this.add_lActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_lActions.Location = new System.Drawing.Point(682, 630);
+            this.add_lActions.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.add_lActions.Name = "add_lActions";
+            this.add_lActions.Size = new System.Drawing.Size(228, 48);
+            this.add_lActions.TabIndex = 45;
+            this.add_lActions.Text = "0 Actions...";
+            // 
+            // add_bNewAction
+            // 
+            this.add_bNewAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add_bNewAction.Location = new System.Drawing.Point(339, 612);
+            this.add_bNewAction.Margin = new System.Windows.Forms.Padding(7);
+            this.add_bNewAction.Name = "add_bNewAction";
+            this.add_bNewAction.Size = new System.Drawing.Size(329, 85);
+            this.add_bNewAction.TabIndex = 44;
+            this.add_bNewAction.Text = "Add Action";
+            this.add_bNewAction.UseVisualStyleBackColor = true;
+            this.add_bNewAction.Click += new System.EventHandler(this.add_bNewAction_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.Location = new System.Drawing.Point(50, 630);
+            this.label72.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(170, 48);
+            this.label72.TabIndex = 43;
+            this.label72.Text = "Actions:";
             // 
             // add_tcInnerPages
             // 
@@ -1803,6 +1853,7 @@
             this.modify_bRules.TabIndex = 46;
             this.modify_bRules.Text = "Modify Rules";
             this.modify_bRules.UseVisualStyleBackColor = true;
+            this.modify_bRules.Click += new System.EventHandler(this.modify_bRules_Click);
             // 
             // modify_bComms
             // 
@@ -2750,12 +2801,184 @@
             // 
             // pModifyRules
             // 
+            this.pModifyRules.Controls.Add(this.modrules_bSetAction);
+            this.pModifyRules.Controls.Add(this.label77);
+            this.pModifyRules.Controls.Add(this.modrules_cAlarm);
+            this.pModifyRules.Controls.Add(this.modrules_tConstraint);
+            this.pModifyRules.Controls.Add(this.label76);
+            this.pModifyRules.Controls.Add(this.label75);
+            this.pModifyRules.Controls.Add(this.modrules_cbRuleType);
+            this.pModifyRules.Controls.Add(this.label74);
+            this.pModifyRules.Controls.Add(this.modrules_cbValueType);
+            this.pModifyRules.Controls.Add(this.modrules_tBack);
+            this.pModifyRules.Controls.Add(this.modrules_tSave);
+            this.pModifyRules.Controls.Add(this.modrules_Name);
+            this.pModifyRules.Controls.Add(this.label71);
+            this.pModifyRules.Controls.Add(this.modrules_lbRules);
+            this.pModifyRules.Controls.Add(this.label73);
             this.pModifyRules.Location = new System.Drawing.Point(10, 47);
             this.pModifyRules.Name = "pModifyRules";
             this.pModifyRules.Size = new System.Drawing.Size(1929, 902);
             this.pModifyRules.TabIndex = 9;
             this.pModifyRules.Text = "Modify Rules";
             this.pModifyRules.UseVisualStyleBackColor = true;
+            // 
+            // modrules_bSetAction
+            // 
+            this.modrules_bSetAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_bSetAction.Location = new System.Drawing.Point(1095, 429);
+            this.modrules_bSetAction.Name = "modrules_bSetAction";
+            this.modrules_bSetAction.Size = new System.Drawing.Size(444, 102);
+            this.modrules_bSetAction.TabIndex = 60;
+            this.modrules_bSetAction.Text = "Set Action";
+            this.modrules_bSetAction.UseVisualStyleBackColor = true;
+            this.modrules_bSetAction.Click += new System.EventHandler(this.modrules_bSetAction_Click);
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label77.Location = new System.Drawing.Point(769, 317);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(277, 48);
+            this.label77.TabIndex = 59;
+            this.label77.Text = "Alarm Option:";
+            // 
+            // modrules_cAlarm
+            // 
+            this.modrules_cAlarm.AutoSize = true;
+            this.modrules_cAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_cAlarm.Location = new System.Drawing.Point(1193, 313);
+            this.modrules_cAlarm.Name = "modrules_cAlarm";
+            this.modrules_cAlarm.Size = new System.Drawing.Size(480, 52);
+            this.modrules_cAlarm.TabIndex = 58;
+            this.modrules_cAlarm.Text = "Alarm On Criteria Pass";
+            this.modrules_cAlarm.UseVisualStyleBackColor = true;
+            // 
+            // modrules_tConstraint
+            // 
+            this.modrules_tConstraint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_tConstraint.Location = new System.Drawing.Point(1193, 252);
+            this.modrules_tConstraint.Name = "modrules_tConstraint";
+            this.modrules_tConstraint.Size = new System.Drawing.Size(733, 55);
+            this.modrules_tConstraint.TabIndex = 57;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label76.Location = new System.Drawing.Point(769, 255);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(223, 48);
+            this.label76.TabIndex = 56;
+            this.label76.Text = "Constraint:";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label75.Location = new System.Drawing.Point(769, 193);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(222, 48);
+            this.label75.TabIndex = 55;
+            this.label75.Text = "Rule Type:";
+            // 
+            // modrules_cbRuleType
+            // 
+            this.modrules_cbRuleType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_cbRuleType.FormattingEnabled = true;
+            this.modrules_cbRuleType.Location = new System.Drawing.Point(1193, 190);
+            this.modrules_cbRuleType.Name = "modrules_cbRuleType";
+            this.modrules_cbRuleType.Size = new System.Drawing.Size(733, 56);
+            this.modrules_cbRuleType.TabIndex = 54;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label74.Location = new System.Drawing.Point(769, 131);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(372, 48);
+            this.label74.TabIndex = 53;
+            this.label74.Text = "Check Value Type:";
+            // 
+            // modrules_cbValueType
+            // 
+            this.modrules_cbValueType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_cbValueType.FormattingEnabled = true;
+            this.modrules_cbValueType.Location = new System.Drawing.Point(1193, 128);
+            this.modrules_cbValueType.Name = "modrules_cbValueType";
+            this.modrules_cbValueType.Size = new System.Drawing.Size(733, 56);
+            this.modrules_cbValueType.TabIndex = 52;
+            this.modrules_cbValueType.SelectedIndexChanged += new System.EventHandler(this.modrules_cbValueType_SelectedIndexChanged);
+            // 
+            // modrules_tBack
+            // 
+            this.modrules_tBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modrules_tBack.BackColor = System.Drawing.Color.Gainsboro;
+            this.modrules_tBack.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modrules_tBack.Location = new System.Drawing.Point(655, 785);
+            this.modrules_tBack.Name = "modrules_tBack";
+            this.modrules_tBack.Size = new System.Drawing.Size(612, 85);
+            this.modrules_tBack.TabIndex = 51;
+            this.modrules_tBack.Text = "GO BACK TO DEVICES";
+            this.modrules_tBack.UseVisualStyleBackColor = false;
+            this.modrules_tBack.Click += new System.EventHandler(this.modrules_tBack_Click);
+            // 
+            // modrules_tSave
+            // 
+            this.modrules_tSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.modrules_tSave.BackColor = System.Drawing.Color.Gainsboro;
+            this.modrules_tSave.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modrules_tSave.Location = new System.Drawing.Point(1273, 760);
+            this.modrules_tSave.Name = "modrules_tSave";
+            this.modrules_tSave.Size = new System.Drawing.Size(612, 110);
+            this.modrules_tSave.TabIndex = 50;
+            this.modrules_tSave.Text = "SAVE RULE INFORMATION";
+            this.modrules_tSave.UseVisualStyleBackColor = false;
+            this.modrules_tSave.Click += new System.EventHandler(this.modrules_tSave_Click);
+            // 
+            // modrules_Name
+            // 
+            this.modrules_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.modrules_Name.Location = new System.Drawing.Point(1193, 67);
+            this.modrules_Name.Name = "modrules_Name";
+            this.modrules_Name.Size = new System.Drawing.Size(733, 55);
+            this.modrules_Name.TabIndex = 49;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label71.Location = new System.Drawing.Point(769, 70);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(143, 48);
+            this.label71.TabIndex = 48;
+            this.label71.Text = "Name:";
+            // 
+            // modrules_lbRules
+            // 
+            this.modrules_lbRules.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.modrules_lbRules.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modrules_lbRules.FormattingEnabled = true;
+            this.modrules_lbRules.ItemHeight = 65;
+            this.modrules_lbRules.Location = new System.Drawing.Point(50, 70);
+            this.modrules_lbRules.Name = "modrules_lbRules";
+            this.modrules_lbRules.Size = new System.Drawing.Size(713, 784);
+            this.modrules_lbRules.TabIndex = 47;
+            this.modrules_lbRules.SelectedIndexChanged += new System.EventHandler(this.modrules_lbRules_SelectedIndexChanged);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label73.Location = new System.Drawing.Point(3, 0);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(276, 51);
+            this.label73.TabIndex = 46;
+            this.label73.Text = "Modify Rules";
             // 
             // pModifyActions
             // 
@@ -2765,40 +2988,6 @@
             this.pModifyActions.TabIndex = 10;
             this.pModifyActions.Text = "ModifyActions";
             this.pModifyActions.UseVisualStyleBackColor = true;
-            // 
-            // add_lActions
-            // 
-            this.add_lActions.AutoSize = true;
-            this.add_lActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_lActions.Location = new System.Drawing.Point(682, 630);
-            this.add_lActions.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.add_lActions.Name = "add_lActions";
-            this.add_lActions.Size = new System.Drawing.Size(228, 48);
-            this.add_lActions.TabIndex = 45;
-            this.add_lActions.Text = "0 Actions...";
-            // 
-            // add_bNewAction
-            // 
-            this.add_bNewAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_bNewAction.Location = new System.Drawing.Point(339, 612);
-            this.add_bNewAction.Margin = new System.Windows.Forms.Padding(7);
-            this.add_bNewAction.Name = "add_bNewAction";
-            this.add_bNewAction.Size = new System.Drawing.Size(329, 85);
-            this.add_bNewAction.TabIndex = 44;
-            this.add_bNewAction.Text = "Add Action";
-            this.add_bNewAction.UseVisualStyleBackColor = true;
-            this.add_bNewAction.Click += new System.EventHandler(this.add_bNewAction_Click);
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.Location = new System.Drawing.Point(50, 630);
-            this.label72.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(170, 48);
-            this.label72.TabIndex = 43;
-            this.label72.Text = "Actions:";
             // 
             // Dashboard
             // 
@@ -2872,6 +3061,8 @@
             this.pModDatabase.PerformLayout();
             this.pModSerial.ResumeLayout(false);
             this.pModSerial.PerformLayout();
+            this.pModifyRules.ResumeLayout(false);
+            this.pModifyRules.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3100,6 +3291,21 @@
         private System.Windows.Forms.Label add_lActions;
         private System.Windows.Forms.Button add_bNewAction;
         private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Button modrules_bSetAction;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.CheckBox modrules_cAlarm;
+        private System.Windows.Forms.TextBox modrules_tConstraint;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.ComboBox modrules_cbRuleType;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.ComboBox modrules_cbValueType;
+        private System.Windows.Forms.Button modrules_tBack;
+        private System.Windows.Forms.Button modrules_tSave;
+        private System.Windows.Forms.TextBox modrules_Name;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.ListBox modrules_lbRules;
+        private System.Windows.Forms.Label label73;
     }
 }
 

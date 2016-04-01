@@ -171,9 +171,15 @@ namespace SCIPA.UI.HMI
             add_tcInnerPages.SelectedTab = pRules;
         }
 
-        public void GoToActionPage()
+        public void GoToActionPage(Models.Rule rule = null)
         {
             add_tcInnerPages.SelectedTab = pActions;
+
+            if (rule == null) return;
+
+            //Create action for specific rule if rule was specified.
+            add_cbRule.SelectedItem = rule;
+            add_cbRule.Enabled = false;
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)

@@ -87,6 +87,7 @@ namespace SCIPA.UI.HMI
             add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             modcomms_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             add_cbComPort.DataSource = SerialPort.GetPortNames();
+            modrules_cbValueType.DataSource= Enum.GetValues(typeof(Models.ValueType));
 
         }
 
@@ -829,5 +830,131 @@ namespace SCIPA.UI.HMI
             //Update the labels.
             UpdateStartLabels();
         }
+
+#region Modify Rules Page
+
+        private void modify_bRules_Click(object sender, EventArgs e)
+        {
+            //Loads the relevant communicators.
+            var controller = new RuleController();
+            modrules_lbRules.Items.Clear();
+            modrules_lbRules.Items.AddRange(
+                controller.RetrieveRulesForDevice(_selectedDevice.Id).ToArray());
+
+            if (modrules_lbRules.Items.Count > 0)
+            {
+                //Select the first element
+                modrules_lbRules.SelectedItem = modrules_lbRules.Items[0];
+
+                //Shows the modify tab.
+                pTabPanel.SelectedTab = pModifyRules;
+            }
+            else
+            {
+                var msg =
+                    System.Windows.Forms.MessageBox.Show(
+                        "There are no Rules for this Device.", "No Rules Available",
+                        MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+        }
+
+        private void modrules_lbRules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selected = (Models.Rule)modrules_lbRules.SelectedItem;
+
+            //Set global accessible value for the Rule object.
+            _rule = selected;
+
+            //Fill in required data.
+            modrules_Name.Text = selected.Name;
+            modrules_tConstraint.Text = selected.Constraint;
+            modrules_cAlarm.Checked = selected.Alarm;
+            modrules_cbValueType.SelectedItem = selected.ValueType;
+            modrules_cbRuleType.SelectedItem = selected.RuleType;
+        }
+
+        private void modrules_cbValueType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Set the Rule Types available dependant on the selected ValueType.
+            var selected = (Models.ValueType)(modrules_cbValueType.SelectedItem);
+
+            //Clear the current list.
+            modrules_cbRuleType.DataSource = null;
+            modrules_cbRuleType.Items.Clear();
+
+            //Integer and Float have all options (so Integer falls through).
+            switch (selected)
+            {
+                case Models.ValueType.Integer:
+                case Models.ValueType.Float:
+                    modrules_cbRuleType.DataSource = Enum.GetValues(typeof(Models.RuleType));
+                    break;
+                case Models.ValueType.String:
+                    modrules_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    modrules_cbRuleType.Items.Add(Models.RuleType.Not);
+                    break;
+                case Models.ValueType.Boolean:
+                    modrules_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    break;
+                default:
+                    DebugOutput.Print("Unable to process the Rule selection type. Reverting to default.");
+                    modrules_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    break;
+            }
+
+            //Refresh the ComboBox.
+            modrules_cbRuleType.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pTabPanel.SelectedTab = pModifyDevice;
+        }
+
+        private void modrules_tBack_Click(object sender, EventArgs e)
+        {
+            pTabPanel.SelectedTab = pModifyDevice;
+        }
+
+        private void modrules_tSave_Click(object sender, EventArgs e)
+        {
+            var controller = new RuleController();
+            var updated = controller.UpdateRule(_rule);
+
+            if (updated != null)
+            {
+                _rule = updated;
+                DebugOutput.Print($"Rule '{updated}' was updated.");
+                return;
+            }
+
+            DebugOutput.Print($"Could not updated {updated}!");
+        }
+
+        private void modrules_bSetAction_Click(object sender, EventArgs e)
+        {
+            //Save the Rule as it stands.
+            modrules_tSave.PerformClick();
+
+            var controller = new ActionController();
+            if (controller.RetrieveActionsForRule(_rule.Id).Any())
+            {
+                //Load the values required.
+
+                //Actions exist.
+                pTabPanel.SelectedTab = pModifyActions;
+            }
+            else
+            {
+                var db = new DataBoard(_communicator,_selectedDevice);
+                db.GoToActionPage(_rule);
+                db.ShowDialog();
+
+                _action = db.GetAction();
+            }
+
+        }
     }
+
+    #endregion Modify Rules Page
 }
