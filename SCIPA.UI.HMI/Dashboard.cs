@@ -52,6 +52,11 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Models.Action _action = null;
 
+        /// <summary>
+        /// Local object for temporarily storing Value data. Used as part of the Value Investigator.
+        /// </summary>
+        private Models.Value _value = null;
+
 
         /// <summary>
         /// Initialise the Dashboard window.
@@ -951,17 +956,40 @@ namespace SCIPA.UI.HMI
 
         private void alarm_lbAlarms_SelectedIndexChanged(object sender, EventArgs e)
         {
+            alarm_bRule.Enabled = false;
+            alarm_bDevice.Enabled = false;
+
             try
             {
                 var selected = (Alarm) alarm_lbAlarms.SelectedItem;
 
-                var devController = new DeviceController();
-                alarm_tDevice.Text = devController.RetrieveDevice(selected.DeviceId).ToString();
-
                 alarm_tDateTime.Text = selected.TimeStamp.ToString();
-                //alarm_tValue.Text = selected.Value.StringValue;
                 alarm_rbTrue.Checked = selected.Accepted;
                 alarm_rbFalse.Checked = !selected.Accepted;
+
+                //Get Value information.
+                if (selected.ValueId > 0)
+                {
+                    var controller = new ValueController();
+                    _value = controller.GetValueById(selected.ValueId);
+                    alarm_tValue.Text = selected.Value.StringValue;
+                }
+
+                //Get Rule information.
+                if (selected.RuleId > 0)
+                {
+                    var controller = new RuleController();
+                    _rule = controller.RetrieveRuleById(selected.RuleId);
+                    alarm_bRule.Enabled = true;
+                }
+
+                //Get Device information.
+                if (selected.DeviceId > 0)
+                {
+                    var controller = new DeviceController();
+                    _selectedDevice = controller.RetrieveDevice(selected.DeviceId);
+                    alarm_tDevice.Text = _selectedDevice.ToString();
+                }
             }
             catch
             {

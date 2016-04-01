@@ -135,7 +135,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.alarm_cbPeriod = new System.Windows.Forms.ComboBox();
             this.alarm_Acknowledge = new System.Windows.Forms.Button();
-            this.alarm_Rule = new System.Windows.Forms.Button();
+            this.alarm_bRule = new System.Windows.Forms.Button();
             this.alarm_bDevice = new System.Windows.Forms.Button();
             this.alarm_tValue = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -1388,7 +1388,7 @@
             this.pAlarms.Controls.Add(this.label29);
             this.pAlarms.Controls.Add(this.groupBox1);
             this.pAlarms.Controls.Add(this.alarm_Acknowledge);
-            this.pAlarms.Controls.Add(this.alarm_Rule);
+            this.pAlarms.Controls.Add(this.alarm_bRule);
             this.pAlarms.Controls.Add(this.alarm_bDevice);
             this.pAlarms.Controls.Add(this.alarm_tValue);
             this.pAlarms.Controls.Add(this.label25);
@@ -1507,16 +1507,16 @@
             this.alarm_Acknowledge.UseVisualStyleBackColor = true;
             this.alarm_Acknowledge.Click += new System.EventHandler(this.alarm_Acknowledge_Click);
             // 
-            // alarm_Rule
+            // alarm_bRule
             // 
-            this.alarm_Rule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alarm_Rule.Location = new System.Drawing.Point(1528, 513);
-            this.alarm_Rule.Margin = new System.Windows.Forms.Padding(7);
-            this.alarm_Rule.Name = "alarm_Rule";
-            this.alarm_Rule.Size = new System.Drawing.Size(361, 85);
-            this.alarm_Rule.TabIndex = 49;
-            this.alarm_Rule.Text = "View Rule";
-            this.alarm_Rule.UseVisualStyleBackColor = true;
+            this.alarm_bRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.alarm_bRule.Location = new System.Drawing.Point(1528, 513);
+            this.alarm_bRule.Margin = new System.Windows.Forms.Padding(7);
+            this.alarm_bRule.Name = "alarm_bRule";
+            this.alarm_bRule.Size = new System.Drawing.Size(361, 85);
+            this.alarm_bRule.TabIndex = 49;
+            this.alarm_bRule.Text = "View Rule";
+            this.alarm_bRule.UseVisualStyleBackColor = true;
             // 
             // alarm_bDevice
             // 
@@ -2590,7 +2590,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox alarm_cbPeriod;
         private System.Windows.Forms.Button alarm_Acknowledge;
-        private System.Windows.Forms.Button alarm_Rule;
+        private System.Windows.Forms.Button alarm_bRule;
         private System.Windows.Forms.Button alarm_bDevice;
         private System.Windows.Forms.TextBox alarm_tValue;
         private System.Windows.Forms.Label label25;

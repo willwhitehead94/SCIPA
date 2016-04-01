@@ -10,6 +10,12 @@ namespace SCIPA.Domain.Logic
         {
             var repo = new MongoRepository();
             return repo.GetAllValuesForDevice(device.Id);
-        }  
+        }
+
+        public Value GetValueById(int valueId)
+        {
+            var repo = new RelationalRepository();
+            return repo.RetrieveValue(valueId);
+        }
     }
 }
