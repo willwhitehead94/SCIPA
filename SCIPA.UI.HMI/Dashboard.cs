@@ -77,6 +77,7 @@ namespace SCIPA.UI.HMI
             this.AlarmsTableAdapter.Fill(this.SCIPAAlarmDataSet.Alarms);
             //Start the live dashboard update outside of the main thread.
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateDashboard));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateActiveAlarms));
             this.report_rvReportViewer.RefreshReport();
 
             //Prepare any Data Sources required for the ComboBoxes.
@@ -143,6 +144,23 @@ namespace SCIPA.UI.HMI
 
             action = () => lDate.Text = $"{DateTime.Now.ToString("D")}";
             this.Invoke(action);
+        }
+
+        /// <summary>
+        /// Method to update the header label with a count of active alarms from
+        /// within the last 24 hours.
+        /// </summary>
+        private void UpdateActiveAlarms(object threadable)
+        {
+            var controller = new AlarmController();
+            while (true)
+            {
+                //Only counts alarms that have been active for longer than 24 hours.
+                _activeAlarmCount = controller.GetAllAlarms(24).Count(a => a.Accepted == false);
+
+                //Sleep for 5 seconds
+                System.Threading.Thread.Sleep(5000);
+            }
         }
 
         /// <summary>
