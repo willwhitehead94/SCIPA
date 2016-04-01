@@ -1066,6 +1066,7 @@ namespace SCIPA.UI.HMI
                     {
                         //File doesnt exist - the blank template must exist.
                         System.Windows.Forms.MessageBox.Show("You do not have the blank template available. Aborting...");
+                        return;
                     }
 
                     //Location of the SSIS Package.
