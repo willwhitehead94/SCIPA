@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.SqlServer.Dts.Runtime;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Inbound;
 using SCIPA.Domain.Logic;
@@ -1054,13 +1053,12 @@ namespace SCIPA.UI.HMI
                 case 4:
                     string pkgLocation;
                     Package pkg;
-                    Microsoft.SqlServer.Dts.Runtime.Application app;
+                    Application app;
                     DTSExecResult pkgResults;
 
                     pkgLocation =
-                        @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\
-                            .Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
-                    app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                        @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
+                    app = new Application();
                     pkg = app.LoadPackage(pkgLocation, null);
                     pkgResults = pkg.Execute();
 
