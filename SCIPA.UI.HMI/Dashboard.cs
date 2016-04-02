@@ -62,7 +62,7 @@ namespace SCIPA.UI.HMI
         /// </summary>
         private Models.Value _value = null;
 
-
+        #region Dashboard Generic Methods
         /// <summary>
         /// Initialise the Dashboard window.
         /// </summary>
@@ -91,10 +91,10 @@ namespace SCIPA.UI.HMI
             this.report_rvReportViewer.RefreshReport();
 
             //Prepare any Data Sources required for the ComboBoxes.
-            modcomms_cbCommType.DataSource = Enum.GetValues(typeof (Models.CommunicatorType));
-            modcomms_cbValueType.DataSource = Enum.GetValues(typeof (Models.ValueType));
-            modcomms_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
-            modrules_cbValueType.DataSource= Enum.GetValues(typeof(Models.ValueType));
+            modcomms_cbCommType.DataSource = Enum.GetValues(typeof(Models.CommunicatorType));
+            modcomms_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
+            modcomms_cbDatabaseType.DataSource = Enum.GetValues(typeof(Models.DatabaseType));
+            modrules_cbValueType.DataSource = Enum.GetValues(typeof(Models.ValueType));
 
         }
 
@@ -230,7 +230,9 @@ namespace SCIPA.UI.HMI
                 _activeAlarmCount = 0;
             }
         }
+        #endregion Dashboard Generic Methods
 
+        #region Dashboard Navigation Button Handlers
         private void bStartProcess_Click(object sender, EventArgs e)
         {
             //Print output statement as to the event.
@@ -308,7 +310,7 @@ namespace SCIPA.UI.HMI
             //Show the page.
             pTabPanel.SelectedTab = pAlarms;
 
-            
+
 
             //var controller = new AlarmController();
             // alarm_lbAlarms.Items.Add(controller.)
@@ -328,7 +330,7 @@ namespace SCIPA.UI.HMI
         /// <param name="e"></param>
         private void bTogglePanelSize_Click(object sender, EventArgs e)
         {
-            var btn = (Button) sender;
+            var btn = (Button)sender;
 
             if (pTabPanel.Dock == DockStyle.None)
             {
@@ -358,7 +360,9 @@ namespace SCIPA.UI.HMI
             var consoleApp = new SCIPA.UI.Service.Program();
             System.Diagnostics.Process.Start(@"cmd.exe", @consoleApp.exePath);
         }
+        #endregion Dashboard Navigation Button Handlers
 
+        #region Settings Page
         private void tSettingsPassword_TextChanged(object sender, EventArgs e)
         {
             if (tSettingsPassword.Text == _settingsPassword)
@@ -368,6 +372,7 @@ namespace SCIPA.UI.HMI
                 System.Windows.Forms.MessageBox.Show("Settings panel would open at this point...");
             }
         }
+        #endregion Settings Page
 
         #region Start Page
 
@@ -524,23 +529,35 @@ namespace SCIPA.UI.HMI
             UpdateStartLabels();
         }
 
+        private void add_bAddAction_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_bSaveRule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add_bNewAction_Click(object sender, EventArgs e)
+        {
+            //Save the new Device.
+            add_bSaveNewDevice.PerformClick();
+
+            //Create and display the DataBoard form.
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToActionPage();
+            window.ShowDialog();
+
+            //Get the Comm object created.
+            _action = window.GetAction();
+
+            //Update the labels.
+            UpdateStartLabels();
+        }
+
 
         #endregion Add New Device Page
-
-        private void alarm_cbPeriod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var hours = Convert.ToInt32(alarm_cbPeriod.SelectedItem);
-
-            var controller = new AlarmController();
-            var alarmList = controller.GetAllAlarms(hours);
-
-            alarm_lbAlarms.Items.Clear();
-
-            if (alarmList != null && alarmList.Any())
-            {
-                alarm_lbAlarms.Items.AddRange(alarmList.OrderByDescending(a=>a.TimeStamp).ToArray());
-            }
-        }
 
         #region Modify Device Page
 
@@ -753,36 +770,24 @@ namespace SCIPA.UI.HMI
 
         #endregion Modify Communicator Information Page.
 
-
-
-        private void add_bAddAction_Click(object sender, EventArgs e)
+        #region Alarm Page
+        private void alarm_cbPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var hours = Convert.ToInt32(alarm_cbPeriod.SelectedItem);
 
+            var controller = new AlarmController();
+            var alarmList = controller.GetAllAlarms(hours);
+
+            alarm_lbAlarms.Items.Clear();
+
+            if (alarmList != null && alarmList.Any())
+            {
+                alarm_lbAlarms.Items.AddRange(alarmList.OrderByDescending(a => a.TimeStamp).ToArray());
+            }
         }
+        #endregion Alarm Page
 
-        private void add_bSaveRule_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void add_bNewAction_Click(object sender, EventArgs e)
-        {
-            //Save the new Device.
-            add_bSaveNewDevice.PerformClick();
-
-            //Create and display the DataBoard form.
-            var window = new DataBoard(_communicator, _selectedDevice);
-            window.GoToActionPage();
-            window.ShowDialog();
-
-            //Get the Comm object created.
-            _action = window.GetAction();
-
-            //Update the labels.
-            UpdateStartLabels();
-        }
-
-#region Modify Rules Page
+        #region Modify Rules Page
 
         private void modify_bRules_Click(object sender, EventArgs e)
         {
