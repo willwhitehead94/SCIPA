@@ -74,8 +74,6 @@ namespace SCIPA.UI.HMI
         /// <param name="e"></param>
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'SCIPAAlarmDataSet.Alarms' table. You can move, or remove it, as needed.
-            this.AlarmsTableAdapter.Fill(this.SCIPAAlarmDataSet.Alarms);
             //Start the live dashboard update outside of the main thread.
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateDashboard));
             ThreadPool.QueueUserWorkItem(new WaitCallback(UpdateActiveAlarms));
