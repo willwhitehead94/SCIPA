@@ -1120,7 +1120,7 @@ namespace SCIPA.UI.HMI
                     packageResult = package.Execute();
 
                     //Inform users of success/fail of package.
-                    if (packageResult == DTSExecResult.Failure)
+                    if (package.ExecutionStatus!=DTSExecStatus.Completed && packageResult == DTSExecResult.Failure)
                     {
                         DebugOutput.Print("Failed to Export data to Excel. Did not delete.");
                         System.Windows.Forms.MessageBox.Show("The export process failed. Aborted.");

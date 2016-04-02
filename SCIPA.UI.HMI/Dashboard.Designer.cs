@@ -1362,7 +1362,8 @@
             "Values by Device Report",
             "Device Values Over Time",
             "Alarm Report",
-            "Export to Excel"});
+            "Export to Excel",
+            "Remove Old Values"});
             this.report_lbReports.Location = new System.Drawing.Point(53, 72);
             this.report_lbReports.Name = "report_lbReports";
             this.report_lbReports.Size = new System.Drawing.Size(713, 784);
