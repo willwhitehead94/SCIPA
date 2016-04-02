@@ -1070,7 +1070,7 @@ namespace SCIPA.UI.HMI
                     }
 
                     //Location of the SSIS Package.
-                    const string packageLocation = @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
+                    string packageLocation = @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
                                                    +@"SCIPA\SCIPA.Domain.BI.Integration\ExportDeviceValuesToExcel.dtsx";
                     var app = new Microsoft.SqlServer.Dts.Runtime.Application();
                     var package = app.LoadPackage(packageLocation, null);
@@ -1093,7 +1093,47 @@ namespace SCIPA.UI.HMI
                     //Return to ensure that the report viewer doesn't refresh blankly.
                     break;
                 case 5:
-                    reportPath = $"{ reportPath}/";
+                    //Case 5 is the Values over 72 hours old being staged, backed up and removed via an SSIS package.
+
+                    var msg = System.Windows.Forms.MessageBox.Show("This service will remove all values older than 72 hours from the SCIPA database. Values will first be backed up to an XLS document on your dekstop before being removed. Are you sure you want to continue?","Delete Old Data",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+                    if (msg == DialogResult.No)
+                    {
+                        DebugOutput.Print("Cancelled old data deletion.");
+                        return;
+                    }
+
+                    DebugOutput.Print("Attempting to remove all old Values from the database...");
+
+                    //Ensure the file is there
+                    if (!System.IO.File.Exists(@"C:\Users\Will Whitehead\Desktop\Output Values.xls"))
+                    {
+                        //File doesnt exist - the blank template must exist.
+                        System.Windows.Forms.MessageBox.Show("You do not have the blank template available. Aborting...");
+                        return;
+                    }
+
+                    //Location of the SSIS Package.
+                    packageLocation = @"C:\Users\Will Whitehead\Dropbox\University\Year 4\Computing Project\"
+                                                   + @"SCIPA\SCIPA.Domain.BI.Integration\ValueProcessor.dtsx";
+                    app = new Microsoft.SqlServer.Dts.Runtime.Application();
+                    package = app.LoadPackage(packageLocation, null);
+                    packageResult = package.Execute();
+
+                    //Inform users of success/fail of package.
+                    if (packageResult == DTSExecResult.Failure)
+                    {
+                        DebugOutput.Print("Failed to Export data to Excel. Did not delete.");
+                        System.Windows.Forms.MessageBox.Show("The export process failed. Aborted.");
+                        return;
+                    }
+                    else
+                    {
+                        DebugOutput.Print("Successfully exported data to Excel, data was deleted.");
+                        System.Windows.Forms.MessageBox.Show("The file on your desktop successfully updated.");
+                        return;
+                    }
+
+                    //Return to ensure that the report viewer doesn't refresh blankly.
                     break;
                 default:
                     break;

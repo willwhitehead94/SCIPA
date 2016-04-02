@@ -1,0 +1,1383 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/2/2016 12:45:04 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-81SM1A6"
+  DTS:CreatorName="DESKTOP-81SM1A6\Will Whitehead"
+  DTS:DTSID="{0DE8265D-53D5-4836-9139-84498C92DF84}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1100.286"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="ValueProcessor"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{FB72B459-B973-4A69-9F38-54E16786B13E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{369A0419-CB0E-4B98-B291-522733B2CCEC}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output Values.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.SCIPA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6CCE35AB-321A-4F9A-B07E-55BE54313F04}"
+      DTS:ObjectName="LocalHost.SCIPA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=SCIPA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F5E5A1EB-8417-47FF-9E3D-2130DAB587DB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StagingTable]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      name="EventTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      name="Inbound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      name="DeviceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      name="CommunicatorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      name="IntegerValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      name="FloatValue"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      name="BooleanValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      name="StringValue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      dataType="dbTimeStamp"
+                      name="EventTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      dataType="bool"
+                      name="Inbound" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      dataType="i2"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      dataType="i4"
+                      name="DeviceId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      dataType="i4"
+                      name="CommunicatorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      dataType="i4"
+                      name="IntegerValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      dataType="numeric"
+                      name="FloatValue"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      dataType="bool"
+                      name="BooleanValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      dataType="nText"
+                      name="StringValue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      name="EventTime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      name="Inbound" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      name="DeviceId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      name="CommunicatorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      name="IntegerValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      name="FloatValue"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      name="BooleanValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      name="StringValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\ValueOutput"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="ValueOutput"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Excel_Destination</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ValueOutput.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[EventTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EventTime"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[EventTime]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[EventTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[Inbound]"
+                      cachedDataType="bool"
+                      cachedName="Inbound"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Inbound]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[Type]"
+                      cachedDataType="i2"
+                      cachedName="Type"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[DeviceId]"
+                      cachedDataType="i4"
+                      cachedName="DeviceId"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[DeviceId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeviceId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[CommunicatorId]"
+                      cachedDataType="i4"
+                      cachedName="CommunicatorId"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[CommunicatorId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommunicatorId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[IntegerValue]"
+                      cachedDataType="i4"
+                      cachedName="IntegerValue"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IntegerValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[FloatValue]"
+                      cachedDataType="numeric"
+                      cachedName="FloatValue"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[FloatValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[BooleanValue]"
+                      cachedDataType="bool"
+                      cachedName="BooleanValue"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BooleanValue]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].Columns[StringValue]"
+                      cachedDataType="nText"
+                      cachedName="StringValue"
+                      externalMetadataColumnId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StringValue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[EventTime]"
+                      dataType="date"
+                      name="EventTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Inbound]"
+                      dataType="r8"
+                      name="Inbound" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[Type]"
+                      dataType="r8"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[DeviceId]"
+                      dataType="r8"
+                      name="DeviceId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[CommunicatorId]"
+                      dataType="r8"
+                      name="CommunicatorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[IntegerValue]"
+                      dataType="r8"
+                      name="IntegerValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[FloatValue]"
+                      dataType="r8"
+                      name="FloatValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[BooleanValue]"
+                      dataType="r8"
+                      name="BooleanValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input].ExternalColumns[StringValue]"
+                      dataType="nText"
+                      name="StringValue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ValueOutput.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ValueOutput.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ValueOutput.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ValueOutput.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\ValueOutput.Inputs[Excel Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Deletes Values In The Stage Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{94bfd466-d250-472a-9f19-b07ebe0636a1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Deletes Values In The Stage Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 RC0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6CCE35AB-321A-4F9A-B07E-55BE54313F04}"
+          SQLTask:SqlStatementSource="DELETE FROM [SCIPA].[dbo].[StagingTable]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Deletes Values Moved To Stage Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{738ED44C-C647-4316-A566-B846D7884421}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Deletes Values Moved To Stage Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016 RC0; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6CCE35AB-321A-4F9A-B07E-55BE54313F04}"
+          SQLTask:SqlStatementSource="DELETE FROM [SCIPA].[dbo].[Values] WHERE Id IN (SELECT Id FROM [SCIPA].[dbo].[StagingTable])" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Value Backup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D34EE6F8-B883-4436-9BA0-29D97B224CF3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Value Backup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Value Backup\SCIPA Database Values Over 72 Hours"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SCIPA Database Values Over 72 Hours"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Values]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Id, EventTime, Inbound, Type, DeviceId, CommunicatorId, IntegerValue, FloatValue, BooleanValue, StringValue
+FROM   [Values]
+WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[EventTime]"
+                      name="EventTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Inbound]"
+                      name="Inbound"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Type]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[DeviceId]"
+                      name="DeviceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[CommunicatorId]"
+                      name="CommunicatorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[IntegerValue]"
+                      name="IntegerValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[FloatValue]"
+                      name="FloatValue"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[BooleanValue]"
+                      name="BooleanValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[StringValue]"
+                      name="StringValue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[EventTime]"
+                      dataType="dbTimeStamp"
+                      name="EventTime" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Inbound]"
+                      dataType="bool"
+                      name="Inbound" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      dataType="i2"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[DeviceId]"
+                      dataType="i4"
+                      name="DeviceId" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[CommunicatorId]"
+                      dataType="i4"
+                      name="CommunicatorId" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[IntegerValue]"
+                      dataType="i4"
+                      name="IntegerValue" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[FloatValue]"
+                      dataType="numeric"
+                      name="FloatValue"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[BooleanValue]"
+                      dataType="bool"
+                      name="BooleanValue" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].ExternalColumns[StringValue]"
+                      dataType="nText"
+                      name="StringValue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[EventTime]"
+                      name="EventTime" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      dataType="bool"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Inbound]"
+                      name="Inbound" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      dataType="i2"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[DeviceId]"
+                      name="DeviceId" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[CommunicatorId]"
+                      name="CommunicatorId" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[IntegerValue]"
+                      name="IntegerValue" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      dataType="numeric"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[FloatValue]"
+                      name="FloatValue"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      dataType="bool"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[BooleanValue]"
+                      name="BooleanValue" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      dataType="nText"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[StringValue]"
+                      name="StringValue" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Value Backup\Staging Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Staging Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StagingTable]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Value Backup\Staging Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.SCIPA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[EventTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EventTime"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[EventTime]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[EventTime]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[Inbound]"
+                      cachedDataType="bool"
+                      cachedName="Inbound"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Inbound]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Inbound]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[Type]"
+                      cachedDataType="i2"
+                      cachedName="Type"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[DeviceId]"
+                      cachedDataType="i4"
+                      cachedName="DeviceId"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[DeviceId]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[DeviceId]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[CommunicatorId]"
+                      cachedDataType="i4"
+                      cachedName="CommunicatorId"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[CommunicatorId]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[CommunicatorId]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[IntegerValue]"
+                      cachedDataType="i4"
+                      cachedName="IntegerValue"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[IntegerValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[IntegerValue]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[FloatValue]"
+                      cachedDataType="numeric"
+                      cachedName="FloatValue"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[FloatValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[FloatValue]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[BooleanValue]"
+                      cachedDataType="bool"
+                      cachedName="BooleanValue"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[BooleanValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[BooleanValue]" />
+                    <inputColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].Columns[StringValue]"
+                      cachedDataType="nText"
+                      cachedName="StringValue"
+                      externalMetadataColumnId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[StringValue]"
+                      lineageId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output].Columns[StringValue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[EventTime]"
+                      dataType="dbTimeStamp"
+                      name="EventTime" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Inbound]"
+                      dataType="bool"
+                      name="Inbound" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      dataType="i2"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[DeviceId]"
+                      dataType="i4"
+                      name="DeviceId" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[CommunicatorId]"
+                      dataType="i4"
+                      name="CommunicatorId" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[IntegerValue]"
+                      dataType="i4"
+                      name="IntegerValue" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[FloatValue]"
+                      dataType="numeric"
+                      name="FloatValue"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[BooleanValue]"
+                      dataType="bool"
+                      name="BooleanValue" />
+                    <externalMetadataColumn
+                      refId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[StringValue]"
+                      dataType="nText"
+                      name="StringValue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Value Backup\Staging Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Value Backup\Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Value Backup\Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Value Backup\Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Value Backup.Paths[OLE DB Source Output]"
+              endId="Package\Value Backup\Staging Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Value Backup\SCIPA Database Values Over 72 Hours.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{623D3811-5E0D-431A-B22A-C0F57EB2F82B}"
+      DTS:From="Package\Value Backup"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Deletes Values Moved To Stage Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0701A725-6097-4D88-AB01-8BBD5114F3C6}"
+      DTS:From="Package\Deletes Values Moved To Stage Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{88F0E4DD-92E5-4183-9DEC-2874A52EA8AE}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Deletes Values In The Stage Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="141.777777777778,41.7777777777778"
+          Id="Package\Value Backup"
+          TopLeft="201.85184383098,127.509582737255" />
+        <NodeLayout
+          Size="256,41.7777777777778"
+          Id="Package\Deletes Values Moved To Stage Table"
+          TopLeft="274.691347109438,221.149432559926" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="272.740732719869,169.287360515033">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129.950614389569,51.8620720448938"
+              Start="0,0"
+              End="129.950614389569,44.3620720448938">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.9310360224469" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.9310360224469"
+                    Point2="0,25.9310360224469"
+                    Point3="4,25.9310360224469" />
+                  <mssgle:LineSegment
+                    End="125.950614389569,25.9310360224469" />
+                  <mssgle:CubicBezierSegment
+                    Point1="125.950614389569,25.9310360224469"
+                    Point2="129.950614389569,25.9310360224469"
+                    Point3="129.950614389569,29.9310360224469" />
+                  <mssgle:LineSegment
+                    End="129.950614389569,44.3620720448938" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151.111111111112,41.7777777777778"
+          Id="Package\Data Flow Task"
+          TopLeft="314.814802305199,317.445732022957" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="402.691347109438,262.927210337704">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.3209892486839,54.5185216852532"
+              Start="0,0"
+              End="-12.3209892486839,47.0185216852532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2592608426266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2592608426266"
+                    Point2="0,27.2592608426266"
+                    Point3="-4,27.2592608426266" />
+                  <mssgle:LineSegment
+                    End="-8.32098924868387,27.2592608426266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.32098924868387,27.2592608426266"
+                    Point2="-12.3209892486839,27.2592608426266"
+                    Point3="-12.3209892486839,31.2592608426266" />
+                  <mssgle:LineSegment
+                    End="-12.3209892486839,47.0185216852532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="240.888888888889,41.7777777777778"
+          Id="Package\Deletes Values In The Stage Table"
+          TopLeft="294.444432744274,415.734368716258" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="390.370357860754,359.223509800735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.5185193279645,56.5108589155229"
+              Start="0,0"
+              End="24.5185193279645,49.0108589155229">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2554294577614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.2554294577614"
+                    Point2="0,28.2554294577614"
+                    Point3="4,28.2554294577614" />
+                  <mssgle:LineSegment
+                    End="20.5185193279645,28.2554294577614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5185193279645,28.2554294577614"
+                    Point2="24.5185193279645,28.2554294577614"
+                    Point3="24.5185193279645,32.2554294577614" />
+                  <mssgle:LineSegment
+                    End="24.5185193279645,49.0108589155229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Value Backup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="260,41.7777777777778"
+          Id="Package\Value Backup\SCIPA Database Values Over 72 Hours"
+          TopLeft="59.0740717266814,39.8467446053921" />
+        <NodeLayout
+          Size="143.111111111112,41.7777777777778"
+          Id="Package\Value Backup\Staging Table"
+          TopLeft="394.135786807587,161.379315651838" />
+        <EdgeLayout
+          Id="Package\Value Backup.Paths[OLE DB Source Output]"
+          TopLeft="189.074071726681,81.6245223831699">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="276.617270636461,79.7547932686683"
+              Start="0,0"
+              End="276.617270636461,72.2547932686683">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8773966343342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.8773966343342"
+                    Point2="0,39.8773966343342"
+                    Point3="4,39.8773966343342" />
+                  <mssgle:LineSegment
+                    End="272.617270636461,39.8773966343342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="272.617270636461,39.8773966343342"
+                    Point2="276.617270636461,39.8773966343342"
+                    Point3="276.617270636461,43.8773966343342" />
+                  <mssgle:LineSegment
+                    End="276.617270636461,72.2547932686683" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Value Backup\SCIPA Database Values Over 72 Hours">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Value Backup\Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136.888888888889,41.7777777777778"
+          Id="Package\Data Flow Task\ValueOutput"
+          TopLeft="247.555555555556,122.222222222222" />
+        <NodeLayout
+          Size="149.777777777778,41.7777777777778"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="154.666666666667,12.4444444444445" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="229.555555555556,54.2222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.4444444444445,68"
+              Start="0,0"
+              End="86.4444444444445,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="82.4444444444445,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.4444444444445,34"
+                    Point2="86.4444444444445,34"
+                    Point3="86.4444444444445,38" />
+                  <mssgle:LineSegment
+                    End="86.4444444444445,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ValueOutput">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
