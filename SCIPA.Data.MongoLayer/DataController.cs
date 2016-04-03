@@ -235,6 +235,14 @@ namespace SCIPA.Data.MongoLayer
                 
 
             return null;
-        } 
+        }
+
+        /// <summary>
+        /// Drops the entire SCIPA database.
+        /// </summary>
+        public void ClearMongo()
+        {
+            _client.DropDatabase("SCIPA");
+        }
     }
 }

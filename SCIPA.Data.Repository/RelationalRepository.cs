@@ -683,7 +683,6 @@ namespace SCIPA.Data.Repository
             return _mapper.Map(dbCurrent, new DOM.Alarm());
         }
 
-
         ///
         /// Methods below this point are PRIVATE and are used as 'helper methods'
         /// for this class only. 
@@ -741,6 +740,9 @@ namespace SCIPA.Data.Repository
             }
         }
 
+        /// <summary>
+        /// Executes the ResetDatabaseScript - deleting all data from the database!
+        /// </summary>
         public static void ClearSql()
         {
             //Use unique context as always required live data.

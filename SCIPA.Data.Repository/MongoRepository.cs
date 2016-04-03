@@ -113,5 +113,12 @@ namespace SCIPA.Data.Repository
             };
         }
 
+        /// <summary>
+        /// Informs the controller to drop the entire SCIPA database.
+        /// </summary>
+        public void ClearMongo()
+        {
+            _controller.ClearMongo();
+        }
     }
 }
