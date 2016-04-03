@@ -1163,6 +1163,20 @@ namespace SCIPA.UI.HMI
             //Return to Device list
             modcomms_bBack.PerformClick();
         }
+
+        private void modrules_bAddNewRule_Click(object sender, EventArgs e)
+        {
+            //Create and display the DataBoard form.
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToRulePage();
+            window.ShowDialog();
+
+            //Get the Comm object created.
+            _rule = window.GetRule();
+
+            //Return to Device list
+            modrules_tBack.PerformClick();
+        }
     }
 
     #endregion Modify Rules Page

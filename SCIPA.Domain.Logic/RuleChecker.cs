@@ -47,7 +47,7 @@ namespace SCIPA.Domain.Inbound
         private bool CriteraMet(Rule rule, Value value)
         {
             //Prepare an error message to show if rule checking fails.
-            var errorMsg = $"Could not check Rule {rule.Id} for '{rule.Device}'! There may have been an issue with the RuleType?";
+            var errorMsg = $"Could not check Rule {rule.Id} for '{rule.DeviceId}'! There may have been an issue with the RuleType?";
             
             //Prepare to handle Rules of type 'Between' by pre-splitting the constraints.
             var betweenBreaker = '#';

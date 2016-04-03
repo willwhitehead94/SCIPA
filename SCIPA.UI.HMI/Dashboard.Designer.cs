@@ -218,6 +218,7 @@
             this.modact_tRule = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
+            this.modrules_bAddNewRule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
@@ -2112,6 +2113,7 @@
             // 
             // pModifyRules
             // 
+            this.pModifyRules.Controls.Add(this.modrules_bAddNewRule);
             this.pModifyRules.Controls.Add(this.modrules_bSetAction);
             this.pModifyRules.Controls.Add(this.label77);
             this.pModifyRules.Controls.Add(this.modrules_cAlarm);
@@ -2436,6 +2438,19 @@
             this.label82.TabIndex = 60;
             this.label82.Text = "Modify Action";
             // 
+            // modrules_bAddNewRule
+            // 
+            this.modrules_bAddNewRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.modrules_bAddNewRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modrules_bAddNewRule.Location = new System.Drawing.Point(37, 785);
+            this.modrules_bAddNewRule.Margin = new System.Windows.Forms.Padding(7);
+            this.modrules_bAddNewRule.Name = "modrules_bAddNewRule";
+            this.modrules_bAddNewRule.Size = new System.Drawing.Size(526, 85);
+            this.modrules_bAddNewRule.TabIndex = 61;
+            this.modrules_bAddNewRule.Text = "Add New Rule";
+            this.modrules_bAddNewRule.UseVisualStyleBackColor = true;
+            this.modrules_bAddNewRule.Click += new System.EventHandler(this.modrules_bAddNewRule_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -2691,6 +2706,7 @@
         private System.Windows.Forms.ListBox stop_lbValues;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button modcomms_bAddNewComm;
+        private System.Windows.Forms.Button modrules_bAddNewRule;
     }
 }
 

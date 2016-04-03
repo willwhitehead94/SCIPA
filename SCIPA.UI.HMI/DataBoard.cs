@@ -182,6 +182,7 @@ namespace SCIPA.UI.HMI
             _rule = rule;
             add_cbRule.Items.Add(rule);
             add_cbRule.SelectedIndex = 0;
+            add_cbRule.SelectedItem = add_cbRule.Items[0];
             add_cbRule.Enabled = false;
 
 
@@ -235,7 +236,7 @@ namespace SCIPA.UI.HMI
 
             _rule.Device = devController.RetrieveDevice(_rule.DeviceId);
             _device = _rule.Device;
-            add_cbCommunicatorDestination.Items.AddRange(commController.GetAllCommunicators().Where(com=>com.Device.Id==_rule.DeviceId && com.Inbound==false).ToArray());
+            //add_cbCommunicatorDestination.Items.AddRange(commController.GetAllCommunicators().Where(com=>com.Device.Id==_rule.DeviceId && com.Inbound==false).ToArray());
 
         }
 
@@ -263,7 +264,7 @@ namespace SCIPA.UI.HMI
 
         private void bSaveAction_Click(object sender, EventArgs e)
         {
-            var ruleSelected = add_cbRule.SelectedItem != null;
+            var ruleSelected = _rule != null;
             var destinationSelected = add_cbCommunicatorDestination.SelectedItem != null;
             var outputEntered = add_tOutputValue.Text != "";
 
@@ -273,7 +274,7 @@ namespace SCIPA.UI.HMI
                 return;
             }
 
-            _rule = (Models.Rule) add_cbRule.SelectedItem;
+            //_rule = (Models.Rule) add_cbRule.SelectedItem;
             _communicator = (Models.Communicator)add_cbCommunicatorDestination.SelectedItem;
 
             var newAction = new Models.Action()
