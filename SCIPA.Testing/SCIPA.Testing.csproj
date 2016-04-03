@@ -35,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.3\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.2.3\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.2.3.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.3\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,6 +64,31 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj">
+      <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
+      <Name>SCIPA.Domain.Generic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCIPA.Domain.Logic\SCIPA.Domain.Logic.csproj">
+      <Project>{782b4fa0-9a1b-41c6-a27f-78e523d9398d}</Project>
+      <Name>SCIPA.Domain.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCIPA.Models\SCIPA.Models.csproj">
+      <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>
+      <Name>SCIPA.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCIPA.System.Inbound\SCIPA.Domain.Inbound.csproj">
+      <Project>{73324bed-86c3-410c-a284-805df7523adf}</Project>
+      <Name>SCIPA.Domain.Inbound</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCIPA.System.Outbound\SCIPA.Domain.Outbound.csproj">
+      <Project>{6631325b-51e1-4ea0-83dd-5d83af1fb21d}</Project>
+      <Name>SCIPA.Domain.Outbound</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

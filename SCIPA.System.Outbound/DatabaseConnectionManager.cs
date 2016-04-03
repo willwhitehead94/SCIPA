@@ -4,7 +4,7 @@ using System.Data;
 using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
-namespace SCIPA.Domain.Logic
+namespace SCIPA.Domain.Outbound
 {
     /// <summary>
     /// This class can be used to connect to either an SQL, an OLE or an ODBC database.
@@ -29,7 +29,8 @@ namespace SCIPA.Domain.Logic
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
         /// </summary>
-        private string DefaultConnectionString = SCIPA.Domain.Generic.Configuration.DefaultConnectionString;
+        private string DefaultConnectionString = Configuration.DefaultConnectionString;
+
         #endregion Default InboundValues
 
         #region Variables

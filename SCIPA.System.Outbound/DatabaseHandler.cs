@@ -1,7 +1,6 @@
 ﻿using System;
 using SCIPA.Domain.Generic;
 using SCIPA.Models;
-using SCIPA.Domain.Logic;
 
 namespace SCIPA.Domain.Outbound
 {
