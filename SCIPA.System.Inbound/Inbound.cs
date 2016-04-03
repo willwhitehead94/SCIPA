@@ -9,10 +9,31 @@ namespace SCIPA.Domain.Inbound
 {
     public class Inbound
     {
+        /// <summary>
+        /// The reader of the data.
+        /// </summary>
         private DataReader _reader = null;
+
+        /// <summary>
+        /// The communicator settings to use as part of the reading
+        /// process.
+        /// </summary>
         private Communicator _communicator = null;
+
+        /// <summary>
+        /// List of devices that have started reading.
+        /// </summary>
         private static List<Device> _startedDevices = new List<Device>();
 
+        /// <summary>
+        /// Last known value for this Inbound source.
+        /// </summary>
+        public string LastValue = "";
+
+        /// <summary>
+        /// Constructor of the Comm inbound service.
+        /// </summary>
+        /// <param name="communicator"></param>
         public Inbound(Communicator communicator)
         {
             DebugOutput.Print("Prepared the Communicator for reading. ", communicator.Id.ToString());
@@ -46,6 +67,10 @@ namespace SCIPA.Domain.Inbound
             ThreadPool.QueueUserWorkItem(new WaitCallback(Loop));
         }
 
+        /// <summary>
+        /// Repeatedly checks the handler for any unseen values every second.
+        /// </summary>
+        /// <param name="obj"></param>
         private void Loop(object obj)
         {
             while (true)
@@ -54,12 +79,15 @@ namespace SCIPA.Domain.Inbound
 
                 while (_reader.AvailableValues() > 0)
                 {
-                    var newValue = _reader.GetNextValueAsString();
+                    LastValue = _reader.GetNextValueAsString().Trim();
                 }
                 Thread.Sleep(1000);
             }
         }
 
+        /// <summary>
+        /// Adds the started device to a list.
+        /// </summary>
         private void UpdateActiveDeviceList()
         {
             if (_communicator.Device == null) return;
@@ -72,6 +100,10 @@ namespace SCIPA.Domain.Inbound
             }
         }
 
+        /// <summary>
+        /// Returns a list of any started devices.
+        /// </summary>
+        /// <returns></returns>
         public static List<Device> GetStartedDevices()
         {
             return _startedDevices;

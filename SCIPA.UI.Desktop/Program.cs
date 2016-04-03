@@ -19,11 +19,6 @@ namespace SCIPA.UI
 
             
             Application.Run(new LogTest());
-
-
-            
-
-            //DomainLogic.Class1 start = new DomainLogic.Class1();
         }
     }
 }
