@@ -157,7 +157,7 @@ namespace SCIPA.UI.HMI
                 _activeAlarmCount = controller.GetActiveAlarmCount();
 
                 //Sleep for 5 seconds
-                System.Threading.Thread.Sleep(5000);
+                System.Threading.Thread.Sleep(1000);
             }
         }
 
