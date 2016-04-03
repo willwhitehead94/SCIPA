@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Contexts;
 using AutoMapper;
+using SCIPA.Data.Repository.Properties;
 using SCIPA.Domain.Generic;
 using DAL = SCIPA.Data.AccessLayer;
 using DOM = SCIPA.Models;
@@ -636,9 +637,6 @@ namespace SCIPA.Data.Repository
         /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
         {
-            //var dbVals = _db.Alarms;
-            //return dbVals.Select(alarm => _mapper.Map(alarm, new DOM.Alarm())).ToList();
-
             //Use unique context as always required live data.
             using (var context = new DAL.SCIPAEntities())
             {
@@ -740,6 +738,15 @@ namespace SCIPA.Data.Repository
                 default:
                     DebugOutput.Print("Unable to convert/understand Communicator...", communicator.Id.ToString());
                     return null;
+            }
+        }
+
+        public static void ClearSql()
+        {
+            //Use unique context as always required live data.
+            using (var context = new DAL.SCIPAEntities())
+            {
+                context.Database.ExecuteSqlCommand(Resources.ResetDatabaseScript);
             }
         }
     }
