@@ -3,6 +3,7 @@ using System.Linq;
 using SCIPA.Data.Repository;
 using SCIPA.Domain.Generic;
 using SCIPA.Domain.Logic;
+using SCIPA.Domain.Outbound;
 using SCIPA.Models;
 using ValueType = SCIPA.Models.ValueType;
 
@@ -179,11 +180,43 @@ namespace SCIPA.Domain.Inbound
                 controller.CreateAlarm(alarm);
             }
 
+            var actionController = new ActionController();
+            var act = actionController.RetrieveActionsForRule(rule.Id).FirstOrDefault();
+
             //Handle any Actions to be taken.
-            if (rule.Action != null)
+            if (act != null)
             {
-                //TODO Implement the required action!
+                rule.Action = act;
+                WriteData(rule,value);
             }
+        }
+
+        private void WriteData(Rule rule, Value value)
+        {
+            var controller = new CommunicatorController();
+            var comm = controller.GetAllCommunicators().FirstOrDefault(com => com.Id == rule.Action.CommunicatorId);
+
+            if (comm == null) return;
+
+            DataHandler handler = null;
+
+            switch (comm.Type)
+            {
+                case CommunicatorType.FlatFile:
+                    handler = new FlatFileHandler((FileCommunicator)comm);
+                    break;
+                case CommunicatorType.Serial:
+                    handler = new SerialDataHandler((SerialCommunicator)comm);
+                    break;
+                case CommunicatorType.Database:
+                    handler = new DatabaseHandler((DatabaseCommunicator)comm);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            
+            
         }
 
         /// <summary>
@@ -233,7 +266,5 @@ namespace SCIPA.Domain.Inbound
 
             return null;
         }
-
-
     }
 }

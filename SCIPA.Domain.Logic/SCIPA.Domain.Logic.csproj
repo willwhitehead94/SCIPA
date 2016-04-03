@@ -69,6 +69,10 @@
       <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>
       <Name>SCIPA.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SCIPA.System.Outbound\SCIPA.Domain.Outbound.csproj">
+      <Project>{6631325b-51e1-4ea0-83dd-5d83af1fb21d}</Project>
+      <Name>SCIPA.Domain.Outbound</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

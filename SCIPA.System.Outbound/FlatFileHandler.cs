@@ -28,6 +28,9 @@ namespace SCIPA.Domain.Outbound
 
             //Configure the local File Path variables.
             _filePath = comms.FilePath; 
+
+            //Output the data required
+            OutputValue(comms.Action.OutputValue);
         }
 
         /// <summary>
