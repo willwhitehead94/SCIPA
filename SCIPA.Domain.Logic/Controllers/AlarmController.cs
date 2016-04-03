@@ -17,6 +17,11 @@ namespace SCIPA.Domain.Logic
         private readonly IRelationalRepository _repo = new RelationalRepository();
 
         /// <summary>
+        /// The last Alarm object following an update.
+        /// </summary>
+        public Models.Alarm LastAlarm = null;
+
+        /// <summary>
         /// Creates a new Alarm object on the database.
         /// </summary>
         /// <param name="alarm"></param>
@@ -41,10 +46,22 @@ namespace SCIPA.Domain.Logic
             return alarms != null && alarms.Any() ? alarms.ToList() : new List<Alarm>();
         }
 
-        public void Acknowledge(Alarm alarm)
+        public Alarm Acknowledge(Alarm alarm)
         {
             alarm.Accepted = true;
-            _repo.UpdateAlarm(alarm);
+            LastAlarm = _repo.UpdateAlarm(alarm);
+
+            return LastAlarm;
+        }
+
+        public int GetActiveAlarmCount()
+        {
+            var list = _repo.RetrieveAlarms().Count();
+            var acceptedList = _repo.RetrieveAlarms().Count(alm => alm.Accepted==false);
+            var acceptedGeneral = _repo.RetrieveAlarms().Where(alm => alm.Accepted == false);
+
+
+            return acceptedList;
         }
     }
 }

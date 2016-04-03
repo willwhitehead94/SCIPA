@@ -190,6 +190,7 @@
             this.modcomms_lbComms = new System.Windows.Forms.ListBox();
             this.label56 = new System.Windows.Forms.Label();
             this.pModifyRules = new System.Windows.Forms.TabPage();
+            this.modrules_bAddNewRule = new System.Windows.Forms.Button();
             this.modrules_bSetAction = new System.Windows.Forms.Button();
             this.label77 = new System.Windows.Forms.Label();
             this.modrules_cAlarm = new System.Windows.Forms.CheckBox();
@@ -218,7 +219,6 @@
             this.modact_tRule = new System.Windows.Forms.TextBox();
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
-            this.modrules_bAddNewRule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmsBindingSource)).BeginInit();
             this.pHeader.SuspendLayout();
             this.pButtonPannel.SuspendLayout();
@@ -2136,6 +2136,19 @@
             this.pModifyRules.Text = "Modify Rules";
             this.pModifyRules.UseVisualStyleBackColor = true;
             // 
+            // modrules_bAddNewRule
+            // 
+            this.modrules_bAddNewRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.modrules_bAddNewRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modrules_bAddNewRule.Location = new System.Drawing.Point(37, 785);
+            this.modrules_bAddNewRule.Margin = new System.Windows.Forms.Padding(7);
+            this.modrules_bAddNewRule.Name = "modrules_bAddNewRule";
+            this.modrules_bAddNewRule.Size = new System.Drawing.Size(526, 85);
+            this.modrules_bAddNewRule.TabIndex = 61;
+            this.modrules_bAddNewRule.Text = "Add New Rule";
+            this.modrules_bAddNewRule.UseVisualStyleBackColor = true;
+            this.modrules_bAddNewRule.Click += new System.EventHandler(this.modrules_bAddNewRule_Click);
+            // 
             // modrules_bSetAction
             // 
             this.modrules_bSetAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -2404,7 +2417,7 @@
             this.modact_bSave.Name = "modact_bSave";
             this.modact_bSave.Size = new System.Drawing.Size(612, 110);
             this.modact_bSave.TabIndex = 63;
-            this.modact_bSave.Text = "SAVE RULE INFORMATION";
+            this.modact_bSave.Text = "SAVE ACTION INFORMATION";
             this.modact_bSave.UseVisualStyleBackColor = false;
             this.modact_bSave.Click += new System.EventHandler(this.modact_bSave_Click);
             // 
@@ -2437,19 +2450,6 @@
             this.label82.Size = new System.Drawing.Size(306, 51);
             this.label82.TabIndex = 60;
             this.label82.Text = "Modify Action";
-            // 
-            // modrules_bAddNewRule
-            // 
-            this.modrules_bAddNewRule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.modrules_bAddNewRule.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modrules_bAddNewRule.Location = new System.Drawing.Point(37, 785);
-            this.modrules_bAddNewRule.Margin = new System.Windows.Forms.Padding(7);
-            this.modrules_bAddNewRule.Name = "modrules_bAddNewRule";
-            this.modrules_bAddNewRule.Size = new System.Drawing.Size(526, 85);
-            this.modrules_bAddNewRule.TabIndex = 61;
-            this.modrules_bAddNewRule.Text = "Add New Rule";
-            this.modrules_bAddNewRule.UseVisualStyleBackColor = true;
-            this.modrules_bAddNewRule.Click += new System.EventHandler(this.modrules_bAddNewRule_Click);
             // 
             // Dashboard
             // 

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Contexts;
 using AutoMapper;
 using SCIPA.Domain.Generic;
 using DAL = SCIPA.Data.AccessLayer;
@@ -635,15 +636,15 @@ namespace SCIPA.Data.Repository
         /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
         {
-            var alarms = _db.Alarms;
+            //var dbVals = _db.Alarms;
+            //return dbVals.Select(alarm => _mapper.Map(alarm, new DOM.Alarm())).ToList();
 
-            List<DOM.Alarm> allAlarms= new List<DOM.Alarm>();
-            foreach (var alarm in alarms)
+            //Use unique context as always required live data.
+            using (var context = new DAL.SCIPAEntities())
             {
-                allAlarms.Add(_mapper.Map(alarm, new DOM.Alarm()));
+                var alarms = context.Alarms.ToList();
+                return alarms.Select(alarm => _mapper.Map(alarm, new DOM.Alarm())).ToList();
             }
-
-            return allAlarms;
         }
 
         /// <summary>

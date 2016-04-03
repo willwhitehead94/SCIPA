@@ -151,7 +151,10 @@ namespace SCIPA.UI.HMI
             while (true)
             {
                 //Only counts alarms that have been active for longer than 24 hours.
-                _activeAlarmCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
+                var liveCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
+
+                //_activeAlarmCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
+                _activeAlarmCount = controller.GetActiveAlarmCount();
 
                 //Sleep for 5 seconds
                 System.Threading.Thread.Sleep(5000);
@@ -295,16 +298,11 @@ namespace SCIPA.UI.HMI
             //Clear the ListBox
             alarm_lbAlarms.Items.Clear();
 
-            //Load the THIRD element from the list, 72 hours.
-            alarm_cbPeriod.SelectedItem = alarm_cbPeriod.Items[2];
+            //Load the correct element from the list, 72 hours.
+            alarm_cbPeriod.SelectedItem = alarm_cbPeriod.Items[5];
 
             //Show the page.
             pTabPanel.SelectedTab = pAlarms;
-
-
-
-            //var controller = new AlarmController();
-            // alarm_lbAlarms.Items.Add(controller.)
         }
 
         private void bSettings_Click(object sender, EventArgs e)
@@ -1019,9 +1017,12 @@ namespace SCIPA.UI.HMI
 
         private void alarm_Acknowledge_Click(object sender, EventArgs e)
         {
+            //Submit an acknowledgment request to the controller.
             var controller = new AlarmController();
             controller.Acknowledge((Alarm)alarm_lbAlarms.SelectedItem);
-            _activeAlarmCount--;
+
+            //Update the alarm object in the list.
+            alarm_lbAlarms.SelectedItem = controller.LastAlarm;
         }
 
         private void alarm_bDevice_Click(object sender, EventArgs e)

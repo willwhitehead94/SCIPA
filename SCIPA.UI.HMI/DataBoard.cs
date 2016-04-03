@@ -100,7 +100,7 @@ namespace SCIPA.UI.HMI
             add_cbDatabaseType.DataSource = Enum.GetValues(typeof (Models.DatabaseType));
             add_cbComPort.DataSource = SerialPort.GetPortNames();
             add_cbRuleCheckValue.DataSource = Enum.GetValues(typeof (Models.ValueType));
-            add_cbRuleType.DataSource = Enum.GetValues(typeof (Models.RuleType));
+            //add_cbRuleType.DataSource = Enum.GetValues(typeof (Models.RuleType));
 
             //Adds known rules for the device to the list box.
             var controller = new RuleController();
@@ -234,6 +234,7 @@ namespace SCIPA.UI.HMI
             var devController = new DeviceController();
             var commController = new CommunicatorController();
 
+            _rule = (Models.Rule)add_cbRule.SelectedItem;
             _rule.Device = devController.RetrieveDevice(_rule.DeviceId);
             _device = _rule.Device;
             //add_cbCommunicatorDestination.Items.AddRange(commController.GetAllCommunicators().Where(com=>com.Device.Id==_rule.DeviceId && com.Inbound==false).ToArray());
@@ -274,7 +275,6 @@ namespace SCIPA.UI.HMI
                 return;
             }
 
-            //_rule = (Models.Rule) add_cbRule.SelectedItem;
             _communicator = (Models.Communicator)add_cbCommunicatorDestination.SelectedItem;
 
             var newAction = new Models.Action()
@@ -293,7 +293,39 @@ namespace SCIPA.UI.HMI
             if (action != null)
             {
                 DebugOutput.Print("Successfully created a new Action.");
+                this.Close();
             }
+        }
+
+        private void add_cbRuleCheckValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Set the Rule Types available dependant on the selected ValueType.
+            var selected = (Models.ValueType)(add_cbRuleCheckValue.SelectedItem);
+
+            //Integer and Float have all options (so Integer falls through).
+            switch (selected)
+            {
+                case Models.ValueType.Integer:
+                case Models.ValueType.Float:
+                    add_cbRuleType.DataSource = Enum.GetValues(typeof(Models.RuleType));
+                    break;
+                case Models.ValueType.String:
+                    add_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    add_cbRuleType.Items.Add(Models.RuleType.Not);
+                    break;
+                case Models.ValueType.Boolean:
+                    add_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    break;
+                default:
+                    DebugOutput.Print("Unable to process the Rule selection type. Reverting to default.");
+                    add_cbRuleType.Items.Add(Models.RuleType.EqualTo);
+                    break;
+            }
+        }
+
+        private void add_cbRuleType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

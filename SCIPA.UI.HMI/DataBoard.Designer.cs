@@ -66,7 +66,6 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.pRules = new System.Windows.Forms.TabPage();
-            this.add_bAddAction = new System.Windows.Forms.Button();
             this.add_bSaveRule = new System.Windows.Forms.Button();
             this.add_cbRuleCheckValue = new System.Windows.Forms.ComboBox();
             this.label53 = new System.Windows.Forms.Label();
@@ -79,7 +78,6 @@
             this.add_tRuleName = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.pActions = new System.Windows.Forms.TabPage();
-            this.bCancelAction = new System.Windows.Forms.Button();
             this.bSaveAction = new System.Windows.Forms.Button();
             this.add_cActionEnabled = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
@@ -484,7 +482,6 @@
             // 
             // pRules
             // 
-            this.pRules.Controls.Add(this.add_bAddAction);
             this.pRules.Controls.Add(this.add_bSaveRule);
             this.pRules.Controls.Add(this.add_cbRuleCheckValue);
             this.pRules.Controls.Add(this.label53);
@@ -502,17 +499,6 @@
             this.pRules.TabIndex = 2;
             this.pRules.Text = "Rules";
             this.pRules.UseVisualStyleBackColor = true;
-            // 
-            // add_bAddAction
-            // 
-            this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bAddAction.Location = new System.Drawing.Point(257, 748);
-            this.add_bAddAction.Name = "add_bAddAction";
-            this.add_bAddAction.Size = new System.Drawing.Size(387, 38);
-            this.add_bAddAction.TabIndex = 46;
-            this.add_bAddAction.Text = "Add Device Action";
-            this.add_bAddAction.UseVisualStyleBackColor = true;
-            this.add_bAddAction.Click += new System.EventHandler(this.add_bAddAction_Click);
             // 
             // add_bSaveRule
             // 
@@ -533,6 +519,7 @@
             this.add_cbRuleCheckValue.Name = "add_cbRuleCheckValue";
             this.add_cbRuleCheckValue.Size = new System.Drawing.Size(628, 56);
             this.add_cbRuleCheckValue.TabIndex = 25;
+            this.add_cbRuleCheckValue.SelectedIndexChanged += new System.EventHandler(this.add_cbRuleCheckValue_SelectedIndexChanged);
             // 
             // label53
             // 
@@ -564,6 +551,7 @@
             this.add_cbRuleType.Name = "add_cbRuleType";
             this.add_cbRuleType.Size = new System.Drawing.Size(628, 56);
             this.add_cbRuleType.TabIndex = 26;
+            this.add_cbRuleType.SelectedIndexChanged += new System.EventHandler(this.add_cbRuleType_SelectedIndexChanged);
             // 
             // label45
             // 
@@ -623,7 +611,6 @@
             // 
             // pActions
             // 
-            this.pActions.Controls.Add(this.bCancelAction);
             this.pActions.Controls.Add(this.bSaveAction);
             this.pActions.Controls.Add(this.add_cActionEnabled);
             this.pActions.Controls.Add(this.label55);
@@ -639,16 +626,6 @@
             this.pActions.TabIndex = 1;
             this.pActions.Text = "Actions";
             this.pActions.UseVisualStyleBackColor = true;
-            // 
-            // bCancelAction
-            // 
-            this.bCancelAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.bCancelAction.Location = new System.Drawing.Point(267, 594);
-            this.bCancelAction.Name = "bCancelAction";
-            this.bCancelAction.Size = new System.Drawing.Size(387, 98);
-            this.bCancelAction.TabIndex = 48;
-            this.bCancelAction.Text = "Cancel and Return";
-            this.bCancelAction.UseVisualStyleBackColor = true;
             // 
             // bSaveAction
             // 
@@ -811,7 +788,6 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TabPage pRules;
-        private System.Windows.Forms.Button add_bAddAction;
         private System.Windows.Forms.Button add_bSaveRule;
         private System.Windows.Forms.ComboBox add_cbRuleCheckValue;
         private System.Windows.Forms.Label label53;
@@ -832,7 +808,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox add_cbRule;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Button bCancelAction;
         private System.Windows.Forms.Button bSaveAction;
     }
 }
