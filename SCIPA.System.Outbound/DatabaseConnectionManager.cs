@@ -29,8 +29,7 @@ namespace SCIPA.Domain.Logic
         /// <summary>
         /// This is the default connection string used when there isn't one passed to the constructor.
         /// </summary>
-        private string DefaultConnectionString = Properties.Settings.Default.DefaultDatabaseConnectionString;
-
+        private string DefaultConnectionString = SCIPA.Domain.Generic.Configuration.DefaultConnectionString;
         #endregion Default InboundValues
 
         #region Variables

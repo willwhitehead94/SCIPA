@@ -29,7 +29,7 @@ namespace SCIPA.Domain.Outbound
         /// implemented.
         /// </summary>
         /// <param name="communicator"></param>
-        public SerialDataHandler(SerialCommunicator communicator)
+        public SerialDataHandler(SerialCommunicator communicator, Rule rule)
         {
             //Create temp variable to read the required values.
             var comm = (SerialCommunicator) communicator;
@@ -45,6 +45,9 @@ namespace SCIPA.Domain.Outbound
                 DtrEnable=comm.IsDTR,
                 RtsEnable = comm.IsRTS
             };
+
+            //Output the data required
+            OutputValue(rule.Action.OutputValue);
         }
 
 

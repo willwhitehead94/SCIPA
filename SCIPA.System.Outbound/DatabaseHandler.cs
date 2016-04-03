@@ -20,10 +20,13 @@ namespace SCIPA.Domain.Outbound
         /// Constructor takes a database communicator object. 
         /// </summary>
         /// <param name="comms">Database Communicator Model</param>
-        public DatabaseHandler(DatabaseCommunicator comms)
+        public DatabaseHandler(DatabaseCommunicator comms, Rule rule)
         {
             _communicator = comms;
             dcm = new DatabaseConnectionManager(comms.DbType, comms.ConnectionString, comms.Query, true);
+
+            //Output the data required
+            OutputValue(rule.Action.OutputValue);
         }
 
         /// <summary>

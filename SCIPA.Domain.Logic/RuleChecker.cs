@@ -203,13 +203,13 @@ namespace SCIPA.Domain.Inbound
             switch (comm.Type)
             {
                 case CommunicatorType.FlatFile:
-                    handler = new FlatFileHandler((FileCommunicator)comm);
+                    handler = new FlatFileHandler((FileCommunicator)comm,rule);
                     break;
                 case CommunicatorType.Serial:
-                    handler = new SerialDataHandler((SerialCommunicator)comm);
+                    handler = new SerialDataHandler((SerialCommunicator)comm,rule);
                     break;
                 case CommunicatorType.Database:
-                    handler = new DatabaseHandler((DatabaseCommunicator)comm);
+                    handler = new DatabaseHandler((DatabaseCommunicator)comm,rule);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -21,7 +21,7 @@ namespace SCIPA.Domain.Outbound
         /// Constructor takes a file communicator object.
         /// </summary>
         /// <param name="comms">File Communicator Model</param>
-        public FlatFileHandler(FileCommunicator comms)
+        public FlatFileHandler(FileCommunicator comms, Rule rule)
         {
             //Set the Communicator object.
             _communicator = comms;
@@ -30,7 +30,7 @@ namespace SCIPA.Domain.Outbound
             _filePath = comms.FilePath; 
 
             //Output the data required
-            OutputValue(comms.Action.OutputValue);
+            OutputValue(rule.Action.OutputValue);
         }
 
         /// <summary>
@@ -56,7 +56,17 @@ namespace SCIPA.Domain.Outbound
                     {
                         DebugOutput.Print($"Connected to file at {_filePath}");
 
-                        if (System.IO.File.OpenWrite(_filePath).CanWrite) DebugOutput.Print($"{_fileName} can be written to.");
+                        //System checker
+                        var result = System.IO.File.OpenWrite(_filePath);
+
+                        if (result.CanWrite)
+                        {
+                            DebugOutput.Print($"{_fileName} can be written to.");
+                            result.Close();
+                            return true;
+                        }
+
+                        result.Close();
                     }
                 }
                 catch (Exception e)
@@ -86,8 +96,10 @@ namespace SCIPA.Domain.Outbound
                 //Ensure appropriate access to the file can be obtained.
                 if (CheckFile)
                 {
+                    System.IO.File.WriteAllText(_filePath,value);
+
                     //Using StreamWriter ensures proper disposal of the object following write.
-                    using (var writer = new StreamWriter(_filePath))
+                    using (var writer = new StreamWriter(@_filePath))
                     {
                         writer.WriteLine(value);
                     }

@@ -29,5 +29,7 @@ namespace SCIPA.Domain.Generic
         /// host Operating System, or where the size of the log may become an issue.
         /// </summary>
         public static bool OutputToLogFile { get; set; } = true;
+
+        public static string DefaultConnectionString { get; set; } = @"Data Source=DESKTOP-81SM1A6;Initial Catalog=scipa;Integrated Security=True";
     }
 }
