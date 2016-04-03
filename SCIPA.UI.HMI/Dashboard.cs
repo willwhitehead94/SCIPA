@@ -1149,6 +1149,20 @@ namespace SCIPA.UI.HMI
 
 
         }
+
+        private void modcomms_bAddNewComm_Click(object sender, EventArgs e)
+        {
+            //Create and display the DataBoard form.
+            var window = new DataBoard(_communicator, _selectedDevice);
+            window.GoToCommunicatorPage();
+            window.ShowDialog();
+
+            //Get the Comm object created.
+            _communicator = window.GetCommunicator();
+
+            //Return to Device list
+            modcomms_bBack.PerformClick();
+        }
     }
 
     #endregion Modify Rules Page

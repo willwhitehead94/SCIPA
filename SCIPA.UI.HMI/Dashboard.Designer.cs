@@ -148,6 +148,7 @@
             this.tSettingsPassword = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.pModifyCommunicators = new System.Windows.Forms.TabPage();
+            this.modcomms_bAddNewComm = new System.Windows.Forms.Button();
             this.modcomms_bBack = new System.Windows.Forms.Button();
             this.modcomms_bSaveComm = new System.Windows.Forms.Button();
             this.modcomms_tpCommType = new SCIPA.UI.HMI.CustomTabControl();
@@ -1653,6 +1654,7 @@
             // 
             // pModifyCommunicators
             // 
+            this.pModifyCommunicators.Controls.Add(this.modcomms_bAddNewComm);
             this.pModifyCommunicators.Controls.Add(this.modcomms_bBack);
             this.pModifyCommunicators.Controls.Add(this.modcomms_bSaveComm);
             this.pModifyCommunicators.Controls.Add(this.modcomms_tpCommType);
@@ -1678,6 +1680,19 @@
             this.pModifyCommunicators.TabIndex = 8;
             this.pModifyCommunicators.Text = "ModifyCommunicators";
             this.pModifyCommunicators.UseVisualStyleBackColor = true;
+            // 
+            // modcomms_bAddNewComm
+            // 
+            this.modcomms_bAddNewComm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.modcomms_bAddNewComm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modcomms_bAddNewComm.Location = new System.Drawing.Point(37, 785);
+            this.modcomms_bAddNewComm.Margin = new System.Windows.Forms.Padding(7);
+            this.modcomms_bAddNewComm.Name = "modcomms_bAddNewComm";
+            this.modcomms_bAddNewComm.Size = new System.Drawing.Size(526, 85);
+            this.modcomms_bAddNewComm.TabIndex = 48;
+            this.modcomms_bAddNewComm.Text = "Add New Communicator";
+            this.modcomms_bAddNewComm.UseVisualStyleBackColor = true;
+            this.modcomms_bAddNewComm.Click += new System.EventHandler(this.modcomms_bAddNewComm_Click);
             // 
             // modcomms_bBack
             // 
@@ -2675,6 +2690,7 @@
         private System.Windows.Forms.TextBox modact_tComm;
         private System.Windows.Forms.ListBox stop_lbValues;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button modcomms_bAddNewComm;
     }
 }
 

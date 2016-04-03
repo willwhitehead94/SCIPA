@@ -43,7 +43,7 @@ namespace SCIPA.UI.HMI
                     EndChar = GetEndChar(),
                     Device = _device,
                     //Id = GetNextIdNumber(),
-                    Inbound = true,
+                    Inbound = add_rbCommInbound.Checked,
                     Type = CommunicatorType.Database,
                     Action = null
                 };
@@ -61,7 +61,7 @@ namespace SCIPA.UI.HMI
                     IsDTR = add_cbDtr.Checked,
                     IsRTS = add_cbRts.Checked,
                     Device = _device,
-                    Inbound = true,
+                    Inbound = add_rbCommInbound.Checked,
                     Type = CommunicatorType.Serial,
                     Action = null
                     //Id = GetNextIdNumber()
@@ -77,7 +77,7 @@ namespace SCIPA.UI.HMI
                     EndChar = GetEndChar(),
                     Device = _device,
                     Type = CommunicatorType.FlatFile,
-                    Inbound = true,
+                    Inbound = add_rbCommInbound.Checked,
                     Action = null
                     //Id = GetNextIdNumber()
                 };

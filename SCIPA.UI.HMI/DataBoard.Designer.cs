@@ -151,13 +151,13 @@
             this.add_rbCommOutbound.Name = "add_rbCommOutbound";
             this.add_rbCommOutbound.Size = new System.Drawing.Size(333, 52);
             this.add_rbCommOutbound.TabIndex = 46;
-            this.add_rbCommOutbound.TabStop = true;
             this.add_rbCommOutbound.Text = "Outbound Data";
             this.add_rbCommOutbound.UseVisualStyleBackColor = true;
             // 
             // add_rbCommInbound
             // 
             this.add_rbCommInbound.AutoSize = true;
+            this.add_rbCommInbound.Checked = true;
             this.add_rbCommInbound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.add_rbCommInbound.Location = new System.Drawing.Point(117, 317);
             this.add_rbCommInbound.Name = "add_rbCommInbound";
