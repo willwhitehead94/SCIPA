@@ -179,12 +179,12 @@ namespace SCIPA.UI.HMI
             if (rule == null) return;
 
             //Create action for specific rule if rule was specified.
-            add_cbRule.SelectedItem = rule;
+            _rule = rule;
+            add_cbRule.Items.Add(rule);
+            add_cbRule.SelectedIndex = 0;
             add_cbRule.Enabled = false;
-            add_rbCommInbound.Checked = false;
-            add_rbCommInbound.Enabled = false;
-            add_rbCommOutbound.Checked = true;
-            add_rbCommOutbound.Enabled = false;
+
+
         }
 
         private void add_cbCommType_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,7 +230,13 @@ namespace SCIPA.UI.HMI
 
         private void add_cbRule_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ruleController = new ActionController();
+            var devController = new DeviceController();
+            var commController = new CommunicatorController();
+
+            _rule.Device = devController.RetrieveDevice(_rule.DeviceId);
+            _device = _rule.Device;
+            add_cbCommunicatorDestination.Items.AddRange(commController.GetAllCommunicators().Where(com=>com.Device.Id==_rule.DeviceId && com.Inbound==false).ToArray());
+
         }
 
         private void add_bSaveRule_Click(object sender, EventArgs e)
@@ -246,11 +252,47 @@ namespace SCIPA.UI.HMI
                 Name = add_tRuleName.Text,
                 DeviceId = _device.Id,
                 RuleType = (Models.RuleType)add_cbRuleType.SelectedItem,
-                ValueType = (Models.ValueType)add_cbValueType.SelectedItem
+                ValueType = (Models.ValueType)add_cbRuleCheckValue.SelectedItem
             };
 
             contoller.CreateRule(_rule);
             contoller.UpdateRule(_rule);
+
+            this.Close();
+        }
+
+        private void bSaveAction_Click(object sender, EventArgs e)
+        {
+            var ruleSelected = add_cbRule.SelectedItem != null;
+            var destinationSelected = add_cbCommunicatorDestination.SelectedItem != null;
+            var outputEntered = add_tOutputValue.Text != "";
+
+            if (!(ruleSelected && destinationSelected && outputEntered))
+            {
+                DebugOutput.Print("Unable to save - not all data has been entered!");
+                return;
+            }
+
+            _rule = (Models.Rule) add_cbRule.SelectedItem;
+            _communicator = (Models.Communicator)add_cbCommunicatorDestination.SelectedItem;
+
+            var newAction = new Models.Action()
+            {
+                Rule   = _rule,
+                RuleId = _rule.Id,
+                Communicator =_communicator,
+                CommunicatorId = _communicator.Id,
+                OutputValue = add_tOutputValue.Text,
+                Enabled = add_cActionEnabled.Checked
+            };
+
+            var controller = new ActionController();
+            var action = controller.CreateAction(newAction);
+
+            if (action != null)
+            {
+                DebugOutput.Print("Successfully created a new Action.");
+            }
         }
     }
 }

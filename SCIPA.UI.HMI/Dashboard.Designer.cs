@@ -1475,7 +1475,9 @@
             "12",
             "24",
             "72",
-            "10000"});
+            "168",
+            "744",
+            "8736"});
             this.alarm_cbPeriod.Location = new System.Drawing.Point(440, 32);
             this.alarm_cbPeriod.Name = "alarm_cbPeriod";
             this.alarm_cbPeriod.Size = new System.Drawing.Size(523, 59);

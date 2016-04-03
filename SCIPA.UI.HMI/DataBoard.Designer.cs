@@ -506,9 +506,9 @@
             // add_bAddAction
             // 
             this.add_bAddAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.add_bAddAction.Location = new System.Drawing.Point(267, 410);
+            this.add_bAddAction.Location = new System.Drawing.Point(257, 748);
             this.add_bAddAction.Name = "add_bAddAction";
-            this.add_bAddAction.Size = new System.Drawing.Size(387, 98);
+            this.add_bAddAction.Size = new System.Drawing.Size(387, 38);
             this.add_bAddAction.TabIndex = 46;
             this.add_bAddAction.Text = "Add Device Action";
             this.add_bAddAction.UseVisualStyleBackColor = true;
@@ -659,6 +659,7 @@
             this.bSaveAction.TabIndex = 47;
             this.bSaveAction.Text = "Save and Return";
             this.bSaveAction.UseVisualStyleBackColor = true;
+            this.bSaveAction.Click += new System.EventHandler(this.bSaveAction_Click);
             // 
             // add_cActionEnabled
             // 

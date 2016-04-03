@@ -292,9 +292,11 @@ namespace SCIPA.UI.HMI
         {
             DebugOutput.Print("Dashboard: Alarms");
 
-            //Clear the ListBox and reload all alarms within the first period allotment.
+            //Clear the ListBox
             alarm_lbAlarms.Items.Clear();
-            alarm_cbPeriod.SelectedItem = alarm_cbPeriod.Items[0];
+
+            //Load the THIRD element from the list, 72 hours.
+            alarm_cbPeriod.SelectedItem = alarm_cbPeriod.Items[2];
 
             //Show the page.
             pTabPanel.SelectedTab = pAlarms;
@@ -791,6 +793,8 @@ namespace SCIPA.UI.HMI
                 //Select the first element
                 modrules_lbRules.SelectedItem = modrules_lbRules.Items[0];
 
+
+
                 //Shows the modify tab.
                 pTabPanel.SelectedTab = pModifyRules;
             }
@@ -1017,6 +1021,7 @@ namespace SCIPA.UI.HMI
         {
             var controller = new AlarmController();
             controller.Acknowledge((Alarm)alarm_lbAlarms.SelectedItem);
+            _activeAlarmCount--;
         }
 
         private void alarm_bDevice_Click(object sender, EventArgs e)
