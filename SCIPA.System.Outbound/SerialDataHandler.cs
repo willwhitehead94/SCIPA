@@ -25,11 +25,16 @@ namespace SCIPA.Domain.Outbound
         private SerialPort _sPort;
 
         /// <summary>
+        /// The value that caused the required write.
+        /// </summary>
+        private Value _value = null;
+
+        /// <summary>
         /// Constructor taking a SerialCommunicator object so as to allow COM settings to be
         /// implemented.
         /// </summary>
         /// <param name="communicator"></param>
-        public SerialDataHandler(SerialCommunicator communicator, Rule rule)
+        public SerialDataHandler(SerialCommunicator communicator, Rule rule, Value value)
         {
             //Create temp variable to read the required values.
             var comm = (SerialCommunicator) communicator;
@@ -46,8 +51,14 @@ namespace SCIPA.Domain.Outbound
                 RtsEnable = comm.IsRTS
             };
 
-            //Output the data required
-            OutputValue(rule.Action.OutputValue);
+            //Make the Value available.
+            _value = value;
+
+            //Output the data required - if blank, print the actual value
+            if (rule.Action.OutputValue == "[val]")
+                OutputValue(_value.StringValue);
+            else
+                OutputValue(rule.Action.OutputValue);
         }
 
 

@@ -18,19 +18,30 @@ namespace SCIPA.Domain.Outbound
         private string _filePath, _folderPath, _fileName;
 
         /// <summary>
+        /// The value that caused the required write.
+        /// </summary>
+        private Value _value = null;
+
+        /// <summary>
         /// Constructor takes a file communicator object.
         /// </summary>
         /// <param name="comms">File Communicator Model</param>
-        public FlatFileHandler(FileCommunicator comms, Rule rule)
+        public FlatFileHandler(FileCommunicator comms, Rule rule, Value val)
         {
             //Set the Communicator object.
             _communicator = comms;
 
             //Configure the local File Path variables.
-            _filePath = comms.FilePath; 
+            _filePath = comms.FilePath;
 
-            //Output the data required
-            OutputValue(rule.Action.OutputValue);
+            //Give access to the value.
+            _value = val;
+
+            //Output the data required - if blank, print the actual value
+            if (rule.Action.OutputValue=="[val]")
+                OutputValue(_value.StringValue);
+            else
+                OutputValue(rule.Action.OutputValue);
         }
 
         /// <summary>
@@ -96,8 +107,6 @@ namespace SCIPA.Domain.Outbound
                 //Ensure appropriate access to the file can be obtained.
                 if (CheckFile)
                 {
-                    System.IO.File.WriteAllText(_filePath,value);
-
                     //Using StreamWriter ensures proper disposal of the object following write.
                     using (var writer = new StreamWriter(@_filePath))
                     {

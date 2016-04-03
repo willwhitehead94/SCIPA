@@ -17,16 +17,27 @@ namespace SCIPA.Domain.Outbound
         private DatabaseConnectionManager dcm = null;
 
         /// <summary>
+        /// The value that caused the required write.
+        /// </summary>
+        private Value _value = null;
+
+        /// <summary>
         /// Constructor takes a database communicator object. 
         /// </summary>
         /// <param name="comms">Database Communicator Model</param>
-        public DatabaseHandler(DatabaseCommunicator comms, Rule rule)
+        public DatabaseHandler(DatabaseCommunicator comms, Rule rule, Value value)
         {
             _communicator = comms;
             dcm = new DatabaseConnectionManager(comms.DbType, comms.ConnectionString, comms.Query, true);
 
-            //Output the data required
-            OutputValue(rule.Action.OutputValue);
+            //Make the Value available.
+            _value = value;
+
+            //Output the data required - if blank, print the actual value
+            if (rule.Action.OutputValue == "[val]")
+                OutputValue(_value.StringValue);
+            else
+                OutputValue(rule.Action.OutputValue);
         }
 
         /// <summary>
