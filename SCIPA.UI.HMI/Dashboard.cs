@@ -358,7 +358,9 @@ namespace SCIPA.UI.HMI
             {
                 DebugOutput.Print("Showing Admin Panel!");
                 tSettingsPassword.Text = "";
-                System.Windows.Forms.MessageBox.Show("Settings panel would open at this point...");
+                var admin = new AdminPanel();
+                admin.ShowDialog();
+                DebugOutput.Print("Panel Closed.");
             }
         }
         #endregion Settings Page
