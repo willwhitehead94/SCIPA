@@ -242,7 +242,14 @@ namespace SCIPA.Data.MongoLayer
         /// </summary>
         public void ClearMongo()
         {
-            _client.DropDatabase("SCIPA");
+            try
+            {
+                _client.DropDatabase("SCIPA");
+            }
+            catch
+            {
+                
+            }
         }
     }
 }
