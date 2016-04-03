@@ -26,6 +26,7 @@ namespace SCIPA.Domain.Inbound
         public void Start()
         {
             Communicator selectedCommunicator = (Communicator)_communicator;
+            if (!selectedCommunicator.Inbound) return;
 
             switch (selectedCommunicator.Type)
             {

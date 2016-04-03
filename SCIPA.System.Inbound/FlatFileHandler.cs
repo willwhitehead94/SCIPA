@@ -58,11 +58,12 @@ namespace SCIPA.Domain.Inbound
         /// <param name="comms">File CommunicatorModel</param>
         public FlatFileHandler(FileCommunicator comms)
         {
+
             if (PathsBeingWatched.Contains(@comms.FilePath))
             {
                 DebugOutput.Print("Already watching for updates on file at ", comms.FilePath);
             }
-            else
+            else if (comms.Inbound)
             {
                 DebugOutput.Print("Attempting to create new connection to file at ", comms.FilePath);
                 Communicator = comms;
