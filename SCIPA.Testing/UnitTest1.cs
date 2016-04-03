@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SCIPA.Testing.Interfaces
+namespace SCIPA.Testing
 {
     [TestClass]
     public class UnitTest1

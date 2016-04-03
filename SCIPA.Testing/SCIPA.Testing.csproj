@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5CDFCEB-A88B-4F41-9965-017818D8DC02}</ProjectGuid>
+    <ProjectGuid>{2858FFEE-4382-47A8-B21D-BEE9D83A8D74}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCIPA.Testing.Data</RootNamespace>
-    <AssemblyName>SCIPA.Testing.Data</AssemblyName>
+    <RootNamespace>SCIPA.Testing</RootNamespace>
+    <AssemblyName>SCIPA.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,14 +50,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataTests.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SCIPA.Domain.Generic\SCIPA.Domain.Generic.csproj">
-      <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
-      <Name>SCIPA.Domain.Generic</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

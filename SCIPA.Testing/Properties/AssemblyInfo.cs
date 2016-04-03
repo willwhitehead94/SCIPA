@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SCIPA.Testing.Domain")]
+[assembly: AssemblyTitle("SCIPA.Testing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SCIPA.Testing.Domain")]
+[assembly: AssemblyProduct("SCIPA.Testing")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f58eff4d-11ed-42f9-85f9-e408715c482b")]
+[assembly: Guid("2858ffee-4382-47a8-b21d-bee9d83a8d74")]
 
 // Version information for an assembly consists of the following four values:
 //
