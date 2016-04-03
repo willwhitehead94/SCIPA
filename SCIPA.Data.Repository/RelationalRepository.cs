@@ -225,13 +225,6 @@ namespace SCIPA.Data.Repository
         public DOM.Action CreateAction(DOM.Action action)
         {
             var dbVal = (_mapper.Map(action, new DAL.Action()));
-            //var rule = _mapper.Map(action.Rule, new DAL.Rule());
-            //dbVal.Rule = rule;
-            //_db.Entry(dbVal.Rule).State=EntityState.Modified;
-
-            //var comm = ConvertDOMCommunicatorToDAL(action.Communicator);
-            //dbVal.Communicator = comm;
-            //_db.Entry(dbVal.Communicator).State = EntityState.Modified;
 
             _db.Actions.Add(dbVal);
             _db.SaveChanges();
