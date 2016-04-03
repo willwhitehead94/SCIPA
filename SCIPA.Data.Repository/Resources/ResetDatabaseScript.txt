@@ -185,6 +185,25 @@ CREATE TABLE [dbo].[Communicators_DatabaseCommunicator] (
 );
 GO
 
+ -- Creating table 'StagingTable'
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[StagingTable](
+	[Id] [int] NULL,
+	[EventTime] [datetime] NULL,
+	[Inbound] [bit] NULL,
+	[Type] [smallint] NULL,
+	[DeviceId] [int] NULL,
+	[CommunicatorId] [int] NULL,
+	[IntegerValue] [int] NULL,
+	[FloatValue] [numeric](18, 0) NULL,
+	[BooleanValue] [bit] NULL,
+	[StringValue] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------

@@ -637,11 +637,19 @@ namespace SCIPA.Data.Repository
         /// <returns></returns>
         public IEnumerable<DOM.Alarm> RetrieveAlarms()
         {
-            //Use unique context as always required live data.
-            using (var context = new DAL.SCIPAEntities())
+            try
             {
-                var alarms = context.Alarms.ToList();
-                return alarms.Select(alarm => _mapper.Map(alarm, new DOM.Alarm())).ToList();
+                //Use unique context as always required live data.
+                using (var context = new DAL.SCIPAEntities())
+                {
+                    var alarms = context.Alarms.ToList();
+                    return alarms.Select(alarm => _mapper.Map(alarm, new DOM.Alarm())).ToList();
+                }
+            }
+            catch
+            {
+                DebugOutput.Print("Failed to update alarm data.");
+                return null;
             }
         }
 
@@ -748,7 +756,9 @@ namespace SCIPA.Data.Repository
             //Use unique context as always required live data.
             using (var context = new DAL.SCIPAEntities())
             {
-                context.Database.ExecuteSqlCommand(Resources.ResetDatabaseScript);
+                context.Database.Delete();
+                context.Database.Create();
+               // context.Database.ExecuteSqlCommand(@Resources.ResetDatabaseScript);
             }
         }
     }

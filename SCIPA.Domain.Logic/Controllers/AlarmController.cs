@@ -40,8 +40,18 @@ namespace SCIPA.Domain.Logic
             //The earliest time to retrieve.
             var earliest = DateTime.Now.AddHours(hours);
 
+            //Alaram List
+            IEnumerable<Alarm> alarms = null;
+
             //Returns all alarms as a list where they fall within the given period.
-            var alarms = _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest);
+            try
+            {
+                alarms = _repo.RetrieveAlarms().Where(al => al.TimeStamp >= earliest);
+            }
+            catch
+            {
+                
+            }
 
             return alarms != null && alarms.Any() ? alarms.ToList() : new List<Alarm>();
         }
@@ -56,12 +66,18 @@ namespace SCIPA.Domain.Logic
 
         public int GetActiveAlarmCount()
         {
-            var list = _repo.RetrieveAlarms().Count();
-            var acceptedList = _repo.RetrieveAlarms().Count(alm => alm.Accepted==false);
-            var acceptedGeneral = _repo.RetrieveAlarms().Where(alm => alm.Accepted == false);
+            try
+            {
+                var list = _repo.RetrieveAlarms().Count();
+                var acceptedList = _repo.RetrieveAlarms().Count(alm => alm.Accepted == false);
+                var acceptedGeneral = _repo.RetrieveAlarms().Where(alm => alm.Accepted == false);
 
-
-            return acceptedList;
+                return acceptedList;
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }
