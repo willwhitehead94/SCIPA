@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SCIPA.Data.Repository;
+using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
 namespace SCIPA.Domain.Logic
@@ -50,7 +51,7 @@ namespace SCIPA.Domain.Logic
             }
             catch
             {
-                
+                DebugOutput.Print("Issue retrieving the alarms...");
             }
 
             return alarms != null && alarms.Any() ? alarms.ToList() : new List<Alarm>();

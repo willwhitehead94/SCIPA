@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<SCIPA.Models.Alarm>
 
 @{
-    ViewBag.Title = "AlarmView";
+    ViewBag.Title = "SCIPA Alarms";
 }
 
-<h2>AlarmView</h2>
+<h2>Showing all Alarms from past 72 hours</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <h4>@Html.ActionLink("Show All Alarms", "Index") | @Html.ActionLink("Show Active (Unacknowledged) Alarms", "Index", new { unacceptedOnly = true })</h4>
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -65,9 +66,6 @@
             @Html.ActionLink("Acknowledge", "Acknowledge", new {id=item.Id})
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
