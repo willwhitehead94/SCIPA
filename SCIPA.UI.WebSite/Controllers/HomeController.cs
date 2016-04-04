@@ -43,12 +43,19 @@ namespace SCIPA.UI.WebSite.Controllers
         /// </summary>
         /// <param name="unacceptedOnly"></param>
         /// <returns></returns>
-        public ActionResult Index(bool unacceptedOnly=false)
+        public ActionResult Index(bool? accepted=null)
         {
             List<Alarm> alarmList = new List<Alarm>();
             allAlarms=new List<Alarm>();
 
-            alarmList = unacceptedOnly ? UnacceptedOnly() : AllAlarms();
+            if (accepted == null)
+            {
+                alarmList=AllAlarms();
+            }
+            else
+            {
+                alarmList = (bool)accepted ? AcceptedOnly() : UnacceptedOnly();
+            }
             
             //For each alarm in the list, download the additional details.
             foreach (var alarm in alarmList)
@@ -75,7 +82,6 @@ namespace SCIPA.UI.WebSite.Controllers
             return controller.GetAllAlarms(Hours).ToList();
         }
 
-
         /// <summary>
         /// Download all Alarms within the period but only return
         /// those who're not yet acknowledged.
@@ -83,8 +89,18 @@ namespace SCIPA.UI.WebSite.Controllers
         /// <returns></returns>
         public List<Alarm> UnacceptedOnly()
         {
-            return AllAlarms().Where(al => al.Accepted = false).ToList();
-        } 
+            return AllAlarms().Where(al => al.Accepted == false).ToList();
+        }
+
+        /// <summary>
+        /// Download all Alarms within the period but only return
+        /// those who're already acknowledged.
+        /// </summary>
+        /// <returns></returns>
+        public List<Alarm> AcceptedOnly()
+        {
+            return AllAlarms().Where(al => al.Accepted).ToList();
+        }
 
         /// <summary>
         /// Allow users to acknowledge the alarms from the site.
