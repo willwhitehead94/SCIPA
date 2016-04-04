@@ -8,7 +8,7 @@ using SCIPA.Models;
 namespace SCIPA.Testing
 {
     [TestClass]
-    public class DatabaseConnections
+    public class UnitTest1
     {
         /// <summary>
         /// Ensures that SCIPA is able to connect to SQL Server.
@@ -16,10 +16,10 @@ namespace SCIPA.Testing
         [TestMethod]
         public void ConnectToSQLServerDatabase()
         {
-            var connextionString = Configuration.DefaultConnectionString;
+            var connextionString = @"provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=SCIPA;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
             var query = "SELECT TOP 5 * FROM [SCIPA].[dbo].[Values]";
 
-            var dcm = new DatabaseConnectionManager(DatabaseType.SQL, connextionString,query,true);
+            var dcm = new DatabaseConnectionManager(DatabaseType.SQL, Configuration.DefaultConnectionString,query,true);
             dcm.Execute();
         }
 
