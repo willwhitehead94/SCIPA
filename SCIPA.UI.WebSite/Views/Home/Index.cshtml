@@ -15,16 +15,25 @@
             @Html.DisplayNameFor(model => model.TimeStamp)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeviceId)
+            @Html.DisplayNameFor(model => model.Device)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ValueId)
+            @Html.DisplayNameFor(model => model.Device.Location)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RuleId)
+            @Html.DisplayNameFor(model => model.Device.Custodian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rule)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Accepted)
+        </th>
+        <th>
+            Acknowledge
         </th>
         <th></th>
     </tr>
@@ -35,16 +44,25 @@
             @Html.DisplayFor(modelItem => item.TimeStamp)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DeviceId)
+            @Html.DisplayFor(modelItem => item.Device.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ValueId)
+            @Html.DisplayFor(modelItem => item.Device.Location)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RuleId)
+            @Html.DisplayFor(modelItem => item.Device.Custodian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value.StringValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rule.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Accepted)
+        </td>
+        <td>
+            @Html.ActionLink("Acknowledge", "Acknowledge", new {id=item.Id})
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
