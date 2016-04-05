@@ -7,8 +7,8 @@
     <ProjectGuid>{4BAC6E7C-F2CC-433B-8794-B120333BDA97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCIPA.Models</RootNamespace>
-    <AssemblyName>SCIPA.Models</AssemblyName>
+    <RootNamespace>SCIPA.Domain.Models</RootNamespace>
+    <AssemblyName>SCIPA.Domain.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

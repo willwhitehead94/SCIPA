@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Data.Repository", "SCIPA.Data.Repository\SCIPA.Data.Repository.csproj", "{6E21D7E3-2E9B-491D-999F-3D372EE43FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Models", "SCIPA.Models\SCIPA.Models.csproj", "{4BAC6E7C-F2CC-433B-8794-B120333BDA97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Domain.Models", "SCIPA.Models\SCIPA.Domain.Models.csproj", "{4BAC6E7C-F2CC-433B-8794-B120333BDA97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCIPA.Domain.Logic", "SCIPA.Domain.Logic\SCIPA.Domain.Logic.csproj", "{782B4FA0-9A1B-41C6-A27F-78E523D9398D}"
 EndProject
