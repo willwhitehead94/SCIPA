@@ -56,7 +56,7 @@
       <Project>{7804f99a-5a1a-4270-bab5-b69c4c5d0d3e}</Project>
       <Name>SCIPA.Domain.Generic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SCIPA.Models\SCIPA.Domain.Models.csproj">
+    <ProjectReference Include="..\SCIPA.Domain.Models\SCIPA.Domain.Models.csproj">
       <Project>{4bac6e7c-f2cc-433b-8794-b120333bda97}</Project>
       <Name>SCIPA.Domain.Models</Name>
     </ProjectReference>
