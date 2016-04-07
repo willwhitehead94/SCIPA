@@ -17,22 +17,22 @@ namespace SCIPA.UI.WebSite.Controllers
         /// <summary>
         /// Device controller to load Device details for display on the form.
         /// </summary>
-        DeviceController devCont = new DeviceController();
+        DeviceController deviceController = new DeviceController();
 
         /// <summary>
         /// Value controller to load specific Value information on the form.
         /// </summary>
-        ValueController valCont = new ValueController();
+        ValueController valueController = new ValueController();
 
         /// <summary>
         /// Rule controller to allow specific Rule data to be displayed.
         /// </summary>
-        RuleController rulCont = new RuleController();
+        RuleController ruleController = new RuleController();
 
         /// <summary>
         /// The number of hours to load alarm data for.
         /// </summary>
-        private int Hours = 72;
+        private int hoursToRetrieve = 72;
 
         /// <summary>
         /// Local collection of Alarms from the database.
@@ -40,7 +40,7 @@ namespace SCIPA.UI.WebSite.Controllers
         ICollection<SCIPA.Models.Alarm> allAlarms = new List<Alarm>();
 
         /// <summary>
-        /// Home page action. Loads all alarms by default from the given Hours period.
+        /// Home page action. Loads all alarms by default from the given hoursToRetrieve period.
         /// Passing a true boolean will show only the unacknowledged alarms.
         /// </summary>
         /// <param name="unacceptedOnly"></param>
@@ -63,9 +63,9 @@ namespace SCIPA.UI.WebSite.Controllers
             foreach (var alarm in alarmList)
             {
                 //Load controller-specific data into the Alarm object.
-                alarm.Device = devCont.RetrieveDevice(alarm.DeviceId);
-                alarm.Value = valCont.GetValueById(alarm.ValueId);
-                alarm.Rule = rulCont.RetrieveRuleById(alarm.RuleId);
+                alarm.Device = deviceController.RetrieveDevice(alarm.DeviceId);
+                alarm.Value = valueController.GetValueById(alarm.ValueId);
+                alarm.Rule = ruleController.RetrieveRuleById(alarm.RuleId);
 
                 //Add the alarm to the global list.
                 allAlarms.Add(alarm);
@@ -76,12 +76,24 @@ namespace SCIPA.UI.WebSite.Controllers
         }
 
         /// <summary>
+        /// Allow users to acknowledge the alarms from the site.
+        /// </summary>
+        /// <param name="id"></param>
+        public void Acknowledge(int id)
+        {
+            controller.Acknowledge(controller.GetAllAlarms(hoursToRetrieve).FirstOrDefault(alm => alm.Id == id));
+            Redirect("Index");
+        }
+
+#region Collection of Appropriate Data
+
+        /// <summary>
         /// Download all alarsm within the given period.
         /// </summary>
         /// <returns></returns>
         public List<Alarm> AllAlarms()
         {
-            return controller.GetAllAlarms(Hours).ToList();
+            return controller.GetAllAlarms(hoursToRetrieve).ToList();
         }
 
         /// <summary>
@@ -104,16 +116,6 @@ namespace SCIPA.UI.WebSite.Controllers
             return AllAlarms().Where(al => al.Accepted).ToList();
         }
 
-        /// <summary>
-        /// Allow users to acknowledge the alarms from the site.
-        /// </summary>
-        /// <param name="id"></param>
-        public void Acknowledge(int id)
-        {
-            controller.Acknowledge(controller.GetAllAlarms(Hours).FirstOrDefault(alm=> alm.Id==id));
-            Redirect("Index");
-        }
-
-
+#endregion Collection of Appropriate Data
     }
 }
