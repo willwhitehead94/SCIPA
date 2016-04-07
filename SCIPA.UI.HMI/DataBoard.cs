@@ -26,6 +26,24 @@ namespace SCIPA.UI.HMI
             InitializeComponent();
             _communicator = _comm;
             _device = _dev;
+
+            if (_device == null)
+            {
+                //Cannot handle an unknown device!
+                this.Close();
+            }
+
+            if (_communicator == null)
+            {
+                var devController = new DeviceController();
+                _communicator = devController.GetCommunicatorsForDevice(_device.Id).FirstOrDefault(c=>c.Inbound);
+
+                if (_communicator == null)
+                {
+                    System.Windows.Forms.MessageBox.Show("No communicators exist - you cannot create a rule!");
+                    this.Close();
+                }
+            }
         }
 
         private void add_bSaveSource_Click(object sender, EventArgs e)
@@ -182,7 +200,7 @@ namespace SCIPA.UI.HMI
             _rule = rule;
             add_cbRule.Items.Add(rule);
             add_cbRule.SelectedIndex = 0;
-            add_cbRule.SelectedItem = add_cbRule.Items[0];
+            //add_cbRule.SelectedItem = add_cbRule.Items[0];
             add_cbRule.Enabled = false;
 
 

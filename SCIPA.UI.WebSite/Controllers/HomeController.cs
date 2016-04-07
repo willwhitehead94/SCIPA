@@ -12,22 +12,22 @@ namespace SCIPA.UI.WebSite.Controllers
         /// <summary>
         /// Main controller - used to access the Alarm data.
         /// </summary>
-        AlarmController controller = new AlarmController();
+        readonly AlarmController controller = new AlarmController();
 
         /// <summary>
         /// Device controller to load Device details for display on the form.
         /// </summary>
-        DeviceController deviceController = new DeviceController();
+        readonly DeviceController deviceController = new DeviceController();
 
         /// <summary>
         /// Value controller to load specific Value information on the form.
         /// </summary>
-        ValueController valueController = new ValueController();
+        readonly ValueController valueController = new ValueController();
 
         /// <summary>
         /// Rule controller to allow specific Rule data to be displayed.
         /// </summary>
-        RuleController ruleController = new RuleController();
+        readonly RuleController ruleController = new RuleController();
 
         /// <summary>
         /// The number of hours to load alarm data for.

@@ -150,14 +150,27 @@ namespace SCIPA.UI.HMI
             var controller = new AlarmController();
             while (true)
             {
-                //Only counts alarms that have been active for longer than 24 hours.
-                var liveCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
+                /*
+                * Updates to the Alarm Count are handled within TRY/CATCH because there is potential
+                * for external changes that may cut/slow the data flow/connection.
+                */
 
-                //_activeAlarmCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
-                _activeAlarmCount = controller.GetActiveAlarmCount();
+                try
+                {
+                    //Only counts alarms that have been active for longer than 24 hours.
+                    var liveCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
 
-                //Sleep for X seconds
-                System.Threading.Thread.Sleep(1000);
+                    //_activeAlarmCount = controller.GetAllAlarms(24).Count(a => !a.Accepted);
+                    _activeAlarmCount = controller.GetActiveAlarmCount();
+
+                    //Sleep for X seconds
+                    System.Threading.Thread.Sleep(1000);
+
+                }
+                catch (Exception e)
+                {
+                    DebugOutput.Print("Alarm Updating Error - ", e.Message);
+                }
             }
         }
 
@@ -213,14 +226,19 @@ namespace SCIPA.UI.HMI
 
         private void lHeaderAlarmCount_Click(object sender, EventArgs e)
         {
-            if (_activeAlarmCount == 0)
-            {
-                _activeAlarmCount = 1;
-            }
-            else
-            {
-                _activeAlarmCount = 0;
-            }
+            //This method was used during development to test the colour changing
+            //loops, as well as auto updating of Alarm Count values.
+
+            //Removed for release.
+
+            //if (_activeAlarmCount == 0)
+            //{
+            //    _activeAlarmCount = 1;
+            //}
+            //else
+            //{
+            //    _activeAlarmCount = 0;
+            //}
         }
         #endregion Dashboard Generic Methods
 
@@ -369,31 +387,45 @@ namespace SCIPA.UI.HMI
 
         private void start_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedDevice = (Device) start_lbDevice.SelectedItem;
-            start_tId.Text = selectedDevice.Id.ToString();
-            start_tDevName.Text = selectedDevice.Name;
-            start_tLocation.Text = selectedDevice.Location;
-            start_tCustodian.Text = selectedDevice.Custodian;
-            start_bStart.Enabled = selectedDevice.Enabled;
+            try
+            {
+                var selectedDevice = (Device) start_lbDevice.SelectedItem;
+                start_tId.Text = selectedDevice.Id.ToString();
+                start_tDevName.Text = selectedDevice.Name;
+                start_tLocation.Text = selectedDevice.Location;
+                start_tCustodian.Text = selectedDevice.Custodian;
+                start_bStart.Enabled = selectedDevice.Enabled;
 
-            //Disallow starting if already started.
-            if (Inbound.GetStartedDevices().Where(dev => dev.Id == selectedDevice.Id).Any())
-                start_bStart.Enabled = false;
+                //Disallow starting if already started.
+                if (Inbound.GetStartedDevices().Where(dev => dev.Id == selectedDevice.Id).Any())
+                    start_bStart.Enabled = false;
 
-            //Allow global access
-            _selectedDevice = selectedDevice;
+                //Allow global access
+                _selectedDevice = selectedDevice;
+            }
+            catch (Exception ex)
+            {
+                DebugOutput.Print("Could not load data for selected object. ",ex.Message);
+            }
         }
 
         private void start_bStart_Click(object sender, EventArgs e)
         {
-            var controller = new CommunicatorController();
-            var commList = controller.GetAllCommunicators().Where(comm => comm.Device.Id == _selectedDevice.Id);
+            try
+            {
+                var controller = new CommunicatorController();
+                var commList = controller.GetAllCommunicators().Where(comm => comm.Device.Id == _selectedDevice.Id);
 
-            foreach (var comm in commList)
-                new Inbound(comm);
+                foreach (var comm in commList)
+                    new Inbound(comm);
 
-            //Once started, stops allowing a second start.
-            start_bStart.Enabled = false;
+                //Once started, stops allowing a second start.
+                start_bStart.Enabled = false;
+            }
+            catch
+            {
+                DebugOutput.Print("Unable to start the selected device!");
+            }
 
         }
 
@@ -403,36 +435,43 @@ namespace SCIPA.UI.HMI
 
         private void stop_lbDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedDevice = (Device) stop_lbDevice.SelectedItem;
-            //stop_tId.Text = selectedDevice.Id.ToString(); //Removed.
-            stop_tDevName.Text = selectedDevice.Name;
-            stop_tLocation.Text = selectedDevice.Location;
-            stop_tCustodian.Text = selectedDevice.Custodian;
-
-            //Load the values from MongoDb
-            var max = 10000; //Max number of records to display
-            var controller = new ValueController();
-            stop_lbValues.Items.Clear();
-
-            //Only add upto the first 'max' values.
-            var allValues = controller.GetValuesForDevice(selectedDevice);
-
-            if (allValues != null && allValues.Any())
+            try
             {
-                var vals = allValues.Take(max).ToArray();
+                var selectedDevice = (Device) stop_lbDevice.SelectedItem;
+                //stop_tId.Text = selectedDevice.Id.ToString(); //Removed.
+                stop_tDevName.Text = selectedDevice.Name;
+                stop_tLocation.Text = selectedDevice.Location;
+                stop_tCustodian.Text = selectedDevice.Custodian;
 
-                var distinct = new List<string>();
-                foreach (var val in vals.Where(val => !distinct.Contains(val.ToString())))
+                //Load the values from MongoDb
+                var max = 10000; //Max number of records to display
+                var controller = new ValueController();
+                stop_lbValues.Items.Clear();
+
+                //Only add upto the first 'max' values.
+                var allValues = controller.GetValuesForDevice(selectedDevice);
+
+                if (allValues != null && allValues.Any())
                 {
-                    distinct.Add(val.ToString());
+                    var vals = allValues.Take(max).ToArray();
+
+                    var distinct = new List<string>();
+                    foreach (var val in vals.Where(val => !distinct.Contains(val.ToString())))
+                    {
+                        distinct.Add(val.ToString());
+                    }
+
+
+                    stop_lbValues.Items.AddRange(distinct.ToArray());
                 }
 
-
-                stop_lbValues.Items.AddRange(distinct.ToArray());
+                //Allow global access
+                _selectedDevice = selectedDevice;
             }
-
-            //Allow global access
-            _selectedDevice = selectedDevice;
+            catch (Exception ex)
+            {
+                DebugOutput.Print("Could not load data for selected object. ", ex.Message);
+            }
         }
 
         #endregion Stop Page
@@ -575,56 +614,80 @@ namespace SCIPA.UI.HMI
 
         private void modify_bSave_Click(object sender, EventArgs e)
         {
-            //Update the global object with any updates values.
-            _selectedDevice.Name = modify_tDevName.Text;
-            _selectedDevice.Custodian = modify_tCustodian.Text;
-            _selectedDevice.Location = modify_tLocation.Text;
-            _selectedDevice.Enabled = modify_rbTrue.Checked;
-
-            //Create new Device Controller.
-            var controller = new DeviceController();
-
-            //Save the Device.
-            var savedDevice = controller.SaveDevice(_selectedDevice);
-
-            //If the updated device is null or has been corupted (i.e. wrong device info), error!
-            if (savedDevice == null || savedDevice.Id != _selectedDevice.Id)
+            try
             {
-                MessageBox.Show("There was an error saving the Device...", _selectedDevice.ToString());
+                //Update the global object with any updates values.
+                _selectedDevice.Name = modify_tDevName.Text;
+                _selectedDevice.Custodian = modify_tCustodian.Text;
+                _selectedDevice.Location = modify_tLocation.Text;
+                _selectedDevice.Enabled = modify_rbTrue.Checked;
+
+                //Create new Device Controller.
+                var controller = new DeviceController();
+
+                //Save the Device.
+                var savedDevice = controller.SaveDevice(_selectedDevice);
+
+                //If the updated device is null or has been corupted (i.e. wrong device info), error!
+                if (savedDevice == null || savedDevice.Id != _selectedDevice.Id)
+                {
+                    MessageBox.Show("There was an error saving the Device...", _selectedDevice.ToString());
+                }
+                else
+                {
+                    //Updated the global variable with a database replica.
+                    //(Should not change the object properties).
+                    _selectedDevice = savedDevice;
+
+                    //Inform the user
+                    DebugOutput.Print("Device was updated successfully. ", _selectedDevice.ToString());
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Updated the global variable with a database replica.
-                //(Should not change the object properties).
-                _selectedDevice = savedDevice;
-
-                //Inform the user
-                DebugOutput.Print("Device was updated successfully. ", _selectedDevice.ToString());
+                DebugOutput.Print("Could not save data for selected object. ", ex.Message);
             }
         }
 
         private void modify_bComms_Click(object sender, EventArgs e)
         {
-            //Loads the relevant communicators.
-            var controller = new CommunicatorController();
-            modcomms_lbComms.Items.Clear();
-            modcomms_lbComms.Items.AddRange(
-                controller.GetAllCommunicators().Where(c => c.Device.Id == _selectedDevice.Id).ToArray());
-
-            if (modcomms_lbComms.Items.Count > 0)
+            try
             {
-                //Select the first element
-                modcomms_lbComms.SelectedItem = modcomms_lbComms.Items[0];
+                //Loads the relevant communicators.
+                var controller = new CommunicatorController();
+                modcomms_lbComms.Items.Clear();
+                modcomms_lbComms.Items.AddRange(
+                    controller.GetAllCommunicators().Where(c => c.Device.Id == _selectedDevice.Id).ToArray());
 
-                //Shows the modify tab.
-                pTabPanel.SelectedTab = pModifyCommunicators;
+                if (modcomms_lbComms.Items.Count > 0)
+                {
+                    //Select the first element
+                    modcomms_lbComms.SelectedItem = modcomms_lbComms.Items[0];
+
+                    //Shows the modify tab.
+                    pTabPanel.SelectedTab = pModifyCommunicators;
+                }
+                else
+                {
+                    var msg =
+                        System.Windows.Forms.MessageBox.Show(
+                            "There are no Communicators for this Device.", "No Communicators Available",
+                            MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                    // -------- Create new communicator ----------
+
+                    //Create and display the DataBoard form.
+                    var window = new DataBoard(null, _selectedDevice);
+                    window.GoToCommunicatorPage();
+                    window.ShowDialog();
+
+                    //Get the Comm object created.
+                    _communicator = window.GetCommunicator();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var msg =
-                    System.Windows.Forms.MessageBox.Show(
-                        "There are no Communicators for this Device.", "No Communicators Available",
-                        MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                DebugOutput.Print("Could not load/store/update information for selected Device", ex.Message);
             }
         }
 
@@ -804,6 +867,16 @@ namespace SCIPA.UI.HMI
                     System.Windows.Forms.MessageBox.Show(
                         "There are no Rules for this Device.", "No Rules Available",
                         MessageBoxButtons.OK, MessageBoxIcon.Hand);
+
+                // -------- Create new rule ----------
+
+                //Create and display the DataBoard form.
+                var window = new DataBoard(null, _selectedDevice);
+                window.GoToRulePage();
+                window.ShowDialog();
+
+                //Get the Comm object created.
+                _rule = window.GetRule();
             }
         }
 
