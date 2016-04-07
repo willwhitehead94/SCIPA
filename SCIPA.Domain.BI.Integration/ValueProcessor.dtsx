@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ValueProcessor"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{FB72B459-B973-4A69-9F38-54E16786B13E}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{50A8D9B4-2D00-433C-B75F-4A8A2CE1281F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output Values.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output Values.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -867,7 +867,7 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[StagingTable]</property>
+                  name="OpenRowset">[StagingTable]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1107,13 +1107,21 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="141.777777777778,41.7777777777778"
-          Id="Package\Value Backup"
-          TopLeft="201.85184383098,127.509582737255" />
+          Size="151.111111111112,41.7777777777778"
+          Id="Package\Data Flow Task"
+          TopLeft="314.814802305199,317.445732022957" />
+        <NodeLayout
+          Size="240.888888888889,41.7777777777778"
+          Id="Package\Deletes Values In The Stage Table"
+          TopLeft="294.444432744274,415.734368716258" />
         <NodeLayout
           Size="256,41.7777777777778"
           Id="Package\Deletes Values Moved To Stage Table"
           TopLeft="274.691347109438,221.149432559926" />
+        <NodeLayout
+          Size="141.777777777778,41.7777777777778"
+          Id="Package\Value Backup"
+          TopLeft="201.85184383098,127.509582737255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="272.740732719869,169.287360515033">
@@ -1148,10 +1156,6 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="151.111111111112,41.7777777777778"
-          Id="Package\Data Flow Task"
-          TopLeft="314.814802305199,317.445732022957" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="402.691347109438,262.927210337704">
@@ -1186,10 +1190,6 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="240.888888888889,41.7777777777778"
-          Id="Package\Deletes Values In The Stage Table"
-          TopLeft="294.444432744274,415.734368716258" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="390.370357860754,359.223509800735">
@@ -1228,18 +1228,94 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136.888888888889,41.7777777777778"
+          Id="Package\Data Flow Task\ValueOutput"
+          TopLeft="247.555555555556,122.222222222222" />
+        <NodeLayout
+          Size="149.777777777778,41.7777777777778"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="154.666666666667,12.4444444444445" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="229.555555555556,54.2222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86.4444444444445,68"
+              Start="0,0"
+              End="86.4444444444445,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30"
+                    Point2="0,34"
+                    Point3="4,34" />
+                  <mssgle:LineSegment
+                    End="82.4444444444445,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.4444444444445,34"
+                    Point2="86.4444444444445,34"
+                    Point3="86.4444444444445,38" />
+                  <mssgle:LineSegment
+                    End="86.4444444444445,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ValueOutput">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Value Backup">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="260,41.7777777777778"
-          Id="Package\Value Backup\SCIPA Database Values Over 72 Hours"
-          TopLeft="59.0740717266814,39.8467446053921" />
-        <NodeLayout
           Size="143.111111111112,41.7777777777778"
           Id="Package\Value Backup\Staging Table"
           TopLeft="394.135786807587,161.379315651838" />
+        <NodeLayout
+          Size="260,41.7777777777778"
+          Id="Package\Value Backup\SCIPA Database Values Over 72 Hours"
+          TopLeft="59.0740717266814,39.8467446053921" />
         <EdgeLayout
           Id="Package\Value Backup.Paths[OLE DB Source Output]"
           TopLeft="189.074071726681,81.6245223831699">
@@ -1292,82 +1368,6 @@ WHERE  (EventTime &lt; DATEADD([hour], - 72,GETDATE()))</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Value Backup\Staging Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="136.888888888889,41.7777777777778"
-          Id="Package\Data Flow Task\ValueOutput"
-          TopLeft="247.555555555556,122.222222222222" />
-        <NodeLayout
-          Size="149.777777777778,41.7777777777778"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="154.666666666667,12.4444444444445" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="229.555555555556,54.2222222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="86.4444444444445,68"
-              Start="0,0"
-              End="86.4444444444445,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30"
-                    Point2="0,34"
-                    Point3="4,34" />
-                  <mssgle:LineSegment
-                    End="82.4444444444445,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="82.4444444444445,34"
-                    Point2="86.4444444444445,34"
-                    Point3="86.4444444444445,38" />
-                  <mssgle:LineSegment
-                    End="86.4444444444445,60.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ValueOutput">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

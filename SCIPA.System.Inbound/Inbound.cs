@@ -79,7 +79,13 @@ namespace SCIPA.Domain.Inbound
 
                 while (_reader.AvailableValues() > 0)
                 {
-                    LastValue = _reader.GetNextValueAsString().Trim();
+                    var one = _reader;
+                    var two = one.GetNextValueAsString();
+
+                    if (two != null)
+                        two = two.Trim();
+
+                    LastValue = two; //_reader.GetNextValueAsString().Trim();
                 }
                 Thread.Sleep(1000);
             }
