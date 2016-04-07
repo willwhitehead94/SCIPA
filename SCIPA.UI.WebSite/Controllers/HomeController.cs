@@ -29,7 +29,9 @@ namespace SCIPA.UI.WebSite.Controllers
         /// </summary>
         RuleController rulCont = new RuleController();
 
-        //The number of hours to load alarm data for.
+        /// <summary>
+        /// The number of hours to load alarm data for.
+        /// </summary>
         private int Hours = 72;
 
         /// <summary>
