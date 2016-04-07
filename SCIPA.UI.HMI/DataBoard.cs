@@ -200,7 +200,6 @@ namespace SCIPA.UI.HMI
             _rule = rule;
             add_cbRule.Items.Add(rule);
             add_cbRule.SelectedIndex = 0;
-            //add_cbRule.SelectedItem = add_cbRule.Items[0];
             add_cbRule.Enabled = false;
 
 
