@@ -164,12 +164,6 @@ namespace SCIPA.Data.Repository
         /// <returns>Domain models of the database objects.</returns>
         public IEnumerable<DOM.Device> RetrieveAllDevices()
         {
-            //var dal = _db.Devices;
-            //var dom = new DOM.Device();
-
-            //_mapper.Map<DAL.Device, DOM.Device>(dal, dom);
-            //dom = _mapper.Map<DAL.Device, DOM.Device>(dal, dom);
-
             return _db.Devices.ToList().Select(device => _mapper.Map(device, new DOM.Device()));
         }
 

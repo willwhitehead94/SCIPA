@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using SCIPA.Domain.Generic;
 using SCIPA.Models;
 
@@ -32,11 +33,12 @@ namespace SCIPA.Domain.Outbound
             //Make the Value available.
             _value = value;
 
-            //Output the data required - if blank, print the actual value
-            if (rule.Action.OutputValue == "[val]")
-                OutputValue(_value.StringValue);
-            else
-                OutputValue(rule.Action.OutputValue);
+            //Output the data required - any instance of [val] is replaced with the actual value
+            StringBuilder builder = new StringBuilder(rule.Action.OutputValue);
+            builder.Replace("[val]", _value.StringValue);
+
+            //Output the string
+            OutputValue(builder.ToString());
         }
 
         /// <summary>

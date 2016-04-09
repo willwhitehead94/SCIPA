@@ -33,17 +33,17 @@ namespace SCIPA.UI.HMI
                 this.Close();
             }
 
-            if (_communicator == null)
-            {
-                var devController = new DeviceController();
-                _communicator = devController.GetCommunicatorsForDevice(_device.Id).FirstOrDefault(c=>c.Inbound);
+            //if (_communicator == null)
+            //{
+            //    var devController = new DeviceController();
+            //    _communicator = devController.GetCommunicatorsForDevice(_device.Id).FirstOrDefault(c=>c.Inbound);
 
-                if (_communicator == null)
-                {
-                    System.Windows.Forms.MessageBox.Show("No communicators exist - you cannot create a rule!");
-                    this.Close();
-                }
-            }
+            //    if (_communicator == null)
+            //    {
+            //        System.Windows.Forms.MessageBox.Show("No communicators exist - you cannot create a rule!");
+            //        this.Close();
+            //    }
+            //}
         }
 
         private void add_bSaveSource_Click(object sender, EventArgs e)
