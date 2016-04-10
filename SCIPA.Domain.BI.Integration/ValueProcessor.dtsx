@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ValueProcessor"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{50A8D9B4-2D00-433C-B75F-4A8A2CE1281F}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{E55D342D-0EF5-4DDA-992A-0DF6D8B85BF0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output Values.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\scipa\Output Values.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager

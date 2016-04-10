@@ -251,8 +251,6 @@ namespace SCIPA.Data.Repository
             }
 
             return returnList;
-
-            return _db.Actions.Where(a => a.RuleId == ruleId).Select(a => _mapper.Map(a, new DOM.Action()));
         } 
 
         /// <summary>

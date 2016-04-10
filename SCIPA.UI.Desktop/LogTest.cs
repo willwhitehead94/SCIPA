@@ -35,13 +35,6 @@ namespace SCIPA.UI
             FilePath = @"C:\scipa\values.dat"
         };
 
-        private SerialDataHandler myHandler;
-
-        private SerialDataReader myReader;
-
-        private FlatFileHandler secondHandler;
-        private FlatFileReader secondReader;
-
         public LogTest()
         {
             InitializeComponent();

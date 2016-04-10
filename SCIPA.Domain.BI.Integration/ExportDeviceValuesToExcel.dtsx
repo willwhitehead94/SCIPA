@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ExportDeviceValuesToExcel"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{009D76E4-B750-48DA-8CA6-3BF6E4A36625}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{E9ECC639-BE2D-4157-9AA2-FADF5A087857}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\scipa\Output.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1174,6 +1174,28 @@
           Id="Package\Export To Excel Data Flow\Union All"
           TopLeft="125.617278959035,132.490425812929" />
         <EdgeLayout
+          Id="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
+          TopLeft="277.296287591075,153.287360515033">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.2345641875957,0"
+              Start="0,0"
+              End="-23.7345641875957,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-23.7345641875957,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Export To Excel Data Flow.Paths[Union All Output 1]"
           TopLeft="181.925921473974,174.268203590707">
           <EdgeLayout.Curve>
@@ -1263,28 +1285,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Export To Excel Data Flow.Paths[Derived Column Output]"
-          TopLeft="277.296287591075,153.287360515033">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-31.2345641875957,0"
-              Start="0,0"
-              End="-23.7345641875957,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-23.7345641875957,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1302,7 +1302,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Export To Excel Data Flow\Value Information">
+    design-time-name="Package\Export To Excel Data Flow\Device Information">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1315,7 +1315,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Export To Excel Data Flow\Device Information">
+    design-time-name="Package\Export To Excel Data Flow\Value Information">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

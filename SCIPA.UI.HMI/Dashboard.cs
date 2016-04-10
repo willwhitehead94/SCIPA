@@ -1166,7 +1166,6 @@ namespace SCIPA.UI.HMI
                     }
 
                     //Return to ensure that the report viewer doesn't refresh blankly.
-                    break;
                 case 5:
                     //Case 5 is the Values over 72 hours old being staged, backed up and removed via an SSIS package.
 
@@ -1209,9 +1208,6 @@ namespace SCIPA.UI.HMI
                     }
 
                     //Return to ensure that the report viewer doesn't refresh blankly.
-                    break;
-                default:
-                    break;
             }
 
             //Set the desired report.

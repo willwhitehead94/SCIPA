@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-81SM1A6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyu5IDv7TeUWhNowonqTWnwAAAAACAAAAAAAQZgAAAAEAACAAAACRfOCKNOd/Ilcoh4XOxgivzt2Kysp1N9BR/I50RX7tOwAAAAAOgAAAAAIAACAAAAAb9pmcDE2EcHEW9Ycv/x26Lt/jd5erPJb+aATM2Gs+VpAAAAAAvCwlaAAvJT2wuG1TkxbuayPNn4Vp2ap/YWS/vXRVFf2IubBKg24Nh+cFTaZM42n/j4DHWxkIHV9HU0cVWwpc1pT+bam+BqZqCutxInK0NKl8QKvUq3fvq1e0XLvBxwEDD6RPRyv3TELpa8uku+A8uihS125pxD9QWF4IPyZYl0uQoApIqzKF+GE7cKkoOCVAAAAAfxTiMX0BuRy9PzJJny1qq6+St5e4yaQ+nYbWF0SQOlXqSfn5F9ufdvzwSkODyMDDSDpUg1ch9zLy8UrEif3RUg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyu5IDv7TeUWhNowonqTWnwAAAAACAAAAAAAQZgAAAAEAACAAAACK884H/vFEK9WIs5RsjLD7TDNUTrHce8aYSg4LCasZBAAAAAAOgAAAAAIAACAAAADx2yRW00Be40iyeRpuy8o3hNMX4ztMRZ5wNWTVLqUdSZAAAACjIWtdBR+Kp5CvlVhHwcjaL6FPDdAMwLsxKo1+fH6Ko1+JSuQCh1fXV3L1AFPHIhY7oUSu27FlN58afLRYFwHRW4s8nu1+LmKI8TTE4f3hwoASsDckLKb+6/EGLpS21rHNYlU2Z+zj4JlU1Sgf0tcnHaLduJRT5W6tVcwhgef2c5Ux7XKUEw8gAKTlIXieC4RAAAAAQFJkZY4VR/9Crek53PyTYC7PPip6NUy1fhlISXFAUV4pWqYCOkXfNyM5V2tq+8UZEADBTDRVCKkPtlLvGC4G1A==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -43,10 +43,10 @@
                 <SSIS:Property SSIS:Name="Name">ExportDeviceValuesToExcel</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{009D76E4-B750-48DA-8CA6-3BF6E4A36625}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E9ECC639-BE2D-4157-9AA2-FADF5A087857}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -64,7 +64,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\scipa\Output.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -79,7 +79,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Will Whitehead\Desktop\Output.xls</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\scipa\Output.xls</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -152,7 +152,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Will Whitehead\Desktop\Output.xls</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\scipa\Output.xls</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -266,10 +266,10 @@
                 <SSIS:Property SSIS:Name="Name">ValueProcessor</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{283B4C2F-4633-416B-8A1C-008D71414E1B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E55D342D-0EF5-4DDA-992A-0DF6D8B85BF0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -287,7 +287,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Will Whitehead\Desktop\Output Values.xls;Extended Properties="Excel 8.0;HDR=YES";</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\scipa\Output Values.xls;Extended Properties="EXCEL 8.0;HDR=YES";</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -302,7 +302,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Will Whitehead\Desktop\Output Values.xls</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\scipa\Output Values.xls</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -375,7 +375,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Will Whitehead\Desktop\Output Values.xls</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\scipa\Output Values.xls</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

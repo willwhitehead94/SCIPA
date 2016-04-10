@@ -75,8 +75,6 @@ namespace SCIPA.Domain.Inbound
         {
             while (true)
             {
-                int x = 0;
-
                 while (_reader.AvailableValues() > 0)
                 {
                     var val = _reader.GetNextValueAsString();
