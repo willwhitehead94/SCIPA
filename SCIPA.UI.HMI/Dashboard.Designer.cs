@@ -1008,7 +1008,6 @@
             this.add_tLocation.Name = "add_tLocation";
             this.add_tLocation.Size = new System.Drawing.Size(569, 55);
             this.add_tLocation.TabIndex = 28;
-            this.add_tLocation.Text = "Under - Desk";
             // 
             // label3
             // 
@@ -1029,7 +1028,6 @@
             this.add_tCustodian.Name = "add_tCustodian";
             this.add_tCustodian.Size = new System.Drawing.Size(569, 55);
             this.add_tCustodian.TabIndex = 26;
-            this.add_tCustodian.Text = "W. Whitehead";
             // 
             // label2
             // 
@@ -1050,7 +1048,6 @@
             this.add_tName.Name = "add_tName";
             this.add_tName.Size = new System.Drawing.Size(569, 55);
             this.add_tName.TabIndex = 24;
-            this.add_tName.Text = "Test Arduino";
             // 
             // add_tId
             // 
