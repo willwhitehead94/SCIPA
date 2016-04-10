@@ -269,16 +269,17 @@ namespace SCIPA.Data.Repository
         /// <param name="action">Domain model to update.</param>
         public DOM.Action UpdateAction(DOM.Action action)
         {
-            var dbValue = RetrieveAction(action.Id);
-            if (dbValue == null) return null;
+            var dbAction = _db.Actions.FirstOrDefault(act => act.Id == action.Id);
 
-            _mapper.Map(action, dbValue);
-            dbValue.Communicator = null;
-            //_db.Entry(dbValue).State = EntityState.Modified;
+            if (dbAction == null) return null;
 
+            var newAction = _mapper.Map(action, new DAL.Action());
+
+            _mapper.Map(newAction, dbAction);
+            dbAction.OutputValue = newAction.OutputValue;
 
             _db.SaveChanges();
-            return _mapper.Map(dbValue, new DOM.Action());
+            return _mapper.Map(dbAction, new DOM.Action());
         }
 
         /// <summary>

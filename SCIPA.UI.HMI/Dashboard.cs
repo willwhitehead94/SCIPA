@@ -982,6 +982,7 @@ namespace SCIPA.UI.HMI
 
                 if (comm != null)
                 {
+                    _communicator = comm;
                     _action.Communicator = comm;
                     modact_tComm.Text = comm.ToString();
                 }
