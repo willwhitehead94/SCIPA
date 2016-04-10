@@ -2410,7 +2410,7 @@
             this.modact_bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.modact_bSave.BackColor = System.Drawing.Color.Gainsboro;
             this.modact_bSave.Font = new System.Drawing.Font("Century Gothic", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modact_bSave.Location = new System.Drawing.Point(761, 518);
+            this.modact_bSave.Location = new System.Drawing.Point(1273, 760);
             this.modact_bSave.Name = "modact_bSave";
             this.modact_bSave.Size = new System.Drawing.Size(612, 110);
             this.modact_bSave.TabIndex = 63;
