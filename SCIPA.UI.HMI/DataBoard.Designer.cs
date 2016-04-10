@@ -440,6 +440,7 @@
             this.add_tEnd.Name = "add_tEnd";
             this.add_tEnd.Size = new System.Drawing.Size(596, 55);
             this.add_tEnd.TabIndex = 28;
+            this.add_tEnd.Text = "0";
             // 
             // label49
             // 
@@ -458,6 +459,7 @@
             this.add_tStartChar.Name = "add_tStartChar";
             this.add_tStartChar.Size = new System.Drawing.Size(596, 55);
             this.add_tStartChar.TabIndex = 26;
+            this.add_tStartChar.Text = "0";
             // 
             // label50
             // 
