@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ValueProcessor"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{E55D342D-0EF5-4DDA-992A-0DF6D8B85BF0}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{95ACC76B-69B9-4021-A5FE-B021657CBA7D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>

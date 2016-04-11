@@ -1138,7 +1138,7 @@ namespace SCIPA.UI.HMI
                     //Case 4 is the Excel Export SSIS package.
 
                     //Ensure the file is there
-                    if (!System.IO.File.Exists(@"C:\Users\Will Whitehead\Desktop\Output.xls"))
+                    if (!System.IO.File.Exists(@"C:\scipa\Output.xls"))
                     {
                         //File doesnt exist - the blank template must exist.
                         System.Windows.Forms.MessageBox.Show("You do not have the blank template available. Aborting...");
@@ -1180,7 +1180,7 @@ namespace SCIPA.UI.HMI
                     DebugOutput.Print("Attempting to remove all old Values from the database...");
 
                     //Ensure the file is there
-                    if (!System.IO.File.Exists(@"C:\Users\Will Whitehead\Desktop\Output Values.xls"))
+                    if (!System.IO.File.Exists(@"C:\scipa\Output Values.xls"))
                     {
                         //File doesnt exist - the blank template must exist.
                         System.Windows.Forms.MessageBox.Show("You do not have the blank template available. Aborting...");
