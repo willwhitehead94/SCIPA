@@ -1162,7 +1162,7 @@ namespace SCIPA.UI.HMI
                     else
                     {
                         DebugOutput.Print("Successfully exported data to Excel");
-                        System.Windows.Forms.MessageBox.Show("The file on your desktop successfully updated.");
+                        System.Windows.Forms.MessageBox.Show("The file successfully updated.");
                         return;
                     }
 
@@ -1204,7 +1204,7 @@ namespace SCIPA.UI.HMI
                     else
                     {
                         DebugOutput.Print("Successfully exported data to Excel, data was deleted.");
-                        System.Windows.Forms.MessageBox.Show("The file on your desktop successfully updated.");
+                        System.Windows.Forms.MessageBox.Show("The file successfully updated.");
                         return;
                     }
 
